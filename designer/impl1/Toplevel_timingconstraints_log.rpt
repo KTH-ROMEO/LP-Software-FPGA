@@ -1,0 +1,74 @@
+Microsemi Libero Software
+Version: 11.9.3.5
+Release: v11.9 SP3
+
+Info: The design Toplevel.adb was last modified by software version 11.9.3.5.
+Opened an existing Libero design Toplevel.adb.
+
+The Execute Script command succeeded ( 00:00:05 )
+***** Layout Variables *********************************************
+
+Mode: TIMING_DRIVEN
+Power-driven Layout: OFF
+Incremental Placement: OFF
+Incremental Route: OFF
+High Effort Layout Mode: ON
+Sequential Optimization: ON
+
+
+Warning: The advanced layout option 'High Effort Layout Mode' is active.
+
+Running I/O Bank Assigner.
+
+I/O Bank Assigner completed successfully.
+ 
+
+Planning global net placement...
+
+
+Global net placement completed successfully.
+
+                        o - o - o - o - o - o
+
+Timing-driven Placer Started: Sun Jun 30 23:22:06 2019
+High-Effort Placer Started...
+
+Placer Finished: Sun Jun 30 23:26:45 2019
+Total Placer CPU Time:     00:04:39
+
+                        o - o - o - o - o - o
+
+
+
+Post-Layout Core Information:
+    Used:   5670  Total:   6144   (92.29%)
+
+    Type       | Instances    | Core tiles
+    -----------|--------------|-----------
+    COMB       | 3595         | 3595
+    SEQ        | 2075         | 2075
+
+Timing-driven Router 
+Design: Toplevel                        Started: Sun Jun 30 23:26:52 2019
+
+ 
+Iterative improvement...
+Iterative improvement...
+
+Timing-driven Router completed successfully.
+
+Design: Toplevel                        
+Finished: Sun Jun 30 23:28:13 2019
+Total CPU Time:     00:01:19            Total Elapsed Time: 00:01:21
+Total Memory Usage: 291.2 Mbytes
+                        o - o - o - o - o - o
+
+Loading the Timing data for the design.
+Finished loading the Timing data.
+TIMER: Max delay timing requirements have been met.
+TIMER: Min delay timing requirements have NOT been met.
+
+The Layout command succeeded ( 00:06:17 )
+Design saved to file C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-CU\designer\impl1\Toplevel.adb.
+Design closed.
+

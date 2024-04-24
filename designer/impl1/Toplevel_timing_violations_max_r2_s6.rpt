@@ -1,0 +1,822 @@
+Timing Violation Report Max Delay Analysis
+
+SmartTime Version v11.9 SP3
+Microsemi Corporation - Microsemi Libero Software Release v11.9 SP3 (Version 11.9.3.5)
+Date: Tue May 14 13:30:02 2019
+
+
+Design: Toplevel
+Family: ProASIC3
+Die: A3P250
+Package: 100 VQFP
+Temperature Range: 0 - 70 C
+Voltage Range: 1.425 - 1.575 V
+Speed Grade: STD
+Design State: Post-Layout
+Data source: Silicon verified
+Min Operating Conditions: BEST - 1.575 V - 0 C
+Max Operating Conditions: WORST - 1.425 V - 70 C
+Using Enhanced Min Delay Analysis
+Scenario for Timing Analysis: Primary
+
+
+Path 1
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[1]:E
+  Delay (ns):            31.606
+  Slack (ns):            -1.055
+  Arrival (ns):          35.983
+  Required (ns):         34.928
+
+Path 2
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[0]:E
+  Delay (ns):            31.606
+  Slack (ns):            -0.964
+  Arrival (ns):          35.983
+  Required (ns):         35.019
+
+Path 3
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[10]:E
+  Delay (ns):            31.743
+  Slack (ns):            -0.948
+  Arrival (ns):          36.120
+  Required (ns):         35.172
+
+Path 4
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[9]:E
+  Delay (ns):            31.683
+  Slack (ns):            -0.888
+  Arrival (ns):          36.060
+  Required (ns):         35.172
+
+Path 5
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[11]:E
+  Delay (ns):            31.435
+  Slack (ns):            -0.884
+  Arrival (ns):          35.812
+  Required (ns):         34.928
+
+Path 6
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[14]:E
+  Delay (ns):            31.683
+  Slack (ns):            -0.821
+  Arrival (ns):          36.060
+  Required (ns):         35.239
+
+Path 7
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[8]:E
+  Delay (ns):            31.683
+  Slack (ns):            -0.821
+  Arrival (ns):          36.060
+  Required (ns):         35.239
+
+Path 8
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[18]:E
+  Delay (ns):            31.683
+  Slack (ns):            -0.821
+  Arrival (ns):          36.060
+  Required (ns):         35.239
+
+Path 9
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[15]:E
+  Delay (ns):            31.683
+  Slack (ns):            -0.821
+  Arrival (ns):          36.060
+  Required (ns):         35.239
+
+Path 10
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[17]:E
+  Delay (ns):            31.683
+  Slack (ns):            -0.821
+  Arrival (ns):          36.060
+  Required (ns):         35.239
+
+Path 11
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[20]:E
+  Delay (ns):            31.383
+  Slack (ns):            -0.729
+  Arrival (ns):          35.760
+  Required (ns):         35.031
+
+Path 12
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[6]:E
+  Delay (ns):            31.322
+  Slack (ns):            -0.668
+  Arrival (ns):          35.699
+  Required (ns):         35.031
+
+Path 13
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[4]:E
+  Delay (ns):            31.211
+  Slack (ns):            -0.660
+  Arrival (ns):          35.588
+  Required (ns):         34.928
+
+Path 14
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[21]:E
+  Delay (ns):            31.386
+  Slack (ns):            -0.524
+  Arrival (ns):          35.763
+  Required (ns):         35.239
+
+Path 15
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[22]:E
+  Delay (ns):            31.178
+  Slack (ns):            -0.524
+  Arrival (ns):          35.555
+  Required (ns):         35.031
+
+Path 16
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[3]:E
+  Delay (ns):            31.166
+  Slack (ns):            -0.512
+  Arrival (ns):          35.543
+  Required (ns):         35.031
+
+Path 17
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[16]:E
+  Delay (ns):            31.112
+  Slack (ns):            -0.458
+  Arrival (ns):          35.489
+  Required (ns):         35.031
+
+Path 18
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[19]:E
+  Delay (ns):            31.041
+  Slack (ns):            -0.399
+  Arrival (ns):          35.418
+  Required (ns):         35.019
+
+Path 19
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[12]:E
+  Delay (ns):            30.897
+  Slack (ns):            -0.346
+  Arrival (ns):          35.274
+  Required (ns):         34.928
+
+Path 20
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[2]:E
+  Delay (ns):            30.972
+  Slack (ns):            -0.318
+  Arrival (ns):          35.349
+  Required (ns):         35.031
+
+Path 21
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[13]:E
+  Delay (ns):            30.897
+  Slack (ns):            -0.310
+  Arrival (ns):          35.274
+  Required (ns):         34.964
+
+Path 22
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[23]:E
+  Delay (ns):            30.947
+  Slack (ns):            -0.293
+  Arrival (ns):          35.324
+  Required (ns):         35.031
+
+Path 23
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[5]:E
+  Delay (ns):            30.947
+  Slack (ns):            -0.293
+  Arrival (ns):          35.324
+  Required (ns):         35.031
+
+Path 24
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/s_milliseconds[7]:E
+  Delay (ns):            30.836
+  Slack (ns):            -0.249
+  Arrival (ns):          35.213
+  Required (ns):         34.964
+
+Path 25
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[1]:E
+  Delay (ns):            30.675
+  Slack (ns):            -0.033
+  Arrival (ns):          34.961
+  Required (ns):         34.928
+
+Path 26
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[0]:E
+  Delay (ns):            30.675
+  Slack (ns):            0.058
+  Arrival (ns):          34.961
+  Required (ns):         35.019
+
+Path 27
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[10]:E
+  Delay (ns):            30.812
+  Slack (ns):            0.074
+  Arrival (ns):          35.098
+  Required (ns):         35.172
+
+Path 28
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[9]:E
+  Delay (ns):            30.752
+  Slack (ns):            0.134
+  Arrival (ns):          35.038
+  Required (ns):         35.172
+
+Path 29
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[11]:E
+  Delay (ns):            30.504
+  Slack (ns):            0.138
+  Arrival (ns):          34.790
+  Required (ns):         34.928
+
+Path 30
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[14]:E
+  Delay (ns):            30.752
+  Slack (ns):            0.201
+  Arrival (ns):          35.038
+  Required (ns):         35.239
+
+Path 31
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[8]:E
+  Delay (ns):            30.752
+  Slack (ns):            0.201
+  Arrival (ns):          35.038
+  Required (ns):         35.239
+
+Path 32
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[18]:E
+  Delay (ns):            30.752
+  Slack (ns):            0.201
+  Arrival (ns):          35.038
+  Required (ns):         35.239
+
+Path 33
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[15]:E
+  Delay (ns):            30.752
+  Slack (ns):            0.201
+  Arrival (ns):          35.038
+  Required (ns):         35.239
+
+Path 34
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[17]:E
+  Delay (ns):            30.752
+  Slack (ns):            0.201
+  Arrival (ns):          35.038
+  Required (ns):         35.239
+
+Path 35
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[1]:E
+  Delay (ns):            30.280
+  Slack (ns):            0.259
+  Arrival (ns):          34.669
+  Required (ns):         34.928
+
+Path 36
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[20]:E
+  Delay (ns):            30.452
+  Slack (ns):            0.293
+  Arrival (ns):          34.738
+  Required (ns):         35.031
+
+Path 37
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[0]:E
+  Delay (ns):            30.280
+  Slack (ns):            0.350
+  Arrival (ns):          34.669
+  Required (ns):         35.019
+
+Path 38
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[6]:E
+  Delay (ns):            30.391
+  Slack (ns):            0.354
+  Arrival (ns):          34.677
+  Required (ns):         35.031
+
+Path 39
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[4]:E
+  Delay (ns):            30.280
+  Slack (ns):            0.362
+  Arrival (ns):          34.566
+  Required (ns):         34.928
+
+Path 40
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[10]:E
+  Delay (ns):            30.417
+  Slack (ns):            0.366
+  Arrival (ns):          34.806
+  Required (ns):         35.172
+
+Path 41
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[9]:E
+  Delay (ns):            30.357
+  Slack (ns):            0.426
+  Arrival (ns):          34.746
+  Required (ns):         35.172
+
+Path 42
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[11]:E
+  Delay (ns):            30.109
+  Slack (ns):            0.430
+  Arrival (ns):          34.498
+  Required (ns):         34.928
+
+Path 43
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[14]:E
+  Delay (ns):            30.357
+  Slack (ns):            0.493
+  Arrival (ns):          34.746
+  Required (ns):         35.239
+
+Path 44
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[8]:E
+  Delay (ns):            30.357
+  Slack (ns):            0.493
+  Arrival (ns):          34.746
+  Required (ns):         35.239
+
+Path 45
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[18]:E
+  Delay (ns):            30.357
+  Slack (ns):            0.493
+  Arrival (ns):          34.746
+  Required (ns):         35.239
+
+Path 46
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[15]:E
+  Delay (ns):            30.357
+  Slack (ns):            0.493
+  Arrival (ns):          34.746
+  Required (ns):         35.239
+
+Path 47
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[17]:E
+  Delay (ns):            30.357
+  Slack (ns):            0.493
+  Arrival (ns):          34.746
+  Required (ns):         35.239
+
+Path 48
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[21]:E
+  Delay (ns):            30.455
+  Slack (ns):            0.498
+  Arrival (ns):          34.741
+  Required (ns):         35.239
+
+Path 49
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[22]:E
+  Delay (ns):            30.247
+  Slack (ns):            0.498
+  Arrival (ns):          34.533
+  Required (ns):         35.031
+
+Path 50
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[3]:E
+  Delay (ns):            30.235
+  Slack (ns):            0.510
+  Arrival (ns):          34.521
+  Required (ns):         35.031
+
+Path 51
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[16]:E
+  Delay (ns):            30.181
+  Slack (ns):            0.564
+  Arrival (ns):          34.467
+  Required (ns):         35.031
+
+Path 52
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[20]:E
+  Delay (ns):            30.057
+  Slack (ns):            0.585
+  Arrival (ns):          34.446
+  Required (ns):         35.031
+
+Path 53
+  From:                  General_Controller_0/s_milliseconds[0]:CLK
+  To:                    General_Controller_0/status_new_data:D
+  Delay (ns):            30.034
+  Slack (ns):            0.587
+  Arrival (ns):          34.411
+  Required (ns):         34.998
+
+Path 54
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[19]:E
+  Delay (ns):            30.110
+  Slack (ns):            0.623
+  Arrival (ns):          34.396
+  Required (ns):         35.019
+
+Path 55
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[6]:E
+  Delay (ns):            29.996
+  Slack (ns):            0.646
+  Arrival (ns):          34.385
+  Required (ns):         35.031
+
+Path 56
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[4]:E
+  Delay (ns):            29.885
+  Slack (ns):            0.654
+  Arrival (ns):          34.274
+  Required (ns):         34.928
+
+Path 57
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[12]:E
+  Delay (ns):            29.966
+  Slack (ns):            0.676
+  Arrival (ns):          34.252
+  Required (ns):         34.928
+
+Path 58
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[2]:E
+  Delay (ns):            30.041
+  Slack (ns):            0.704
+  Arrival (ns):          34.327
+  Required (ns):         35.031
+
+Path 59
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[13]:E
+  Delay (ns):            29.966
+  Slack (ns):            0.712
+  Arrival (ns):          34.252
+  Required (ns):         34.964
+
+Path 60
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[23]:E
+  Delay (ns):            30.016
+  Slack (ns):            0.729
+  Arrival (ns):          34.302
+  Required (ns):         35.031
+
+Path 61
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[5]:E
+  Delay (ns):            30.016
+  Slack (ns):            0.729
+  Arrival (ns):          34.302
+  Required (ns):         35.031
+
+Path 62
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/s_milliseconds[7]:E
+  Delay (ns):            29.905
+  Slack (ns):            0.773
+  Arrival (ns):          34.191
+  Required (ns):         34.964
+
+Path 63
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[21]:E
+  Delay (ns):            30.060
+  Slack (ns):            0.790
+  Arrival (ns):          34.449
+  Required (ns):         35.239
+
+Path 64
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[22]:E
+  Delay (ns):            29.852
+  Slack (ns):            0.790
+  Arrival (ns):          34.241
+  Required (ns):         35.031
+
+Path 65
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[3]:E
+  Delay (ns):            29.840
+  Slack (ns):            0.802
+  Arrival (ns):          34.229
+  Required (ns):         35.031
+
+Path 66
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[16]:E
+  Delay (ns):            29.786
+  Slack (ns):            0.856
+  Arrival (ns):          34.175
+  Required (ns):         35.031
+
+Path 67
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[19]:E
+  Delay (ns):            29.715
+  Slack (ns):            0.915
+  Arrival (ns):          34.104
+  Required (ns):         35.019
+
+Path 68
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[12]:E
+  Delay (ns):            29.571
+  Slack (ns):            0.968
+  Arrival (ns):          33.960
+  Required (ns):         34.928
+
+Path 69
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[2]:E
+  Delay (ns):            29.646
+  Slack (ns):            0.996
+  Arrival (ns):          34.035
+  Required (ns):         35.031
+
+Path 70
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[13]:E
+  Delay (ns):            29.571
+  Slack (ns):            1.004
+  Arrival (ns):          33.960
+  Required (ns):         34.964
+
+Path 71
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[23]:E
+  Delay (ns):            29.621
+  Slack (ns):            1.021
+  Arrival (ns):          34.010
+  Required (ns):         35.031
+
+Path 72
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[5]:E
+  Delay (ns):            29.621
+  Slack (ns):            1.021
+  Arrival (ns):          34.010
+  Required (ns):         35.031
+
+Path 73
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/s_milliseconds[7]:E
+  Delay (ns):            29.510
+  Slack (ns):            1.065
+  Arrival (ns):          33.899
+  Required (ns):         34.964
+
+Path 74
+  From:                  General_Controller_0/s_milliseconds[1]:CLK
+  To:                    General_Controller_0/status_new_data:D
+  Delay (ns):            29.103
+  Slack (ns):            1.609
+  Arrival (ns):          33.389
+  Required (ns):         34.998
+
+Path 75
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[1]:E
+  Delay (ns):            28.792
+  Slack (ns):            1.747
+  Arrival (ns):          33.181
+  Required (ns):         34.928
+
+Path 76
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[0]:E
+  Delay (ns):            28.792
+  Slack (ns):            1.838
+  Arrival (ns):          33.181
+  Required (ns):         35.019
+
+Path 77
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[10]:E
+  Delay (ns):            28.929
+  Slack (ns):            1.854
+  Arrival (ns):          33.318
+  Required (ns):         35.172
+
+Path 78
+  From:                  General_Controller_0/s_milliseconds[2]:CLK
+  To:                    General_Controller_0/status_new_data:D
+  Delay (ns):            28.708
+  Slack (ns):            1.901
+  Arrival (ns):          33.097
+  Required (ns):         34.998
+
+Path 79
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[9]:E
+  Delay (ns):            28.869
+  Slack (ns):            1.914
+  Arrival (ns):          33.258
+  Required (ns):         35.172
+
+Path 80
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[11]:E
+  Delay (ns):            28.621
+  Slack (ns):            1.918
+  Arrival (ns):          33.010
+  Required (ns):         34.928
+
+Path 81
+  From:                  Microcontroller_0/Data_Saving_0/Data_Mux_0/we:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_AFULL:D
+  Delay (ns):            13.345
+  Slack (ns):            1.965
+  Arrival (ns):          17.472
+  Required (ns):         19.437
+
+Path 82
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[14]:E
+  Delay (ns):            28.869
+  Slack (ns):            1.981
+  Arrival (ns):          33.258
+  Required (ns):         35.239
+
+Path 83
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[8]:E
+  Delay (ns):            28.869
+  Slack (ns):            1.981
+  Arrival (ns):          33.258
+  Required (ns):         35.239
+
+Path 84
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[18]:E
+  Delay (ns):            28.869
+  Slack (ns):            1.981
+  Arrival (ns):          33.258
+  Required (ns):         35.239
+
+Path 85
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[15]:E
+  Delay (ns):            28.869
+  Slack (ns):            1.981
+  Arrival (ns):          33.258
+  Required (ns):         35.239
+
+Path 86
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[17]:E
+  Delay (ns):            28.869
+  Slack (ns):            1.981
+  Arrival (ns):          33.258
+  Required (ns):         35.239
+
+Path 87
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[20]:E
+  Delay (ns):            28.569
+  Slack (ns):            2.073
+  Arrival (ns):          32.958
+  Required (ns):         35.031
+
+Path 88
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[6]:E
+  Delay (ns):            28.508
+  Slack (ns):            2.134
+  Arrival (ns):          32.897
+  Required (ns):         35.031
+
+Path 89
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[4]:E
+  Delay (ns):            28.397
+  Slack (ns):            2.142
+  Arrival (ns):          32.786
+  Required (ns):         34.928
+
+Path 90
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[21]:E
+  Delay (ns):            28.572
+  Slack (ns):            2.278
+  Arrival (ns):          32.961
+  Required (ns):         35.239
+
+Path 91
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[22]:E
+  Delay (ns):            28.364
+  Slack (ns):            2.278
+  Arrival (ns):          32.753
+  Required (ns):         35.031
+
+Path 92
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[3]:E
+  Delay (ns):            28.352
+  Slack (ns):            2.290
+  Arrival (ns):          32.741
+  Required (ns):         35.031
+
+Path 93
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[16]:E
+  Delay (ns):            28.298
+  Slack (ns):            2.344
+  Arrival (ns):          32.687
+  Required (ns):         35.031
+
+Path 94
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[19]:E
+  Delay (ns):            28.227
+  Slack (ns):            2.403
+  Arrival (ns):          32.616
+  Required (ns):         35.019
+
+Path 95
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[12]:E
+  Delay (ns):            28.083
+  Slack (ns):            2.456
+  Arrival (ns):          32.472
+  Required (ns):         34.928
+
+Path 96
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[2]:E
+  Delay (ns):            28.158
+  Slack (ns):            2.484
+  Arrival (ns):          32.547
+  Required (ns):         35.031
+
+Path 97
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[13]:E
+  Delay (ns):            28.083
+  Slack (ns):            2.492
+  Arrival (ns):          32.472
+  Required (ns):         34.964
+
+Path 98
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[23]:E
+  Delay (ns):            28.133
+  Slack (ns):            2.509
+  Arrival (ns):          32.522
+  Required (ns):         35.031
+
+Path 99
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[5]:E
+  Delay (ns):            28.133
+  Slack (ns):            2.509
+  Arrival (ns):          32.522
+  Required (ns):         35.031
+
+Path 100
+  From:                  General_Controller_0/s_milliseconds[3]:CLK
+  To:                    General_Controller_0/s_milliseconds[7]:E
+  Delay (ns):            28.022
+  Slack (ns):            2.553
+  Arrival (ns):          32.411
+  Required (ns):         34.964
+

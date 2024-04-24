@@ -1,0 +1,467 @@
+Microsemi Libero Software
+Version: 11.9.3.5
+Release: v11.9 SP3
+
+Info: The design C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+      11.9SP3\designer\impl1\Toplevel.adb was last modified by software version 11.9.3.5.
+Opened an existing Libero design C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+11.9SP3\designer\impl1\Toplevel.adb.
+'BA_NAME' set to 'Toplevel_ba'
+'KEEP_EXISTING_PHYSICAL_CONSTRAINTS' set to '1'
+'SDC_IMPORT_MERGE' set to '1'
+'IDE_DESIGNERVIEW_NAME' set to 'Impl1'
+'IDE_DESIGNERVIEW_COUNT' set to '1'
+'IDE_DESIGNERVIEW_REV0' set to 'Impl1'
+'IDE_DESIGNERVIEW_REVNUM0' set to '1'
+'IDE_DESIGNERVIEW_ROOTDIR' set to 'C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+11.9SP3\designer'
+'IDE_DESIGNERVIEW_LASTREV' set to '1'
+
+The Execute Script command succeeded ( 00:00:00 )
+Before proceeding, your design must be saved to disk.
+Save changes to C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+11.9SP3\designer\impl1\Toplevel.adb now? [OK]
+Design saved to file C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+11.9SP3\designer\impl1\Toplevel.adb.
+Wrote pin report to file: C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+11.9SP3\designer\impl1\Toplevel_report_pin_byname.txt
+
+The Report command succeeded ( 00:00:01 )
+Wrote pin report to file: C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+11.9SP3\designer\impl1\Toplevel_report_pin_bynumber.txt
+
+The Report command succeeded ( 00:00:01 )
+
+The Execute Script command succeeded ( 00:00:02 )
+Check design state: COMPILE
+'MULTIPASS_LAYOUT_SEED_INDEX' set to '3'
+Design saved to file C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+11.9SP3\designer\impl1\Toplevel.adb.
+Variable MULTIPASS_LAYOUT_SEED_INDEX = 3
+----- Evaluating Initial State -------
+Check design state: LAYOUT
+Variable DEFAULT_PLACE_SEED_VARIABLE_VALUE = 0
+Variable PLACE_SEED_VARIABLE_VALUE = 8988747
+Info: Multi-Pass: Seed:   8988747
+Variable IS_POWER_GUI_SUPPORTED = 1
+Wrote timer report to file: Toplevel_timing_r2_initial.rpt
+
+The Report command succeeded ( 00:00:06 )
+Wrote timing_violations report to file: Toplevel_timing_violations_max_r2_initial.rpt
+
+The Report command succeeded ( 00:00:02 )
+Wrote timing_violations report to file: Toplevel_timing_violations_min_r2_initial.rpt
+
+The Report command succeeded ( 00:00:03 )
+  - Reading netlist
+  - Initializing power engine...
+  - Restoring saved options...
+  - Power analysis done!
+Wrote power report to file: Toplevel_power_r2_initial.rpt
+
+The Report command succeeded ( 00:00:03 )
+Info: Multi-Pass: Iteration Initial, Seed Index N/A,  Worst Slack = -1.068
+Design saved to file C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+11.9SP3\designer\impl1\Toplevel.adb.
+Warning: Overwriting the existing file: C:/SPIDER2/Firmware/SPIDER2-Datahub-FPGA-General
+         11.9SP3/designer/impl1/Toplevel_layout.log.
+Wrote to the file: C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+11.9SP3\designer\impl1\Toplevel_layout.log
+
+The Export command succeeded ( 00:00:02 )
+----- Iteration 1 of 4 -----
+Variable MULTIPASS_LAYOUT_SEED_INDEX = 3
+Variable DEFAULT_PLACE_SEED_VARIABLE_VALUE = 0
+Variable MULTIPASS_LAYOUT_SEED_INDEX = 3
+'MULTIPASS_LAYOUT_SEED_INDEX' set to '4'
+Info: Multi-Pass: Seed:   51071856
+Info: Commit the changes made in SmartPower ?
+      Changes not commited will be lost. [YES]
+***** Layout Variables *********************************************
+
+Mode: TIMING_DRIVEN
+Power-driven Layout: OFF
+Incremental Placement: OFF
+Incremental Route: OFF
+High Effort Layout Mode: ON
+
+
+Warning: The advanced layout option 'High Effort Layout Mode' is active.
+
+Running I/O Bank Assigner.
+
+I/O Bank Assigner completed successfully.
+ 
+
+Planning global net placement...
+
+
+Global net placement completed successfully.
+
+                        o - o - o - o - o - o
+
+Timing-driven Placer Started: Tue May 14 13:18:50 2019
+High-Effort Placer Started...
+
+Placer Finished: Tue May 14 13:21:33 2019
+Total Placer CPU Time:     00:02:43
+
+                        o - o - o - o - o - o
+
+
+
+Post-Layout Core Information:
+    Used:   4628  Total:   6144   (75.33%)
+
+    Type       | Instances    | Core tiles
+    -----------|--------------|-----------
+    COMB       | 3203         | 3203
+    SEQ        | 1425         | 1425
+
+Timing-driven Router 
+Design: Toplevel                        Started: Tue May 14 13:21:39 2019
+
+ 
+Iterative improvement...
+Iterative improvement...
+
+Timing-driven Router completed successfully.
+
+Design: Toplevel                        
+Finished: Tue May 14 13:22:10 2019
+Total CPU Time:     00:00:30            Total Elapsed Time: 00:00:31
+Total Memory Usage: 252.3 Mbytes
+                        o - o - o - o - o - o
+
+Loading the Timing data for the design.
+Finished loading the Timing data.
+TIMER: Max delay timing requirements have NOT been met.
+TIMER: Min delay timing requirements have been met.
+
+The Layout command succeeded ( 00:03:31 )
+Variable IS_POWER_GUI_SUPPORTED = 1
+Wrote timer report to file: Toplevel_timing_r2_s4.rpt
+
+The Report command succeeded ( 00:00:01 )
+Wrote timing_violations report to file: Toplevel_timing_violations_max_r2_s4.rpt
+
+The Report command succeeded ( 00:00:02 )
+Wrote timing_violations report to file: Toplevel_timing_violations_min_r2_s4.rpt
+
+The Report command succeeded ( 00:00:02 )
+  - Reading netlist
+  - Initializing power engine...
+  - Restoring saved options...
+  - Power analysis done!
+Wrote power report to file: Toplevel_power_r2_s4.rpt
+
+The Report command succeeded ( 00:00:03 )
+Info: Multi-Pass: Iteration 1, Seed Index 4,  Worst Slack = -0.580, Range -1.068 - -0.580
+Design saved to file C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+11.9SP3\designer\impl1\Toplevel.adb.
+Warning: Overwriting the existing file: C:/SPIDER2/Firmware/SPIDER2-Datahub-FPGA-General
+         11.9SP3/designer/impl1/Toplevel_layout.log.
+Wrote to the file: C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+11.9SP3\designer\impl1\Toplevel_layout.log
+
+The Export command succeeded ( 00:00:02 )
+----- Iteration 2 of 4 -----
+Variable MULTIPASS_LAYOUT_SEED_INDEX = 4
+Variable DEFAULT_PLACE_SEED_VARIABLE_VALUE = 0
+Variable MULTIPASS_LAYOUT_SEED_INDEX = 4
+'MULTIPASS_LAYOUT_SEED_INDEX' set to '5'
+Info: Multi-Pass: Seed:   78381505
+Info: Commit the changes made in SmartPower ?
+      Changes not commited will be lost. [YES]
+***** Layout Variables *********************************************
+
+Mode: TIMING_DRIVEN
+Power-driven Layout: OFF
+Incremental Placement: OFF
+Incremental Route: OFF
+High Effort Layout Mode: ON
+
+
+Warning: The advanced layout option 'High Effort Layout Mode' is active.
+
+Running I/O Bank Assigner.
+
+I/O Bank Assigner completed successfully.
+ 
+
+Planning global net placement...
+
+
+Global net placement completed successfully.
+
+                        o - o - o - o - o - o
+
+Timing-driven Placer Started: Tue May 14 13:22:31 2019
+High-Effort Placer Started...
+
+Placer Finished: Tue May 14 13:25:04 2019
+Total Placer CPU Time:     00:02:33
+
+                        o - o - o - o - o - o
+
+
+
+Post-Layout Core Information:
+    Used:   4635  Total:   6144   (75.44%)
+
+    Type       | Instances    | Core tiles
+    -----------|--------------|-----------
+    COMB       | 3210         | 3210
+    SEQ        | 1425         | 1425
+
+Timing-driven Router 
+Design: Toplevel                        Started: Tue May 14 13:25:11 2019
+
+ 
+Iterative improvement...
+Iterative improvement...
+
+Timing-driven Router completed successfully.
+
+Design: Toplevel                        
+Finished: Tue May 14 13:26:16 2019
+Total CPU Time:     00:01:04            Total Elapsed Time: 00:01:05
+Total Memory Usage: 303.8 Mbytes
+                        o - o - o - o - o - o
+
+Loading the Timing data for the design.
+Finished loading the Timing data.
+TIMER: Max delay timing requirements have NOT been met.
+TIMER: Min delay timing requirements have been met.
+
+The Layout command succeeded ( 00:03:54 )
+Variable IS_POWER_GUI_SUPPORTED = 1
+Wrote timer report to file: Toplevel_timing_r2_s5.rpt
+
+The Report command succeeded ( 00:00:01 )
+Wrote timing_violations report to file: Toplevel_timing_violations_max_r2_s5.rpt
+
+The Report command succeeded ( 00:00:02 )
+Wrote timing_violations report to file: Toplevel_timing_violations_min_r2_s5.rpt
+
+The Report command succeeded ( 00:00:02 )
+  - Reading netlist
+  - Initializing power engine...
+  - Restoring saved options...
+  - Power analysis done!
+Wrote power report to file: Toplevel_power_r2_s5.rpt
+
+The Report command succeeded ( 00:00:03 )
+Info: Multi-Pass: Iteration 2, Seed Index 5,  Worst Slack = -0.543, Range -1.068 - -0.543
+Design saved to file C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+11.9SP3\designer\impl1\Toplevel.adb.
+Warning: Overwriting the existing file: C:/SPIDER2/Firmware/SPIDER2-Datahub-FPGA-General
+         11.9SP3/designer/impl1/Toplevel_layout.log.
+Wrote to the file: C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+11.9SP3\designer\impl1\Toplevel_layout.log
+
+The Export command succeeded ( 00:00:02 )
+----- Iteration 3 of 4 -----
+Variable MULTIPASS_LAYOUT_SEED_INDEX = 5
+Variable DEFAULT_PLACE_SEED_VARIABLE_VALUE = 0
+Variable MULTIPASS_LAYOUT_SEED_INDEX = 5
+'MULTIPASS_LAYOUT_SEED_INDEX' set to '6'
+Info: Multi-Pass: Seed:   82287664
+Info: Commit the changes made in SmartPower ?
+      Changes not commited will be lost. [YES]
+***** Layout Variables *********************************************
+
+Mode: TIMING_DRIVEN
+Power-driven Layout: OFF
+Incremental Placement: OFF
+Incremental Route: OFF
+High Effort Layout Mode: ON
+
+
+Warning: The advanced layout option 'High Effort Layout Mode' is active.
+
+Running I/O Bank Assigner.
+
+I/O Bank Assigner completed successfully.
+ 
+
+Planning global net placement...
+
+
+Global net placement completed successfully.
+
+                        o - o - o - o - o - o
+
+Timing-driven Placer Started: Tue May 14 13:26:36 2019
+High-Effort Placer Started...
+
+Placer Finished: Tue May 14 13:29:08 2019
+Total Placer CPU Time:     00:02:32
+
+                        o - o - o - o - o - o
+
+
+
+Post-Layout Core Information:
+    Used:   4618  Total:   6144   (75.16%)
+
+    Type       | Instances    | Core tiles
+    -----------|--------------|-----------
+    COMB       | 3193         | 3193
+    SEQ        | 1425         | 1425
+
+Timing-driven Router 
+Design: Toplevel                        Started: Tue May 14 13:29:14 2019
+
+ 
+Iterative improvement...
+Iterative improvement...
+
+Timing-driven Router completed successfully.
+
+Design: Toplevel                        
+Finished: Tue May 14 13:29:55 2019
+Total CPU Time:     00:00:40            Total Elapsed Time: 00:00:41
+Total Memory Usage: 267.8 Mbytes
+                        o - o - o - o - o - o
+
+Loading the Timing data for the design.
+Finished loading the Timing data.
+TIMER: Max delay timing requirements have NOT been met.
+TIMER: Min delay timing requirements have been met.
+
+The Layout command succeeded ( 00:03:29 )
+Variable IS_POWER_GUI_SUPPORTED = 1
+Wrote timer report to file: Toplevel_timing_r2_s6.rpt
+
+The Report command succeeded ( 00:00:01 )
+Wrote timing_violations report to file: Toplevel_timing_violations_max_r2_s6.rpt
+
+The Report command succeeded ( 00:00:02 )
+Wrote timing_violations report to file: Toplevel_timing_violations_min_r2_s6.rpt
+
+The Report command succeeded ( 00:00:02 )
+  - Reading netlist
+  - Initializing power engine...
+  - Restoring saved options...
+  - Power analysis done!
+Wrote power report to file: Toplevel_power_r2_s6.rpt
+
+The Report command succeeded ( 00:00:03 )
+Info: Multi-Pass: Iteration 3, Seed Index 6,  Worst Slack = -1.055, Range -1.068 - -0.543
+Info: Commit the changes made in SmartPower ?
+      Changes not commited will be lost. [YES]
+Design closed.
+
+Info: The design C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+      11.9SP3\designer\impl1\Toplevel.adb was last modified by software version 11.9.3.5.
+Opened an existing Libero design C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+11.9SP3\designer\impl1\Toplevel.adb.
+'MULTIPASS_LAYOUT_SEED_INDEX' set to '6'
+Design saved to file C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+11.9SP3\designer\impl1\Toplevel.adb.
+Warning: Overwriting the existing file: C:/SPIDER2/Firmware/SPIDER2-Datahub-FPGA-General
+         11.9SP3/designer/impl1/Toplevel_layout.log.
+Wrote to the file: C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+11.9SP3\designer\impl1\Toplevel_layout.log
+
+The Export command succeeded ( 00:00:02 )
+----- Iteration 4 of 4 -----
+Variable MULTIPASS_LAYOUT_SEED_INDEX = 6
+Variable DEFAULT_PLACE_SEED_VARIABLE_VALUE = 0
+Variable MULTIPASS_LAYOUT_SEED_INDEX = 6
+'MULTIPASS_LAYOUT_SEED_INDEX' set to '7'
+Info: Multi-Pass: Seed:   23702026
+***** Layout Variables *********************************************
+
+Mode: TIMING_DRIVEN
+Power-driven Layout: OFF
+Incremental Placement: OFF
+Incremental Route: OFF
+High Effort Layout Mode: ON
+
+
+Warning: The advanced layout option 'High Effort Layout Mode' is active.
+
+Running I/O Bank Assigner.
+
+I/O Bank Assigner completed successfully.
+ 
+
+Planning global net placement...
+
+
+Global net placement completed successfully.
+
+                        o - o - o - o - o - o
+
+Timing-driven Placer Started: Tue May 14 13:30:20 2019
+High-Effort Placer Started...
+
+Placer Finished: Tue May 14 13:32:52 2019
+Total Placer CPU Time:     00:02:32
+
+                        o - o - o - o - o - o
+
+
+
+Post-Layout Core Information:
+    Used:   4634  Total:   6144   (75.42%)
+
+    Type       | Instances    | Core tiles
+    -----------|--------------|-----------
+    COMB       | 3209         | 3209
+    SEQ        | 1425         | 1425
+
+Timing-driven Router 
+Design: Toplevel                        Started: Tue May 14 13:32:59 2019
+
+ 
+Iterative improvement...
+Iterative improvement...
+
+Timing-driven Router completed successfully.
+
+Design: Toplevel                        
+Finished: Tue May 14 13:33:36 2019
+Total CPU Time:     00:00:36            Total Elapsed Time: 00:00:37
+Total Memory Usage: 262.9 Mbytes
+                        o - o - o - o - o - o
+
+Loading the Timing data for the design.
+Finished loading the Timing data.
+TIMER: Max delay timing requirements have NOT been met.
+TIMER: Min delay timing requirements have been met.
+
+The Layout command succeeded ( 00:03:25 )
+Variable IS_POWER_GUI_SUPPORTED = 1
+Wrote timer report to file: Toplevel_timing_r2_s7.rpt
+
+The Report command succeeded ( 00:00:01 )
+Wrote timing_violations report to file: Toplevel_timing_violations_max_r2_s7.rpt
+
+The Report command succeeded ( 00:00:02 )
+Wrote timing_violations report to file: Toplevel_timing_violations_min_r2_s7.rpt
+
+The Report command succeeded ( 00:00:02 )
+  - Reading netlist
+  - Initializing power engine...
+  - Restoring saved options...
+  - Power analysis done!
+Wrote power report to file: Toplevel_power_r2_s7.rpt
+
+The Report command succeeded ( 00:00:03 )
+Info: Multi-Pass: Iteration 4, Seed Index 7,  Worst Slack = -0.760, Range -1.068 - -0.543
+Info: Commit the changes made in SmartPower ?
+      Changes not commited will be lost. [YES]
+Design closed.
+
+Info: The design C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+      11.9SP3\designer\impl1\Toplevel.adb was last modified by software version 11.9.3.5.
+Opened an existing Libero design C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+11.9SP3\designer\impl1\Toplevel.adb.
+'MULTIPASS_LAYOUT_SEED_INDEX' set to '7'
+Design saved to file C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General
+11.9SP3\designer\impl1\Toplevel.adb.
+Warning: Overwriting the existing file: C:/SPIDER2/Firmware/SPIDER2-Datahub-FPGA-General
+         11.9SP3/designer/impl1/Toplevel_layout.log.

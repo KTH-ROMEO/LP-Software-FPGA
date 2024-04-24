@@ -1,0 +1,822 @@
+Timing Violation Report Min Delay Analysis
+
+SmartTime Version v11.9 SP3
+Microsemi Corporation - Microsemi Libero Software Release v11.9 SP3 (Version 11.9.3.5)
+Date: Tue May 14 13:33:45 2019
+
+
+Design: Toplevel
+Family: ProASIC3
+Die: A3P250
+Package: 100 VQFP
+Temperature Range: 0 - 70 C
+Voltage Range: 1.425 - 1.575 V
+Speed Grade: STD
+Design State: Post-Layout
+Data source: Silicon verified
+Min Operating Conditions: BEST - 1.575 V - 0 C
+Max Operating Conditions: WORST - 1.425 V - 70 C
+Using Enhanced Min Delay Analysis
+Scenario for Timing Analysis: Primary
+
+
+Path 1
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_5:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_WGRYSYNC[10]\\:D
+  Delay (ns):            0.324
+  Slack (ns):            0.272
+  Arrival (ns):          1.829
+  Required (ns):         1.557
+
+Path 2
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_19:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_WGRYSYNC[4]\\:D
+  Delay (ns):            0.324
+  Slack (ns):            0.272
+  Arrival (ns):          1.829
+  Required (ns):         1.557
+
+Path 3
+  From:                  Communications_0/RMU_UART/tx_hold_reg[1]:CLK
+  To:                    Communications_0/RMU_UART/make_TX/tx_byte[1]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.274
+  Arrival (ns):          1.857
+  Required (ns):         1.583
+
+Path 4
+  From:                  Status_Readout_0/send[3]:CLK
+  To:                    Communications_0/RMU_UART/tx_hold_reg[3]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.274
+  Arrival (ns):          1.857
+  Required (ns):         1.583
+
+Path 5
+  From:                  Communications_0/RMU_UART/tx_hold_reg[4]:CLK
+  To:                    Communications_0/RMU_UART/make_TX/tx_byte[4]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.274
+  Arrival (ns):          1.857
+  Required (ns):         1.583
+
+Path 6
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_2:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_WGRYSYNC[1]\\:D
+  Delay (ns):            0.324
+  Slack (ns):            0.291
+  Arrival (ns):          1.831
+  Required (ns):         1.540
+
+Path 7
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_18:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_RGRYSYNC[10]\\:D
+  Delay (ns):            0.324
+  Slack (ns):            0.293
+  Arrival (ns):          1.854
+  Required (ns):         1.561
+
+Path 8
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_21:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_WGRYSYNC[7]\\:D
+  Delay (ns):            0.327
+  Slack (ns):            0.294
+  Arrival (ns):          1.858
+  Required (ns):         1.564
+
+Path 9
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_7:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_WGRYSYNC[12]\\:D
+  Delay (ns):            0.327
+  Slack (ns):            0.294
+  Arrival (ns):          1.858
+  Required (ns):         1.564
+
+Path 10
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_9:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_RGRYSYNC[8]\\:D
+  Delay (ns):            0.329
+  Slack (ns):            0.294
+  Arrival (ns):          1.855
+  Required (ns):         1.561
+
+Path 11
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_4:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_RGRYSYNC[5]\\:D
+  Delay (ns):            0.329
+  Slack (ns):            0.294
+  Arrival (ns):          1.855
+  Required (ns):         1.561
+
+Path 12
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_25:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_WGRYSYNC[6]\\:D
+  Delay (ns):            0.327
+  Slack (ns):            0.294
+  Arrival (ns):          1.858
+  Required (ns):         1.564
+
+Path 13
+  From:                  Communications_0/UC_UART/make_Communications_UC_UART_Clock_gen/baud_clock_int:CLK
+  To:                    Communications_0/UC_UART/make_Communications_UC_UART_Clock_gen/xmit_cntr[2]:E
+  Delay (ns):            0.318
+  Slack (ns):            0.296
+  Arrival (ns):          1.862
+  Required (ns):         1.566
+
+Path 14
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_8:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_WGRYSYNC[2]\\:D
+  Delay (ns):            0.324
+  Slack (ns):            0.297
+  Arrival (ns):          1.822
+  Required (ns):         1.525
+
+Path 15
+  From:                  FFU_Command_Checker_0/command_out[7]:CLK
+  To:                    General_Controller_0/s_command[7]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.298
+  Arrival (ns):          1.880
+  Required (ns):         1.582
+
+Path 16
+  From:                  FFU_Command_Checker_0/command_out[3]:CLK
+  To:                    General_Controller_0/s_command[3]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.298
+  Arrival (ns):          1.880
+  Required (ns):         1.582
+
+Path 17
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_22:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_WGRYSYNC[11]\\:D
+  Delay (ns):            0.324
+  Slack (ns):            0.298
+  Arrival (ns):          1.855
+  Required (ns):         1.557
+
+Path 18
+  From:                  FFU_Command_Checker_0/command_out[5]:CLK
+  To:                    General_Controller_0/s_command[5]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.298
+  Arrival (ns):          1.883
+  Required (ns):         1.585
+
+Path 19
+  From:                  Communications_0/RMU_UART/tx_hold_reg[0]:CLK
+  To:                    Communications_0/RMU_UART/make_TX/tx_byte[0]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.298
+  Arrival (ns):          1.881
+  Required (ns):         1.583
+
+Path 20
+  From:                  Communications_0/RMU_UART/make_RX/rx_shift[0]:CLK
+  To:                    Communications_0/RMU_UART/make_RX/rx_byte_xhdl5[0]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.298
+  Arrival (ns):          1.883
+  Required (ns):         1.585
+
+Path 21
+  From:                  FFU_Command_Checker_0/command_out[4]:CLK
+  To:                    General_Controller_0/s_command[4]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.298
+  Arrival (ns):          1.883
+  Required (ns):         1.585
+
+Path 22
+  From:                  FFU_Command_Checker_0/command_out[1]:CLK
+  To:                    General_Controller_0/s_command[1]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.298
+  Arrival (ns):          1.883
+  Required (ns):         1.585
+
+Path 23
+  From:                  Communications_0/RMU_UART/tx_hold_reg[3]:CLK
+  To:                    Communications_0/RMU_UART/make_TX/tx_byte[3]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.298
+  Arrival (ns):          1.881
+  Required (ns):         1.583
+
+Path 24
+  From:                  FFU_Command_Checker_0/command_out[2]:CLK
+  To:                    General_Controller_0/s_command[2]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.298
+  Arrival (ns):          1.880
+  Required (ns):         1.582
+
+Path 25
+  From:                  Status_Readout_0/send[5]:CLK
+  To:                    Communications_0/RMU_UART/tx_hold_reg[5]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.298
+  Arrival (ns):          1.881
+  Required (ns):         1.583
+
+Path 26
+  From:                  FFU_Command_Checker_0/command_out[6]:CLK
+  To:                    General_Controller_0/s_command[6]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.298
+  Arrival (ns):          1.883
+  Required (ns):         1.585
+
+Path 27
+  From:                  Communications_0/UC_UART/make_RX/rx_byte_xhdl5[4]:CLK
+  To:                    Microcontroller_0/uC_Status_0/read_byte[4]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.299
+  Arrival (ns):          1.878
+  Required (ns):         1.579
+
+Path 28
+  From:                  Communications_0/UC_UART/make_RX/rx_byte_xhdl5[7]:CLK
+  To:                    Microcontroller_0/uC_Status_0/read_byte[7]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.299
+  Arrival (ns):          1.880
+  Required (ns):         1.581
+
+Path 29
+  From:                  Communications_0/UC_UART/make_RX/rx_byte_xhdl5[5]:CLK
+  To:                    Microcontroller_0/uC_Status_0/read_byte[5]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.299
+  Arrival (ns):          1.878
+  Required (ns):         1.579
+
+Path 30
+  From:                  Communications_0/UC_UART/make_RX/rx_byte_xhdl5[6]:CLK
+  To:                    Microcontroller_0/uC_Status_0/read_byte[6]:D
+  Delay (ns):            0.327
+  Slack (ns):            0.300
+  Arrival (ns):          1.889
+  Required (ns):         1.589
+
+Path 31
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_10:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_WGRYSYNC[3]\\:D
+  Delay (ns):            0.327
+  Slack (ns):            0.300
+  Arrival (ns):          1.864
+  Required (ns):         1.564
+
+Path 32
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_11:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_WGRYSYNC[5]\\:D
+  Delay (ns):            0.327
+  Slack (ns):            0.300
+  Arrival (ns):          1.864
+  Required (ns):         1.564
+
+Path 33
+  From:                  Status_Readout_0/send[2]:CLK
+  To:                    Communications_0/RMU_UART/tx_hold_reg[2]:D
+  Delay (ns):            0.327
+  Slack (ns):            0.301
+  Arrival (ns):          1.884
+  Required (ns):         1.583
+
+Path 34
+  From:                  Communications_0/RMU_UART/tx_hold_reg[2]:CLK
+  To:                    Communications_0/RMU_UART/make_TX/tx_byte[2]:D
+  Delay (ns):            0.327
+  Slack (ns):            0.301
+  Arrival (ns):          1.884
+  Required (ns):         1.583
+
+Path 35
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_17:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_RGRYSYNC[4]\\:D
+  Delay (ns):            0.324
+  Slack (ns):            0.303
+  Arrival (ns):          1.864
+  Required (ns):         1.561
+
+Path 36
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_3:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_RGRYSYNC[9]\\:D
+  Delay (ns):            0.324
+  Slack (ns):            0.303
+  Arrival (ns):          1.864
+  Required (ns):         1.561
+
+Path 37
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_13:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_RGRYSYNC[6]\\:D
+  Delay (ns):            0.324
+  Slack (ns):            0.303
+  Arrival (ns):          1.864
+  Required (ns):         1.561
+
+Path 38
+  From:                  Communications_0/RMU_UART/tx_hold_reg[6]:CLK
+  To:                    Communications_0/RMU_UART/make_TX/tx_byte[6]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.303
+  Arrival (ns):          1.862
+  Required (ns):         1.559
+
+Path 39
+  From:                  Status_Readout_0/send[1]:CLK
+  To:                    Communications_0/RMU_UART/tx_hold_reg[1]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.304
+  Arrival (ns):          1.857
+  Required (ns):         1.553
+
+Path 40
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_20:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_RGRYSYNC[12]\\:D
+  Delay (ns):            0.332
+  Slack (ns):            0.304
+  Arrival (ns):          1.864
+  Required (ns):         1.560
+
+Path 41
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_26:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_WGRYSYNC[8]\\:D
+  Delay (ns):            0.324
+  Slack (ns):            0.304
+  Arrival (ns):          1.829
+  Required (ns):         1.525
+
+Path 42
+  From:                  Status_Readout_0/send[4]:CLK
+  To:                    Communications_0/RMU_UART/tx_hold_reg[4]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.304
+  Arrival (ns):          1.857
+  Required (ns):         1.553
+
+Path 43
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_23:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_RGRYSYNC[3]\\:D
+  Delay (ns):            0.329
+  Slack (ns):            0.304
+  Arrival (ns):          1.852
+  Required (ns):         1.548
+
+Path 44
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_27:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_WGRYSYNC[9]\\:D
+  Delay (ns):            0.324
+  Slack (ns):            0.304
+  Arrival (ns):          1.829
+  Required (ns):         1.525
+
+Path 45
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_0:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_RGRYSYNC[11]\\:D
+  Delay (ns):            0.324
+  Slack (ns):            0.304
+  Arrival (ns):          1.850
+  Required (ns):         1.546
+
+Path 46
+  From:                  Communications_0/UC_UART/make_RX/rx_shift[0]:CLK
+  To:                    Communications_0/UC_UART/make_RX/rx_byte_xhdl5[0]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.305
+  Arrival (ns):          1.886
+  Required (ns):         1.581
+
+Path 47
+  From:                  Communications_0/UC_UART/make_RX/rx_byte_xhdl5[1]:CLK
+  To:                    Microcontroller_0/uC_Status_0/read_byte_0[1]:D
+  Delay (ns):            0.324
+  Slack (ns):            0.305
+  Arrival (ns):          1.886
+  Required (ns):         1.581
+
+Path 48
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_15:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_WGRYSYNC[0]\\:D
+  Delay (ns):            0.324
+  Slack (ns):            0.307
+  Arrival (ns):          1.822
+  Required (ns):         1.515
+
+Path 49
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_1:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_RGRYSYNC[2]\\:D
+  Delay (ns):            0.324
+  Slack (ns):            0.307
+  Arrival (ns):          1.847
+  Required (ns):         1.540
+
+Path 50
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_12:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_RGRYSYNC[1]\\:D
+  Delay (ns):            0.329
+  Slack (ns):            0.311
+  Arrival (ns):          1.859
+  Required (ns):         1.548
+
+Path 51
+  From:                  Communications_0/RMU_UART/make_RX/receive_full_int:CLK
+  To:                    Communications_0/RMU_UART/rxrdy_xhdl4:D
+  Delay (ns):            0.349
+  Slack (ns):            0.311
+  Arrival (ns):          1.893
+  Required (ns):         1.582
+
+Path 52
+  From:                  General_Controller_0/bootCounter[7]:CLK
+  To:                    General_Controller_0/fram_data_out[7]:D
+  Delay (ns):            0.341
+  Slack (ns):            0.318
+  Arrival (ns):          1.877
+  Required (ns):         1.559
+
+Path 53
+  From:                  Communications_0/UC_UART/make_RX/samples[2]:CLK
+  To:                    Communications_0/UC_UART/make_RX/samples[1]:D
+  Delay (ns):            0.340
+  Slack (ns):            0.318
+  Arrival (ns):          1.884
+  Required (ns):         1.566
+
+Path 54
+  From:                  Communications_0/UC_UART/make_RX/rx_byte_xhdl5[3]:CLK
+  To:                    Microcontroller_0/uC_Status_0/read_byte[3]:D
+  Delay (ns):            0.354
+  Slack (ns):            0.319
+  Arrival (ns):          1.908
+  Required (ns):         1.589
+
+Path 55
+  From:                  Communications_0/RMU_UART/make_RX/rx_shift[1]:CLK
+  To:                    Communications_0/RMU_UART/make_RX/rx_byte_xhdl5[1]:D
+  Delay (ns):            0.349
+  Slack (ns):            0.320
+  Arrival (ns):          1.905
+  Required (ns):         1.585
+
+Path 56
+  From:                  Communications_0/UC_UART/make_RX/samples[1]:CLK
+  To:                    Communications_0/UC_UART/make_RX/samples[0]:D
+  Delay (ns):            0.342
+  Slack (ns):            0.320
+  Arrival (ns):          1.886
+  Required (ns):         1.566
+
+Path 57
+  From:                  Communications_0/RMU_UART/make_RX/samples[1]:CLK
+  To:                    Communications_0/RMU_UART/make_RX/samples[0]:D
+  Delay (ns):            0.341
+  Slack (ns):            0.322
+  Arrival (ns):          1.888
+  Required (ns):         1.566
+
+Path 58
+  From:                  FFU_Command_Checker_0/rmu_oen:CLK
+  To:                    Communications_0/RMU_UART/make_RX/receive_full_int:D
+  Delay (ns):            0.341
+  Slack (ns):            0.322
+  Arrival (ns):          1.888
+  Required (ns):         1.566
+
+Path 59
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_READ_RESET_P:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_RGRY[9]\\:CLR
+  Delay (ns):            0.342
+  Slack (ns):            0.322
+  Arrival (ns):          1.847
+  Required (ns):         1.525
+
+Path 60
+  From:                  Communications_0/RMU_UART/make_RX/rx_byte_xhdl5[0]:CLK
+  To:                    FFU_Command_Checker_0/command_out[0]:D
+  Delay (ns):            0.349
+  Slack (ns):            0.323
+  Arrival (ns):          1.908
+  Required (ns):         1.585
+
+Path 61
+  From:                  Communications_0/RMU_UART/make_RX/rx_byte_xhdl5[7]:CLK
+  To:                    FFU_Command_Checker_0/command_out[7]:D
+  Delay (ns):            0.349
+  Slack (ns):            0.323
+  Arrival (ns):          1.905
+  Required (ns):         1.582
+
+Path 62
+  From:                  Communications_0/RMU_UART/make_RX/samples[2]:CLK
+  To:                    Communications_0/RMU_UART/make_RX/samples[1]:D
+  Delay (ns):            0.346
+  Slack (ns):            0.323
+  Arrival (ns):          1.893
+  Required (ns):         1.570
+
+Path 63
+  From:                  General_Controller_0/bootCounter[0]:CLK
+  To:                    General_Controller_0/fram_data_out[0]:D
+  Delay (ns):            0.342
+  Slack (ns):            0.324
+  Arrival (ns):          1.865
+  Required (ns):         1.541
+
+Path 64
+  From:                  Communications_0/UC_UART/make_RX/rx_shift[5]:CLK
+  To:                    Communications_0/UC_UART/make_RX/rx_byte_xhdl5[5]:D
+  Delay (ns):            0.349
+  Slack (ns):            0.324
+  Arrival (ns):          1.903
+  Required (ns):         1.579
+
+Path 65
+  From:                  Communications_0/UC_UART/make_RX/rx_shift[4]:CLK
+  To:                    Communications_0/UC_UART/make_RX/rx_byte_xhdl5[4]:D
+  Delay (ns):            0.349
+  Slack (ns):            0.324
+  Arrival (ns):          1.903
+  Required (ns):         1.579
+
+Path 66
+  From:                  Communications_0/UC_UART/make_RX/rx_shift[7]:CLK
+  To:                    Communications_0/UC_UART/make_RX/rx_byte_xhdl5[7]:D
+  Delay (ns):            0.349
+  Slack (ns):            0.324
+  Arrival (ns):          1.905
+  Required (ns):         1.581
+
+Path 67
+  From:                  Communications_0/UC_UART/make_RX/rx_shift[2]:CLK
+  To:                    Communications_0/UC_UART/make_RX/rx_byte_xhdl5[2]:D
+  Delay (ns):            0.349
+  Slack (ns):            0.324
+  Arrival (ns):          1.903
+  Required (ns):         1.579
+
+Path 68
+  From:                  Communications_0/UC_UART/make_RX/rx_shift[3]:CLK
+  To:                    Communications_0/UC_UART/make_RX/rx_byte_xhdl5[3]:D
+  Delay (ns):            0.349
+  Slack (ns):            0.324
+  Arrival (ns):          1.903
+  Required (ns):         1.579
+
+Path 69
+  From:                  Communications_0/RMU_UART/make_RX/rx_byte_xhdl5[1]:CLK
+  To:                    FFU_Command_Checker_0/command_out[1]:D
+  Delay (ns):            0.350
+  Slack (ns):            0.324
+  Arrival (ns):          1.909
+  Required (ns):         1.585
+
+Path 70
+  From:                  Communications_0/RMU_UART/make_RX/rx_byte_xhdl5[2]:CLK
+  To:                    FFU_Command_Checker_0/command_out[2]:D
+  Delay (ns):            0.350
+  Slack (ns):            0.324
+  Arrival (ns):          1.906
+  Required (ns):         1.582
+
+Path 71
+  From:                  Communications_0/UC_UART/make_RX/rx_byte_xhdl5[3]:CLK
+  To:                    Microcontroller_0/uC_Status_0/read_byte_0[3]:D
+  Delay (ns):            0.350
+  Slack (ns):            0.325
+  Arrival (ns):          1.904
+  Required (ns):         1.579
+
+Path 72
+  From:                  Communications_0/UC_UART/make_RX/rx_shift[6]:CLK
+  To:                    Communications_0/UC_UART/make_RX/rx_byte_xhdl5[6]:D
+  Delay (ns):            0.353
+  Slack (ns):            0.326
+  Arrival (ns):          1.915
+  Required (ns):         1.589
+
+Path 73
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_WRITE_RESET_P_0:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_RGRYSYNC[0]\\:CLR
+  Delay (ns):            0.347
+  Slack (ns):            0.326
+  Arrival (ns):          1.886
+  Required (ns):         1.560
+
+Path 74
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_WRITE_RESET_P:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_13:CLR
+  Delay (ns):            0.354
+  Slack (ns):            0.327
+  Arrival (ns):          1.888
+  Required (ns):         1.561
+
+Path 75
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_WRITE_RESET_P:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_14:CLR
+  Delay (ns):            0.354
+  Slack (ns):            0.327
+  Arrival (ns):          1.888
+  Required (ns):         1.561
+
+Path 76
+  From:                  Communications_0/UC_UART/make_RX/rx_shift[1]:CLK
+  To:                    Communications_0/UC_UART/make_RX/rx_byte_xhdl5[1]:D
+  Delay (ns):            0.355
+  Slack (ns):            0.328
+  Arrival (ns):          1.917
+  Required (ns):         1.589
+
+Path 77
+  From:                  Communications_0/RMU_UART/make_RX/rx_shift[3]:CLK
+  To:                    Communications_0/RMU_UART/make_RX/rx_byte_xhdl5[3]:D
+  Delay (ns):            0.349
+  Slack (ns):            0.330
+  Arrival (ns):          1.896
+  Required (ns):         1.566
+
+Path 78
+  From:                  Communications_0/RMU_UART/make_RX/rx_shift[4]:CLK
+  To:                    Communications_0/RMU_UART/make_RX/rx_byte_xhdl5[4]:D
+  Delay (ns):            0.349
+  Slack (ns):            0.330
+  Arrival (ns):          1.880
+  Required (ns):         1.550
+
+Path 79
+  From:                  Microcontroller_0/uC_Status_0/uc_uart_oen:CLK
+  To:                    Communications_0/UC_UART/make_RX/receive_full_int:D
+  Delay (ns):            0.349
+  Slack (ns):            0.332
+  Arrival (ns):          1.911
+  Required (ns):         1.579
+
+Path 80
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_READ_RESET_P:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_8:CLR
+  Delay (ns):            0.342
+  Slack (ns):            0.332
+  Arrival (ns):          1.847
+  Required (ns):         1.515
+
+Path 81
+  From:                  Communications_0/RMU_UART/make_RX/rx_shift[5]:CLK
+  To:                    Communications_0/RMU_UART/make_RX/rx_byte_xhdl5[5]:D
+  Delay (ns):            0.349
+  Slack (ns):            0.333
+  Arrival (ns):          1.868
+  Required (ns):         1.535
+
+Path 82
+  From:                  General_Controller_0/bootCounter[5]:CLK
+  To:                    General_Controller_0/fram_data_out[5]:D
+  Delay (ns):            0.342
+  Slack (ns):            0.339
+  Arrival (ns):          1.880
+  Required (ns):         1.541
+
+Path 83
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_WRITE_RESET_P_0:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_MEM_WADDR[0]\\:CLR
+  Delay (ns):            0.342
+  Slack (ns):            0.339
+  Arrival (ns):          1.881
+  Required (ns):         1.542
+
+Path 84
+  From:                  General_Controller_0/bootCounter[2]:CLK
+  To:                    General_Controller_0/fram_data_out[2]:D
+  Delay (ns):            0.363
+  Slack (ns):            0.342
+  Arrival (ns):          1.901
+  Required (ns):         1.559
+
+Path 85
+  From:                  Communications_0/UC_UART/make_RX/rx_byte_xhdl5[0]:CLK
+  To:                    Microcontroller_0/uC_Status_0/read_byte[0]:D
+  Delay (ns):            0.350
+  Slack (ns):            0.343
+  Arrival (ns):          1.906
+  Required (ns):         1.563
+
+Path 86
+  From:                  General_Controller_0/bootCounter[4]:CLK
+  To:                    General_Controller_0/fram_data_out[4]:D
+  Delay (ns):            0.363
+  Slack (ns):            0.343
+  Arrival (ns):          1.899
+  Required (ns):         1.556
+
+Path 87
+  From:                  Communications_0/UC_UART/make_RX/rx_byte_xhdl5[0]:CLK
+  To:                    Microcontroller_0/uC_Status_0/read_byte_0[0]:D
+  Delay (ns):            0.350
+  Slack (ns):            0.343
+  Arrival (ns):          1.906
+  Required (ns):         1.563
+
+Path 88
+  From:                  General_Controller_0/bootCounter[3]:CLK
+  To:                    General_Controller_0/fram_data_out[3]:D
+  Delay (ns):            0.365
+  Slack (ns):            0.344
+  Arrival (ns):          1.903
+  Required (ns):         1.559
+
+Path 89
+  From:                  Communications_0/UC_UART/make_RX/receive_full_int:CLK
+  To:                    Communications_0/UC_UART/rxrdy_xhdl4:D
+  Delay (ns):            0.373
+  Slack (ns):            0.348
+  Arrival (ns):          1.927
+  Required (ns):         1.579
+
+Path 90
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_READ_RESET_P_0:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_WGRYSYNC[2]\\:CLR
+  Delay (ns):            0.368
+  Slack (ns):            0.348
+  Arrival (ns):          1.873
+  Required (ns):         1.525
+
+Path 91
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_READ_RESET_P_0:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_RGRY[10]\\:CLR
+  Delay (ns):            0.368
+  Slack (ns):            0.348
+  Arrival (ns):          1.873
+  Required (ns):         1.525
+
+Path 92
+  From:                  Microcontroller_0/Data_Saving_0/Interrupt_Generator_0/counter[9]:CLK
+  To:                    Microcontroller_0/Data_Saving_0/Interrupt_Generator_0/uC_interrupt:D
+  Delay (ns):            0.363
+  Slack (ns):            0.351
+  Arrival (ns):          1.887
+  Required (ns):         1.536
+
+Path 93
+  From:                  Status_Readout_0/state[3]:CLK
+  To:                    Status_Readout_0/prevState[3]:D
+  Delay (ns):            0.382
+  Slack (ns):            0.356
+  Arrival (ns):          1.939
+  Required (ns):         1.583
+
+Path 94
+  From:                  Communications_0/RMU_UART/make_Communications_RMU_UART_Clock_gen/baud_clock_int:CLK
+  To:                    Communications_0/RMU_UART/make_Communications_RMU_UART_Clock_gen/xmit_cntr[3]:E
+  Delay (ns):            0.378
+  Slack (ns):            0.357
+  Arrival (ns):          1.911
+  Required (ns):         1.554
+
+Path 95
+  From:                  Communications_0/RMU_UART/make_Communications_RMU_UART_Clock_gen/baud_clock_int:CLK
+  To:                    Communications_0/RMU_UART/make_Communications_RMU_UART_Clock_gen/xmit_cntr[2]:E
+  Delay (ns):            0.378
+  Slack (ns):            0.357
+  Arrival (ns):          1.911
+  Required (ns):         1.554
+
+Path 96
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_6:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_READ_RESET_P_1:D
+  Delay (ns):            0.378
+  Slack (ns):            0.358
+  Arrival (ns):          1.883
+  Required (ns):         1.525
+
+Path 97
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_6:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_READ_RESET_P:D
+  Delay (ns):            0.378
+  Slack (ns):            0.358
+  Arrival (ns):          1.883
+  Required (ns):         1.525
+
+Path 98
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_6:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_READ_RESET_P_0:D
+  Delay (ns):            0.378
+  Slack (ns):            0.358
+  Arrival (ns):          1.883
+  Required (ns):         1.525
+
+Path 99
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_READ_RESET_P_0:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/\\DFN1C0_WGRYSYNC[0]\\:CLR
+  Delay (ns):            0.368
+  Slack (ns):            0.358
+  Arrival (ns):          1.873
+  Required (ns):         1.515
+
+Path 100
+  From:                  Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_16:CLK
+  To:                    Microcontroller_0/Data_Saving_0/FPGABuffer_0/DFN1C0_WRITE_RESET_P_0:D
+  Delay (ns):            0.381
+  Slack (ns):            0.360
+  Arrival (ns):          1.920
+  Required (ns):         1.560
+

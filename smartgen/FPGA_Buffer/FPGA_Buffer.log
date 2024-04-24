@@ -1,0 +1,93 @@
+ ** Message System Log
+ ** Database: 
+ ** Date:   Sun Jan 12 18:57:34 2020
+
+
+****************
+Macro Parameters
+****************
+
+Name                            : FPGA_Buffer
+Family                          : PA3LC
+Output Format                   : VHDL
+Type                            : SOFTFIFO
+Write Enable                    : Active High
+Read Clock                      : Rising
+Write Clock                     : Rising
+Reset                           : Active High
+Read Enable                     : Active High
+Write Depth                     : 1024
+Write Width                     : 32
+Read Depth                      : 4096
+Read Width                      : 8
+Almost Full                     : 516
+Almost Empty                    : 65536
+Clocks                          : Independent Read and Write Clocks
+AEFlag                          : None
+AFFlag                          : Static
+Read Pipe Mode1                 : No Pipe
+Optimized for                   : Speed
+Prevent Read When Empty         : Yes
+Prevent Write When Full         : Yes
+Write Acknowledge               : No
+Data Valid                      : No
+Overflow                        : No
+Underflow                       : No
+Read Data Count                 : No
+Write Data Count                : No
+Standalone Controller           : False
+Initialize RAM                  : False
+Portname DataIn                 : data_in
+Portname DataOut                : data_out
+Portname AE Port                : AEVAL
+Portname AF Port                : AFVAL
+Portname Write En               : we
+Portname Read En                : re
+Portname WClock                 : w_clk
+Portname RClock                 : r_clk
+Portname AE Flag                : AEMPTY
+Portname AF Flag                : afull
+Portname Full Flag              : full
+Portname Empty Flag             : empty
+Portname Reset                  : reset
+Portname Write Acknowledge      : WACK
+Portname Data Valid             : DVLD
+Portname Overflow               : OVERFLOW
+Portname Underflow              : UNDERFLOW
+Portname Read Count             : RDCNT
+Portname Write Count            : WRCNT
+Portname Memory Write Address   :
+Portname Memory Read Address    :
+Portname Memory Write Enable    :
+Portname Memory Read Enable     :
+Portname Clock                  :
+
+Cascade Configuration:
+     Port A configuration       : 1024x4
+     Port B configuration       : 4096x1
+     Number of blocks depth wise: 1
+     Number of blocks width wise: 8
+
+**************
+Compile Report
+**************
+
+Warning:  CMP503: Remapped 8 enable flip-flop(s) to a 2-tile implementation because the CLR/PRE pin on the enable flip-flop is not being driven by a global net.
+
+Netlist Resource Report
+=======================
+
+    CORE                       Used:    411  Total:   6144   (6.69%)
+    IO (W/ clocks)             Used:      0  Total:     68   (0.00%)
+    Differential IO            Used:      0  Total:     13   (0.00%)
+    GLOBAL (Chip+Quadrant)     Used:      0  Total:     18   (0.00%)
+    PLL                        Used:      0  Total:      1   (0.00%)
+    RAM/FIFO                   Used:      8  Total:      8   (100.00%)
+    Low Static ICC             Used:      0  Total:      1   (0.00%)
+    FlashROM                   Used:      0  Total:      1   (0.00%)
+    User JTAG                  Used:      0  Total:      1   (0.00%)
+
+Wrote VHDL netlist to C:/SPIDER2/Firmware/KTH GitHub Enterprise/SPIDER2-DataHub-EMUScience-FPGA/smartgen\FPGA_Buffer\FPGA_Buffer.vhd.
+
+ ** Log Ended:   Sun Jan 12 18:57:35 2020
+

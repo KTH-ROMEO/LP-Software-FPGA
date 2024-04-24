@@ -1,0 +1,783 @@
+KEY LIBERO "11.8"
+KEY CAPTURE "11.8.2.4"
+KEY DEFAULT_IMPORT_LOC "C:\Jobb\VHDL\spider-cu\hdl"
+KEY DEFAULT_OPEN_LOC ""
+KEY ProjectID "0"
+KEY HDLTechnology "VHDL"
+KEY VERILOGMODE "VERILOG2001"
+KEY VHDLMODE "VHDL2008"
+KEY UseConstraintFlowTechnology "FALSE"
+KEY VendorTechnology_Family "ProASIC3"
+KEY VendorTechnology_Die "IS4X4M1"
+KEY VendorTechnology_Package "vq100"
+KEY VendorTechnology_Speed "STD"
+KEY VendorTechnology_DieVoltage "1.5"
+KEY VendorTechnology_PART_RANGE "COM"
+KEY VendorTechnology_DSW_VCCA_VOLTAGE_RAMP_RATE ""
+KEY VendorTechnology_IO_DEFT_STD "LVCMOS33"
+KEY VendorTechnology_OPCONR ""
+KEY VendorTechnology_PLL_SUPPLY ""
+KEY VendorTechnology_RAD_EXPOSURE ""
+KEY VendorTechnology_RESERVEMIGRATIONPINS "1"
+KEY VendorTechnology_RESTRICTPROBEPINS "1"
+KEY VendorTechnology_RESTRICTSPIPINS "0"
+KEY VendorTechnology_SYSTEM_CONTROLLER_SUSPEND_MODE ""
+KEY VendorTechnology_TARGETDEVICESFORMIGRATION "IS4X4M1"
+KEY VendorTechnology_TEMPR "COM"
+KEY VendorTechnology_UNUSED_MSS_IO_RESISTOR_PULL "None"
+KEY VendorTechnology_VCCI_1.5_VOLTR "COM"
+KEY VendorTechnology_VCCI_1.8_VOLTR "COM"
+KEY VendorTechnology_VCCI_2.5_VOLTR "COM"
+KEY VendorTechnology_VCCI_3.3_VOLTR "COM"
+KEY VendorTechnology_VOLTR "COM"
+KEY ProjectLocation "C:\SPIDER2\Firmware\SPIDER2-Datahub-FPGA-General"
+KEY ProjectDescription ""
+KEY Pa4PeripheralNewSeq "GOOD"
+KEY SimulationType "VHDL"
+KEY Vendor "Actel"
+KEY ActiveRoot "Toplevel::work"
+LIST REVISIONS
+VALUE="Impl1",NUM=1
+CURREV=1
+ENDLIST
+LIST LIBRARIES
+COREUART_LIB
+ENDLIST
+LIST LIBRARY_COREUART_LIB
+ALIAS=COREUART_LIB
+COMPILE_OPTION=COMPILE
+CUSTOMPATH=false
+ENDLIST
+LIST FileManager
+VALUE "<project>\component\Actel\DirectCore\COREUART\5.6.102\COREUART.cxf,actgen_cxf"
+STATE="utd"
+TIME="1557743787"
+SIZE="401"
+PARENT="<project>\component\work\Communications\Communications.cxf"
+ENDFILE
+VALUE "<project>\component\work\Accelerometer\Accelerometer.cxf,actgen_cxf"
+STATE="utd"
+TIME="1557489426"
+SIZE="4156"
+ENDFILE
+VALUE "<project>\component\work\Accelerometer\Accelerometer.vhd,hdl"
+STATE="utd"
+TIME="1557489426"
+SIZE="10810"
+PARENT="<project>\component\work\Accelerometer\Accelerometer.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Communications\Communications.cxf,actgen_cxf"
+STATE="utd"
+TIME="1557743788"
+SIZE="5326"
+ENDFILE
+VALUE "<project>\component\work\Communications\Communications.vhd,hdl"
+STATE="utd"
+TIME="1557743787"
+SIZE="12221"
+PARENT="<project>\component\work\Communications\Communications.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Communications\RMU_UART\Communications_RMU_UART_COREUART.cxf,actgen_cxf"
+STATE="utd"
+TIME="1557743787"
+SIZE="1685"
+PARENT="<project>\component\work\Communications\Communications.cxf"
+ENDFILE
+VALUE "<project>\component\work\Communications\RMU_UART\rtl\vhdl\core\Clock_gen.vhd,hdl"
+STATE="utd"
+TIME="1557743787"
+SIZE="12906"
+LIBRARY="COREUART_LIB"
+PARENT="<project>\component\work\Communications\RMU_UART\Communications_RMU_UART_COREUART.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Communications\RMU_UART\rtl\vhdl\core\components.vhd,hdl"
+STATE="utd"
+TIME="1557743787"
+SIZE="2725"
+LIBRARY="COREUART_LIB"
+PARENT="<project>\component\work\Communications\RMU_UART\Communications_RMU_UART_COREUART.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Communications\RMU_UART\rtl\vhdl\core\CoreUART.vhd,hdl"
+STATE="utd"
+TIME="1557743787"
+SIZE="22358"
+LIBRARY="COREUART_LIB"
+PARENT="<project>\component\work\Communications\RMU_UART\Communications_RMU_UART_COREUART.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Communications\RMU_UART\rtl\vhdl\core\coreuart_pkg.vhd,hdl"
+STATE="utd"
+TIME="1557743787"
+SIZE="511"
+LIBRARY="COREUART_LIB"
+PARENT="<project>\component\work\Communications\RMU_UART\Communications_RMU_UART_COREUART.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Communications\RMU_UART\rtl\vhdl\core\fifo_256x8_pa3.vhd,hdl"
+STATE="utd"
+TIME="1557743787"
+SIZE="8488"
+LIBRARY="COREUART_LIB"
+PARENT="<project>\component\work\Communications\RMU_UART\Communications_RMU_UART_COREUART.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Communications\RMU_UART\rtl\vhdl\core\Rx_async.vhd,hdl"
+STATE="utd"
+TIME="1557743787"
+SIZE="21570"
+LIBRARY="COREUART_LIB"
+PARENT="<project>\component\work\Communications\RMU_UART\Communications_RMU_UART_COREUART.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Communications\RMU_UART\rtl\vhdl\core\Tx_async.vhd,hdl"
+STATE="utd"
+TIME="1557743787"
+SIZE="11213"
+LIBRARY="COREUART_LIB"
+PARENT="<project>\component\work\Communications\RMU_UART\Communications_RMU_UART_COREUART.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Communications\UC_UART\Communications_UC_UART_COREUART.cxf,actgen_cxf"
+STATE="utd"
+TIME="1557743787"
+SIZE="1684"
+PARENT="<project>\component\work\Communications\Communications.cxf"
+ENDFILE
+VALUE "<project>\component\work\Communications\UC_UART\rtl\vhdl\core\Clock_gen.vhd,hdl"
+STATE="utd"
+TIME="1557743787"
+SIZE="12903"
+LIBRARY="COREUART_LIB"
+PARENT="<project>\component\work\Communications\UC_UART\Communications_UC_UART_COREUART.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Communications\UC_UART\rtl\vhdl\core\components.vhd,hdl"
+STATE="utd"
+TIME="1557743787"
+SIZE="2722"
+LIBRARY="COREUART_LIB"
+PARENT="<project>\component\work\Communications\UC_UART\Communications_UC_UART_COREUART.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Communications\UC_UART\rtl\vhdl\core\CoreUART.vhd,hdl"
+STATE="utd"
+TIME="1557743787"
+SIZE="22343"
+LIBRARY="COREUART_LIB"
+PARENT="<project>\component\work\Communications\UC_UART\Communications_UC_UART_COREUART.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Communications\UC_UART\rtl\vhdl\core\coreuart_pkg.vhd,hdl"
+STATE="utd"
+TIME="1557743787"
+SIZE="507"
+LIBRARY="COREUART_LIB"
+PARENT="<project>\component\work\Communications\UC_UART\Communications_UC_UART_COREUART.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Communications\UC_UART\rtl\vhdl\core\fifo_256x8_pa3.vhd,hdl"
+STATE="utd"
+TIME="1557743787"
+SIZE="8479"
+LIBRARY="COREUART_LIB"
+PARENT="<project>\component\work\Communications\UC_UART\Communications_UC_UART_COREUART.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Communications\UC_UART\rtl\vhdl\core\Rx_async.vhd,hdl"
+STATE="utd"
+TIME="1557743787"
+SIZE="21567"
+LIBRARY="COREUART_LIB"
+PARENT="<project>\component\work\Communications\UC_UART\Communications_UC_UART_COREUART.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Communications\UC_UART\rtl\vhdl\core\Tx_async.vhd,hdl"
+STATE="utd"
+TIME="1557743787"
+SIZE="11210"
+LIBRARY="COREUART_LIB"
+PARENT="<project>\component\work\Communications\UC_UART\Communications_UC_UART_COREUART.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Data_Saving\Data_Saving.cxf,actgen_cxf"
+STATE="utd"
+TIME="1557495591"
+SIZE="10362"
+ENDFILE
+VALUE "<project>\component\work\Data_Saving\Data_Saving.vhd,hdl"
+STATE="utd"
+TIME="1557495591"
+SIZE="13061"
+PARENT="<project>\component\work\Data_Saving\Data_Saving.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\DESIGN_FIRMWARE\DESIGN_FIRMWARE.cxf,actgen_cxf"
+STATE="utd"
+TIME="1557407885"
+SIZE="437"
+ENDFILE
+VALUE "<project>\component\work\DESIGN_IO\DESIGN_IO.cxf,actgen_cxf"
+STATE="utd"
+TIME="1557407886"
+SIZE="413"
+ENDFILE
+VALUE "<project>\component\work\FRAM\FRAM.cxf,actgen_cxf"
+STATE="utd"
+TIME="1557498112"
+SIZE="1891"
+ENDFILE
+VALUE "<project>\component\work\FRAM\FRAM.vhd,hdl"
+STATE="utd"
+TIME="1557498111"
+SIZE="4624"
+PARENT="<project>\component\work\FRAM\FRAM.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Gyro\Gyro.cxf,actgen_cxf"
+STATE="utd"
+TIME="1557489318"
+SIZE="3224"
+ENDFILE
+VALUE "<project>\component\work\Gyro\Gyro.vhd,hdl"
+STATE="utd"
+TIME="1557489317"
+SIZE="8873"
+PARENT="<project>\component\work\Gyro\Gyro.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Microcontroller\Microcontroller.cxf,actgen_cxf"
+STATE="utd"
+TIME="1557497684"
+SIZE="11096"
+ENDFILE
+VALUE "<project>\component\work\Microcontroller\Microcontroller.vhd,hdl"
+STATE="utd"
+TIME="1557497684"
+SIZE="19075"
+PARENT="<project>\component\work\Microcontroller\Microcontroller.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Pressure_Sensor\Pressure_Sensor.cxf,actgen_cxf"
+STATE="utd"
+TIME="1557488905"
+SIZE="3098"
+ENDFILE
+VALUE "<project>\component\work\Pressure_Sensor\Pressure_Sensor.vhd,hdl"
+STATE="utd"
+TIME="1557488905"
+SIZE="8590"
+PARENT="<project>\component\work\Pressure_Sensor\Pressure_Sensor.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Sensors\Sensors.cxf,actgen_cxf"
+STATE="utd"
+TIME="1557497901"
+SIZE="7120"
+ENDFILE
+VALUE "<project>\component\work\Sensors\Sensors.vhd,hdl"
+STATE="utd"
+TIME="1557497901"
+SIZE="12202"
+PARENT="<project>\component\work\Sensors\Sensors.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\Toplevel\Toplevel.cxf,actgen_cxf"
+STATE="utd"
+TIME="1557777243"
+SIZE="7665"
+ENDFILE
+VALUE "<project>\component\work\Toplevel\Toplevel.vhd,hdl"
+STATE="utd"
+TIME="1557777238"
+SIZE="36788"
+PARENT="<project>\component\work\Toplevel\Toplevel.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\designer\impl1\Toplevel.adb,adb"
+STATE="utd"
+TIME="1557755329"
+SIZE="3987456"
+ENDFILE
+VALUE "<project>\designer\impl1\Toplevel.ide_des,ide_des"
+STATE="utd"
+TIME="1557755329"
+SIZE="990"
+ENDFILE
+VALUE "<project>\designer\impl1\Toplevel.pdb,pdb"
+STATE="utd"
+TIME="1557782949"
+SIZE="125526"
+ENDFILE
+VALUE "<project>\designer\impl1\Toplevel_compile_log.rpt,log"
+STATE="utd"
+TIME="1557777279"
+SIZE="27169"
+ENDFILE
+VALUE "<project>\designer\impl1\Toplevel_fp\projectData\Toplevel.pdb,pdb"
+STATE="utd"
+TIME="1557755410"
+SIZE="125622"
+ENDFILE
+VALUE "<project>\designer\impl1\Toplevel_fp\Toplevel.pro,pro"
+STATE="utd"
+TIME="1557755410"
+SIZE="2421"
+ENDFILE
+VALUE "<project>\designer\impl1\Toplevel_placeroute_log.rpt,log"
+STATE="utd"
+TIME="1557782919"
+SIZE="2557"
+ENDFILE
+VALUE "<project>\designer\impl1\Toplevel_prgdata_log.rpt,log"
+STATE="utd"
+TIME="1557782951"
+SIZE="740"
+ENDFILE
+VALUE "<project>\designer\impl1\Toplevel_verifytiming_log.rpt,log"
+STATE="utd"
+TIME="1557782932"
+SIZE="1186"
+ENDFILE
+VALUE "<project>\hdl\BaudRate_Selector.vhd,hdl"
+STATE="utd"
+TIME="1550341287"
+SIZE="1548"
+ENDFILE
+VALUE "<project>\hdl\ClockDiv_I2C.vhd,hdl"
+STATE="utd"
+TIME="1542849584"
+SIZE="1265"
+ENDFILE
+VALUE "<project>\hdl\Data_Mux.vhd,hdl"
+STATE="utd"
+TIME="1557495388"
+SIZE="25383"
+ENDFILE
+VALUE "<project>\hdl\FFU_Command_Checker.vhd,hdl"
+STATE="utd"
+TIME="1543314230"
+SIZE="3075"
+ENDFILE
+VALUE "<project>\hdl\General_Controller.vhd,hdl"
+STATE="utd"
+TIME="1557782728"
+SIZE="6446"
+ENDFILE
+VALUE "<project>\hdl\I2C_Interface.vhd,hdl"
+STATE="utd"
+TIME="1542678167"
+SIZE="11431"
+ENDFILE
+VALUE "<project>\hdl\Interrupt_Generator.vhd,hdl"
+STATE="utd"
+TIME="1541838467"
+SIZE="1397"
+ENDFILE
+VALUE "<project>\hdl\L3G20H_Interface.vhd,hdl"
+STATE="utd"
+TIME="1557488130"
+SIZE="10230"
+ENDFILE
+VALUE "<project>\hdl\LSM303AGR_Interface.vhd,hdl"
+STATE="utd"
+TIME="1557774193"
+SIZE="16173"
+ENDFILE
+VALUE "<project>\hdl\MS5611-01BA03_Interface.vhd,hdl"
+STATE="utd"
+TIME="1557488227"
+SIZE="16623"
+ENDFILE
+VALUE "<project>\hdl\Status_Readout.vhd,hdl"
+STATE="utd"
+TIME="1546625834"
+SIZE="10741"
+ENDFILE
+VALUE "<project>\hdl\Timekeeper.vhd,hdl"
+STATE="utd"
+TIME="1549277010"
+SIZE="1076"
+ENDFILE
+VALUE "<project>\hdl\Timing.vhd,hdl"
+STATE="utd"
+TIME="1557408930"
+SIZE="2779"
+ENDFILE
+VALUE "<project>\hdl\UARTLineReleaser.vhd,hdl"
+STATE="utd"
+TIME="1546620943"
+SIZE="1003"
+ENDFILE
+VALUE "<project>\hdl\uC_Status.vhd,hdl"
+STATE="utd"
+TIME="1557755158"
+SIZE="11462"
+ENDFILE
+VALUE "<project>\smartgen\FPGABuffer\FPGABuffer.cxf,actgen_cxf"
+STATE="utd"
+TIME="1557490080"
+SIZE="2452"
+ENDFILE
+VALUE "<project>\smartgen\FPGABuffer\FPGABuffer.gen,gen"
+STATE="utd"
+TIME="1557490076"
+SIZE="989"
+PARENT="<project>\smartgen\FPGABuffer\FPGABuffer.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\smartgen\FPGABuffer\FPGABuffer.log,log"
+STATE="utd"
+TIME="1557490078"
+SIZE="3583"
+PARENT="<project>\smartgen\FPGABuffer\FPGABuffer.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\smartgen\FPGABuffer\FPGABuffer.vhd,hdl"
+STATE="utd"
+TIME="1557490078"
+SIZE="103333"
+PARENT="<project>\smartgen\FPGABuffer\FPGABuffer.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\synthesis\synwork\layer0.so,so"
+STATE="utd"
+TIME="1557762462"
+SIZE="159"
+ENDFILE
+VALUE "<project>\synthesis\Toplevel.edn,syn_edn"
+STATE="utd"
+TIME="1557755183"
+SIZE="2869133"
+ENDFILE
+VALUE "<project>\synthesis\Toplevel.so,so"
+STATE="utd"
+TIME="1557755183"
+SIZE="234"
+ENDFILE
+VALUE "<project>\synthesis\Toplevel_sdc.sdc,syn_sdc"
+STATE="utd"
+TIME="1557755183"
+SIZE="498"
+ENDFILE
+VALUE "<project>\synthesis\Toplevel_syn.prj,prj"
+STATE="utd"
+TIME="1557755183"
+SIZE="6290"
+ENDFILE
+ENDLIST
+LIST UsedFile
+ENDLIST
+LIST NewModulesInfo
+LIST "Toplevel::work"
+FILE "<project>\component\work\Toplevel\Toplevel.vhd,hdl"
+LIST ProjectState5.1
+LIST Impl1
+LiberoState=Post_Layout
+ideSYNTHESIS(<project>\synthesis\Toplevel.edn,syn_edn)=StateSuccess
+ideDESIGNER(<project>\designer\impl1\Toplevel.adb,adb)=StateSuccess
+LIST FlowOptions
+UsePhySynth=FALSE
+UseSynth=TRUE
+UseFhbAutoInst=FALSE
+ENDLIST
+Used_File_List
+ENDUsed_File_List
+ENDLIST
+ENDLIST
+LIST PinReports
+VALUE "<project>\designer\impl1\Toplevel_report_pin_byname.txt,log"
+VALUE "<project>\designer\impl1\Toplevel_report_pin_bynumber.txt,log"
+ENDLIST
+ENDLIST
+ENDLIST
+LIST AssociatedStimulus
+ENDLIST
+LIST Other_Association
+ENDLIST
+LIST SimulationOptions
+UseAutomaticDoFile=true
+IncludeWaveDo=false
+Type=max
+RunTime=1000ns
+Resolution=1ps
+VsimOpt=
+EntityName=test
+TopInstanceName=<top>_0
+DoFileName=
+DoFileName2=wave.do
+DoFileParams=
+DisplayDUTWave=false
+LogAllSignals=false
+DisablePulseFiltering=false
+DumpVCD=false
+VCDFileName=power.vcd
+VHDL2008=false
+Verilog2001=false
+SystemVerilog=false
+TimeUnit=1
+TimeUnitBase=ns
+Precision=100
+PrecisionBase=ps
+ENDLIST
+LIST ModelSimLibPath
+UseCustomPath=FALSE
+LibraryPath=
+ENDLIST
+LIST GlobalFlowOptions
+GenerateHDLAfterSynthesis=FALSE
+GenerateHDLAfterPhySynthesis=FALSE
+RunDRCAfterSynthesis=FALSE
+AutoCheckConstraints=TRUE
+UpdateModelSimIni=TRUE
+NoIOMode=FALSE
+PeriInitStandalone=FALSE
+EnableViewDraw=FALSE
+UpdateViewDrawIni=TRUE
+GenerateHDLFromSchematic=TRUE
+VmNetlistFlowOn=FALSE
+EnableDesignSeparationOn=FALSE
+EnableSETMitigationOn=FALSE
+DisplayFanoutLimit=10
+AbortFlowOnPDCErrorsOn=TRUE
+AbortFlowOnSDCErrorsOn=TRUE
+InstantiateInSmartDesign=TRUE
+FlashProInputFile=pdb
+SmartGenCompileReport=T
+ENDLIST
+LIST PhySynthesisOptions
+ENDLIST
+LIST Profiles
+NAME="SoftConsole"
+FUNCTION="SoftwareIDE"
+TOOL="SoftConsole"
+LOCATION="eclipse.exe"
+PARAM=""
+BATCH=0
+LICENSE=""
+IS32BIT="1"
+EndProfile
+NAME="Synplify Pro ME"
+FUNCTION="Synthesis"
+TOOL="Synplify Pro ME"
+LOCATION="C:\Microsemi\Libero_SoC_v11.8\SynplifyPro\bin\synplify_pro.exe"
+PARAM="-licensetype synplifypro_actel -batch -log synplify.log"
+BATCH=1
+LICENSE=""
+IS32BIT="1"
+EndProfile
+NAME="ModelSim ME"
+FUNCTION="Simulation"
+TOOL="ModelSim"
+LOCATION="C:\Microsemi\Libero_SoC_v11.8\Modelsim\win32acoem\modelsim.exe"
+PARAM=""
+BATCH=0
+LICENSE=""
+IS32BIT="1"
+EndProfile
+NAME="FPExpress"
+FUNCTION="Program"
+TOOL="FlashPro"
+LOCATION="C:\Microsemi\Libero_SoC_v11.8\Designer\bin\FPExpress.exe"
+PARAM=""
+BATCH=0
+LICENSE=""
+IS32BIT="1"
+EndProfile
+NAME="Identify Debugger"
+FUNCTION="IdentifyDebugger"
+TOOL="Identify Debugger"
+LOCATION="C:\Microsemi\Libero_SoC_v11.8\Identify\bin\identify_debugger.exe"
+PARAM=""
+BATCH=0
+LICENSE=""
+IS32BIT="1"
+EndProfile
+ENDLIST
+LIST ProjectState5.1
+LIST "Toplevel::work"
+LIST Impl1
+LiberoState=Post_Layout
+ideSYNTHESIS(<project>\synthesis\Toplevel.edn,syn_edn)=StateSuccess
+ideDESIGNER(<project>\designer\impl1\Toplevel.adb,adb)=StateSuccess
+LIST FlowOptions
+UsePhySynth=FALSE
+UseSynth=TRUE
+UseFhbAutoInst=FALSE
+ENDLIST
+Used_File_List
+ENDUsed_File_List
+ENDLIST
+ENDLIST
+ENDLIST
+LIST ExcludePackageForSimulation
+ENDLIST
+LIST ExcludePackageForSynthesis
+ENDLIST
+LIST IncludeModuleForSimulation
+ENDLIST
+LIST CDBOrder
+ENDLIST
+LIST UserCustomizedFileList
+ENDLIST
+LIST OpenedFileList
+ORIENTATION;HORIZONTAL
+Reports;Reports;0
+ReportsCurrentItem;Generate Programming Data:Toplevel_prgdata_log.rpt
+HDL;hdl\LSM303AGR_Interface.vhd;0
+HDL;hdl\General_Controller.vhd;0
+HDL;hdl\Data_Mux.vhd;0
+SmartDesign;Toplevel;0
+SmartDesign;Data_Saving;0
+SmartDesign;Microcontroller;0
+HDL;hdl\uC_Status.vhd;0
+SmartDesign;Sensors;0
+SmartDesign;Accelerometer;0
+ACTIVEVIEW;Reports
+ENDLIST
+LIST ModuleSubBlockList
+LIST "Accelerometer::work","component\work\Accelerometer\Accelerometer.vhd","TRUE","FALSE"
+SUBBLOCK "I2C_Interface::work","hdl\I2C_Interface.vhd","FALSE","FALSE"
+SUBBLOCK "LSM303AGR_Interface::work","hdl\LSM303AGR_Interface.vhd","FALSE","FALSE"
+ENDLIST
+LIST "BaudRate_Selector::work","hdl\BaudRate_Selector.vhd","FALSE","FALSE"
+ENDLIST
+LIST "ClockDiv_I2C::work","hdl\ClockDiv_I2C.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Communications::work","component\work\Communications\Communications.vhd","TRUE","FALSE"
+SUBBLOCK "BaudRate_Selector::work","hdl\BaudRate_Selector.vhd","FALSE","FALSE"
+SUBBLOCK "UARTLineReleaser::work","hdl\UARTLineReleaser.vhd","FALSE","FALSE"
+SUBBLOCK "Communications_RMU_UART_COREUART::COREUART_LIB","component\work\Communications\RMU_UART\rtl\vhdl\core\CoreUART.vhd","FALSE","FALSE"
+SUBBLOCK "Communications_UC_UART_COREUART::COREUART_LIB","component\work\Communications\UC_UART\rtl\vhdl\core\CoreUART.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Data_Mux::work","hdl\Data_Mux.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Data_Saving::work","component\work\Data_Saving\Data_Saving.vhd","TRUE","FALSE"
+SUBBLOCK "Data_Mux::work","hdl\Data_Mux.vhd","FALSE","FALSE"
+SUBBLOCK "FPGABuffer::work","smartgen\FPGABuffer\FPGABuffer.vhd","TRUE","FALSE"
+SUBBLOCK "Interrupt_Generator::work","hdl\Interrupt_Generator.vhd","FALSE","FALSE"
+ENDLIST
+LIST "DESIGN_FIRMWARE::work","component\work\DESIGN_FIRMWARE\DESIGN_FIRMWARE.cxf","TRUE","FALSE"
+ENDLIST
+LIST "DESIGN_IO::work","component\work\DESIGN_IO\DESIGN_IO.cxf","TRUE","FALSE"
+ENDLIST
+LIST "FFU_Command_Checker::work","hdl\FFU_Command_Checker.vhd","FALSE","FALSE"
+ENDLIST
+LIST "FPGABuffer::work","smartgen\FPGABuffer\FPGABuffer.vhd","TRUE","FALSE"
+ENDLIST
+LIST "FRAM::work","component\work\FRAM\FRAM.vhd","TRUE","FALSE"
+SUBBLOCK "I2C_Interface::work","hdl\I2C_Interface.vhd","FALSE","FALSE"
+ENDLIST
+LIST "General_Controller::work","hdl\General_Controller.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Gyro::work","component\work\Gyro\Gyro.vhd","TRUE","FALSE"
+SUBBLOCK "I2C_Interface::work","hdl\I2C_Interface.vhd","FALSE","FALSE"
+SUBBLOCK "L3G20H_Interface::work","hdl\L3G20H_Interface.vhd","FALSE","FALSE"
+ENDLIST
+LIST "I2C_Interface::work","hdl\I2C_Interface.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Interrupt_Generator::work","hdl\Interrupt_Generator.vhd","FALSE","FALSE"
+ENDLIST
+LIST "L3G20H_Interface::work","hdl\L3G20H_Interface.vhd","FALSE","FALSE"
+ENDLIST
+LIST "LSM303AGR_Interface::work","hdl\LSM303AGR_Interface.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Microcontroller::work","component\work\Microcontroller\Microcontroller.vhd","TRUE","FALSE"
+SUBBLOCK "Data_Saving::work","component\work\Data_Saving\Data_Saving.vhd","TRUE","FALSE"
+SUBBLOCK "uC_Status::work","hdl\uC_Status.vhd","FALSE","FALSE"
+ENDLIST
+LIST "MS5611_01BA03_Interface::work","hdl\MS5611-01BA03_Interface.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Pressure_Sensor::work","component\work\Pressure_Sensor\Pressure_Sensor.vhd","TRUE","FALSE"
+SUBBLOCK "I2C_Interface::work","hdl\I2C_Interface.vhd","FALSE","FALSE"
+SUBBLOCK "MS5611_01BA03_Interface::work","hdl\MS5611-01BA03_Interface.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Sensors::work","component\work\Sensors\Sensors.vhd","TRUE","FALSE"
+SUBBLOCK "Accelerometer::work","component\work\Accelerometer\Accelerometer.vhd","TRUE","FALSE"
+SUBBLOCK "Gyro::work","component\work\Gyro\Gyro.vhd","TRUE","FALSE"
+SUBBLOCK "Pressure_Sensor::work","component\work\Pressure_Sensor\Pressure_Sensor.vhd","TRUE","FALSE"
+ENDLIST
+LIST "Status_Readout::work","hdl\Status_Readout.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Timekeeper::work","hdl\Timekeeper.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Timing::work","hdl\Timing.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Toplevel::work","component\work\Toplevel\Toplevel.vhd","TRUE","FALSE"
+SUBBLOCK "ClockDiv_I2C::work","hdl\ClockDiv_I2C.vhd","FALSE","FALSE"
+SUBBLOCK "Communications::work","component\work\Communications\Communications.vhd","TRUE","FALSE"
+SUBBLOCK "FFU_Command_Checker::work","hdl\FFU_Command_Checker.vhd","FALSE","FALSE"
+SUBBLOCK "FRAM::work","component\work\FRAM\FRAM.vhd","TRUE","FALSE"
+SUBBLOCK "Microcontroller::work","component\work\Microcontroller\Microcontroller.vhd","TRUE","FALSE"
+SUBBLOCK "Sensors::work","component\work\Sensors\Sensors.vhd","TRUE","FALSE"
+SUBBLOCK "Status_Readout::work","hdl\Status_Readout.vhd","FALSE","FALSE"
+SUBBLOCK "Timekeeper::work","hdl\Timekeeper.vhd","FALSE","FALSE"
+SUBBLOCK "Timing::work","hdl\Timing.vhd","FALSE","FALSE"
+SUBBLOCK "General_Controller::work","hdl\General_Controller.vhd","FALSE","FALSE"
+ENDLIST
+LIST "UARTLineReleaser::work","hdl\UARTLineReleaser.vhd","FALSE","FALSE"
+ENDLIST
+LIST "uC_Status::work","hdl\uC_Status.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Communications_RMU_UART_Clock_gen::COREUART_LIB","component\work\Communications\RMU_UART\rtl\vhdl\core\Clock_gen.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Communications_RMU_UART_components::COREUART_LIB","component\work\Communications\RMU_UART\rtl\vhdl\core\components.vhd","FALSE","FALSE"
+SUBBLOCK "Communications_RMU_UART_CoreUARTapb::COREUART_LIB","","FALSE","FALSE"
+ENDLIST
+LIST "Communications_RMU_UART_COREUART::COREUART_LIB","component\work\Communications\RMU_UART\rtl\vhdl\core\CoreUART.vhd","FALSE","FALSE"
+SUBBLOCK "Communications_RMU_UART_Clock_gen::COREUART_LIB","component\work\Communications\RMU_UART\rtl\vhdl\core\Clock_gen.vhd","FALSE","FALSE"
+SUBBLOCK "Communications_RMU_UART_Rx_async::COREUART_LIB","component\work\Communications\RMU_UART\rtl\vhdl\core\Rx_async.vhd","FALSE","FALSE"
+SUBBLOCK "Communications_RMU_UART_Tx_async::COREUART_LIB","component\work\Communications\RMU_UART\rtl\vhdl\core\Tx_async.vhd","FALSE","FALSE"
+SUBBLOCK "Communications_RMU_UART_fifo_256x8::COREUART_LIB","component\work\Communications\RMU_UART\rtl\vhdl\core\fifo_256x8_pa3.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Communications_RMU_UART_coreuart_pkg::COREUART_LIB","component\work\Communications\RMU_UART\rtl\vhdl\core\coreuart_pkg.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Communications_RMU_UART_CoreUARTapb::COREUART_LIB","","FALSE","FALSE"
+ENDLIST
+LIST "Communications_RMU_UART_fifo_256x8::COREUART_LIB","component\work\Communications\RMU_UART\rtl\vhdl\core\fifo_256x8_pa3.vhd","FALSE","FALSE"
+SUBBLOCK "Communications_RMU_UART_fifo_256x8_pa3::COREUART_LIB","component\work\Communications\RMU_UART\rtl\vhdl\core\fifo_256x8_pa3.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Communications_RMU_UART_fifo_256x8_pa3::COREUART_LIB","component\work\Communications\RMU_UART\rtl\vhdl\core\fifo_256x8_pa3.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Communications_RMU_UART_Rx_async::COREUART_LIB","component\work\Communications\RMU_UART\rtl\vhdl\core\Rx_async.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Communications_RMU_UART_Tx_async::COREUART_LIB","component\work\Communications\RMU_UART\rtl\vhdl\core\Tx_async.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Communications_UC_UART_Clock_gen::COREUART_LIB","component\work\Communications\UC_UART\rtl\vhdl\core\Clock_gen.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Communications_UC_UART_components::COREUART_LIB","component\work\Communications\UC_UART\rtl\vhdl\core\components.vhd","FALSE","FALSE"
+SUBBLOCK "Communications_UC_UART_CoreUARTapb::COREUART_LIB","","FALSE","FALSE"
+ENDLIST
+LIST "Communications_UC_UART_COREUART::COREUART_LIB","component\work\Communications\UC_UART\rtl\vhdl\core\CoreUART.vhd","FALSE","FALSE"
+SUBBLOCK "Communications_UC_UART_Clock_gen::COREUART_LIB","component\work\Communications\UC_UART\rtl\vhdl\core\Clock_gen.vhd","FALSE","FALSE"
+SUBBLOCK "Communications_UC_UART_Rx_async::COREUART_LIB","component\work\Communications\UC_UART\rtl\vhdl\core\Rx_async.vhd","FALSE","FALSE"
+SUBBLOCK "Communications_UC_UART_Tx_async::COREUART_LIB","component\work\Communications\UC_UART\rtl\vhdl\core\Tx_async.vhd","FALSE","FALSE"
+SUBBLOCK "Communications_UC_UART_fifo_256x8::COREUART_LIB","component\work\Communications\UC_UART\rtl\vhdl\core\fifo_256x8_pa3.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Communications_UC_UART_coreuart_pkg::COREUART_LIB","component\work\Communications\UC_UART\rtl\vhdl\core\coreuart_pkg.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Communications_UC_UART_CoreUARTapb::COREUART_LIB","","FALSE","FALSE"
+ENDLIST
+LIST "Communications_UC_UART_fifo_256x8::COREUART_LIB","component\work\Communications\UC_UART\rtl\vhdl\core\fifo_256x8_pa3.vhd","FALSE","FALSE"
+SUBBLOCK "Communications_UC_UART_fifo_256x8_pa3::COREUART_LIB","component\work\Communications\UC_UART\rtl\vhdl\core\fifo_256x8_pa3.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Communications_UC_UART_fifo_256x8_pa3::COREUART_LIB","component\work\Communications\UC_UART\rtl\vhdl\core\fifo_256x8_pa3.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Communications_UC_UART_Rx_async::COREUART_LIB","component\work\Communications\UC_UART\rtl\vhdl\core\Rx_async.vhd","FALSE","FALSE"
+ENDLIST
+LIST "Communications_UC_UART_Tx_async::COREUART_LIB","component\work\Communications\UC_UART\rtl\vhdl\core\Tx_async.vhd","FALSE","FALSE"
+ENDLIST
+ENDLIST
+LIST ActiveTestBenchList
+ENDLIST
+LIST IOTabList
+ENDLIST
+LIST FPTabList
+ENDLIST
+LIST TimingTabList
+ENDLIST
+LIST FDCTabList
+ENDLIST
