@@ -99,8 +99,15 @@ architecture architecture_General_Controller of General_Controller is
         uc_rx_receive_ffu_id,
         uc_rx_receive_unit_id,
         uc_rx_receive_gs_id,
+        uc_rx_receive_const_bias,
+        uc_rx_receive_sweep_table,
         uc_rx_postamble
     );
+
+    type t_Sweep_Table is array (0 to 255) of std_logic_vector(7 downto 0);
+    signal sweep_table : t_Sweep_Table;
+    signal sweep_table_id : integer range 0 to 255;
+    signal sweep_table_len : std_logic_vector(7 downto 0);
 
     signal flight_state : std_logic_vector(7 downto 0);
     constant boot : std_logic_vector(7 downto 0) := x"01";
@@ -144,6 +151,8 @@ begin
             unit_id <= x"21";       -- Default unit identifier - before microcontroller reads out the stored value.
             ffu_id <= x"00";        -- Default FFU identifier - before microcontroller reads out the stored value.
             gs_id <= x"00";        -- Default FFU identifier - before microcontroller reads out the stored value.
+            sweep_table_id <= 0; -- Default Sweep_Table_ID value
+            sweep_table_len <= x"00";
 
             flight_state <= boot;
 
@@ -280,7 +289,7 @@ begin
                 when 3 =>
                     case command is
                         when x"40" => readout_en <= '1';                    -- "@"
-                        when x"A4" => send_telemetry_request <= '1';        -- "¤"
+                        when x"A4" => send_telemetry_request <= '1';        -- "ï¿½"
                         when x"58" => mission_mode <= '1';                  -- "X"
                         when x"41" => led1 <= not led1;                     -- "A"
                         when x"42" => led2 <= not led2;                     -- "B"
@@ -570,7 +579,7 @@ when uc_tx_send_state =>
                             uc_rx_state <= uc_rx_get_byte;
 
                         when 2 =>
-                            if uc_rx_byte = x"B5" then          -- "µ"
+                            if uc_rx_byte = x"B5" then          -- "ï¿½"
                                 uc_rx_state <= uc_rx_get_byte;
                             else
                                 uc_rx_state <= uc_rx_idle;
@@ -590,6 +599,8 @@ when uc_tx_send_state =>
                                 when x"46" => uc_rx_state <= uc_rx_receive_ffu_id;      -- "F" - FFU ID
                                 when x"47" => uc_rx_state <= uc_rx_receive_gs_id;       -- "G" - GS ID for FPGA
                                 when x"55" => uc_rx_state <= uc_rx_receive_unit_id;     -- "U" - Unit ID
+                                when x"CB" => uc_rx_state <= uc_rx_receive_const_bias;
+                                when x"AB" => uc_rx_state <= uc_rx_receive_sweep_table;
                                 when others => uc_rx_state <= uc_rx_idle;               -- Unknown message, ignore.
                             end case;
                     end case;
@@ -617,6 +628,28 @@ when uc_tx_send_state =>
                         when 1 => uc_rx_state <= uc_rx_get_byte;
                         when 2 => gs_id <= uc_rx_byte; uc_rx_state <= uc_rx_postamble; uc_rx_substate <= 1;
                     end case;
+
+                when uc_rx_receive_sweep_table =>
+                    case uc_rx_substate is
+                        when 1 =>
+                            uc_rx_state <= uc_rx_get_byte;      -- Get sweep table length byte.
+                        when 2 =>
+                            sweep_table_len <= uc_rx_byte;
+                            uc_rx_state <= uc_rx_get_byte;
+                        when 3 =>
+                            if sweep_table_len > 0 then
+                                sweep_table(sweep_table_id) <= uc_rx_byte;
+                                sweep_table_id <= sweep_table_id + 1;
+                                sweep_table_len <= sweep_table_len - 1;
+                                uc_rx_state <= uc_rx_get_byte;
+                                uc_rx_substate <= uc_rx_substate - 1;    -- Get byte increments the substate counter, to keep the execution here we decrement.
+                            else
+                                uc_rx_state <= uc_rx_postamble;
+                                led1 <= not led1;
+                            end if;
+                    end case;
+
+
 
                 when uc_rx_postamble =>
                     case uc_rx_substate is
