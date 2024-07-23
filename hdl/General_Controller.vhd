@@ -332,6 +332,8 @@ begin
                     end case;
 
                     ext_rx_state <= 1;
+                when others =>
+                    ext_rx_state <=1;
 
             end case;
 
@@ -385,6 +387,7 @@ begin
                                 uc_tx_substate <= 1;
                                 uc_tx_state <= uc_tx_nextstate;
                             end if;
+                        when others =>
                     end case;
 
                 when uc_tx_telemetry =>
@@ -412,6 +415,7 @@ begin
                                 uc_tx_substate <= 1;
                                 uc_tx_state <= uc_tx_postamble;
                             end if;
+                        when others =>
                     end case;
                 when uc_tx_send_console_en =>
                     case uc_tx_substate is
@@ -438,6 +442,7 @@ begin
                                 uc_tx_substate <= 1;
                                 uc_tx_state <= uc_tx_postamble;
                             end if;
+                        when others =>
                     end case;
                 when uc_tx_led3 =>
                     case uc_tx_substate is
@@ -464,6 +469,7 @@ begin
                                 uc_tx_substate <= 1;
                                 uc_tx_state <= uc_tx_postamble;
                             end if;
+                        when others =>
                     end case;
                 when uc_tx_led4 =>
                     case uc_tx_substate is
@@ -490,6 +496,7 @@ begin
                                 uc_tx_substate <= 1;
                                 uc_tx_state <= uc_tx_postamble;
                             end if;
+                    when others =>
                     end case;
 when uc_tx_send_state =>
                     case uc_tx_substate is
@@ -527,6 +534,7 @@ when uc_tx_send_state =>
                                 uc_tx_substate <= 1;
                                 uc_tx_state <= uc_tx_postamble;
                             end if;
+                        when others =>
                     end case;
                 when uc_tx_postamble =>
                     case uc_tx_substate is
@@ -542,7 +550,10 @@ when uc_tx_send_state =>
                                 uc_tx_substate <= 1;
                                 uc_tx_state <= uc_tx_idle;
                             end if;
+                        when others =>
                     end case;
+                when others =>
+                     uc_tx_state <= uc_tx_idle;
 
             end case;
 
@@ -603,12 +614,14 @@ when uc_tx_send_state =>
                                 when x"AB" => uc_rx_state <= uc_rx_receive_sweep_table;
                                 when others => uc_rx_state <= uc_rx_idle;               -- Unknown message, ignore.
                             end case;
+                    when others =>
                     end case;
 
                 when uc_rx_receive_ffu_id =>
                     case uc_rx_substate is
                         when 1 => uc_rx_state <= uc_rx_get_byte;
                         when 2 => ffu_id <= uc_rx_byte; uc_rx_state <= uc_rx_postamble; uc_rx_substate <= 1;
+                        when others =>
                     end case;
 
                 when uc_rx_receive_unit_id =>
@@ -621,12 +634,14 @@ when uc_tx_send_state =>
 
                             uc_rx_state <= uc_rx_postamble;
                             uc_rx_substate <= 1;
+                        when others =>
                     end case;
 
                 when uc_rx_receive_gs_id =>
                     case uc_rx_substate is
                         when 1 => uc_rx_state <= uc_rx_get_byte;
                         when 2 => gs_id <= uc_rx_byte; uc_rx_state <= uc_rx_postamble; uc_rx_substate <= 1;
+                        when others =>
                     end case;
 
                 when uc_rx_receive_sweep_table =>
@@ -645,8 +660,10 @@ when uc_tx_send_state =>
                                 uc_rx_substate <= uc_rx_substate - 1;    -- Get byte increments the substate counter, to keep the execution here we decrement.
                             else
                                 uc_rx_state <= uc_rx_postamble;
+                                uc_rx_substate <= 1;
                                 led1 <= not led1;
                             end if;
+                        when others =>
                     end case;
 
 
@@ -655,7 +672,11 @@ when uc_tx_send_state =>
                     case uc_rx_substate is
                         when 1 => uc_rx_state <= uc_rx_get_byte;
                         when 2 => uc_rx_state <= uc_rx_idle;
+                        when others =>
                     end case;
+
+                when others =>
+                     uc_rx_state <= uc_rx_idle;
             end case;
 
 ----------------- Status bits generation ---------------------
