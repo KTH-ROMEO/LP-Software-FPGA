@@ -20,6 +20,7 @@ library IEEE;
 
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_unsigned.all;
+use IEEE.numeric_std.all;
 
 entity General_Controller is
 port (
@@ -99,15 +100,38 @@ architecture architecture_General_Controller of General_Controller is
         uc_rx_receive_ffu_id,
         uc_rx_receive_unit_id,
         uc_rx_receive_gs_id,
+        uc_rx_receive_en_cb_mode,
         uc_rx_receive_const_bias,
+        uc_rx_readback_const_bias,
+        uc_rx_receive_en_swt_mode,
         uc_rx_receive_sweep_table,
+        uc_rx_receive_swt_steps,
+        uc_rx_receive_swt_sr,
+        uc_rx_readback_sweep_table,
+        uc_rx_readback_swt_steps,
+        uc_rx_readback_swt_sr,
         uc_rx_postamble
     );
 
-    type t_Sweep_Table is array (0 to 255) of std_logic_vector(7 downto 0);
-    signal sweep_table : t_Sweep_Table;
-    signal sweep_table_id : integer range 0 to 255;
-    signal sweep_table_len : std_logic_vector(7 downto 0);
+    signal constant_bias_mode : std_logic;
+    signal constant_bias_voltage_0 : std_logic_vector(15 downto 0);
+    signal constant_bias_voltage_1 : std_logic_vector(15 downto 0);
+    signal constant_bias_voltage_temp : std_logic_vector(15 downto 0);
+    signal cb_bytes_recv : integer range 0 to 1 := 0;
+    signal constant_bias_probe_id : std_logic_vector(7 downto 0);
+
+    signal sweep_table_mode : std_logic;
+    type t_Sweep_Table is array (0 to 255) of std_logic_vector(15 downto 0);
+    signal sweep_table_0 : t_Sweep_Table;
+    signal sweep_table_1 : t_Sweep_Table;
+    signal swt_bytes_recv : integer range 0 to 1 := 0;
+    signal sweep_table_probe_id : std_logic_vector(7 downto 0);
+    signal sweep_table_step_id : std_logic_vector(7 downto 0);
+    signal sweep_table_voltage_temp : std_logic_vector(15 downto 0);
+
+    signal sweep_table_nof_steps : std_logic_vector(7 downto 0);
+    signal sweep_table_sample_rate : std_logic_vector(7 downto 0);
+    -- signal sweep_table_len : std_logic_vector(7 downto 0);
 
     signal flight_state : std_logic_vector(7 downto 0);
     constant boot : std_logic_vector(7 downto 0) := x"01";
@@ -151,8 +175,6 @@ begin
             unit_id <= x"21";       -- Default unit identifier - before microcontroller reads out the stored value.
             ffu_id <= x"00";        -- Default FFU identifier - before microcontroller reads out the stored value.
             gs_id <= x"00";        -- Default FFU identifier - before microcontroller reads out the stored value.
-            sweep_table_id <= 0; -- Default Sweep_Table_ID value
-            sweep_table_len <= x"00";
 
             flight_state <= boot;
 
@@ -201,6 +223,22 @@ begin
             old_1Hz <= '0';
             state_seconds <= (others => '0');
             send_flight_state <= '0';
+
+            constant_bias_mode <= '0';
+            constant_bias_voltage_0 <= (others => '0');
+            constant_bias_voltage_1 <= (others => '0');
+            constant_bias_voltage_temp <= (others => '0');
+            constant_bias_probe_id <= (others => '0');
+
+            sweep_table_mode <= '0';
+            sweep_table_0 <= (others =>(others => '0'));
+            sweep_table_1 <= (others =>(others => '0'));
+            sweep_table_probe_id <= (others => '0');
+            sweep_table_step_id <= (others => '0');
+            sweep_table_voltage_temp <= (others => '0');
+
+            sweep_table_nof_steps <= (others => '0');
+            sweep_table_sample_rate <= (others => '0');
 
         elsif rising_edge(clk) then
     ----------------------- Seconds counter -----------------------------
@@ -498,7 +536,7 @@ begin
                             end if;
                     when others =>
                     end case;
-when uc_tx_send_state =>
+                when uc_tx_send_state =>
                     case uc_tx_substate is
                         when 1 =>
                             if uc_tx_rdy = '1' then
@@ -607,12 +645,22 @@ when uc_tx_send_state =>
                             uc_rx_substate <= 1;
 
                             case uc_rx_byte is
-                                when x"46" => uc_rx_state <= uc_rx_receive_ffu_id;      -- "F" - FFU ID
-                                when x"47" => uc_rx_state <= uc_rx_receive_gs_id;       -- "G" - GS ID for FPGA
-                                when x"55" => uc_rx_state <= uc_rx_receive_unit_id;     -- "U" - Unit ID
+                                when x"46" => uc_rx_state <= uc_rx_receive_ffu_id;              -- "F" - FFU ID
+                                when x"47" => uc_rx_state <= uc_rx_receive_gs_id;               -- "G" - GS ID for FPGA
+                                when x"55" => uc_rx_state <= uc_rx_receive_unit_id;             -- "U" - Unit ID
+
+                                when x"CA" => uc_rx_state <= uc_rx_receive_en_cb_mode;
                                 when x"CB" => uc_rx_state <= uc_rx_receive_const_bias;
+                                when x"CC" => uc_rx_state <= uc_rx_readback_const_bias;
+
+                                when x"AA" => uc_rx_state <= uc_rx_receive_en_swt_mode;
                                 when x"AB" => uc_rx_state <= uc_rx_receive_sweep_table;
-                                when others => uc_rx_state <= uc_rx_idle;               -- Unknown message, ignore.
+                                when x"AC" => uc_rx_state <= uc_rx_receive_swt_steps;
+                                when x"AD" => uc_rx_state <= uc_rx_receive_swt_sr;
+                                when x"A0" => uc_rx_state <= uc_rx_readback_sweep_table;
+                                when x"A1" => uc_rx_state <= uc_rx_readback_swt_steps;
+                                when x"A2" => uc_rx_state <= uc_rx_readback_swt_sr;
+                                when others => uc_rx_state <= uc_rx_idle;                       -- Unknown message, ignore.
                             end case;
                     when others =>
                     end case;
@@ -644,25 +692,108 @@ when uc_tx_send_state =>
                         when others =>
                     end case;
 
-                when uc_rx_receive_sweep_table =>
+
+                when uc_rx_receive_en_cb_mode => 
                     case uc_rx_substate is
                         when 1 =>
-                            uc_rx_state <= uc_rx_get_byte;      -- Get sweep table length byte.
-                        when 2 =>
-                            sweep_table_len <= uc_rx_byte;
+                            constant_bias_mode <= '1';
+                            sweep_table_mode <= '0';
+                            uc_rx_state <= uc_rx_postamble;
+                            uc_rx_substate <= 1;
+                        when others =>
+                    end case;
+
+
+                when uc_rx_receive_const_bias =>
+                    case uc_rx_substate is 
+                        when 1 => uc_rx_state <= uc_rx_get_byte;
+                        when 2 => 
+                            constant_bias_probe_id <= uc_rx_byte;
                             uc_rx_state <= uc_rx_get_byte;
                         when 3 =>
-                            if sweep_table_len > 0 then
-                                sweep_table(sweep_table_id) <= uc_rx_byte;
-                                sweep_table_id <= sweep_table_id + 1;
-                                sweep_table_len <= sweep_table_len - 1;
+                            if cb_bytes_recv = 0 then
+                                constant_bias_voltage_temp(7 downto 0) <= uc_rx_byte;
                                 uc_rx_state <= uc_rx_get_byte;
-                                uc_rx_substate <= uc_rx_substate - 1;    -- Get byte increments the substate counter, to keep the execution here we decrement.
+                                uc_rx_substate <= uc_rx_substate - 1;
+                                cb_bytes_recv <= 1;
                             else
-                                uc_rx_state <= uc_rx_postamble;
-                                uc_rx_substate <= 1;
-                                led1 <= not led1;
+                                constant_bias_voltage_temp(15 downto 8) <= uc_rx_byte;
+                                uc_rx_substate <= uc_rx_substate + 1; -- Usually incrementation of this is done using get_byte, but since we still need to do    
+                            end if;                                 -- stuff without getting the preamble byte, we do increment manually
+                        when 4 =>
+                            case constant_bias_probe_id is
+                                when x"00" => constant_bias_voltage_0 <= constant_bias_voltage_temp;
+                                when x"01" => constant_bias_voltage_1 <= constant_bias_voltage_temp;
+                                when others =>
+                            end case;
+                            cb_bytes_recv <= 0;
+                            uc_rx_state <= uc_rx_postamble;
+                            uc_rx_substate <= 1;
+                        when others =>
+                    end case;
+
+
+                when uc_rx_receive_en_swt_mode => 
+                    case uc_rx_substate is
+                        when 1 =>
+                            sweep_table_mode <= '1';
+                            constant_bias_mode <= '0';
+                            uc_rx_state <= uc_rx_postamble;
+                            uc_rx_substate <= 1;
+                        when others =>
+                    end case;
+
+
+                when uc_rx_receive_swt_steps => 
+                    case uc_rx_substate is
+                        when 1 => uc_rx_state <= uc_rx_get_byte;
+                        when 2 =>
+                            sweep_table_nof_steps <= uc_rx_byte;
+                            uc_rx_state <= uc_rx_postamble;
+                            uc_rx_substate <= 1;
+                        when others =>
+                    end case;
+
+
+                when uc_rx_receive_swt_sr => 
+                    case uc_rx_substate is
+                        when 1 => uc_rx_state <= uc_rx_get_byte;
+                        when 2 =>
+                            sweep_table_sample_rate <= uc_rx_byte;
+                            uc_rx_state <= uc_rx_postamble;
+                            uc_rx_substate <= 1;
+                        when others =>
+                    end case;
+
+
+                when uc_rx_receive_sweep_table =>
+                    case uc_rx_substate is 
+                        when 1 => uc_rx_state <= uc_rx_get_byte;
+                        when 2 => 
+                            sweep_table_probe_id <= uc_rx_byte;
+                            uc_rx_state <= uc_rx_get_byte;
+                        when 3 => 
+                            sweep_table_step_id <= uc_rx_byte;
+                            uc_rx_state <= uc_rx_get_byte;
+                        when 4 =>
+                            if swt_bytes_recv = 0 then
+                                sweep_table_voltage_temp(7 downto 0) <= uc_rx_byte;
+                                uc_rx_state <= uc_rx_get_byte;
+                                uc_rx_substate <= uc_rx_substate - 1;
+                                swt_bytes_recv <= 1;
+                            else
+                                sweep_table_voltage_temp(15 downto 8) <= uc_rx_byte;
+                                uc_rx_substate <= uc_rx_substate + 1;
                             end if;
+                        when 5 =>
+                            case sweep_table_probe_id is
+                                when x"00" => sweep_table_0(to_integer(unsigned(sweep_table_step_id))) <= sweep_table_voltage_temp;
+                                when x"01" => sweep_table_1(to_integer(unsigned(sweep_table_step_id))) <= sweep_table_voltage_temp;
+                                when others =>
+                            end case;
+                            swt_bytes_recv <= 0;
+                            uc_rx_state <= uc_rx_postamble;
+                            uc_rx_substate <= 1;
                         when others =>
                     end case;
 
