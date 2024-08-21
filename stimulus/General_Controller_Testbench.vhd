@@ -39,13 +39,14 @@ architecture behavioral of General_Controller_Testbench is
     signal SYSCLK : std_logic := '0';
     signal NSYSRESET : std_logic := '0';
     signal UC_RX_RDY : std_logic := '1';
+    signal UC_TX_RDY : std_logic := '1';
     signal UC_RECV : std_logic_vector(7 downto 0):= x"B5";
     
     type AB_array is array (0 to 7) of std_logic_vector(7 downto 0);
     signal SEND_AB_ARRAY : AB_array := (x"B5", x"43", x"AB", x"00", x"30", x"CD", x"AB", x"0A");
 
-    type CB_array is array (0 to 14) of std_logic_vector(7 downto 0);
-    signal SEND_CB_ARRAY : CB_array := (x"B5", x"43", x"CB", x"01", x"CD", x"AB", x"0A", x"00", x"B5", x"43", x"CB", x"00", x"FD", x"CE", x"0A");
+    type CB_array is array (0 to 13) of std_logic_vector(7 downto 0);
+    signal SEND_CB_ARRAY : CB_array := (x"B5", x"43", x"CB", x"01", x"CD", x"AB", x"0A", x"B5", x"43", x"CB", x"00", x"FD", x"CE", x"0A");
 
     type AA_array is array (0 to 3) of std_logic_vector(7 downto 0);
     signal SEND_AA_ARRAY : AA_array := (x"B5", x"43", x"AA", x"0A");
@@ -60,6 +61,8 @@ architecture behavioral of General_Controller_Testbench is
     signal SEND_AD_ARRAY : AD_array := (x"b5", x"43", x"ad", x"20", x"0a");
 
 
+    type CC_array is array (0 to 4) of std_logic_vector(7 downto 0);
+    signal SEND_CC_ARRAY : CC_array := (x"b5", x"43", x"CC", x"01", x"0A");
 
 
     signal unit_id : std_logic_vector(7 downto 0);
@@ -156,12 +159,22 @@ begin
             NSYSRESET <= '0';
             vhdl_initial := FALSE;
         else
-            for i in SEND_CB_ARRAY'range loop
-                wait for (SYSCLK_PERIOD * 2);
+            for i in SEND_CC_ARRAY'range loop
+                wait for (SYSCLK_PERIOD * 1000);
                 UC_RX_RDY <= '1';                
-                UC_RECV <= SEND_CB_ARRAY(i);
-                wait for (SYSCLK_PERIOD * 2);
+                UC_RECV <= SEND_CC_ARRAY(i);
+                wait for (SYSCLK_PERIOD * 1000);
                 UC_RX_RDY <= '0';
+            end loop;
+
+            wait for (SYSCLK_PERIOD * 1000);
+
+            for i in 1 to 10 loop
+                wait for (SYSCLK_PERIOD * 1000);
+                UC_TX_RDY <= '1';                
+                
+                wait for (SYSCLK_PERIOD * 1000);
+                UC_TX_RDY <= '0';
             end loop;
 
         end if;
@@ -185,7 +198,7 @@ begin
             ext_rx_rdy => '0',
             ext_recv => (others=> '0'),
             uc_recv => UC_RECV,
-            uc_tx_rdy => '0',
+            uc_tx_rdy => UC_TX_RDY,
             uc_rx_rdy => UC_RX_RDY,
             cu_sync => '0',
 
