@@ -399,27 +399,28 @@ begin
     --------- Microcontroller UART transmit ------------
             case uc_tx_state is
                 when uc_tx_idle =>
-                    if send_console_enable = '1' then
-                        uc_tx_state <= uc_tx_preamble;
-                        uc_tx_nextstate <= uc_tx_send_console_en;
-                        send_console_enable <= '0';
-                    elsif send_flight_state = '1' then
-                        uc_tx_state <= uc_tx_preamble;
-                        uc_tx_nextstate <= uc_tx_send_state;
-                        send_flight_state <= '0';
-                    elsif send_led3 = '1' then
-                        uc_tx_state <= uc_tx_preamble;
-                        uc_tx_nextstate <= uc_tx_led3;
-                        send_led3 <= '0';
-                    elsif send_led4 = '1' then
-                        uc_tx_state <= uc_tx_preamble;
-                        uc_tx_nextstate <= uc_tx_led4;
-                        send_led4 <= '0';
-                    elsif send_telemetry_request = '1' then
-                        uc_tx_state <= uc_tx_preamble;
-                        uc_tx_nextstate <= uc_tx_telemetry;
-                        send_telemetry_request <= '0';
-                    end if;
+--
+--                    if send_console_enable = '1' then
+--                        uc_tx_state <= uc_tx_preamble;
+--                        uc_tx_nextstate <= uc_tx_send_console_en;
+--                        send_console_enable <= '0';
+--                    elsif send_flight_state = '1' then
+--                        uc_tx_state <= uc_tx_preamble;
+--                        uc_tx_nextstate <= uc_tx_send_state;
+--                        send_flight_state <= '0';
+--                   elsif send_led3 = '1' then
+--                       uc_tx_state <= uc_tx_preamble;
+--                        uc_tx_nextstate <= uc_tx_led3;
+--                        send_led3 <= '0';
+--                    elsif send_led4 = '1' then
+--                        uc_tx_state <= uc_tx_preamble;
+--                        uc_tx_nextstate <= uc_tx_led4;
+--                        send_led4 <= '0';
+--                    elsif send_telemetry_request = '1' then
+--                        uc_tx_state <= uc_tx_preamble;
+--                        uc_tx_nextstate <= uc_tx_telemetry;
+--                        send_telemetry_request <= '0';
+--                    end if;
 
                 when uc_tx_preamble =>
                     case uc_tx_substate is
