@@ -44,6 +44,19 @@ port (
 
     cu_sync : IN std_logic;
 
+    st_rdata0  : IN std_logic_vector(15 downto 0);
+    st_rdata1  : IN std_logic_vector(15 downto 0);
+
+    st_wdata : OUT std_logic_vector(15 downto 0);
+    st_waddr : OUT std_logic_vector(7 downto 0);
+    st_raddr : OUT std_logic_vector(7 downto 0);
+
+
+    st_wen0   : OUT std_logic;
+    st_wen1   : OUT std_logic;
+    st_ren0   : OUT std_logic;
+    st_ren1   : OUT std_logic;
+
     unit_id : OUT std_logic_vector(7 downto 0);
     ffu_id : OUT std_logic_vector(7 downto 0);
     gs_id : OUT std_logic_vector(7 downto 0);
@@ -140,9 +153,9 @@ architecture architecture_General_Controller of General_Controller is
     signal constant_bias_probe_id : std_logic_vector(7 downto 0);
 
     signal sweep_table_mode : std_logic_vector(7 downto 0); -- Saved as a vector for simpler readback.
-    type t_Sweep_Table is array (0 to 255) of std_logic_vector(15 downto 0);
-    signal sweep_table_0 : t_Sweep_Table;
-    signal sweep_table_1 : t_Sweep_Table;
+    signal sweep_table_write_value : std_logic_vector(15 downto 0);
+    signal sweep_table_read_value  : std_logic_vector(15 downto 0);
+
     signal sweep_table_probe_id : std_logic_vector(7 downto 0);
     signal sweep_table_step_id : std_logic_vector(7 downto 0);
 
@@ -150,7 +163,9 @@ architecture architecture_General_Controller of General_Controller is
     signal sweep_table_sample_skip : std_logic_vector(15 downto 0);
     signal sweep_table_samples_per_point : std_logic_vector(15 downto 0);
     signal sweep_table_points : std_logic_vector(15 downto 0);
-    -- signal sweep_table_len : std_logic_vector(7 downto 0);
+
+    signal sweep_table_write_wait : integer range 0 to 3;
+    signal sweep_table_read_wait : integer range 0 to 3;
 
     signal flight_state : std_logic_vector(7 downto 0);
     constant boot : std_logic_vector(7 downto 0) := x"01";
@@ -251,8 +266,6 @@ begin
             constant_bias_probe_id <= (others => '0');
 
             sweep_table_mode <= (others => '0');
-            sweep_table_0 <= (others =>(others => '0'));
-            sweep_table_1 <= (others =>(others => '0'));
             sweep_table_probe_id <= (others => '0');
             sweep_table_step_id <= (others => '0');
 
@@ -260,6 +273,17 @@ begin
             sweep_table_sample_skip <= (others => '0');
             sweep_table_samples_per_point <= (others => '0');
             sweep_table_points <= (others => '0');
+
+            sweep_table_write_wait <= 0;
+            sweep_table_read_wait <= 0;
+            st_wdata <= (others => '0');
+            st_waddr <= (others => '0');
+            st_raddr <= (others => '0');
+
+            st_wen0  <= '0';
+            st_wen1  <= '0';
+            st_ren0  <= '0';
+            st_ren1  <= '0';
 
         elsif rising_edge(clk) then
     ----------------------- Seconds counter -----------------------------
@@ -399,28 +423,6 @@ begin
     --------- Microcontroller UART transmit ------------
             case uc_tx_state is
                 when uc_tx_idle =>
---
---                    if send_console_enable = '1' then
---                        uc_tx_state <= uc_tx_preamble;
---                        uc_tx_nextstate <= uc_tx_send_console_en;
---                        send_console_enable <= '0';
---                    elsif send_flight_state = '1' then
---                        uc_tx_state <= uc_tx_preamble;
---                        uc_tx_nextstate <= uc_tx_send_state;
---                        send_flight_state <= '0';
---                   elsif send_led3 = '1' then
---                       uc_tx_state <= uc_tx_preamble;
---                        uc_tx_nextstate <= uc_tx_led3;
---                        send_led3 <= '0';
---                    elsif send_led4 = '1' then
---                        uc_tx_state <= uc_tx_preamble;
---                        uc_tx_nextstate <= uc_tx_led4;
---                        send_led4 <= '0';
---                    elsif send_telemetry_request = '1' then
---                        uc_tx_state <= uc_tx_preamble;
---                        uc_tx_nextstate <= uc_tx_telemetry;
---                        send_telemetry_request <= '0';
---                    end if;
 
                 when uc_tx_preamble =>
                     case uc_tx_substate is
@@ -577,11 +579,7 @@ begin
                             end if;
                         when 3 => 
                             if uc_tx_rdy = '1' then
-                                case sweep_table_probe_id is
---                                    when x"00" => uc_send <= sweep_table_0(to_integer(unsigned(sweep_table_step_id)))(7 downto 0);
---                                    when x"01" => uc_send <= sweep_table_1(to_integer(unsigned(sweep_table_step_id)))(7 downto 0);
-                                    when others =>
-                                end case;
+                                uc_send <= sweep_table_read_value(7 downto 0);
                                 uc_wen <= '1';
                                 uc_tx_substate <= uc_tx_substate + 1;
                             end if;
@@ -593,11 +591,7 @@ begin
                             end if;
                         when 5 => 
                             if uc_tx_rdy = '1' then
-                                case sweep_table_probe_id is
---                                    when x"00" => uc_send <= sweep_table_0(to_integer(unsigned(sweep_table_step_id)))(15 downto 8);
---                                    when x"01" => uc_send <= sweep_table_1(to_integer(unsigned(sweep_table_step_id)))(15 downto 8);
-                                    when others =>
-                                end case;
+                                uc_send <= sweep_table_read_value(15 downto 8);
                                 uc_wen <= '1';
                                 uc_tx_substate <= uc_tx_substate + 1;
                             end if;
@@ -679,6 +673,7 @@ begin
                                 uc_tx_state <= uc_tx_idle;
                             end if;
                         when others =>
+                            uc_tx_state <= uc_tx_idle;
                     end case;
                 when others =>
                      uc_tx_state <= uc_tx_idle;
@@ -833,6 +828,7 @@ begin
                             uc_tx_state <= uc_tx_preamble;
                             uc_tx_nextstate <= uc_tx_send_cb_mode;
                             uc_rx_state <= uc_rx_postamble;
+                            uc_rx_substate <= 1;
                         when others =>
                     end case;
 
@@ -845,6 +841,7 @@ begin
                             uc_tx_state <= uc_tx_preamble;
                             uc_tx_nextstate <= uc_tx_send_const_bias;
                             uc_rx_state <= uc_rx_postamble;
+                            uc_rx_substate <= 1;
                         when others =>
                     end case;
 
@@ -855,8 +852,8 @@ begin
                             sweep_table_mode   <= x"01";
                             constant_bias_mode <= x"00";
                             uc_rx_state <= uc_rx_postamble;
-                            uc_rx_substate <= 1;
-                        when others =>
+                            uc_rx_substate <= 1; 
+                       when others =>
                     end case;
 
 
@@ -873,15 +870,34 @@ begin
                             temp_first_byte <= uc_rx_byte;
                             uc_rx_state <= uc_rx_get_byte;
                         when 5 =>
+                            sweep_table_write_value(7 downto 0) <= temp_first_byte;
+                            sweep_table_write_value(15 downto 8) <= uc_rx_byte;
+                            uc_rx_substate <= uc_rx_substate + 1;
+                        when 6 =>
+                            -- Write to SweepTable RAM
                             case sweep_table_probe_id is
-                                when x"00" => 
-                                    sweep_table_0(to_integer(unsigned(sweep_table_step_id)))(7 downto 0) <= temp_first_byte;
-                                    sweep_table_0(to_integer(unsigned(sweep_table_step_id)))(15 downto 8) <= uc_rx_byte;
+                                when x"00" =>
+                                    st_wen0 <= '1';
+                                    st_wen1 <= '0';
                                 when x"01" =>
-                                    sweep_table_1(to_integer(unsigned(sweep_table_step_id)))(7 downto 0) <= temp_first_byte;
-                                    sweep_table_1(to_integer(unsigned(sweep_table_step_id)))(15 downto 8) <= uc_rx_byte;
+                                    st_wen0 <= '0';
+                                    st_wen1 <= '1';
                                 when others =>
                             end case;
+                            st_ren0 <= '0';
+                            st_ren1 <= '0';
+                            st_waddr <= sweep_table_step_id;
+                            st_wdata <= sweep_table_write_value;
+                            uc_rx_substate <= uc_rx_substate + 1;
+                        when 7 => 
+                            -- Wait 3 CLK cycles for data to be written.
+                            if sweep_table_write_wait /= 3 then
+                               sweep_table_write_wait <= sweep_table_write_wait + 1;
+                            else
+                                uc_rx_substate <= uc_rx_substate + 1;
+                            end if;
+                        when 8 =>
+                            sweep_table_write_wait <= 0;
                             uc_rx_state <= uc_rx_postamble;
                             uc_rx_substate <= 1;
                         when others =>
@@ -950,7 +966,8 @@ begin
                             uc_tx_state <= uc_tx_preamble;
                             uc_tx_nextstate <= uc_tx_send_swt_mode;
                             uc_rx_state <= uc_rx_postamble;
-                        when others =>
+                            uc_rx_substate <= 1; 
+                       when others =>
                     end case;
 
 
@@ -962,9 +979,42 @@ begin
                             uc_rx_state <= uc_rx_get_byte;
                         when 3 =>
                             sweep_table_step_id <= uc_rx_byte;
+                            uc_rx_substate <= uc_rx_substate + 1;
+                        when 4 =>
+                            st_raddr <= sweep_table_step_id;
+                            st_wen0 <= '0';
+                            st_wen1 <= '0';
+                            case sweep_table_probe_id is
+                                when x"00" =>
+                                    st_ren0 <= '1';
+                                    st_ren1 <= '0';
+                                when x"01" =>
+                                    st_ren0 <= '0';
+                                    st_ren1 <= '1';
+                                when others =>
+                            end case;
+                            uc_rx_substate <= uc_rx_substate + 1;
+                        when 5 => 
+                            -- Wait 3 CLK cycles for data to be read.
+                            if sweep_table_read_wait /= 3 then
+                               sweep_table_read_wait <= sweep_table_read_wait + 1;
+                            else
+                                uc_rx_substate <= uc_rx_substate + 1;
+                            end if;
+                        when 6 =>
+                            sweep_table_read_wait <= 0;
+                            case sweep_table_probe_id is
+                                when x"00" =>
+                                    sweep_table_read_value <= st_rdata0;
+                                when x"01" =>
+                                    sweep_table_read_value <= st_rdata1;
+                                when others =>
+                            end case;
+
                             uc_tx_state <= uc_tx_preamble;
                             uc_tx_nextstate <= uc_tx_send_sweep_table;
                             uc_rx_state <= uc_rx_postamble;
+                            uc_rx_substate <= 1;
                         when others =>
                     end case;
 

@@ -1,6 +1,6 @@
  ** Message System Log
  ** Database: 
- ** Date:   Sun Jan 12 18:57:34 2020
+ ** Date:   Fri Aug 30 14:32:09 2024
 
 
 ****************
@@ -16,11 +16,11 @@ Read Clock                      : Rising
 Write Clock                     : Rising
 Reset                           : Active High
 Read Enable                     : Active High
-Write Depth                     : 1024
+Write Depth                     : 256
 Write Width                     : 32
-Read Depth                      : 4096
+Read Depth                      : 1024
 Read Width                      : 8
-Almost Full                     : 516
+Almost Full                     : 129
 Almost Empty                    : 65536
 Clocks                          : Independent Read and Write Clocks
 AEFlag                          : None
@@ -63,10 +63,10 @@ Portname Memory Read Enable     :
 Portname Clock                  :
 
 Cascade Configuration:
-     Port A configuration       : 1024x4
-     Port B configuration       : 4096x1
+     Port A configuration       : 512x8
+     Port B configuration       : 2048x2
      Number of blocks depth wise: 1
-     Number of blocks width wise: 8
+     Number of blocks width wise: 4
 
 **************
 Compile Report
@@ -77,17 +77,17 @@ Warning:  CMP503: Remapped 8 enable flip-flop(s) to a 2-tile implementation beca
 Netlist Resource Report
 =======================
 
-    CORE                       Used:    411  Total:   6144   (6.69%)
+    CORE                       Used:    334  Total:   6144   (5.44%)
     IO (W/ clocks)             Used:      0  Total:     68   (0.00%)
     Differential IO            Used:      0  Total:     13   (0.00%)
     GLOBAL (Chip+Quadrant)     Used:      0  Total:     18   (0.00%)
     PLL                        Used:      0  Total:      1   (0.00%)
-    RAM/FIFO                   Used:      8  Total:      8   (100.00%)
+    RAM/FIFO                   Used:      4  Total:      8   (50.00%)
     Low Static ICC             Used:      0  Total:      1   (0.00%)
     FlashROM                   Used:      0  Total:      1   (0.00%)
     User JTAG                  Used:      0  Total:      1   (0.00%)
 
-Wrote VHDL netlist to C:/SPIDER2/Firmware/KTH GitHub Enterprise/SPIDER2-DataHub-EMUScience-FPGA/smartgen\FPGA_Buffer\FPGA_Buffer.vhd.
+Wrote VHDL netlist to C:/Users/Lab-user1/Desktop/MasterThesis/Langmuir-DataHub-EMUScience-FPGA/smartgen\FPGA_Buffer\FPGA_Buffer.vhd.
 
- ** Log Ended:   Sun Jan 12 18:57:35 2020
+ ** Log Ended:   Fri Aug 30 14:32:10 2024
 

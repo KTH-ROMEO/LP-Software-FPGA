@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Thu Jan 23 14:32:59 2020
--- Version: v11.9 SP3 11.9.3.5
+-- Created by SmartDesign Fri Aug 30 14:36:23 2024
+-- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
 ----------------------------------------------------------------------
@@ -186,34 +186,34 @@ Packet_Saver_0 : Packet_Saver
         reset             => reset,
         en                => en,
         sync              => sync,
-        acc_packet        => acc_packet_0,
         acc_new_data      => acc_new_data,
-        mag_packet        => mag_packet_0,
         mag_new_data      => mag_new_data,
-        gyro_packet       => gyro_packet_0,
         gyro_new_data     => gyro_new_data,
-        pressure_packet   => pressure_packet_0,
         pressure_new_data => pressure_new_data,
-        status_packet     => status_packet_0,
         status_new_data   => status_new_data,
-        pres_cal1_packet  => pres_cal1_packet_0,
-        pres_cal2_packet  => pres_cal2_packet_0,
         pres_cal_new_data => pres_cal_new_data,
-        ch_0_packet       => ch_0_packet_0,
-        ch_1_packet       => ch_1_packet_0,
-        ch_2_packet       => ch_2_packet_0,
-        ch_3_packet       => ch_3_packet_0,
-        ch_4_packet       => ch_4_packet,
-        ch_5_packet       => ch_5_packet,
         ch_0_new_data     => ch_0_new_data,
         ch_1_new_data     => ch_1_new_data,
         ch_2_new_data     => ch_2_new_data,
         ch_3_new_data     => ch_3_new_data,
         ch_4_new_data     => ch_4_new_data,
         ch_5_new_data     => ch_5_new_data,
+        acc_packet        => acc_packet_0,
+        mag_packet        => mag_packet_0,
+        gyro_packet       => gyro_packet_0,
+        pressure_packet   => pressure_packet_0,
+        status_packet     => status_packet_0,
+        pres_cal1_packet  => pres_cal1_packet_0,
+        pres_cal2_packet  => pres_cal2_packet_0,
+        ch_0_packet       => ch_0_packet_0,
+        ch_1_packet       => ch_1_packet_0,
+        ch_2_packet       => ch_2_packet_0,
+        ch_3_packet       => ch_3_packet_0,
+        ch_4_packet       => ch_4_packet,
+        ch_5_packet       => ch_5_packet,
         -- Outputs
-        data_out          => Packet_Saver_0_data_out_0,
-        we                => Packet_Saver_0_we 
+        we                => Packet_Saver_0_we,
+        data_out          => Packet_Saver_0_data_out_0 
         );
 
 end RTL;

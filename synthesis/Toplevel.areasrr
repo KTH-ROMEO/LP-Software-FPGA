@@ -7,23 +7,25 @@ Report for cell Toplevel.rtl
                              CLKINT         3       0.0        0.0
                           ClockDivs         1      20.0       20.0
                      Communications         1     390.0      390.0
-                        Data_Saving         1    1175.0     1175.0
+                        Data_Saving         1    1051.0     1051.0
               Eject_Signal_Debounce         1      40.0       40.0
                                 GND         1       0.0        0.0
-                         GS_Readout         1     447.0      447.0
-                 General_Controller         1     553.0      553.0
+                         GS_Readout         1     439.0      439.0
+                 General_Controller         1    1137.0     1137.0
                     I2C_PassThrough         1      38.0       38.0
                               INBUF        13       0.0        0.0
                              OUTBUF        32       0.0        0.0
            Pressure_Signal_Debounce         1     108.0      108.0
                             Science         1    1056.0     1056.0
-                            Sensors         1    1604.0     1604.0
+                            Sensors         1    1622.0     1622.0
+                         SweepTable         1       1.0        1.0
+                       SweepTable_0         1       1.0        1.0
                             TRIBUFF         1       0.0        0.0
                          Timekeeper         1     122.0      122.0
                              Timing         1     154.0      154.0
                                 VCC         1       0.0        0.0
                             
-                         TOTAL             69               5708.0
+                         TOTAL             71               6180.0
 ----------------------------------------------------------------------
 Report for cell Timing.netlist
      Instance path:  Timing_0
@@ -63,39 +65,63 @@ Report for cell Timekeeper.netlist
                             
                          TOTAL            124                122.0
 ----------------------------------------------------------------------
+Report for cell SweepTable_0.netlist
+  Original Cell name SweepTable
+     Instance path:  SweepTable_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                                INV         1       1.0        1.0
+                          RAM512X18         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              4                  1.0
+----------------------------------------------------------------------
+Report for cell SweepTable.netlist
+  Original Cell name SweepTable
+     Instance path:  SweepTable_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                                INV         1       1.0        1.0
+                          RAM512X18         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              4                  1.0
+----------------------------------------------------------------------
 Report for cell Sensors.netlist
      Instance path:  Sensors_0
                                           Cell usage:
                                cell       count     area    count*area
-                      Accelerometer         1     698.0      698.0
+                      Accelerometer         1     705.0      705.0
                                 GND         1       0.0        0.0
-                               Gyro         1     455.0      455.0
-                    Pressure_Sensor         1     451.0      451.0
+                               Gyro         1     461.0      461.0
+                    Pressure_Sensor         1     456.0      456.0
                                 VCC         1       0.0        0.0
                             
-                         TOTAL              5               1604.0
+                         TOTAL              5               1622.0
 ----------------------------------------------------------------------
 Report for cell Pressure_Sensor.netlist
      Instance path:  Sensors_0.Pressure_Sensor_0
                                           Cell usage:
                                cell       count     area    count*area
                                 GND         1       0.0        0.0
-                       I2C_Master_2         1     172.0      172.0
-            MS5611_01BA03_Interface         1     279.0      279.0
+                       I2C_Master_2         1     174.0      174.0
+            MS5611_01BA03_Interface         1     282.0      282.0
                                 VCC         1       0.0        0.0
                             
-                         TOTAL              4                451.0
+                         TOTAL              4                456.0
 ----------------------------------------------------------------------
 Report for cell MS5611_01BA03_Interface.netlist
      Instance path:  Sensors_0.Pressure_Sensor_0.MS5611_01BA03_Interface_0
                                           Cell usage:
                                cell       count     area    count*area
-                                AO1         9       1.0        9.0
-                               AO1A         4       1.0        4.0
-                               AO1B         1       1.0        1.0
-                               AO1C         1       1.0        1.0
-                               AO1D         3       1.0        3.0
-                              AOI1B         1       1.0        1.0
+                               AND2         2       1.0        2.0
+                                AO1         8       1.0        8.0
+                               AO1A         7       1.0        7.0
+                               AO1B         2       1.0        2.0
+                               AO1C         4       1.0        4.0
+                               AO1D         2       1.0        2.0
                                AX1E         1       1.0        1.0
                              DFN1C1        14       1.0       14.0
                              DFN1E0         1       1.0        1.0
@@ -105,31 +131,31 @@ Report for cell MS5611_01BA03_Interface.netlist
                                 GND         1       0.0        0.0
                                 INV         1       1.0        1.0
                                MX2A         1       1.0        1.0
-                               NOR2        17       1.0       17.0
-                              NOR2A        22       1.0       22.0
-                              NOR2B         4       1.0        4.0
+                               NOR2        16       1.0       16.0
+                              NOR2A        23       1.0       23.0
+                              NOR2B         8       1.0        8.0
                                NOR3         7       1.0        7.0
-                              NOR3A        15       1.0       15.0
+                              NOR3A        13       1.0       13.0
                               NOR3B        10       1.0       10.0
                               NOR3C         2       1.0        2.0
-                                OA1         3       1.0        3.0
+                                OA1         2       1.0        2.0
                                OA1A         1       1.0        1.0
-                               OA1B         5       1.0        5.0
-                               OA1C         4       1.0        4.0
-                               OAI1         1       1.0        1.0
+                               OA1B         4       1.0        4.0
+                               OA1C         5       1.0        5.0
                                 OR2        19       1.0       19.0
-                               OR2A        13       1.0       13.0
-                               OR2B         9       1.0        9.0
+                               OR2A        11       1.0       11.0
+                               OR2B         7       1.0        7.0
                                 OR3        10       1.0       10.0
-                               OR3A         2       1.0        2.0
-                               OR3B         2       1.0        2.0
+                               OR3A         4       1.0        4.0
+                               OR3B         1       1.0        1.0
                                OR3C         1       1.0        1.0
                                 VCC         1       0.0        0.0
-                               XA1A         3       1.0        3.0
+                               XA1A         2       1.0        2.0
                               XNOR2         1       1.0        1.0
                                 XO1         1       1.0        1.0
+                               XOR2         1       1.0        1.0
                             
-                         TOTAL            281                279.0
+                         TOTAL            284                282.0
 ----------------------------------------------------------------------
 Report for cell I2C_Master_2.netlist
   Original Cell name I2C_Master
@@ -137,7 +163,7 @@ Report for cell I2C_Master_2.netlist
                                           Cell usage:
                                cell       count     area    count*area
                                AND2         3       1.0        3.0
-                                AO1         8       1.0        8.0
+                                AO1         9       1.0        9.0
                                AO1A         6       1.0        6.0
                                AO1B         1       1.0        1.0
                                AOI1         1       1.0        1.0
@@ -147,51 +173,49 @@ Report for cell I2C_Master_2.netlist
                              DFN0E1         3       1.0        3.0
                            DFN0E1C1        14       1.0       14.0
                              DFN0P1         4       1.0        4.0
-                             DFN1P1         1       1.0        1.0
+                             DFN1P1         2       1.0        2.0
                                 GND         1       0.0        0.0
                                 MX2         6       1.0        6.0
                                MX2A         1       1.0        1.0
-                               NOR2         7       1.0        7.0
-                              NOR2A        14       1.0       14.0
-                              NOR2B        11       1.0       11.0
-                               NOR3         2       1.0        2.0
-                              NOR3A         7       1.0        7.0
-                              NOR3B         5       1.0        5.0
-                              NOR3C         3       1.0        3.0
-                                OA1         5       1.0        5.0
-                               OA1A         2       1.0        2.0
-                               OA1C         2       1.0        2.0
-                                OR2        16       1.0       16.0
-                               OR2A         8       1.0        8.0
-                               OR2B         1       1.0        1.0
-                                OR3         9       1.0        9.0
+                               NOR2         6       1.0        6.0
+                              NOR2A        10       1.0       10.0
+                              NOR2B         8       1.0        8.0
+                               NOR3         1       1.0        1.0
+                              NOR3A         8       1.0        8.0
+                              NOR3B        10       1.0       10.0
+                              NOR3C         8       1.0        8.0
+                                OA1         6       1.0        6.0
+                               OA1A         1       1.0        1.0
+                               OA1C         3       1.0        3.0
+                                OR2        15       1.0       15.0
+                               OR2A         5       1.0        5.0
+                                OR3        10       1.0       10.0
                                OR3A         5       1.0        5.0
+                               OR3C         1       1.0        1.0
                                 VCC         1       0.0        0.0
                                XA1B         1       1.0        1.0
                                XA1C         2       1.0        2.0
                                XOR2        11       1.0       11.0
                             
-                         TOTAL            174                172.0
+                         TOTAL            176                174.0
 ----------------------------------------------------------------------
 Report for cell Gyro.netlist
      Instance path:  Sensors_0.Gyro_0
                                           Cell usage:
                                cell       count     area    count*area
                                 GND         1       0.0        0.0
-                       I2C_Master_1         1     185.0      185.0
-                  L3GD20H_Interface         1     270.0      270.0
+                       I2C_Master_1         1     190.0      190.0
+                  L3GD20H_Interface         1     271.0      271.0
                                 VCC         1       0.0        0.0
                             
-                         TOTAL              4                455.0
+                         TOTAL              4                461.0
 ----------------------------------------------------------------------
 Report for cell L3GD20H_Interface.netlist
      Instance path:  Sensors_0.Gyro_0.L3GD20H_Interface_0
                                           Cell usage:
                                cell       count     area    count*area
-                               AND2         1       1.0        1.0
-                                AO1         7       1.0        7.0
-                               AO1A         5       1.0        5.0
-                               AO1D         1       1.0        1.0
+                                AO1         6       1.0        6.0
+                               AO1A         4       1.0        4.0
                                AOI1         3       1.0        3.0
                               AOI1B         1       1.0        1.0
                              DFN1C1        18       1.0       18.0
@@ -204,69 +228,69 @@ Report for cell L3GD20H_Interface.netlist
                                 MX2         1       1.0        1.0
                                MX2A         1       1.0        1.0
                                NOR2         8       1.0        8.0
-                              NOR2A        26       1.0       26.0
-                              NOR2B        14       1.0       14.0
+                              NOR2A        25       1.0       25.0
+                              NOR2B        13       1.0       13.0
                                NOR3         2       1.0        2.0
-                              NOR3A        15       1.0       15.0
-                              NOR3B         9       1.0        9.0
-                              NOR3C         3       1.0        3.0
-                                OA1         4       1.0        4.0
-                               OA1A         2       1.0        2.0
-                               OA1B         7       1.0        7.0
-                                OR2        14       1.0       14.0
-                               OR2A         9       1.0        9.0
-                               OR2B         5       1.0        5.0
-                                OR3        12       1.0       12.0
-                               OR3A         6       1.0        6.0
+                              NOR3A        16       1.0       16.0
+                              NOR3B        12       1.0       12.0
+                              NOR3C         1       1.0        1.0
+                                OA1         5       1.0        5.0
+                               OA1B         8       1.0        8.0
+                                OR2        15       1.0       15.0
+                               OR2A        12       1.0       12.0
+                               OR2B         6       1.0        6.0
+                                OR3        11       1.0       11.0
+                               OR3A         7       1.0        7.0
                                 VCC         1       0.0        0.0
                             
-                         TOTAL            272                270.0
+                         TOTAL            273                271.0
 ----------------------------------------------------------------------
 Report for cell I2C_Master_1.netlist
   Original Cell name I2C_Master
      Instance path:  Sensors_0.Gyro_0.I2C_Master_0
                                           Cell usage:
                                cell       count     area    count*area
-                               AND2         3       1.0        3.0
-                                AO1        15       1.0       15.0
-                               AO1A         5       1.0        5.0
+                               AND2         5       1.0        5.0
+                                AO1        16       1.0       16.0
+                               AO1A         7       1.0        7.0
+                               AO1B         1       1.0        1.0
                                AO1C         2       1.0        2.0
                                AO1D         1       1.0        1.0
                                AOI1         1       1.0        1.0
                                AX1B         2       1.0        2.0
-                               AX1D         1       1.0        1.0
                              DFN0C1         9       1.0        9.0
                              DFN0E0         3       1.0        3.0
                            DFN0E0C1         1       1.0        1.0
                            DFN0E0P1         2       1.0        2.0
                            DFN0E1C1        15       1.0       15.0
                              DFN0P1         4       1.0        4.0
-                             DFN1P1         1       1.0        1.0
+                             DFN1P1         2       1.0        2.0
                                 GND         1       0.0        0.0
-                              MIN3X         1       1.0        1.0
-                                MX2         9       1.0        9.0
+                                MX2        10       1.0       10.0
                                MX2A         2       1.0        2.0
-                               NOR2         7       1.0        7.0
-                              NOR2A        12       1.0       12.0
-                              NOR2B        12       1.0       12.0
-                               NOR3         3       1.0        3.0
-                              NOR3A         7       1.0        7.0
-                              NOR3B         8       1.0        8.0
+                               NOR2         6       1.0        6.0
+                              NOR2A        14       1.0       14.0
+                              NOR2B        13       1.0       13.0
+                               NOR3         4       1.0        4.0
+                              NOR3A         4       1.0        4.0
+                              NOR3B         7       1.0        7.0
                               NOR3C         6       1.0        6.0
                                 OA1         1       1.0        1.0
-                               OA1B         1       1.0        1.0
-                               OA1C         4       1.0        4.0
+                               OA1B         2       1.0        2.0
+                               OA1C         5       1.0        5.0
                                 OR2        13       1.0       13.0
-                               OR2A         7       1.0        7.0
-                               OR2B         3       1.0        3.0
-                                OR3         4       1.0        4.0
-                               OR3A         8       1.0        8.0
-                               OR3B         2       1.0        2.0
+                               OR2A         6       1.0        6.0
+                               OR2B         2       1.0        2.0
+                                OR3         6       1.0        6.0
+                               OR3A         5       1.0        5.0
+                               OR3B         1       1.0        1.0
                                 VCC         1       0.0        0.0
+                               XA1B         1       1.0        1.0
                                XA1C         1       1.0        1.0
+                              XNOR2         1       1.0        1.0
                                XOR2         9       1.0        9.0
                             
-                         TOTAL            187                185.0
+                         TOTAL            192                190.0
 ----------------------------------------------------------------------
 Report for cell Accelerometer.netlist
      Instance path:  Sensors_0.Accelerometer_0
@@ -274,20 +298,22 @@ Report for cell Accelerometer.netlist
                                cell       count     area    count*area
                                 GND         1       0.0        0.0
                        I2C_Master_0         1     196.0      196.0
-            LSM303AGR_I2C_Interface         1     502.0      502.0
+            LSM303AGR_I2C_Interface         1     509.0      509.0
                                 VCC         1       0.0        0.0
                             
-                         TOTAL              4                698.0
+                         TOTAL              4                705.0
 ----------------------------------------------------------------------
 Report for cell LSM303AGR_I2C_Interface.netlist
      Instance path:  Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0
                                           Cell usage:
                                cell       count     area    count*area
-                               AND2         2       1.0        2.0
-                                AO1        19       1.0       19.0
-                               AO1A        11       1.0       11.0
-                               AO1C         1       1.0        1.0
+                               AND2         8       1.0        8.0
+                                AO1        13       1.0       13.0
+                               AO16         1       1.0        1.0
+                               AO1A        15       1.0       15.0
                                AO1D         2       1.0        2.0
+                               AOI1         1       1.0        1.0
+                              AOI1B         1       1.0        1.0
                                DFN1         3       1.0        3.0
                              DFN1C1        13       1.0       13.0
                              DFN1E0         4       1.0        4.0
@@ -300,29 +326,29 @@ Report for cell LSM303AGR_I2C_Interface.netlist
                                 MX2         9       1.0        9.0
                                MX2A         1       1.0        1.0
                                MX2B         1       1.0        1.0
-                               NOR2        15       1.0       15.0
-                              NOR2A        41       1.0       41.0
-                              NOR2B        35       1.0       35.0
-                               NOR3        10       1.0       10.0
-                              NOR3A        26       1.0       26.0
-                              NOR3B        29       1.0       29.0
+                               NOR2        14       1.0       14.0
+                              NOR2A        45       1.0       45.0
+                              NOR2B        34       1.0       34.0
+                               NOR3         9       1.0        9.0
+                              NOR3A        27       1.0       27.0
+                              NOR3B        28       1.0       28.0
                               NOR3C        13       1.0       13.0
-                                OA1         2       1.0        2.0
+                                OA1         4       1.0        4.0
                                OA1A         3       1.0        3.0
                                OA1B         7       1.0        7.0
-                               OA1C         2       1.0        2.0
-                               OAI1         1       1.0        1.0
-                                OR2        29       1.0       29.0
-                               OR2A        15       1.0       15.0
-                               OR2B         1       1.0        1.0
-                                OR3        35       1.0       35.0
-                               OR3A         6       1.0        6.0
-                               OR3B         4       1.0        4.0
+                               OA1C         1       1.0        1.0
+                               OAI1         2       1.0        2.0
+                                OR2        28       1.0       28.0
+                               OR2A        16       1.0       16.0
+                                OR3        34       1.0       34.0
+                               OR3A         9       1.0        9.0
+                               OR3B         1       1.0        1.0
                                 VCC         1       0.0        0.0
                               XNOR2         1       1.0        1.0
-                               XOR2         8       1.0        8.0
+                               XO1A         1       1.0        1.0
+                               XOR2         7       1.0        7.0
                             
-                         TOTAL            504                502.0
+                         TOTAL            511                509.0
 ----------------------------------------------------------------------
 Report for cell I2C_Master_0.netlist
   Original Cell name I2C_Master
@@ -330,9 +356,11 @@ Report for cell I2C_Master_0.netlist
                                           Cell usage:
                                cell       count     area    count*area
                                AND2         3       1.0        3.0
-                                AO1        14       1.0       14.0
-                               AO1A         8       1.0        8.0
-                               AO1B         1       1.0        1.0
+                                AO1        13       1.0       13.0
+                               AO1A         7       1.0        7.0
+                               AO1C         2       1.0        2.0
+                               AO1D         1       1.0        1.0
+                               AOI1         1       1.0        1.0
                                AX1B         2       1.0        2.0
                                AX1D         1       1.0        1.0
                              DFN0C1         9       1.0        9.0
@@ -343,27 +371,26 @@ Report for cell I2C_Master_0.netlist
                              DFN0P1         5       1.0        5.0
                              DFN1P1         1       1.0        1.0
                                 GND         1       0.0        0.0
+                              MIN3X         1       1.0        1.0
                                 MX2        10       1.0       10.0
                                MX2A         2       1.0        2.0
                                MX2B         1       1.0        1.0
-                               NOR2         8       1.0        8.0
+                               NOR2         9       1.0        9.0
                               NOR2A        13       1.0       13.0
                               NOR2B        13       1.0       13.0
-                               NOR3         5       1.0        5.0
-                              NOR3A         7       1.0        7.0
-                              NOR3B         6       1.0        6.0
-                              NOR3C         7       1.0        7.0
+                               NOR3         4       1.0        4.0
+                              NOR3A         6       1.0        6.0
+                              NOR3B        12       1.0       12.0
+                              NOR3C         5       1.0        5.0
                                 OA1         2       1.0        2.0
-                               OA1B         2       1.0        2.0
+                               OA1B         1       1.0        1.0
                                OA1C         4       1.0        4.0
-                                OR2        13       1.0       13.0
+                                OR2        11       1.0       11.0
                                OR2A         8       1.0        8.0
-                               OR2B         5       1.0        5.0
-                                OR3         5       1.0        5.0
-                               OR3A         8       1.0        8.0
-                               OR3B         1       1.0        1.0
+                               OR2B         4       1.0        4.0
+                                OR3         8       1.0        8.0
+                               OR3A         6       1.0        6.0
                                 VCC         1       0.0        0.0
-                               XA1B         1       1.0        1.0
                                XA1C         1       1.0        1.0
                                XOR2         9       1.0        9.0
                             
@@ -390,6 +417,8 @@ Report for cell SWEEP_SPIDER2.netlist
                                AND2         1       1.0        1.0
                                AO18         4       1.0        4.0
                                AO1A         4       1.0        4.0
+                               AO1B         2       1.0        2.0
+                               AO1D         1       1.0        1.0
                               AOI1B         1       1.0        1.0
                                 AX1         1       1.0        1.0
                                AX1C         2       1.0        2.0
@@ -399,19 +428,22 @@ Report for cell SWEEP_SPIDER2.netlist
                              DFN1P1         5       1.0        5.0
                                 GND         1       0.0        0.0
                                MIN3         1       1.0        1.0
-                                MX2        23       1.0       23.0
-                               MX2A        10       1.0       10.0
-                               MX2B        11       1.0       11.0
-                               NOR2        17       1.0       17.0
+                                MX2        21       1.0       21.0
+                               MX2A         9       1.0        9.0
+                               MX2B         9       1.0        9.0
+                               NOR2        14       1.0       14.0
                               NOR2A        23       1.0       23.0
-                              NOR2B        17       1.0       17.0
-                              NOR3A         8       1.0        8.0
+                              NOR2B        18       1.0       18.0
+                               NOR3         2       1.0        2.0
+                              NOR3A         9       1.0        9.0
                               NOR3B         1       1.0        1.0
-                              NOR3C        10       1.0       10.0
-                                OA1         3       1.0        3.0
-                               OA1C         1       1.0        1.0
-                                OR2         3       1.0        3.0
-                               OR2A         5       1.0        5.0
+                              NOR3C         9       1.0        9.0
+                                OA1         2       1.0        2.0
+                               OA1A         3       1.0        3.0
+                               OA1C         2       1.0        2.0
+                                OR2         2       1.0        2.0
+                               OR2A         4       1.0        4.0
+                               OR2B         1       1.0        1.0
                                 VCC         1       0.0        0.0
                                XA1B         3       1.0        3.0
                               XNOR3         5       1.0        5.0
@@ -494,7 +526,6 @@ Report for cell ADC_READ.netlist
                                AO16         1       1.0        1.0
                                AO1A         2       1.0        2.0
                                AO1B         1       1.0        1.0
-                               AOI1         1       1.0        1.0
                               AOI1B         3       1.0        3.0
                                 AX1         1       1.0        1.0
                                AX1A         1       1.0        1.0
@@ -509,26 +540,26 @@ Report for cell ADC_READ.netlist
                                 GND         1       0.0        0.0
                                 INV         1       1.0        1.0
                                 MX2        52       1.0       52.0
-                               NOR2        15       1.0       15.0
-                              NOR2A        32       1.0       32.0
+                               NOR2        14       1.0       14.0
+                              NOR2A        33       1.0       33.0
                               NOR2B        42       1.0       42.0
                                NOR3         1       1.0        1.0
-                              NOR3A        15       1.0       15.0
-                              NOR3B        18       1.0       18.0
+                              NOR3A        16       1.0       16.0
+                              NOR3B        15       1.0       15.0
                               NOR3C        13       1.0       13.0
                                 OA1         2       1.0        2.0
                                OA1A         2       1.0        2.0
-                               OA1C         6       1.0        6.0
+                               OA1C         5       1.0        5.0
                                 OR2         8       1.0        8.0
-                               OR2A         1       1.0        1.0
-                               OR2B         6       1.0        6.0
+                               OR2A         4       1.0        4.0
+                               OR2B         7       1.0        7.0
                                 OR3         5       1.0        5.0
                                OR3A         2       1.0        2.0
-                               OR3B         4       1.0        4.0
-                               OR3C         4       1.0        4.0
+                               OR3B         3       1.0        3.0
+                               OR3C         3       1.0        3.0
                                 VCC         1       0.0        0.0
                                 XA1        18       1.0       18.0
-                               XA1A         3       1.0        3.0
+                               XA1A         5       1.0        5.0
                                XA1B        11       1.0       11.0
                               XNOR2         2       1.0        2.0
                                XOR2         9       1.0        9.0
@@ -539,30 +570,29 @@ Report for cell Pressure_Signal_Debounce.netlist
      Instance path:  Pressure_Signal_Debounce_0
                                           Cell usage:
                                cell       count     area    count*area
-                               AND2         7       1.0        7.0
-                                AO1         2       1.0        2.0
+                               AND2         5       1.0        5.0
+                                AO1         4       1.0        4.0
+                               AO1A         2       1.0        2.0
                                AO1B         6       1.0        6.0
-                              AOI1B         2       1.0        2.0
                                DFN1        10       1.0       10.0
                              DFN1C1         3       1.0        3.0
                                 GND         1       0.0        0.0
                                 MX2         2       1.0        2.0
                                NOR2         9       1.0        9.0
-                              NOR2A         5       1.0        5.0
-                              NOR2B        13       1.0       13.0
+                              NOR2A         7       1.0        7.0
+                              NOR2B        15       1.0       15.0
                                NOR3         2       1.0        2.0
                               NOR3A         2       1.0        2.0
-                              NOR3B         2       1.0        2.0
-                              NOR3C         8       1.0        8.0
-                                OA1         3       1.0        3.0
-                               OA1B         2       1.0        2.0
+                              NOR3B         1       1.0        1.0
+                              NOR3C         9       1.0        9.0
+                                OA1         1       1.0        1.0
+                               OA1B         1       1.0        1.0
                                OA1C         2       1.0        2.0
-                                OR2         8       1.0        8.0
+                                OR2         7       1.0        7.0
                                OR2A         1       1.0        1.0
-                               OR2B         4       1.0        4.0
+                               OR2B         5       1.0        5.0
                                OR3A         1       1.0        1.0
                                OR3B         2       1.0        2.0
-                               OR3C         1       1.0        1.0
                                 VCC         1       0.0        0.0
                               XNOR2         1       1.0        1.0
                                XOR2        10       1.0       10.0
@@ -598,12 +628,13 @@ Report for cell GS_Readout.netlist
      Instance path:  GS_Readout_0
                                           Cell usage:
                                cell       count     area    count*area
-                               AND2        12       1.0       12.0
-                                AO1        17       1.0       17.0
-                               AO1A        11       1.0       11.0
+                               AND2         2       1.0        2.0
+                                AO1        15       1.0       15.0
+                               AO1A         4       1.0        4.0
                                AO1C         2       1.0        2.0
-                               AO1D         4       1.0        4.0
-                               AOI1         2       1.0        2.0
+                               AO1D         3       1.0        3.0
+                               AOI1         5       1.0        5.0
+                              AOI1B         1       1.0        1.0
                              CLKINT         1       0.0        0.0
                              DFN1C1        11       1.0       11.0
                            DFN1E0C1         6       1.0        6.0
@@ -613,85 +644,85 @@ Report for cell GS_Readout.netlist
                                 GND         1       0.0        0.0
                                 MX2       169       1.0      169.0
                                MX2A         2       1.0        2.0
-                               NOR2        10       1.0       10.0
-                              NOR2A        50       1.0       50.0
-                              NOR2B        30       1.0       30.0
-                               NOR3         3       1.0        3.0
-                              NOR3A        14       1.0       14.0
-                              NOR3B        18       1.0       18.0
-                              NOR3C        19       1.0       19.0
-                                OA1         1       1.0        1.0
-                               OA1A         6       1.0        6.0
+                               NOR2         9       1.0        9.0
+                              NOR2A        41       1.0       41.0
+                              NOR2B        41       1.0       41.0
+                               NOR3         4       1.0        4.0
+                              NOR3A        11       1.0       11.0
+                              NOR3B        26       1.0       26.0
+                              NOR3C        14       1.0       14.0
+                                OA1         3       1.0        3.0
+                               OA1A         5       1.0        5.0
                                OA1B         1       1.0        1.0
                                OA1C         3       1.0        3.0
-                               OAI1         2       1.0        2.0
                                 OR2        12       1.0       12.0
-                               OR2A         2       1.0        2.0
+                               OR2A         4       1.0        4.0
                                OR2B         1       1.0        1.0
-                                OR3        12       1.0       12.0
+                                OR3        18       1.0       18.0
                                OR3A         1       1.0        1.0
-                               OR3B         1       1.0        1.0
                                 VCC         1       0.0        0.0
                               XNOR2         8       1.0        8.0
                                XOR2         5       1.0        5.0
                             
-                         TOTAL            450                447.0
+                         TOTAL            442                439.0
 ----------------------------------------------------------------------
 Report for cell General_Controller.netlist
      Instance path:  General_Controller_0
                                           Cell usage:
                                cell       count     area    count*area
-                               AND2         2       1.0        2.0
-                                AO1        33       1.0       33.0
-                               AO1A         7       1.0        7.0
-                               AO1B         2       1.0        2.0
-                               AO1C         5       1.0        5.0
-                               AO1D         4       1.0        4.0
-                               AOI1         4       1.0        4.0
+                               AND2         7       1.0        7.0
+                                AO1        73       1.0       73.0
+                               AO1A        12       1.0       12.0
+                               AO1B         4       1.0        4.0
+                               AO1C         1       1.0        1.0
+                               AO1D         5       1.0        5.0
+                               AOI1         3       1.0        3.0
                               AOI1B         2       1.0        2.0
-                                AX1         5       1.0        5.0
-                               AX1B         3       1.0        3.0
-                               AX1E         1       1.0        1.0
+                               AOI5         2       1.0        2.0
+                                AX1         1       1.0        1.0
+                               AX1A         1       1.0        1.0
+                               AX1B         1       1.0        1.0
                               AXOI3         1       1.0        1.0
-                              AXOI4         1       1.0        1.0
-                             DFN1C1        37       1.0       37.0
-                             DFN1E0        36       1.0       36.0
-                           DFN1E0C1        34       1.0       34.0
-                           DFN1E0P1         2       1.0        2.0
-                             DFN1E1        16       1.0       16.0
-                           DFN1E1C1        34       1.0       34.0
-                           DFN1E1P1         1       1.0        1.0
+                              AXOI5         1       1.0        1.0
+                           DFI1E1C1         4       1.0        4.0
+                             DFN1C1        70       1.0       70.0
+                             DFN1E0        35       1.0       35.0
+                           DFN1E0C1        38       1.0       38.0
+                           DFN1E0P1         3       1.0        3.0
+                             DFN1E1        48       1.0       48.0
+                           DFN1E1C1       124       1.0      124.0
                              DFN1P1         8       1.0        8.0
                                 GND         1       0.0        0.0
                                 INV         1       1.0        1.0
-                                MX2         3       1.0        3.0
-                               MX2A         1       1.0        1.0
-                               NOR2        36       1.0       36.0
-                              NOR2A        41       1.0       41.0
-                              NOR2B        50       1.0       50.0
-                               NOR3        12       1.0       12.0
-                              NOR3A        17       1.0       17.0
-                              NOR3B        15       1.0       15.0
-                              NOR3C        20       1.0       20.0
-                                OA1         9       1.0        9.0
-                               OA1A         5       1.0        5.0
-                               OA1B         4       1.0        4.0
-                               OA1C         7       1.0        7.0
-                               OAI1         4       1.0        4.0
-                                OR2        14       1.0       14.0
-                               OR2A        19       1.0       19.0
-                               OR2B        11       1.0       11.0
-                                OR3        12       1.0       12.0
-                               OR3A         6       1.0        6.0
-                               OR3B         6       1.0        6.0
+                                MX2        23       1.0       23.0
+                               MX2A         3       1.0        3.0
+                               MX2C         2       1.0        2.0
+                               NOR2        39       1.0       39.0
+                              NOR2A        76       1.0       76.0
+                              NOR2B       145       1.0      145.0
+                               NOR3        11       1.0       11.0
+                              NOR3A        39       1.0       39.0
+                              NOR3B        45       1.0       45.0
+                              NOR3C        46       1.0       46.0
+                                OA1        18       1.0       18.0
+                               OA1A         9       1.0        9.0
+                               OA1B         9       1.0        9.0
+                               OA1C         9       1.0        9.0
+                               OAI1         1       1.0        1.0
+                                OR2        49       1.0       49.0
+                               OR2A        36       1.0       36.0
+                               OR2B         7       1.0        7.0
+                                OR3        73       1.0       73.0
+                               OR3A         9       1.0        9.0
+                               OR3B         5       1.0        5.0
                                OR3C         1       1.0        1.0
                                 VCC         1       0.0        0.0
-                                XA1         3       1.0        3.0
-                               XA1A         8       1.0        8.0
-                              XNOR2         5       1.0        5.0
-                               XOR2         5       1.0        5.0
+                                XA1         2       1.0        2.0
+                               XA1A        16       1.0       16.0
+                              XNOR2         2       1.0        2.0
+                               XOR2        17       1.0       17.0
                             
-                         TOTAL            555                553.0
+                         TOTAL           1139               1137.0
 ----------------------------------------------------------------------
 Report for cell Eject_Signal_Debounce.netlist
      Instance path:  Eject_Signal_Debounce_0
@@ -722,20 +753,20 @@ Report for cell Data_Saving.netlist
      Instance path:  Data_Saving_0
                                           Cell usage:
                                cell       count     area    count*area
-                        FPGA_Buffer         1     477.0      477.0
+                        FPGA_Buffer         1     368.0      368.0
                                 GND         1       0.0        0.0
                 Interrupt_Generator         1      26.0       26.0
-                       Packet_Saver         1     672.0      672.0
+                       Packet_Saver         1     657.0      657.0
                                 VCC         1       0.0        0.0
                             
-                         TOTAL              5               1175.0
+                         TOTAL              5               1051.0
 ----------------------------------------------------------------------
 Report for cell Packet_Saver.netlist
      Instance path:  Data_Saving_0.Packet_Saver_0
                                           Cell usage:
                                cell       count     area    count*area
-                               AND2        15       1.0       15.0
-                                AO1       121       1.0      121.0
+                               AND2         1       1.0        1.0
+                                AO1       129       1.0      129.0
                                AOI1         8       1.0        8.0
                              CLKINT         1       0.0        0.0
                              DFN0C1         1       1.0        1.0
@@ -748,21 +779,21 @@ Report for cell Packet_Saver.netlist
                                MX2C         3       1.0        3.0
                                NOR2         2       1.0        2.0
                               NOR2A         9       1.0        9.0
-                              NOR2B       265       1.0      265.0
+                              NOR2B       269       1.0      269.0
                                NOR3         5       1.0        5.0
                               NOR3A         2       1.0        2.0
                               NOR3B         3       1.0        3.0
-                                OA1         1       1.0        1.0
+                                OA1         2       1.0        2.0
                                OA1B         2       1.0        2.0
                                OA1C         4       1.0        4.0
-                                OR2        23       1.0       23.0
+                                OR2         4       1.0        4.0
                                OR2A         2       1.0        2.0
                                OR2B         2       1.0        2.0
-                                OR3        84       1.0       84.0
+                                OR3        89       1.0       89.0
                                 VCC         1       0.0        0.0
                                XOR2         2       1.0        2.0
                             
-                         TOTAL            675                672.0
+                         TOTAL            660                657.0
 ----------------------------------------------------------------------
 Report for cell Interrupt_Generator.netlist
      Instance path:  Data_Saving_0.Interrupt_Generator_0
@@ -785,40 +816,41 @@ Report for cell FPGA_Buffer.netlist
      Instance path:  Data_Saving_0.FPGA_Buffer_0
                                           Cell usage:
                                cell       count     area    count*area
-                               AND2        55       1.0       55.0
-                              AND2A         2       1.0        2.0
-                               AND3         8       1.0        8.0
-                                AO1        44       1.0       44.0
+                               AND2        31       1.0       31.0
+                              AND2A         1       1.0        1.0
+                               AND3         6       1.0        6.0
+                                AO1        26       1.0       26.0
                                AO1B         1       1.0        1.0
-                               AO1C         5       1.0        5.0
+                               AO1C         4       1.0        4.0
                                AO1D         1       1.0        1.0
+                               AX1C         2       1.0        2.0
+                               AX1D         3       1.0        3.0
                                BUFF         2       1.0        2.0
-                             DFN1C0       101       1.0      101.0
+                             DFN1C0        83       1.0       83.0
                            DFN1E1C0         8       1.0        8.0
                              DFN1P0         1       1.0        1.0
                                 GND         1       0.0        0.0
-                                INV        14       1.0       14.0
+                                INV        12       1.0       12.0
+                               MAJ3         4       1.0        4.0
                               NAND2         2       1.0        2.0
-                             NAND3A         3       1.0        3.0
-                              NOR2A         1       1.0        1.0
-                              NOR2B         1       1.0        1.0
-                              NOR3B         1       1.0        1.0
+                             NAND3A         4       1.0        4.0
+                              NOR2B        10       1.0       10.0
+                              NOR3A         1       1.0        1.0
                               NOR3C         4       1.0        4.0
                                 OA1         1       1.0        1.0
-                               OA1A         1       1.0        1.0
-                               OA1C         1       1.0        1.0
-                                OR2         1       1.0        1.0
-                               OR2A         6       1.0        6.0
-                                OR3         2       1.0        2.0
-                               OR3A         2       1.0        2.0
-                             RAM4K9         8       0.0        0.0
+                                OR2         2       1.0        2.0
+                               OR2A         7       1.0        7.0
+                               OR3A         1       1.0        1.0
+                               OR3C         1       1.0        1.0
+                             RAM4K9         4       0.0        0.0
                                 VCC         1       0.0        0.0
-                              XNOR2        40       1.0       40.0
-                              XNOR3        40       1.0       40.0
-                               XOR2       119       1.0      119.0
-                               XOR3        10       1.0       10.0
+                                XA1         1       1.0        1.0
+                              XNOR2        30       1.0       30.0
+                              XNOR3        26       1.0       26.0
+                               XOR2        82       1.0       82.0
+                               XOR3        11       1.0       11.0
                             
-                         TOTAL            487                477.0
+                         TOTAL            374                368.0
 ----------------------------------------------------------------------
 Report for cell Communications.netlist
      Instance path:  Communications_0
@@ -826,8 +858,8 @@ Report for cell Communications.netlist
                                cell       count     area    count*area
                 FFU_Command_Checker         1      34.0       34.0
                                 GND         1       0.0        0.0
-                             UART_1         1     177.0      177.0
-                           UART_1_0         1     175.0      175.0
+                             UART_1         1     175.0      175.0
+                           UART_1_0         1     177.0      177.0
                  UART_Ext2uC_Switch         1       4.0        4.0
                                 VCC         1       0.0        0.0
                             
@@ -849,10 +881,59 @@ Report for cell UART_1_0.netlist
      Instance path:  Communications_0.UART_1
                                           Cell usage:
                                cell       count     area    count*area
-                                AO1         6       1.0        6.0
-                               AO1A         2       1.0        2.0
+                                AO1         5       1.0        5.0
+                               AO1A         1       1.0        1.0
                                AO1C         2       1.0        2.0
-                               AO1D         1       1.0        1.0
+                               AO1D         2       1.0        2.0
+                               AOI1         2       1.0        2.0
+                               AX1A         1       1.0        1.0
+                               AX1B         2       1.0        2.0
+                               AX1C         2       1.0        2.0
+                               AXO5         1       1.0        1.0
+                              AXOI4         1       1.0        1.0
+                              AXOI7         2       1.0        2.0
+                             DFN1C1         8       1.0        8.0
+                           DFN1E0C1        10       1.0       10.0
+                             DFN1E1         8       1.0        8.0
+                           DFN1E1C1        21       1.0       21.0
+                             DFN1P1         8       1.0        8.0
+                                GND         1       0.0        0.0
+                                MX2         8       1.0        8.0
+                               MX2A         5       1.0        5.0
+                               MX2C         4       1.0        4.0
+                               NOR2         7       1.0        7.0
+                              NOR2A         7       1.0        7.0
+                              NOR2B        10       1.0       10.0
+                               NOR3         1       1.0        1.0
+                              NOR3A         7       1.0        7.0
+                              NOR3B         8       1.0        8.0
+                              NOR3C        11       1.0       11.0
+                                OA1         3       1.0        3.0
+                               OA1A         2       1.0        2.0
+                                OR2         7       1.0        7.0
+                               OR2A         1       1.0        1.0
+                               OR2B         3       1.0        3.0
+                                OR3         3       1.0        3.0
+                               OR3A         1       1.0        1.0
+                                VCC         1       0.0        0.0
+                                XA1         4       1.0        4.0
+                               XA1A         1       1.0        1.0
+                               XA1B         2       1.0        2.0
+                              XNOR2         2       1.0        2.0
+                               XO1A         2       1.0        2.0
+                               XOR2         2       1.0        2.0
+                            
+                         TOTAL            179                177.0
+----------------------------------------------------------------------
+Report for cell UART_1.netlist
+  Original Cell name UART
+     Instance path:  Communications_0.UART_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                AO1         6       1.0        6.0
+                               AO1A         1       1.0        1.0
+                               AO1C         2       1.0        2.0
+                               AO1D         2       1.0        2.0
                                AOI1         2       1.0        2.0
                                AX1A         1       1.0        1.0
                                AX1B         2       1.0        2.0
@@ -876,70 +957,22 @@ Report for cell UART_1_0.netlist
                               NOR3A         5       1.0        5.0
                               NOR3B         8       1.0        8.0
                               NOR3C        12       1.0       12.0
-                                OA1         1       1.0        1.0
-                               OA1A         2       1.0        2.0
-                                OR2         8       1.0        8.0
-                               OR2B         2       1.0        2.0
-                                OR3         2       1.0        2.0
-                               OR3C         1       1.0        1.0
-                                VCC         1       0.0        0.0
-                                XA1         4       1.0        4.0
-                               XA1A         1       1.0        1.0
-                               XA1B         1       1.0        1.0
-                              XNOR2         2       1.0        2.0
-                               XO1A         3       1.0        3.0
-                               XOR2         2       1.0        2.0
-                            
-                         TOTAL            177                175.0
-----------------------------------------------------------------------
-Report for cell UART_1.netlist
-  Original Cell name UART
-     Instance path:  Communications_0.UART_0
-                                          Cell usage:
-                               cell       count     area    count*area
-                                AO1         5       1.0        5.0
-                               AO1A         1       1.0        1.0
-                               AO1C         2       1.0        2.0
-                               AO1D         1       1.0        1.0
-                               AOI1         2       1.0        2.0
-                                AX1         1       1.0        1.0
-                               AX1A         1       1.0        1.0
-                               AX1B         2       1.0        2.0
-                               AX1D         1       1.0        1.0
-                               AXO5         1       1.0        1.0
-                              AXOI4         1       1.0        1.0
-                              AXOI7         1       1.0        1.0
-                             DFN1C1         8       1.0        8.0
-                           DFN1E0C1        10       1.0       10.0
-                             DFN1E1         8       1.0        8.0
-                           DFN1E1C1        21       1.0       21.0
-                             DFN1P1         8       1.0        8.0
-                                GND         1       0.0        0.0
-                                MX2         9       1.0        9.0
-                               MX2A         6       1.0        6.0
-                               MX2C         4       1.0        4.0
-                               NOR2         8       1.0        8.0
-                              NOR2A         7       1.0        7.0
-                              NOR2B        11       1.0       11.0
-                               NOR3         2       1.0        2.0
-                              NOR3A         6       1.0        6.0
-                              NOR3B         8       1.0        8.0
-                              NOR3C        12       1.0       12.0
                                 OA1         2       1.0        2.0
                                OA1A         2       1.0        2.0
                                 OR2         6       1.0        6.0
                                OR2B         2       1.0        2.0
-                                OR3         4       1.0        4.0
+                                OR3         3       1.0        3.0
+                               OR3A         1       1.0        1.0
                                OR3C         1       1.0        1.0
                                 VCC         1       0.0        0.0
                                 XA1         4       1.0        4.0
                                XA1A         1       1.0        1.0
                                XA1B         1       1.0        1.0
                               XNOR2         2       1.0        2.0
-                               XO1A         3       1.0        3.0
+                               XO1A         2       1.0        2.0
                                XOR2         2       1.0        2.0
                             
-                         TOTAL            179                177.0
+                         TOTAL            177                175.0
 ----------------------------------------------------------------------
 Report for cell FFU_Command_Checker.netlist
      Instance path:  Communications_0.FFU_Command_Checker_0

@@ -6,77 +6,42 @@
     <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
     <StatusMessage>Warning</StatusMessage>
     <message>Floating Driver</message>
-    <detail>Floating output pin Data_Saving:acc_packet</detail>
-    <crossprobe>liberoaction://cross_probe/smartdesign/Data_Saving/pins/Data_Saving:acc_packet</crossprobe>
+    <detail>Floating output pin Data_Saving:fmc_clk</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Data_Saving/pins/Data_Saving:fmc_clk</crossprobe>
   </drc>
   <drc>
     <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
     <StatusMessage>Warning</StatusMessage>
     <message>Floating Driver</message>
-    <detail>Floating output pin Data_Saving:mag_packet</detail>
-    <crossprobe>liberoaction://cross_probe/smartdesign/Data_Saving/pins/Data_Saving:mag_packet</crossprobe>
+    <detail>Floating output pin Data_Saving:fmc_noe</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Data_Saving/pins/Data_Saving:fmc_noe</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Undriven Pin</message>
+    <detail>Unconnected input pin fmc_da</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Data_Saving/pins/Data_Saving:fmc_da</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Undriven Pin</message>
+    <detail>Unconnected input pin Interrupt_Generator_0:afull</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Data_Saving/pins/Interrupt_Generator_0:afull</crossprobe>
   </drc>
   <drc>
     <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
     <StatusMessage>Warning</StatusMessage>
     <message>Floating Driver</message>
-    <detail>Floating output pin Data_Saving:gyro_packet</detail>
-    <crossprobe>liberoaction://cross_probe/smartdesign/Data_Saving/pins/Data_Saving:gyro_packet</crossprobe>
+    <detail>Floating output pin Packet_Saver_0:we</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Data_Saving/pins/Packet_Saver_0:we</crossprobe>
   </drc>
   <drc>
     <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
     <StatusMessage>Warning</StatusMessage>
     <message>Floating Driver</message>
-    <detail>Floating output pin Data_Saving:pressure_packet</detail>
-    <crossprobe>liberoaction://cross_probe/smartdesign/Data_Saving/pins/Data_Saving:pressure_packet</crossprobe>
-  </drc>
-  <drc>
-    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
-    <StatusMessage>Warning</StatusMessage>
-    <message>Floating Driver</message>
-    <detail>Floating output pin Data_Saving:pres_cal1_packet</detail>
-    <crossprobe>liberoaction://cross_probe/smartdesign/Data_Saving/pins/Data_Saving:pres_cal1_packet</crossprobe>
-  </drc>
-  <drc>
-    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
-    <StatusMessage>Warning</StatusMessage>
-    <message>Floating Driver</message>
-    <detail>Floating output pin Data_Saving:pres_cal2_packet</detail>
-    <crossprobe>liberoaction://cross_probe/smartdesign/Data_Saving/pins/Data_Saving:pres_cal2_packet</crossprobe>
-  </drc>
-  <drc>
-    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
-    <StatusMessage>Warning</StatusMessage>
-    <message>Floating Driver</message>
-    <detail>Floating output pin Data_Saving:status_packet</detail>
-    <crossprobe>liberoaction://cross_probe/smartdesign/Data_Saving/pins/Data_Saving:status_packet</crossprobe>
-  </drc>
-  <drc>
-    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
-    <StatusMessage>Warning</StatusMessage>
-    <message>Floating Driver</message>
-    <detail>Floating output pin Data_Saving:ch_0_packet</detail>
-    <crossprobe>liberoaction://cross_probe/smartdesign/Data_Saving/pins/Data_Saving:ch_0_packet</crossprobe>
-  </drc>
-  <drc>
-    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
-    <StatusMessage>Warning</StatusMessage>
-    <message>Floating Driver</message>
-    <detail>Floating output pin Data_Saving:ch_1_packet</detail>
-    <crossprobe>liberoaction://cross_probe/smartdesign/Data_Saving/pins/Data_Saving:ch_1_packet</crossprobe>
-  </drc>
-  <drc>
-    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
-    <StatusMessage>Warning</StatusMessage>
-    <message>Floating Driver</message>
-    <detail>Floating output pin Data_Saving:ch_2_packet</detail>
-    <crossprobe>liberoaction://cross_probe/smartdesign/Data_Saving/pins/Data_Saving:ch_2_packet</crossprobe>
-  </drc>
-  <drc>
-    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
-    <StatusMessage>Warning</StatusMessage>
-    <message>Floating Driver</message>
-    <detail>Floating output pin Data_Saving:ch_3_packet</detail>
-    <crossprobe>liberoaction://cross_probe/smartdesign/Data_Saving/pins/Data_Saving:ch_3_packet</crossprobe>
+    <detail>Floating output pin Packet_Saver_0:data_out</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Data_Saving/pins/Packet_Saver_0:data_out</crossprobe>
   </drc>
 </drcreport>

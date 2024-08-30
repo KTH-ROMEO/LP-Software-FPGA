@@ -1,6 +1,6 @@
 <project name="Toplevel" version="1.1">
     <ProjectDirectory>
-        C:\Users\rudol\Desktop\KTH_TEBSM\Master_Thesis\Code\Langmuir-DataHub-EMUScience-FPGA\designer\impl1\Toplevel_fp
+        C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\designer\impl1\Toplevel_fp
     </ProjectDirectory>
     <View>
         SingleSTAPLView
@@ -9,7 +9,7 @@
         
     </LiberoTargetDevice>
     <LogFile>
-        C:\Users\rudol\Desktop\KTH_TEBSM\Master_Thesis\Code\Langmuir-DataHub-EMUScience-FPGA\designer\impl1\Toplevel_fp\Toplevel.log
+        C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\designer\impl1\Toplevel_fp\Toplevel.log
     </LogFile>
     <SerializationOption>
         Skip
@@ -74,7 +74,7 @@
         </Hardware>
         <Algo type="PDB">
             <filename>
-                C:\Users\rudol\Desktop\KTH_TEBSM\Master_Thesis\Code\Langmuir-DataHub-EMUScience-FPGA\designer\impl1\Toplevel.pdb
+                C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\designer\impl1\Toplevel.pdb
             </filename>
             <local>
                 projectData\Toplevel.pdb
