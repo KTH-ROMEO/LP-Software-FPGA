@@ -133,9 +133,9 @@ Optimized macros:
   - Buffers:                0
   - Inverters:              3
   - Tieoff:                 35
-  - Logic combining:        212
+  - Logic combining:        225
 
-    Total macros optimized  251
+    Total macros optimized  264
 
 Warning: CMP503: Remapped 8 enable flip-flop(s) to a 2-tile implementation because the CLR/PRE
          pin on the enable flip-flop is not being driven by a global net.
@@ -152,7 +152,7 @@ There were 0 error(s) and 0 warning(s).
 Compile report:
 ===============
 
-    CORE                       Used:   5937  Total:   6144   (96.63%)
+    CORE                       Used:   5983  Total:   6144   (97.38%)
     IO (W/ clocks)             Used:     51  Total:     68   (75.00%)
     Differential IO            Used:      0  Total:     13   (0.00%)
     GLOBAL (Chip+Quadrant)     Used:      6  Total:     18   (33.33%)
@@ -177,8 +177,8 @@ Core Information:
 
     Type    | Instances    | Core tiles
     --------|--------------|-----------
-    COMB    | 4206         | 4206
-    SEQ     | 1731         | 1731
+    COMB    | 4251         | 4251
+    SEQ     | 1732         | 1732
 
 I/O Function:
 
@@ -222,10 +222,10 @@ The following nets have been assigned to a chip global resource:
     1195    SET/RESET_NET Net   : CLKINT_1_Y
                           Driver: CLKINT_1
                           Source: NETLIST
-    108     CLK_NET       Net   : ClockDivs_0_clk_800kHz
+    109     CLK_NET       Net   : ClockDivs_0_clk_800kHz
                           Driver: ClockDivs_0/clk_800kHz_RNIT3EB
                           Source: NETLIST
-    107     INT_NET       Net   : GS_Readout_0/subState[0]
+    106     INT_NET       Net   : GS_Readout_0/subState[0]
                           Driver: GS_Readout_0/subState_RNITID3[0]
                           Source: NETLIST
     83      INT_NET       Net   : Data_Saving_0/Packet_Saver_0/packet_select[9]
@@ -238,8 +238,6 @@ The following nets have been assigned to a chip global resource:
 High fanout nets in the post compile netlist:
     Fanout  Type          Name
     --------------------------
-    24      INT_NET       Net   : ACCE_SCL_c
-                          Driver: Sensors_0/Accelerometer_0/I2C_Master_0/scl
     24      INT_NET       Net   : Data_Saving_0/Packet_Saver_0/packet_select_1[11]
                           Driver: Data_Saving_0/Packet_Saver_0/packet_select_1[11]
     24      INT_NET       Net   : Data_Saving_0/Packet_Saver_0/packet_select_0[11]
@@ -256,19 +254,19 @@ High fanout nets in the post compile netlist:
                           Driver:
 Sensors_0/Pressure_Sensor_0/MS5611_01BA03_Interface_0/state_RNIN45R[3]
     24      INT_NET       Net   :
-Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/mag_time_0_sqmuxa
-                          Driver:
-Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state_RNINMCD1[5]
-    24      INT_NET       Net   :
 Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/acc_time_0_sqmuxa
                           Driver:
-Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state_RNIONCD1[6]
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state_RNI918J1[6]
+    24      INT_NET       Net   :
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/mag_time_0_sqmuxa
+                          Driver:
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state_RNI808J1[5]
+    24      INT_NET       Net   : Sensors_0/Gyro_0/L3GD20H_Interface_0/gyro_time_0_sqmuxa
+                          Driver: Sensors_0/Gyro_0/L3GD20H_Interface_0/state_RNID6JM1[2]
 
 Nets that are candidates for clock assignment and the resulting fanout:
     Fanout  Type          Name
     --------------------------
-    24      INT_NET       Net   : ACCE_SCL_c
-                          Driver: Sensors_0/Accelerometer_0/I2C_Master_0/scl
     24      INT_NET       Net   : Data_Saving_0/Packet_Saver_0/packet_select_1[11]
                           Driver: Data_Saving_0/Packet_Saver_0/packet_select_1[11]
     24      INT_NET       Net   : Data_Saving_0/Packet_Saver_0/packet_select_0[11]
@@ -285,13 +283,15 @@ Nets that are candidates for clock assignment and the resulting fanout:
                           Driver:
 Sensors_0/Pressure_Sensor_0/MS5611_01BA03_Interface_0/state_RNIN45R[3]
     24      INT_NET       Net   :
-Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/mag_time_0_sqmuxa
-                          Driver:
-Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state_RNINMCD1[5]
-    24      INT_NET       Net   :
 Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/acc_time_0_sqmuxa
                           Driver:
-Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state_RNIONCD1[6]
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state_RNI918J1[6]
+    24      INT_NET       Net   :
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/mag_time_0_sqmuxa
+                          Driver:
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state_RNI808J1[5]
+    24      INT_NET       Net   : Sensors_0/Gyro_0/L3GD20H_Interface_0/gyro_time_0_sqmuxa
+                          Driver: Sensors_0/Gyro_0/L3GD20H_Interface_0/state_RNID6JM1[2]
 
 The Compile command succeeded ( 00:00:03 )
 Wrote status report to file: Toplevel_compile_report.txt

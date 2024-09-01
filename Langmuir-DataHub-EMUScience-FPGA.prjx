@@ -181,8 +181,8 @@ SIZE="1038"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel.pdb,pdb"
 STATE="utd"
-TIME="1725024857"
-SIZE="142525"
+TIME="1725046303"
+SIZE="143754"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_compile_log.rpt,log"
 STATE="utd"
@@ -206,7 +206,7 @@ SIZE="2505"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_placeroute_log.rpt,log"
 STATE="utd"
-TIME="1725024830"
+TIME="1725046276"
 SIZE="3032"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_power.rpt,log"
@@ -261,7 +261,7 @@ SIZE="12269"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_prgdata_log.rpt,log"
 STATE="utd"
-TIME="1725024858"
+TIME="1725046304"
 SIZE="844"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_timing.rpt,log"
@@ -421,7 +421,7 @@ SIZE="30478"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_verifytiming_log.rpt,log"
 STATE="utd"
-TIME="1725024842"
+TIME="1725046288"
 SIZE="1227"
 ENDFILE
 VALUE "<project>\hdl\ADC_READ.vhd,hdl"
@@ -768,8 +768,8 @@ NAME="Synplify Pro ME"
 FUNCTION="Synthesis"
 TOOL="Synplify Pro ME"
 LOCATION="C:\Microsemi\Libero_SoC_v11.9\SynplifyPro\bin\synplify_pro.exe"
-PARAM=""
-BATCH=0
+PARAM="-licensetype synplifypro_actel -batch -log synplify.log"
+BATCH=1
 LICENSE=""
 IS32BIT="1"
 EndProfile
@@ -830,8 +830,8 @@ LIST UserCustomizedFileList
 ENDLIST
 LIST OpenedFileList
 ORIENTATION;HORIZONTAL
-StartPage;StartPage;0
-ACTIVEVIEW;StartPage
+HDL;hdl\General_Controller.vhd;0
+ACTIVEVIEW;hdl\General_Controller.vhd
 ENDLIST
 LIST ModuleSubBlockList
 LIST "Accelerometer::work","component\work\Accelerometer\Accelerometer.vhd","TRUE","FALSE"

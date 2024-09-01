@@ -14,13 +14,6 @@ File C:\Microsemi\Libero_SoC_v11.9\SynplifyPro\lib\proasic\proasic3.vhd changed 
 File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\Eject_Signal_Debounce.vhd changed - recompiling
 File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\GS_Readout.vhd changed - recompiling
 File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd changed - recompiling
-File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\I2C_PassThrough.vhd changed - recompiling
-File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\Pressure_Signal_Debounce.vhd changed - recompiling
-File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\ADC_READ.vhd changed - recompiling
-File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\ADC_RESET.vhd changed - recompiling
-File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\DAC_SET.vhd changed - recompiling
-File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\SET_LP_GAIN.vhd changed - recompiling
-File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\SWEEP_SPIDER2.vhd changed - recompiling
 File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\I2C_Master.vhd changed - recompiling
 File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\LSM303AGR_I2C_Interface.vhd changed - recompiling
 File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\L3GD20H_Interface.vhd changed - recompiling
@@ -38,6 +31,20 @@ File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\co
 File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\component\work\Toplevel\Toplevel.vhd changed - recompiling
 VHDL syntax check successful!
 File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd changed - recompiling
+File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\I2C_PassThrough.vhd changed - recompiling
+File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\Pressure_Signal_Debounce.vhd changed - recompiling
+File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\ADC_READ.vhd changed - recompiling
+File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\ADC_RESET.vhd changed - recompiling
+File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\DAC_SET.vhd changed - recompiling
+File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\SET_LP_GAIN.vhd changed - recompiling
+File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\SWEEP_SPIDER2.vhd changed - recompiling
+File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\I2C_Master.vhd changed - recompiling
+File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\LSM303AGR_I2C_Interface.vhd changed - recompiling
+File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\L3GD20H_Interface.vhd changed - recompiling
+File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\MS5611_01BA03_Interface.vhd changed - recompiling
+File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\smartgen\SweepTable\SweepTable.vhd changed - recompiling
+File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\Timekeeper.vhd changed - recompiling
+File C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\Timing.vhd changed - recompiling
 @N: CD231 :"C:\Microsemi\Libero_SoC_v11.9\SynplifyPro\lib\vhd2008\std1164.vhd":890:16:890:17|Using onehot encoding for type mvl9plus. For example, enumeration 'U' is mapped to "1000000000".
 @N: CD630 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\component\work\Toplevel\Toplevel.vhd":17:7:17:14|Synthesizing work.toplevel.rtl.
 @N: CD630 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\Timing.vhd":46:7:46:12|Synthesizing work.timing.architecture_timing.
@@ -680,12 +687,12 @@ State machine has 6 reachable states with original encodings of:
 @W: CL260 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\MS5611_01BA03_Interface.vhd":99:8:99:9|Pruning register bit 5 of data_out(6 downto 3). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
 @N: CL159 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\component\work\Toplevel\Toplevel.vhd":29:8:29:14|Input FMC_NE1 is unused.
 
-At c_vhdl Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 97MB peak: 104MB)
+At c_vhdl Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 98MB peak: 104MB)
 
 Process took 0h:00m:02s realtime, 0h:00m:02s cputime
 
 Process completed successfully.
-# Fri Aug 30 21:25:48 2024
+# Sun Sep 01 21:14:36 2024
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q4p1, Build 512R, built Oct 26 2017
@@ -696,16 +703,16 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Fri Aug 30 21:25:48 2024
+# Sun Sep 01 21:14:36 2024
 
 ###########################################################]
 @END
 
-At c_hdl Exit (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:02s; Memory used current: 3MB peak: 4MB)
+At c_hdl Exit (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:03s; Memory used current: 3MB peak: 4MB)
 
-Process took 0h:00m:03s realtime, 0h:00m:02s cputime
+Process took 0h:00m:03s realtime, 0h:00m:03s cputime
 
 Process completed successfully.
-# Fri Aug 30 21:25:48 2024
+# Sun Sep 01 21:14:36 2024
 
 ###########################################################]

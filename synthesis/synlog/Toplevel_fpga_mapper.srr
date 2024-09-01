@@ -1,4 +1,4 @@
-# Fri Aug 30 21:25:53 2024
+# Sun Sep 01 21:14:40 2024
 
 Synopsys Microsemi Technology Mapper, Version mapact, Build 2172R, Built Oct 30 2017 10:54:39
 Copyright (C) 1994-2017 Synopsys, Inc. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -341,7 +341,7 @@ Starting factoring (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:04s; M
 
 @W: BN132 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\dac_set.vhd":58:2:58:3|Removing sequential instance Science_0.DAC_SET_0.DCLK because it is equivalent to instance Science_0.DAC_SET_0.state[0]. To keep the instance, apply constraint syn_preserve=1 on the instance.
 
-Finished factoring (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:05s; Memory used current: 172MB peak: 173MB)
+Finished factoring (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 170MB peak: 170MB)
 
 @W: MO160 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\sweep_spider2.vhd":63:2:63:3|Register bit Science_0.SWEEP_SPIDER2_0.counter[8] (in view view:work.Toplevel(rtl)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
 @W: MO160 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\sweep_spider2.vhd":63:2:63:3|Register bit Science_0.SWEEP_SPIDER2_0.counter[7] (in view view:work.Toplevel(rtl)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
@@ -358,28 +358,28 @@ Finished factoring (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:05s; M
 @W: BN132 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\ms5611_01ba03_interface.vhd":99:8:99:9|Removing sequential instance Sensors_0.Pressure_Sensor_0.MS5611_01BA03_Interface_0.old_clk_1kHz because it is equivalent to instance Science_0.SWEEP_SPIDER2_0.latch. To keep the instance, apply constraint syn_preserve=1 on the instance.
 @W: BN132 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\eject_signal_debounce.vhd":51:4:51:5|Removing sequential instance Eject_Signal_Debounce_0.old_1kHz because it is equivalent to instance Science_0.SWEEP_SPIDER2_0.latch. To keep the instance, apply constraint syn_preserve=1 on the instance.
 
-Starting gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 167MB peak: 173MB)
+Starting gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 165MB peak: 171MB)
 
 
-Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 167MB peak: 173MB)
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 165MB peak: 171MB)
 
 
-Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:09s; CPU Time elapsed 0h:00m:07s; Memory used current: 149MB peak: 186MB)
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:09s; CPU Time elapsed 0h:00m:08s; Memory used current: 149MB peak: 184MB)
 
 
-Starting Early Timing Optimization (Real Time elapsed 0h:00m:09s; CPU Time elapsed 0h:00m:08s; Memory used current: 151MB peak: 186MB)
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:09s; CPU Time elapsed 0h:00m:08s; Memory used current: 151MB peak: 184MB)
 
 
-Finished Early Timing Optimization (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:08s; Memory used current: 151MB peak: 186MB)
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:09s; CPU Time elapsed 0h:00m:08s; Memory used current: 151MB peak: 184MB)
 
 
-Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:09s; Memory used current: 149MB peak: 186MB)
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:09s; Memory used current: 149MB peak: 184MB)
 
 
-Finished preparing to map (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:09s; Memory used current: 146MB peak: 186MB)
+Finished preparing to map (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:09s; Memory used current: 146MB peak: 184MB)
 
 
-Finished technology mapping (Real Time elapsed 0h:00m:11s; CPU Time elapsed 0h:00m:10s; Memory used current: 200MB peak: 203MB)
+Finished technology mapping (Real Time elapsed 0h:00m:11s; CPU Time elapsed 0h:00m:10s; Memory used current: 190MB peak: 193MB)
 
 
 High Fanout Net Report
@@ -387,19 +387,19 @@ High Fanout Net Report
 
 Driver Instance / Pin Name                                              Fanout, notes                     
 ----------------------------------------------------------------------------------------------------------
-CLKINT_1 / Y                                                            1162 : 1111 asynchronous set/reset
-General_Controller_0.sweep_en / Q                                       32                                
-Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[2] / Q     28                                
-Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[0] / Q     36                                
+CLKINT_1 / Y                                                            1161 : 1111 asynchronous set/reset
+General_Controller_0.sweep_en / Q                                       33                                
+Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[2] / Q     26                                
+Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[0] / Q     39                                
 Sensors_0.Accelerometer_0.I2C_Master_0.state[8] / Q                     26                                
 Science_0.SWEEP_SPIDER2_0.update / Q                                    65                                
 Science_0.DAC_SET_0.ADR[1] / Q                                          35                                
 Science_0.ADC_READ_0.chan[0] / Q                                        26                                
 Science_0.ADC_READ_0.chan[1] / Q                                        44                                
 Science_0.ADC_READ_0.state[1] / Q                                       39                                
-GS_Readout_0.un3_s_vector.I_5 / Y                                       51                                
-GS_Readout_0.un3_s_vector.I_7 / Y                                       29                                
-GS_Readout_0.subState[0] / Q                                            105                               
+GS_Readout_0.un3_s_vector.I_5 / Y                                       54                                
+GS_Readout_0.un3_s_vector.I_7 / Y                                       32                                
+GS_Readout_0.subState[0] / Q                                            104                               
 Data_Saving_0.FPGA_Buffer_0.DFN1C0_WRITE_RESET_P / Q                    42 : 42 asynchronous set/reset    
 Data_Saving_0.FPGA_Buffer_0.DFN1C0_READ_RESET_P / Q                     48 : 48 asynchronous set/reset    
 Data_Saving_0.Packet_Saver_0.word_cnt[0] / Q                            35                                
@@ -409,38 +409,40 @@ Data_Saving_0.Packet_Saver_0.packet_select[10] / Q                      74
 Data_Saving_0.Packet_Saver_0.packet_select[9] / Q                       83                                
 Data_Saving_0.Packet_Saver_0.packet_select[8] / Q                       34                                
 Data_Saving_0.Packet_Saver_0.packet_select[5] / Q                       82                                
-Sensors_0.Gyro_0.I2C_Master_0.scl / Q                                   25                                
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl / Q                        29                                
+Sensors_0.Accelerometer_0.I2C_Master_0.scl / Q                          26                                
+Sensors_0.Gyro_0.I2C_Master_0.scl / Q                                   28                                
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl / Q                        28                                
 Science_0.ADC_READ_0.exp_packet_0_sqmuxa / Y                            83                                
-General_Controller_0.st_waddr_1_sqmuxa_0_a4 / Y                         25                                
-Science_0.ADC_READ_0.chan0_data_0_sqmuxa_0_a2_0_a3_0_a2_0_a2 / Y        39                                
+General_Controller_0.status_bits_0_sqmuxa / Y                           31                                
 Science_0.ADC_READ_0.chan1_data_1_sqmuxa_0_a2_0_a3_0_a2_0_a2 / Y        26                                
 Science_0.ADC_READ_0.g3i_289_0_a3_0_a2_0_a2 / Y                         26                                
+Science_0.ADC_READ_0.chan0_data_0_sqmuxa_0_a2_0_a3_0_a2_0_a2 / Y        39                                
 Data_Saving_0.Packet_Saver_0.un1_pres_cal1_flag8_0 / Y                  32                                
 Data_Saving_0.Packet_Saver_0.m1_e_0 / Y                                 31                                
 Science_0.ADC_READ_0.g4i_256_0_a2_0_0_i / Y                             26                                
+General_Controller_0.st_waddr_1_sqmuxa_0_a4 / Y                         25                                
 General_Controller_0.uc_rx_state_ns_o3[3] / Y                           25                                
-General_Controller_0.status_bits_0_sqmuxa_i_0_o4 / Y                    31                                
 ==========================================================================================================
 
 @N: FP130 |Promoting Net ClockDivs_0_clk_800kHz on CLKINT  ClockDivs_0.clk_800kHz_inferred_clock 
-@N: FP130 |Promoting Net GS_Readout_0.subState[0] on CLKINT  I_553 
-@N: FP130 |Promoting Net Data_Saving_0.Packet_Saver_0.packet_select[9] on CLKINT  I_554 
+@N: FP130 |Promoting Net GS_Readout_0.subState[0] on CLKINT  I_540 
+@N: FP130 |Promoting Net Data_Saving_0.Packet_Saver_0.packet_select[9] on CLKINT  I_541 
 
-Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:12s; CPU Time elapsed 0h:00m:10s; Memory used current: 203MB peak: 207MB)
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:11s; CPU Time elapsed 0h:00m:10s; Memory used current: 192MB peak: 197MB)
 
-Replicating Combinational Instance General_Controller_0.status_bits_0_sqmuxa_i_0_o4, fanout 31 segments 2
 Replicating Combinational Instance General_Controller_0.uc_rx_state_ns_o3[3], fanout 25 segments 2
+Replicating Combinational Instance General_Controller_0.st_waddr_1_sqmuxa_0_a4, fanout 25 segments 2
 Replicating Combinational Instance Science_0.ADC_READ_0.g4i_256_0_a2_0_0_i, fanout 26 segments 2
 Replicating Combinational Instance Data_Saving_0.Packet_Saver_0.m1_e_0, fanout 31 segments 2
 Replicating Combinational Instance Data_Saving_0.Packet_Saver_0.un1_pres_cal1_flag8_0, fanout 32 segments 2
+Replicating Combinational Instance Science_0.ADC_READ_0.chan0_data_0_sqmuxa_0_a2_0_a3_0_a2_0_a2, fanout 39 segments 2
 Replicating Combinational Instance Science_0.ADC_READ_0.g3i_289_0_a3_0_a2_0_a2, fanout 26 segments 2
 Replicating Combinational Instance Science_0.ADC_READ_0.chan1_data_1_sqmuxa_0_a2_0_a3_0_a2_0_a2, fanout 26 segments 2
-Replicating Combinational Instance Science_0.ADC_READ_0.chan0_data_0_sqmuxa_0_a2_0_a3_0_a2_0_a2, fanout 39 segments 2
-Replicating Combinational Instance General_Controller_0.st_waddr_1_sqmuxa_0_a4, fanout 25 segments 2
+Replicating Combinational Instance General_Controller_0.status_bits_0_sqmuxa, fanout 31 segments 2
 Replicating Combinational Instance Science_0.ADC_READ_0.exp_packet_0_sqmuxa, fanout 83 segments 4
-Replicating Sequential Instance Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl, fanout 29 segments 2
-Replicating Sequential Instance Sensors_0.Gyro_0.I2C_Master_0.scl, fanout 25 segments 2
+Replicating Sequential Instance Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl, fanout 28 segments 2
+Replicating Sequential Instance Sensors_0.Gyro_0.I2C_Master_0.scl, fanout 28 segments 2
+Replicating Sequential Instance Sensors_0.Accelerometer_0.I2C_Master_0.scl, fanout 26 segments 2
 Replicating Sequential Instance Data_Saving_0.Packet_Saver_0.packet_select[5], fanout 82 segments 4
 Replicating Sequential Instance Data_Saving_0.Packet_Saver_0.packet_select[8], fanout 34 segments 2
 Replicating Sequential Instance Data_Saving_0.Packet_Saver_0.packet_select[10], fanout 74 segments 4
@@ -449,24 +451,24 @@ Replicating Sequential Instance Data_Saving_0.Packet_Saver_0.packet_select[12], 
 Replicating Sequential Instance Data_Saving_0.Packet_Saver_0.word_cnt[0], fanout 36 segments 2
 Replicating Sequential Instance Data_Saving_0.FPGA_Buffer_0.DFN1C0_READ_RESET_P, fanout 48 segments 2
 Replicating Sequential Instance Data_Saving_0.FPGA_Buffer_0.DFN1C0_WRITE_RESET_P, fanout 42 segments 2
-Replicating Combinational Instance GS_Readout_0.un3_s_vector.I_7, fanout 29 segments 2
-Replicating Combinational Instance GS_Readout_0.un3_s_vector.I_5, fanout 51 segments 3
+Replicating Combinational Instance GS_Readout_0.un3_s_vector.I_7, fanout 32 segments 2
+Replicating Combinational Instance GS_Readout_0.un3_s_vector.I_5, fanout 54 segments 3
 Replicating Sequential Instance Science_0.ADC_READ_0.state[1], fanout 39 segments 2
 Replicating Sequential Instance Science_0.ADC_READ_0.chan[1], fanout 48 segments 2
 Replicating Sequential Instance Science_0.ADC_READ_0.chan[0], fanout 30 segments 2
 Replicating Sequential Instance Science_0.DAC_SET_0.ADR[1], fanout 35 segments 2
 Replicating Sequential Instance Science_0.SWEEP_SPIDER2_0.update, fanout 65 segments 3
 Replicating Sequential Instance Sensors_0.Accelerometer_0.I2C_Master_0.state[8], fanout 26 segments 2
-Replicating Sequential Instance Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[0], fanout 36 segments 2
-Replicating Sequential Instance Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[2], fanout 28 segments 2
-Replicating Sequential Instance General_Controller_0.sweep_en, fanout 32 segments 2
+Replicating Sequential Instance Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[0], fanout 39 segments 2
+Replicating Sequential Instance Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[2], fanout 26 segments 2
+Replicating Sequential Instance General_Controller_0.sweep_en, fanout 33 segments 2
 
 Added 0 Buffers
-Added 41 Cells via replication
-	Added 26 Sequential Cells via replication
+Added 42 Cells via replication
+	Added 27 Sequential Cells via replication
 	Added 15 Combinational Cells via replication
 
-Finished restoring hierarchy (Real Time elapsed 0h:00m:12s; CPU Time elapsed 0h:00m:10s; Memory used current: 204MB peak: 207MB)
+Finished restoring hierarchy (Real Time elapsed 0h:00m:11s; CPU Time elapsed 0h:00m:10s; Memory used current: 193MB peak: 197MB)
 
 @N: MT611 :|Automatically generated clock ClockDivs|clk_1kHz_inferred_clock is not used and is being removed
 @N: MT611 :|Automatically generated clock ClockDivs|clk_50Hz_inferred_clock is not used and is being removed
@@ -479,8 +481,8 @@ Finished restoring hierarchy (Real Time elapsed 0h:00m:12s; CPU Time elapsed 0h:
 
 Clock optimization not enabled
 2 non-gated/non-generated clock tree(s) driving 1618 clock pin(s) of sequential element(s)
-3 gated/generated clock tree(s) driving 125 clock pin(s) of sequential element(s)
-0 instances converted, 125 sequential instances remain driven by gated/generated clocks
+3 gated/generated clock tree(s) driving 126 clock pin(s) of sequential element(s)
+0 instances converted, 126 sequential instances remain driven by gated/generated clocks
 
 ========================================== Non-Gated/Non-Generated Clocks ==========================================
 Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance                             
@@ -491,7 +493,7 @@ Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample I
 =========================================================================================== Gated/Generated Clocks ===========================================================================================
 Clock Tree ID     Driving Element            Drive Element Type     Fanout     Sample Instance                                        Explanation                                                             
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-@K:CKID0001       ClockDivs_0.clk_800kHz     DFN1C1                 108        Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[3]     No generated or derived clock directive on output of sequential instance
+@K:CKID0001       ClockDivs_0.clk_800kHz     DFN1C1                 109        Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[3]     No generated or derived clock directive on output of sequential instance
 @K:CKID0002       Timing_0.m_time[7]         DFN1C1                 13         Pressure_Signal_Debounce_0.ms_cnt[9]                   No generated or derived clock directive on output of sequential instance
 @K:CKID0003       Timing_0.s_time[5]         DFN1C1                 4          Science_0.ADC_RESET_0.state[1]                         No generated or derived clock directive on output of sequential instance
 ==============================================================================================================================================================================================================
@@ -500,19 +502,19 @@ Clock Tree ID     Driving Element            Drive Element Type     Fanout     S
 ##### END OF CLOCK OPTIMIZATION REPORT ######]
 
 
-Start Writing Netlists (Real Time elapsed 0h:00m:12s; CPU Time elapsed 0h:00m:11s; Memory used current: 190MB peak: 207MB)
+Start Writing Netlists (Real Time elapsed 0h:00m:12s; CPU Time elapsed 0h:00m:11s; Memory used current: 179MB peak: 197MB)
 
 Writing Analyst data base C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\synthesis\synwork\Toplevel_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:11s; Memory used current: 196MB peak: 207MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:12s; CPU Time elapsed 0h:00m:11s; Memory used current: 185MB peak: 197MB)
 
 Writing EDIF Netlist and constraint files
 L-2016.09M-SP1-5
 
-Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:12s; Memory used current: 199MB peak: 207MB)
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:12s; Memory used current: 188MB peak: 197MB)
 
 
-Start final timing analysis (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:12s; Memory used current: 197MB peak: 207MB)
+Start final timing analysis (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:12s; Memory used current: 185MB peak: 197MB)
 
 @W: MT420 |Found inferred clock Toplevel|CLOCK with period 31.25ns. Please declare a user-defined clock on object "p:CLOCK"
 @W: MT420 |Found inferred clock Toplevel|FMC_CLK with period 31.25ns. Please declare a user-defined clock on object "p:FMC_CLK"
@@ -522,7 +524,7 @@ Start final timing analysis (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:0
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Fri Aug 30 21:26:06 2024
+# Timing Report written on Sun Sep 01 21:14:54 2024
 #
 
 
@@ -549,9 +551,9 @@ Worst slack in design: -3.754
                                         Requested     Estimated     Requested     Estimated                Clock        Clock              
 Starting Clock                          Frequency     Frequency     Period        Period        Slack      Type         Group              
 -------------------------------------------------------------------------------------------------------------------------------------------
-ClockDivs|clk_800kHz_inferred_clock     32.0 MHz      34.6 MHz      31.250        28.908        1.171      inferred     Inferred_clkgroup_1
-Timing|m_time_inferred_clock[7]         32.0 MHz      70.6 MHz      31.250        14.155        17.095     inferred     Inferred_clkgroup_3
-Timing|s_time_inferred_clock[5]         32.0 MHz      255.1 MHz     31.250        3.921         27.329     inferred     Inferred_clkgroup_2
+ClockDivs|clk_800kHz_inferred_clock     32.0 MHz      35.5 MHz      31.250        28.140        1.555      inferred     Inferred_clkgroup_1
+Timing|m_time_inferred_clock[7]         32.0 MHz      71.5 MHz      31.250        13.995        17.255     inferred     Inferred_clkgroup_3
+Timing|s_time_inferred_clock[5]         32.0 MHz      246.3 MHz     31.250        4.060         27.190     inferred     Inferred_clkgroup_2
 Toplevel|CLOCK                          32.0 MHz      25.8 MHz      31.250        38.759        -3.754     inferred     Inferred_clkgroup_0
 Toplevel|FMC_CLK                        32.0 MHz      64.0 MHz      31.250        15.613        15.637     inferred     Inferred_clkgroup_4
 ===========================================================================================================================================
@@ -567,16 +569,16 @@ Clocks                                                                    |    r
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Starting                             Ending                               |  constraint  slack   |  constraint  slack   |  constraint  slack  |  constraint  slack 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Toplevel|CLOCK                       Toplevel|CLOCK                       |  31.250      9.658   |  31.250      21.724  |  15.625      7.705  |  15.625      -3.754
+Toplevel|CLOCK                       Toplevel|CLOCK                       |  31.250      9.671   |  31.250      21.406  |  15.625      7.818  |  15.625      -3.754
 Toplevel|CLOCK                       ClockDivs|clk_800kHz_inferred_clock  |  No paths    -       |  No paths    -       |  Diff grp    -      |  No paths    -     
 Toplevel|CLOCK                       Timing|s_time_inferred_clock[5]      |  Diff grp    -       |  No paths    -       |  No paths    -      |  No paths    -     
 Toplevel|CLOCK                       Timing|m_time_inferred_clock[7]      |  Diff grp    -       |  No paths    -       |  No paths    -      |  No paths    -     
 Toplevel|CLOCK                       Toplevel|FMC_CLK                     |  Diff grp    -       |  No paths    -       |  No paths    -      |  No paths    -     
 ClockDivs|clk_800kHz_inferred_clock  Toplevel|CLOCK                       |  No paths    -       |  No paths    -       |  No paths    -      |  Diff grp    -     
-ClockDivs|clk_800kHz_inferred_clock  ClockDivs|clk_800kHz_inferred_clock  |  31.250      25.710  |  31.250      14.933  |  15.625      1.171  |  15.625      8.955 
-Timing|s_time_inferred_clock[5]      Timing|s_time_inferred_clock[5]      |  31.250      27.329  |  No paths    -       |  No paths    -      |  No paths    -     
+ClockDivs|clk_800kHz_inferred_clock  ClockDivs|clk_800kHz_inferred_clock  |  31.250      26.029  |  31.250      14.090  |  15.625      1.555  |  15.625      8.955 
+Timing|s_time_inferred_clock[5]      Timing|s_time_inferred_clock[5]      |  31.250      27.190  |  No paths    -       |  No paths    -      |  No paths    -     
 Timing|m_time_inferred_clock[7]      Toplevel|CLOCK                       |  Diff grp    -       |  No paths    -       |  No paths    -      |  No paths    -     
-Timing|m_time_inferred_clock[7]      Timing|m_time_inferred_clock[7]      |  31.250      17.095  |  No paths    -       |  No paths    -      |  No paths    -     
+Timing|m_time_inferred_clock[7]      Timing|m_time_inferred_clock[7]      |  31.250      17.255  |  No paths    -       |  No paths    -      |  No paths    -     
 Toplevel|FMC_CLK                     Toplevel|CLOCK                       |  Diff grp    -       |  No paths    -       |  No paths    -      |  No paths    -     
 Toplevel|FMC_CLK                     Toplevel|FMC_CLK                     |  31.250      15.637  |  No paths    -       |  No paths    -      |  No paths    -     
 ===================================================================================================================================================================
@@ -605,37 +607,37 @@ Starting Points with Worst Slack
 Instance                                              Reference                               Type       Pin     Net                  Time        Slack 
                                                       Clock                                                                                             
 --------------------------------------------------------------------------------------------------------------------------------------------------------
-Sensors_0.Accelerometer_0.I2C_Master_0.scl            ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       ACCE_SCL_c           0.737       1.171 
-Sensors_0.Gyro_0.I2C_Master_0.scl                     ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       GYRO_SCL_c           0.737       1.644 
-Sensors_0.Gyro_0.I2C_Master_0.scl_0                   ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       GYRO_SCL_c_0         0.737       2.796 
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl          ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       PRESSURE_SCL_c       0.737       3.430 
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl_0        ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       PRESSURE_SCL_c_0     0.580       4.760 
+Sensors_0.Gyro_0.I2C_Master_0.scl                     ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       GYRO_SCL_c           0.737       1.555 
+Sensors_0.Accelerometer_0.I2C_Master_0.scl_0          ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       ACCE_SCL_c_0         0.737       1.704 
+Sensors_0.Gyro_0.I2C_Master_0.scl_0                   ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       GYRO_SCL_c_0         0.737       2.686 
+Sensors_0.Accelerometer_0.I2C_Master_0.scl            ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       ACCE_SCL_c           0.737       2.822 
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl_0        ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       PRESSURE_SCL_c_0     0.737       4.198 
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl          ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       PRESSURE_SCL_c       0.737       5.552 
 Sensors_0.Pressure_Sensor_0.I2C_Master_0.state[8]     ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       state[8]             0.653       8.955 
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.state[0]     ClockDivs|clk_800kHz_inferred_clock     DFN0C1     Q       state[0]             0.653       9.949 
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.state[0]     ClockDivs|clk_800kHz_inferred_clock     DFN0C1     Q       state[0]             0.653       10.052
 Sensors_0.Gyro_0.I2C_Master_0.state[8]                ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       state[8]             0.653       10.853
 Sensors_0.Gyro_0.I2C_Master_0.state[0]                ClockDivs|clk_800kHz_inferred_clock     DFN0C1     Q       state[0]             0.653       11.027
-Sensors_0.Accelerometer_0.I2C_Master_0.state[0]       ClockDivs|clk_800kHz_inferred_clock     DFN0C1     Q       state[0]             0.653       11.233
 ========================================================================================================================================================
 
 
 Ending Points with Worst Slack
 ******************************
 
-                                                       Starting                                                                    Required          
-Instance                                               Reference                               Type       Pin     Net              Time         Slack
-                                                       Clock                                                                                         
------------------------------------------------------------------------------------------------------------------------------------------------------
-Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[3]       ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       bitcnt_12[3]     14.913       1.171
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt[3]                ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       bitcnt_12[3]     14.913       1.644
-Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[2]       ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[2]     14.913       2.033
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt[2]                ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[2]     14.913       2.506
-Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[1]       ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[1]     14.913       3.295
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[3]     ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       bitcnt_12[3]     14.913       3.430
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt[1]                ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[1]     14.913       3.767
-Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[0]       ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[0]     14.913       4.158
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[2]     ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[2]     14.913       4.299
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt[0]                ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[0]     14.913       4.631
-=====================================================================================================================================================
+                                                         Starting                                                                    Required          
+Instance                                                 Reference                               Type       Pin     Net              Time         Slack
+                                                         Clock                                                                                         
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt[3]                  ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       bitcnt_12[3]     14.913       1.555
+Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[3]         ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       bitcnt_12[3]     14.913       1.704
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt[2]                  ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[2]     14.913       2.417
+Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[2]         ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[2]     14.913       2.566
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt[1]                  ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[1]     14.913       3.679
+Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[1]         ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[1]     14.913       3.828
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[3]       ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       bitcnt_12[3]     14.913       4.198
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt[0]                  ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[0]     14.913       4.542
+Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[0]         ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[0]     14.913       4.692
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.byte_cnt[0]     ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       N_520_mux        14.913       4.709
+=======================================================================================================================================================
 
 
 
@@ -649,51 +651,51 @@ Path information for path number 1:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         14.913
 
-    - Propagation time:                      13.742
+    - Propagation time:                      13.358
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 1.171
+    = Slack (non-critical) :                 1.555
 
     Number of logic level(s):                9
-    Starting point:                          Sensors_0.Accelerometer_0.I2C_Master_0.scl / Q
-    Ending point:                            Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[3] / D
+    Starting point:                          Sensors_0.Gyro_0.I2C_Master_0.scl / Q
+    Ending point:                            Sensors_0.Gyro_0.I2C_Master_0.bitcnt[3] / D
     The start point is clocked by            ClockDivs|clk_800kHz_inferred_clock [rising] on pin CLK
     The end   point is clocked by            ClockDivs|clk_800kHz_inferred_clock [falling] on pin CLK
 
-Instance / Net                                                          Pin      Pin               Arrival     No. of    
-Name                                                         Type       Name     Dir     Delay     Time        Fan Out(s)
--------------------------------------------------------------------------------------------------------------------------
-Sensors_0.Accelerometer_0.I2C_Master_0.scl                   DFN1P1     Q        Out     0.737     0.737       -         
-ACCE_SCL_c                                                   Net        -        -       2.466     -           24        
-Sensors_0.Accelerometer_0.I2C_Master_0.scl_RNIJUCI           NOR2B      B        In      -         3.203       -         
-Sensors_0.Accelerometer_0.I2C_Master_0.scl_RNIJUCI           NOR2B      Y        Out     0.627     3.830       -         
-N_422                                                        Net        -        -       0.386     -           2         
-Sensors_0.Accelerometer_0.I2C_Master_0.state_RNICLQQ[8]      OR2        B        In      -         4.216       -         
-Sensors_0.Accelerometer_0.I2C_Master_0.state_RNICLQQ[8]      OR2        Y        Out     0.646     4.863       -         
-un1_state_6_i_1_0                                            Net        -        -       0.322     -           1         
-Sensors_0.Accelerometer_0.I2C_Master_0.state_RNIUFMV2[1]     AO1        C        In      -         5.184       -         
-Sensors_0.Accelerometer_0.I2C_Master_0.state_RNIUFMV2[1]     AO1        Y        Out     0.633     5.817       -         
-un1_state_4_1                                                Net        -        -       0.386     -           2         
-Sensors_0.Accelerometer_0.I2C_Master_0.state_RNIEJRJ5[0]     NOR3       C        In      -         6.203       -         
-Sensors_0.Accelerometer_0.I2C_Master_0.state_RNIEJRJ5[0]     NOR3       Y        Out     0.751     6.954       -         
-state_RNIEJRJ5[0]                                            Net        -        -       1.669     -           9         
-Sensors_0.Accelerometer_0.I2C_Master_0.un1_bitcnt.I_9        XOR2       B        In      -         8.622       -         
-Sensors_0.Accelerometer_0.I2C_Master_0.un1_bitcnt.I_9        XOR2       Y        Out     0.937     9.559       -         
-DWACT_ADD_CI_0_pog_array_0[0]                                Net        -        -       0.322     -           1         
-Sensors_0.Accelerometer_0.I2C_Master_0.un1_bitcnt.I_20       AO1        A        In      -         9.880       -         
-Sensors_0.Accelerometer_0.I2C_Master_0.un1_bitcnt.I_20       AO1        Y        Out     0.520     10.400      -         
-DWACT_ADD_CI_0_g_array_1[0]                                  Net        -        -       0.386     -           2         
-Sensors_0.Accelerometer_0.I2C_Master_0.un1_bitcnt.I_22       AO1        B        In      -         10.786      -         
-Sensors_0.Accelerometer_0.I2C_Master_0.un1_bitcnt.I_22       AO1        Y        Out     0.567     11.352      -         
-DWACT_ADD_CI_0_g_array_12[0]                                 Net        -        -       0.322     -           1         
-Sensors_0.Accelerometer_0.I2C_Master_0.un1_bitcnt.I_16       XOR2       B        In      -         11.674      -         
-Sensors_0.Accelerometer_0.I2C_Master_0.un1_bitcnt.I_16       XOR2       Y        Out     0.937     12.610      -         
-I_16                                                         Net        -        -       0.322     -           1         
-Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt_RNO[3]         NOR2B      A        In      -         12.932      -         
-Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt_RNO[3]         NOR2B      Y        Out     0.488     13.420      -         
-bitcnt_12[3]                                                 Net        -        -       0.322     -           1         
-Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[3]             DFN0C1     D        In      -         13.742      -         
-=========================================================================================================================
-Total path delay (propagation time + setup) of 14.454 is 7.555(52.3%) logic and 6.900(47.7%) route.
+Instance / Net                                                 Pin      Pin               Arrival     No. of    
+Name                                                Type       Name     Dir     Delay     Time        Fan Out(s)
+----------------------------------------------------------------------------------------------------------------
+Sensors_0.Gyro_0.I2C_Master_0.scl                   DFN1P1     Q        Out     0.737     0.737       -         
+GYRO_SCL_c                                          Net        -        -       2.082     -           14        
+Sensors_0.Gyro_0.I2C_Master_0.scl_RNI5H8V           NOR2B      B        In      -         2.819       -         
+Sensors_0.Gyro_0.I2C_Master_0.scl_RNI5H8V           NOR2B      Y        Out     0.627     3.446       -         
+N_436                                               Net        -        -       0.386     -           2         
+Sensors_0.Gyro_0.I2C_Master_0.state_RNI4OH91[8]     OR2        B        In      -         3.832       -         
+Sensors_0.Gyro_0.I2C_Master_0.state_RNI4OH91[8]     OR2        Y        Out     0.646     4.479       -         
+un1_state_6_i_1_0                                   Net        -        -       0.322     -           1         
+Sensors_0.Gyro_0.I2C_Master_0.state_RNI9H883[1]     AO1        C        In      -         4.800       -         
+Sensors_0.Gyro_0.I2C_Master_0.state_RNI9H883[1]     AO1        Y        Out     0.633     5.433       -         
+un1_state_4_1                                       Net        -        -       0.386     -           2         
+Sensors_0.Gyro_0.I2C_Master_0.state_RNI3UEN5[0]     NOR3       C        In      -         5.819       -         
+Sensors_0.Gyro_0.I2C_Master_0.state_RNI3UEN5[0]     NOR3       Y        Out     0.751     6.569       -         
+state_RNI3UEN5[0]                                   Net        -        -       1.669     -           9         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_9        XOR2       B        In      -         8.238       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_9        XOR2       Y        Out     0.937     9.175       -         
+DWACT_ADD_CI_0_pog_array_0[0]                       Net        -        -       0.322     -           1         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_20       AO1        A        In      -         9.496       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_20       AO1        Y        Out     0.520     10.016      -         
+DWACT_ADD_CI_0_g_array_1[0]                         Net        -        -       0.386     -           2         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_22       AO1        B        In      -         10.402      -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_22       AO1        Y        Out     0.567     10.968      -         
+DWACT_ADD_CI_0_g_array_12[0]                        Net        -        -       0.322     -           1         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_16       XOR2       B        In      -         11.290      -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_16       XOR2       Y        Out     0.937     12.226      -         
+I_16_1                                              Net        -        -       0.322     -           1         
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt_RNO[3]         NOR2B      A        In      -         12.548      -         
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt_RNO[3]         NOR2B      Y        Out     0.488     13.036      -         
+bitcnt_12[3]                                        Net        -        -       0.322     -           1         
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt[3]             DFN0C1     D        In      -         13.358      -         
+================================================================================================================
+Total path delay (propagation time + setup) of 14.070 is 7.555(53.7%) logic and 6.516(46.3%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -712,16 +714,16 @@ Starting Points with Worst Slack
 Instance                                 Reference                           Type       Pin     Net           Time        Slack 
                                          Clock                                                                                  
 --------------------------------------------------------------------------------------------------------------------------------
-Pressure_Signal_Debounce_0.state[1]      Timing|m_time_inferred_clock[7]     DFN1C1     Q       state[1]      0.580       17.095
-Pressure_Signal_Debounce_0.state[0]      Timing|m_time_inferred_clock[7]     DFN1C1     Q       state[0]      0.737       19.841
-Pressure_Signal_Debounce_0.ms_cnt[2]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[2]     0.737       20.471
-Pressure_Signal_Debounce_0.ms_cnt[4]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[4]     0.737       20.611
-Pressure_Signal_Debounce_0.ms_cnt[0]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[0]     0.737       20.877
-Pressure_Signal_Debounce_0.ms_cnt[6]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[6]     0.580       20.927
-Pressure_Signal_Debounce_0.ms_cnt[1]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[1]     0.737       21.016
-Pressure_Signal_Debounce_0.ms_cnt[3]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[3]     0.580       21.205
-Pressure_Signal_Debounce_0.ms_cnt[5]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[5]     0.580       21.332
-Pressure_Signal_Debounce_0.ms_cnt[9]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[9]     0.580       21.654
+Pressure_Signal_Debounce_0.state[1]      Timing|m_time_inferred_clock[7]     DFN1C1     Q       state[1]      0.737       17.255
+Pressure_Signal_Debounce_0.state[0]      Timing|m_time_inferred_clock[7]     DFN1C1     Q       state[0]      0.737       19.594
+Pressure_Signal_Debounce_0.ms_cnt[0]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[0]     0.737       21.464
+Pressure_Signal_Debounce_0.ms_cnt[4]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[4]     0.737       21.691
+Pressure_Signal_Debounce_0.ms_cnt[2]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[2]     0.737       21.830
+Pressure_Signal_Debounce_0.ms_cnt[1]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[1]     0.737       22.251
+Pressure_Signal_Debounce_0.ms_cnt[7]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[7]     0.737       22.282
+Pressure_Signal_Debounce_0.ms_cnt[3]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[3]     0.737       22.395
+Pressure_Signal_Debounce_0.ms_cnt[6]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[6]     0.737       22.711
+Pressure_Signal_Debounce_0.ms_cnt[8]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[8]     0.737       23.231
 ================================================================================================================================
 
 
@@ -732,16 +734,16 @@ Ending Points with Worst Slack
 Instance                                 Reference                           Type     Pin     Net                 Time         Slack 
                                          Clock                                                                                       
 -------------------------------------------------------------------------------------------------------------------------------------
-Pressure_Signal_Debounce_0.ms_cnt[7]     Timing|m_time_inferred_clock[7]     DFN1     D       N_20                30.711       17.095
-Pressure_Signal_Debounce_0.ms_cnt[9]     Timing|m_time_inferred_clock[7]     DFN1     D       N_16_i              30.711       17.095
-Pressure_Signal_Debounce_0.ms_cnt[6]     Timing|m_time_inferred_clock[7]     DFN1     D       N_17                30.711       17.905
-Pressure_Signal_Debounce_0.ms_cnt[8]     Timing|m_time_inferred_clock[7]     DFN1     D       N_28                30.711       17.905
-Pressure_Signal_Debounce_0.ms_cnt[5]     Timing|m_time_inferred_clock[7]     DFN1     D       N_13                30.711       17.969
-Pressure_Signal_Debounce_0.ms_cnt[4]     Timing|m_time_inferred_clock[7]     DFN1     D       ms_cnt_RNO_0[4]     30.711       18.583
-Pressure_Signal_Debounce_0.ms_cnt[3]     Timing|m_time_inferred_clock[7]     DFN1     D       N_10                30.711       19.641
-Pressure_Signal_Debounce_0.ms_cnt[2]     Timing|m_time_inferred_clock[7]     DFN1     D       ms_cnt_RNO_0[2]     30.711       20.255
-Pressure_Signal_Debounce_0.ms_cnt[0]     Timing|m_time_inferred_clock[7]     DFN1     D       N_8                 30.677       20.471
-Pressure_Signal_Debounce_0.ms_cnt[1]     Timing|m_time_inferred_clock[7]     DFN1     D       ms_cnt_RNO_0[1]     30.677       21.460
+Pressure_Signal_Debounce_0.ms_cnt[7]     Timing|m_time_inferred_clock[7]     DFN1     D       N_20                30.711       17.255
+Pressure_Signal_Debounce_0.ms_cnt[9]     Timing|m_time_inferred_clock[7]     DFN1     D       N_16_i              30.711       17.255
+Pressure_Signal_Debounce_0.ms_cnt[6]     Timing|m_time_inferred_clock[7]     DFN1     D       N_17                30.711       18.065
+Pressure_Signal_Debounce_0.ms_cnt[8]     Timing|m_time_inferred_clock[7]     DFN1     D       N_28                30.711       18.065
+Pressure_Signal_Debounce_0.ms_cnt[5]     Timing|m_time_inferred_clock[7]     DFN1     D       N_13                30.711       18.129
+Pressure_Signal_Debounce_0.ms_cnt[4]     Timing|m_time_inferred_clock[7]     DFN1     D       ms_cnt_RNO_0[4]     30.711       18.742
+Pressure_Signal_Debounce_0.ms_cnt[3]     Timing|m_time_inferred_clock[7]     DFN1     D       N_10                30.711       19.801
+Pressure_Signal_Debounce_0.ms_cnt[2]     Timing|m_time_inferred_clock[7]     DFN1     D       ms_cnt_RNO_0[2]     30.711       20.414
+Pressure_Signal_Debounce_0.ms_cnt[1]     Timing|m_time_inferred_clock[7]     DFN1     D       ms_cnt_RNO_0[1]     30.677       21.691
+Pressure_Signal_Debounce_0.ms_cnt[0]     Timing|m_time_inferred_clock[7]     DFN1     D       N_8                 30.677       21.702
 =====================================================================================================================================
 
 
@@ -756,57 +758,54 @@ Path information for path number 1:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         30.711
 
-    - Propagation time:                      13.616
+    - Propagation time:                      13.456
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 17.095
+    = Slack (non-critical) :                 17.255
 
-    Number of logic level(s):                11
+    Number of logic level(s):                10
     Starting point:                          Pressure_Signal_Debounce_0.state[1] / Q
     Ending point:                            Pressure_Signal_Debounce_0.ms_cnt[7] / D
     The start point is clocked by            Timing|m_time_inferred_clock[7] [rising] on pin CLK
     The end   point is clocked by            Timing|m_time_inferred_clock[7] [rising] on pin CLK
 
-Instance / Net                                              Pin      Pin               Arrival     No. of    
-Name                                             Type       Name     Dir     Delay     Time        Fan Out(s)
--------------------------------------------------------------------------------------------------------------
-Pressure_Signal_Debounce_0.state[1]              DFN1C1     Q        Out     0.580     0.580       -         
-state[1]                                         Net        -        -       1.423     -           6         
-Pressure_Signal_Debounce_0.state_RNI7CNC3[1]     NOR2A      B        In      -         2.004       -         
-Pressure_Signal_Debounce_0.state_RNI7CNC3[1]     NOR2A      Y        Out     0.386     2.390       -         
-N_140                                            Net        -        -       0.322     -           1         
-Pressure_Signal_Debounce_0.state_RNI1FS19[1]     AO1        C        In      -         2.711       -         
-Pressure_Signal_Debounce_0.state_RNI1FS19[1]     AO1        Y        Out     0.633     3.344       -         
-un1_reset_0_0_o3_0                               Net        -        -       0.322     -           1         
-Pressure_Signal_Debounce_0.state_RNI3J2UI[1]     OR2        B        In      -         3.665       -         
-Pressure_Signal_Debounce_0.state_RNI3J2UI[1]     OR2        Y        Out     0.646     4.312       -         
-N_358                                            Net        -        -       0.386     -           2         
-Pressure_Signal_Debounce_0.state_RNIO46IJ[0]     OA1C       A        In      -         4.697       -         
-Pressure_Signal_Debounce_0.state_RNIO46IJ[0]     OA1C       Y        Out     0.931     5.629       -         
-state_RNIO46IJ[0]                                Net        -        -       0.386     -           2         
-Pressure_Signal_Debounce_0.un1_ms_cnt.I_1        AND2       B        In      -         6.015       -         
-Pressure_Signal_Debounce_0.un1_ms_cnt.I_1        AND2       Y        Out     0.516     6.531       -         
-DWACT_ADD_CI_0_TMP[0]                            Net        -        -       0.386     -           2         
-Pressure_Signal_Debounce_0.un1_ms_cnt.I_56       NOR2B      A        In      -         6.917       -         
-Pressure_Signal_Debounce_0.un1_ms_cnt.I_56       NOR2B      Y        Out     0.488     7.405       -         
-DWACT_ADD_CI_0_g_array_1[0]                      Net        -        -       0.806     -           3         
-Pressure_Signal_Debounce_0.un1_ms_cnt.I_55       NOR2B      A        In      -         8.211       -         
-Pressure_Signal_Debounce_0.un1_ms_cnt.I_55       NOR2B      Y        Out     0.488     8.700       -         
-DWACT_ADD_CI_0_g_array_2[0]                      Net        -        -       1.184     -           4         
-Pressure_Signal_Debounce_0.un1_ms_cnt.I_51       NOR2B      A        In      -         9.883       -         
-Pressure_Signal_Debounce_0.un1_ms_cnt.I_51       NOR2B      Y        Out     0.488     10.372      -         
-DWACT_ADD_CI_0_g_array_11[0]                     Net        -        -       0.386     -           2         
-Pressure_Signal_Debounce_0.un1_ms_cnt.I_52       NOR2B      A        In      -         10.757      -         
-Pressure_Signal_Debounce_0.un1_ms_cnt.I_52       NOR2B      Y        Out     0.488     11.246      -         
-DWACT_ADD_CI_0_g_array_12_2[0]                   Net        -        -       0.322     -           1         
-Pressure_Signal_Debounce_0.un1_ms_cnt.I_39       XOR2       B        In      -         11.567      -         
-Pressure_Signal_Debounce_0.un1_ms_cnt.I_39       XOR2       Y        Out     0.937     12.504      -         
-un1_ms_cnt_i_li[2]                               Net        -        -       0.322     -           1         
-Pressure_Signal_Debounce_0.ms_cnt_RNO[7]         AO1B       A        In      -         12.825      -         
-Pressure_Signal_Debounce_0.ms_cnt_RNO[7]         AO1B       Y        Out     0.469     13.295      -         
-N_20                                             Net        -        -       0.322     -           1         
-Pressure_Signal_Debounce_0.ms_cnt[7]             DFN1       D        In      -         13.616      -         
-=============================================================================================================
-Total path delay (propagation time + setup) of 14.155 is 7.591(53.6%) logic and 6.564(46.4%) route.
+Instance / Net                                                Pin      Pin               Arrival     No. of    
+Name                                               Type       Name     Dir     Delay     Time        Fan Out(s)
+---------------------------------------------------------------------------------------------------------------
+Pressure_Signal_Debounce_0.state[1]                DFN1C1     Q        Out     0.737     0.737       -         
+state[1]                                           Net        -        -       1.526     -           7         
+Pressure_Signal_Debounce_0.state_RNI246S9[1]       MX2        S        In      -         2.263       -         
+Pressure_Signal_Debounce_0.state_RNI246S9[1]       MX2        Y        Out     0.396     2.659       -         
+un1_reset_0_0_o3_1                                 Net        -        -       0.322     -           1         
+Pressure_Signal_Debounce_0.state_RNI3J2UI[1]       OR3        C        In      -         2.981       -         
+Pressure_Signal_Debounce_0.state_RNI3J2UI[1]       OR3        Y        Out     0.751     3.731       -         
+N_358                                              Net        -        -       0.806     -           3         
+Pressure_Signal_Debounce_0.state_RNIO46IJ_0[0]     OA1C       A        In      -         4.538       -         
+Pressure_Signal_Debounce_0.state_RNIO46IJ_0[0]     OA1C       Y        Out     0.931     5.469       -         
+state_RNIO46IJ_0[0]                                Net        -        -       0.386     -           2         
+Pressure_Signal_Debounce_0.un1_ms_cnt.I_1          AND2       B        In      -         5.855       -         
+Pressure_Signal_Debounce_0.un1_ms_cnt.I_1          AND2       Y        Out     0.516     6.371       -         
+DWACT_ADD_CI_0_TMP[0]                              Net        -        -       0.386     -           2         
+Pressure_Signal_Debounce_0.un1_ms_cnt.I_56         NOR2B      A        In      -         6.757       -         
+Pressure_Signal_Debounce_0.un1_ms_cnt.I_56         NOR2B      Y        Out     0.488     7.245       -         
+DWACT_ADD_CI_0_g_array_1[0]                        Net        -        -       0.806     -           3         
+Pressure_Signal_Debounce_0.un1_ms_cnt.I_55         NOR2B      A        In      -         8.052       -         
+Pressure_Signal_Debounce_0.un1_ms_cnt.I_55         NOR2B      Y        Out     0.488     8.540       -         
+DWACT_ADD_CI_0_g_array_2[0]                        Net        -        -       1.184     -           4         
+Pressure_Signal_Debounce_0.un1_ms_cnt.I_51         NOR2B      A        In      -         9.724       -         
+Pressure_Signal_Debounce_0.un1_ms_cnt.I_51         NOR2B      Y        Out     0.488     10.212      -         
+DWACT_ADD_CI_0_g_array_11[0]                       Net        -        -       0.386     -           2         
+Pressure_Signal_Debounce_0.un1_ms_cnt.I_52         NOR2B      A        In      -         10.598      -         
+Pressure_Signal_Debounce_0.un1_ms_cnt.I_52         NOR2B      Y        Out     0.488     11.086      -         
+DWACT_ADD_CI_0_g_array_12_2[0]                     Net        -        -       0.322     -           1         
+Pressure_Signal_Debounce_0.un1_ms_cnt.I_39         XOR2       B        In      -         11.408      -         
+Pressure_Signal_Debounce_0.un1_ms_cnt.I_39         XOR2       Y        Out     0.937     12.344      -         
+un1_ms_cnt_i_li[2]                                 Net        -        -       0.322     -           1         
+Pressure_Signal_Debounce_0.ms_cnt_RNO[7]           AO1B       A        In      -         12.666      -         
+Pressure_Signal_Debounce_0.ms_cnt_RNO[7]           AO1B       Y        Out     0.469     13.135      -         
+N_20                                               Net        -        -       0.322     -           1         
+Pressure_Signal_Debounce_0.ms_cnt[7]               DFN1       D        In      -         13.456      -         
+===============================================================================================================
+Total path delay (propagation time + setup) of 13.995 is 7.229(51.7%) logic and 6.766(48.3%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -825,8 +824,8 @@ Starting Points with Worst Slack
 Instance                             Reference                           Type         Pin     Net            Time        Slack 
                                      Clock                                                                                     
 -------------------------------------------------------------------------------------------------------------------------------
-Science_0.ADC_RESET_0.state[1]       Timing|s_time_inferred_clock[5]     DFN1E0       Q       state[1]       0.737       27.329
-Science_0.ADC_RESET_0.state[0]       Timing|s_time_inferred_clock[5]     DFN1E0       Q       state[0]       0.737       27.611
+Science_0.ADC_RESET_0.state[1]       Timing|s_time_inferred_clock[5]     DFN1E0       Q       state[1]       0.737       27.190
+Science_0.ADC_RESET_0.state[0]       Timing|s_time_inferred_clock[5]     DFN1E0       Q       state[0]       0.737       27.750
 Science_0.ADC_RESET_0.old_enable     Timing|s_time_inferred_clock[5]     DFN1E1C1     Q       old_enable     0.737       28.843
 ===============================================================================================================================
 
@@ -838,8 +837,8 @@ Ending Points with Worst Slack
 Instance                             Reference                           Type         Pin     Net            Time         Slack 
                                      Clock                                                                                      
 --------------------------------------------------------------------------------------------------------------------------------
-Science_0.ADC_RESET_0.state[0]       Timing|s_time_inferred_clock[5]     DFN1E0       D       N_13           30.711       27.329
-Science_0.ADC_RESET_0.old_enable     Timing|s_time_inferred_clock[5]     DFN1E1C1     E       state_d[2]     30.850       28.414
+Science_0.ADC_RESET_0.state[0]       Timing|s_time_inferred_clock[5]     DFN1E0       D       N_13           30.711       27.190
+Science_0.ADC_RESET_0.old_enable     Timing|s_time_inferred_clock[5]     DFN1E1C1     E       state_d[2]     30.850       28.275
 Science_0.ADC_RESET_0.state[1]       Timing|s_time_inferred_clock[5]     DFN1E0       D       N_14           30.711       28.440
 Science_0.ADC_RESET_0.ADCRESET       Timing|s_time_inferred_clock[5]     DFN1C1       D       state[1]       30.677       29.133
 ================================================================================================================================
@@ -856,9 +855,9 @@ Path information for path number 1:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         30.711
 
-    - Propagation time:                      3.382
+    - Propagation time:                      3.521
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 27.329
+    = Slack (non-critical) :                 27.190
 
     Number of logic level(s):                2
     Starting point:                          Science_0.ADC_RESET_0.state[1] / Q
@@ -871,15 +870,15 @@ Name                                       Type       Name     Dir     Delay    
 -------------------------------------------------------------------------------------------------------
 Science_0.ADC_RESET_0.state[1]             DFN1E0     Q        Out     0.737     0.737       -         
 state[1]                                   Net        -        -       0.806     -           3         
-Science_0.ADC_RESET_0.state_RNIFH4T[0]     NOR2       A        In      -         1.543       -         
-Science_0.ADC_RESET_0.state_RNIFH4T[0]     NOR2       Y        Out     0.507     2.051       -         
+Science_0.ADC_RESET_0.state_RNIFH4T[0]     NOR2       B        In      -         1.543       -         
+Science_0.ADC_RESET_0.state_RNIFH4T[0]     NOR2       Y        Out     0.646     2.190       -         
 state_d[2]                                 Net        -        -       0.386     -           2         
-Science_0.ADC_RESET_0.state_RNO[0]         NOR3B      B        In      -         2.437       -         
-Science_0.ADC_RESET_0.state_RNO[0]         NOR3B      Y        Out     0.624     3.060       -         
+Science_0.ADC_RESET_0.state_RNO[0]         NOR3B      B        In      -         2.576       -         
+Science_0.ADC_RESET_0.state_RNO[0]         NOR3B      Y        Out     0.624     3.200       -         
 N_13                                       Net        -        -       0.322     -           1         
-Science_0.ADC_RESET_0.state[0]             DFN1E0     D        In      -         3.382       -         
+Science_0.ADC_RESET_0.state[0]             DFN1E0     D        In      -         3.521       -         
 =======================================================================================================
-Total path delay (propagation time + setup) of 3.921 is 2.407(61.4%) logic and 1.514(38.6%) route.
+Total path delay (propagation time + setup) of 4.060 is 2.546(62.7%) logic and 1.514(37.3%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -899,15 +898,15 @@ Instance                                   Reference          Type         Pin  
                                            Clock                                                                                              
 ----------------------------------------------------------------------------------------------------------------------------------------------
 Data_Saving_0.Packet_Saver_0.we            Toplevel|CLOCK     DFN0E1C1     Q       Packet_Saver_0_we                        0.653       -3.754
-Science_0.ADC_READ_0.g4i[0]                Toplevel|CLOCK     DFN1E0C1     Q       ADC_READ_0_G4[0]                         0.737       7.705 
-Science_0.ADC_READ_0.g3i[1]                Toplevel|CLOCK     DFN1E1C1     Q       ADC_READ_0_G3[1]                         0.737       7.818 
-Science_0.ADC_READ_0.g4i[1]                Toplevel|CLOCK     DFN1E0C1     Q       ADC_READ_0_G4[1]                         0.737       7.959 
-General_Controller_0.en_data_saving        Toplevel|CLOCK     DFN1E1C1     Q       General_Controller_0_en_data_saving      0.580       8.101 
-Science_0.ADC_READ_0.g3i[0]                Toplevel|CLOCK     DFN1E1C1     Q       ADC_READ_0_G3[0]                         0.737       8.216 
-Science_0.ADC_READ_0.g1i[1]                Toplevel|CLOCK     DFN1E1C1     Q       ADC_READ_0_G1[1]                         0.737       8.832 
-Science_0.ADC_READ_0.g1i[0]                Toplevel|CLOCK     DFN1E1C1     Q       ADC_READ_0_G1[0]                         0.737       8.880 
-Science_0.ADC_READ_0.g2i[0]                Toplevel|CLOCK     DFN1E1C1     Q       ADC_READ_0_G2[0]                         0.737       8.974 
-General_Controller_0.status_bits_1[42]     Toplevel|CLOCK     DFN1E0       Q       Data_Hub_Packets_0_status_packet[42]     0.737       9.009 
+Science_0.ADC_READ_0.g4i[0]                Toplevel|CLOCK     DFN1E0C1     Q       ADC_READ_0_G4[0]                         0.737       7.818 
+Science_0.ADC_READ_0.g3i[0]                Toplevel|CLOCK     DFN1E1C1     Q       ADC_READ_0_G3[0]                         0.737       7.952 
+Science_0.ADC_READ_0.g3i[1]                Toplevel|CLOCK     DFN1E1C1     Q       ADC_READ_0_G3[1]                         0.737       7.959 
+Science_0.ADC_READ_0.g4i[1]                Toplevel|CLOCK     DFN1E0C1     Q       ADC_READ_0_G4[1]                         0.737       7.970 
+General_Controller_0.status_bits_1[42]     Toplevel|CLOCK     DFN1         Q       Data_Hub_Packets_0_status_packet[42]     0.737       8.588 
+General_Controller_0.status_bits_1[43]     Toplevel|CLOCK     DFN1         Q       Data_Hub_Packets_0_status_packet[43]     0.737       8.588 
+General_Controller_0.status_bits_1[44]     Toplevel|CLOCK     DFN1         Q       Data_Hub_Packets_0_status_packet[44]     0.737       8.588 
+General_Controller_0.status_bits_1[45]     Toplevel|CLOCK     DFN1         Q       Data_Hub_Packets_0_status_packet[45]     0.737       8.588 
+General_Controller_0.status_bits_1[46]     Toplevel|CLOCK     DFN1         Q       Data_Hub_Packets_0_status_packet[46]     0.737       8.588 
 ==============================================================================================================================================
 
 
@@ -1388,38 +1387,37 @@ Path delay compensated for clock skew. Clock skew is added to clock-to-out value
 Timing exceptions that could not be applied
 None
 
-Finished final timing analysis (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:12s; Memory used current: 197MB peak: 207MB)
+Finished final timing analysis (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:12s; Memory used current: 185MB peak: 197MB)
 
 
-Finished timing report (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:12s; Memory used current: 197MB peak: 207MB)
+Finished timing report (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:12s; Memory used current: 185MB peak: 197MB)
 
 --------------------------------------------------------------------------------
 Target Part: A3P250_VQFP100_STD
 Report for cell Toplevel.rtl
   Core Cell usage:
               cell count     area count*area
-              AND2    92      1.0       92.0
+              AND2    88      1.0       88.0
              AND2A     1      1.0        1.0
               AND3    14      1.0       14.0
-               AO1   333      1.0      333.0
-              AO16     2      1.0        2.0
+               AO1   308      1.0      308.0
+              AO16     1      1.0        1.0
               AO18     4      1.0        4.0
-              AO1A    78      1.0       78.0
-              AO1B    18      1.0       18.0
-              AO1C    23      1.0       23.0
-              AO1D    20      1.0       20.0
-              AOI1    28      1.0       28.0
-             AOI1B    12      1.0       12.0
+              AO1A    90      1.0       90.0
+              AO1B    14      1.0       14.0
+              AO1C    21      1.0       21.0
+              AO1D    19      1.0       19.0
+              AOI1    23      1.0       23.0
+             AOI1B    13      1.0       13.0
               AOI5     2      1.0        2.0
-               AX1     5      1.0        5.0
+               AX1     7      1.0        7.0
               AX1A     4      1.0        4.0
-              AX1B     9      1.0        9.0
-              AX1C    46      1.0       46.0
-              AX1D     4      1.0        4.0
-              AX1E     1      1.0        1.0
+              AX1B     8      1.0        8.0
+              AX1C    49      1.0       49.0
+              AX1D     6      1.0        6.0
+              AX1E     2      1.0        2.0
               AXO5     2      1.0        2.0
-             AXOI3     1      1.0        1.0
-             AXOI4     3      1.0        3.0
+             AXOI4     4      1.0        4.0
              AXOI5     1      1.0        1.0
              AXOI7     4      1.0        4.0
               BUFF     2      1.0        2.0
@@ -1428,42 +1426,41 @@ Report for cell Toplevel.rtl
                INV    27      1.0       27.0
               MAJ3     4      1.0        4.0
               MIN3     1      1.0        1.0
-             MIN3X     1      1.0        1.0
-               MX2   444      1.0      444.0
-              MX2A    33      1.0       33.0
-              MX2B    13      1.0       13.0
-              MX2C    14      1.0       14.0
+               MX2   478      1.0      478.0
+              MX2A    34      1.0       34.0
+              MX2B    15      1.0       15.0
+              MX2C    13      1.0       13.0
              NAND2     2      1.0        2.0
             NAND3A     4      1.0        4.0
-              NOR2   170      1.0      170.0
-             NOR2A   364      1.0      364.0
-             NOR2B   701      1.0      701.0
-              NOR3    56      1.0       56.0
-             NOR3A   168      1.0      168.0
-             NOR3B   195      1.0      195.0
-             NOR3C   180      1.0      180.0
-               OA1    56      1.0       56.0
-              OA1A    28      1.0       28.0
+              NOR2   185      1.0      185.0
+             NOR2A   379      1.0      379.0
+             NOR2B   712      1.0      712.0
+              NOR3    63      1.0       63.0
+             NOR3A   169      1.0      169.0
+             NOR3B   194      1.0      194.0
+             NOR3C   197      1.0      197.0
+               OA1    49      1.0       49.0
+              OA1A    22      1.0       22.0
               OA1B    36      1.0       36.0
-              OA1C    46      1.0       46.0
-              OAI1     5      1.0        5.0
-               OR2   213      1.0      213.0
-              OR2A   123      1.0      123.0
-              OR2B    54      1.0       54.0
-               OR3   273      1.0      273.0
-              OR3A    52      1.0       52.0
+              OA1C    36      1.0       36.0
+              OAI1     8      1.0        8.0
+               OR2   210      1.0      210.0
+              OR2A   119      1.0      119.0
+              OR2B    50      1.0       50.0
+               OR3   293      1.0      293.0
+              OR3A    43      1.0       43.0
               OR3B    16      1.0       16.0
-              OR3C     8      1.0        8.0
+              OR3C    11      1.0       11.0
                VCC    36      0.0        0.0
-               XA1    29      1.0       29.0
-              XA1A    26      1.0       26.0
-              XA1B    19      1.0       19.0
-              XA1C     4      1.0        4.0
-             XNOR2    54      1.0       54.0
+               XA1    28      1.0       28.0
+              XA1A    11      1.0       11.0
+              XA1B    24      1.0       24.0
+              XA1C     7      1.0        7.0
+             XNOR2    52      1.0       52.0
              XNOR3    31      1.0       31.0
-               XO1     4      1.0        4.0
-              XO1A     5      1.0        5.0
-              XOR2   270      1.0      270.0
+               XO1     5      1.0        5.0
+              XO1A     6      1.0        6.0
+              XOR2   275      1.0      275.0
               XOR3    11      1.0       11.0
 
 
@@ -1475,22 +1472,22 @@ Report for cell Toplevel.rtl
             DFN0E1     3      1.0        3.0
           DFN0E1C1    54      1.0       54.0
             DFN0P1    26      1.0       26.0
-              DFN1    25      1.0       25.0
+              DFN1    54      1.0       54.0
             DFN1C0    83      1.0       83.0
-            DFN1C1   242      1.0      242.0
-            DFN1E0    53      1.0       53.0
+            DFN1C1   243      1.0      243.0
+            DFN1E0    22      1.0       22.0
           DFN1E0C1   128      1.0      128.0
           DFN1E0P1     7      1.0        7.0
-            DFN1E1   417      1.0      417.0
+            DFN1E1   419      1.0      419.0
           DFN1E1C0     8      1.0        8.0
-          DFN1E1C1   483      1.0      483.0
+          DFN1E1C1   482      1.0      482.0
           DFN1E1P1    42      1.0       42.0
             DFN1P0     1      1.0        1.0
-            DFN1P1    47      1.0       47.0
+            DFN1P1    48      1.0       48.0
             RAM4K9     4      0.0        0.0
          RAM512X18     2      0.0        0.0
                    -----          ----------
-             TOTAL  6264              6180.0
+             TOTAL  6323              6239.0
 
 
   IO Cell usage:
@@ -1503,7 +1500,7 @@ Report for cell Toplevel.rtl
              TOTAL    51
 
 
-Core Cells         : 6180 of 6144 (101%)
+Core Cells         : 6239 of 6144 (102%)
 IO Cells           : 51
 
   RAM/ROM Usage Summary
@@ -1511,9 +1508,9 @@ Block Rams : 6 of 8 (75%)
 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:14s; CPU Time elapsed 0h:00m:12s; Memory used current: 38MB peak: 207MB)
+At Mapper Exit (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:12s; Memory used current: 38MB peak: 197MB)
 
-Process took 0h:00m:14s realtime, 0h:00m:12s cputime
-# Fri Aug 30 21:26:07 2024
+Process took 0h:00m:13s realtime, 0h:00m:12s cputime
+# Sun Sep 01 21:14:54 2024
 
 ###########################################################]

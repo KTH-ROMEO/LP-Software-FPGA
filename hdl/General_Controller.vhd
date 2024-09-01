@@ -565,9 +565,21 @@ begin
 
                 when uc_tx_send_sweep_table =>
                     case uc_tx_substate is
+--                        when 1 => 
+--                            if uc_tx_rdy = '1' then
+--                                uc_send <= x"A1";
+--                                uc_wen <= '1';
+--                                uc_tx_substate <= uc_tx_substate + 1;
+--                            end if;
+--                        when 2 =>
+--                            if uc_tx_rdy = '0' then
+--                                uc_wen <= '0';
+--                                uc_tx_substate <= 1;
+--                                uc_tx_substate <= uc_tx_substate + 1;
+--                            end if;
                         when 1 => 
                             if uc_tx_rdy = '1' then
-                                uc_send <= x"A1";
+                                uc_send <= sweep_table_read_value(7 downto 0);
                                 uc_wen <= '1';
                                 uc_tx_substate <= uc_tx_substate + 1;
                             end if;
@@ -579,23 +591,11 @@ begin
                             end if;
                         when 3 => 
                             if uc_tx_rdy = '1' then
-                                uc_send <= sweep_table_read_value(7 downto 0);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 4 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 5 => 
-                            if uc_tx_rdy = '1' then
                                 uc_send <= sweep_table_read_value(15 downto 8);
                                 uc_wen <= '1';
                                 uc_tx_substate <= uc_tx_substate + 1;
                             end if;
-                        when 6 =>
+                        when 4 =>
                             if uc_tx_rdy = '0' then
                                 uc_wen <= '0';
                                 uc_tx_substate <= 1;
