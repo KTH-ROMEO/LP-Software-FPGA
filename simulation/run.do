@@ -10,10 +10,10 @@ if {[file exists presynth/_info]} {
 vmap presynth presynth
 vmap proasic3 "C:/Microsemi/Libero_SoC_v11.9/Designer/lib/modelsim/precompiled/vhdl/proasic3"
 
+vcom -2008 -explicit  -work presynth "${PROJECT_DIR}/smartgen/SweepTable/SweepTable.vhd"
 vcom -2008 -explicit  -work presynth "${PROJECT_DIR}/hdl/General_Controller.vhd"
 vcom -2008 -explicit  -work presynth "${PROJECT_DIR}/stimulus/General_Controller_Testbench.vhd"
-vcom -2008 -explicit  -work presynth "${PROJECT_DIR}/smartgen/SweepTable/SweepTable.vhd"
 
 vsim -L proasic3 -L presynth  -t 1ps presynth.General_Controller_Testbench
 add wave /General_Controller_Testbench/*
-run 100ps
+run 1000ns

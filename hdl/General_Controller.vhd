@@ -457,23 +457,11 @@ begin
                     case uc_tx_substate is
                         when 1 => 
                             if uc_tx_rdy = '1' then
-                                uc_send <= x"C0";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 2 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_state <= uc_tx_postamble;
-                            end if;
-                        when 3 => 
-                            if uc_tx_rdy = '1' then
                                 uc_send <= constant_bias_mode;
                                 uc_wen <= '1';
                                 uc_tx_substate <= uc_tx_substate + 1;
                             end if;
-                        when 4 =>
+                        when 2 =>
                             if uc_tx_rdy = '0' then
                                 uc_wen <= '0';
                                 uc_tx_substate <= 1;
@@ -487,7 +475,11 @@ begin
                     case uc_tx_substate is
                         when 1 => 
                             if uc_tx_rdy = '1' then
-                                uc_send <= x"CC";
+                                case constant_bias_probe_id is
+                                    when x"00" => uc_send <= constant_bias_voltage_0(7 downto 0);
+                                    when x"01" => uc_send <= constant_bias_voltage_1(7 downto 0);
+                                    when others =>
+                                end case;
                                 uc_wen <= '1';
                                 uc_tx_substate <= uc_tx_substate + 1;
                             end if;
@@ -500,22 +492,6 @@ begin
                         when 3 => 
                             if uc_tx_rdy = '1' then
                                 case constant_bias_probe_id is
-                                    when x"00" => uc_send <= constant_bias_voltage_0(7 downto 0);
-                                    when x"01" => uc_send <= constant_bias_voltage_1(7 downto 0);
-                                    when others =>
-                                end case;
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 4 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 5 => 
-                            if uc_tx_rdy = '1' then
-                                case constant_bias_probe_id is
                                     when x"00" => uc_send <= constant_bias_voltage_0(15 downto 8);
                                     when x"01" => uc_send <= constant_bias_voltage_1(15 downto 8);
                                     when others =>
@@ -523,7 +499,7 @@ begin
                                 uc_wen <= '1';
                                 uc_tx_substate <= uc_tx_substate + 1;
                             end if;
-                        when 6 =>
+                        when 4 =>
                             if uc_tx_rdy = '0' then
                                 uc_wen <= '0';
                                 uc_tx_substate <= 1;
@@ -537,23 +513,11 @@ begin
                     case uc_tx_substate is
                         when 1 => 
                             if uc_tx_rdy = '1' then
-                                uc_send <= x"A0";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 2 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_state <= uc_tx_postamble;
-                            end if;
-                        when 3 => 
-                            if uc_tx_rdy = '1' then
                                 uc_send <= sweep_table_mode;
                                 uc_wen <= '1';
                                 uc_tx_substate <= uc_tx_substate + 1;
                             end if;
-                        when 4 =>
+                        when 2 =>
                             if uc_tx_rdy = '0' then
                                 uc_wen <= '0';
                                 uc_tx_substate <= 1;
@@ -565,18 +529,6 @@ begin
 
                 when uc_tx_send_sweep_table =>
                     case uc_tx_substate is
---                        when 1 => 
---                            if uc_tx_rdy = '1' then
---                                uc_send <= x"A1";
---                                uc_wen <= '1';
---                                uc_tx_substate <= uc_tx_substate + 1;
---                            end if;
---                        when 2 =>
---                            if uc_tx_rdy = '0' then
---                                uc_wen <= '0';
---                                uc_tx_substate <= 1;
---                                uc_tx_substate <= uc_tx_substate + 1;
---                            end if;
                         when 1 => 
                             if uc_tx_rdy = '1' then
                                 uc_send <= sweep_table_read_value(7 downto 0);
@@ -605,59 +557,116 @@ begin
                     end case;
 
 
+                when uc_tx_send_swt_steps =>
+                    case uc_tx_substate is
+                        when 1 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= sweep_table_nof_steps;
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 2 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= 1;
+                                uc_tx_state <= uc_tx_postamble;
+                            end if;
+                        when others =>
+                    end case;
 
 
 
---
---                    when uc_tx_send_swt_steps =>
---                        case uc_tx_substate is
---                            when 1 => 
---                                if uc_tx_rdy = '1' then
---                                    uc_send <= SPECIFIC_DATA_BYTE_0;
---                                    uc_wen <= '1';
---                                    uc_tx_substate <= uc_tx_substate + 1;
---                                end if;
---                            when others =>
---                        end case;
---
---
---                    when uc_tx_send_swt_skip =>
---                        case uc_tx_substate is
---                            when 1 => 
---                                if uc_tx_rdy = '1' then
---                                    uc_send <= SPECIFIC_DATA_BYTE_0;
---                                    uc_wen <= '1';
---                                    uc_tx_substate <= uc_tx_substate + 1;
---                                end if;
---                            when others =>
---                        end case;
---
---
---                    when uc_tx_send_swt_samples_per_point =>
---                        case uc_tx_substate is
---                            when 1 => 
---                                if uc_tx_rdy = '1' then
---                                    uc_send <= SPECIFIC_DATA_BYTE_0;
---                                    uc_wen <= '1';
---                                    uc_tx_substate <= uc_tx_substate + 1;
---                                end if;
---                            when others =>
---                        end case;
---
---
---                    when uc_tx_send_swt_point =>
---                        case uc_tx_substate is
---                            when 1 => 
---                                if uc_tx_rdy = '1' then
---                                    uc_send <= SPECIFIC_DATA_BYTE_0;
---                                    uc_wen <= '1';
---                                    uc_tx_substate <= uc_tx_substate + 1;
---                                end if;
---                            when others =>
---                        end case;
---
---
---                    end case;
+                when uc_tx_send_swt_skip =>
+                    case uc_tx_substate is
+                        when 1 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= sweep_table_sample_skip(7 downto 0);
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 2 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= 1;
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 3 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= sweep_table_sample_skip(15 downto 8);
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 4 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= 1;
+                                uc_tx_state <= uc_tx_postamble;
+                            end if;
+                        when others =>
+                    end case;
+
+
+                when uc_tx_send_swt_samples_per_point =>
+                    case uc_tx_substate is
+                        when 1 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= sweep_table_samples_per_point(7 downto 0);
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 2 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= 1;
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 3 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= sweep_table_samples_per_point(15 downto 8);
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 4 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= 1;
+                                uc_tx_state <= uc_tx_postamble;
+                            end if;
+                        when others =>
+                    end case;
+
+
+
+                when uc_tx_send_swt_points =>
+                    case uc_tx_substate is
+                        when 1 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= sweep_table_points(7 downto 0);
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 2 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= 1;
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 3 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= sweep_table_points(15 downto 8);
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 4 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= 1;
+                                uc_tx_state <= uc_tx_postamble;
+                            end if;
+                        when others =>
+                    end case;
+
+
                 when uc_tx_postamble =>
                     case uc_tx_substate is
                         when 1 =>

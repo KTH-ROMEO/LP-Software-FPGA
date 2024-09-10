@@ -13,12 +13,12 @@ Opened an existing Libero design Toplevel.adb.
 'C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\designer'
 'IDE_DESIGNERVIEW_LASTREV' set to '1'
 
- Netlist Reading Time = 0.0 seconds
+ Netlist Reading Time = 1.0 seconds
 Imported the file:
 
 C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\synthesis\Toplevel.edn
 
-The Import command succeeded ( 00:00:04 )
+The Import command succeeded ( 00:00:03 )
 =====================================================================
 Parameters used to run compile:
 ===============================
@@ -133,9 +133,9 @@ Optimized macros:
   - Buffers:                0
   - Inverters:              3
   - Tieoff:                 35
-  - Logic combining:        225
+  - Logic combining:        216
 
-    Total macros optimized  264
+    Total macros optimized  255
 
 Warning: CMP503: Remapped 8 enable flip-flop(s) to a 2-tile implementation because the CLR/PRE
          pin on the enable flip-flop is not being driven by a global net.
@@ -152,7 +152,7 @@ There were 0 error(s) and 0 warning(s).
 Compile report:
 ===============
 
-    CORE                       Used:   5983  Total:   6144   (97.38%)
+    CORE                       Used:   6082  Total:   6144   (98.99%)
     IO (W/ clocks)             Used:     51  Total:     68   (75.00%)
     Differential IO            Used:      0  Total:     13   (0.00%)
     GLOBAL (Chip+Quadrant)     Used:      6  Total:     18   (33.33%)
@@ -177,8 +177,8 @@ Core Information:
 
     Type    | Instances    | Core tiles
     --------|--------------|-----------
-    COMB    | 4251         | 4251
-    SEQ     | 1732         | 1732
+    COMB    | 4287         | 4287
+    SEQ     | 1795         | 1795
 
 I/O Function:
 
@@ -216,16 +216,16 @@ The following nets drive enable flip-flops that have been remapped to a 2-tile i
 The following nets have been assigned to a chip global resource:
     Fanout  Type          Name
     --------------------------
-    1563    CLK_NET       Net   : CLKINT_0_Y_0
+    1628    CLK_NET       Net   : CLKINT_0_Y_0
                           Driver: CLKINT_0
                           Source: NETLIST
-    1195    SET/RESET_NET Net   : CLKINT_1_Y
+    1252    SET/RESET_NET Net   : CLKINT_1_Y
                           Driver: CLKINT_1
                           Source: NETLIST
-    109     CLK_NET       Net   : ClockDivs_0_clk_800kHz
+    107     CLK_NET       Net   : ClockDivs_0_clk_800kHz
                           Driver: ClockDivs_0/clk_800kHz_RNIT3EB
                           Source: NETLIST
-    106     INT_NET       Net   : GS_Readout_0/subState[0]
+    107     INT_NET       Net   : GS_Readout_0/subState[0]
                           Driver: GS_Readout_0/subState_RNITID3[0]
                           Source: NETLIST
     83      INT_NET       Net   : Data_Saving_0/Packet_Saver_0/packet_select[9]
@@ -238,6 +238,8 @@ The following nets have been assigned to a chip global resource:
 High fanout nets in the post compile netlist:
     Fanout  Type          Name
     --------------------------
+    24      INT_NET       Net   : GYRO_SCL_c
+                          Driver: Sensors_0/Gyro_0/I2C_Master_0/scl
     24      INT_NET       Net   : Data_Saving_0/Packet_Saver_0/packet_select_1[11]
                           Driver: Data_Saving_0/Packet_Saver_0/packet_select_1[11]
     24      INT_NET       Net   : Data_Saving_0/Packet_Saver_0/packet_select_0[11]
@@ -254,19 +256,19 @@ High fanout nets in the post compile netlist:
                           Driver:
 Sensors_0/Pressure_Sensor_0/MS5611_01BA03_Interface_0/state_RNIN45R[3]
     24      INT_NET       Net   :
-Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/acc_time_0_sqmuxa
-                          Driver:
-Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state_RNI918J1[6]
-    24      INT_NET       Net   :
 Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/mag_time_0_sqmuxa
                           Driver:
 Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state_RNI808J1[5]
-    24      INT_NET       Net   : Sensors_0/Gyro_0/L3GD20H_Interface_0/gyro_time_0_sqmuxa
-                          Driver: Sensors_0/Gyro_0/L3GD20H_Interface_0/state_RNID6JM1[2]
+    24      INT_NET       Net   :
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/acc_time_0_sqmuxa
+                          Driver:
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state_RNI918J1[6]
 
 Nets that are candidates for clock assignment and the resulting fanout:
     Fanout  Type          Name
     --------------------------
+    24      INT_NET       Net   : GYRO_SCL_c
+                          Driver: Sensors_0/Gyro_0/I2C_Master_0/scl
     24      INT_NET       Net   : Data_Saving_0/Packet_Saver_0/packet_select_1[11]
                           Driver: Data_Saving_0/Packet_Saver_0/packet_select_1[11]
     24      INT_NET       Net   : Data_Saving_0/Packet_Saver_0/packet_select_0[11]
@@ -283,15 +285,13 @@ Nets that are candidates for clock assignment and the resulting fanout:
                           Driver:
 Sensors_0/Pressure_Sensor_0/MS5611_01BA03_Interface_0/state_RNIN45R[3]
     24      INT_NET       Net   :
-Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/acc_time_0_sqmuxa
-                          Driver:
-Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state_RNI918J1[6]
-    24      INT_NET       Net   :
 Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/mag_time_0_sqmuxa
                           Driver:
 Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state_RNI808J1[5]
-    24      INT_NET       Net   : Sensors_0/Gyro_0/L3GD20H_Interface_0/gyro_time_0_sqmuxa
-                          Driver: Sensors_0/Gyro_0/L3GD20H_Interface_0/state_RNID6JM1[2]
+    24      INT_NET       Net   :
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/acc_time_0_sqmuxa
+                          Driver:
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state_RNI918J1[6]
 
 The Compile command succeeded ( 00:00:03 )
 Wrote status report to file: Toplevel_compile_report.txt
@@ -299,7 +299,7 @@ Wrote status report to file: Toplevel_compile_report.txt
 The Report command succeeded ( 00:00:00 )
 Wrote pin report to file: Toplevel_report_pin_byname.txt
 
-The Report command succeeded ( 00:00:01 )
+The Report command succeeded ( 00:00:00 )
 Wrote pin report to file: Toplevel_report_pin_bynumber.txt
 
 The Report command succeeded ( 00:00:01 )

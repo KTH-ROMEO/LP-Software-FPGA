@@ -157,12 +157,8 @@ Post processing for work.gs_readout.architecture_gs_readout
 @N: CD630 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":25:7:25:24|Synthesizing work.general_controller.architecture_general_controller.
 @N: CD231 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":97:26:97:27|Using onehot encoding for type uc_tx_state_type. For example, enumeration uc_tx_idle is mapped to "1000000000000000".
 @N: CD231 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":117:26:117:27|Using onehot encoding for type uc_rx_state_type. For example, enumeration uc_rx_idle is mapped to "100000000000000000000000".
-@N: CD604 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":1069:16:1069:29|OTHERS clause is not synthesized.
+@N: CD604 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":1078:16:1078:29|OTHERS clause is not synthesized.
 Post processing for work.general_controller.architecture_general_controller
-@W: CL169 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Pruning unused register sweep_table_points_4(15 downto 0). Make sure that there are no unused intermediate registers.
-@W: CL169 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Pruning unused register sweep_table_samples_per_point_4(15 downto 0). Make sure that there are no unused intermediate registers.
-@W: CL169 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Pruning unused register sweep_table_sample_skip_4(15 downto 0). Make sure that there are no unused intermediate registers.
-@W: CL169 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Pruning unused register sweep_table_nof_steps_3(7 downto 0). Make sure that there are no unused intermediate registers.
 @W: CL169 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Pruning unused register send_flight_state_3. Make sure that there are no unused intermediate registers.
 @W: CL169 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Pruning unused register send_telemetry_request_3. Make sure that there are no unused intermediate registers.
 @W: CL169 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Pruning unused register send_led4_3. Make sure that there are no unused intermediate registers.
@@ -411,15 +407,6 @@ State machine has 4 reachable states with original encodings of:
    01
    10
    11
-@W: CL279 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Pruning register bits 0 to 3 of uc_tx_nextstate(0 to 15). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
-@W: CL279 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Pruning register bits 8 to 11 of uc_tx_nextstate(0 to 15). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
-@W: CL260 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Pruning register bit 13 of uc_tx_nextstate(0 to 15). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
-@W: CL279 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Pruning register bits 0 to 3 of uc_tx_state(0 to 15). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
-@W: CL279 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Pruning register bits 8 to 11 of uc_tx_state(0 to 15). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
-@W: CL260 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Pruning register bit 13 of uc_tx_state(0 to 15). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
-@W: CL138 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Removing register 'uc_tx_nextstate' because it is only assigned 0 or its original value.
-@N: CL189 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Register bit uc_tx_nextstate(uc_tx_idle) is always 0.
-@N: CL189 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Register bit uc_tx_nextstate(uc_tx_preamble) is always 0.
 @N: CL201 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Trying to extract state machine for register flight_state.
 Extracted state machine for register flight_state
 State machine has 5 reachable states with original encodings of:
@@ -461,7 +448,10 @@ State machine has 24 reachable states with original encodings of:
    001000000000000000000000
    010000000000000000000000
    100000000000000000000000
+@W: CL279 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Pruning register bits 8 to 14 of uc_tx_nextstate(0 to 15). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
 @W: CL279 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Pruning register bits 3 to 1 of ramp(3 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL257 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Register bit 0 always 0, optimizing ...
+@W: CL169 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\General_Controller.vhd":208:8:208:9|Pruning unused register uc_tx_nextstate(uc_tx_idle). Make sure that there are no unused intermediate registers.
 @N: CL201 :"C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\hdl\GS_Readout.vhd":132:8:132:9|Trying to extract state machine for register state.
 Extracted state machine for register state
 State machine has 8 reachable states with original encodings of:

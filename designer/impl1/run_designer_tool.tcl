@@ -1,8 +1,4 @@
-# (OPEN DESIGN)
-
-open_design "C:/Users/Lab-user1/Desktop/MasterThesis/Langmuir-DataHub-EMUScience-FPGA/designer/impl1/Toplevel.adb"
-export -format "PDB" \
-    -feature "prog_fpga"  \
-    {C:/Users/Lab-user1/Desktop/MasterThesis/Langmuir-DataHub-EMUScience-FPGA/designer/impl1/Toplevel.pdb}
-save_design "C:/Users/Lab-user1/Desktop/MasterThesis/Langmuir-DataHub-EMUScience-FPGA/designer/impl1/Toplevel.adb"
+set_defvar "IDE_DESIGNERVIEW_ROOTDIR" {C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\designer}
+open_design Toplevel.adb
+open_tool mvn_ioedit
 

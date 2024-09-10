@@ -181,8 +181,8 @@ SIZE="1038"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel.pdb,pdb"
 STATE="utd"
-TIME="1725046303"
-SIZE="143754"
+TIME="1725301184"
+SIZE="145331"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_compile_log.rpt,log"
 STATE="utd"
@@ -206,7 +206,7 @@ SIZE="2505"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_placeroute_log.rpt,log"
 STATE="utd"
-TIME="1725046276"
+TIME="1725301153"
 SIZE="3032"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_power.rpt,log"
@@ -261,7 +261,7 @@ SIZE="12269"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_prgdata_log.rpt,log"
 STATE="utd"
-TIME="1725046304"
+TIME="1725301185"
 SIZE="844"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_timing.rpt,log"
@@ -421,7 +421,7 @@ SIZE="30478"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_verifytiming_log.rpt,log"
 STATE="utd"
-TIME="1725046288"
+TIME="1725301166"
 SIZE="1227"
 ENDFILE
 VALUE "<project>\hdl\ADC_READ.vhd,hdl"
@@ -491,8 +491,8 @@ SIZE="5572"
 ENDFILE
 VALUE "<project>\hdl\General_Controller.vhd,hdl"
 STATE="utd"
-TIME="1725045657"
-SIZE="45754"
+TIME="1725300669"
+SIZE="46187"
 ENDFILE
 VALUE "<project>\hdl\GS_Readout.vhd,hdl"
 STATE="utd"
@@ -682,7 +682,6 @@ LIST Impl1
 LiberoState=Post_Layout
 ideSYNTHESIS(<project>\synthesis\Toplevel.edn,syn_edn)=StateSuccess
 ideDESIGNER(<project>\designer\impl1\Toplevel.adb,adb)=StateSuccess
-ideSYNTHESIS(<project>\synthesis\Toplevel.vm,syn_vm)=StateFailure
 LIST FlowOptions
 UsePhySynth=FALSE
 UseSynth=TRUE
@@ -777,7 +776,7 @@ NAME="ModelSim ME"
 FUNCTION="Simulation"
 TOOL="ModelSim"
 LOCATION="C:\Microsemi\Libero_SoC_v11.9\Modelsim\win32acoem\modelsim.exe"
-PARAM=""
+PARAM=" -l General_Controller_Testbench_presynth_simulation.log "
 BATCH=0
 LICENSE=""
 IS32BIT="1"
@@ -807,7 +806,6 @@ LIST Impl1
 LiberoState=Post_Layout
 ideSYNTHESIS(<project>\synthesis\Toplevel.edn,syn_edn)=StateSuccess
 ideDESIGNER(<project>\designer\impl1\Toplevel.adb,adb)=StateSuccess
-ideSYNTHESIS(<project>\synthesis\Toplevel.vm,syn_vm)=StateFailure
 LIST FlowOptions
 UsePhySynth=FALSE
 UseSynth=TRUE
@@ -830,8 +828,12 @@ LIST UserCustomizedFileList
 ENDLIST
 LIST OpenedFileList
 ORIENTATION;HORIZONTAL
+Reports;Reports;0
+ReportsCurrentItem;Generate Programming Data:Toplevel_prgdata_log.rpt
 HDL;hdl\General_Controller.vhd;0
-ACTIVEVIEW;hdl\General_Controller.vhd
+SmartDesign;Toplevel;0
+HDL;hdl\I2C_PassThrough.vhd;0
+ACTIVEVIEW;Toplevel
 ENDLIST
 LIST ModuleSubBlockList
 LIST "Accelerometer::work","component\work\Accelerometer\Accelerometer.vhd","TRUE","FALSE"
@@ -942,7 +944,6 @@ SUBBLOCK "Data_Hub_Packets::work","hdl\Data_Hub_Packets.vhd","FALSE","FALSE"
 SUBBLOCK "Data_Saving::work","component\work\Data_Saving\Data_Saving.vhd","TRUE","FALSE"
 SUBBLOCK "Eject_Signal_Debounce::work","hdl\Eject_Signal_Debounce.vhd","FALSE","FALSE"
 SUBBLOCK "GS_Readout::work","hdl\GS_Readout.vhd","FALSE","FALSE"
-SUBBLOCK "General_Controller::work","hdl\General_Controller.vhd","FALSE","FALSE"
 SUBBLOCK "I2C_PassThrough::work","hdl\I2C_PassThrough.vhd","FALSE","FALSE"
 SUBBLOCK "Pressure_Signal_Debounce::work","hdl\Pressure_Signal_Debounce.vhd","FALSE","FALSE"
 SUBBLOCK "Science::work","component\work\Science\Science.vhd","TRUE","FALSE"
@@ -950,6 +951,7 @@ SUBBLOCK "Sensors::work","component\work\Sensors\Sensors.vhd","TRUE","FALSE"
 SUBBLOCK "SweepTable::work","smartgen\SweepTable\SweepTable.vhd","TRUE","FALSE"
 SUBBLOCK "Timekeeper::work","hdl\Timekeeper.vhd","FALSE","FALSE"
 SUBBLOCK "Timing::work","hdl\Timing.vhd","FALSE","FALSE"
+SUBBLOCK "General_Controller::work","hdl\General_Controller.vhd","FALSE","FALSE"
 ENDLIST
 LIST "UART::work","hdl\UART.vhd","FALSE","FALSE"
 ENDLIST
@@ -958,8 +960,8 @@ ENDLIST
 LIST "UARTLineReleaser::work","hdl\UARTLineReleaser.vhd","FALSE","FALSE"
 ENDLIST
 LIST "General_Controller_Testbench::work","stimulus\General_Controller_Testbench.vhd","FALSE","TRUE"
-SUBBLOCK "General_Controller::work","hdl\General_Controller.vhd","FALSE","FALSE"
 SUBBLOCK "SweepTable::work","smartgen\SweepTable\SweepTable.vhd","TRUE","FALSE"
+SUBBLOCK "General_Controller::work","hdl\General_Controller.vhd","FALSE","FALSE"
 ENDLIST
 ENDLIST
 LIST ActiveTestBenchList
