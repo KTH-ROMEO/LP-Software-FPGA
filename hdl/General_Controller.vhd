@@ -104,9 +104,8 @@ architecture architecture_General_Controller of General_Controller is
         uc_tx_telemetry,
         uc_tx_send_state,
 
-        uc_tx_send_cb_mode,
         uc_tx_send_const_bias,
-        uc_tx_send_swt_mode,
+        uc_tx_send_swt_sweep_cnt,
         uc_tx_send_sweep_table,
         uc_tx_send_swt_steps,
         uc_tx_send_swt_skip,
@@ -124,19 +123,19 @@ architecture architecture_General_Controller of General_Controller is
         uc_rx_receive_gs_id,
 
         uc_rx_receive_en_cb_mode,
+        uc_rx_receive_dis_cb_mode,
         uc_rx_receive_const_bias,
 
-        uc_rx_readback_en_cb_mode,
         uc_rx_readback_const_bias,
 
-        uc_rx_receive_en_swt_mode,
+        uc_rx_receive_activate_sweep,
         uc_rx_receive_sweep_table,
         uc_rx_receive_swt_steps,
         uc_rx_receive_swt_skip,
         uc_rx_receive_swt_samples_per_point,
         uc_rx_receive_swt_points,
 
-        uc_rx_readback_swt_mode,
+        uc_rx_readback_swt_sweep_cnt,
         uc_rx_readback_sweep_table,
         uc_rx_readback_swt_steps,
         uc_rx_readback_swt_skip,
@@ -147,12 +146,13 @@ architecture architecture_General_Controller of General_Controller is
 
     signal temp_first_byte : std_logic_vector(7 downto 0);
 
-    signal constant_bias_mode : std_logic_vector(7 downto 0); -- Saved as a vector for simpler readback.
+    signal constant_bias_mode : std_logic;
     signal constant_bias_voltage_0 : std_logic_vector(15 downto 0);
     signal constant_bias_voltage_1 : std_logic_vector(15 downto 0);
     signal constant_bias_probe_id : std_logic_vector(7 downto 0);
 
-    signal sweep_table_mode : std_logic_vector(7 downto 0); -- Saved as a vector for simpler readback.
+    signal sweep_table_activate_sweep : std_logic;
+    signal sweep_table_sweep_cnt : std_logic_vector(15 downto 0); -- Number of activated sweeps since last FPGA power on.
     signal sweep_table_write_value : std_logic_vector(15 downto 0);
     signal sweep_table_read_value  : std_logic_vector(15 downto 0);
 
@@ -260,12 +260,13 @@ begin
 
             temp_first_byte <= (others => '0');
 
-            constant_bias_mode <= (others =>'0');
+            constant_bias_mode <= '0';
             constant_bias_voltage_0 <= (others => '0');
             constant_bias_voltage_1 <= (others => '0');
             constant_bias_probe_id <= (others => '0');
-
-            sweep_table_mode <= (others => '0');
+            
+            sweep_table_activate_sweep <= '0';
+            sweep_table_sweep_cnt <= (others => '0');
             sweep_table_probe_id <= (others => '0');
             sweep_table_step_id <= (others => '0');
 
@@ -296,6 +297,9 @@ begin
                     send_flight_state <= '1';
                 end if;
             end if;
+
+    --------------Disable Sweep Trigger if activated --------------------
+            sweep_table_activate_sweep <= '0';
 
     --------- General state machine - mission sequence, etc. ------------
             case flight_state is
@@ -453,24 +457,6 @@ begin
                     end case;
 
 
-                when uc_tx_send_cb_mode =>
-                    case uc_tx_substate is
-                        when 1 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= constant_bias_mode;
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 2 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_state <= uc_tx_postamble;
-                            end if;
-                        when others =>
-                    end case;
-
-
                 when uc_tx_send_const_bias =>
                     case uc_tx_substate is
                         when 1 => 
@@ -509,15 +495,27 @@ begin
                     end case;
 
 
-                when uc_tx_send_swt_mode =>
+                when uc_tx_send_swt_sweep_cnt =>
                     case uc_tx_substate is
                         when 1 => 
                             if uc_tx_rdy = '1' then
-                                uc_send <= sweep_table_mode;
+                                uc_send <= sweep_table_sweep_cnt(7 downto 0);
                                 uc_wen <= '1';
                                 uc_tx_substate <= uc_tx_substate + 1;
                             end if;
                         when 2 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= 1;
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 3 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= sweep_table_sweep_cnt(15 downto 8);
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 4 =>
                             if uc_tx_rdy = '0' then
                                 uc_wen <= '0';
                                 uc_tx_substate <= 1;
@@ -744,18 +742,18 @@ begin
                                 when x"55" => uc_rx_state <= uc_rx_receive_unit_id;             -- "U" - Unit ID
 
                                 when x"CA" => uc_rx_state <= uc_rx_receive_en_cb_mode;
+                                when x"C0" => uc_rx_state <= uc_rx_receive_dis_cb_mode;
                                 when x"CB" => uc_rx_state <= uc_rx_receive_const_bias;
-                                when x"C0" => uc_rx_state <= uc_rx_readback_en_cb_mode;
                                 when x"CC" => uc_rx_state <= uc_rx_readback_const_bias;
 
-                                when x"AA" => uc_rx_state <= uc_rx_receive_en_swt_mode;
+                                when x"AA" => uc_rx_state <= uc_rx_receive_activate_sweep;
                                 when x"AB" => uc_rx_state <= uc_rx_receive_sweep_table;
                                 when x"AC" => uc_rx_state <= uc_rx_receive_swt_steps;
                                 when x"AD" => uc_rx_state <= uc_rx_receive_swt_skip;
                                 when x"AE" => uc_rx_state <= uc_rx_receive_swt_samples_per_point;
                                 when x"AF" => uc_rx_state <= uc_rx_receive_swt_points;
 
-                                when x"A0" => uc_rx_state <= uc_rx_readback_swt_mode;
+                                when x"A0" => uc_rx_state <= uc_rx_readback_swt_sweep_cnt;
                                 when x"A1" => uc_rx_state <= uc_rx_readback_sweep_table;
                                 when x"A2" => uc_rx_state <= uc_rx_readback_swt_steps;
                                 when x"A3" => uc_rx_state <= uc_rx_readback_swt_skip;
@@ -798,12 +796,21 @@ begin
                 when uc_rx_receive_en_cb_mode => 
                     case uc_rx_substate is
                         when 1 =>
-                            constant_bias_mode <= x"01";
-                            sweep_table_mode   <= x"00";
+                            constant_bias_mode <= '1';
                             uc_rx_state <= uc_rx_postamble;
                             uc_rx_substate <= 1;
                         when others =>
                     end case;
+
+                when uc_rx_receive_dis_cb_mode => 
+                    case uc_rx_substate is
+                        when 1 =>
+                            constant_bias_mode <= '0';
+                            uc_rx_state <= uc_rx_postamble;
+                            uc_rx_substate <= 1;
+                        when others =>
+                    end case;
+
 
 
                 when uc_rx_receive_const_bias =>
@@ -831,17 +838,6 @@ begin
                     end case;
 
 
-                when uc_rx_readback_en_cb_mode =>
-                    case uc_rx_substate is
-                        when 1 =>
-                            uc_tx_state <= uc_tx_preamble;
-                            uc_tx_nextstate <= uc_tx_send_cb_mode;
-                            uc_rx_state <= uc_rx_postamble;
-                            uc_rx_substate <= 1;
-                        when others =>
-                    end case;
-
-                
                 when uc_rx_readback_const_bias =>
                     case uc_rx_substate is
                         when 1 => uc_rx_state <= uc_rx_get_byte;
@@ -855,11 +851,12 @@ begin
                     end case;
 
 
-                when uc_rx_receive_en_swt_mode => 
+                when uc_rx_receive_activate_sweep => 
                     case uc_rx_substate is
                         when 1 =>
-                            sweep_table_mode   <= x"01";
-                            constant_bias_mode <= x"00";
+                            sweep_table_sweep_cnt <= sweep_table_sweep_cnt + 1;
+                            sweep_table_activate_sweep <= '1';
+                            constant_bias_mode <= '0'; -- TODO: Consider - should this be done?
                             uc_rx_state <= uc_rx_postamble;
                             uc_rx_substate <= 1; 
                        when others =>
@@ -969,11 +966,11 @@ begin
                     end case;
 
 
-                when uc_rx_readback_swt_mode =>
+                when uc_rx_readback_swt_sweep_cnt =>
                     case uc_rx_substate is
                         when 1 =>
                             uc_tx_state <= uc_tx_preamble;
-                            uc_tx_nextstate <= uc_tx_send_swt_mode;
+                            uc_tx_nextstate <= uc_tx_send_swt_sweep_cnt;
                             uc_rx_state <= uc_rx_postamble;
                             uc_rx_substate <= 1; 
                        when others =>

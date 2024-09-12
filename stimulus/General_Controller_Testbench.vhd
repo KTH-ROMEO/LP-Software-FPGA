@@ -50,8 +50,14 @@ architecture behavioral of General_Controller_Testbench is
     type AA_array is array (0 to 3) of std_logic_vector(7 downto 0);
     signal SEND_AA_ARRAY : AA_array := (x"B5", x"43", x"AA", x"0A");
 
+    type A0_array is array (0 to 3) of std_logic_vector(7 downto 0);
+    signal SEND_A0_ARRAY : AA_array := (x"B5", x"43", x"A0", x"0A");
+
     type CA_array is array (0 to 3) of std_logic_vector(7 downto 0);
     signal SEND_CA_ARRAY : CA_array := (x"B5", x"43", x"CA", x"0A");
+
+    type C0_array is array (0 to 3) of std_logic_vector(7 downto 0);
+    signal SEND_C0_ARRAY : CA_array := (x"B5", x"43", x"C0", x"0A");
 
     type AC_array is array (0 to 4) of std_logic_vector(7 downto 0);
     signal SEND_AC_ARRAY : AC_array := (x"b5", x"43", x"ac", x"bc", x"0a");
@@ -200,34 +206,34 @@ begin
             NSYSRESET <= '0';
             vhdl_initial := FALSE;
         else
-            for i in SEND_AB_ARRAY'range loop
+            for i in SEND_AA_ARRAY'range loop
                 wait for (SYSCLK_PERIOD * 1000);
                 UC_RX_RDY <= '1';
-                UC_RECV <= SEND_AB_ARRAY(i);
+                UC_RECV <= SEND_AA_ARRAY(i);
                 wait for (SYSCLK_PERIOD * 1000);
                 UC_RX_RDY <= '0';
             end loop;
 
             wait for (SYSCLK_PERIOD * 100);
 
-            for i in READBACK_A1_ARRAY'range loop
+            for i in SEND_A0_ARRAY'range loop
                 wait for (SYSCLK_PERIOD * 1000);
                 UC_RX_RDY <= '1';
-                UC_RECV <= READBACK_A1_ARRAY(i);
+                UC_RECV <= SEND_A0_ARRAY(i);
                 wait for (SYSCLK_PERIOD * 1000);
                 UC_RX_RDY <= '0';
             end loop;
 
 
-            wait for (SYSCLK_PERIOD * 1000);
-
-            for i in 1 to 10 loop
-                wait for (SYSCLK_PERIOD * 1000);
-                UC_TX_RDY <= '1';                
-                
-                wait for (SYSCLK_PERIOD * 1000);
-                UC_TX_RDY <= '0';
-            end loop;
+            --wait for (SYSCLK_PERIOD * 1000);
+--
+            --for i in 1 to 10 loop
+                --wait for (SYSCLK_PERIOD * 1000);
+                --UC_TX_RDY <= '1';                
+                --
+                --wait for (SYSCLK_PERIOD * 1000);
+                --UC_TX_RDY <= '0';
+            --end loop;
 
         end if;
     end process;
