@@ -108,6 +108,7 @@ architecture architecture_General_Controller of General_Controller is
         uc_tx_send_swt_sweep_cnt,
         uc_tx_send_sweep_table,
         uc_tx_send_swt_steps,
+        uc_tx_send_swt_samples_per_step,
         uc_tx_send_swt_skip,
         uc_tx_send_swt_samples_per_point,
         uc_tx_send_swt_points
@@ -131,6 +132,7 @@ architecture architecture_General_Controller of General_Controller is
         uc_rx_receive_activate_sweep,
         uc_rx_receive_sweep_table,
         uc_rx_receive_swt_steps,
+        uc_rx_receive_swt_samples_per_step,
         uc_rx_receive_swt_skip,
         uc_rx_receive_swt_samples_per_point,
         uc_rx_receive_swt_points,
@@ -138,6 +140,7 @@ architecture architecture_General_Controller of General_Controller is
         uc_rx_readback_swt_sweep_cnt,
         uc_rx_readback_sweep_table,
         uc_rx_readback_swt_steps,
+        uc_rx_readback_swt_samples_per_step,
         uc_rx_readback_swt_skip,
         uc_rx_readback_swt_samples_per_point,
         uc_rx_readback_swt_points,
@@ -160,6 +163,7 @@ architecture architecture_General_Controller of General_Controller is
     signal sweep_table_step_id : std_logic_vector(7 downto 0);
 
     signal sweep_table_nof_steps : std_logic_vector(7 downto 0);
+    signal sweep_table_samples_per_step : std_logic_vector(15 downto 0);
     signal sweep_table_sample_skip : std_logic_vector(15 downto 0);
     signal sweep_table_samples_per_point : std_logic_vector(15 downto 0);
     signal sweep_table_points : std_logic_vector(15 downto 0);
@@ -573,6 +577,35 @@ begin
                     end case;
 
 
+                when uc_tx_send_swt_samples_per_step =>
+                    case uc_tx_substate is
+                        when 1 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= sweep_table_samples_per_step(7 downto 0);
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 2 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= 1;
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 3 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= sweep_table_samples_per_step(15 downto 8);
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 4 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= 1;
+                                uc_tx_state <= uc_tx_postamble;
+                            end if;
+                        when others =>
+                    end case;
+
 
                 when uc_tx_send_swt_skip =>
                     case uc_tx_substate is
@@ -749,16 +782,18 @@ begin
                                 when x"AA" => uc_rx_state <= uc_rx_receive_activate_sweep;
                                 when x"AB" => uc_rx_state <= uc_rx_receive_sweep_table;
                                 when x"AC" => uc_rx_state <= uc_rx_receive_swt_steps;
-                                when x"AD" => uc_rx_state <= uc_rx_receive_swt_skip;
-                                when x"AE" => uc_rx_state <= uc_rx_receive_swt_samples_per_point;
-                                when x"AF" => uc_rx_state <= uc_rx_receive_swt_points;
+                                when x"AD" => uc_rx_state <= uc_rx_receive_swt_samples_per_step;
+                                when x"AE" => uc_rx_state <= uc_rx_receive_swt_skip;
+                                when x"AF" => uc_rx_state <= uc_rx_receive_swt_samples_per_point;
+                                when x"B0" => uc_rx_state <= uc_rx_receive_swt_points;
 
                                 when x"A0" => uc_rx_state <= uc_rx_readback_swt_sweep_cnt;
                                 when x"A1" => uc_rx_state <= uc_rx_readback_sweep_table;
                                 when x"A2" => uc_rx_state <= uc_rx_readback_swt_steps;
-                                when x"A3" => uc_rx_state <= uc_rx_readback_swt_skip;
-                                when x"A4" => uc_rx_state <= uc_rx_readback_swt_samples_per_point;
-                                when x"A5" => uc_rx_state <= uc_rx_readback_swt_points;
+                                when x"A3" => uc_rx_state <= uc_rx_readback_swt_samples_per_step;
+                                when x"A4" => uc_rx_state <= uc_rx_readback_swt_skip;
+                                when x"A5" => uc_rx_state <= uc_rx_readback_swt_samples_per_point;
+                                when x"A6" => uc_rx_state <= uc_rx_readback_swt_points;
 
                                 when others => uc_rx_state <= uc_rx_idle;                       -- Unknown message, ignore.
                             end case;
@@ -921,6 +956,21 @@ begin
                     end case;
 
 
+                when uc_rx_receive_swt_samples_per_step => 
+                    case uc_rx_substate is
+                        when 1 => uc_rx_state <= uc_rx_get_byte;
+                        when 2 =>
+                            temp_first_byte <= uc_rx_byte;
+                            uc_rx_state <= uc_rx_get_byte;
+                        when 3 => 
+                            sweep_table_samples_per_step(7 downto 0) <= temp_first_byte;
+                            sweep_table_samples_per_step(15 downto 8) <= uc_rx_byte;
+                            uc_rx_state <= uc_rx_postamble;
+                            uc_rx_substate <= 1;
+                        when others =>
+                    end case;
+
+
                 when uc_rx_receive_swt_skip => 
                     case uc_rx_substate is
                         when 1 => uc_rx_state <= uc_rx_get_byte;
@@ -1030,6 +1080,16 @@ begin
                         when 1 =>
                             uc_tx_state <= uc_tx_preamble;
                             uc_tx_nextstate <= uc_tx_send_swt_steps;
+                            uc_rx_state <= uc_rx_postamble;
+                        when others =>
+                    end case;
+
+
+                when uc_rx_readback_swt_samples_per_step =>
+                    case uc_rx_substate is
+                        when 1 =>
+                            uc_tx_state <= uc_tx_preamble;
+                            uc_tx_nextstate <= uc_tx_send_swt_samples_per_step;
                             uc_rx_state <= uc_rx_postamble;
                         when others =>
                     end case;
