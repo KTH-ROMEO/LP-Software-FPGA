@@ -26,6 +26,7 @@ entity General_Controller is
 port (
 	clk : IN  std_logic;
     clk_1Hz : IN std_logic;
+    clk_32k : IN std_logic;
     reset: IN std_logic;
     
     status_packet_clk : IN std_logic;
@@ -44,6 +45,10 @@ port (
 
     cu_sync : IN std_logic;
 
+    --fake_msr_rdy : IN std_logic;
+    --fake_msr     : IN std_logic_vector(15 downto 0);
+    --smp_per_msr  : OUT std_logic_vector(15 downto 0);
+
     st_rdata0  : IN std_logic_vector(15 downto 0);
     st_rdata1  : IN std_logic_vector(15 downto 0);
 
@@ -56,7 +61,7 @@ port (
     st_wen1   : OUT std_logic;
     st_ren0   : OUT std_logic;
     st_ren1   : OUT std_logic;
-
+    
     unit_id : OUT std_logic_vector(7 downto 0);
     ffu_id : OUT std_logic_vector(7 downto 0);
     gs_id : OUT std_logic_vector(7 downto 0);
@@ -97,13 +102,15 @@ architecture architecture_General_Controller of General_Controller is
     type uc_tx_state_type is (
         uc_tx_idle,
         uc_tx_preamble,
+        uc_tx_scientific_data_preamble,
         uc_tx_send_console_en,
         uc_tx_postamble,
         uc_tx_led3,
         uc_tx_led4,
         uc_tx_telemetry,
         uc_tx_send_state,
-
+        
+        uc_tx_send_scientific_data,
         uc_tx_send_const_bias,
         uc_tx_send_swt_sweep_cnt,
         uc_tx_send_sweep_table,
@@ -171,6 +178,12 @@ architecture architecture_General_Controller of General_Controller is
     signal sweep_table_write_wait : integer range 0 to 3;
     signal sweep_table_read_wait : integer range 0 to 3;
 
+    signal fake_msr_rdy_s : std_logic;
+    signal fake_msr_rdy_f : std_logic;
+    signal fake_msr_s : std_logic_vector(15 downto 0);
+    signal fake_msr_f : std_logic_vector(15 downto 0);
+    signal smp_per_msr_s : std_logic_vector(15 downto 0);
+
     signal flight_state : std_logic_vector(7 downto 0);
     constant boot : std_logic_vector(7 downto 0) := x"01";
     constant idle : std_logic_vector(7 downto 0) := x"02";
@@ -203,10 +216,48 @@ architecture architecture_General_Controller of General_Controller is
     signal state_seconds : std_logic_vector(19 downto 0);
     signal send_flight_state : std_logic;
 
-    signal old_1Hz : std_logic;
-
+    signal old_1Hz : std_logic;    
     signal mission_mode : std_logic;
+
+    signal sample_counter   : unsigned(15 downto 0);
+
+    signal m_counter : unsigned(15 downto 0);
+    signal k_counter : unsigned(15 downto 0);
+    signal s_counter : std_logic_vector(15 downto 0);
+
+    signal counter          : unsigned(15 downto 0);
+    signal current_smp_msr  : std_logic_vector(15 downto 0);
+
 begin
+
+--process(clk_32k, reset)
+--begin
+--    if reset /= '0' then
+        --sample_counter  <= (others => '0');
+        --counter         <= (others => '0');
+        --current_smp_msr <= sweep_table_samples_per_step;
+--
+        --fake_msr_rdy_f <= '0';
+--
+    --elsif rising_edge(clk_32k) then
+        --sample_counter <= sample_counter + 1;
+        --counter <= counter + 1;
+        --current_smp_msr <= sweep_table_samples_per_step;
+        --
+        ---- If the samples per measurement are changed then restart sampling from scratch to avoid incorrectly processesed point.
+        ---- Sample counter needs to be reset to 1 instead of 0, since the internal value "counter" is still incremented in this cycle.
+    --
+        --fake_msr_rdy_f <= '1' when sample_counter = unsigned(current_smp_msr) else '0';
+        --fake_msr_f <= std_logic_vector(counter) when sample_counter = unsigned(current_smp_msr);
+        --sample_counter  <= x"0001" when sample_counter = unsigned(current_smp_msr);
+        --counter <= x"0000" when counter = x"FFFF";
+--
+    --end if;
+    --sample_counter  <= x"0001" when current_smp_msr /= sweep_table_samples_per_step;
+--end process;
+
+
+
     process (clk, reset)
     begin
         if reset /= '0' then
@@ -289,6 +340,13 @@ begin
             st_wen1  <= '0';
             st_ren0  <= '0';
             st_ren1  <= '0';
+            
+            fake_msr_rdy_s <= '0';
+            fake_msr_s <= (others => '0');
+            smp_per_msr_s <= (others => '0');
+
+            k_counter <= x"0001";
+            m_counter <= x"0001";
 
         elsif rising_edge(clk) then
     ----------------------- Seconds counter -----------------------------
@@ -305,6 +363,20 @@ begin
     --------------Disable Sweep Trigger if activated --------------------
             sweep_table_activate_sweep <= '0';
 
+    --------------Constant Bias Fake Data Generator--------------------
+            m_counter <= m_counter + 1;
+            k_counter <= k_counter + 1 when m_counter = x"03E8"; -- 1000 dec
+            m_counter <= x"0001" when m_counter = x"03E8"; -- 1000 dec
+            s_counter <= std_logic_vector(k_counter);
+
+            if constant_bias_mode = '1' then
+                if std_logic_vector(k_counter) = sweep_table_samples_per_step then
+                    k_counter <= x"0001";
+                    uc_tx_state <= uc_tx_send_scientific_data ;
+                    uc_tx_nextstate <= uc_tx_idle;
+                    uc_tx_substate <= 1;
+                 end if;
+            end if;
     --------- General state machine - mission sequence, etc. ------------
             case flight_state is
                 when boot =>
@@ -460,6 +532,63 @@ begin
                         when others =>
                     end case;
 
+                when uc_tx_scientific_data_preamble =>
+                    case uc_tx_substate is
+                        when 1 =>
+                            if uc_tx_rdy = '1' then
+                                uc_send <= x"83";
+                                uc_wen <= '1';
+                                uc_tx_substate <= 2;
+                            end if;
+                        when 2 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= 1;
+                                uc_tx_state <= uc_tx_nextstate;
+                            end if;
+                        when others =>
+                    end case;
+
+
+                when uc_tx_send_scientific_data =>
+                    case uc_tx_substate is
+                        when 1 =>
+                            if uc_tx_rdy = '1' then
+                                uc_send <= x"83";
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 2 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 3 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <=  s_counter(7 downto 0);
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 4 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 5 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= s_counter(15 downto 8);
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 6 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= 1;
+                                uc_tx_state <= uc_tx_idle;
+                            end if;
+                        when others =>
+                    end case;
+
 
                 when uc_tx_send_const_bias =>
                     case uc_tx_substate is
@@ -476,7 +605,6 @@ begin
                         when 2 =>
                             if uc_tx_rdy = '0' then
                                 uc_wen <= '0';
-                                uc_tx_substate <= 1;
                                 uc_tx_substate <= uc_tx_substate + 1;
                             end if;
                         when 3 => 
@@ -965,6 +1093,10 @@ begin
                         when 3 => 
                             sweep_table_samples_per_step(7 downto 0) <= temp_first_byte;
                             sweep_table_samples_per_step(15 downto 8) <= uc_rx_byte;
+
+                            smp_per_msr_s(7 downto 0) <= temp_first_byte;
+                            smp_per_msr_s(15 downto 8) <= uc_rx_byte;
+
                             uc_rx_state <= uc_rx_postamble;
                             uc_rx_substate <= 1;
                         when others =>
