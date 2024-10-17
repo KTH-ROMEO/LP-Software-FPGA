@@ -64,8 +64,8 @@ begin
         fake_measurement(11 downto 0) <= std_logic_vector(counter) when sample_counter = unsigned(current_smp_msr(11 downto 0));
         sample_counter  <= x"001" when sample_counter = unsigned(current_smp_msr(11 downto 0));
         counter <= x"000" when counter = x"FFF";
-
+        --sample_counter  <= x"001" when current_smp_msr /= samples_per_measurement;
     end if;
-    sample_counter  <= x"001" when current_smp_msr /= samples_per_measurement;
+    
 end process;
 end architecture_Constant_Bias_Fake_Data_Generator;

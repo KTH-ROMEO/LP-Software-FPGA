@@ -45,10 +45,6 @@ port (
 
     cu_sync : IN std_logic;
 
-    --fake_msr_rdy : IN std_logic;
-    --fake_msr     : IN std_logic_vector(15 downto 0);
-    --smp_per_msr  : OUT std_logic_vector(15 downto 0);
-
     st_rdata0  : IN std_logic_vector(15 downto 0);
     st_rdata1  : IN std_logic_vector(15 downto 0);
 
@@ -178,10 +174,6 @@ architecture architecture_General_Controller of General_Controller is
     signal sweep_table_write_wait : integer range 0 to 3;
     signal sweep_table_read_wait : integer range 0 to 3;
 
-    signal fake_msr_rdy_s : std_logic;
-    signal fake_msr_rdy_f : std_logic;
-    signal fake_msr_s : std_logic_vector(15 downto 0);
-    signal fake_msr_f : std_logic_vector(15 downto 0);
     signal smp_per_msr_s : std_logic_vector(15 downto 0);
 
     signal flight_state : std_logic_vector(7 downto 0);
@@ -219,44 +211,17 @@ architecture architecture_General_Controller of General_Controller is
     signal old_1Hz : std_logic;    
     signal mission_mode : std_logic;
 
-    signal sample_counter   : unsigned(15 downto 0);
-
-    signal m_counter : unsigned(15 downto 0);
-    signal k_counter : unsigned(15 downto 0);
+    -- For generating Fake CB data.
+    signal m_counter : std_logic_vector(15 downto 0);
+    signal k_counter : std_logic_vector(15 downto 0);
     signal s_counter : std_logic_vector(15 downto 0);
+    signal sequence_counter : std_logic_vector(15 downto 0);
+    signal send_fake_rdy : std_logic;
 
-    signal counter          : unsigned(15 downto 0);
-    signal current_smp_msr  : std_logic_vector(15 downto 0);
+    signal out_counter          : std_logic_vector(31 downto 0);
+    --signal current_smp_msr  : std_logic_vector(15 downto 0);
 
 begin
-
---process(clk_32k, reset)
---begin
---    if reset /= '0' then
-        --sample_counter  <= (others => '0');
-        --counter         <= (others => '0');
-        --current_smp_msr <= sweep_table_samples_per_step;
---
-        --fake_msr_rdy_f <= '0';
---
-    --elsif rising_edge(clk_32k) then
-        --sample_counter <= sample_counter + 1;
-        --counter <= counter + 1;
-        --current_smp_msr <= sweep_table_samples_per_step;
-        --
-        ---- If the samples per measurement are changed then restart sampling from scratch to avoid incorrectly processesed point.
-        ---- Sample counter needs to be reset to 1 instead of 0, since the internal value "counter" is still incremented in this cycle.
-    --
-        --fake_msr_rdy_f <= '1' when sample_counter = unsigned(current_smp_msr) else '0';
-        --fake_msr_f <= std_logic_vector(counter) when sample_counter = unsigned(current_smp_msr);
-        --sample_counter  <= x"0001" when sample_counter = unsigned(current_smp_msr);
-        --counter <= x"0000" when counter = x"FFFF";
---
-    --end if;
-    --sample_counter  <= x"0001" when current_smp_msr /= sweep_table_samples_per_step;
---end process;
-
-
 
     process (clk, reset)
     begin
@@ -341,12 +306,15 @@ begin
             st_ren0  <= '0';
             st_ren1  <= '0';
             
-            fake_msr_rdy_s <= '0';
-            fake_msr_s <= (others => '0');
+
             smp_per_msr_s <= (others => '0');
 
             k_counter <= x"0001";
             m_counter <= x"0001";
+            s_counter <= x"0001";
+
+            sequence_counter <= x"0000";
+            send_fake_rdy <= '0';
 
         elsif rising_edge(clk) then
     ----------------------- Seconds counter -----------------------------
@@ -355,7 +323,7 @@ begin
             if old_1Hz = '0' AND clk_1Hz = '1' then
                 state_seconds <= state_seconds + 1;
 
-                if milliseconds > 1000 then
+                if milliseconds(10) = '1' then -- Original here, checks for >1000 miliseconds
                     send_flight_state <= '1';
                 end if;
             end if;
@@ -364,73 +332,76 @@ begin
             sweep_table_activate_sweep <= '0';
 
     --------------Constant Bias Fake Data Generator--------------------
-            m_counter <= m_counter + 1;
-            k_counter <= k_counter + 1 when m_counter = x"03E8"; -- 1000 dec
-            m_counter <= x"0001" when m_counter = x"03E8"; -- 1000 dec
-            s_counter <= std_logic_vector(k_counter);
+            if m_counter(10) = '1' then -- Check for x0400 or 1 on 10th bit.
+                m_counter <= x"0001";
+                k_counter <= k_counter + 1 ;
+            else
+                m_counter <= m_counter + 1;
+                s_counter <= s_counter + 1;
+            end if;
 
             if constant_bias_mode = '1' then
                 if std_logic_vector(k_counter) = sweep_table_samples_per_step then
                     k_counter <= x"0001";
-                    uc_tx_state <= uc_tx_send_scientific_data ;
-                    uc_tx_nextstate <= uc_tx_idle;
-                    uc_tx_substate <= 1;
+                    send_fake_rdy <= '1';
+                    out_counter(31 downto 16) <= s_counter;
+                    out_counter(15 downto 0) <= s_counter + 1;
                  end if;
             end if;
     --------- General state machine - mission sequence, etc. ------------
-            case flight_state is
-                when boot =>
-                    uc_pwr_en <= '1';
-                    
-                    if milliseconds > 100 then
-                        en_sensors <= '1';
-                    end if;
+            --case flight_state is
+                --when boot =>
+                    --uc_pwr_en <= '1';
+                    --
+                    ----if milliseconds > 100 then
+                        ----en_sensors <= '1';
+                    ----end if;
+----
+                    ----if milliseconds > 1000 then
+                        ----flight_state <= idle;
+                    ----end if;
+--
+                --when idle =>
+                    --if mission_mode = '1' then
+                        --flight_state <= inside_rocket;
+                        --state_seconds <= (others => '0');
+                    --end if;
+--
+                    --if low_pressure = '1' then
+                        --mission_mode <= '1';
+                    --end if;
+--
+                --when inside_rocket =>
+                    --en_data_saving <= '1';
+--
+                    --if state_seconds < 2 then
+                        --exp_adc_reset <= '0';
+                    --else
+                        --exp_adc_reset <= '1';
+--
+                        --if ffu_ejected = '1' then
+                            --flight_state <= freefall;
+                            --state_seconds <= (others => '0');
+                        --end if;
+                    --end if;
+--
+                --when freefall =>
+                    --en_science_packets <= '1';
+                    --sweep_en <= '1';
+--
+----                    if state_seconds > 360 then
+                        ----flight_state <= landed;
+                        ----state_seconds <= (others => '0');
+                    ----end if;
+--
+                --when landed =>
+                    --en_science_packets <= '0';
+                    --sweep_en <= '0';
+                    --en_data_saving <= '0';
+--
+                --when others => flight_state <= idle;
 
-                    if milliseconds > 1000 then
-                        flight_state <= idle;
-                    end if;
-
-                when idle =>
-                    if mission_mode = '1' then
-                        flight_state <= inside_rocket;
-                        state_seconds <= (others => '0');
-                    end if;
-
-                    if low_pressure = '1' then
-                        mission_mode <= '1';
-                    end if;
-
-                when inside_rocket =>
-                    en_data_saving <= '1';
-
-                    if state_seconds < 2 then
-                        exp_adc_reset <= '0';
-                    else
-                        exp_adc_reset <= '1';
-
-                        if ffu_ejected = '1' then
-                            flight_state <= freefall;
-                            state_seconds <= (others => '0');
-                        end if;
-                    end if;
-
-                when freefall =>
-                    en_science_packets <= '1';
-                    sweep_en <= '1';
-
-                    if state_seconds > 360 then
-                        flight_state <= landed;
-                        state_seconds <= (others => '0');
-                    end if;
-
-                when landed =>
-                    en_science_packets <= '0';
-                    sweep_en <= '0';
-                    en_data_saving <= '0';
-
-                when others => flight_state <= idle;
-
-            end case;
+            --end case;
 
     -------- External UART receive ------------
             readout_en <= '0';  -- Default state low. Only a pulse is needed to start the readout controller.
@@ -503,6 +474,12 @@ begin
     --------- Microcontroller UART transmit ------------
             case uc_tx_state is
                 when uc_tx_idle =>
+                    if send_fake_rdy then
+                        uc_tx_state <= uc_tx_scientific_data_preamble;
+                        uc_tx_nextstate <= uc_tx_send_scientific_data;
+                        uc_tx_substate <= 1;
+                        send_fake_rdy <= '0';
+                    end if;
 
                 when uc_tx_preamble =>
                     case uc_tx_substate is
@@ -535,12 +512,34 @@ begin
                 when uc_tx_scientific_data_preamble =>
                     case uc_tx_substate is
                         when 1 =>
-                            if uc_tx_rdy = '1' then
+                            if uc_tx_rdy = '1' then                                
                                 uc_send <= x"83";
                                 uc_wen <= '1';
-                                uc_tx_substate <= 2;
+                                uc_tx_substate <= uc_tx_substate + 1;
                             end if;
                         when 2 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 3 =>
+                            if uc_tx_rdy = '1' then
+                                uc_send <= sequence_counter(7 downto 0);
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 4 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 5 =>
+                            if uc_tx_rdy = '1' then
+                                uc_send <= sequence_counter(15 downto 8);
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 6 =>
                             if uc_tx_rdy = '0' then
                                 uc_wen <= '0';
                                 uc_tx_substate <= 1;
@@ -552,9 +551,9 @@ begin
 
                 when uc_tx_send_scientific_data =>
                     case uc_tx_substate is
-                        when 1 =>
+                        when 1 => 
                             if uc_tx_rdy = '1' then
-                                uc_send <= x"83";
+                                uc_send <=  out_counter(7 downto 0);
                                 uc_wen <= '1';
                                 uc_tx_substate <= uc_tx_substate + 1;
                             end if;
@@ -565,7 +564,7 @@ begin
                             end if;
                         when 3 => 
                             if uc_tx_rdy = '1' then
-                                uc_send <=  s_counter(7 downto 0);
+                                uc_send <=  out_counter(15 downto 8);
                                 uc_wen <= '1';
                                 uc_tx_substate <= uc_tx_substate + 1;
                             end if;
@@ -576,13 +575,27 @@ begin
                             end if;
                         when 5 => 
                             if uc_tx_rdy = '1' then
-                                uc_send <= s_counter(15 downto 8);
+                                uc_send <=  out_counter(23 downto 16);
                                 uc_wen <= '1';
                                 uc_tx_substate <= uc_tx_substate + 1;
                             end if;
                         when 6 =>
                             if uc_tx_rdy = '0' then
                                 uc_wen <= '0';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 7 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= out_counter(31 downto 24);
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 8 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                sequence_counter <= sequence_counter + 1; -- This is here because we need to increment
+                                                                          -- the sequence counter EXACTLY ONCE for each message.
+                                                                          -- Incrementing somewhere else might lead to incorrect values.
                                 uc_tx_substate <= 1;
                                 uc_tx_state <= uc_tx_idle;
                             end if;
