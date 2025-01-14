@@ -6,6 +6,6 @@ Instrument software development for Langmuir probe onboard ROMEO satellite
 SPIDER2 DataHub Code
 ## Description
 The code contains the FPGA part of the Langmuir Probe Payload software.
-The code is compiled and flashed using MicroSemi Libero SoC v11.9 SP6
+The code is synthesized, compiled, programmed, and tested using Microsemi Libero SoC v11.9 SP6
 The Langmuir Probe Payload is a part of the ROMEO mission.
 A detailed description of the software is available in the Master Thesis document.
