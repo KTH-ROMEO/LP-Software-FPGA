@@ -26,7 +26,6 @@ entity General_Controller is
 port (
 	clk : IN  std_logic;
     clk_1Hz : IN std_logic;
-    clk_32k : IN std_logic;
     reset: IN std_logic;
     
     status_packet_clk : IN std_logic;
@@ -332,22 +331,26 @@ begin
             sweep_table_activate_sweep <= '0';
 
     --------------Constant Bias Fake Data Generator--------------------
-            if m_counter(10) = '1' then -- Check for x0400 or 1 on 10th bit.
-                m_counter <= x"0001";
-                k_counter <= k_counter + 1 ;
-            else
-                m_counter <= m_counter + 1;
-                s_counter <= s_counter + 1;
-            end if;
-
-            if constant_bias_mode = '1' then
-                if std_logic_vector(k_counter) = sweep_table_samples_per_step then
-                    k_counter <= x"0001";
-                    send_fake_rdy <= '1';
-                    out_counter(31 downto 16) <= s_counter;
-                    out_counter(15 downto 0) <= s_counter + 1;
-                 end if;
-            end if;
+    --- THIS SECTION IS INTENDED TO GENERATED FAKE CONSTANT BIAS DATA FOR TESTING AND DEVELOPMENT
+    --- PURPOSES. IT IS COMMENTED OUT DUE TO IT NOT WORKING/TAKING UP TO MANY CORE MODULES TO
+    --- SYNTHESIZE THE REST OF THE DESIGN. PLEASE REFACTOR AND REMOVE UNNECESSARY COMPONENTS FROM THE TOP LEVEL
+    --- BEFORE UNCOMMENTING AND PROCEEDING.
+            --if m_counter(10) = '1' then -- Check for x0400 or 1 on 10th bit.
+                --m_counter <= x"0001";
+                --k_counter <= k_counter + 1 ;
+            --else
+                --m_counter <= m_counter + 1;
+                --s_counter <= s_counter + 1;
+            --end if;
+--
+            --if constant_bias_mode = '1' then
+                --if std_logic_vector(k_counter) = sweep_table_samples_per_step then
+                    --k_counter <= x"0001";
+                    --send_fake_rdy <= '1';
+                    --out_counter(31 downto 16) <= s_counter;
+                    --out_counter(15 downto 0) <= s_counter + 1;
+                 --end if;
+            --end if;
     --------- General state machine - mission sequence, etc. ------------
             --case flight_state is
                 --when boot =>
