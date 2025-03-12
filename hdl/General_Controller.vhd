@@ -233,7 +233,7 @@ begin
 
             uc_reset <= 'Z';
             uc_pwr_en <= '0';
-            led1 <= '0';
+            led1 <= '1';
             led2 <= '0';
 
             ext_oen <= '0';
@@ -352,17 +352,17 @@ begin
                  --end if;
             --end if;
     --------- General state machine - mission sequence, etc. ------------
-            --case flight_state is
-                --when boot =>
-                    --uc_pwr_en <= '1';
+            case flight_state is
+                when boot =>  --Quick Fix
+                    uc_pwr_en <= '1';
                     --
                     ----if milliseconds > 100 then
                         ----en_sensors <= '1';
                     ----end if;
 ----
-                    ----if milliseconds > 1000 then
-                        ----flight_state <= idle;
-                    ----end if;
+                    if milliseconds > 1000 then
+                        flight_state <= idle;
+                    end if;
 --
                 --when idle =>
                     --if mission_mode = '1' then
@@ -404,7 +404,7 @@ begin
 --
                 --when others => flight_state <= idle;
 
-            --end case;
+            end case;
 
     -------- External UART receive ------------
             readout_en <= '0';  -- Default state low. Only a pulse is needed to start the readout controller.
