@@ -1,6 +1,6 @@
 <project name="Toplevel" version="1.1">
     <ProjectDirectory>
-        C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\designer\impl1\Toplevel_fp
+        C:\Users\sergi\Desktop\Master Year 2\Master Thesis\LP-Software-FPGA\designer\impl1\Toplevel_fp
     </ProjectDirectory>
     <View>
         SingleSTAPLView
@@ -9,17 +9,17 @@
         
     </LiberoTargetDevice>
     <LogFile>
-        C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\designer\impl1\Toplevel_fp\Toplevel.log
+        C:\Users\sergi\Desktop\Master Year 2\Master Thesis\LP-Software-FPGA\designer\impl1\Toplevel_fp\Toplevel.log
     </LogFile>
     <SerializationOption>
         Skip
     </SerializationOption>
     <programmer status="enable" type="FlashPro5" revision="UndefRev" connection="usb2.0">
         <name>
-            S20059HUMJ
+            S20059FFJ4
         </name>
         <id>
-            S20059HUMJ
+            S20059FFJ4
         </id>
     </programmer>
     <configuration>
@@ -74,7 +74,7 @@
         </Hardware>
         <Algo type="PDB">
             <filename>
-                C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\designer\impl1\Toplevel.pdb
+                C:\Users\sergi\Desktop\Master Year 2\Master Thesis\LP-Software-FPGA\designer\impl1\Toplevel.pdb
             </filename>
             <local>
                 projectData\Toplevel.pdb

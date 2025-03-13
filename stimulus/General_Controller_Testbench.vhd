@@ -34,16 +34,13 @@ end General_Controller_Testbench;
 
 architecture behavioral of General_Controller_Testbench is
 
-    constant SYSCLK_PERIOD : time := 31.25 ns; -- 32MHZ
+    constant SYSCLK_PERIOD : time := 100 ns; -- 10MHZ
 
-    constant SYSCLK_PERIOD32 : time := 31250 ns; -- 32kHZ
-    
     signal SYSCLK : std_logic := '0';
-    signal SYSCLK32 : std_logic := '0';
     signal NSYSRESET : std_logic := '0';
-    signal UC_RX_RDY : std_logic := '0';
-    signal UC_TX_RDY : std_logic := '0';
-    signal UC_RECV : std_logic_vector(7 downto 0):= (others => '0');
+    signal UC_RX_RDY : std_logic := '1';
+    signal UC_TX_RDY : std_logic := '1';
+    signal UC_RECV : std_logic_vector(7 downto 0):= x"B5";
     
 
 
@@ -65,8 +62,8 @@ architecture behavioral of General_Controller_Testbench is
     type AC_array is array (0 to 4) of std_logic_vector(7 downto 0);
     signal SEND_AC_ARRAY : AC_array := (x"b5", x"43", x"ac", x"bc", x"0a");
 
-    type AD_array is array (0 to 5) of std_logic_vector(7 downto 0);
-    signal SEND_AD_ARRAY : AD_array := (x"b5", x"43", x"ad", x"10", x"00", x"0a");
+    type AD_array is array (0 to 4) of std_logic_vector(7 downto 0);
+    signal SEND_AD_ARRAY : AD_array := (x"b5", x"43", x"ad", x"20", x"0a");
 
 
     type CC_array is array (0 to 4) of std_logic_vector(7 downto 0);
@@ -116,73 +113,66 @@ architecture behavioral of General_Controller_Testbench is
     signal st_ren0  : std_logic;
     signal st_ren1  : std_logic;
 
-    --signal fake_msr : std_logic_vector(15 downto 0);
-    --signal fake_msr_rdy : std_logic;
-    --signal smp_per_msr : std_logic_vector(15 downto 0);
+    component General_Controller
+        -- ports
+        port( 
+            -- Inputs
+            clk : in std_logic;
+            clk_1Hz : in std_logic;
+            reset : in std_logic;
+            status_packet_clk : in std_logic;
+            milliseconds : in std_logic_vector(23 downto 0);
+            ffu_ejected : in std_logic;
+            low_pressure : in std_logic;
+            ext_rx_rdy : in std_logic;
+            ext_recv : in std_logic_vector(7 downto 0);
+            uc_recv : in std_logic_vector(7 downto 0);
+            uc_tx_rdy : in std_logic;
+            uc_rx_rdy : in std_logic;
+            cu_sync : in std_logic;
+            st_rdata0  : IN std_logic_vector(15 downto 0);
+            st_rdata1  : IN std_logic_vector(15 downto 0);
 
-component General_Controller
-    -- Port list
-    port(
-        -- Inputs
-        clk                : in  std_logic;
-        clk_1Hz            : in  std_logic;
-        clk_32k            : in  std_logic;
-        cu_sync            : in  std_logic;
-        ext_recv           : in  std_logic_vector(7 downto 0);
-        ext_rx_rdy         : in  std_logic;
+            -- Outputs
+            st_wdata : OUT std_logic_vector(15 downto 0);
+            st_waddr : OUT std_logic_vector(7 downto 0);
+            st_raddr : OUT std_logic_vector(7 downto 0);
+            st_wen0   : OUT std_logic;
+            st_wen1   : OUT std_logic;
+            st_ren0   : OUT std_logic;
+            st_ren1   : OUT std_logic;
 
-        --fake_msr           : in  std_logic_vector(15 downto 0);
-        --fake_msr_rdy       : in  std_logic;
-        
-        ffu_ejected        : in  std_logic;
-        low_pressure       : in  std_logic;
-        milliseconds       : in  std_logic_vector(23 downto 0);
-        reset              : in  std_logic;
-        st_rdata0          : in  std_logic_vector(15 downto 0);
-        st_rdata1          : in  std_logic_vector(15 downto 0);
-        status_packet_clk  : in  std_logic;
-        uc_recv            : in  std_logic_vector(7 downto 0);
-        uc_rx_rdy          : in  std_logic;
-        uc_tx_rdy          : in  std_logic;
-        -- Outputs
-        DAC_max_value      : out std_logic;
-        DAC_zero_value     : out std_logic;
-        en_data_saving     : out std_logic;
-        en_science_packets : out std_logic;
-        en_sensors         : out std_logic;
-        exp_adc_reset      : out std_logic;
-        ext_oen            : out std_logic;
-        ffu_id             : out std_logic_vector(7 downto 0);
-        gs_id              : out std_logic_vector(7 downto 0);
-        led1               : out std_logic;
-        led2               : out std_logic;
-        man_gain1          : out std_logic_vector(1 downto 0);
-        man_gain2          : out std_logic_vector(1 downto 0);
-        man_gain3          : out std_logic_vector(1 downto 0);
-        man_gain4          : out std_logic_vector(1 downto 0);
-        ramp               : out std_logic_vector(3 downto 0);
-        readout_en         : out std_logic;
-        
-        --smp_per_msr        : out std_logic_vector(15 downto 0);
-        
-        st_raddr           : out std_logic_vector(7 downto 0);
-        st_ren0            : out std_logic;
-        st_ren1            : out std_logic;
-        st_waddr           : out std_logic_vector(7 downto 0);
-        st_wdata           : out std_logic_vector(15 downto 0);
-        st_wen0            : out std_logic;
-        st_wen1            : out std_logic;
-        status_bits        : out std_logic_vector(63 downto 0);
-        status_new_data    : out std_logic;
-        sweep_en           : out std_logic;
-        uc_oen             : out std_logic;
-        uc_pwr_en          : out std_logic;
-        uc_reset           : out std_logic;
-        uc_send            : out std_logic_vector(7 downto 0);
-        uc_wen             : out std_logic;
-        unit_id            : out std_logic_vector(7 downto 0)
+            unit_id : out std_logic_vector(7 downto 0);
+            ffu_id : out std_logic_vector(7 downto 0);
+            gs_id : out std_logic_vector(7 downto 0);
+            uc_send : out std_logic_vector(7 downto 0);
+            uc_wen : out std_logic;
+            uc_oen : out std_logic;
+            ext_oen : out std_logic;
+            readout_en : out std_logic;
+            uc_reset : out std_logic;
+            uc_pwr_en : out std_logic;
+            en_sensors : out std_logic;
+            en_data_saving : out std_logic;
+            led1 : out std_logic;
+            led2 : out std_logic;
+            status_bits : out std_logic_vector(63 downto 0);
+            status_new_data : out std_logic;
+            en_science_packets : out std_logic;
+            sweep_en : out std_logic;
+            ramp : out std_logic_vector(3 downto 0);
+            exp_adc_reset : out std_logic;
+            man_gain1 : out std_logic_vector(1 downto 0);
+            man_gain2 : out std_logic_vector(1 downto 0);
+            man_gain3 : out std_logic_vector(1 downto 0);
+            man_gain4 : out std_logic_vector(1 downto 0);
+            DAC_zero_value : out std_logic;
+            DAC_max_value : out std_logic
+
+            -- Inouts
+
         );
-end component;
+    end component;
 
     component SweepTable
         -- Port list
@@ -200,25 +190,10 @@ end component;
         );
     end component;
 
--- Constant_Bias_Fake_Data_Generator
---component Constant_Bias_Fake_Data_Generator
-    -- Port list
---    port(
-        -- Inputs
---       clk_32k                 : in  std_logic;
---        reset                   : in  std_logic;
---        samples_per_measurement : in  std_logic_vector(15 downto 0);
-        -- Outputs
---        fake_measurement        : out std_logic_vector(15 downto 0);
---        measurement_rdy         : out std_logic
---        );
---end component;
-
 begin
 
     process
         variable vhdl_initial : BOOLEAN := TRUE;
-        variable send_cmd_sent : BOOLEAN := FALSE;
 
     begin
         if ( vhdl_initial ) then
@@ -231,50 +206,40 @@ begin
             NSYSRESET <= '0';
             vhdl_initial := FALSE;
         else
-            if ( not send_cmd_sent ) then
-
-
-            wait for (SYSCLK_PERIOD * 2000);
-
-
-            for i in SEND_AD_ARRAY'range loop
+            for i in SEND_AA_ARRAY'range loop
                 wait for (SYSCLK_PERIOD * 1000);
                 UC_RX_RDY <= '1';
-                UC_RECV <= SEND_AD_ARRAY(i);
+                UC_RECV <= SEND_AA_ARRAY(i);
+                wait for (SYSCLK_PERIOD * 1000);
+                UC_RX_RDY <= '0';
+            end loop;
+
+            wait for (SYSCLK_PERIOD * 100);
+
+            for i in SEND_A0_ARRAY'range loop
+                wait for (SYSCLK_PERIOD * 1000);
+                UC_RX_RDY <= '1';
+                UC_RECV <= SEND_A0_ARRAY(i);
                 wait for (SYSCLK_PERIOD * 1000);
                 UC_RX_RDY <= '0';
             end loop;
 
 
-            wait for (SYSCLK_PERIOD * 5000);
-
-
-            for i in SEND_CA_ARRAY'range loop
-                wait for (SYSCLK_PERIOD * 1000);
-                UC_RX_RDY <= '1';
-                UC_RECV <= SEND_CA_ARRAY(i);
-                wait for (SYSCLK_PERIOD * 1000);
-                UC_RX_RDY <= '0';
-            end loop;
-            send_cmd_sent := TRUE;
-            end if;
-
-            wait for (SYSCLK_PERIOD * 5000);
+            --wait for (SYSCLK_PERIOD * 1000);
 --
-            for i in 1 to 100 loop
-                wait for (SYSCLK_PERIOD * 1000);
-                UC_TX_RDY <= '1';                
-                
-                wait for (SYSCLK_PERIOD * 1000);
-                UC_TX_RDY <= '0';
-            end loop;
+            --for i in 1 to 10 loop
+                --wait for (SYSCLK_PERIOD * 1000);
+                --UC_TX_RDY <= '1';                
+                --
+                --wait for (SYSCLK_PERIOD * 1000);
+                --UC_TX_RDY <= '0';
+            --end loop;
 
         end if;
     end process;
 
     -- Clock Driver
-    SYSCLK <= not SYSCLK after (SYSCLK_PERIOD / 1.0 );
-    SYSCLK32 <= not SYSCLK32 after (SYSCLK_PERIOD32 / 1);
+    SYSCLK <= not SYSCLK after (SYSCLK_PERIOD / 2.0 );
 
     -- Instantiate Unit Under Test:  General_Controller
     General_Controller_0 : General_Controller
@@ -283,7 +248,6 @@ begin
             -- Inputs
             clk => SYSCLK,
             clk_1Hz => SYSCLK,
-            clk_32k => SYSCLK32,
             reset => NSYSRESET,
             status_packet_clk => SYSCLK,
             milliseconds => (others=> '0'),
@@ -299,14 +263,7 @@ begin
             st_rdata0 => st_rdata0,
             st_rdata1 => st_rdata1,
 
-            --fake_msr => fake_msr,
-            --fake_msr_rdy => fake_msr_rdy,
-
-
             -- Outputs
-
-            --smp_per_msr => smp_per_msr,
-
             st_wdata => st_wdata,
             st_waddr => st_waddr,
             st_raddr => st_raddr,
@@ -346,20 +303,6 @@ begin
 
         );
 
-
--- Constant_Bias_Fake_Data_Generator_0
---Constant_Bias_Fake_Data_Generator_0 : Constant_Bias_Fake_Data_Generator
---    port map( 
-        -- Inputs
---        clk_32k                 => SYSCLK32,
---        samples_per_measurement => smp_per_msr,
---        reset                   => NSYSRESET,
-        -- Outputs
---        measurement_rdy         => fake_msr_rdy,
---        fake_measurement        => fake_msr
---        );
-
-
     -- SweepTable_0
     SweepTable_0 : SweepTable
         port map( 
@@ -388,7 +331,6 @@ begin
             -- Outputs
             RD    => st_rdata1 
         );
-
 
 end behavioral;
 

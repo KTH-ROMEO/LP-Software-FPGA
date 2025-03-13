@@ -13,8 +13,8 @@ entity DAC_SET is
         CLK         : in  std_logic;
         DACA        : in  std_logic_vector(15 downto 0);
         DACB        : in  std_logic_vector(15 downto 0);
-        DACC        : in  std_logic_vector(15 downto 0);
-        DACD        : in  std_logic_vector(15 downto 0);
+        --DACC        : in  std_logic_vector(15 downto 0);
+        --DACD        : in  std_logic_vector(15 downto 0);
 --        ADR         : in  std_logic_vector(1 downto 0);
         SET         : in  std_logic;
         LDCS        : out std_logic;
@@ -47,9 +47,7 @@ begin
     LDSDI <= sdi_int;
 
     DAC <=  DACA when ADR = "00" else
-            DACB when ADR = "01" else
-            DACC when ADR = "10" else
-            DACD;
+            DACB when ADR = "01";
 --------------------------
 -- state machine to set out 
 --------------------------
@@ -111,7 +109,7 @@ begin
                     CS <= '0';
                     sdi_int <= vector(17);
                     if cnt = "10010" then
-                        if ADR = "00" then 
+                        if ADR = "10" then 
                             state <= "00001";       -- this is to return to the idle state when all four DACs have been sent.
                         else
                             state <= "00010";       -- this is to set the next DAC value.

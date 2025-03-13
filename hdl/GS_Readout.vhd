@@ -43,6 +43,7 @@ port (
     ch9_data : IN std_logic_vector(11 downto 0);
     ch10_data : IN std_logic_vector(11 downto 0);
     ch11_data : IN std_logic_vector(11 downto 0);
+    exp_SC_packet : IN std_logic_vector(63 downto 0);
 
     txrdy : IN std_logic;
 
@@ -108,19 +109,19 @@ architecture architecture_GS_Readout of GS_Readout is
     end;
 begin
     busy <= '0' when state = state_idle else '1';
-
+    --Sensors
     adc_vector_1(63 downto 48) <= x"01AD";
     adc_vector_1(47 downto 36) <= ch0_data;
     adc_vector_1(35 downto 24) <= ch1_data;
     adc_vector_1(23 downto 12) <= ch2_data;
     adc_vector_1(11 downto 0) <= ch3_data;
-
+    --Channel 0-3 ADC
     adc_vector_2(63 downto 48) <= x"02AD";
     adc_vector_2(47 downto 36) <= ch4_data;
     adc_vector_2(35 downto 24) <= ch5_data;
     adc_vector_2(23 downto 12) <= ch6_data;
     adc_vector_2(11 downto 0) <= ch7_data;
-
+    --Channel 4-7 ADC
     adc_vector_3(63 downto 48) <= x"03AD";
     adc_vector_3(47 downto 36) <= ch8_data;
     adc_vector_3(35 downto 24) <= ch9_data;

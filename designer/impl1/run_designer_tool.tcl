@@ -1,4 +1,4 @@
-set_defvar "IDE_DESIGNERVIEW_ROOTDIR" {C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\designer}
+set_defvar "IDE_DESIGNERVIEW_ROOTDIR" {C:\Users\sergi\Desktop\Master Year 2\Master Thesis\20250312_LP-Software-FPGA\designer}
 open_design Toplevel.adb
-open_tool mvn_ioedit
+open_tool mvn_chipedit
 

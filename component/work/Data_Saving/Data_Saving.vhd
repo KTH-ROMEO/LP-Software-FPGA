@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Fri Aug 30 14:36:23 2024
+-- Created by SmartDesign Tue Mar 11 18:06:40 2025
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -21,7 +21,6 @@ entity Data_Saving is
         acc_new_data       : in  std_logic;
         acc_packet_0       : in  std_logic_vector(87 downto 0);
         ch_0_new_data      : in  std_logic;
-        ch_0_packet_0      : in  std_logic_vector(87 downto 0);
         ch_1_new_data      : in  std_logic;
         ch_1_packet_0      : in  std_logic_vector(87 downto 0);
         ch_2_new_data      : in  std_logic;
@@ -34,6 +33,7 @@ entity Data_Saving is
         ch_5_packet        : in  std_logic_vector(87 downto 0);
         clk                : in  std_logic;
         en                 : in  std_logic;
+        exp_SC_packet      : in  std_logic_vector(63 downto 0);
         fmc_clk            : in  std_logic;
         fmc_noe            : in  std_logic;
         gyro_new_data      : in  std_logic;
@@ -99,7 +99,7 @@ component Packet_Saver
         acc_new_data      : in  std_logic;
         acc_packet        : in  std_logic_vector(87 downto 0);
         ch_0_new_data     : in  std_logic;
-        ch_0_packet       : in  std_logic_vector(87 downto 0);
+        ch_0_packet       : in  std_logic_vector(63 downto 0);
         ch_1_new_data     : in  std_logic;
         ch_1_packet       : in  std_logic_vector(87 downto 0);
         ch_2_new_data     : in  std_logic;
@@ -205,7 +205,7 @@ Packet_Saver_0 : Packet_Saver
         status_packet     => status_packet_0,
         pres_cal1_packet  => pres_cal1_packet_0,
         pres_cal2_packet  => pres_cal2_packet_0,
-        ch_0_packet       => ch_0_packet_0,
+        ch_0_packet       => exp_SC_packet,
         ch_1_packet       => ch_1_packet_0,
         ch_2_packet       => ch_2_packet_0,
         ch_3_packet       => ch_3_packet_0,

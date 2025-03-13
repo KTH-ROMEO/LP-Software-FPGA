@@ -24,35 +24,48 @@ use IEEE.numeric_std.all;
 
 entity SWEEP_SPIDER2 is
 port (
-		RESET       : in  std_logic;
-        CLK         : in  std_logic;                    
-        CLK_SLOW    : in std_logic;                     -- here the clock should probably be M_time(17)       
-        ACTIVATE    : in  std_logic;
-        FFUID       : in  std_logic_vector(7 downto 0);
-        DAC1        : out  std_logic_vector(15 downto 0);
-        DAC2        : out  std_logic_vector(15 downto 0);
-        DAC3        : out  std_logic_vector(15 downto 0);
-        DAC4        : out  std_logic_vector(15 downto 0);
+		RESET           : in  std_logic;
+        CLK             : in  std_logic;                    
+        CLK_SLOW        : in std_logic;                         -- SampleRate 32kHz       
+        SW_ENABLE       : in  std_logic;
+        CB_ENABLE       : in  std_logic;
+        RD0             : in  std_logic_vector(15 downto 0);    -- Data from Table0
+        RD1             : in  std_logic_vector(15 downto 0);    -- Data from Table1
+        N_STEPS         : in  std_logic_vector(7 downto 0);
+        N_SAMPLES       : in  std_logic_vector(15 downto 0);
+        N_SKIP_SAMPLES  : in  std_logic_vector(15 downto 0);
 
-        SET         : out std_logic
+        CBIASV0         : in  std_logic_vector(15 downto 0);    -- Voltage for CBias0
+        CBIASV1         : in  std_logic_vector(15 downto 0);    -- Voltage for CBias1
+
+        DAC1            : out  std_logic_vector(15 downto 0);
+        DAC2            : out  std_logic_vector(15 downto 0);
+        
+        SET             : out std_logic; 
+        REN0            : out std_logic;                    -- Read enable table 0
+        REN1            : out std_logic;                    -- Read enable table 1
+        RADDR           : out std_logic_vector(7 downto 0); -- Read address
+        ADC_EN          : out std_logic;                    -- ADC only enable when not skipping samples
+        SW_END          : out std_logic
+
 );
 end SWEEP_SPIDER2;
 
 architecture architecture_SWEEP_SPIDER2 of SWEEP_SPIDER2 is
-    signal dac1_int, dac2_int, dac3_int, dac4_int   : std_logic_vector(15 downto 0);
-    signal latch, update                            : std_logic;
-    signal cnt                                      : std_logic_vector(1 downto 0);
-    signal counter                                  : std_logic_vector(15 downto 0);
-    signal ud_counter                               : std_logic_vector(15 downto 0);
-    signal up_flag                                  : std_logic;
+    signal dac1_int, dac2_int                       : std_logic_vector(15 downto 0); --dac3_int, dac4_int
+    signal latch, update, fetch, V_Changed          : std_logic;
+    signal sweep_state                              : integer range 0 to 6;
+    signal skipped_n                                : std_logic_vector(15 downto 0);
+    signal step                                     : std_logic_vector(7 downto 0);
+    signal sample_n                                 : std_logic_vector(15 downto 0); -- Amount of samples performed in current step
+    signal sweep_end                                : std_logic;
+    signal sweep_table_read_wait                    : integer range 0 to 3;  -- Buffer to read from table
 
 ---------------------------------------------------------------------
 
 begin
     DAC1 <= dac1_int;
     DAC2 <= dac2_int;
-    DAC3 <= dac3_int;
-    DAC4 <= dac4_int;
     SET <= update;
 
 --------------------------
@@ -60,125 +73,127 @@ begin
 --------------------------
 	process (CLK, RESET)
 	begin
-		if RESET = '1' then -- assync. reset
-		    dac1_int <= x"9B1F";   -- reset value of the DAC
-            dac2_int <= x"9B1F";   -- reset value of the DAC
-            dac3_int <= x"9B1F";   -- reset value of the DAC
-            dac4_int <= x"9B1F";   -- reset value of the DAC
-           latch <= '0';
-           update <= '0';
-           cnt <= "00";
-            up_flag <='1';
-            ud_counter <= x"4000";  -- starting value of the up/down ramp
-           counter <= x"9800";   -- starting value of the Sweep/ramp
+		if RESET = '1' then         -- assync. reset
+		    dac1_int <= x"9B1F";    -- reset value of the DAC
+            dac2_int <= x"9B1F";    -- reset value of the DAC
+            fetch <='0';            -- Voltage value needs to be requested
+            latch <= '0';           -- initialize the latch
+            update <= '0';          -- Update signal
+            sweep_state <= 0;       -- number of sweeps CHANGED
+            step <= x"00";          -- Reset step
+            REN0 <='0';
+            REN1 <='0';
+            RADDR <= x"00";
+            ADC_EN <='0';
+            sweep_table_read_wait <= 0;
+            skipped_n <= x"0000";
+            sample_n <= x"0000";
+            SW_END <= '0';
+            V_Changed <= '0';
             
 		elsif rising_edge(CLK) then
+            -- Block to update the DAC values #update --TODO: Should only be active if SW_ENABLE or CB_ENABLE ='1'
             latch <= CLK_SLOW;
             if (CLK_SLOW = '1') and (latch = '0') then 
-                update <= '1';
+                if (SW_ENABLE= '1' or CB_ENABLE= '1') and V_Changed= '1' then
+                    update <= '1';
+                end if;
+                fetch <='0';
+                if sweep_end='1' then
+                    SW_END <= '1';
+                end if;
             else
                 update <= '0';
             end if;
+            if SW_ENABLE= '1' or CB_ENABLE= '1' then
+                if fetch ='0' then
+                    if CB_ENABLE= '1' then
+                        ADC_EN <= '1';
+                        dac1_int <= CBIASV0;
+                        dac2_int <= CBIASV1;
+                        fetch <= '1';
+                    elsif SW_ENABLE='1' then
+                        case sweep_state is
+                            when 0 => -- Consider to move it to last step and avoid issues
+                                -- Check if current sample is last of the step, if not increase sample counter
+                                if skipped_n = x"0000" then
+                                    ADC_EN <= '0';
+                                    sweep_state <= 1;
+                                elsif skipped_n = N_SKIP_SAMPLES then
+                                    ADC_EN <= '1';
+                                    sweep_state <= 3;
+                                else
+                                    skipped_n <= skipped_n + x"0001";
+                                    sweep_state <= 3;
+                                end if;
 
-            if update = '1' then            
-                if (ACTIVATE = '1') then
+                            when 1 =>
+                                RADDR <= step;
+                                REN0 <= '1';
+                                REN1 <= '1';
+                                sweep_state <= 2;
+                            when 2 => 
+                                -- Wait 4 CLK cycles for data to be read.
+                                if sweep_table_read_wait /= 3 then
+                                    sweep_table_read_wait <= sweep_table_read_wait + 1;
+                                else
+                                    sweep_state <= 3;
+                                    dac1_int <= RD0;
+                                    dac2_int <= RD1;
+                                    REN0 <= '0';
+                                    REN1 <= '0';
+                                end if;
+                            when 3=>
+                                sweep_table_read_wait <= 0;
+                                if skipped_n = x"0000" then
+                                    V_Changed <= '1';
+                                    skipped_n <= skipped_n + x"0001";
+                                    sweep_state <= 4;
+                                elsif sample_n = N_SAMPLES then
+                                    V_Changed <= '0';
+                                    if step = N_STEPS then
+                                        step <= (others =>'0');
+                                        sweep_state <= 5;
+                                    else
+                                        step <= step+x"01";
+                                        skipped_n <= x"0000";
+                                        sweep_state <= 4;
+                                    end if;
+                                    sample_n <= (others => '0');
+                                else 
+                                    V_Changed <= '0';
+                                    sample_n <= sample_n +x"0001";
+                                    sweep_state <= 4;
+                                end if;
+                                
+                            when 4 =>
+                                fetch <= '1';
+                                sweep_state <= 0;
+                            when 5 =>
+                                fetch <= '1';
+                                sweep_end <= '1';
+                            when others =>
+                                sweep_table_read_wait <= 0;
+                                REN0 <= '0';
+                                REN1 <= '0';
+                                sweep_state <= 0;
+                                fetch <= '0';
+                        end case;
 
---                  This is counter upward (ramp) for all sweeps!
-                    if counter = x"F800" then       -- Maximum value of all sweeps, ca 3V
-                        if ((FFUID=x"07") or (FFUID=x"08")) then 
-                            counter <= x"9800";         -- Minimum value of the sweep for FFU # 7 and 8, ca 0V
-                        else
-                            counter <= x"4000";         -- Minimum value of the sweep for all other FFUs
-                        end if;
-                        cnt <= cnt + 1;
-                    else
-                        if ((FFUID=x"07") or (FFUID=x"08")) then 
-                            counter <= counter + x"0200";         -- Minimum value of the sweep for FFU # 7 and 8, ca 0V
-                        else
-                            counter <= counter + x"0400";         -- Minimum value of the sweep for all other FFUs
-                        end if;
                     end if;
-
---                  This is counter up/down for sweep on probe 1 for FFUs #3 and #4
-                    if ud_counter = x"F800" then       -- Maximum value of the sweep
-                            up_flag <= '0';                           
-                            ud_counter <= ud_counter - x"0200";  -- Increase voltage by 66 mV
-                    elsif (ud_counter = x"4000") then       -- Maximum value of the sweep
-                            up_flag <= '1';                            
-                            ud_counter <= ud_counter + x"0200";  -- Increase voltage by 66 mV
-                    else
-                        if up_flag = '1' then
-                            ud_counter <= ud_counter + x"0200";  -- Increase voltage by 66 mV
-                        else
-                            ud_counter <= ud_counter - x"0200";  -- Increase voltage by 66 mV
-                        end if;
-                    end if;
-
-
---          Here we do special treatment for FFUID 3 and 4
-                    if (FFUID = x"03") or (FFUID = x"04") then
-                       dac1_int <= ud_counter;            -- Probe 1 is sweeping up/down
-                       dac2_int <= x"C853";            -- 1.5 V
-                       dac3_int <= x"D764";            -- 2.0 V
-                       dac4_int <= x"F587";            -- 3.0 V
---          Here we do special treatment for FFUID 2
-                    elsif (FFUID = x"02") then
-                       dac1_int <= x"C853";            -- 1.5 V
-                       dac2_int <= x"D764";            -- 2.0 V
-                       dac3_int <= x"E676";            -- 2.5 V
-                       dac4_int <= x"F587";            -- 3.0 V
-                    else
-
---              This section for rotating sweep on different probes
---                  Setting value for DAC1
-                        if cnt="00" then 
-                            dac1_int <= counter;
-                        else
-                            if (FFUID = x"01") then
-                                dac1_int <= x"40B6";        -- -3V      -- this is default value for FFU#1    
-                            else
-                                dac1_int <= x"C853";        -- +1.5V
-                            end if;
-                        end if;
-
-    --                  Setting value for DAC2
-                        if cnt="01" then 
-                            dac2_int <= counter;
-                        else
-                            if (FFUID = x"01") then
-                                dac2_int <= x"7CFC";        -- -1V    
-                            else
-                                dac2_int <= x"D764";        -- +2.0V
-                            end if; 
-                        end if;
-
-    --                  Setting value for DAC3
-                        if cnt="10" then 
-                            dac3_int <= counter;
-                        else
-                            if (FFUID = x"01") then
-                                dac3_int <= x"B942";          -- +1.0V
-                            else
-                                dac3_int <= x"E676";          -- +2.5V 
-                            end if;           
-                        end if;
-
-    --                  Setting value for DAC4
-                        if cnt="11" then 
-                            dac4_int <= counter;
-                        else
-                            dac4_int <= x"F587";            --  +3.0V
-                        end if;
-                    end if;
-                else
-  		           dac1_int <= x"9B1F";   -- reset value of the DAC
-                   dac2_int <= x"9B1F";   -- reset value of the DAC
-                   dac3_int <= x"9B1F";   -- reset value of the DAC
-                   dac4_int <= x"9B1F";   -- reset value of the DAC
                 end if;
+            else
+                ADC_EN <='0';           -- ADC off if the experiment is not running
+                step <= x"00";          -- Reset value of step
+                dac1_int <= x"9B1F";    -- reset value of the DAC
+                dac2_int <= x"9B1F";    -- reset value of the DAC
+                --SW_END <= '0';
+                sample_n <= x"0000";
+                sweep_end <= '0';
             end if;
         end if;
     end process;
+    --Comment to see if it does update the test bench
 
 
 end architecture_SWEEP_SPIDER2;

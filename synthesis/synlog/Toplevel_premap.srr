@@ -1,14 +1,14 @@
-# Mon Sep 02 20:13:35 2024
+# Thu Mar 13 20:22:01 2025
 
 Synopsys Microsemi Technology Pre-mapping, Version mapact, Build 2172R, Built Oct 30 2017 10:54:39
 Copyright (C) 1994-2017 Synopsys, Inc. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
 Product Version L-2016.09M-SP1-5
 
-Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 99MB)
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 100MB)
 
 @A: MF827 |No constraint file specified.
-@L: C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\synthesis\Toplevel_scck.rpt 
-Printing clock  summary report in "C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\synthesis\Toplevel_scck.rpt" file 
+@L: C:\Users\sergi\Desktop\Master Year 2\Master Thesis\20250312_LP-Software-FPGA\synthesis\Toplevel_scck.rpt 
+Printing clock  summary report in "C:\Users\sergi\Desktop\Master Year 2\Master Thesis\20250312_LP-Software-FPGA\synthesis\Toplevel_scck.rpt" file 
 @N: MF248 |Running in 64-bit mode.
 @N: MF667 |Clock conversion disabled. (Command "set_option -fix_gated_and_generated_clocks 0" in the project file.)
 
@@ -17,14 +17,22 @@ Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s
 
 Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 114MB peak: 121MB)
 
-@N: MO111 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\general_controller.vhd":208:8:208:9|Tristate driver uc_reset_2 (in view: work.General_Controller(architecture_general_controller)) on net uc_reset (in view: work.General_Controller(architecture_general_controller)) has its enable tied to GND.
-@N: BN362 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\general_controller.vhd":208:8:208:9|Removing sequential instance ramp_1[0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\general_controller.vhd":208:8:208:9|Removing sequential instance man_gain1[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\general_controller.vhd":208:8:208:9|Removing sequential instance man_gain2[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\general_controller.vhd":208:8:208:9|Removing sequential instance man_gain3[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\general_controller.vhd":208:8:208:9|Removing sequential instance man_gain4[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: MO111 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\general_controller.vhd":229:8:229:9|Tristate driver uc_reset_2 (in view: work.General_Controller(architecture_general_controller)) on net uc_reset (in view: work.General_Controller(architecture_general_controller)) has its enable tied to GND.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\adc_read.vhd":87:2:87:3|Removing sequential instance exp_SC_packet[63:0] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\sweep_spider2.vhd":76:2:76:3|Removing sequential instance V_Changed (in view: work.SWEEP_SPIDER2(architecture_sweep_spider2)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\sweep_spider2.vhd":76:2:76:3|Removing sequential instance SW_END (in view: work.SWEEP_SPIDER2(architecture_sweep_spider2)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\general_controller.vhd":229:8:229:9|Removing sequential instance ffu_id[7:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\general_controller.vhd":229:8:229:9|Removing sequential instance ramp_1[0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\general_controller.vhd":229:8:229:9|Removing sequential instance man_gain1[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\general_controller.vhd":229:8:229:9|Removing sequential instance man_gain2[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\general_controller.vhd":229:8:229:9|Removing sequential instance man_gain3[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\general_controller.vhd":229:8:229:9|Removing sequential instance man_gain4[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\adc_read.vhd":87:2:87:3|Removing sequential instance exp_Test_packet[63:0] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\sweep_spider2.vhd":76:2:76:3|Removing sequential instance sweep_state[0:5] (in view: work.SWEEP_SPIDER2(architecture_sweep_spider2)) of type view:PrimLib.statemachine(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\general_controller.vhd":229:8:229:9|Removing sequential instance en_science_packets (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\sweep_spider2.vhd":76:2:76:3|Removing sequential instance latch (in view: work.SWEEP_SPIDER2(architecture_sweep_spider2)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 
-Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 122MB peak: 123MB)
+Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 122MB peak: 124MB)
 
 
 
@@ -37,25 +45,25 @@ Clock                                   Frequency     Period        Type        
 ClockDivs|clk_1kHz_inferred_clock       32.0 MHz      31.250        inferred     Inferred_clkgroup_5     7    
 ClockDivs|clk_50Hz_inferred_clock       32.0 MHz      31.250        inferred     Inferred_clkgroup_6     6    
 ClockDivs|clk_800kHz_inferred_clock     32.0 MHz      31.250        inferred     Inferred_clkgroup_1     126  
-Timing|m_time_inferred_clock[7]         32.0 MHz      31.250        inferred     Inferred_clkgroup_3     37   
-Timing|s_time_inferred_clock[5]         32.0 MHz      31.250        inferred     Inferred_clkgroup_2     5    
-Toplevel|CLOCK                          32.0 MHz      31.250        inferred     Inferred_clkgroup_0     1691 
+DAC_SET|ADR_inferred_clock[1]           32.0 MHz      31.250        inferred     Inferred_clkgroup_2     39   
+Timing|s_time_inferred_clock[5]         32.0 MHz      31.250        inferred     Inferred_clkgroup_3     5    
+Toplevel|CLOCK                          32.0 MHz      31.250        inferred     Inferred_clkgroup_0     1479 
 Toplevel|FMC_CLK                        32.0 MHz      31.250        inferred     Inferred_clkgroup_4     54   
 ==============================================================================================================
 
-@W: MT530 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\clockdivs.vhd":57:8:57:9|Found inferred clock Toplevel|CLOCK which controls 1691 sequential elements including ClockDivs_0.cnt_800kHz[4:0]. This clock has no specified timing constraint which may adversely impact design performance. 
-@W: MT530 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\clockdivs.vhd":76:8:76:9|Found inferred clock ClockDivs|clk_800kHz_inferred_clock which controls 126 sequential elements including ClockDivs_0.cnt_1kHz[8:0]. This clock has no specified timing constraint which may adversely impact design performance. 
-@W: MT530 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\adc_reset.vhd":37:2:37:3|Found inferred clock Timing|s_time_inferred_clock[5] which controls 5 sequential elements including Science_0.ADC_RESET_0.state[0:2]. This clock has no specified timing constraint which may adversely impact design performance. 
-@W: MT530 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\eject_signal_debounce.vhd":51:4:51:5|Found inferred clock Timing|m_time_inferred_clock[7] which controls 37 sequential elements including Eject_Signal_Debounce_0.state[0:3]. This clock has no specified timing constraint which may adversely impact design performance. 
-@W: MT530 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\smartgen\fpga_buffer\fpga_buffer.vhd":2135:4:2135:23|Found inferred clock Toplevel|FMC_CLK which controls 54 sequential elements including Data_Saving_0.FPGA_Buffer_0.\\DFN1C0_WGRYSYNC\[5\]\\. This clock has no specified timing constraint which may adversely impact design performance. 
-@W: MT530 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\clockdivs.vhd":100:8:100:9|Found inferred clock ClockDivs|clk_1kHz_inferred_clock which controls 7 sequential elements including ClockDivs_0.cnt_50Hz[5:0]. This clock has no specified timing constraint which may adversely impact design performance. 
-@W: MT530 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\clockdivs.vhd":115:8:115:9|Found inferred clock ClockDivs|clk_50Hz_inferred_clock which controls 6 sequential elements including ClockDivs_0.cnt_1Hz[4:0]. This clock has no specified timing constraint which may adversely impact design performance. 
+@W: MT530 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\clockdivs.vhd":57:8:57:9|Found inferred clock Toplevel|CLOCK which controls 1479 sequential elements including ClockDivs_0.cnt_800kHz[4:0]. This clock has no specified timing constraint which may adversely impact design performance. 
+@W: MT530 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\clockdivs.vhd":76:8:76:9|Found inferred clock ClockDivs|clk_800kHz_inferred_clock which controls 126 sequential elements including ClockDivs_0.cnt_1kHz[8:0]. This clock has no specified timing constraint which may adversely impact design performance. 
+@W: MT530 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\dac_set.vhd":56:2:56:3|Found inferred clock DAC_SET|ADR_inferred_clock[1] which controls 39 sequential elements including Science_0.DAC_SET_0.state[0:4]. This clock has no specified timing constraint which may adversely impact design performance. 
+@W: MT530 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\adc_reset.vhd":37:2:37:3|Found inferred clock Timing|s_time_inferred_clock[5] which controls 5 sequential elements including Science_0.ADC_RESET_0.state[0:2]. This clock has no specified timing constraint which may adversely impact design performance. 
+@W: MT530 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\smartgen\fpga_buffer\fpga_buffer.vhd":2135:4:2135:23|Found inferred clock Toplevel|FMC_CLK which controls 54 sequential elements including Data_Saving_0.FPGA_Buffer_0.\\DFN1C0_WGRYSYNC\[5\]\\. This clock has no specified timing constraint which may adversely impact design performance. 
+@W: MT530 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\clockdivs.vhd":100:8:100:9|Found inferred clock ClockDivs|clk_1kHz_inferred_clock which controls 7 sequential elements including ClockDivs_0.cnt_50Hz[5:0]. This clock has no specified timing constraint which may adversely impact design performance. 
+@W: MT530 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\clockdivs.vhd":115:8:115:9|Found inferred clock ClockDivs|clk_50Hz_inferred_clock which controls 6 sequential elements including ClockDivs_0.cnt_1Hz[4:0]. This clock has no specified timing constraint which may adversely impact design performance. 
 
 Finished Pre Mapping Phase.
 @N: MO111 :|Tristate driver UC_RESET_t (in view: work.Toplevel(rtl)) on net UC_RESET (in view: work.Toplevel(rtl)) has its enable tied to GND.
-@N: BN225 |Writing default property annotation file C:\Users\Lab-user1\Desktop\MasterThesis\Langmuir-DataHub-EMUScience-FPGA\synthesis\Toplevel.sap.
+@N: BN225 |Writing default property annotation file C:\Users\sergi\Desktop\Master Year 2\Master Thesis\20250312_LP-Software-FPGA\synthesis\Toplevel.sap.
 
-Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 121MB peak: 123MB)
+Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 121MB peak: 124MB)
 
 Encoding state machine state[0:3] (in view: work.FFU_Command_Checker(architecture_ffu_command_checker))
 original code -> new code
@@ -63,68 +71,70 @@ original code -> new code
    010 -> 01
    011 -> 10
    100 -> 11
-@N: MO225 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\ffu_command_checker.vhd":49:4:49:5|There are no possible illegal states for state machine state[0:3] (in view: work.FFU_Command_Checker(architecture_ffu_command_checker)); safe FSM implementation is not required.
+@N: MO225 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\ffu_command_checker.vhd":49:4:49:5|There are no possible illegal states for state machine state[0:3] (in view: work.FFU_Command_Checker(architecture_ffu_command_checker)); safe FSM implementation is not required.
 Encoding state machine rx_state[0:3] (in view: work.UART_1(architecture_uart))
 original code -> new code
    00 -> 00
    01 -> 01
    10 -> 10
    11 -> 11
-@N: MO225 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\uart.vhd":132:8:132:9|There are no possible illegal states for state machine rx_state[0:3] (in view: work.UART_1(architecture_uart)); safe FSM implementation is not required.
+@N: MO225 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\uart.vhd":132:8:132:9|There are no possible illegal states for state machine rx_state[0:3] (in view: work.UART_1(architecture_uart)); safe FSM implementation is not required.
 Encoding state machine tx_state[0:3] (in view: work.UART_1(architecture_uart))
 original code -> new code
    00 -> 00
    01 -> 01
    10 -> 10
    11 -> 11
-@N: MO225 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\uart.vhd":67:8:67:9|There are no possible illegal states for state machine tx_state[0:3] (in view: work.UART_1(architecture_uart)); safe FSM implementation is not required.
+@N: MO225 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\uart.vhd":67:8:67:9|There are no possible illegal states for state machine tx_state[0:3] (in view: work.UART_1(architecture_uart)); safe FSM implementation is not required.
 Encoding state machine rx_state[0:3] (in view: work.UART_0(architecture_uart))
 original code -> new code
    00 -> 00
    01 -> 01
    10 -> 10
    11 -> 11
-@N: MO225 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\uart.vhd":132:8:132:9|There are no possible illegal states for state machine rx_state[0:3] (in view: work.UART_0(architecture_uart)); safe FSM implementation is not required.
+@N: MO225 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\uart.vhd":132:8:132:9|There are no possible illegal states for state machine rx_state[0:3] (in view: work.UART_0(architecture_uart)); safe FSM implementation is not required.
 Encoding state machine tx_state[0:3] (in view: work.UART_0(architecture_uart))
 original code -> new code
    00 -> 00
    01 -> 01
    10 -> 10
    11 -> 11
-@N: MO225 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\uart.vhd":67:8:67:9|There are no possible illegal states for state machine tx_state[0:3] (in view: work.UART_0(architecture_uart)); safe FSM implementation is not required.
-Encoding state machine state[0:3] (in view: work.Eject_Signal_Debounce(architecture_eject_signal_debounce))
+@N: MO225 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\uart.vhd":67:8:67:9|There are no possible illegal states for state machine tx_state[0:3] (in view: work.UART_0(architecture_uart)); safe FSM implementation is not required.
+Encoding state machine uc_rx_state[0:31] (in view: work.General_Controller(architecture_general_controller))
 original code -> new code
-   00 -> 00
-   01 -> 01
-   10 -> 10
-   11 -> 11
-@N: MO225 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\eject_signal_debounce.vhd":51:4:51:5|There are no possible illegal states for state machine state[0:3] (in view: work.Eject_Signal_Debounce(architecture_eject_signal_debounce)); safe FSM implementation is not required.
-Encoding state machine uc_rx_state[0:23] (in view: work.General_Controller(architecture_general_controller))
-original code -> new code
-   000000000000000000000001 -> 000000000000000000000001
-   000000000000000000000010 -> 000000000000000000000010
-   000000000000000000000100 -> 000000000000000000000100
-   000000000000000000001000 -> 000000000000000000001000
-   000000000000000000010000 -> 000000000000000000010000
-   000000000000000000100000 -> 000000000000000000100000
-   000000000000000001000000 -> 000000000000000001000000
-   000000000000000010000000 -> 000000000000000010000000
-   000000000000000100000000 -> 000000000000000100000000
-   000000000000001000000000 -> 000000000000001000000000
-   000000000000010000000000 -> 000000000000010000000000
-   000000000000100000000000 -> 000000000000100000000000
-   000000000001000000000000 -> 000000000001000000000000
-   000000000010000000000000 -> 000000000010000000000000
-   000000000100000000000000 -> 000000000100000000000000
-   000000001000000000000000 -> 000000001000000000000000
-   000000010000000000000000 -> 000000010000000000000000
-   000000100000000000000000 -> 000000100000000000000000
-   000001000000000000000000 -> 000001000000000000000000
-   000010000000000000000000 -> 000010000000000000000000
-   000100000000000000000000 -> 000100000000000000000000
-   001000000000000000000000 -> 001000000000000000000000
-   010000000000000000000000 -> 010000000000000000000000
-   100000000000000000000000 -> 100000000000000000000000
+   00000 -> 00000
+   00001 -> 00001
+   00010 -> 00011
+   00011 -> 00010
+   00100 -> 00110
+   00101 -> 00111
+   00110 -> 00101
+   00111 -> 00100
+   01000 -> 01100
+   01001 -> 01101
+   01010 -> 01111
+   01011 -> 01110
+   01100 -> 01010
+   01101 -> 01011
+   01110 -> 01001
+   01111 -> 01000
+   10000 -> 11000
+   10001 -> 11001
+   10010 -> 11011
+   10011 -> 11010
+   10100 -> 11110
+   10101 -> 11111
+   10110 -> 11101
+   10111 -> 11100
+   11000 -> 10100
+   11001 -> 10101
+   11010 -> 10111
+   11011 -> 10110
+   11100 -> 10010
+   11101 -> 10011
+   11110 -> 10001
+   11111 -> 10000
+@N: MO225 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\general_controller.vhd":229:8:229:9|There are no possible illegal states for state machine uc_rx_state[0:31] (in view: work.General_Controller(architecture_general_controller)); safe FSM implementation is not required.
 Encoding state machine flight_state[0:4] (in view: work.General_Controller(architecture_general_controller))
 original code -> new code
    00000001 -> 00001
@@ -147,39 +157,20 @@ original code -> new code
    00100000 -> 00100000
    01000000 -> 01000000
    10000000 -> 10000000
-Encoding state machine state[0:4] (in view: work.I2C_PassThrough(architecture_i2c_passthrough))
+Encoding state machine cnt_chan[0:1] (in view: work.ADC_READ(behavioral))
 original code -> new code
-   00001 -> 00001
-   00010 -> 00010
-   00100 -> 00100
-   01000 -> 01000
-   10000 -> 10000
-@N: BN362 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\i2c_passthrough.vhd":51:8:51:9|Removing sequential instance state[4] (in view: work.I2C_PassThrough(architecture_i2c_passthrough)) of type view:PrimLib.dffs(prim) because it does not drive other instances.
-Encoding state machine state[0:3] (in view: work.Pressure_Signal_Debounce(architecture_pressure_signal_debounce))
+   00 -> 0
+   01 -> 1
+@N: MO225 :"c:\users\sergi\desktop\master year 2\master thesis\20250312_lp-software-fpga\hdl\adc_read.vhd":87:2:87:3|There are no possible illegal states for state machine cnt_chan[0:1] (in view: work.ADC_READ(behavioral)); safe FSM implementation is not required.
+Encoding state machine state[0:6] (in view: work.ADC_READ(behavioral))
 original code -> new code
-   00 -> 00
-   01 -> 01
-   10 -> 10
-   11 -> 11
-@N: MO225 :"c:\users\lab-user1\desktop\masterthesis\langmuir-datahub-emuscience-fpga\hdl\pressure_signal_debounce.vhd":47:4:47:5|There are no possible illegal states for state machine state[0:3] (in view: work.Pressure_Signal_Debounce(architecture_pressure_signal_debounce)); safe FSM implementation is not required.
-Encoding state machine state[0:5] (in view: work.ADC_READ(behavioral))
-original code -> new code
-   00000001 -> 000001
-   00000010 -> 000010
-   00000100 -> 000100
-   00010000 -> 001000
-   00100000 -> 010000
-   01000000 -> 100000
-Encoding state machine g4i[0:2] (in view: work.ADC_READ(behavioral))
-original code -> new code
-   00 -> 00
-   01 -> 01
-   10 -> 10
-Encoding state machine g3i[0:2] (in view: work.ADC_READ(behavioral))
-original code -> new code
-   00 -> 00
-   01 -> 01
-   10 -> 10
+   00000001 -> 0000001
+   00000010 -> 0000010
+   00000100 -> 0000100
+   00001000 -> 0001000
+   00010000 -> 0010000
+   00100000 -> 0100000
+   01000000 -> 1000000
 Encoding state machine g2i[0:2] (in view: work.ADC_READ(behavioral))
 original code -> new code
    00 -> 00
@@ -300,13 +291,13 @@ original code -> new code
 None
 None
 
-Finished constraint checker (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 147MB peak: 150MB)
+Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 128MB peak: 130MB)
 
 Pre-mapping successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 40MB peak: 150MB)
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 39MB peak: 130MB)
 
-Process took 0h:00m:02s realtime, 0h:00m:02s cputime
-# Mon Sep 02 20:13:37 2024
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Thu Mar 13 20:22:02 2025
 
 ###########################################################]

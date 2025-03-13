@@ -45,7 +45,7 @@ port (
     pres_cal2_packet : IN std_logic_vector(87 downto 0);
     pres_cal_new_data : IN std_logic;
 
-    ch_0_packet : IN std_logic_vector(87 downto 0);
+    ch_0_packet : IN std_logic_vector(63 downto 0);
     ch_1_packet : IN std_logic_vector(87 downto 0);
     ch_2_packet : IN std_logic_vector(87 downto 0);
     ch_3_packet : IN std_logic_vector(87 downto 0);
@@ -107,7 +107,7 @@ begin
                                                  status_packet(87 downto 86) when status,
                                                  pres_cal1_packet(87 downto 86) when pres_cal1,
                                                  pres_cal2_packet(87 downto 86) when pres_cal2,
-                                                 ch_0_packet(87 downto 86) when ch_0,
+                                                 --ch_0_packet(63 downto 62) when ch_0,
                                                  ch_1_packet(87 downto 86) when ch_1,
                                                  ch_2_packet(87 downto 86) when ch_2,
                                                  ch_3_packet(87 downto 86) when ch_3,
@@ -122,7 +122,7 @@ begin
                                                  status_packet(84 downto 0) when status,
                                                  pres_cal1_packet(84 downto 0) when pres_cal1,
                                                  pres_cal2_packet(84 downto 0) when pres_cal2,
-                                                 ch_0_packet(84 downto 0) when ch_0,
+                                                 --ch_0_packet when ch_0,
                                                  ch_1_packet(84 downto 0) when ch_1,
                                                  ch_2_packet(84 downto 0) when ch_2,
                                                  ch_3_packet(84 downto 0) when ch_3,

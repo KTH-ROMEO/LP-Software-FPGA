@@ -56,7 +56,7 @@ port (
     st_wen1   : OUT std_logic;
     st_ren0   : OUT std_logic;
     st_ren1   : OUT std_logic;
-    
+
     unit_id : OUT std_logic_vector(7 downto 0);
     ffu_id : OUT std_logic_vector(7 downto 0);
     gs_id : OUT std_logic_vector(7 downto 0);
@@ -90,22 +90,35 @@ port (
     man_gain3 : OUT std_logic_vector(1 downto 0);
     man_gain4 : OUT std_logic_vector(1 downto 0);
     DAC_zero_value : OUT std_logic;
-    DAC_max_value  : OUT std_logic
+    DAC_max_value  : OUT std_logic;
+
+    ------------------------------------------------
+    --Ports for DAC/ADC signals
+    Bias_enabled : OUT std_logic;
+    C_bias_V0 : OUT std_logic_vector(15 downto 0);
+    C_bias_V1 : OUT std_logic_vector(15 downto 0);
+
+    Sweep_enabled               : OUT std_logic;
+    Sweep_no_steps              : OUT std_logic_vector(7 downto 0);
+    Sweep_samples_per_step      : OUT std_logic_vector(15 downto 0);
+    Sweep_samples_per_point     : OUT std_logic_vector(15 downto 0);
+    Sweep_skiped_samples        : OUT std_logic_vector(15 downto 0);
+    Sweep_points_per_step       : OUT std_logic_vector(15 downto 0) -- sweep_table_points
+    
+    ------------------------------------------------
 );
 end General_Controller;
 architecture architecture_General_Controller of General_Controller is
     type uc_tx_state_type is (
         uc_tx_idle,
         uc_tx_preamble,
-        uc_tx_scientific_data_preamble,
         uc_tx_send_console_en,
         uc_tx_postamble,
         uc_tx_led3,
         uc_tx_led4,
         uc_tx_telemetry,
         uc_tx_send_state,
-        
-        uc_tx_send_scientific_data,
+
         uc_tx_send_const_bias,
         uc_tx_send_swt_sweep_cnt,
         uc_tx_send_sweep_table,
@@ -149,8 +162,9 @@ architecture architecture_General_Controller of General_Controller is
         uc_rx_postamble
     );
 
-    signal temp_first_byte : std_logic_vector(7 downto 0);
 
+    signal temp_first_byte : std_logic_vector(7 downto 0);
+    -------------------------------------------------------------
     signal constant_bias_mode : std_logic;
     signal constant_bias_voltage_0 : std_logic_vector(15 downto 0);
     signal constant_bias_voltage_1 : std_logic_vector(15 downto 0);
@@ -172,8 +186,7 @@ architecture architecture_General_Controller of General_Controller is
 
     signal sweep_table_write_wait : integer range 0 to 3;
     signal sweep_table_read_wait : integer range 0 to 3;
-
-    signal smp_per_msr_s : std_logic_vector(15 downto 0);
+    -------------------------------------------------------------
 
     signal flight_state : std_logic_vector(7 downto 0);
     constant boot : std_logic_vector(7 downto 0) := x"01";
@@ -207,24 +220,25 @@ architecture architecture_General_Controller of General_Controller is
     signal state_seconds : std_logic_vector(19 downto 0);
     signal send_flight_state : std_logic;
 
-    signal old_1Hz : std_logic;    
+    signal old_1Hz : std_logic;
+
     signal mission_mode : std_logic;
-
-    -- For generating Fake CB data.
-    signal m_counter : std_logic_vector(15 downto 0);
-    signal k_counter : std_logic_vector(15 downto 0);
-    signal s_counter : std_logic_vector(15 downto 0);
-    signal sequence_counter : std_logic_vector(15 downto 0);
-    signal send_fake_rdy : std_logic;
-
-    signal out_counter          : std_logic_vector(31 downto 0);
-    --signal current_smp_msr  : std_logic_vector(15 downto 0);
-
 begin
-
     process (clk, reset)
     begin
         if reset /= '0' then
+            ------------------------------------------------
+            --Default state of DAC/ADC signals
+            constant_bias_mode <= '0';
+            constant_bias_voltage_0 <= x"0000";
+            constant_bias_voltage_1 <= x"0000";
+
+            sweep_table_activate_sweep <= '0';
+            sweep_table_nof_steps <= x"00";
+            sweep_table_samples_per_point <= x"0000";
+            sweep_table_points <= x"0000";
+            ------------------------------------------------
+            
             unit_id <= x"21";       -- Default unit identifier - before microcontroller reads out the stored value.
             ffu_id <= x"00";        -- Default FFU identifier - before microcontroller reads out the stored value.
             gs_id <= x"00";        -- Default FFU identifier - before microcontroller reads out the stored value.
@@ -233,7 +247,7 @@ begin
 
             uc_reset <= 'Z';
             uc_pwr_en <= '0';
-            led1 <= '1';
+            led1 <= '0';
             led2 <= '0';
 
             ext_oen <= '0';
@@ -304,16 +318,6 @@ begin
             st_wen1  <= '0';
             st_ren0  <= '0';
             st_ren1  <= '0';
-            
-
-            smp_per_msr_s <= (others => '0');
-
-            k_counter <= x"0001";
-            m_counter <= x"0001";
-            s_counter <= x"0001";
-
-            sequence_counter <= x"0000";
-            send_fake_rdy <= '0';
 
         elsif rising_edge(clk) then
     ----------------------- Seconds counter -----------------------------
@@ -322,7 +326,7 @@ begin
             if old_1Hz = '0' AND clk_1Hz = '1' then
                 state_seconds <= state_seconds + 1;
 
-                if milliseconds(10) = '1' then -- Original here, checks for >1000 miliseconds
+                if milliseconds > 1000 then
                     send_flight_state <= '1';
                 end if;
             end if;
@@ -330,79 +334,58 @@ begin
     --------------Disable Sweep Trigger if activated --------------------
             sweep_table_activate_sweep <= '0';
 
-    --------------Constant Bias Fake Data Generator--------------------
-    --- THIS SECTION IS INTENDED TO GENERATED FAKE CONSTANT BIAS DATA FOR TESTING AND DEVELOPMENT
-    --- PURPOSES. IT IS COMMENTED OUT DUE TO IT NOT WORKING/TAKING UP TO MANY CORE MODULES TO
-    --- SYNTHESIZE THE REST OF THE DESIGN. PLEASE REFACTOR AND REMOVE UNNECESSARY COMPONENTS FROM THE TOP LEVEL
-    --- BEFORE UNCOMMENTING AND PROCEEDING.
-            --if m_counter(10) = '1' then -- Check for x0400 or 1 on 10th bit.
-                --m_counter <= x"0001";
-                --k_counter <= k_counter + 1 ;
-            --else
-                --m_counter <= m_counter + 1;
-                --s_counter <= s_counter + 1;
-            --end if;
---
-            --if constant_bias_mode = '1' then
-                --if std_logic_vector(k_counter) = sweep_table_samples_per_step then
-                    --k_counter <= x"0001";
-                    --send_fake_rdy <= '1';
-                    --out_counter(31 downto 16) <= s_counter;
-                    --out_counter(15 downto 0) <= s_counter + 1;
-                 --end if;
-            --end if;
     --------- General state machine - mission sequence, etc. ------------
             case flight_state is
-                when boot =>  --Quick Fix
+                when boot =>
                     uc_pwr_en <= '1';
-                    --
-                    ----if milliseconds > 100 then
-                        ----en_sensors <= '1';
-                    ----end if;
-----
+                    
+                    if milliseconds > 100 then
+                        en_sensors <= '1';
+                    end if;
+
                     if milliseconds > 1000 then
                         flight_state <= idle;
                     end if;
---
-                --when idle =>
-                    --if mission_mode = '1' then
-                        --flight_state <= inside_rocket;
-                        --state_seconds <= (others => '0');
-                    --end if;
---
-                    --if low_pressure = '1' then
-                        --mission_mode <= '1';
-                    --end if;
---
-                --when inside_rocket =>
-                    --en_data_saving <= '1';
---
-                    --if state_seconds < 2 then
-                        --exp_adc_reset <= '0';
-                    --else
-                        --exp_adc_reset <= '1';
---
-                        --if ffu_ejected = '1' then
-                            --flight_state <= freefall;
-                            --state_seconds <= (others => '0');
-                        --end if;
-                    --end if;
---
-                --when freefall =>
-                    --en_science_packets <= '1';
-                    --sweep_en <= '1';
---
-----                    if state_seconds > 360 then
-                        ----flight_state <= landed;
-                        ----state_seconds <= (others => '0');
-                    ----end if;
---
-                --when landed =>
-                    --en_science_packets <= '0';
-                    --sweep_en <= '0';
-                    --en_data_saving <= '0';
---
-                --when others => flight_state <= idle;
+
+                when idle =>
+                    if mission_mode = '1' then
+                        flight_state <= inside_rocket;
+                        state_seconds <= (others => '0');
+                    end if;
+
+                    if low_pressure = '1' then
+                        mission_mode <= '1';
+                    end if;
+
+                when inside_rocket =>
+                    en_data_saving <= '1';
+
+                    if state_seconds < 2 then
+                        exp_adc_reset <= '0';
+                    else
+                        exp_adc_reset <= '1';
+
+                        if ffu_ejected = '1' then
+                            flight_state <= freefall;
+                            state_seconds <= (others => '0');
+                        end if;
+                    end if;
+
+                when freefall =>
+                    en_science_packets <= '1';
+                    sweep_en <= '1';
+
+                    if state_seconds > 360 then
+                        flight_state <= landed;
+                        state_seconds <= (others => '0');
+                    end if;
+
+                when landed =>
+                    en_science_packets <= '0';
+                    sweep_en <= '0';
+                    en_data_saving <= '0';
+
+                when others => flight_state <= idle;
 
             end case;
 
@@ -477,12 +460,6 @@ begin
     --------- Microcontroller UART transmit ------------
             case uc_tx_state is
                 when uc_tx_idle =>
-                    if send_fake_rdy then
-                        uc_tx_state <= uc_tx_scientific_data_preamble;
-                        uc_tx_nextstate <= uc_tx_send_scientific_data;
-                        uc_tx_substate <= 1;
-                        send_fake_rdy <= '0';
-                    end if;
 
                 when uc_tx_preamble =>
                     case uc_tx_substate is
@@ -512,99 +489,6 @@ begin
                         when others =>
                     end case;
 
-                when uc_tx_scientific_data_preamble =>
-                    case uc_tx_substate is
-                        when 1 =>
-                            if uc_tx_rdy = '1' then                                
-                                uc_send <= x"83";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 2 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 3 =>
-                            if uc_tx_rdy = '1' then
-                                uc_send <= sequence_counter(7 downto 0);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 4 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 5 =>
-                            if uc_tx_rdy = '1' then
-                                uc_send <= sequence_counter(15 downto 8);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 6 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_state <= uc_tx_nextstate;
-                            end if;
-                        when others =>
-                    end case;
-
-
-                when uc_tx_send_scientific_data =>
-                    case uc_tx_substate is
-                        when 1 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <=  out_counter(7 downto 0);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 2 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 3 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <=  out_counter(15 downto 8);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 4 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 5 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <=  out_counter(23 downto 16);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 6 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 7 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= out_counter(31 downto 24);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 8 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                sequence_counter <= sequence_counter + 1; -- This is here because we need to increment
-                                                                          -- the sequence counter EXACTLY ONCE for each message.
-                                                                          -- Incrementing somewhere else might lead to incorrect values.
-                                uc_tx_substate <= 1;
-                                uc_tx_state <= uc_tx_idle;
-                            end if;
-                        when others =>
-                    end case;
-
 
                 when uc_tx_send_const_bias =>
                     case uc_tx_substate is
@@ -621,6 +505,7 @@ begin
                         when 2 =>
                             if uc_tx_rdy = '0' then
                                 uc_wen <= '0';
+                                uc_tx_substate <= 1;
                                 uc_tx_substate <= uc_tx_substate + 1;
                             end if;
                         when 3 => 
@@ -1109,10 +994,6 @@ begin
                         when 3 => 
                             sweep_table_samples_per_step(7 downto 0) <= temp_first_byte;
                             sweep_table_samples_per_step(15 downto 8) <= uc_rx_byte;
-
-                            smp_per_msr_s(7 downto 0) <= temp_first_byte;
-                            smp_per_msr_s(15 downto 8) <= uc_rx_byte;
-
                             uc_rx_state <= uc_rx_postamble;
                             uc_rx_substate <= 1;
                         when others =>

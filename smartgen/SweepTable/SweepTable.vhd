@@ -124,6 +124,8 @@ begin
       port map(A => WEN, Y => WEAP);
     
     SweepTable_R0C0 : RAM512X18
+      generic map(MEMORYFILE => "SweepTable_R0C0.mem")
+
       port map(RADDR8 => \GND\, RADDR7 => RADDR(7), RADDR6 => 
         RADDR(6), RADDR5 => RADDR(5), RADDR4 => RADDR(4), RADDR3
          => RADDR(3), RADDR2 => RADDR(2), RADDR1 => RADDR(1), 
@@ -171,7 +173,7 @@ end DEF_ARCH;
 -- GEN_BHV_VERILOG_VAL:F
 -- MGNTIMER:F
 -- MGNCMPL:T
--- DESDIR:C:/Users/Lab-user1/Desktop/MasterThesis/Langmuir-DataHub-EMUScience-FPGA/smartgen\SweepTable
+-- DESDIR:C:/Users/Jesus/Documents/KTH/ROMEO/test_vhdl/Master-Thesis-Code-FPGA/smartgen\SweepTable
 -- GEN_BEHV_MODULE:F
 -- SMARTGEN_DIE:IS4X4M1
 -- SMARTGEN_PACKAGE:vq100
@@ -184,7 +186,7 @@ end DEF_ARCH;
 -- CLOCK_PN:RWCLK
 -- RESET_PN:RESET
 -- RESET_POLARITY:1
--- INIT_RAM:F
+-- INIT_RAM:T
 -- DEFAULT_WORD:0x0000
 -- CASCADE:0
 -- WCLK_EDGE:RISE
