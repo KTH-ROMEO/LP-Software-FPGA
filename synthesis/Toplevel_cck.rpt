@@ -1,7 +1,7 @@
 # Synopsys Constraint Checker, version mapact, Build 2172R, built Oct 30 2017
 # Copyright (C) 1994-2017 Synopsys, Inc. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
 
-# Written on Thu Mar 13 20:22:02 2025
+# Written on Thu Mar 13 21:24:42 2025
 
 
 ##### DESIGN INFO #######################################################
@@ -24,22 +24,17 @@ Found 0 issues in 0 out of 0 constraints
 Clock Relationships
 *******************
 
-Starting                                Ending                                  |     rise to rise     |     fall to fall     |     rise to fall     |     fall to rise                     
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Toplevel|CLOCK                          Toplevel|CLOCK                          |     31.250           |     31.250           |     15.625           |     15.625                           
-Toplevel|CLOCK                          ClockDivs|clk_800kHz_inferred_clock     |     No paths         |     No paths         |     Diff grp         |     No paths                         
-Toplevel|CLOCK                          DAC_SET|ADR_inferred_clock[1]           |     No paths         |     No paths         |     Diff grp         |     No paths                         
-Toplevel|CLOCK                          Timing|s_time_inferred_clock[5]         |     Diff grp         |     No paths         |     No paths         |     No paths                         
-Toplevel|CLOCK                          Toplevel|FMC_CLK                        |     Diff grp         |     No paths         |     No paths         |     No paths                         
-ClockDivs|clk_800kHz_inferred_clock     Toplevel|CLOCK                          |     No paths         |     No paths         |     No paths         |     Diff grp                         
-ClockDivs|clk_800kHz_inferred_clock     ClockDivs|clk_800kHz_inferred_clock     |     31.250           |     31.250           |     15.625           |     15.625                           
-DAC_SET|ADR_inferred_clock[1]           Toplevel|CLOCK                          |     Diff grp         |     No paths         |     No paths         |     No paths                         
-Timing|s_time_inferred_clock[5]         Timing|s_time_inferred_clock[5]         |     31.250           |     No paths         |     No paths         |     No paths                         
-Toplevel|FMC_CLK                        Toplevel|CLOCK                          |     Diff grp         |     No paths         |     No paths         |     No paths                         
-Toplevel|FMC_CLK                        Toplevel|FMC_CLK                        |     31.250           |     No paths         |     No paths         |     No paths                         
-ClockDivs|clk_1kHz_inferred_clock       ClockDivs|clk_1kHz_inferred_clock       |     31.250           |     No paths         |     No paths         |     No paths                         
-ClockDivs|clk_50Hz_inferred_clock       ClockDivs|clk_50Hz_inferred_clock       |     31.250           |     No paths         |     No paths         |     No paths                         
-===========================================================================================================================================================================================
+Starting                            Ending                              |     rise to rise     |     fall to fall     |     rise to fall     |     fall to rise                     
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Toplevel|CLOCK                      Toplevel|CLOCK                      |     31.250           |     31.250           |     15.625           |     15.625                           
+Toplevel|CLOCK                      DAC_SET|ADR_inferred_clock[1]       |     No paths         |     No paths         |     Diff grp         |     No paths                         
+Toplevel|CLOCK                      Timing|s_time_inferred_clock[5]     |     Diff grp         |     No paths         |     No paths         |     No paths                         
+Toplevel|CLOCK                      Toplevel|FMC_CLK                    |     Diff grp         |     No paths         |     No paths         |     No paths                         
+DAC_SET|ADR_inferred_clock[1]       Toplevel|CLOCK                      |     Diff grp         |     No paths         |     No paths         |     No paths                         
+Timing|s_time_inferred_clock[5]     Timing|s_time_inferred_clock[5]     |     31.250           |     No paths         |     No paths         |     No paths                         
+Toplevel|FMC_CLK                    Toplevel|CLOCK                      |     Diff grp         |     No paths         |     No paths         |     No paths                         
+Toplevel|FMC_CLK                    Toplevel|FMC_CLK                    |     31.250           |     No paths         |     No paths         |     No paths                         
+===================================================================================================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
        'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
 
@@ -50,16 +45,12 @@ Unconstrained Start/End Points
 p:AA
 p:AB
 p:ABSY
-p:ACCE_SCL
-p:ACCE_SDA (bidir end point)
-p:ACCE_SDA (bidir start point)
 p:ACLK
 p:ACS
 p:ACST
 p:ARST
 p:CU_SYNC
 p:EMU_RX
-p:FFU_EJECTED
 p:FMC_DA[0]
 p:FMC_DA[1]
 p:FMC_DA[2]
@@ -68,13 +59,8 @@ p:FMC_DA[4]
 p:FMC_DA[5]
 p:FMC_DA[6]
 p:FMC_DA[7]
-p:FMC_NE1
 p:FMC_NOE
 p:FPGA_BUF_INT
-p:FRAM_SDA
-p:GYRO_SCL
-p:GYRO_SDA (bidir end point)
-p:GYRO_SDA (bidir start point)
 p:L1WR
 p:L2WR
 p:L3WR
@@ -86,16 +72,11 @@ p:LDCS
 p:LDSDI
 p:LED1
 p:LED2
-p:PRESSURE_SCL
-p:PRESSURE_SDA (bidir end point)
-p:PRESSURE_SDA (bidir start point)
 p:RESET
 p:SCIENCE_TX
 p:TOP_UART_RX
 p:TOP_UART_TX
 p:UC_CONSOLE_EN
-p:UC_I2C4_SCL
-p:UC_I2C4_SDA
 p:UC_PWR_EN
 p:UC_RESET
 p:UC_UART_RX
