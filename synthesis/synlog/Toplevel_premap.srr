@@ -1,4 +1,4 @@
-# Thu Mar 13 21:24:42 2025
+# Fri Mar 14 01:45:53 2025
 
 Synopsys Microsemi Technology Pre-mapping, Version mapact, Build 2172R, Built Oct 30 2017 10:54:39
 Copyright (C) 1994-2017 Synopsys, Inc. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -12,25 +12,25 @@ Printing clock  summary report in "C:\Users\sergi\Desktop\Master Year 2\Master T
 @N: MF248 |Running in 64-bit mode.
 @N: MF667 |Clock conversion disabled. (Command "set_option -fix_gated_and_generated_clocks 0" in the project file.)
 
-Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 109MB peak: 114MB)
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 109MB peak: 115MB)
 
 
-Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 109MB peak: 114MB)
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 109MB peak: 115MB)
 
-@N: MO111 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":229:8:229:9|Tristate driver uc_reset_2 (in view: work.General_Controller(architecture_general_controller)) on net uc_reset (in view: work.General_Controller(architecture_general_controller)) has its enable tied to GND.
+@N: MO111 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Tristate driver uc_reset_2 (in view: work.General_Controller(architecture_general_controller)) on net uc_reset (in view: work.General_Controller(architecture_general_controller)) has its enable tied to GND.
 @N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":87:2:87:3|Removing sequential instance exp_SC_packet[63:0] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\sweep_spider2.vhd":76:2:76:3|Removing sequential instance V_Changed (in view: work.SWEEP_SPIDER2(architecture_sweep_spider2)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\sweep_spider2.vhd":76:2:76:3|Removing sequential instance SW_END (in view: work.SWEEP_SPIDER2(architecture_sweep_spider2)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\packet_saver.vhd":137:8:137:9|Removing sequential instance packet_select[0:12] (in view: work.Packet_Saver(architecture_packet_saver)) of type view:PrimLib.dffpatre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":229:8:229:9|Removing sequential instance ffu_id[7:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":229:8:229:9|Removing sequential instance ramp_1[0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":229:8:229:9|Removing sequential instance man_gain1[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":229:8:229:9|Removing sequential instance man_gain2[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":229:8:229:9|Removing sequential instance man_gain3[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":229:8:229:9|Removing sequential instance man_gain4[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance ffu_id[7:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance ramp_1[0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance man_gain1[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance man_gain2[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance man_gain3[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance man_gain4[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":87:2:87:3|Removing sequential instance exp_Test_packet[63:0] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\sweep_spider2.vhd":76:2:76:3|Removing sequential instance sweep_state[0:5] (in view: work.SWEEP_SPIDER2(architecture_sweep_spider2)) of type view:PrimLib.statemachine(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":229:8:229:9|Removing sequential instance en_science_packets (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance en_science_packets (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\sweep_spider2.vhd":76:2:76:3|Removing sequential instance latch (in view: work.SWEEP_SPIDER2(architecture_sweep_spider2)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 
 Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 116MB peak: 118MB)
@@ -45,11 +45,11 @@ Clock                               Frequency     Period        Type         Gro
 ----------------------------------------------------------------------------------------------------------
 DAC_SET|ADR_inferred_clock[1]       32.0 MHz      31.250        inferred     Inferred_clkgroup_1     39   
 Timing|s_time_inferred_clock[5]     32.0 MHz      31.250        inferred     Inferred_clkgroup_2     5    
-Toplevel|CLOCK                      32.0 MHz      31.250        inferred     Inferred_clkgroup_0     1061 
+Toplevel|CLOCK                      32.0 MHz      31.250        inferred     Inferred_clkgroup_0     1063 
 Toplevel|FMC_CLK                    32.0 MHz      31.250        inferred     Inferred_clkgroup_3     54   
 ==========================================================================================================
 
-@W: MT530 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\ffu_command_checker.vhd":49:4:49:5|Found inferred clock Toplevel|CLOCK which controls 1061 sequential elements including Communications_0.FFU_Command_Checker_0.rmu_oen. This clock has no specified timing constraint which may adversely impact design performance. 
+@W: MT530 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\ffu_command_checker.vhd":49:4:49:5|Found inferred clock Toplevel|CLOCK which controls 1063 sequential elements including Communications_0.FFU_Command_Checker_0.rmu_oen. This clock has no specified timing constraint which may adversely impact design performance. 
 @W: MT530 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\dac_set.vhd":56:2:56:3|Found inferred clock DAC_SET|ADR_inferred_clock[1] which controls 39 sequential elements including Science_0.DAC_SET_0.state[0:4]. This clock has no specified timing constraint which may adversely impact design performance. 
 @W: MT530 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_reset.vhd":37:2:37:3|Found inferred clock Timing|s_time_inferred_clock[5] which controls 5 sequential elements including Science_0.ADC_RESET_0.state[0:2]. This clock has no specified timing constraint which may adversely impact design performance. 
 @W: MT530 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\smartgen\fpga_buffer\fpga_buffer.vhd":2135:4:2135:23|Found inferred clock Toplevel|FMC_CLK which controls 54 sequential elements including Data_Saving_0.FPGA_Buffer_0.\\DFN1C0_WGRYSYNC\[5\]\\. This clock has no specified timing constraint which may adversely impact design performance. 
@@ -58,7 +58,7 @@ Finished Pre Mapping Phase.
 @N: MO111 :|Tristate driver UC_RESET_t (in view: work.Toplevel(rtl)) on net UC_RESET (in view: work.Toplevel(rtl)) has its enable tied to GND.
 @N: BN225 |Writing default property annotation file C:\Users\sergi\Desktop\Master Year 2\Master Thesis\LP-Software-FPGA\synthesis\Toplevel.sap.
 
-Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 115MB peak: 118MB)
+Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 116MB peak: 118MB)
 
 Encoding state machine state[0:3] (in view: work.FFU_Command_Checker(architecture_ffu_command_checker))
 original code -> new code
@@ -129,7 +129,7 @@ original code -> new code
    11101 -> 10011
    11110 -> 10001
    11111 -> 10000
-@N: MO225 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":229:8:229:9|There are no possible illegal states for state machine uc_rx_state[0:31] (in view: work.General_Controller(architecture_general_controller)); safe FSM implementation is not required.
+@N: MO225 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|There are no possible illegal states for state machine uc_rx_state[0:31] (in view: work.General_Controller(architecture_general_controller)); safe FSM implementation is not required.
 Encoding state machine flight_state[0:4] (in view: work.General_Controller(architecture_general_controller))
 original code -> new code
    00000001 -> 00001
@@ -201,13 +201,13 @@ original code -> new code
 None
 None
 
-Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 118MB peak: 120MB)
+Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 119MB peak: 120MB)
 
 Pre-mapping successful!
 
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 33MB peak: 120MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Thu Mar 13 21:24:42 2025
+# Fri Mar 14 01:45:54 2025
 
 ###########################################################]

@@ -119,7 +119,8 @@ architecture architecture_General_Controller of General_Controller is
         uc_tx_telemetry,
         uc_tx_send_state,
 
-        uc_tx_send_const_bias,
+        uc_tx_send_const_bias_measurement,
+        uc_tx_send_const_bias_voltage,
         uc_tx_send_swt_sweep_cnt,
         uc_tx_send_sweep_table,
         uc_tx_send_swt_steps,
@@ -293,7 +294,6 @@ begin
 
             temp_first_byte <= (others => '0');
 
-            constant_bias_mode <= '0';
             constant_bias_voltage_0 <= (others => '0');
             constant_bias_voltage_1 <= (others => '0');
             constant_bias_probe_id <= (others => '0');
@@ -488,9 +488,102 @@ begin
                             end if;
                         when others =>
                     end case;
+                
+                when uc_tx_send_const_bias_measurement =>
+                    case uc_tx_substate is 
+                        when 1 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= "00000001";
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 2 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 3 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= "00000010";
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 4 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 5 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= "00000011";
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 6 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 7 =>
+                            if uc_tx_rdy = '1' then
+                                uc_send <= "00000100";
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 8 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 9 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= "00000101";
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 10 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 11 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= "00000110";
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 12 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 13 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= "00000111";
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 14 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 15 =>
+                            if uc_tx_rdy = '1' then
+                                uc_send <= "00001000";
+                                uc_wen <= '1';
+                                uc_tx_substate <= uc_tx_substate + 1;
+                            end if;
+                        when 16 =>
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= 1;
+                                uc_tx_state <= uc_tx_postamble;
+                            end if;
+                        when others =>
+                    end case;
 
-
-                when uc_tx_send_const_bias =>
+                when uc_tx_send_const_bias_voltage =>
                     case uc_tx_substate is
                         when 1 => 
                             if uc_tx_rdy = '1' then
@@ -860,7 +953,10 @@ begin
                 when uc_rx_receive_en_cb_mode => 
                     case uc_rx_substate is
                         when 1 =>
+                            led1 <= '1';
                             constant_bias_mode <= '1';
+                            uc_tx_state <= uc_tx_preamble;
+                            uc_tx_nextstate <= uc_tx_send_const_bias_measurement;
                             uc_rx_state <= uc_rx_postamble;
                             uc_rx_substate <= 1;
                         when others =>
@@ -869,6 +965,8 @@ begin
                 when uc_rx_receive_dis_cb_mode => 
                     case uc_rx_substate is
                         when 1 =>
+                            led1 <= '0';
+                            led2 <= '0';
                             constant_bias_mode <= '0';
                             uc_rx_state <= uc_rx_postamble;
                             uc_rx_substate <= 1;
@@ -908,7 +1006,7 @@ begin
                         when 2 =>
                             constant_bias_probe_id <= uc_rx_byte;
                             uc_tx_state <= uc_tx_preamble;
-                            uc_tx_nextstate <= uc_tx_send_const_bias;
+                            uc_tx_nextstate <= uc_tx_send_const_bias_voltage;
                             uc_rx_state <= uc_rx_postamble;
                             uc_rx_substate <= 1;
                         when others =>

@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Thu Mar 13 21:24:24 2025
+-- Created by SmartDesign Thu Mar 13 23:45:04 2025
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -386,7 +386,6 @@ signal ARST_net_0                                   : std_logic;
 signal CLKINT_0_Y_0                                 : std_logic;
 signal CLKINT_1_Y                                   : std_logic;
 signal CLKINT_2_Y                                   : std_logic;
-signal ClockDivs_0_clk_800kHz                       : std_logic;
 signal Communications_0_ext_recv                    : std_logic_vector(7 downto 0);
 signal Communications_0_ext_rx_rdy                  : std_logic;
 signal Communications_0_ext_tx_rdy                  : std_logic;
@@ -434,7 +433,7 @@ signal LA1_net_0                                    : std_logic;
 signal LDCLK_net_0                                  : std_logic;
 signal LDCS_net_0                                   : std_logic;
 signal LDSDI_net_0                                  : std_logic;
-signal LED1_0                                       : std_logic;
+signal LED1_net_0                                   : std_logic;
 signal LED2_net_0                                   : std_logic;
 signal Science_0_exp_new_data                       : std_logic;
 signal Science_0_exp_SC_packet                      : std_logic_vector(63 downto 0);
@@ -461,7 +460,7 @@ signal UC_UART_RX_net_0                             : std_logic;
 signal FPGA_BUF_INT_net_1                           : std_logic;
 signal UC_UART_RX_net_1                             : std_logic;
 signal TOP_UART_TX_net_1                            : std_logic;
-signal LED1_0_net_0                                 : std_logic;
+signal LED1_net_1                                   : std_logic;
 signal LED2_net_1                                   : std_logic;
 signal UC_PWR_EN_net_1                              : std_logic;
 signal UC_RESET_net_1                               : std_logic;
@@ -567,8 +566,8 @@ begin
  UC_UART_RX         <= UC_UART_RX_net_1;
  TOP_UART_TX_net_1  <= TOP_UART_TX_net_0;
  TOP_UART_TX        <= TOP_UART_TX_net_1;
- LED1_0_net_0       <= LED1_0;
- LED1               <= LED1_0_net_0;
+ LED1_net_1         <= LED1_net_0;
+ LED1               <= LED1_net_1;
  LED2_net_1         <= LED2_net_0;
  LED2               <= LED2_net_1;
  UC_PWR_EN_net_1    <= UC_PWR_EN_net_0;
@@ -681,7 +680,7 @@ ClockDivs_0 : ClockDivs
         clk_4MHz   => OPEN,
         clk_2MHz   => OPEN,
         clk_1MHz   => OPEN,
-        clk_800kHz => ClockDivs_0_clk_800kHz,
+        clk_800kHz => OPEN,
         clk_4kHz   => OPEN,
         clk_1kHz   => OPEN,
         clk_50Hz   => OPEN,
@@ -784,7 +783,7 @@ General_Controller_0 : General_Controller
         uc_pwr_en               => UC_PWR_EN_net_0,
         en_sensors              => OPEN,
         en_data_saving          => General_Controller_0_en_data_saving,
-        led1                    => LED1_0,
+        led1                    => LED1_net_0,
         led2                    => LED2_net_0,
         status_new_data         => General_Controller_0_status_new_data,
         en_science_packets      => General_Controller_0_en_science_packets,
