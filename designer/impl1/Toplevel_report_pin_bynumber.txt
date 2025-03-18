@@ -1,5 +1,5 @@
 *****************************************************************
-Pin Report - Date: Fri Mar 14 01:49:58 2025 Pinchecksum: NOT-AVAILABLE
+Pin Report - Date: Tue Mar 18 17:24:31 2025 Pinchecksum: NOT-AVAILABLE
 Product: Designer
 Release: v11.9 SP6
 Version: 11.9.6.7
@@ -36,16 +36,16 @@ Number |Port          |Function       |State       |I/O Std  |Output Drive (mA) 
 24                     VMV3            Reserved
 25                     GNDQ            Reserved
 26      CLOCK          GEA2/IO97RSB2   Special      LVCMOS33  ---                ---   None           ---   ---               No           No
-27                     GEB2/IO96RSB2   Special
-28                     GEC2/IO95RSB2   Special
+27      PRESSURE_SDA   GEB2/IO96RSB2   Special      LVCMOS33  2                  Low   None           No    35                No           No
+28      PRESSURE_SCL   GEC2/IO95RSB2   Special      LVCMOS33  2                  Low   None           No    35                No           No
 29      FMC_CLK        IO93RSB2        Fixed        LVCMOS33  ---                ---   None           ---   ---               No           No
 30      FMC_NOE        IO92RSB2        Fixed        LVCMOS33  ---                ---   None           ---   ---               No           No
 31                     IO91RSB2        Unassigned
 32                     IO90RSB2        Unassigned
 33      UC_UART_TX     IO88RSB2        Fixed        LVCMOS33  ---                ---   None           ---   ---               No           No
 34      UC_UART_RX     IO86RSB2        Fixed        LVCMOS33  2                  Low   None           No    35                No           No
-35                     IO85RSB2        Unassigned
-36                     IO84RSB2        Unassigned
+35      FRAM_SCL       IO85RSB2        Fixed        LVCMOS33  2                  Low   None           No    35                No           No
+36      FRAM_SDA       IO84RSB2        Fixed        LVCMOS33  2                  Low   None           No    35                No           No
 37                     VCC             Reserved
 38                     GND             Reserved
 39                     VCCIB2          Reserved
@@ -92,18 +92,18 @@ Number |Port          |Function       |State       |I/O Std  |Output Drive (mA) 
 80      CU_SYNC        GBC1/IO36RSB0   Special      LVCMOS33  ---                ---   None           ---   ---               No           No
 81                     GBC0/IO35RSB0   Special
 82                     IO29RSB0        Unassigned
-83                     IO27RSB0        Unassigned
+83      FFU_EJECTED    IO27RSB0        Fixed        LVCMOS33  ---                ---   None           ---   ---               No           No
 84      UC_PWR_EN      IO25RSB0        Fixed        LVCMOS33  2                  Low   None           No    35                No           No
-85                     IO23RSB0        Unassigned
-86                     IO21RSB0        Unassigned
+85      GYRO_SDA       IO23RSB0        Fixed        LVCMOS33  2                  Low   None           No    35                No           No
+86      GYRO_SCL       IO21RSB0        Fixed        LVCMOS33  2                  Low   None           No    35                No           No
 87                     VCCIB0          Reserved
 88                     GND             Reserved
 89                     VCC             Reserved
-90                     IO15RSB0        Unassigned
-91                     IO13RSB0        Unassigned
+90      ACCE_SCL       IO15RSB0        Fixed        LVCMOS33  2                  Low   None           No    35                No           No
+91      ACCE_SDA       IO13RSB0        Fixed        LVCMOS33  2                  Low   None           No    35                No           No
 92                     IO11RSB0        Unassigned
-93                     GAC1/IO05RSB0   Special
-94                     GAC0/IO04RSB0   Special
+93      UC_I2C4_SCL    GAC1/IO05RSB0   Special      LVCMOS33  ---                ---   None           ---   ---               No           No
+94      UC_I2C4_SDA    GAC0/IO04RSB0   Special      LVCMOS33  2                  Low   None           No    35                No           No
 95                     GAB1/IO03RSB0   Special
 96      LA0            GAB0/IO02RSB0   Special      LVCMOS33  2                  Low   None           No    35                No           No
 97      UC_RESET       GAA1/IO01RSB0   Special      LVCMOS33  2                  Low   None           No    35                No           No

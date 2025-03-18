@@ -5,7 +5,7 @@
 Product: Designer
 Release: v11.9 SP6
 Version: 11.9.6.7
-Date: Fri Mar 14 01:49:56 2025
+Date: Tue Mar 18 17:24:30 2025
 Design Name: Toplevel  Family: ProASIC3  Die: A3P250  Package: 100 VQFP
 Design State: Post-Layout
 
@@ -13,12 +13,18 @@ The following nets have been routed to a chip global resource:
 
     Fanout            Name
     ----------------------
-    734               Net   : CLKINT_0_Y_0
+    1225              Net   : CLKINT_0_Y_0
                       Driver: CLKINT_0/U_GL
-    584               Net   : CLKINT_1_Y
+    947               Net   : CLKINT_1_Y
                       Driver: CLKINT_1/U_GL
     55                Net   : CLKINT_2_Y
                       Driver: CLKINT_2/U_GL
+    107               Net   : ClockDivs_0_clk_800kHz
+                      Driver: ClockDivs_0/clk_800kHz_RNIT3EB/U_GL
+    74                Net   : Data_Saving_0/Packet_Saver_0/packet_select[10]
+                      Driver: Data_Saving_0/Packet_Saver_0/packet_select_RNI3AT4[10]/U_GL
+    83                Net   : Data_Saving_0/Packet_Saver_0/packet_select[9]
+                      Driver: Data_Saving_0/Packet_Saver_0/packet_select_RNIRAS8[9]/U_GL
 
 
 
