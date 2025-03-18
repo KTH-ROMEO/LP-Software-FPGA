@@ -172,7 +172,7 @@ begin
                 step <= x"00";          -- Reset value of step
                 dac1_int <= x"9B1F";    -- reset value of the DAC
                 dac2_int <= x"9B1F";    -- reset value of the DAC
-                --SW_END <= '0';          -- This line needs to be commented if the component is tested in the Test bench
+                SW_END <= '0';          -- This line needs to be commented if the component is tested in the Test bench
                 sample_n <= x"0000";
                 sweep_end <= '0';
                 update <= '0';

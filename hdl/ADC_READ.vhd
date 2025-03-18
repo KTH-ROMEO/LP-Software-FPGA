@@ -100,7 +100,7 @@ begin
 
 				when "00000100" =>  -- set convsta high
                     ACST <= '1';
-                    if ABSY /='1' then -- counter(8 downto 5)="0110" then  -- wait for 22 us (good up to oversampling x4)  -reducing for 32 kHz sampling #Old condition, changed to use the busy pin instead
+                    if ABSY /='1' then -- counter(8 downto 5)="0110" then  -- wait for 22 us (good up to oversampling x4)  -reducing for 32 kHz sampling #(Old condition, changed to use the busy pin instead)
                        state <= "00001000";
                     else                          
                        state <= "00000100";       
@@ -115,10 +115,11 @@ begin
                     exp_new_data <= '0';
                     ACLK <= '0';
                     -- DEBUG to generate fake ADC values
-                    data_a <= "000111001000010001";
-                    data_b <= "011010010000100010"; 
-                    --data_a <= data_a(16 downto 0) & AB; -- Lines are flipped on schematics
-                    --data_b <= data_b(16 downto 0) & AA; -- Lines are flipped on schematics
+                    --data_a <= "000111001000010001";
+                    --data_b <= "011010010000100010"; 
+                    ---------------------------------------
+                    data_a <= data_a(16 downto 0) & AB; -- Lines are flipped on schematics
+                    data_b <= data_b(16 downto 0) & AA; -- Lines are flipped on schematics
                     state <= "00100000";
                     cnt <= cnt + 1;
 
@@ -127,7 +128,7 @@ begin
                     if cnt=x"12" then 
                         cnt <= x"00";
                         case cnt_chan is 
-                            when "00" => DATA_c0 <= data_a; DATA_c4 <= data_b; exp_new_data <='1';
+                            when "00" => DATA_c0 <= data_a; DATA_c4 <= data_b; exp_new_data <='1';  --exp_new_data updated here to save time if only chan0 and chan4 (cnt_chan=00) require to be read
                             --when "01" => DATA_c1 <= data_a; DATA_c5 <= data_b;
                             --when "10" => DATA_c2 <= data_a; DATA_c6 <= data_b;
                             --when "11" => DATA_c3 <= data_a; DATA_c7 <= data_b;
@@ -137,14 +138,14 @@ begin
                         data_b <= (others => '0');
                         
                         if cnt_chan = "11" then  -- Reading all 4 (8) channels
-                            --exp_new_data <='1';
+                            --exp_new_data <='1'; (moved to previous case statement to save time)
                             cnt_chan <= "00";
                             state <= "00000001"; 
                         else 
                             state <= "00010000";
                             cnt_chan <= cnt_chan+1;
                         end if;
-                        chan <= cnt_chan; -- 
+                        chan <= cnt_chan; 
                     else 
                        state <= "00010000";
                     end if;
@@ -154,24 +155,6 @@ begin
             end case;
         end if;
     end process;
-    --------------------------
-    -- state machine to send out the data to memory 
-    --------------------------
-	
 
---DAC <=  DACA when chan = "00" else
-        --DACB when chan = "01";-- else
-        --DACC when chan = "10" else
-        --DACD;
-
---gain <= g1i  when chan = "00" else
-        --g2i  when chan = "01";-- else
-        --g3i  when chan = "10" else
-        --g4i;
-
---G1 <= g1i;
---G2 <= g2i;
---G3 <= g3i;
---G4 <= g4i;
 
 end behavioral;
