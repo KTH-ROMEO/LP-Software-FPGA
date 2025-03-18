@@ -19,8 +19,8 @@ entity DAC_SET is
         SET         : in  std_logic;
         LDCS        : out std_logic;
         LDSDI       : out std_logic;
-        LDCLK       : out std_logic;
-        state_out   : out std_logic_vector(3 downto 0)
+        LDCLK       : out std_logic
+        --state_out   : out std_logic_vector(3 downto 0)
        );
 
 end DAC_SET;
@@ -43,7 +43,7 @@ architecture behavioral of DAC_SET is
 begin
     LDCS <= CS;
     LDCLK <= DCLK;
-    state_out <= sdi_int & DAC(2 downto 0);
+    --state_out <= sdi_int & DAC(2 downto 0);
     LDSDI <= sdi_int;
 
     DAC <=  DACA when ADR = "00" else

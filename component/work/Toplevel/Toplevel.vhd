@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Tue Mar 18 17:18:33 2025
+-- Created by SmartDesign Tue Mar 18 18:43:27 2025
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -381,9 +381,7 @@ component Science
         clk                     : in  std_logic;
         clk_16Hz                : in  std_logic;
         clk_32kHz               : in  std_logic;
-        en_packets              : in  std_logic;
         exp_adc_reset           : in  std_logic;
-        milliseconds            : in  std_logic_vector(23 downto 0);
         reset                   : in  std_logic;
         -- Outputs
         ACLK                    : out std_logic;
@@ -400,11 +398,10 @@ component Science
         LDCS                    : out std_logic;
         LDSDI                   : out std_logic;
         RADDR                   : out std_logic_vector(7 downto 0);
-        RE0                     : out std_logic;
-        REN1                    : out std_logic;
-        exp_SC_packet           : out std_logic_vector(63 downto 0);
-        exp_Test_packet         : out std_logic_vector(63 downto 0);
-        exp_new_data            : out std_logic
+        REN                     : out std_logic;
+        SC_packet               : out std_logic_vector(63 downto 0);
+        SW_END                  : out std_logic;
+        new_SC_packet           : out std_logic
         );
 end component;
 -- Sensors
@@ -481,8 +478,7 @@ component TableSelect
         GCREN0  : in  std_logic;
         GCREN1  : in  std_logic;
         ScRADDR : in  std_logic_vector(7 downto 0);
-        ScREN0  : in  std_logic;
-        ScREN1  : in  std_logic;
+        ScREN   : in  std_logic;
         -- Outputs
         RADDR   : out std_logic_vector(7 downto 0);
         REN0    : out std_logic;
@@ -550,7 +546,6 @@ signal General_Controller_0_Bias_enabled            : std_logic;
 signal General_Controller_0_C_bias_V0               : std_logic_vector(15 downto 0);
 signal General_Controller_0_C_bias_V1               : std_logic_vector(15 downto 0);
 signal General_Controller_0_en_data_saving          : std_logic;
-signal General_Controller_0_en_science_packets      : std_logic;
 signal General_Controller_0_en_sensors              : std_logic;
 signal General_Controller_0_exp_adc_reset           : std_logic;
 signal General_Controller_0_ext_oen                 : std_logic;
@@ -591,11 +586,10 @@ signal LED1_0                                       : std_logic;
 signal LED2_net_0                                   : std_logic;
 signal PRESSURE_SCL_net_0                           : std_logic;
 signal Pressure_Signal_Debounce_0_low_pressure      : std_logic;
-signal Science_0_exp_new_data                       : std_logic;
-signal Science_0_exp_SC_packet                      : std_logic_vector(63 downto 0);
+signal Science_0_new_SC_packet                      : std_logic;
 signal Science_0_RADDR                              : std_logic_vector(7 downto 0);
-signal Science_0_RE0                                : std_logic;
-signal Science_0_REN1                               : std_logic;
+signal Science_0_REN                                : std_logic;
+signal Science_0_SC_packet                          : std_logic_vector(63 downto 0);
 signal Sensors_0_acc_new_data                       : std_logic;
 signal Sensors_0_acc_temp                           : std_logic_vector(7 downto 0);
 signal Sensors_0_acc_time                           : std_logic_vector(23 downto 0);
@@ -965,7 +959,7 @@ Data_Saving_0 : Data_Saving
         pressure_new_data  => Sensors_0_pressure_new_data,
         pres_cal_new_data  => Sensors_0_pres_cal_new_data,
         status_new_data    => General_Controller_0_status_new_data,
-        ch_0_new_data      => Science_0_exp_new_data,
+        ch_0_new_data      => Science_0_new_SC_packet,
         ch_1_new_data      => GND_net,
         ch_2_new_data      => GND_net,
         ch_3_new_data      => GND_net,
@@ -986,7 +980,7 @@ Data_Saving_0 : Data_Saving
         ch_3_packet_0      => ch_3_packet_0_const_net_0,
         ch_4_packet        => ch_4_packet_const_net_0,
         ch_5_packet        => ch_5_packet_const_net_0,
-        exp_SC_packet      => Science_0_exp_SC_packet,
+        exp_SC_packet      => Science_0_SC_packet,
         -- Outputs
         uC_interrupt       => FPGA_BUF_INT_net_0,
         fmc_da             => FMC_DA_0 
@@ -1037,7 +1031,7 @@ General_Controller_0 : General_Controller
         led1                    => LED1_0,
         led2                    => LED2_net_0,
         status_new_data         => General_Controller_0_status_new_data,
-        en_science_packets      => General_Controller_0_en_science_packets,
+        en_science_packets      => OPEN,
         sweep_en                => OPEN,
         exp_adc_reset           => General_Controller_0_exp_adc_reset,
         DAC_zero_value          => OPEN,
@@ -1086,7 +1080,7 @@ GS_Readout_0 : GS_Readout
         ch9_data      => ch9_data_const_net_0,
         ch10_data     => ch10_data_const_net_0,
         ch11_data     => ch11_data_const_net_0,
-        exp_SC_packet => Science_0_exp_SC_packet,
+        exp_SC_packet => Science_0_SC_packet,
         status_bits   => General_Controller_0_status_bits,
         -- Outputs
         wen           => GS_Readout_0_wen,
@@ -1128,10 +1122,8 @@ Science_0 : Science
         reset                   => CLKINT_1_Y,
         exp_adc_reset           => General_Controller_0_exp_adc_reset,
         clk_16Hz                => Timing_0_s_clks20to20(20),
-        en_packets              => General_Controller_0_en_science_packets,
         Bias_enabled            => General_Controller_0_Bias_enabled,
         Sweep_enabled           => General_Controller_0_Sweep_enabled,
-        milliseconds            => Timekeeper_0_microseconds,
         Sweep_no_steps          => General_Controller_0_Sweep_no_steps,
         Sweep_skipped_samples   => General_Controller_0_Sweep_skiped_samples,
         Sweep_Samples           => General_Controller_0_Sweep_samples_per_step,
@@ -1145,7 +1137,6 @@ Science_0 : Science
         ACS                     => ACS_net_0,
         ACLK                    => ACLK_net_0,
         ACST                    => ACST_net_0,
-        exp_new_data            => Science_0_exp_new_data,
         LA0                     => LA0_net_0,
         LA1                     => LA1_net_0,
         L1WR                    => L1WR_net_0,
@@ -1156,11 +1147,11 @@ Science_0 : Science
         LDSDI                   => LDSDI_net_0,
         LDCLK                   => LDCLK_net_0,
         ARST                    => ARST_net_0,
-        RE0                     => Science_0_RE0,
-        REN1                    => Science_0_REN1,
+        REN                     => Science_0_REN,
+        new_SC_packet           => Science_0_new_SC_packet,
+        SW_END                  => OPEN,
         RADDR                   => Science_0_RADDR,
-        exp_SC_packet           => Science_0_exp_SC_packet,
-        exp_Test_packet         => OPEN 
+        SC_packet               => Science_0_SC_packet 
         );
 -- Sensors_0
 Sensors_0 : Sensors
@@ -1243,8 +1234,7 @@ TableSelect_0 : TableSelect
         -- Inputs
         GCREN0  => General_Controller_0_st_ren0,
         GCREN1  => General_Controller_0_st_ren1,
-        ScREN0  => Science_0_RE0,
-        ScREN1  => Science_0_REN1,
+        ScREN   => Science_0_REN,
         GCRADDR => General_Controller_0_st_raddr_1,
         ScRADDR => Science_0_RADDR,
         -- Outputs

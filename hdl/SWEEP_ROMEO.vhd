@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 -- Company: <Name>
 --
--- File: SWEEP_SPIDER2.vhd
+-- File: SWEEP_ROMEO.vhd
 -- File history:
 --      <Revision number>: <Date>: <Comments>
 --      <Revision number>: <Date>: <Comments>
@@ -22,7 +22,7 @@ use ieee.std_logic_unsigned.all;
 use IEEE.numeric_std.all;
 
 
-entity SWEEP_SPIDER2 is
+entity SWEEP_ROMEO is
 port (
 		RESET           : in  std_logic;
         CLK             : in  std_logic;                    
@@ -47,9 +47,9 @@ port (
 
 
 );
-end SWEEP_SPIDER2;
+end SWEEP_ROMEO;
 
-architecture architecture_SWEEP_SPIDER2 of SWEEP_SPIDER2 is
+architecture architecture_SWEEP_ROMEO of SWEEP_ROMEO is
     signal dac1_int, dac2_int                       : std_logic_vector(15 downto 0); --dac3_int, dac4_int
     signal latch, update, fetch                     : std_logic;
     signal sweep_state                              : integer range 0 to 6;
@@ -185,4 +185,4 @@ begin
     end process;
 
 
-end architecture_SWEEP_SPIDER2;
+end architecture_SWEEP_ROMEO;

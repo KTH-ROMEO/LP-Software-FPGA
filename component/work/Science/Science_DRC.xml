@@ -6,7 +6,161 @@
     <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
     <StatusMessage>Warning</StatusMessage>
     <message>Floating Driver</message>
-    <detail>Floating output pin ADC_READ_0:ENDPOINTSTEP</detail>
-    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/ADC_READ_0:ENDPOINTSTEP</crossprobe>
+    <detail>Floating output pin Science:en_packets</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/Science:en_packets</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Undriven Pin</message>
+    <detail>Unconnected top level output port Science:RE0</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/Science:RE0</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Undriven Pin</message>
+    <detail>Unconnected top level output port Science:REN1</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/Science:REN1</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
+    <StatusMessage>Warning</StatusMessage>
+    <message>Floating Driver</message>
+    <detail>Floating output pin Science:milliseconds</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/Science:milliseconds</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
+    <StatusMessage>Warning</StatusMessage>
+    <message>Floating Driver</message>
+    <detail>Floating output pin Science:Sweep_skipped_samples</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/Science:Sweep_skipped_samples</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Undriven Pin</message>
+    <detail>Unconnected input pin exp_Test_packet</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/Science:exp_Test_packet</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Unused Instance</message>
+    <detail>ADC_Data_Packer_0 output pins are not being used.  Connect or mark them unused</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/instances/ADC_Data_Packer_0</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Undriven Pin</message>
+    <detail>Unconnected input pin ADC_Data_Packer_0:CLK</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/ADC_Data_Packer_0:CLK</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Undriven Pin</message>
+    <detail>Unconnected input pin ADC_Data_Packer_0:RESET</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/ADC_Data_Packer_0:RESET</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Undriven Pin</message>
+    <detail>Unconnected input pin ADC_Data_Packer_0:data_a[15:0]</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/ADC_Data_Packer_0:data_a</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Undriven Pin</message>
+    <detail>Unconnected input pin ADC_Data_Packer_0:data_b[15:0]</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/ADC_Data_Packer_0:data_b</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Undriven Pin</message>
+    <detail>Unconnected input pin ADC_Data_Packer_0:N_SAMPLES_POINT[15:0]</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/ADC_Data_Packer_0:N_SAMPLES_POINT</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Undriven Pin</message>
+    <detail>Unconnected input pin ADC_Data_Packer_0:SW_EN</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/ADC_Data_Packer_0:SW_EN</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Undriven Pin</message>
+    <detail>Unconnected input pin ADC_Data_Packer_0:CB_EN</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/ADC_Data_Packer_0:CB_EN</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
+    <StatusMessage>Warning</StatusMessage>
+    <message>Floating Driver</message>
+    <detail>Floating output bus pin ADC_Data_Packer_0:exp_SC_packet[63:0]</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/ADC_Data_Packer_0:exp_SC_packet</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
+    <StatusMessage>Warning</StatusMessage>
+    <message>Floating Driver</message>
+    <detail>Floating output pin ADC_Data_Packer_0:exp_new_data</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/ADC_Data_Packer_0:exp_new_data</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
+    <StatusMessage>Warning</StatusMessage>
+    <message>Floating Driver</message>
+    <detail>Floating output bus pin ADC_Data_Packer_0:G1[1:0]</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/ADC_Data_Packer_0:G1</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
+    <StatusMessage>Warning</StatusMessage>
+    <message>Floating Driver</message>
+    <detail>Floating output bus pin ADC_Data_Packer_0:G2[1:0]</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/ADC_Data_Packer_0:G2</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Undriven Pin</message>
+    <detail>Unconnected input pin G1</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/SET_LP_GAIN_0:G1</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Undriven Pin</message>
+    <detail>Unconnected input pin G2</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/SET_LP_GAIN_0:G2</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
+    <StatusMessage>Warning</StatusMessage>
+    <message>Floating Driver</message>
+    <detail>Floating output bus pin SWEEP_SPIDER2_0:samp[15:0]</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/SWEEP_SPIDER2_0:samp</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
+    <StatusMessage>Warning</StatusMessage>
+    <message>Floating Driver</message>
+    <detail>Floating output pin SWEEP_SPIDER2_0:REN</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/SWEEP_SPIDER2_0:REN</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_SoC_v11.9\Designer/data/drcreport\warn.png</status>
+    <StatusMessage>Warning</StatusMessage>
+    <message>Floating Driver</message>
+    <detail>Floating output pin SWEEP_SPIDER2_0:STEP_END</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/Science/pins/SWEEP_SPIDER2_0:STEP_END</crossprobe>
   </drc>
 </drcreport>
