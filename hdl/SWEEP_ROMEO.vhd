@@ -43,6 +43,7 @@ port (
         DAC2            : out  std_logic_vector(15 downto 0);
         STEP_END        : out std_logic;                    -- ADC only enable when not skipping samples
         --samp       : out  std_logic_vector(15 downto 0); --DEBUG
+        SWEEP_ACTIVE    : out std_logic;
         SW_END          : out std_logic
 
 
@@ -55,7 +56,7 @@ architecture architecture_SWEEP_ROMEO of SWEEP_ROMEO is
     signal sweep_state                              : integer range 0 to 6;
     signal step                                     : std_logic_vector(7 downto 0);
     signal sample_n                                 : std_logic_vector(15 downto 0); -- Amount of samples performed in current step
-    signal sweep_end                                : std_logic;
+    signal sweep_end, SW_active                     : std_logic;
     signal sweep_table_read_wait                    : integer range 0 to 3;  -- Buffer to read from table
 ---------------------------------------------------------------------
 
@@ -63,6 +64,7 @@ begin
     DAC1 <= dac1_int;
     DAC2 <= dac2_int;
     SET <= update;
+    SWEEP_ACTIVE <=SW_active;
     --samp <= sample_n;
 
 --------------------------
@@ -82,19 +84,24 @@ begin
             RADDR <= x"00";
             sweep_table_read_wait <= 0;
             sample_n <= x"0000";
+            SW_active<= '0';
             STEP_END <= '0';
             SW_END <= '0';
             
 		elsif rising_edge(CLK) then
-            -- Block to update the DAC values #update --TODO: Should only be active if SW_ENABLE or CB_ENABLE ='1'
+            -- Block to update the DAC values #update --TODO: Should only be active if SW_active or CB_ENABLE ='1'
             latch <= CLK_SLOW;
+            if SW_ENABLE='1' then
+                SW_active <= '1';
+            end if;
             if (CLK_SLOW = '1') and (latch = '0') then 
                 fetch <='0';
                 if sweep_end='1' then
+                    SW_active <='0';
                     SW_END <= '1';
                 end if;
             end if;
-            if SW_ENABLE= '1' or CB_ENABLE= '1' then
+            if SW_active= '1' or CB_ENABLE= '1' then
                 if fetch ='0' then
                     if CB_ENABLE= '1' then
                         sweep_state <= 0;
@@ -102,7 +109,7 @@ begin
                         dac2_int <= CBIASV1;
                         update <= '1';
                         fetch <= '1';
-                    elsif SW_ENABLE='1' then
+                    elsif SW_active='1' then
                         case sweep_state is
                             when 0 => 
                                 if sample_n = x"0000" then

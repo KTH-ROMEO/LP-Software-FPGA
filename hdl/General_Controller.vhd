@@ -1141,6 +1141,7 @@ begin
                         when 1 =>
                             led1 <= '1';
                             constant_bias_mode <= '1';
+                            Bias_enabled <='1'; -- Activate the CB_en port to Science module, proper implementation is left as an exercise for the reader
                             uc_tx_state <= uc_tx_preamble;
                             uc_tx_nextstate <= uc_tx_send_const_bias_measurement;
                             uc_rx_state <= uc_rx_postamble;
@@ -1154,6 +1155,7 @@ begin
                             led1 <= '0';
                             led2 <= '0';
                             constant_bias_mode <= '0';
+                            Bias_enabled <='0'; --Deactivate the CB_en port to Science module, proper implementation is left as an exercise for the reader
                             uc_rx_state <= uc_rx_postamble;
                             uc_rx_substate <= 1;
                         when others =>
@@ -1201,7 +1203,11 @@ begin
 
                 when uc_rx_receive_activate_sweep => 
                     case uc_rx_substate is
-                        when 1 =>
+                        when 1 => 
+                            Sweep_enabled <= '1';  -- Generate the SW_en port strobe to Science module, proper implementation is left as an exercise for the reader
+                            uc_rx_substate <= uc_rx_substate + 1;
+                        when 2 =>
+                            Sweep_enabled <= '0'; -- Generate the SW_en port strobe to Science module, proper implementation is left as an exercise for the reader
                             sweep_table_sweep_cnt <= sweep_table_sweep_cnt + 1;
                             sweep_table_activate_sweep <= '1';
                             constant_bias_mode <= '0'; -- TODO: Consider - should this be done?

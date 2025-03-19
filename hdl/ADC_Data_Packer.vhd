@@ -96,7 +96,7 @@ begin
                         end if;
                         
                     when 1 =>
-                        if n_skipped = N_SKIPPED_SAMPLES or CB_EN='1' then
+                        if n_skipped = N_SKIPPED_SAMPLES then
                             state <= 2;
                         else
                             state <= 0;
@@ -127,7 +127,7 @@ begin
                         G1 <= g1i;
                         G2 <= g2i;
                         -----------------------------------
-                        if n_points = N_POINT_STEP and SW_EN='1' then
+                        if n_points = N_POINT_STEP then
                             n_points <= x"0000";
                             state <= 5;
                         else
@@ -135,7 +135,7 @@ begin
                         end if;
                         new_SC_packet <='0';
                     when 5 =>
-                        if STEP_END = '1' then
+                        if STEP_END = '1' or CB_EN='1' then
                             -- Gain update at the end of the step
                             G1 <= g1i;
                             G2 <= g2i;

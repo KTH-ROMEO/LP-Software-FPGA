@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Tue Mar 18 18:43:22 2025
+-- Created by SmartDesign Thu Mar 20 00:38:59 2025
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -161,80 +161,82 @@ component SWEEP_ROMEO
     -- Port list
     port(
         -- Inputs
-        CBIASV0   : in  std_logic_vector(15 downto 0);
-        CBIASV1   : in  std_logic_vector(15 downto 0);
-        CB_ENABLE : in  std_logic;
-        CLK       : in  std_logic;
-        CLK_SLOW  : in  std_logic;
-        N_SAMPLES : in  std_logic_vector(15 downto 0);
-        N_STEPS   : in  std_logic_vector(7 downto 0);
-        RD0       : in  std_logic_vector(15 downto 0);
-        RD1       : in  std_logic_vector(15 downto 0);
-        RESET     : in  std_logic;
-        SW_ENABLE : in  std_logic;
+        CBIASV0      : in  std_logic_vector(15 downto 0);
+        CBIASV1      : in  std_logic_vector(15 downto 0);
+        CB_ENABLE    : in  std_logic;
+        CLK          : in  std_logic;
+        CLK_SLOW     : in  std_logic;
+        N_SAMPLES    : in  std_logic_vector(15 downto 0);
+        N_STEPS      : in  std_logic_vector(7 downto 0);
+        RD0          : in  std_logic_vector(15 downto 0);
+        RD1          : in  std_logic_vector(15 downto 0);
+        RESET        : in  std_logic;
+        SW_ENABLE    : in  std_logic;
         -- Outputs
-        DAC1      : out std_logic_vector(15 downto 0);
-        DAC2      : out std_logic_vector(15 downto 0);
-        RADDR     : out std_logic_vector(7 downto 0);
-        REN       : out std_logic;
-        SET       : out std_logic;
-        STEP_END  : out std_logic;
-        SW_END    : out std_logic
+        DAC1         : out std_logic_vector(15 downto 0);
+        DAC2         : out std_logic_vector(15 downto 0);
+        RADDR        : out std_logic_vector(7 downto 0);
+        REN          : out std_logic;
+        SET          : out std_logic;
+        STEP_END     : out std_logic;
+        SWEEP_ACTIVE : out std_logic;
+        SW_END       : out std_logic
         );
 end component;
 ----------------------------------------------------------------------
 -- Signal declarations
 ----------------------------------------------------------------------
-signal ACLK_net_0              : std_logic;
-signal ACS_net_0               : std_logic;
-signal ACST_net_0              : std_logic;
-signal ADC_Data_Packer_0_G1    : std_logic_vector(1 downto 0);
-signal ADC_Data_Packer_0_G2    : std_logic_vector(1 downto 0);
-signal ADC_READ_0_DATA_c0      : std_logic_vector(17 downto 0);
-signal ADC_READ_0_DATA_c4      : std_logic_vector(17 downto 0);
-signal ADC_READ_0_exp_new_data : std_logic;
-signal ARST_net_0              : std_logic;
-signal L1WR_net_0              : std_logic;
-signal L2WR_net_0              : std_logic;
-signal L3WR_net_0              : std_logic;
-signal L4WR_net_0              : std_logic;
-signal LA0_net_0               : std_logic;
-signal LA1_net_0               : std_logic;
-signal LDCLK_net_0             : std_logic;
-signal LDCS_net_0              : std_logic;
-signal LDSDI_net_0             : std_logic;
-signal new_SC_packet_net_0     : std_logic;
-signal RADDR_net_0             : std_logic_vector(7 downto 0);
-signal REN_net_0               : std_logic;
-signal SC_packet_net_0         : std_logic_vector(63 downto 0);
-signal SW_END_net_0            : std_logic;
-signal SWEEP_ROMEO_0_DAC1      : std_logic_vector(15 downto 0);
-signal SWEEP_ROMEO_0_DAC2      : std_logic_vector(15 downto 0);
-signal SWEEP_ROMEO_0_SET       : std_logic;
-signal SWEEP_ROMEO_0_STEP_END  : std_logic;
-signal ACS_net_1               : std_logic;
-signal ACLK_net_1              : std_logic;
-signal ACST_net_1              : std_logic;
-signal LA0_net_1               : std_logic;
-signal LA1_net_1               : std_logic;
-signal L1WR_net_1              : std_logic;
-signal L2WR_net_1              : std_logic;
-signal L3WR_net_1              : std_logic;
-signal L4WR_net_1              : std_logic;
-signal LDCS_net_1              : std_logic;
-signal LDSDI_net_1             : std_logic;
-signal LDCLK_net_1             : std_logic;
-signal ARST_net_1              : std_logic;
-signal REN_net_1               : std_logic;
-signal new_SC_packet_net_1     : std_logic;
-signal SW_END_net_1            : std_logic;
-signal RADDR_net_1             : std_logic_vector(7 downto 0);
-signal SC_packet_net_1         : std_logic_vector(63 downto 0);
+signal ACLK_net_0                 : std_logic;
+signal ACS_net_0                  : std_logic;
+signal ACST_net_0                 : std_logic;
+signal ADC_Data_Packer_0_G1       : std_logic_vector(1 downto 0);
+signal ADC_Data_Packer_0_G2       : std_logic_vector(1 downto 0);
+signal ADC_READ_0_DATA_c0         : std_logic_vector(17 downto 0);
+signal ADC_READ_0_DATA_c4         : std_logic_vector(17 downto 0);
+signal ADC_READ_0_exp_new_data    : std_logic;
+signal ARST_net_0                 : std_logic;
+signal L1WR_net_0                 : std_logic;
+signal L2WR_net_0                 : std_logic;
+signal L3WR_net_0                 : std_logic;
+signal L4WR_net_0                 : std_logic;
+signal LA0_net_0                  : std_logic;
+signal LA1_net_0                  : std_logic;
+signal LDCLK_net_0                : std_logic;
+signal LDCS_net_0                 : std_logic;
+signal LDSDI_net_0                : std_logic;
+signal new_SC_packet_net_0        : std_logic;
+signal RADDR_net_0                : std_logic_vector(7 downto 0);
+signal REN_net_0                  : std_logic;
+signal SC_packet_net_0            : std_logic_vector(63 downto 0);
+signal SW_END_net_0               : std_logic;
+signal SWEEP_ROMEO_0_DAC1         : std_logic_vector(15 downto 0);
+signal SWEEP_ROMEO_0_DAC2         : std_logic_vector(15 downto 0);
+signal SWEEP_ROMEO_0_SET          : std_logic;
+signal SWEEP_ROMEO_0_STEP_END     : std_logic;
+signal SWEEP_ROMEO_0_SWEEP_ACTIVE : std_logic;
+signal ACS_net_1                  : std_logic;
+signal ACLK_net_1                 : std_logic;
+signal ACST_net_1                 : std_logic;
+signal LA0_net_1                  : std_logic;
+signal LA1_net_1                  : std_logic;
+signal L1WR_net_1                 : std_logic;
+signal L2WR_net_1                 : std_logic;
+signal L3WR_net_1                 : std_logic;
+signal L4WR_net_1                 : std_logic;
+signal LDCS_net_1                 : std_logic;
+signal LDSDI_net_1                : std_logic;
+signal LDCLK_net_1                : std_logic;
+signal ARST_net_1                 : std_logic;
+signal REN_net_1                  : std_logic;
+signal new_SC_packet_net_1        : std_logic;
+signal SW_END_net_1               : std_logic;
+signal RADDR_net_1                : std_logic_vector(7 downto 0);
+signal SC_packet_net_1            : std_logic_vector(63 downto 0);
 ----------------------------------------------------------------------
 -- TiedOff Signals
 ----------------------------------------------------------------------
-signal G3_const_net_0          : std_logic_vector(1 downto 0);
-signal G4_const_net_0          : std_logic_vector(1 downto 0);
+signal G3_const_net_0             : std_logic_vector(1 downto 0);
+signal G4_const_net_0             : std_logic_vector(1 downto 0);
 
 begin
 ----------------------------------------------------------------------
@@ -290,7 +292,7 @@ ADC_Data_Packer_0 : ADC_Data_Packer
         -- Inputs
         CLK               => clk,
         RESET             => reset,
-        SW_EN             => Sweep_enabled,
+        SW_EN             => SWEEP_ROMEO_0_SWEEP_ACTIVE,
         CB_EN             => Bias_enabled,
         STEP_END          => SWEEP_ROMEO_0_STEP_END,
         exp_new_data      => ADC_READ_0_exp_new_data,
@@ -369,25 +371,26 @@ SET_LP_GAIN_0 : SET_LP_GAIN
 SWEEP_ROMEO_0 : SWEEP_ROMEO
     port map( 
         -- Inputs
-        RESET     => reset,
-        CLK       => clk,
-        CLK_SLOW  => clk_32kHz,
-        SW_ENABLE => Sweep_enabled,
-        CB_ENABLE => Bias_enabled,
-        RD0       => RData0,
-        RD1       => RData1,
-        N_STEPS   => Sweep_no_steps,
-        N_SAMPLES => Sweep_Samples,
-        CBIASV0   => C_bias_V0,
-        CBIASV1   => C_bias_V1,
+        RESET        => reset,
+        CLK          => clk,
+        CLK_SLOW     => clk_32kHz,
+        SW_ENABLE    => Sweep_enabled,
+        CB_ENABLE    => Bias_enabled,
+        RD0          => RData0,
+        RD1          => RData1,
+        N_STEPS      => Sweep_no_steps,
+        N_SAMPLES    => Sweep_Samples,
+        CBIASV0      => C_bias_V0,
+        CBIASV1      => C_bias_V1,
         -- Outputs
-        REN       => REN_net_0,
-        SET       => SWEEP_ROMEO_0_SET,
-        STEP_END  => SWEEP_ROMEO_0_STEP_END,
-        SW_END    => SW_END_net_0,
-        RADDR     => RADDR_net_0,
-        DAC1      => SWEEP_ROMEO_0_DAC1,
-        DAC2      => SWEEP_ROMEO_0_DAC2 
+        REN          => REN_net_0,
+        SET          => SWEEP_ROMEO_0_SET,
+        STEP_END     => SWEEP_ROMEO_0_STEP_END,
+        SWEEP_ACTIVE => SWEEP_ROMEO_0_SWEEP_ACTIVE,
+        SW_END       => SW_END_net_0,
+        RADDR        => RADDR_net_0,
+        DAC1         => SWEEP_ROMEO_0_DAC1,
+        DAC2         => SWEEP_ROMEO_0_DAC2 
         );
 
 end RTL;
