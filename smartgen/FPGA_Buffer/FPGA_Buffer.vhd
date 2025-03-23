@@ -2167,7 +2167,7 @@ end DEF_ARCH;
 -- GEN_BHV_VERILOG_VAL:F
 -- MGNTIMER:F
 -- MGNCMPL:T
--- DESDIR:C:/Users/Lab-user1/Desktop/MasterThesis/Langmuir-DataHub-EMUScience-FPGA/smartgen\FPGA_Buffer
+-- DESDIR:C:/Users/sergi/Desktop/Master Year 2/Master Thesis/LP-Software-FPGA/smartgen\FPGA_Buffer
 -- GEN_BEHV_MODULE:F
 -- SMARTGEN_DIE:IS4X4M1
 -- SMARTGEN_PACKAGE:vq100

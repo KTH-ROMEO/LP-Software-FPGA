@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Tue Mar 18 18:43:27 2025
+-- Created by SmartDesign Sun Mar 23 23:24:49 2025
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -188,40 +188,17 @@ component Data_Saving
     -- Port list
     port(
         -- Inputs
-        acc_new_data       : in  std_logic;
-        acc_packet_0       : in  std_logic_vector(87 downto 0);
-        ch_0_new_data      : in  std_logic;
-        ch_1_new_data      : in  std_logic;
-        ch_1_packet_0      : in  std_logic_vector(87 downto 0);
-        ch_2_new_data      : in  std_logic;
-        ch_2_packet_0      : in  std_logic_vector(87 downto 0);
-        ch_3_new_data      : in  std_logic;
-        ch_3_packet_0      : in  std_logic_vector(87 downto 0);
-        ch_4_new_data      : in  std_logic;
-        ch_4_packet        : in  std_logic_vector(87 downto 0);
-        ch_5_new_data      : in  std_logic;
-        ch_5_packet        : in  std_logic_vector(87 downto 0);
-        clk                : in  std_logic;
-        en                 : in  std_logic;
-        exp_SC_packet      : in  std_logic_vector(63 downto 0);
-        fmc_clk            : in  std_logic;
-        fmc_noe            : in  std_logic;
-        gyro_new_data      : in  std_logic;
-        gyro_packet_0      : in  std_logic_vector(87 downto 0);
-        mag_new_data       : in  std_logic;
-        mag_packet_0       : in  std_logic_vector(87 downto 0);
-        pres_cal1_packet_0 : in  std_logic_vector(87 downto 0);
-        pres_cal2_packet_0 : in  std_logic_vector(87 downto 0);
-        pres_cal_new_data  : in  std_logic;
-        pressure_new_data  : in  std_logic;
-        pressure_packet_0  : in  std_logic_vector(87 downto 0);
-        reset              : in  std_logic;
-        status_new_data    : in  std_logic;
-        status_packet_0    : in  std_logic_vector(87 downto 0);
-        sync               : in  std_logic;
+        ch_0_new_data : in  std_logic;
+        clk           : in  std_logic;
+        en            : in  std_logic;
+        exp_SC_packet : in  std_logic_vector(63 downto 0);
+        fmc_clk       : in  std_logic;
+        fmc_noe       : in  std_logic;
+        reset         : in  std_logic;
         -- Outputs
-        fmc_da             : out std_logic_vector(7 downto 0);
-        uC_interrupt       : out std_logic
+        fmc_da        : out std_logic_vector(7 downto 0);
+        led2          : out std_logic;
+        uC_interrupt  : out std_logic
         );
 end component;
 -- Eject_Signal_Debounce
@@ -263,9 +240,12 @@ component General_Controller
         C_bias_V1               : out std_logic_vector(15 downto 0);
         DAC_max_value           : out std_logic;
         DAC_zero_value          : out std_logic;
+        SC_packet               : out std_logic_vector(63 downto 0);
+        SC_we                   : out std_logic;
         Sweep_enabled           : out std_logic;
         Sweep_no_steps          : out std_logic_vector(7 downto 0);
         Sweep_points_per_step   : out std_logic_vector(15 downto 0);
+        Sweep_reset             : out std_logic;
         Sweep_samples_per_point : out std_logic_vector(15 downto 0);
         Sweep_samples_per_step  : out std_logic_vector(15 downto 0);
         Sweep_skiped_samples    : out std_logic_vector(15 downto 0);
@@ -345,6 +325,17 @@ component I2C_PassThrough
         -- Inouts
         sda_m : inout std_logic;
         sda_s : inout std_logic
+        );
+end component;
+-- OR2
+component OR2
+    -- Port list
+    port(
+        -- Inputs
+        A : in  std_logic;
+        B : in  std_logic;
+        -- Outputs
+        Y : out std_logic
         );
 end component;
 -- Pressure_Signal_Debounce
@@ -531,9 +522,7 @@ signal Communications_0_ext_tx_rdy                  : std_logic;
 signal Communications_0_uc_recv                     : std_logic_vector(7 downto 0);
 signal Communications_0_uc_rx_rdy                   : std_logic;
 signal Communications_0_uc_tx_rdy                   : std_logic;
-signal Data_Hub_Packets_0_acc_packet                : std_logic_vector(87 downto 0);
 signal Data_Hub_Packets_0_gyro_packet               : std_logic_vector(87 downto 0);
-signal Data_Hub_Packets_0_mag_packet                : std_logic_vector(87 downto 0);
 signal Data_Hub_Packets_0_pres_cal1_packet          : std_logic_vector(87 downto 0);
 signal Data_Hub_Packets_0_pres_cal2_packet          : std_logic_vector(87 downto 0);
 signal Data_Hub_Packets_0_pressure_packet           : std_logic_vector(87 downto 0);
@@ -545,12 +534,12 @@ signal FRAM_SCL_net_0                               : std_logic;
 signal General_Controller_0_Bias_enabled            : std_logic;
 signal General_Controller_0_C_bias_V0               : std_logic_vector(15 downto 0);
 signal General_Controller_0_C_bias_V1               : std_logic_vector(15 downto 0);
-signal General_Controller_0_en_data_saving          : std_logic;
 signal General_Controller_0_en_sensors              : std_logic;
 signal General_Controller_0_exp_adc_reset           : std_logic;
 signal General_Controller_0_ext_oen                 : std_logic;
 signal General_Controller_0_gs_id                   : std_logic_vector(7 downto 0);
 signal General_Controller_0_readout_en              : std_logic;
+signal General_Controller_0_SC_packet               : std_logic_vector(63 downto 0);
 signal General_Controller_0_st_raddr_1              : std_logic_vector(7 downto 0);
 signal General_Controller_0_st_ren0                 : std_logic;
 signal General_Controller_0_st_ren1                 : std_logic;
@@ -559,10 +548,10 @@ signal General_Controller_0_st_wdata                : std_logic_vector(15 downto
 signal General_Controller_0_st_wen0                 : std_logic;
 signal General_Controller_0_st_wen1                 : std_logic;
 signal General_Controller_0_status_bits             : std_logic_vector(63 downto 0);
-signal General_Controller_0_status_new_data         : std_logic;
 signal General_Controller_0_Sweep_enabled           : std_logic;
 signal General_Controller_0_Sweep_no_steps          : std_logic_vector(7 downto 0);
 signal General_Controller_0_Sweep_points_per_step   : std_logic_vector(15 downto 0);
+signal General_Controller_0_Sweep_reset             : std_logic;
 signal General_Controller_0_Sweep_samples_per_point : std_logic_vector(15 downto 0);
 signal General_Controller_0_Sweep_samples_per_step  : std_logic_vector(15 downto 0);
 signal General_Controller_0_Sweep_skiped_samples    : std_logic_vector(15 downto 0);
@@ -582,15 +571,13 @@ signal LA1_net_0                                    : std_logic;
 signal LDCLK_net_0                                  : std_logic;
 signal LDCS_net_0                                   : std_logic;
 signal LDSDI_net_0                                  : std_logic;
-signal LED1_0                                       : std_logic;
+signal LED1_net_0                                   : std_logic;
 signal LED2_net_0                                   : std_logic;
+signal OR2_0_Y                                      : std_logic;
 signal PRESSURE_SCL_net_0                           : std_logic;
 signal Pressure_Signal_Debounce_0_low_pressure      : std_logic;
-signal Science_0_new_SC_packet                      : std_logic;
 signal Science_0_RADDR                              : std_logic_vector(7 downto 0);
 signal Science_0_REN                                : std_logic;
-signal Science_0_SC_packet                          : std_logic_vector(63 downto 0);
-signal Sensors_0_acc_new_data                       : std_logic;
 signal Sensors_0_acc_temp                           : std_logic_vector(7 downto 0);
 signal Sensors_0_acc_time                           : std_logic_vector(23 downto 0);
 signal Sensors_0_acc_x                              : std_logic_vector(11 downto 0);
@@ -602,7 +589,6 @@ signal Sensors_0_C3                                 : std_logic_vector(15 downto
 signal Sensors_0_C4                                 : std_logic_vector(15 downto 0);
 signal Sensors_0_C5                                 : std_logic_vector(15 downto 0);
 signal Sensors_0_C6                                 : std_logic_vector(15 downto 0);
-signal Sensors_0_gyro_new_data                      : std_logic;
 signal Sensors_0_gyro_temp                          : std_logic_vector(7 downto 0);
 signal Sensors_0_gyro_time                          : std_logic_vector(23 downto 0);
 signal Sensors_0_gyro_x                             : std_logic_vector(15 downto 0);
@@ -611,13 +597,10 @@ signal Sensors_0_gyro_z                             : std_logic_vector(15 downto
 signal Sensors_0_gyro_z7to4                         : std_logic_vector(7 downto 4);
 signal Sensors_0_gyro_z11to8                        : std_logic_vector(11 downto 8);
 signal Sensors_0_gyro_z15to12                       : std_logic_vector(15 downto 12);
-signal Sensors_0_mag_new_data                       : std_logic;
 signal Sensors_0_mag_time                           : std_logic_vector(23 downto 0);
 signal Sensors_0_mag_x                              : std_logic_vector(11 downto 0);
 signal Sensors_0_mag_y                              : std_logic_vector(11 downto 0);
 signal Sensors_0_mag_z                              : std_logic_vector(11 downto 0);
-signal Sensors_0_pres_cal_new_data                  : std_logic;
-signal Sensors_0_pressure_new_data                  : std_logic;
 signal Sensors_0_pressure_raw                       : std_logic_vector(23 downto 0);
 signal Sensors_0_pressure_raw23to12                 : std_logic_vector(23 downto 12);
 signal Sensors_0_pressure_temp_raw                  : std_logic_vector(23 downto 0);
@@ -646,7 +629,7 @@ signal UC_UART_RX_net_1                             : std_logic;
 signal TOP_UART_TX_net_1                            : std_logic;
 signal GYRO_SCL_net_1                               : std_logic;
 signal ACCE_SCL_net_1                               : std_logic;
-signal LED1_0_net_0                                 : std_logic;
+signal LED1_net_1                                   : std_logic;
 signal LED2_net_1                                   : std_logic;
 signal UC_PWR_EN_net_1                              : std_logic;
 signal UC_RESET_net_1                               : std_logic;
@@ -693,12 +676,7 @@ signal s_clks_net_0                                 : std_logic_vector(24 downto
 ----------------------------------------------------------------------
 -- TiedOff Signals
 ----------------------------------------------------------------------
-signal GND_net                                      : std_logic;
-signal ch_1_packet_0_const_net_0                    : std_logic_vector(87 downto 0);
-signal ch_2_packet_0_const_net_0                    : std_logic_vector(87 downto 0);
-signal ch_3_packet_0_const_net_0                    : std_logic_vector(87 downto 0);
-signal ch_4_packet_const_net_0                      : std_logic_vector(87 downto 0);
-signal ch_5_packet_const_net_0                      : std_logic_vector(87 downto 0);
+signal VCC_net                                      : std_logic;
 signal ch4_data_const_net_0                         : std_logic_vector(11 downto 0);
 signal ch5_data_const_net_0                         : std_logic_vector(11 downto 0);
 signal ch6_data_const_net_0                         : std_logic_vector(11 downto 0);
@@ -707,6 +685,7 @@ signal ch8_data_const_net_0                         : std_logic_vector(11 downto
 signal ch9_data_const_net_0                         : std_logic_vector(11 downto 0);
 signal ch10_data_const_net_0                        : std_logic_vector(11 downto 0);
 signal ch11_data_const_net_0                        : std_logic_vector(11 downto 0);
+signal exp_SC_packet_const_net_0                    : std_logic_vector(63 downto 0);
 ----------------------------------------------------------------------
 -- Inverted Signals
 ----------------------------------------------------------------------
@@ -716,12 +695,7 @@ begin
 ----------------------------------------------------------------------
 -- Constant assignments
 ----------------------------------------------------------------------
- GND_net                   <= '0';
- ch_1_packet_0_const_net_0 <= B"0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
- ch_2_packet_0_const_net_0 <= B"0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
- ch_3_packet_0_const_net_0 <= B"0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
- ch_4_packet_const_net_0   <= B"0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
- ch_5_packet_const_net_0   <= B"0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+ VCC_net                   <= '1';
  ch4_data_const_net_0      <= B"000000000000";
  ch5_data_const_net_0      <= B"000000000000";
  ch6_data_const_net_0      <= B"000000000000";
@@ -730,6 +704,7 @@ begin
  ch9_data_const_net_0      <= B"000000000000";
  ch10_data_const_net_0     <= B"000000000000";
  ch11_data_const_net_0     <= B"000000000000";
+ exp_SC_packet_const_net_0 <= B"0000000000000000000000000000000000000000000000000000000000000000";
 ----------------------------------------------------------------------
 -- Inversions
 ----------------------------------------------------------------------
@@ -749,8 +724,8 @@ begin
  GYRO_SCL           <= GYRO_SCL_net_1;
  ACCE_SCL_net_1     <= ACCE_SCL_net_0;
  ACCE_SCL           <= ACCE_SCL_net_1;
- LED1_0_net_0       <= LED1_0;
- LED1               <= LED1_0_net_0;
+ LED1_net_1         <= LED1_net_0;
+ LED1               <= LED1_net_1;
  LED2_net_1         <= LED2_net_0;
  LED2               <= LED2_net_1;
  UC_PWR_EN_net_1    <= UC_PWR_EN_net_0;
@@ -938,8 +913,8 @@ Data_Hub_Packets_0 : Data_Hub_Packets
         C6                => Sensors_0_C6,
         status_bits       => General_Controller_0_status_bits,
         -- Outputs
-        acc_packet        => Data_Hub_Packets_0_acc_packet,
-        mag_packet        => Data_Hub_Packets_0_mag_packet,
+        acc_packet        => OPEN,
+        mag_packet        => OPEN,
         gyro_packet       => Data_Hub_Packets_0_gyro_packet,
         pressure_packet   => Data_Hub_Packets_0_pressure_packet,
         pres_cal1_packet  => Data_Hub_Packets_0_pres_cal1_packet,
@@ -950,40 +925,17 @@ Data_Hub_Packets_0 : Data_Hub_Packets
 Data_Saving_0 : Data_Saving
     port map( 
         -- Inputs
-        clk                => CLKINT_0_Y_0,
-        reset              => CLKINT_1_Y,
-        en                 => General_Controller_0_en_data_saving,
-        acc_new_data       => Sensors_0_acc_new_data,
-        mag_new_data       => Sensors_0_mag_new_data,
-        gyro_new_data      => Sensors_0_gyro_new_data,
-        pressure_new_data  => Sensors_0_pressure_new_data,
-        pres_cal_new_data  => Sensors_0_pres_cal_new_data,
-        status_new_data    => General_Controller_0_status_new_data,
-        ch_0_new_data      => Science_0_new_SC_packet,
-        ch_1_new_data      => GND_net,
-        ch_2_new_data      => GND_net,
-        ch_3_new_data      => GND_net,
-        ch_4_new_data      => GND_net,
-        ch_5_new_data      => GND_net,
-        sync               => CU_SYNC,
-        fmc_noe            => FMC_NOE,
-        fmc_clk            => CLKINT_2_Y,
-        acc_packet_0       => Data_Hub_Packets_0_acc_packet,
-        mag_packet_0       => Data_Hub_Packets_0_mag_packet,
-        gyro_packet_0      => Data_Hub_Packets_0_gyro_packet,
-        pressure_packet_0  => Data_Hub_Packets_0_pressure_packet,
-        status_packet_0    => Data_Hub_Packets_0_status_packet,
-        pres_cal1_packet_0 => Data_Hub_Packets_0_pres_cal1_packet,
-        pres_cal2_packet_0 => Data_Hub_Packets_0_pres_cal2_packet,
-        ch_1_packet_0      => ch_1_packet_0_const_net_0,
-        ch_2_packet_0      => ch_2_packet_0_const_net_0,
-        ch_3_packet_0      => ch_3_packet_0_const_net_0,
-        ch_4_packet        => ch_4_packet_const_net_0,
-        ch_5_packet        => ch_5_packet_const_net_0,
-        exp_SC_packet      => Science_0_SC_packet,
+        clk           => CLKINT_0_Y_0,
+        reset         => OR2_0_Y,
+        en            => VCC_net,
+        ch_0_new_data => LED2_net_0,
+        fmc_noe       => FMC_NOE,
+        fmc_clk       => CLKINT_2_Y,
+        exp_SC_packet => General_Controller_0_SC_packet,
         -- Outputs
-        uC_interrupt       => FPGA_BUF_INT_net_0,
-        fmc_da             => FMC_DA_0 
+        uC_interrupt  => FPGA_BUF_INT_net_0,
+        fmc_da        => FMC_DA_0,
+        led2          => LED1_net_0 
         );
 -- Eject_Signal_Debounce_0
 Eject_Signal_Debounce_0 : Eject_Signal_Debounce
@@ -1004,22 +956,29 @@ General_Controller_0 : General_Controller
         clk_1Hz                 => Timing_0_s_clks24to24(24),
         reset                   => CLKINT_1_Y,
         status_packet_clk       => Timing_0_s_clks18to18(18),
+        milliseconds            => Timekeeper_0_milliseconds,
         ffu_ejected             => Eject_Signal_Debounce_0_ffu_ejected_out,
         low_pressure            => Pressure_Signal_Debounce_0_low_pressure,
         ext_rx_rdy              => Communications_0_ext_rx_rdy,
+        ext_recv                => Communications_0_ext_recv,
+        uc_recv                 => Communications_0_uc_recv,
         uc_tx_rdy               => Communications_0_uc_tx_rdy,
         uc_rx_rdy               => Communications_0_uc_rx_rdy,
         cu_sync                 => CU_SYNC,
-        milliseconds            => Timekeeper_0_milliseconds,
-        ext_recv                => Communications_0_ext_recv,
-        uc_recv                 => Communications_0_uc_recv,
         st_rdata0               => SweepTable_0_RD,
         st_rdata1               => SweepTable_1_RD,
         -- Outputs
+        st_wdata                => General_Controller_0_st_wdata,
+        st_waddr                => General_Controller_0_st_waddr,
+        st_raddr                => General_Controller_0_st_raddr_1,
         st_wen0                 => General_Controller_0_st_wen0,
         st_wen1                 => General_Controller_0_st_wen1,
         st_ren0                 => General_Controller_0_st_ren0,
         st_ren1                 => General_Controller_0_st_ren1,
+        unit_id                 => General_Controller_0_unit_id,
+        ffu_id                  => OPEN,
+        gs_id                   => General_Controller_0_gs_id,
+        uc_send                 => General_Controller_0_uc_send,
         uc_wen                  => General_Controller_0_uc_wen,
         uc_oen                  => General_Controller_0_uc_oen,
         ext_oen                 => General_Controller_0_ext_oen,
@@ -1027,37 +986,33 @@ General_Controller_0 : General_Controller
         uc_reset                => UC_RESET_net_0,
         uc_pwr_en               => UC_PWR_EN_net_0,
         en_sensors              => General_Controller_0_en_sensors,
-        en_data_saving          => General_Controller_0_en_data_saving,
-        led1                    => LED1_0,
-        led2                    => LED2_net_0,
-        status_new_data         => General_Controller_0_status_new_data,
+        en_data_saving          => OPEN,
+        led1                    => OPEN,
+        led2                    => OPEN,
+        status_bits             => General_Controller_0_status_bits,
+        status_new_data         => OPEN,
         en_science_packets      => OPEN,
         sweep_en                => OPEN,
-        exp_adc_reset           => General_Controller_0_exp_adc_reset,
-        DAC_zero_value          => OPEN,
-        DAC_max_value           => OPEN,
-        Bias_enabled            => General_Controller_0_Bias_enabled,
-        Sweep_enabled           => General_Controller_0_Sweep_enabled,
-        st_wdata                => General_Controller_0_st_wdata,
-        st_waddr                => General_Controller_0_st_waddr,
-        st_raddr                => General_Controller_0_st_raddr_1,
-        unit_id                 => General_Controller_0_unit_id,
-        ffu_id                  => OPEN,
-        gs_id                   => General_Controller_0_gs_id,
-        uc_send                 => General_Controller_0_uc_send,
-        status_bits             => General_Controller_0_status_bits,
         ramp                    => OPEN,
+        exp_adc_reset           => General_Controller_0_exp_adc_reset,
         man_gain1               => OPEN,
         man_gain2               => OPEN,
         man_gain3               => OPEN,
         man_gain4               => OPEN,
+        DAC_zero_value          => OPEN,
+        DAC_max_value           => OPEN,
+        Bias_enabled            => General_Controller_0_Bias_enabled,
         C_bias_V0               => General_Controller_0_C_bias_V0,
         C_bias_V1               => General_Controller_0_C_bias_V1,
+        Sweep_enabled           => General_Controller_0_Sweep_enabled,
+        Sweep_reset             => General_Controller_0_Sweep_reset,
         Sweep_no_steps          => General_Controller_0_Sweep_no_steps,
         Sweep_samples_per_step  => General_Controller_0_Sweep_samples_per_step,
         Sweep_samples_per_point => General_Controller_0_Sweep_samples_per_point,
         Sweep_skiped_samples    => General_Controller_0_Sweep_skiped_samples,
-        Sweep_points_per_step   => General_Controller_0_Sweep_points_per_step 
+        Sweep_points_per_step   => General_Controller_0_Sweep_points_per_step,
+        SC_packet               => General_Controller_0_SC_packet,
+        SC_we                   => LED2_net_0 
         );
 -- GS_Readout_0
 GS_Readout_0 : GS_Readout
@@ -1080,7 +1035,7 @@ GS_Readout_0 : GS_Readout
         ch9_data      => ch9_data_const_net_0,
         ch10_data     => ch10_data_const_net_0,
         ch11_data     => ch11_data_const_net_0,
-        exp_SC_packet => Science_0_SC_packet,
+        exp_SC_packet => exp_SC_packet_const_net_0,
         status_bits   => General_Controller_0_status_bits,
         -- Outputs
         wen           => GS_Readout_0_wen,
@@ -1099,6 +1054,15 @@ I2C_PassThrough_0 : I2C_PassThrough
         -- Inouts
         sda_m => UC_I2C4_SDA,
         sda_s => FRAM_SDA 
+        );
+-- OR2_0
+OR2_0 : OR2
+    port map( 
+        -- Inputs
+        A => CLKINT_1_Y,
+        B => General_Controller_0_Sweep_reset,
+        -- Outputs
+        Y => OR2_0_Y 
         );
 -- Pressure_Signal_Debounce_0
 Pressure_Signal_Debounce_0 : Pressure_Signal_Debounce
@@ -1148,10 +1112,10 @@ Science_0 : Science
         LDCLK                   => LDCLK_net_0,
         ARST                    => ARST_net_0,
         REN                     => Science_0_REN,
-        new_SC_packet           => Science_0_new_SC_packet,
+        new_SC_packet           => OPEN,
         SW_END                  => OPEN,
         RADDR                   => Science_0_RADDR,
-        SC_packet               => Science_0_SC_packet 
+        SC_packet               => OPEN 
         );
 -- Sensors_0
 Sensors_0 : Sensors
@@ -1167,11 +1131,11 @@ Sensors_0 : Sensors
         acce_scl          => ACCE_SCL_net_0,
         pressure_scl      => PRESSURE_SCL_net_0,
         gyro_scl          => GYRO_SCL_net_0,
-        acc_new_data      => Sensors_0_acc_new_data,
-        mag_new_data      => Sensors_0_mag_new_data,
-        gyro_new_data     => Sensors_0_gyro_new_data,
-        pressure_new_data => Sensors_0_pressure_new_data,
-        pres_cal_new_data => Sensors_0_pres_cal_new_data,
+        acc_new_data      => OPEN,
+        mag_new_data      => OPEN,
+        gyro_new_data     => OPEN,
+        pressure_new_data => OPEN,
+        pres_cal_new_data => OPEN,
         acc_x             => Sensors_0_acc_x,
         acc_y             => Sensors_0_acc_y,
         acc_z             => Sensors_0_acc_z,

@@ -99,11 +99,15 @@ port (
     C_bias_V1 : OUT std_logic_vector(15 downto 0);
 
     Sweep_enabled               : OUT std_logic;
+    Sweep_reset               : OUT std_logic;
     Sweep_no_steps              : OUT std_logic_vector(7 downto 0);
     Sweep_samples_per_step      : OUT std_logic_vector(15 downto 0);
     Sweep_samples_per_point     : OUT std_logic_vector(15 downto 0);
     Sweep_skiped_samples        : OUT std_logic_vector(15 downto 0);
-    Sweep_points_per_step       : OUT std_logic_vector(15 downto 0) -- sweep_table_points
+    Sweep_points_per_step       : OUT std_logic_vector(15 downto 0); -- sweep_table_points
+
+    SC_packet   : OUT std_logic_vector(63 downto 0);
+    SC_we : OUT std_logic
     
     ------------------------------------------------
 );
@@ -190,6 +194,7 @@ architecture architecture_General_Controller of General_Controller is
     -------------------------------------------------------------
 
     signal flight_state : std_logic_vector(7 downto 0);
+    signal SWEEP_state_counter : std_logic_vector(3 downto 0);
     constant boot : std_logic_vector(7 downto 0) := x"01";
     constant idle : std_logic_vector(7 downto 0) := x"02";
     constant inside_rocket : std_logic_vector(7 downto 0) := x"03";
@@ -224,7 +229,14 @@ architecture architecture_General_Controller of General_Controller is
     signal old_1Hz : std_logic;
 
     signal mission_mode : std_logic;
+
+    signal start_sweep_measurement : std_logic;
+
+    signal delay_counter : integer range 0 to 1000000 := 0;  -- Counter for delay
 begin
+
+    -- SC_packet <= x"0102030405060708";
+
     process (clk, reset)
     begin
         if reset /= '0' then
@@ -238,6 +250,11 @@ begin
             sweep_table_nof_steps <= x"00";
             sweep_table_samples_per_point <= x"0000";
             sweep_table_points <= x"0000";
+
+            SWEEP_state_counter <= x"0";
+            start_sweep_measurement <= '0';
+
+            SC_packet <= x"0000000000000000";
             ------------------------------------------------
             
             unit_id <= x"21";       -- Default unit identifier - before microcontroller reads out the stored value.
@@ -329,10 +346,66 @@ begin
                 if milliseconds > 1000 then
                     send_flight_state <= '1';
                 end if;
+
+            end if;
+
+            -- if start_sweep_measurement = '1' then
+            --     case SWEEP_state_counter is
+            --         when "0000" =>
+            --             SC_we <= '0'; 
+            --             SC_packet <= SC_packet + 1;
+            --             SWEEP_state_counter <= SWEEP_state_counter + 1;
+            --         when "0001" =>
+            --             SC_we <= '1'; 
+            --             SWEEP_state_counter <= SWEEP_state_counter + 1;
+            --         when "0010" =>
+            --             SC_we <= '0'; 
+            --             SWEEP_state_counter <= SWEEP_state_counter + 1;
+            --         when others =>
+            --             SC_we <= '0'; 
+            --             SWEEP_state_counter <= "0000";
+            --     end case;
+            -- end if;
+
+            if start_sweep_measurement = '1' then
+                case SWEEP_state_counter is
+                    when "0000" =>
+                        SC_we <= '0'; 
+                        SC_packet <= SC_packet + 1;
+                        delay_counter <= 0;  -- Reset delay counter
+                        SWEEP_state_counter <= SWEEP_state_counter + 1;
+        
+                    when "0001" =>
+                        SC_we <= '0';  -- Keep write disabled
+                        if delay_counter < 10000 then
+                            delay_counter <= delay_counter + 1;  -- Count cycles
+                        else
+                            SWEEP_state_counter <= SWEEP_state_counter + 1;  -- Move to next state
+                        end if;
+        
+                    when "0010" =>
+                        SC_we <= '1';  -- Enable write after delay
+                        SWEEP_state_counter <= SWEEP_state_counter + 1;
+        
+                    when "0011" =>
+                        SC_we <= '0'; 
+                        SWEEP_state_counter <= "0000";
+        
+                    when others =>
+                        SC_we <= '0';
+                        SWEEP_state_counter <= "0000";
+                end case;
             end if;
 
     --------------Disable Sweep Trigger if activated --------------------
             sweep_table_activate_sweep <= '0';
+            Sweep_no_steps <= sweep_table_nof_steps;
+            Sweep_samples_per_step <= sweep_table_samples_per_step; 
+            Sweep_skiped_samples <= sweep_table_sample_skip;
+            Sweep_samples_per_point <= sweep_table_samples_per_point;
+            Sweep_points_per_step <= sweep_table_points;
+
+            
 
     --------- General state machine - mission sequence, etc. ------------
             case flight_state is
@@ -1158,6 +1231,7 @@ begin
                             Bias_enabled <='0'; --Deactivate the CB_en port to Science module, proper implementation is left as an exercise for the reader
                             uc_rx_state <= uc_rx_postamble;
                             uc_rx_substate <= 1;
+                            start_sweep_measurement <= '0';
                         when others =>
                     end case;
 
@@ -1205,14 +1279,21 @@ begin
                     case uc_rx_substate is
                         when 1 => 
                             Sweep_enabled <= '1';  -- Generate the SW_en port strobe to Science module, proper implementation is left as an exercise for the reader
+                            Sweep_reset <= '1';
                             uc_rx_substate <= uc_rx_substate + 1;
                         when 2 =>
                             Sweep_enabled <= '0'; -- Generate the SW_en port strobe to Science module, proper implementation is left as an exercise for the reader
+                            Sweep_reset <= '0';
+                            SC_packet <= x"0000000000000000";
                             sweep_table_sweep_cnt <= sweep_table_sweep_cnt + 1;
                             sweep_table_activate_sweep <= '1';
                             constant_bias_mode <= '0'; -- TODO: Consider - should this be done?
+                            uc_rx_substate <= uc_rx_substate + 1;
+                        when 3 =>
+                            
                             uc_rx_state <= uc_rx_postamble;
                             uc_rx_substate <= 1; 
+                            start_sweep_measurement <= '1';
                        when others =>
                     end case;
 

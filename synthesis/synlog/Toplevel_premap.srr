@@ -1,4 +1,4 @@
-# Tue Mar 18 21:11:10 2025
+# Sun Mar 23 23:25:47 2025
 
 Synopsys Microsemi Technology Pre-mapping, Version mapact, Build 2172R, Built Oct 30 2017 10:54:39
 Copyright (C) 1994-2017 Synopsys, Inc. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -12,33 +12,38 @@ Printing clock  summary report in "C:\Users\sergi\Desktop\Master Year 2\Master T
 @N: MF248 |Running in 64-bit mode.
 @N: MF667 |Clock conversion disabled. (Command "set_option -fix_gated_and_generated_clocks 0" in the project file.)
 
-Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 115MB peak: 121MB)
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 111MB peak: 116MB)
 
 
-Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 115MB peak: 121MB)
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 111MB peak: 116MB)
 
-@N: MO111 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Tristate driver uc_reset_2 (in view: work.General_Controller(architecture_general_controller)) on net uc_reset (in view: work.General_Controller(architecture_general_controller)) has its enable tied to GND.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_data_packer.vhd":73:8:73:9|Removing sequential instance G1[1:0] (in view: work.ADC_Data_Packer(architecture_adc_data_packer)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_data_packer.vhd":73:8:73:9|Removing sequential instance G2[1:0] (in view: work.ADC_Data_Packer(architecture_adc_data_packer)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\sweep_romeo.vhd":73:2:73:3|Removing sequential instance STEP_END (in view: work.SWEEP_ROMEO(architecture_sweep_romeo)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN115 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\component\work\science\science.vhd":288:0:288:16|Removing instance ADC_Data_Packer_0 (in view: work.Science(rtl)) of type view:work.ADC_Data_Packer(architecture_adc_data_packer) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_data_packer.vhd":164:8:164:9|Removing sequential instance g1i[1:0] (in view: work.ADC_Data_Packer(architecture_adc_data_packer)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_data_packer.vhd":164:8:164:9|Removing sequential instance g2i[1:0] (in view: work.ADC_Data_Packer(architecture_adc_data_packer)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance ffu_id[7:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance en_science_packets (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance ramp_1[0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance man_gain1[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance man_gain2[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance man_gain3[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance man_gain4[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance DATA_c0[17:0] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance DATA_c4[17:0] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance exp_new_data (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\sweep_romeo.vhd":73:2:73:3|Removing sequential instance sweep_state[0:6] (in view: work.SWEEP_ROMEO(architecture_sweep_romeo)) of type view:PrimLib.statemachine(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_data_packer.vhd":73:8:73:9|Removing sequential instance state[0:5] (in view: work.ADC_Data_Packer(architecture_adc_data_packer)) of type view:PrimLib.statemachine(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\sweep_romeo.vhd":73:2:73:3|Removing sequential instance latch (in view: work.SWEEP_ROMEO(architecture_sweep_romeo)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
+@N: MO111 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":242:8:242:9|Tristate driver uc_reset_2 (in view: work.General_Controller(architecture_general_controller)) on net uc_reset (in view: work.General_Controller(architecture_general_controller)) has its enable tied to GND.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":242:8:242:9|Removing sequential instance ffu_id[7:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":242:8:242:9|Removing sequential instance status_new_data (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":242:8:242:9|Removing sequential instance en_science_packets (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":242:8:242:9|Removing sequential instance ramp_1[0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":242:8:242:9|Removing sequential instance man_gain1[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":242:8:242:9|Removing sequential instance man_gain2[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":242:8:242:9|Removing sequential instance man_gain3[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":242:8:242:9|Removing sequential instance man_gain4[1:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_data_packer.vhd":73:8:73:9|Removing sequential instance SC_packet[63:0] (in view: work.ADC_Data_Packer(architecture_adc_data_packer)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_data_packer.vhd":73:8:73:9|Removing sequential instance new_SC_packet (in view: work.ADC_Data_Packer(architecture_adc_data_packer)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\sweep_romeo.vhd":75:2:75:3|Removing sequential instance SW_END (in view: work.SWEEP_ROMEO(architecture_sweep_romeo)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\lsm303agr_i2c_interface.vhd":104:8:104:9|Removing sequential instance acc_time[23:0] (in view: work.LSM303AGR_I2C_Interface(architecture_lsm303agr_i2c_interface)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\lsm303agr_i2c_interface.vhd":104:8:104:9|Removing sequential instance acc_x[11:0] (in view: work.LSM303AGR_I2C_Interface(architecture_lsm303agr_i2c_interface)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\lsm303agr_i2c_interface.vhd":104:8:104:9|Removing sequential instance acc_y[11:0] (in view: work.LSM303AGR_I2C_Interface(architecture_lsm303agr_i2c_interface)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\lsm303agr_i2c_interface.vhd":104:8:104:9|Removing sequential instance mag_time[23:0] (in view: work.LSM303AGR_I2C_Interface(architecture_lsm303agr_i2c_interface)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\lsm303agr_i2c_interface.vhd":104:8:104:9|Removing sequential instance mag_x[11:0] (in view: work.LSM303AGR_I2C_Interface(architecture_lsm303agr_i2c_interface)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\lsm303agr_i2c_interface.vhd":104:8:104:9|Removing sequential instance mag_y[11:0] (in view: work.LSM303AGR_I2C_Interface(architecture_lsm303agr_i2c_interface)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\lsm303agr_i2c_interface.vhd":104:8:104:9|Removing sequential instance mag_z[11:0] (in view: work.LSM303AGR_I2C_Interface(architecture_lsm303agr_i2c_interface)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\lsm303agr_i2c_interface.vhd":104:8:104:9|Removing sequential instance temp[7:0] (in view: work.LSM303AGR_I2C_Interface(architecture_lsm303agr_i2c_interface)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\lsm303agr_i2c_interface.vhd":104:8:104:9|Removing sequential instance acc_new_data (in view: work.LSM303AGR_I2C_Interface(architecture_lsm303agr_i2c_interface)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\lsm303agr_i2c_interface.vhd":104:8:104:9|Removing sequential instance mag_new_data (in view: work.LSM303AGR_I2C_Interface(architecture_lsm303agr_i2c_interface)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\l3gd20h_interface.vhd":81:8:81:9|Removing sequential instance gyro_time[23:0] (in view: work.L3GD20H_Interface(architecture_l3gd20h_interface)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\l3gd20h_interface.vhd":81:8:81:9|Removing sequential instance temp[7:0] (in view: work.L3GD20H_Interface(architecture_l3gd20h_interface)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\ms5611_01ba03_interface.vhd":99:8:99:9|Removing sequential instance pressure_time[23:0] (in view: work.MS5611_01BA03_Interface(architecture_ms5611_01ba03_interface)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 
-Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 122MB peak: 124MB)
+Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 119MB peak: 121MB)
 
 
 
@@ -54,11 +59,11 @@ ClockDivs|clk_800kHz_inferred_clock     32.0 MHz      31.250        inferred    
 DAC_SET|ADR_inferred_clock[1]           32.0 MHz      31.250        inferred     Inferred_clkgroup_2     39   
 Timing|m_time_inferred_clock[7]         32.0 MHz      31.250        inferred     Inferred_clkgroup_4     35   
 Timing|s_time_inferred_clock[5]         32.0 MHz      31.250        inferred     Inferred_clkgroup_3     5    
-Toplevel|CLOCK                          32.0 MHz      31.250        inferred     Inferred_clkgroup_0     1371 
+Toplevel|CLOCK                          32.0 MHz      31.250        inferred     Inferred_clkgroup_0     1490 
 Toplevel|FMC_CLK                        32.0 MHz      31.250        inferred     Inferred_clkgroup_5     54   
 ==============================================================================================================
 
-@W: MT530 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\clockdivs.vhd":57:8:57:9|Found inferred clock Toplevel|CLOCK which controls 1371 sequential elements including ClockDivs_0.cnt_800kHz[4:0]. This clock has no specified timing constraint which may adversely impact design performance. 
+@W: MT530 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\clockdivs.vhd":57:8:57:9|Found inferred clock Toplevel|CLOCK which controls 1490 sequential elements including ClockDivs_0.cnt_800kHz[4:0]. This clock has no specified timing constraint which may adversely impact design performance. 
 @W: MT530 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\clockdivs.vhd":76:8:76:9|Found inferred clock ClockDivs|clk_800kHz_inferred_clock which controls 126 sequential elements including ClockDivs_0.cnt_1kHz[8:0]. This clock has no specified timing constraint which may adversely impact design performance. 
 @W: MT530 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\dac_set.vhd":56:2:56:3|Found inferred clock DAC_SET|ADR_inferred_clock[1] which controls 39 sequential elements including Science_0.DAC_SET_0.state[0:4]. This clock has no specified timing constraint which may adversely impact design performance. 
 @W: MT530 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_reset.vhd":37:2:37:3|Found inferred clock Timing|s_time_inferred_clock[5] which controls 5 sequential elements including Science_0.ADC_RESET_0.state[0:2]. This clock has no specified timing constraint which may adversely impact design performance. 
@@ -71,7 +76,7 @@ Finished Pre Mapping Phase.
 @N: MO111 :|Tristate driver UC_RESET_t (in view: work.Toplevel(rtl)) on net UC_RESET (in view: work.Toplevel(rtl)) has its enable tied to GND.
 @N: BN225 |Writing default property annotation file C:\Users\sergi\Desktop\Master Year 2\Master Thesis\LP-Software-FPGA\synthesis\Toplevel.sap.
 
-Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 121MB peak: 124MB)
+Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 118MB peak: 121MB)
 
 Encoding state machine state[0:3] (in view: work.FFU_Command_Checker(architecture_ffu_command_checker))
 original code -> new code
@@ -108,6 +113,11 @@ original code -> new code
    10 -> 10
    11 -> 11
 @N: MO225 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\uart.vhd":67:8:67:9|There are no possible illegal states for state machine tx_state[0:3] (in view: work.UART_0(architecture_uart)); safe FSM implementation is not required.
+Encoding state machine word_cnt[0:1] (in view: work.Packet_Saver(architecture_packet_saver))
+original code -> new code
+   01 -> 0
+   10 -> 1
+@N: MO225 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\packet_saver.vhd":25:8:25:9|There are no possible illegal states for state machine word_cnt[0:1] (in view: work.Packet_Saver(architecture_packet_saver)); safe FSM implementation is not required.
 Encoding state machine state[0:3] (in view: work.Eject_Signal_Debounce(architecture_eject_signal_debounce))
 original code -> new code
    00 -> 00
@@ -149,7 +159,7 @@ original code -> new code
    11101 -> 10011
    11110 -> 10001
    11111 -> 10000
-@N: MO225 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|There are no possible illegal states for state machine uc_rx_state[0:31] (in view: work.General_Controller(architecture_general_controller)); safe FSM implementation is not required.
+@N: MO225 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\general_controller.vhd":242:8:242:9|There are no possible illegal states for state machine uc_rx_state[0:31] (in view: work.General_Controller(architecture_general_controller)); safe FSM implementation is not required.
 Encoding state machine flight_state[0:4] (in view: work.General_Controller(architecture_general_controller))
 original code -> new code
    00000001 -> 00001
@@ -187,6 +197,14 @@ original code -> new code
    10 -> 10
    11 -> 11
 @N: MO225 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\pressure_signal_debounce.vhd":47:4:47:5|There are no possible illegal states for state machine state[0:3] (in view: work.Pressure_Signal_Debounce(architecture_pressure_signal_debounce)); safe FSM implementation is not required.
+Encoding state machine state[0:5] (in view: work.ADC_Data_Packer(architecture_adc_data_packer))
+original code -> new code
+   000 -> 000001
+   001 -> 000010
+   010 -> 000100
+   011 -> 001000
+   100 -> 010000
+   101 -> 100000
 Encoding state machine state[0:5] (in view: work.ADC_READ(behavioral))
 original code -> new code
    00000001 -> 000001
@@ -217,6 +235,15 @@ original code -> new code
    00100000 -> 00100000
    01000000 -> 01000000
    10000000 -> 10000000
+Encoding state machine sweep_state[0:6] (in view: work.SWEEP_ROMEO(architecture_sweep_romeo))
+original code -> new code
+   000 -> 0000001
+   001 -> 0000010
+   010 -> 0000100
+   011 -> 0001000
+   100 -> 0010000
+   101 -> 0100000
+   110 -> 1000000
 Encoding state machine state[0:8] (in view: work.I2C_Master_0(architecture_i2c_master))
 original code -> new code
    000000001 -> 000000001
@@ -302,52 +329,16 @@ original code -> new code
    00111 -> 001000000
    01000 -> 010000000
    01001 -> 100000000
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_a[17] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_b[17] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_a[16] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_b[16] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_a[15] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_b[15] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_a[14] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_b[14] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_a[13] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_b[13] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_a[12] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_b[12] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_a[11] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_b[11] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_a[10] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_b[10] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_a[9] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_b[9] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_a[8] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_b[8] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_a[7] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_b[7] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_a[6] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_b[6] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_a[5] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_b[5] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_a[4] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_b[4] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_a[3] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_b[3] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_a[2] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_b[2] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_a[1] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_b[1] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_a[0] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\sergi\desktop\master year 2\master thesis\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance data_b[0] (in view: work.ADC_READ(behavioral)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 None
 None
 
-Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 128MB peak: 130MB)
+Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 125MB peak: 127MB)
 
 Pre-mapping successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 39MB peak: 130MB)
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 37MB peak: 127MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Tue Mar 18 21:11:11 2025
+# Sun Mar 23 23:25:48 2025
 
 ###########################################################]
