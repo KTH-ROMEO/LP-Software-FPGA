@@ -43,31 +43,31 @@ port (
     pressure_raw : IN std_logic_vector(23 downto 0);
     pressure_temp_raw : IN std_logic_vector(23 downto 0);
 
-    C1 : IN std_logic_vector(15 downto 0);
-    C2 : IN std_logic_vector(15 downto 0);
-    C3 : IN std_logic_vector(15 downto 0);
-    C4 : IN std_logic_vector(15 downto 0);
-    C5 : IN std_logic_vector(15 downto 0);
-    C6 : IN std_logic_vector(15 downto 0);
+    --C1 : IN std_logic_vector(15 downto 0);
+    --C2 : IN std_logic_vector(15 downto 0);
+    --C3 : IN std_logic_vector(15 downto 0);
+    --C4 : IN std_logic_vector(15 downto 0);
+    --C5 : IN std_logic_vector(15 downto 0);
+    --C6 : IN std_logic_vector(15 downto 0);
 
     status_bits : IN std_logic_vector(63 downto 0);
 
-    acc_packet : OUT std_logic_vector(87 downto 0);
-    mag_packet : OUT std_logic_vector(87 downto 0);
-    gyro_packet : OUT std_logic_vector(87 downto 0);
-    pressure_packet : OUT std_logic_vector(87 downto 0);
-    pres_cal1_packet : OUT std_logic_vector(87 downto 0);
-    pres_cal2_packet : OUT std_logic_vector(87 downto 0);
-    status_packet : OUT std_logic_vector(87 downto 0)
+    acc_packet : OUT std_logic_vector(71 downto 0);
+    mag_packet : OUT std_logic_vector(71 downto 0);
+    gyro_packet : OUT std_logic_vector(71 downto 0);
+    pressure_packet : OUT std_logic_vector(71 downto 0);
+    --pres_cal1_packet : OUT std_logic_vector(87 downto 0);
+    --pres_cal2_packet : OUT std_logic_vector(87 downto 0);
+    status_packet : OUT std_logic_vector(71 downto 0)
 );
 end Data_Hub_Packets;
 architecture architecture_Data_Hub_Packets of Data_Hub_Packets is
 begin
-    acc_packet <= x"41" & acc_time & acc_x & acc_y & acc_z & x"0" & acc_temp & x"00";
-    mag_packet <= x"4D" & mag_time & mag_x & mag_y & mag_z & x"0" & acc_temp & x"00";
-    gyro_packet <= x"59" & gyro_time & gyro_x & gyro_y & gyro_z & gyro_temp;
-    pressure_packet <= x"50" & pressure_time & pressure_raw & pressure_temp_raw & x"00";
-    status_packet <= x"53" & x"0000" & status_bits;
-    pres_cal1_packet <= x"43" & x"31" & C1 & C2 & C3 & x"000000";
-    pres_cal2_packet <= x"43" & x"32" & C4 & C5 & C6 & x"000000";
+    acc_packet <= x"F6" & acc_x & acc_y & acc_z & x"0" & acc_temp & x"0000";
+    mag_packet <= x"4D" & mag_x & mag_y & mag_z & x"0" & acc_temp & x"0000";
+    gyro_packet <= x"59" & gyro_x & gyro_y & gyro_z & gyro_temp & x"00";
+    pressure_packet <= x"50" & pressure_raw & pressure_temp_raw & x"0000";
+    status_packet <= x"53" & status_bits;
+    --pres_cal1_packet <= x"43" & x"31" & C1 & C2 & C3 & x"000000";
+    --pres_cal2_packet <= x"43" & x"32" & C4 & C5 & C6 & x"000000";
 end architecture_Data_Hub_Packets;

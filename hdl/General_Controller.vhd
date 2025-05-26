@@ -47,6 +47,8 @@ port (
     st_rdata0  : IN std_logic_vector(15 downto 0);
     st_rdata1  : IN std_logic_vector(15 downto 0);
 
+    acc_packet : IN std_logic_vector(71 downto 0);
+
     st_wdata : OUT std_logic_vector(15 downto 0);
     st_waddr : OUT std_logic_vector(7 downto 0);
     st_raddr : OUT std_logic_vector(7 downto 0);
@@ -127,7 +129,8 @@ architecture architecture_General_Controller of General_Controller is
         uc_tx_send_swt_samples_per_step,
         uc_tx_send_swt_skip,
         uc_tx_send_swt_samples_per_point,
-        uc_tx_send_swt_points
+        uc_tx_send_swt_points,
+        uc_tx_send_sensors_data
     );
 
     type uc_rx_state_type is (
@@ -160,6 +163,7 @@ architecture architecture_General_Controller of General_Controller is
         uc_rx_readback_swt_skip,
         uc_rx_readback_swt_samples_per_point,
         uc_rx_readback_swt_points,
+        uc_rx_readback_sensors_data,
         uc_rx_postamble
     );
 
@@ -187,6 +191,8 @@ architecture architecture_General_Controller of General_Controller is
 
     signal sweep_table_write_wait : integer range 0 to 3;
     signal sweep_table_read_wait : integer range 0 to 3;
+
+    signal msg_2send : std_logic_vector(71 downto 0); -- this can be extended to include pre/postamble
     -------------------------------------------------------------
 
     signal flight_state : std_logic_vector(7 downto 0);
@@ -215,6 +221,8 @@ architecture architecture_General_Controller of General_Controller is
     signal uc_rx_prev_state : uc_rx_state_type;
     signal uc_rx_byte : std_logic_vector(7 downto 0);
     signal uc_rx_substate : integer range 1 to 16;
+
+    signal tx_sensors_byte_index : integer range 0 to 8;
 
     signal old_status_packet_clk : std_logic;
 
@@ -318,6 +326,8 @@ begin
             st_wen1  <= '0';
             st_ren0  <= '0';
             st_ren1  <= '0';
+
+            tx_sensors_byte_index <= 0;
 
         elsif rising_edge(clk) then
     ----------------------- Seconds counter -----------------------------
@@ -460,6 +470,11 @@ begin
     --------- Microcontroller UART transmit ------------
             case uc_tx_state is
                 when uc_tx_idle =>
+                    uc_tx_substate <= 1;
+
+                    if uc_rx_rdy = '1' then
+                        uc_rx_state <= uc_rx_preamble;
+                    end if;
 
                 when uc_tx_preamble =>
                     case uc_tx_substate is
@@ -1004,6 +1019,29 @@ begin
                             end if;
                         when others =>
                     end case;
+    
+                when uc_tx_send_sensors_data =>
+                    case uc_tx_substate is
+                        when 1 => 
+                            if uc_tx_rdy = '1' then
+                                uc_send <= msg_2send(((tx_sensors_byte_index+1)*8-1) downto (tx_sensors_byte_index*8));
+                                uc_wen <= '1';
+                                uc_tx_substate <= 2;
+                            end if;
+
+                        when 2 =>  
+                            if uc_tx_rdy = '0' then
+                                uc_wen <= '0';
+                                uc_tx_substate <= 1;
+                                if tx_sensors_byte_index < 8 then
+                                    tx_sensors_byte_index <= tx_sensors_byte_index + 1;
+                                else
+                                    tx_sensors_byte_index <= 0;
+                                    uc_tx_state <= uc_tx_postamble;
+                                end if;
+                            end if;
+                        when others =>
+                    end case;
 
 
                 when uc_tx_postamble =>
@@ -1102,6 +1140,8 @@ begin
                                 when x"A4" => uc_rx_state <= uc_rx_readback_swt_skip;
                                 when x"A5" => uc_rx_state <= uc_rx_readback_swt_samples_per_point;
                                 when x"A6" => uc_rx_state <= uc_rx_readback_swt_points;
+                                when x"F6" => uc_rx_state <= uc_rx_readback_sensors_data;
+                                                msg_2send <= acc_packet;
 
                                 when others => uc_rx_state <= uc_rx_idle;                       -- Unknown message, ignore.
                             end case;
@@ -1443,6 +1483,14 @@ begin
                         when others =>
                     end case;
 
+                when uc_rx_readback_sensors_data =>
+                    case uc_rx_substate is
+                        when 1 =>
+                            uc_tx_state <= uc_tx_preamble;
+                            uc_tx_nextstate <= uc_tx_send_sensors_data;
+                            uc_rx_state <= uc_rx_postamble;
+                        when others =>
+                    end case;
 
                 when uc_rx_postamble =>
                     case uc_rx_substate is
