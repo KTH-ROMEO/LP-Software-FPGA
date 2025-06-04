@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Sun May 25 19:43:59 2025
+-- Created by SmartDesign Mon May 26 09:48:33 2025
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -126,22 +126,29 @@ component Packet_Saver
         status_packet     : in  std_logic_vector(87 downto 0);
         sync              : in  std_logic;
         -- Outputs
-        data_out          : out std_logic_vector(31 downto 0);
+        data_out          : out std_logic_vector(63 downto 0);
         we                : out std_logic
         );
 end component;
 ----------------------------------------------------------------------
 -- Signal declarations
 ----------------------------------------------------------------------
-signal fmc_da_net_0              : std_logic_vector(7 downto 0);
-signal FPGA_Buffer_0_afull       : std_logic;
-signal Packet_Saver_0_data_out_0 : std_logic_vector(31 downto 0);
-signal Packet_Saver_0_we         : std_logic;
-signal uC_interrupt_net_0        : std_logic;
-signal uC_interrupt_net_1        : std_logic;
-signal fmc_da_net_1              : std_logic_vector(7 downto 0);
+signal fmc_da_net_0        : std_logic_vector(7 downto 0);
+signal FPGA_Buffer_0_afull : std_logic;
+signal Packet_Saver_0_we   : std_logic;
+signal uC_interrupt_net_0  : std_logic;
+signal uC_interrupt_net_1  : std_logic;
+signal fmc_da_net_1        : std_logic_vector(7 downto 0);
+----------------------------------------------------------------------
+-- TiedOff Signals
+----------------------------------------------------------------------
+signal data_in_const_net_0 : std_logic_vector(31 downto 0);
 
 begin
+----------------------------------------------------------------------
+-- Constant assignments
+----------------------------------------------------------------------
+ data_in_const_net_0 <= B"00000000000000000000000000000000";
 ----------------------------------------------------------------------
 -- Top level output port assignments
 ----------------------------------------------------------------------
@@ -161,7 +168,7 @@ FPGA_Buffer_0 : FPGA_Buffer
         w_clk    => clk,
         r_clk    => fmc_clk,
         reset    => reset,
-        data_in  => Packet_Saver_0_data_out_0,
+        data_in  => data_in_const_net_0,
         -- Outputs
         full     => OPEN,
         empty    => OPEN,
@@ -186,34 +193,34 @@ Packet_Saver_0 : Packet_Saver
         reset             => reset,
         en                => en,
         sync              => sync,
-        acc_new_data      => acc_new_data,
-        mag_new_data      => mag_new_data,
-        gyro_new_data     => gyro_new_data,
-        pressure_new_data => pressure_new_data,
-        status_new_data   => status_new_data,
-        pres_cal_new_data => pres_cal_new_data,
-        ch_0_new_data     => ch_0_new_data,
-        ch_1_new_data     => ch_1_new_data,
-        ch_2_new_data     => ch_2_new_data,
-        ch_3_new_data     => ch_3_new_data,
-        ch_4_new_data     => ch_4_new_data,
-        ch_5_new_data     => ch_5_new_data,
         acc_packet        => acc_packet_0,
+        acc_new_data      => acc_new_data,
         mag_packet        => mag_packet_0,
+        mag_new_data      => mag_new_data,
         gyro_packet       => gyro_packet_0,
+        gyro_new_data     => gyro_new_data,
         pressure_packet   => pressure_packet_0,
+        pressure_new_data => pressure_new_data,
         status_packet     => status_packet_0,
+        status_new_data   => status_new_data,
         pres_cal1_packet  => pres_cal1_packet_0,
         pres_cal2_packet  => pres_cal2_packet_0,
+        pres_cal_new_data => pres_cal_new_data,
         ch_0_packet       => exp_SC_packet,
         ch_1_packet       => ch_1_packet_0,
         ch_2_packet       => ch_2_packet_0,
         ch_3_packet       => ch_3_packet_0,
         ch_4_packet       => ch_4_packet,
         ch_5_packet       => ch_5_packet,
+        ch_0_new_data     => ch_0_new_data,
+        ch_1_new_data     => ch_1_new_data,
+        ch_2_new_data     => ch_2_new_data,
+        ch_3_new_data     => ch_3_new_data,
+        ch_4_new_data     => ch_4_new_data,
+        ch_5_new_data     => ch_5_new_data,
         -- Outputs
-        we                => Packet_Saver_0_we,
-        data_out          => Packet_Saver_0_data_out_0 
+        data_out          => OPEN,
+        we                => Packet_Saver_0_we 
         );
 
 end RTL;

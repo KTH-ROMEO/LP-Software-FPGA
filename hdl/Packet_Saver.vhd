@@ -58,7 +58,7 @@ port (
     ch_4_new_data : IN std_logic;
     ch_5_new_data : IN std_logic;
 
-    data_out : OUT std_logic_vector(31 downto 0);
+    data_out : OUT std_logic_vector(63 downto 0);
     we : OUT std_logic
 );
 end Packet_Saver;
@@ -100,35 +100,24 @@ architecture architecture_Packet_Saver of Packet_Saver is
     signal word_cnt : integer range 1 to 3;
 begin
 
-    with packet_select select selected_packet(87 downto 86) <= acc_packet(87 downto 86) when acc,
-                                                 mag_packet(87 downto 86) when mag,
-                                                 gyro_packet(87 downto 86) when gyro,
-                                                 pressure_packet(87 downto 86) when pressure,
-                                                 status_packet(87 downto 86) when status,
-                                                 pres_cal1_packet(87 downto 86) when pres_cal1,
-                                                 pres_cal2_packet(87 downto 86) when pres_cal2,
-                                                 --ch_0_packet(63 downto 62) when ch_0,
-                                                 ch_1_packet(87 downto 86) when ch_1,
-                                                 ch_2_packet(87 downto 86) when ch_2,
-                                                 ch_3_packet(87 downto 86) when ch_3,
-                                                 ch_4_packet(87 downto 86) when ch_4,
-                                                 ch_5_packet(87 downto 86) when ch_5,
+    with packet_select select selected_packet(63 downto 0) <= 
+                                                 ch_0_packet(63 downto 0) when ch_0,
                                                  (others => '0') when others;
 
-    with packet_select select selected_packet(84 downto 0) <= acc_packet(84 downto 0) when acc,
-                                                 mag_packet(84 downto 0) when mag,
-                                                 gyro_packet(84 downto 0) when gyro,
-                                                 pressure_packet(84 downto 0) when pressure,
-                                                 status_packet(84 downto 0) when status,
-                                                 pres_cal1_packet(84 downto 0) when pres_cal1,
-                                                 pres_cal2_packet(84 downto 0) when pres_cal2,
-                                                 --ch_0_packet when ch_0,
-                                                 ch_1_packet(84 downto 0) when ch_1,
-                                                 ch_2_packet(84 downto 0) when ch_2,
-                                                 ch_3_packet(84 downto 0) when ch_3,
-                                                 ch_4_packet(84 downto 0) when ch_4,
-                                                 ch_5_packet(84 downto 0) when ch_5,
-                                                 (others => '0') when others;
+    -- with packet_select select selected_packet(84 downto 0) <= acc_packet(84 downto 0) when acc,
+    --                                              mag_packet(84 downto 0) when mag,
+    --                                              gyro_packet(84 downto 0) when gyro,
+    --                                              pressure_packet(84 downto 0) when pressure,
+    --                                              status_packet(84 downto 0) when status,
+    --                                              pres_cal1_packet(84 downto 0) when pres_cal1,
+    --                                              pres_cal2_packet(84 downto 0) when pres_cal2,
+    --                                              --ch_0_packet when ch_0,
+    --                                              ch_1_packet(84 downto 0) when ch_1,
+    --                                              ch_2_packet(84 downto 0) when ch_2,
+    --                                              ch_3_packet(84 downto 0) when ch_3,
+    --                                              ch_4_packet(84 downto 0) when ch_4,
+    --                                              ch_5_packet(84 downto 0) when ch_5,
+    --                                              (others => '0') when others;
 
     selected_packet(85) <= sync;
 
@@ -167,7 +156,7 @@ begin
 
             word_cnt <= 1;
 
-            data_out <= x"00000000";
+            data_out <= x"0000000000000000";
             we <= '0';
             
 
@@ -297,13 +286,21 @@ begin
                     we <= '1';
                     word_cnt <= word_cnt + 1;
 
+                    data_out <= selected_packet(63 downto 0);
+
                     case word_cnt is
-                        when 1 => data_out <= selected_packet(63 downto 56) & selected_packet(71 downto 64) & selected_packet(79 downto 72) & selected_packet(87 downto 80);
-                        when 2 => data_out <= selected_packet(31 downto 24) & selected_packet(39 downto 32) & selected_packet(47 downto 40) & selected_packet(55 downto 48);
-                        when 3 => data_out <= x"0A" & selected_packet(7 downto 0) & selected_packet(15 downto 8) & selected_packet(23 downto 16);
-                                   state <= select_packet;
+                        when 1 => data_out <= selected_packet(63 downto 0);
+                                    state <= select_packet;
                         when others => word_cnt <= 1;
                     end case;
+
+                    -- case word_cnt is
+                    --     when 1 => data_out <= selected_packet(63 downto 56) & selected_packet(71 downto 64) & selected_packet(79 downto 72) & selected_packet(87 downto 80);
+                    --     when 2 => data_out <= selected_packet(31 downto 24) & selected_packet(39 downto 32) & selected_packet(47 downto 40) & selected_packet(55 downto 48);
+                    --     when 3 => data_out <= x"0A" & selected_packet(7 downto 0) & selected_packet(15 downto 8) & selected_packet(23 downto 16);
+                    --                state <= select_packet;
+                    --     when others => word_cnt <= 1;
+                    -- end case;
                 end if;
             end if;
         end if;

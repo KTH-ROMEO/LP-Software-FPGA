@@ -63,7 +63,8 @@ port (
 end Data_Hub_Packets;
 architecture architecture_Data_Hub_Packets of Data_Hub_Packets is
 begin
-    acc_packet <= x"F6" & acc_x & acc_y & acc_z & x"0" & acc_temp & x"0000";
+    --    acc_packet <= x"F6" & acc_x & acc_y & acc_z & x"0" & acc_temp & x"0000";
+    acc_packet <= x"F6a1b2c3d4e5f60ff0";
     mag_packet <= x"4D" & mag_x & mag_y & mag_z & x"0" & acc_temp & x"0000";
     gyro_packet <= x"59" & gyro_x & gyro_y & gyro_z & gyro_temp & x"00";
     pressure_packet <= x"50" & pressure_raw & pressure_temp_raw & x"0000";

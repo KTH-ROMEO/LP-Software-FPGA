@@ -470,11 +470,11 @@ begin
     --------- Microcontroller UART transmit ------------
             case uc_tx_state is
                 when uc_tx_idle =>
-                    uc_tx_substate <= 1;
+                    -- uc_tx_substate <= 1;
 
-                    if uc_rx_rdy = '1' then
-                        uc_rx_state <= uc_rx_preamble;
-                    end if;
+                    -- if uc_rx_rdy = '1' then
+                    --     uc_rx_state <= uc_rx_preamble;
+                    -- end if;
 
                 when uc_tx_preamble =>
                     case uc_tx_substate is
@@ -1024,7 +1024,8 @@ begin
                     case uc_tx_substate is
                         when 1 => 
                             if uc_tx_rdy = '1' then
-                                uc_send <= msg_2send(((tx_sensors_byte_index+1)*8-1) downto (tx_sensors_byte_index*8));
+                                -- uc_send <= msg_2send(((tx_sensors_byte_index+1)*8-1) downto (tx_sensors_byte_index*8));
+                                uc_send <= msg_2send((71-tx_sensors_byte_index*8) downto (64-tx_sensors_byte_index*8));
                                 uc_wen <= '1';
                                 uc_tx_substate <= 2;
                             end if;
