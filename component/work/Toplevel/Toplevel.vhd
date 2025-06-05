@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Mon May 26 08:26:48 2025
+-- Created by SmartDesign Thu Jun 05 17:27:36 2025
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -243,6 +243,7 @@ component General_Controller
         ffu_ejected             : in  std_logic;
         low_pressure            : in  std_logic;
         milliseconds            : in  std_logic_vector(23 downto 0);
+        new_data                : in  std_logic;
         reset                   : in  std_logic;
         st_rdata0               : in  std_logic_vector(15 downto 0);
         st_rdata1               : in  std_logic_vector(15 downto 0);
@@ -991,23 +992,31 @@ General_Controller_0 : General_Controller
         clk_1Hz                 => Timing_0_s_clks24to24(24),
         reset                   => CLKINT_1_Y,
         status_packet_clk       => Timing_0_s_clks18to18(18),
+        milliseconds            => Timekeeper_0_milliseconds,
         ffu_ejected             => Eject_Signal_Debounce_0_ffu_ejected_out,
         low_pressure            => Pressure_Signal_Debounce_0_low_pressure,
         ext_rx_rdy              => Communications_0_ext_rx_rdy,
+        ext_recv                => Communications_0_ext_recv,
+        uc_recv                 => Communications_0_uc_recv,
         uc_tx_rdy               => Communications_0_uc_tx_rdy,
         uc_rx_rdy               => Communications_0_uc_rx_rdy,
         cu_sync                 => CU_SYNC,
-        milliseconds            => Timekeeper_0_milliseconds,
-        ext_recv                => Communications_0_ext_recv,
-        uc_recv                 => Communications_0_uc_recv,
         st_rdata0               => SweepTable_0_RD,
         st_rdata1               => SweepTable_1_RD,
         acc_packet              => Data_Hub_Packets_0_acc_packet_0,
+        new_data                => Timing_0_s_clks24to24(24),
         -- Outputs
+        st_wdata                => General_Controller_0_st_wdata,
+        st_waddr                => General_Controller_0_st_waddr,
+        st_raddr                => General_Controller_0_st_raddr_1,
         st_wen0                 => General_Controller_0_st_wen0,
         st_wen1                 => General_Controller_0_st_wen1,
         st_ren0                 => General_Controller_0_st_ren0,
         st_ren1                 => General_Controller_0_st_ren1,
+        unit_id                 => General_Controller_0_unit_id,
+        ffu_id                  => OPEN,
+        gs_id                   => General_Controller_0_gs_id,
+        uc_send                 => General_Controller_0_uc_send,
         uc_wen                  => General_Controller_0_uc_wen,
         uc_oen                  => General_Controller_0_uc_oen,
         ext_oen                 => General_Controller_0_ext_oen,
@@ -1018,29 +1027,22 @@ General_Controller_0 : General_Controller
         en_data_saving          => General_Controller_0_en_data_saving,
         led1                    => LED1_0,
         led2                    => LED2_net_0,
+        status_bits             => General_Controller_0_status_bits,
         status_new_data         => General_Controller_0_status_new_data,
         en_science_packets      => OPEN,
         sweep_en                => OPEN,
-        exp_adc_reset           => General_Controller_0_exp_adc_reset,
-        DAC_zero_value          => OPEN,
-        DAC_max_value           => OPEN,
-        Bias_enabled            => General_Controller_0_Bias_enabled,
-        Sweep_enabled           => General_Controller_0_Sweep_enabled,
-        st_wdata                => General_Controller_0_st_wdata,
-        st_waddr                => General_Controller_0_st_waddr,
-        st_raddr                => General_Controller_0_st_raddr_1,
-        unit_id                 => General_Controller_0_unit_id,
-        ffu_id                  => OPEN,
-        gs_id                   => General_Controller_0_gs_id,
-        uc_send                 => General_Controller_0_uc_send,
-        status_bits             => General_Controller_0_status_bits,
         ramp                    => OPEN,
+        exp_adc_reset           => General_Controller_0_exp_adc_reset,
         man_gain1               => OPEN,
         man_gain2               => OPEN,
         man_gain3               => OPEN,
         man_gain4               => OPEN,
+        DAC_zero_value          => OPEN,
+        DAC_max_value           => OPEN,
+        Bias_enabled            => General_Controller_0_Bias_enabled,
         C_bias_V0               => General_Controller_0_C_bias_V0,
         C_bias_V1               => General_Controller_0_C_bias_V1,
+        Sweep_enabled           => General_Controller_0_Sweep_enabled,
         Sweep_no_steps          => General_Controller_0_Sweep_no_steps,
         Sweep_samples_per_step  => General_Controller_0_Sweep_samples_per_step,
         Sweep_samples_per_point => General_Controller_0_Sweep_samples_per_point,

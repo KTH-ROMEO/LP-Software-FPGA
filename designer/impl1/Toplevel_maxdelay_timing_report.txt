@@ -2,7 +2,7 @@ Timing Report Max Delay Analysis
 
 SmartTime Version v11.9 SP6
 Microsemi Corporation - Microsemi Libero Software Release v11.9 SP6 (Version 11.9.6.7)
-Date: Mon May 26 10:25:51 2025
+Date: Thu Jun 05 17:33:36 2025
 
 
 Design: Toplevel
@@ -24,28 +24,28 @@ Scenario for Timing Analysis: Primary
 SUMMARY
 
 Clock Domain:               CLOCK
-Period (ns):                24.706
-Frequency (MHz):            40.476
+Period (ns):                22.184
+Frequency (MHz):            45.078
 Required Period (ns):       31.250
 Required Frequency (MHz):   32.000
-External Setup (ns):        6.998
-Max Clock-To-Out (ns):      19.994
+External Setup (ns):        7.402
+Max Clock-To-Out (ns):      20.580
 
 Clock Domain:               ClockDivs_0/clk_800kHz:Q
-Period (ns):                25.742
-Frequency (MHz):            38.847
+Period (ns):                24.616
+Frequency (MHz):            40.624
 Required Period (ns):       N/A
 Required Frequency (MHz):   N/A
-External Setup (ns):        4.952
-Max Clock-To-Out (ns):      19.217
+External Setup (ns):        5.639
+Max Clock-To-Out (ns):      17.301
 
 Clock Domain:               FMC_CLK
-Period (ns):                12.173
-Frequency (MHz):            82.149
+Period (ns):                12.478
+Frequency (MHz):            80.141
 Required Period (ns):       18.519
 Required Frequency (MHz):   53.999
-External Setup (ns):        11.565
-Max Clock-To-Out (ns):      17.727
+External Setup (ns):        11.464
+Max Clock-To-Out (ns):      17.448
 
 Clock Domain:               Science_0/DAC_SET_0/ADR[1]:Q
 Period (ns):                N/A
@@ -56,20 +56,20 @@ External Setup (ns):        N/A
 Max Clock-To-Out (ns):      N/A
 
 Clock Domain:               Timing_0/m_time[7]:Q
-Period (ns):                17.253
-Frequency (MHz):            57.961
+Period (ns):                15.933
+Frequency (MHz):            62.763
 Required Period (ns):       N/A
 Required Frequency (MHz):   N/A
-External Setup (ns):        8.619
+External Setup (ns):        8.119
 Max Clock-To-Out (ns):      N/A
 
 Clock Domain:               Timing_0/s_time[5]:Q
-Period (ns):                3.693
-Frequency (MHz):            270.783
+Period (ns):                3.729
+Frequency (MHz):            268.168
 Required Period (ns):       N/A
 Required Frequency (MHz):   N/A
-External Setup (ns):        3.413
-Max Clock-To-Out (ns):      15.989
+External Setup (ns):        3.188
+Max Clock-To-Out (ns):      15.657
 
 Clock Domain:               GPS_FEND_CLKOUT
 Period (ns):                N/A
@@ -96,7 +96,7 @@ External Setup (ns):        N/A
 Max Clock-To-Out (ns):      N/A
 
                             Input to Output
-Max Delay (ns):             18.106
+Max Delay (ns):             19.125
 
 END SUMMARY
 -----------------------------------------------------
@@ -108,60 +108,60 @@ SET Register to Register
 Path 1
   From:                  Data_Saving_0/Packet_Saver_0/we:CLK
   To:                    Data_Saving_0/FPGA_Buffer_0/DFN1C0_afull:D
-  Delay (ns):            11.975
-  Slack (ns):            3.272
-  Arrival (ns):          16.105
-  Required (ns):         19.377
-  Setup (ns):            0.574
-  Minimum Period (ns):   24.706
+  Delay (ns):            10.761
+  Slack (ns):            4.533
+  Arrival (ns):          14.862
+  Required (ns):         19.395
+  Setup (ns):            0.539
+  Minimum Period (ns):   22.184
 
 Path 2
   From:                  Data_Saving_0/Packet_Saver_0/we:CLK
   To:                    Data_Saving_0/FPGA_Buffer_0/DFN1C0_full:D
-  Delay (ns):            9.544
-  Slack (ns):            5.703
-  Arrival (ns):          13.674
-  Required (ns):         19.377
+  Delay (ns):            9.633
+  Slack (ns):            5.626
+  Arrival (ns):          13.734
+  Required (ns):         19.360
   Setup (ns):            0.574
-  Minimum Period (ns):   19.844
+  Minimum Period (ns):   19.998
 
 Path 3
   From:                  Data_Saving_0/Packet_Saver_0/we:CLK
-  To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_WGRY[5]\\:D
-  Delay (ns):            8.465
-  Slack (ns):            6.825
-  Arrival (ns):          12.595
-  Required (ns):         19.420
+  To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_WGRY[7]\\:D
+  Delay (ns):            7.482
+  Slack (ns):            7.885
+  Arrival (ns):          11.583
+  Required (ns):         19.468
   Setup (ns):            0.539
-  Minimum Period (ns):   17.600
+  Minimum Period (ns):   15.480
 
 Path 4
   From:                  Data_Saving_0/Packet_Saver_0/we:CLK
-  To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_WGRY[7]\\:D
-  Delay (ns):            8.391
-  Slack (ns):            6.951
-  Arrival (ns):          12.521
-  Required (ns):         19.472
+  To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_WGRY[5]\\:D
+  Delay (ns):            6.864
+  Slack (ns):            8.430
+  Arrival (ns):          10.965
+  Required (ns):         19.395
   Setup (ns):            0.539
-  Minimum Period (ns):   17.348
+  Minimum Period (ns):   14.390
 
 Path 5
   From:                  Data_Saving_0/Packet_Saver_0/we:CLK
-  To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_WGRY[8]\\:D
-  Delay (ns):            7.989
-  Slack (ns):            7.353
-  Arrival (ns):          12.119
-  Required (ns):         19.472
+  To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_WGRY[6]\\:D
+  Delay (ns):            6.809
+  Slack (ns):            8.571
+  Arrival (ns):          10.910
+  Required (ns):         19.481
   Setup (ns):            0.539
-  Minimum Period (ns):   16.544
+  Minimum Period (ns):   14.108
 
 
 Expanded Path 1
   From: Data_Saving_0/Packet_Saver_0/we:CLK
   To: Data_Saving_0/FPGA_Buffer_0/DFN1C0_afull:D
-  data required time                             19.377
-  data arrival time                          -   16.105
-  slack                                          3.272
+  data required time                             19.395
+  data arrival time                          -   14.862
+  slack                                          4.533
   ________________________________________________________
   Data arrival time calculation
   0.000                        CLOCK
@@ -179,54 +179,50 @@ Expanded Path 1
   2.631                        CLKINT_0:A (f)
                +     0.767          cell: ADLIB:CLKINT
   3.398                        CLKINT_0:Y (f)
-               +     0.732          net: CLKINT_0_Y_0
-  4.130                        Data_Saving_0/Packet_Saver_0/we:CLK (f)
+               +     0.703          net: CLKINT_0_Y_0
+  4.101                        Data_Saving_0/Packet_Saver_0/we:CLK (f)
                +     0.654          cell: ADLIB:DFN0E1C1
-  4.784                        Data_Saving_0/Packet_Saver_0/we:Q (f)
-               +     0.395          net: Data_Saving_0/Packet_Saver_0_we
-  5.179                        HIEFFPLA_INST_0_49504:C (f)
-               +     0.641          cell: ADLIB:AND3A
-  5.820                        HIEFFPLA_INST_0_49504:Y (f)
-               +     0.332          net: HIEFFPLA_NET_0_66341
-  6.152                        HIEFFPLA_INST_0_49501:B (f)
-               +     0.603          cell: ADLIB:XOR2
-  6.755                        HIEFFPLA_INST_0_49501:Y (f)
-               +     0.332          net: HIEFFPLA_NET_0_66342
-  7.087                        HIEFFPLA_INST_0_49261:A (f)
-               +     1.062          cell: ADLIB:AO13
-  8.149                        HIEFFPLA_INST_0_49261:Y (f)
-               +     0.628          net: HIEFFPLA_NET_0_66389
-  8.777                        HIEFFPLA_INST_0_49426:A (f)
-               +     0.887          cell: ADLIB:AO13
-  9.664                        HIEFFPLA_INST_0_49426:Y (f)
-               +     0.334          net: HIEFFPLA_NET_0_66359
-  9.998                        HIEFFPLA_INST_0_49237:B (f)
-               +     0.636          cell: ADLIB:AO1
-  10.634                       HIEFFPLA_INST_0_49237:Y (f)
-               +     0.323          net: HIEFFPLA_NET_0_66391
-  10.957                       HIEFFPLA_INST_0_49282:B (f)
-               +     0.598          cell: ADLIB:AO1
-  11.555                       HIEFFPLA_INST_0_49282:Y (f)
-               +     0.323          net: HIEFFPLA_NET_0_66387
-  11.878                       HIEFFPLA_INST_0_49314:B (f)
+  4.755                        Data_Saving_0/Packet_Saver_0/we:Q (f)
+               +     0.384          net: Data_Saving_0/Packet_Saver_0_we
+  5.139                        HIEFFPLA_INST_0_49180:C (f)
+               +     0.641          cell: ADLIB:NAND3
+  5.780                        HIEFFPLA_INST_0_49180:Y (r)
+               +     0.430          net: HIEFFPLA_NET_0_66558
+  6.210                        HIEFFPLA_INST_0_49177:B (r)
+               +     0.515          cell: ADLIB:NOR2A
+  6.725                        HIEFFPLA_INST_0_49177:Y (f)
+               +     0.334          net: HIEFFPLA_NET_0_66559
+  7.059                        HIEFFPLA_INST_0_49567:B (f)
+               +     1.000          cell: ADLIB:AX1C
+  8.059                        HIEFFPLA_INST_0_49567:Y (f)
+               +     0.323          net: HIEFFPLA_NET_0_66478
+  8.382                        HIEFFPLA_INST_0_49290:C (f)
+               +     0.713          cell: ADLIB:XA1
+  9.095                        HIEFFPLA_INST_0_49290:Y (f)
+               +     0.333          net: HIEFFPLA_NET_0_66531
+  9.428                        HIEFFPLA_INST_0_49349:A (f)
+               +     0.490          cell: ADLIB:MAJ3
+  9.918                        HIEFFPLA_INST_0_49349:Y (f)
+               +     0.711          net: HIEFFPLA_NET_0_66524
+  10.629                       HIEFFPLA_INST_0_49338:C (f)
+               +     0.633          cell: ADLIB:AO1
+  11.262                       HIEFFPLA_INST_0_49338:Y (f)
+               +     0.323          net: HIEFFPLA_NET_0_66526
+  11.585                       HIEFFPLA_INST_0_77621:B (f)
                +     0.933          cell: ADLIB:AO13
-  12.811                       HIEFFPLA_INST_0_49314:Y (f)
-               +     0.334          net: HIEFFPLA_NET_0_66383
-  13.145                       HIEFFPLA_INST_0_77396:B (f)
-               +     0.824          cell: ADLIB:XO1A
-  13.969                       HIEFFPLA_INST_0_77396:Y (f)
-               +     0.318          net: HIEFFPLA_NET_0_78346
-  14.287                       HIEFFPLA_INST_0_49221:C (f)
-               +     0.525          cell: ADLIB:NOR3B
-  14.812                       HIEFFPLA_INST_0_49221:Y (r)
-               +     0.334          net: HIEFFPLA_NET_0_66395
-  15.146                       HIEFFPLA_INST_0_49213:B (r)
-               +     0.636          cell: ADLIB:AO1D
-  15.782                       HIEFFPLA_INST_0_49213:Y (f)
-               +     0.323          net: HIEFFPLA_NET_0_66397
-  16.105                       Data_Saving_0/FPGA_Buffer_0/DFN1C0_afull:D (f)
+  12.518                       HIEFFPLA_INST_0_77621:Y (f)
+               +     0.334          net: HIEFFPLA_NET_0_77627
+  12.852                       HIEFFPLA_INST_0_91718:B (f)
+               +     0.648          cell: ADLIB:XNOR3
+  13.500                       HIEFFPLA_INST_0_91718:Y (f)
+               +     0.350          net: HIEFFPLA_NET_0_91721
+  13.850                       HIEFFPLA_INST_0_91717:C (f)
+               +     0.664          cell: ADLIB:NAND3C
+  14.514                       HIEFFPLA_INST_0_91717:Y (f)
+               +     0.348          net: HIEFFPLA_NET_0_92662
+  14.862                       Data_Saving_0/FPGA_Buffer_0/DFN1C0_afull:D (f)
                                     
-  16.105                       data arrival time
+  14.862                       data arrival time
   ________________________________________________________
   Data required time calculation
   15.625                       CLOCK
@@ -244,12 +240,12 @@ Expanded Path 1
   18.494                       CLKINT_0:A (r)
                +     0.747          cell: ADLIB:CLKINT
   19.241                       CLKINT_0:Y (r)
-               +     0.710          net: CLKINT_0_Y_0
-  19.951                       Data_Saving_0/FPGA_Buffer_0/DFN1C0_afull:CLK (r)
-               -     0.574          Library setup time: ADLIB:DFN1C0
-  19.377                       Data_Saving_0/FPGA_Buffer_0/DFN1C0_afull:D
+               +     0.693          net: CLKINT_0_Y_0
+  19.934                       Data_Saving_0/FPGA_Buffer_0/DFN1C0_afull:CLK (r)
+               -     0.539          Library setup time: ADLIB:DFN1C0
+  19.395                       Data_Saving_0/FPGA_Buffer_0/DFN1C0_afull:D
                                     
-  19.377                       data required time
+  19.395                       data required time
 
 
 END SET Register to Register
@@ -259,97 +255,97 @@ END SET Register to Register
 SET External Setup
 
 Path 1
-  From:                  RESET
-  To:                    Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/i2c_addr_1[0]:E
-  Delay (ns):            10.858
+  From:                  FFU_EJECTED
+  To:                    Eject_Signal_Debounce_0/ms_cnt[3]:D
+  Delay (ns):            11.137
   Slack (ns):
-  Arrival (ns):          10.858
+  Arrival (ns):          11.137
   Required (ns):
-  Setup (ns):            0.435
-  External Setup (ns):   6.998
+  Setup (ns):            0.574
+  External Setup (ns):   7.402
 
 Path 2
   From:                  RESET
   To:                    Eject_Signal_Debounce_0/ms_cnt[3]:D
-  Delay (ns):            10.690
+  Delay (ns):            10.790
   Slack (ns):
-  Arrival (ns):          10.690
+  Arrival (ns):          10.790
   Required (ns):
-  Setup (ns):            0.539
-  External Setup (ns):   6.901
+  Setup (ns):            0.574
+  External Setup (ns):   7.055
 
 Path 3
   From:                  FFU_EJECTED
-  To:                    Eject_Signal_Debounce_0/ms_cnt[3]:D
-  Delay (ns):            10.547
+  To:                    Eject_Signal_Debounce_0/ms_cnt[4]:D
+  Delay (ns):            10.590
   Slack (ns):
-  Arrival (ns):          10.547
+  Arrival (ns):          10.590
   Required (ns):
   Setup (ns):            0.539
-  External Setup (ns):   6.758
+  External Setup (ns):   6.803
 
 Path 4
-  From:                  RESET
-  To:                    Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/i2c_addr_1[1]:E
-  Delay (ns):            10.517
+  From:                  FFU_EJECTED
+  To:                    Eject_Signal_Debounce_0/ms_cnt[5]:D
+  Delay (ns):            10.342
   Slack (ns):
-  Arrival (ns):          10.517
+  Arrival (ns):          10.342
   Required (ns):
-  Setup (ns):            0.435
-  External Setup (ns):   6.651
+  Setup (ns):            0.539
+  External Setup (ns):   6.568
 
 Path 5
   From:                  RESET
-  To:                    Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/i2c_addr_1[3]:E
-  Delay (ns):            10.296
+  To:                    Eject_Signal_Debounce_0/ms_cnt[4]:D
+  Delay (ns):            10.229
   Slack (ns):
-  Arrival (ns):          10.296
+  Arrival (ns):          10.229
   Required (ns):
-  Setup (ns):            0.435
+  Setup (ns):            0.539
   External Setup (ns):   6.442
 
 
 Expanded Path 1
-  From: RESET
-  To: Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/i2c_addr_1[0]:E
+  From: FFU_EJECTED
+  To: Eject_Signal_Debounce_0/ms_cnt[3]:D
   data required time                             N/C
-  data arrival time                          -   10.858
+  data arrival time                          -   11.137
   slack                                          N/C
   ________________________________________________________
   Data arrival time calculation
-  0.000                        RESET (r)
-               +     0.000          net: RESET
-  0.000                        RESET_pad/U0/U0:PAD (r)
+  0.000                        FFU_EJECTED (r)
+               +     0.000          net: FFU_EJECTED
+  0.000                        FFU_EJECTED_pad/U0/U0:PAD (r)
                +     1.001          cell: ADLIB:IOPAD_IN
-  1.001                        RESET_pad/U0/U0:Y (r)
-               +     0.000          net: RESET_pad/U0/NET1
-  1.001                        RESET_pad/U0/U1:YIN (r)
+  1.001                        FFU_EJECTED_pad/U0/U0:Y (r)
+               +     0.000          net: FFU_EJECTED_pad/U0/NET1
+  1.001                        FFU_EJECTED_pad/U0/U1:YIN (r)
                +     0.043          cell: ADLIB:IOIN_IB
-  1.044                        RESET_pad/U0/U1:Y (r)
-               +     1.789          net: RESET_c
-  2.833                        CLKINT_1:A (r)
-               +     0.747          cell: ADLIB:CLKINT
-  3.580                        CLKINT_1:Y (r)
-               +     0.677          net: CLKINT_1_Y
-  4.257                        HIEFFPLA_INST_0_58554:C (r)
-               +     0.683          cell: ADLIB:AND3C
-  4.940                        HIEFFPLA_INST_0_58554:Y (f)
-               +     1.177          net: HIEFFPLA_NET_0_64325
-  6.117                        HIEFFPLA_INST_0_58858:C (f)
-               +     0.633          cell: ADLIB:AO1E
-  6.750                        HIEFFPLA_INST_0_58858:Y (r)
-               +     0.323          net: HIEFFPLA_NET_0_64260
-  7.073                        HIEFFPLA_INST_0_58852:C (r)
-               +     0.768          cell: ADLIB:AO1A
-  7.841                        HIEFFPLA_INST_0_58852:Y (r)
-               +     0.334          net: HIEFFPLA_NET_0_64261
-  8.175                        HIEFFPLA_INST_0_58751:C (r)
-               +     0.655          cell: ADLIB:AO1A
-  8.830                        HIEFFPLA_INST_0_58751:Y (r)
-               +     2.028          net: HIEFFPLA_NET_0_64283
-  10.858                       Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/i2c_addr_1[0]:E (r)
+  1.044                        FFU_EJECTED_pad/U0/U1:Y (r)
+               +     3.568          net: FFU_EJECTED_c
+  4.612                        HIEFFPLA_INST_0_49869:A (r)
+               +     0.593          cell: ADLIB:XO1
+  5.205                        HIEFFPLA_INST_0_49869:Y (f)
+               +     0.406          net: HIEFFPLA_NET_0_66392
+  5.611                        HIEFFPLA_INST_0_49885:B (f)
+               +     0.641          cell: ADLIB:NOR3B
+  6.252                        HIEFFPLA_INST_0_49885:Y (f)
+               +     1.630          net: HIEFFPLA_NET_0_66388
+  7.882                        HIEFFPLA_INST_0_49902:B (f)
+               +     0.628          cell: ADLIB:AND2
+  8.510                        HIEFFPLA_INST_0_49902:Y (f)
+               +     0.350          net: HIEFFPLA_NET_0_66384
+  8.860                        HIEFFPLA_INST_0_49899:A (f)
+               +     0.993          cell: ADLIB:AX1C
+  9.853                        HIEFFPLA_INST_0_49899:Y (f)
+               +     0.339          net: HIEFFPLA_NET_0_66385
+  10.192                       HIEFFPLA_INST_0_49840:B (f)
+               +     0.607          cell: ADLIB:NOR3B
+  10.799                       HIEFFPLA_INST_0_49840:Y (f)
+               +     0.338          net: HIEFFPLA_NET_0_66399
+  11.137                       Eject_Signal_Debounce_0/ms_cnt[3]:D (f)
                                     
-  10.858                       data arrival time
+  11.137                       data arrival time
   ________________________________________________________
   Data required time calculation
   N/C                          CLOCK
@@ -367,10 +363,10 @@ Expanded Path 1
   N/C                          CLKINT_0:A (r)
                +     0.747          cell: ADLIB:CLKINT
   N/C                          CLKINT_0:Y (r)
-               +     0.679          net: CLKINT_0_Y_0
-  N/C                          Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/i2c_addr_1[0]:CLK (r)
-               -     0.435          Library setup time: ADLIB:DFN1E0
-  N/C                          Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/i2c_addr_1[0]:E
+               +     0.693          net: CLKINT_0_Y_0
+  N/C                          Eject_Signal_Debounce_0/ms_cnt[3]:CLK (r)
+               -     0.574          Library setup time: ADLIB:DFN1
+  N/C                          Eject_Signal_Debounce_0/ms_cnt[3]:D
 
 
 END SET External Setup
@@ -382,54 +378,54 @@ SET Clock to Output
 Path 1
   From:                  Communications_0/UART_0/tx:CLK
   To:                    SCIENCE_TX
-  Delay (ns):            15.701
+  Delay (ns):            16.238
   Slack (ns):
-  Arrival (ns):          19.994
+  Arrival (ns):          20.580
   Required (ns):
-  Clock to Out (ns):     19.994
+  Clock to Out (ns):     20.580
 
 Path 2
-  From:                  Communications_0/UART_1/tx:CLK
-  To:                    UC_UART_RX
-  Delay (ns):            15.287
-  Slack (ns):
-  Arrival (ns):          19.582
-  Required (ns):
-  Clock to Out (ns):     19.582
-
-Path 3
   From:                  Science_0/DAC_SET_0/state[0]:CLK
   To:                    LDCLK
-  Delay (ns):            14.903
+  Delay (ns):            15.215
   Slack (ns):
-  Arrival (ns):          19.261
+  Arrival (ns):          19.636
   Required (ns):
-  Clock to Out (ns):     19.261
+  Clock to Out (ns):     19.636
+
+Path 3
+  From:                  General_Controller_0/led2:CLK
+  To:                    LED2
+  Delay (ns):            14.637
+  Slack (ns):
+  Arrival (ns):          18.972
+  Required (ns):
+  Clock to Out (ns):     18.972
 
 Path 4
-  From:                  General_Controller_0/led1:CLK
-  To:                    LED1
-  Delay (ns):            14.577
-  Slack (ns):
-  Arrival (ns):          18.954
-  Required (ns):
-  Clock to Out (ns):     18.954
-
-Path 5
   From:                  Science_0/DAC_SET_0/sdi_int:CLK
   To:                    LDSDI
-  Delay (ns):            14.564
+  Delay (ns):            14.503
   Slack (ns):
-  Arrival (ns):          18.923
+  Arrival (ns):          18.884
   Required (ns):
-  Clock to Out (ns):     18.923
+  Clock to Out (ns):     18.884
+
+Path 5
+  From:                  Science_0/SET_LP_GAIN_0/LA1:CLK
+  To:                    LA1
+  Delay (ns):            14.517
+  Slack (ns):
+  Arrival (ns):          18.678
+  Required (ns):
+  Clock to Out (ns):     18.678
 
 
 Expanded Path 1
   From: Communications_0/UART_0/tx:CLK
   To: SCIENCE_TX
   data required time                             N/C
-  data arrival time                          -   19.994
+  data arrival time                          -   20.580
   slack                                          N/C
   ________________________________________________________
   Data arrival time calculation
@@ -448,26 +444,26 @@ Expanded Path 1
   2.869                        CLKINT_0:A (r)
                +     0.747          cell: ADLIB:CLKINT
   3.616                        CLKINT_0:Y (r)
-               +     0.677          net: CLKINT_0_Y_0
-  4.293                        Communications_0/UART_0/tx:CLK (r)
+               +     0.726          net: CLKINT_0_Y_0
+  4.342                        Communications_0/UART_0/tx:CLK (r)
                +     0.737          cell: ADLIB:DFN1P1
-  5.030                        Communications_0/UART_0/tx:Q (f)
+  5.079                        Communications_0/UART_0/tx:Q (f)
                +     0.334          net: Communications_0/UART_0_tx
-  5.364                        HIEFFPLA_INST_0_49087:A (f)
+  5.413                        HIEFFPLA_INST_0_49149:A (f)
                +     0.619          cell: ADLIB:MX2
-  5.983                        HIEFFPLA_INST_0_49087:Y (f)
-               +     3.673          net: SCIENCE_TX_c_c
-  9.656                        SCIENCE_TX_pad/U0/U1:D (f)
+  6.032                        HIEFFPLA_INST_0_49149:Y (f)
+               +     4.210          net: SCIENCE_TX_c_c
+  10.242                       SCIENCE_TX_pad/U0/U1:D (f)
                +     0.659          cell: ADLIB:IOTRI_OB_EB
-  10.315                       SCIENCE_TX_pad/U0/U1:DOUT (f)
+  10.901                       SCIENCE_TX_pad/U0/U1:DOUT (f)
                +     0.000          net: SCIENCE_TX_pad/U0/NET1
-  10.315                       SCIENCE_TX_pad/U0/U0:D (f)
+  10.901                       SCIENCE_TX_pad/U0/U0:D (f)
                +     9.679          cell: ADLIB:IOPAD_TRI
-  19.994                       SCIENCE_TX_pad/U0/U0:PAD (f)
+  20.580                       SCIENCE_TX_pad/U0/U0:PAD (f)
                +     0.000          net: SCIENCE_TX
-  19.994                       SCIENCE_TX (f)
+  20.580                       SCIENCE_TX (f)
                                     
-  19.994                       data arrival time
+  20.580                       data arrival time
   ________________________________________________________
   Data required time calculation
   N/C                          CLOCK
@@ -486,65 +482,65 @@ SET Register to Asynchronous
 Path 1
   From:                  Data_Saving_0/FPGA_Buffer_0/DFN1C0_WRITE_RESET_P_0:CLK
   To:                    Data_Saving_0/FPGA_Buffer_0/\\RAM4K9_QXI[7]\\:RESET
-  Delay (ns):            3.661
-  Slack (ns):            25.789
-  Arrival (ns):          8.047
-  Required (ns):         33.836
+  Delay (ns):            5.497
+  Slack (ns):            23.989
+  Arrival (ns):          9.879
+  Required (ns):         33.868
   Recovery (ns):         1.956
-  Minimum Period (ns):   5.461
-  Skew (ns):             -0.156
+  Minimum Period (ns):   7.261
+  Skew (ns):             -0.192
 
 Path 2
   From:                  Data_Saving_0/FPGA_Buffer_0/DFN1C0_WRITE_RESET_P_0:CLK
-  To:                    Data_Saving_0/FPGA_Buffer_0/\\RAM4K9_QXI[3]\\:RESET
-  Delay (ns):            2.986
-  Slack (ns):            26.480
-  Arrival (ns):          7.372
-  Required (ns):         33.852
-  Recovery (ns):         1.956
-  Minimum Period (ns):   4.770
-  Skew (ns):             -0.172
+  To:                    Data_Saving_0/FPGA_Buffer_0/DFN1C0_16:CLR
+  Delay (ns):            6.710
+  Slack (ns):            24.187
+  Arrival (ns):          11.092
+  Required (ns):         35.279
+  Recovery (ns):         0.297
+  Minimum Period (ns):   7.063
+  Skew (ns):             0.056
 
 Path 3
   From:                  Data_Saving_0/FPGA_Buffer_0/DFN1C0_WRITE_RESET_P_0:CLK
-  To:                    Data_Saving_0/FPGA_Buffer_0/\\RAM4K9_QXI[1]\\:RESET
-  Delay (ns):            2.538
-  Slack (ns):            26.928
-  Arrival (ns):          6.924
-  Required (ns):         33.852
-  Recovery (ns):         1.956
-  Minimum Period (ns):   4.322
-  Skew (ns):             -0.172
+  To:                    Data_Saving_0/FPGA_Buffer_0/DFN1C0_11:CLR
+  Delay (ns):            6.334
+  Slack (ns):            24.546
+  Arrival (ns):          10.716
+  Required (ns):         35.262
+  Recovery (ns):         0.297
+  Minimum Period (ns):   6.704
+  Skew (ns):             0.073
 
 Path 4
-  From:                  Data_Saving_0/FPGA_Buffer_0/DFN1C0_WRITE_RESET_P:CLK
-  To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_RGRYSYNC[3]\\:CLR
-  Delay (ns):            3.735
-  Slack (ns):            27.185
-  Arrival (ns):          8.121
-  Required (ns):         35.306
+  From:                  Data_Saving_0/FPGA_Buffer_0/DFN1C0_WRITE_RESET_P_0:CLK
+  To:                    Data_Saving_0/FPGA_Buffer_0/DFN1C0_14:CLR
+  Delay (ns):            6.348
+  Slack (ns):            24.661
+  Arrival (ns):          10.730
+  Required (ns):         35.391
   Recovery (ns):         0.297
-  Minimum Period (ns):   4.065
-  Skew (ns):             0.033
+  Minimum Period (ns):   6.589
+  Skew (ns):             -0.056
 
 Path 5
   From:                  Data_Saving_0/FPGA_Buffer_0/DFN1C0_WRITE_RESET_P_0:CLK
-  To:                    Data_Saving_0/FPGA_Buffer_0/\\RAM4K9_QXI[5]\\:RESET
-  Delay (ns):            2.174
-  Slack (ns):            27.308
-  Arrival (ns):          6.560
-  Required (ns):         33.868
+  To:                    Data_Saving_0/FPGA_Buffer_0/\\RAM4K9_QXI[1]\\:RESET
+  Delay (ns):            4.683
+  Slack (ns):            24.771
+  Arrival (ns):          9.065
+  Required (ns):         33.836
   Recovery (ns):         1.956
-  Minimum Period (ns):   3.942
-  Skew (ns):             -0.188
+  Minimum Period (ns):   6.479
+  Skew (ns):             -0.160
 
 
 Expanded Path 1
   From: Data_Saving_0/FPGA_Buffer_0/DFN1C0_WRITE_RESET_P_0:CLK
   To: Data_Saving_0/FPGA_Buffer_0/\\RAM4K9_QXI[7]\\:RESET
-  data required time                             33.836
-  data arrival time                          -   8.047
-  slack                                          25.789
+  data required time                             33.868
+  data arrival time                          -   9.879
+  slack                                          23.989
   ________________________________________________________
   Data arrival time calculation
   0.000                        CLOCK
@@ -562,14 +558,14 @@ Expanded Path 1
   2.869                        CLKINT_0:A (r)
                +     0.747          cell: ADLIB:CLKINT
   3.616                        CLKINT_0:Y (r)
-               +     0.770          net: CLKINT_0_Y_0
-  4.386                        Data_Saving_0/FPGA_Buffer_0/DFN1C0_WRITE_RESET_P_0:CLK (r)
+               +     0.766          net: CLKINT_0_Y_0
+  4.382                        Data_Saving_0/FPGA_Buffer_0/DFN1C0_WRITE_RESET_P_0:CLK (r)
                +     0.581          cell: ADLIB:DFN1C0
-  4.967                        Data_Saving_0/FPGA_Buffer_0/DFN1C0_WRITE_RESET_P_0:Q (r)
-               +     3.080          net: Data_Saving_0/FPGA_Buffer_0/WRITE_RESET_P_0
-  8.047                        Data_Saving_0/FPGA_Buffer_0/\\RAM4K9_QXI[7]\\:RESET (r)
+  4.963                        Data_Saving_0/FPGA_Buffer_0/DFN1C0_WRITE_RESET_P_0:Q (r)
+               +     4.916          net: Data_Saving_0/FPGA_Buffer_0/WRITE_RESET_P_0
+  9.879                        Data_Saving_0/FPGA_Buffer_0/\\RAM4K9_QXI[7]\\:RESET (r)
                                     
-  8.047                        data arrival time
+  9.879                        data arrival time
   ________________________________________________________
   Data required time calculation
   31.250                       CLOCK
@@ -587,12 +583,12 @@ Expanded Path 1
   34.119                       CLKINT_0:A (r)
                +     0.747          cell: ADLIB:CLKINT
   34.866                       CLKINT_0:Y (r)
-               +     0.926          net: CLKINT_0_Y_0
-  35.792                       Data_Saving_0/FPGA_Buffer_0/\\RAM4K9_QXI[7]\\:CLKA (r)
+               +     0.958          net: CLKINT_0_Y_0
+  35.824                       Data_Saving_0/FPGA_Buffer_0/\\RAM4K9_QXI[7]\\:CLKA (r)
                -     1.956          Library recovery time: ADLIB:RAM4K9
-  33.836                       Data_Saving_0/FPGA_Buffer_0/\\RAM4K9_QXI[7]\\:RESET
+  33.868                       Data_Saving_0/FPGA_Buffer_0/\\RAM4K9_QXI[7]\\:RESET
                                     
-  33.836                       data required time
+  33.868                       data required time
 
 
 END SET Register to Asynchronous
@@ -604,59 +600,59 @@ SET External Recovery
 Path 1
   From:                  RESET
   To:                    SweepTable_1/SweepTable_R0C0:RESET
-  Delay (ns):            4.330
+  Delay (ns):            4.307
   Slack (ns):
-  Arrival (ns):          4.330
+  Arrival (ns):          4.307
   Required (ns):
   Recovery (ns):         2.008
-  External Recovery (ns): 1.742
+  External Recovery (ns): 1.741
 
 Path 2
   From:                  RESET
   To:                    SweepTable_0/SweepTable_R0C0:RESET
-  Delay (ns):            4.322
+  Delay (ns):            4.362
   Slack (ns):
-  Arrival (ns):          4.322
+  Arrival (ns):          4.362
   Required (ns):
   Recovery (ns):         2.008
-  External Recovery (ns): 1.654
+  External Recovery (ns): 1.710
 
 Path 3
   From:                  RESET
-  To:                    Science_0/SET_LP_GAIN_0/L3WR:CLR
-  Delay (ns):            4.154
+  To:                    Science_0/SET_LP_GAIN_0/old_G2[0]:CLR
+  Delay (ns):            4.093
   Slack (ns):
-  Arrival (ns):          4.154
+  Arrival (ns):          4.093
   Required (ns):
   Recovery (ns):         0.297
-  External Recovery (ns): 0.345
+  External Recovery (ns): 0.263
 
 Path 4
   From:                  RESET
-  To:                    Data_Saving_0/Packet_Saver_0/word_cnt[1]:CLR
-  Delay (ns):            4.065
+  To:                    Science_0/SET_LP_GAIN_0/old_G2[1]:CLR
+  Delay (ns):            4.093
   Slack (ns):
-  Arrival (ns):          4.065
+  Arrival (ns):          4.093
   Required (ns):
   Recovery (ns):         0.297
-  External Recovery (ns): 0.261
+  External Recovery (ns): 0.263
 
 Path 5
   From:                  RESET
-  To:                    Data_Saving_0/Packet_Saver_0/word_cnt[0]:PRE
-  Delay (ns):            4.065
+  To:                    Data_Saving_0/Packet_Saver_0/old_acc_new_data:PRE
+  Delay (ns):            4.085
   Slack (ns):
-  Arrival (ns):          4.065
+  Arrival (ns):          4.085
   Required (ns):
   Recovery (ns):         0.297
-  External Recovery (ns): 0.261
+  External Recovery (ns): 0.259
 
 
 Expanded Path 1
   From: RESET
   To: SweepTable_1/SweepTable_R0C0:RESET
   data required time                             N/C
-  data arrival time                          -   4.330
+  data arrival time                          -   4.307
   slack                                          N/C
   ________________________________________________________
   Data arrival time calculation
@@ -669,14 +665,14 @@ Expanded Path 1
   0.688                        RESET_pad/U0/U1:YIN (f)
                +     0.040          cell: ADLIB:IOIN_IB
   0.728                        RESET_pad/U0/U1:Y (f)
-               +     1.861          net: RESET_c
-  2.589                        CLKINT_1:A (f)
+               +     1.881          net: RESET_c
+  2.609                        CLKINT_1:A (f)
                +     0.767          cell: ADLIB:CLKINT
-  3.356                        CLKINT_1:Y (f)
-               +     0.974          net: CLKINT_1_Y
-  4.330                        SweepTable_1/SweepTable_R0C0:RESET (f)
+  3.376                        CLKINT_1:Y (f)
+               +     0.931          net: CLKINT_1_Y
+  4.307                        SweepTable_1/SweepTable_R0C0:RESET (f)
                                     
-  4.330                        data arrival time
+  4.307                        data arrival time
   ________________________________________________________
   Data required time calculation
   N/C                          CLOCK
@@ -694,7 +690,7 @@ Expanded Path 1
   N/C                          CLKINT_0:A (r)
                +     0.747          cell: ADLIB:CLKINT
   N/C                          CLKINT_0:Y (r)
-               +     0.980          net: CLKINT_0_Y_0
+               +     0.958          net: CLKINT_0_Y_0
   N/C                          SweepTable_1/SweepTable_R0C0:RCLK (r)
                -     2.008          Library recovery time: ADLIB:RAM512X18
   N/C                          SweepTable_1/SweepTable_R0C0:RESET
@@ -717,104 +713,116 @@ Clock Domain ClockDivs_0/clk_800kHz:Q
 SET Register to Register
 
 Path 1
-  From:                  Sensors_0/Accelerometer_0/I2C_Master_0/scl_0:CLK
-  To:                    Sensors_0/Accelerometer_0/I2C_Master_0/state[2]:D
-  Delay (ns):            12.175
+  From:                  Sensors_0/Gyro_0/I2C_Master_0/scl:CLK
+  To:                    Sensors_0/Gyro_0/I2C_Master_0/sda_1:D
+  Delay (ns):            11.636
   Slack (ns):
-  Arrival (ns):          15.195
+  Arrival (ns):          13.997
   Required (ns):
   Setup (ns):            0.713
-  Minimum Period (ns):   25.742
+  Minimum Period (ns):   24.616
 
 Path 2
-  From:                  Sensors_0/Accelerometer_0/I2C_Master_0/scl_0:CLK
-  To:                    Sensors_0/Accelerometer_0/I2C_Master_0/bitcnt[2]:D
-  Delay (ns):            11.756
+  From:                  Sensors_0/Accelerometer_0/I2C_Master_0/scl:CLK
+  To:                    Sensors_0/Accelerometer_0/I2C_Master_0/byte_cnt[1]:E
+  Delay (ns):            11.410
   Slack (ns):
-  Arrival (ns):          14.776
+  Arrival (ns):          13.777
   Required (ns):
-  Setup (ns):            0.713
-  Minimum Period (ns):   24.924
+  Setup (ns):            0.608
+  Minimum Period (ns):   23.974
 
 Path 3
-  From:                  Sensors_0/Accelerometer_0/I2C_Master_0/scl_0:CLK
-  To:                    Sensors_0/Accelerometer_0/I2C_Master_0/byte_cnt[3]:E
-  Delay (ns):            11.749
+  From:                  Sensors_0/Accelerometer_0/I2C_Master_0/scl:CLK
+  To:                    Sensors_0/Accelerometer_0/I2C_Master_0/bitcnt[3]:D
+  Delay (ns):            11.209
   Slack (ns):
-  Arrival (ns):          14.769
-  Required (ns):
-  Setup (ns):            0.608
-  Minimum Period (ns):   24.720
-
-Path 4
-  From:                  Sensors_0/Accelerometer_0/I2C_Master_0/scl_0:CLK
-  To:                    Sensors_0/Accelerometer_0/I2C_Master_0/bitcnt[1]:D
-  Delay (ns):            11.504
-  Slack (ns):
-  Arrival (ns):          14.524
+  Arrival (ns):          13.576
   Required (ns):
   Setup (ns):            0.713
-  Minimum Period (ns):   24.420
+  Minimum Period (ns):   23.774
 
-Path 5
-  From:                  Sensors_0/Accelerometer_0/I2C_Master_0/scl_0:CLK
-  To:                    Sensors_0/Accelerometer_0/I2C_Master_0/write_done:E
-  Delay (ns):            11.536
+Path 4
+  From:                  Sensors_0/Accelerometer_0/I2C_Master_0/scl:CLK
+  To:                    Sensors_0/Accelerometer_0/I2C_Master_0/byte_cnt[3]:E
+  Delay (ns):            11.117
   Slack (ns):
-  Arrival (ns):          14.556
+  Arrival (ns):          13.484
   Required (ns):
   Setup (ns):            0.608
-  Minimum Period (ns):   24.294
+  Minimum Period (ns):   23.388
+
+Path 5
+  From:                  Sensors_0/Accelerometer_0/I2C_Master_0/scl:CLK
+  To:                    Sensors_0/Accelerometer_0/I2C_Master_0/bitcnt[2]:D
+  Delay (ns):            10.837
+  Slack (ns):
+  Arrival (ns):          13.204
+  Required (ns):
+  Setup (ns):            0.713
+  Minimum Period (ns):   23.030
 
 
 Expanded Path 1
-  From: Sensors_0/Accelerometer_0/I2C_Master_0/scl_0:CLK
-  To: Sensors_0/Accelerometer_0/I2C_Master_0/state[2]:D
+  From: Sensors_0/Gyro_0/I2C_Master_0/scl:CLK
+  To: Sensors_0/Gyro_0/I2C_Master_0/sda_1:D
   data required time                             N/C
-  data arrival time                          -   15.195
+  data arrival time                          -   13.997
   slack                                          N/C
   ________________________________________________________
   Data arrival time calculation
   0.000                        ClockDivs_0/clk_800kHz:Q
                +     0.000          Clock source
   0.000                        ClockDivs_0/clk_800kHz:Q (r)
-               +     1.611          net: ClockDivs_0/clk_800kHz_i
-  1.611                        ClockDivs_0/clk_800kHz_RNIT3EB:A (r)
+               +     0.947          net: ClockDivs_0/clk_800kHz_i
+  0.947                        ClockDivs_0/clk_800kHz_RNIT3EB:A (r)
                +     0.718          cell: ADLIB:CLKINT
-  2.329                        ClockDivs_0/clk_800kHz_RNIT3EB:Y (r)
-               +     0.691          net: ClockDivs_0_clk_800kHz
-  3.020                        Sensors_0/Accelerometer_0/I2C_Master_0/scl_0:CLK (r)
+  1.665                        ClockDivs_0/clk_800kHz_RNIT3EB:Y (r)
+               +     0.696          net: ClockDivs_0_clk_800kHz
+  2.361                        Sensors_0/Gyro_0/I2C_Master_0/scl:CLK (r)
                +     0.737          cell: ADLIB:DFN1P1
-  3.757                        Sensors_0/Accelerometer_0/I2C_Master_0/scl_0:Q (f)
-               +     6.322          net: Sensors_0/Accelerometer_0/I2C_Master_0/ACCE_SCL_c_0
-  10.079                       HIEFFPLA_INST_0_57693:C (f)
-               +     0.664          cell: ADLIB:OR3A
-  10.743                       HIEFFPLA_INST_0_57693:Y (f)
-               +     2.634          net: HIEFFPLA_NET_0_64538
-  13.377                       HIEFFPLA_INST_0_58182:A (f)
-               +     0.520          cell: ADLIB:AO1A
-  13.897                       HIEFFPLA_INST_0_58182:Y (r)
-               +     0.334          net: HIEFFPLA_NET_0_64417
-  14.231                       HIEFFPLA_INST_0_58126:C (r)
-               +     0.641          cell: ADLIB:NOR3A
-  14.872                       HIEFFPLA_INST_0_58126:Y (f)
-               +     0.323          net: HIEFFPLA_NET_0_64430
-  15.195                       Sensors_0/Accelerometer_0/I2C_Master_0/state[2]:D (f)
+  3.098                        Sensors_0/Gyro_0/I2C_Master_0/scl:Q (f)
+               +     3.949          net: GYRO_SCL_c
+  7.047                        HIEFFPLA_INST_0_60062:B (f)
+               +     0.488          cell: ADLIB:NOR2A
+  7.535                        HIEFFPLA_INST_0_60062:Y (r)
+               +     0.530          net: HIEFFPLA_NET_0_64089
+  8.065                        HIEFFPLA_INST_0_59749:A (r)
+               +     0.751          cell: ADLIB:NOR3B
+  8.816                        HIEFFPLA_INST_0_59749:Y (r)
+               +     0.328          net: HIEFFPLA_NET_0_64162
+  9.144                        HIEFFPLA_INST_0_59747:C (r)
+               +     0.487          cell: ADLIB:AOI1
+  9.631                        HIEFFPLA_INST_0_59747:Y (f)
+               +     0.317          net: HIEFFPLA_NET_0_64163
+  9.948                        HIEFFPLA_INST_0_59726:A (f)
+               +     0.464          cell: ADLIB:OR3A
+  10.412                       HIEFFPLA_INST_0_59726:Y (r)
+               +     1.817          net: HIEFFPLA_NET_0_64167
+  12.229                       HIEFFPLA_INST_0_59693:C (r)
+               +     0.767          cell: ADLIB:AO1
+  12.996                       HIEFFPLA_INST_0_59693:Y (r)
+               +     0.318          net: HIEFFPLA_NET_0_64176
+  13.314                       HIEFFPLA_INST_0_59686:A (r)
+               +     0.360          cell: ADLIB:NAND3C
+  13.674                       HIEFFPLA_INST_0_59686:Y (r)
+               +     0.323          net: HIEFFPLA_NET_0_64177
+  13.997                       Sensors_0/Gyro_0/I2C_Master_0/sda_1:D (r)
                                     
-  15.195                       data arrival time
+  13.997                       data arrival time
   ________________________________________________________
   Data required time calculation
   N/C                          ClockDivs_0/clk_800kHz:Q
                +     0.000          Clock source
   N/C                          ClockDivs_0/clk_800kHz:Q (f)
-               +     1.554          net: ClockDivs_0/clk_800kHz_i
+               +     0.930          net: ClockDivs_0/clk_800kHz_i
   N/C                          ClockDivs_0/clk_800kHz_RNIT3EB:A (f)
                +     0.761          cell: ADLIB:CLKINT
   N/C                          ClockDivs_0/clk_800kHz_RNIT3EB:Y (f)
-               +     0.722          net: ClockDivs_0_clk_800kHz
-  N/C                          Sensors_0/Accelerometer_0/I2C_Master_0/state[2]:CLK (f)
-               -     0.713          Library setup time: ADLIB:DFN0C1
-  N/C                          Sensors_0/Accelerometer_0/I2C_Master_0/state[2]:D
+               +     0.711          net: ClockDivs_0_clk_800kHz
+  N/C                          Sensors_0/Gyro_0/I2C_Master_0/sda_1:CLK (f)
+               -     0.713          Library setup time: ADLIB:DFN0E0C1
+  N/C                          Sensors_0/Gyro_0/I2C_Master_0/sda_1:D
 
 
 END SET Register to Register
@@ -826,59 +834,59 @@ SET External Setup
 Path 1
   From:                  RESET
   To:                    Sensors_0/Gyro_0/I2C_Master_0/next_state[2]:E
-  Delay (ns):            7.386
+  Delay (ns):            7.439
   Slack (ns):
-  Arrival (ns):          7.386
+  Arrival (ns):          7.439
   Required (ns):
   Setup (ns):            0.608
-  External Setup (ns):   4.952
+  External Setup (ns):   5.639
 
 Path 2
   From:                  RESET
   To:                    Sensors_0/Gyro_0/I2C_Master_0/next_state[1]:E
-  Delay (ns):            7.386
+  Delay (ns):            7.439
   Slack (ns):
-  Arrival (ns):          7.386
+  Arrival (ns):          7.439
   Required (ns):
   Setup (ns):            0.608
-  External Setup (ns):   4.952
+  External Setup (ns):   5.639
 
 Path 3
   From:                  RESET
   To:                    Sensors_0/Gyro_0/I2C_Master_0/next_state[0]:E
-  Delay (ns):            7.392
+  Delay (ns):            7.439
   Slack (ns):
-  Arrival (ns):          7.392
+  Arrival (ns):          7.439
   Required (ns):
   Setup (ns):            0.608
-  External Setup (ns):   4.949
+  External Setup (ns):   5.639
 
 Path 4
   From:                  RESET
-  To:                    Sensors_0/Pressure_Sensor_0/I2C_Master_0/next_state[0]:E
-  Delay (ns):            6.022
+  To:                    Sensors_0/Accelerometer_0/I2C_Master_0/next_state[2]:E
+  Delay (ns):            7.377
   Slack (ns):
-  Arrival (ns):          6.022
+  Arrival (ns):          7.377
   Required (ns):
   Setup (ns):            0.608
-  External Setup (ns):   3.598
+  External Setup (ns):   5.575
 
 Path 5
-  From:                  GYRO_SDA
-  To:                    Sensors_0/Gyro_0/I2C_Master_0/s_ack_error:E
-  Delay (ns):            6.017
+  From:                  RESET
+  To:                    Sensors_0/Accelerometer_0/I2C_Master_0/next_state[0]:E
+  Delay (ns):            7.377
   Slack (ns):
-  Arrival (ns):          6.017
+  Arrival (ns):          7.377
   Required (ns):
   Setup (ns):            0.608
-  External Setup (ns):   3.594
+  External Setup (ns):   5.563
 
 
 Expanded Path 1
   From: RESET
   To: Sensors_0/Gyro_0/I2C_Master_0/next_state[2]:E
   data required time                             N/C
-  data arrival time                          -   7.386
+  data arrival time                          -   7.439
   slack                                          N/C
   ________________________________________________________
   Data arrival time calculation
@@ -891,36 +899,36 @@ Expanded Path 1
   1.001                        RESET_pad/U0/U1:YIN (r)
                +     0.043          cell: ADLIB:IOIN_IB
   1.044                        RESET_pad/U0/U1:Y (r)
-               +     1.789          net: RESET_c
-  2.833                        CLKINT_1:A (r)
+               +     1.802          net: RESET_c
+  2.846                        CLKINT_1:A (r)
                +     0.747          cell: ADLIB:CLKINT
-  3.580                        CLKINT_1:Y (r)
-               +     0.713          net: CLKINT_1_Y
-  4.293                        HIEFFPLA_INST_0_59913:C (r)
+  3.593                        CLKINT_1:Y (r)
+               +     0.749          net: CLKINT_1_Y
+  4.342                        HIEFFPLA_INST_0_59684:C (r)
                +     0.655          cell: ADLIB:AO1A
-  4.948                        HIEFFPLA_INST_0_59913:Y (r)
-               +     0.334          net: HIEFFPLA_NET_0_64014
-  5.282                        HIEFFPLA_INST_0_59909:C (r)
+  4.997                        HIEFFPLA_INST_0_59684:Y (r)
+               +     0.343          net: HIEFFPLA_NET_0_64178
+  5.340                        HIEFFPLA_INST_0_59680:C (r)
                +     0.655          cell: ADLIB:AO1A
-  5.937                        HIEFFPLA_INST_0_59909:Y (r)
-               +     0.334          net: HIEFFPLA_NET_0_64015
-  6.271                        HIEFFPLA_INST_0_59873:C (r)
+  5.995                        HIEFFPLA_INST_0_59680:Y (r)
+               +     0.334          net: HIEFFPLA_NET_0_64179
+  6.329                        HIEFFPLA_INST_0_59862:C (r)
                +     0.655          cell: ADLIB:AO1D
-  6.926                        HIEFFPLA_INST_0_59873:Y (r)
-               +     0.460          net: HIEFFPLA_NET_0_64025
-  7.386                        Sensors_0/Gyro_0/I2C_Master_0/next_state[2]:E (r)
+  6.984                        HIEFFPLA_INST_0_59862:Y (r)
+               +     0.455          net: HIEFFPLA_NET_0_64135
+  7.439                        Sensors_0/Gyro_0/I2C_Master_0/next_state[2]:E (r)
                                     
-  7.386                        data arrival time
+  7.439                        data arrival time
   ________________________________________________________
   Data required time calculation
   N/C                          ClockDivs_0/clk_800kHz:Q
                +     0.000          Clock source
   N/C                          ClockDivs_0/clk_800kHz:Q (f)
-               +     1.554          net: ClockDivs_0/clk_800kHz_i
+               +     0.930          net: ClockDivs_0/clk_800kHz_i
   N/C                          ClockDivs_0/clk_800kHz_RNIT3EB:A (f)
                +     0.761          cell: ADLIB:CLKINT
   N/C                          ClockDivs_0/clk_800kHz_RNIT3EB:Y (f)
-               +     0.727          net: ClockDivs_0_clk_800kHz
+               +     0.717          net: ClockDivs_0_clk_800kHz
   N/C                          Sensors_0/Gyro_0/I2C_Master_0/next_state[2]:CLK (f)
                -     0.608          Library setup time: ADLIB:DFN0E0
   N/C                          Sensors_0/Gyro_0/I2C_Master_0/next_state[2]:E
@@ -933,89 +941,93 @@ END SET External Setup
 SET Clock to Output
 
 Path 1
-  From:                  Sensors_0/Pressure_Sensor_0/I2C_Master_0/scl:CLK
-  To:                    PRESSURE_SCL
-  Delay (ns):            16.193
-  Slack (ns):
-  Arrival (ns):          19.217
-  Required (ns):
-  Clock to Out (ns):     19.217
-
-Path 2
   From:                  Sensors_0/Accelerometer_0/I2C_Master_0/sda_cl_1:CLK
   To:                    ACCE_SDA
-  Delay (ns):            14.334
+  Delay (ns):            14.897
   Slack (ns):
-  Arrival (ns):          17.356
+  Arrival (ns):          17.301
   Required (ns):
-  Clock to Out (ns):     17.356
+  Clock to Out (ns):     17.301
+
+Path 2
+  From:                  Sensors_0/Accelerometer_0/I2C_Master_0/sda_cl_2:CLK
+  To:                    ACCE_SDA
+  Delay (ns):            14.103
+  Slack (ns):
+  Arrival (ns):          16.496
+  Required (ns):
+  Clock to Out (ns):     16.496
 
 Path 3
-  From:                  Sensors_0/Accelerometer_0/I2C_Master_0/scl:CLK
-  To:                    ACCE_SCL
-  Delay (ns):            14.087
+  From:                  Sensors_0/Accelerometer_0/I2C_Master_0/sda_cl:CLK
+  To:                    ACCE_SDA
+  Delay (ns):            13.944
   Slack (ns):
-  Arrival (ns):          17.100
+  Arrival (ns):          16.337
   Required (ns):
-  Clock to Out (ns):     17.100
+  Clock to Out (ns):     16.337
 
 Path 4
-  From:                  Sensors_0/Gyro_0/I2C_Master_0/sda_cl_2:CLK
-  To:                    GYRO_SDA
-  Delay (ns):            13.984
+  From:                  Sensors_0/Accelerometer_0/I2C_Master_0/sda_1:CLK
+  To:                    ACCE_SDA
+  Delay (ns):            13.355
   Slack (ns):
-  Arrival (ns):          17.026
+  Arrival (ns):          15.777
   Required (ns):
-  Clock to Out (ns):     17.026
+  Clock to Out (ns):     15.777
 
 Path 5
-  From:                  Sensors_0/Gyro_0/I2C_Master_0/sda_cl_1:CLK
-  To:                    GYRO_SDA
-  Delay (ns):            13.949
+  From:                  Sensors_0/Pressure_Sensor_0/I2C_Master_0/sda_1:CLK
+  To:                    PRESSURE_SDA
+  Delay (ns):            13.233
   Slack (ns):
-  Arrival (ns):          16.991
+  Arrival (ns):          15.681
   Required (ns):
-  Clock to Out (ns):     16.991
+  Clock to Out (ns):     15.681
 
 
 Expanded Path 1
-  From: Sensors_0/Pressure_Sensor_0/I2C_Master_0/scl:CLK
-  To: PRESSURE_SCL
+  From: Sensors_0/Accelerometer_0/I2C_Master_0/sda_cl_1:CLK
+  To: ACCE_SDA
   data required time                             N/C
-  data arrival time                          -   19.217
+  data arrival time                          -   17.301
   slack                                          N/C
   ________________________________________________________
   Data arrival time calculation
   0.000                        ClockDivs_0/clk_800kHz:Q
                +     0.000          Clock source
-  0.000                        ClockDivs_0/clk_800kHz:Q (r)
-               +     1.611          net: ClockDivs_0/clk_800kHz_i
-  1.611                        ClockDivs_0/clk_800kHz_RNIT3EB:A (r)
-               +     0.718          cell: ADLIB:CLKINT
-  2.329                        ClockDivs_0/clk_800kHz_RNIT3EB:Y (r)
-               +     0.695          net: ClockDivs_0_clk_800kHz
-  3.024                        Sensors_0/Pressure_Sensor_0/I2C_Master_0/scl:CLK (r)
-               +     0.737          cell: ADLIB:DFN1P1
-  3.761                        Sensors_0/Pressure_Sensor_0/I2C_Master_0/scl:Q (f)
-               +     5.195          net: PRESSURE_SCL_c
-  8.956                        PRESSURE_SCL_pad/U0/U1:D (f)
-               +     0.582          cell: ADLIB:IOTRI_OB_EB
-  9.538                        PRESSURE_SCL_pad/U0/U1:DOUT (f)
-               +     0.000          net: PRESSURE_SCL_pad/U0/NET1
-  9.538                        PRESSURE_SCL_pad/U0/U0:D (f)
-               +     9.679          cell: ADLIB:IOPAD_TRI
-  19.217                       PRESSURE_SCL_pad/U0/U0:PAD (f)
-               +     0.000          net: PRESSURE_SCL
-  19.217                       PRESSURE_SCL (f)
+  0.000                        ClockDivs_0/clk_800kHz:Q (f)
+               +     0.930          net: ClockDivs_0/clk_800kHz_i
+  0.930                        ClockDivs_0/clk_800kHz_RNIT3EB:A (f)
+               +     0.761          cell: ADLIB:CLKINT
+  1.691                        ClockDivs_0/clk_800kHz_RNIT3EB:Y (f)
+               +     0.713          net: ClockDivs_0_clk_800kHz
+  2.404                        Sensors_0/Accelerometer_0/I2C_Master_0/sda_cl_1:CLK (f)
+               +     0.527          cell: ADLIB:DFN0E0P1
+  2.931                        Sensors_0/Accelerometer_0/I2C_Master_0/sda_cl_1:Q (r)
+               +     1.149          net: Sensors_0/Accelerometer_0/I2C_Master_0/sda_cl_1
+  4.080                        HIEFFPLA_INST_0_58014:B (r)
+               +     0.716          cell: ADLIB:AND3
+  4.796                        HIEFFPLA_INST_0_58014:Y (r)
+               +     2.179          net: sda_cl_1_RNIBFPP
+  6.975                        ACCE_SDA_pad/U0/U1:E (r)
+               +     0.468          cell: ADLIB:IOBI_IB_OB_EB
+  7.443                        ACCE_SDA_pad/U0/U1:EOUT (r)
+               +     0.000          net: ACCE_SDA_pad/U0/NET2
+  7.443                        ACCE_SDA_pad/U0/U0:E (r)
+               +     9.858          cell: ADLIB:IOPAD_BI
+  17.301                       ACCE_SDA_pad/U0/U0:PAD (f)
+               +     0.000          net: ACCE_SDA
+  17.301                       ACCE_SDA (f)
                                     
-  19.217                       data arrival time
+  17.301                       data arrival time
   ________________________________________________________
   Data required time calculation
   N/C                          ClockDivs_0/clk_800kHz:Q
                +     0.000          Clock source
   N/C                          ClockDivs_0/clk_800kHz:Q (r)
                                     
-  N/C                          PRESSURE_SCL (f)
+  N/C                          ACCE_SDA (f)
 
 
 END SET Clock to Output
@@ -1034,60 +1046,60 @@ SET External Recovery
 
 Path 1
   From:                  RESET
-  To:                    Sensors_0/Pressure_Sensor_0/I2C_Master_0/data_out[2]:CLR
-  Delay (ns):            4.107
+  To:                    Sensors_0/Gyro_0/I2C_Master_0/scl_0:PRE
+  Delay (ns):            4.085
   Slack (ns):
-  Arrival (ns):          4.107
+  Arrival (ns):          4.085
   Required (ns):
   Recovery (ns):         0.297
-  External Recovery (ns): 1.362
+  External Recovery (ns): 2.045
 
 Path 2
   From:                  RESET
-  To:                    Sensors_0/Pressure_Sensor_0/I2C_Master_0/data_out[5]:CLR
-  Delay (ns):            4.107
+  To:                    Sensors_0/Pressure_Sensor_0/I2C_Master_0/scl_0:PRE
+  Delay (ns):            4.081
   Slack (ns):
-  Arrival (ns):          4.107
+  Arrival (ns):          4.081
   Required (ns):
   Recovery (ns):         0.297
-  External Recovery (ns): 1.362
+  External Recovery (ns): 2.024
 
 Path 3
   From:                  RESET
-  To:                    Sensors_0/Pressure_Sensor_0/I2C_Master_0/data_out[0]:CLR
-  Delay (ns):            4.107
+  To:                    Sensors_0/Pressure_Sensor_0/I2C_Master_0/scl:PRE
+  Delay (ns):            4.104
   Slack (ns):
-  Arrival (ns):          4.107
+  Arrival (ns):          4.104
   Required (ns):
   Recovery (ns):         0.297
-  External Recovery (ns): 1.362
+  External Recovery (ns): 2.024
 
 Path 4
   From:                  RESET
-  To:                    Sensors_0/Pressure_Sensor_0/I2C_Master_0/data_out[6]:CLR
-  Delay (ns):            4.107
+  To:                    Sensors_0/Gyro_0/I2C_Master_0/scl:PRE
+  Delay (ns):            4.085
   Slack (ns):
-  Arrival (ns):          4.107
+  Arrival (ns):          4.085
   Required (ns):
   Recovery (ns):         0.297
-  External Recovery (ns): 1.362
+  External Recovery (ns): 2.021
 
 Path 5
   From:                  RESET
-  To:                    Sensors_0/Pressure_Sensor_0/I2C_Master_0/scl:PRE
-  Delay (ns):            4.088
+  To:                    Sensors_0/Accelerometer_0/I2C_Master_0/scl_0:PRE
+  Delay (ns):            4.068
   Slack (ns):
-  Arrival (ns):          4.088
+  Arrival (ns):          4.068
   Required (ns):
   Recovery (ns):         0.297
-  External Recovery (ns): 1.361
+  External Recovery (ns): 2.016
 
 
 Expanded Path 1
   From: RESET
-  To: Sensors_0/Pressure_Sensor_0/I2C_Master_0/data_out[2]:CLR
+  To: Sensors_0/Gyro_0/I2C_Master_0/scl_0:PRE
   data required time                             N/C
-  data arrival time                          -   4.107
+  data arrival time                          -   4.085
   slack                                          N/C
   ________________________________________________________
   Data arrival time calculation
@@ -1100,27 +1112,27 @@ Expanded Path 1
   0.688                        RESET_pad/U0/U1:YIN (f)
                +     0.040          cell: ADLIB:IOIN_IB
   0.728                        RESET_pad/U0/U1:Y (f)
-               +     1.861          net: RESET_c
-  2.589                        CLKINT_1:A (f)
+               +     1.881          net: RESET_c
+  2.609                        CLKINT_1:A (f)
                +     0.767          cell: ADLIB:CLKINT
-  3.356                        CLKINT_1:Y (f)
-               +     0.751          net: CLKINT_1_Y
-  4.107                        Sensors_0/Pressure_Sensor_0/I2C_Master_0/data_out[2]:CLR (f)
+  3.376                        CLKINT_1:Y (f)
+               +     0.709          net: CLKINT_1_Y
+  4.085                        Sensors_0/Gyro_0/I2C_Master_0/scl_0:PRE (f)
                                     
-  4.107                        data arrival time
+  4.085                        data arrival time
   ________________________________________________________
   Data required time calculation
   N/C                          ClockDivs_0/clk_800kHz:Q
                +     0.000          Clock source
-  N/C                          ClockDivs_0/clk_800kHz:Q (f)
-               +     1.554          net: ClockDivs_0/clk_800kHz_i
-  N/C                          ClockDivs_0/clk_800kHz_RNIT3EB:A (f)
-               +     0.761          cell: ADLIB:CLKINT
-  N/C                          ClockDivs_0/clk_800kHz_RNIT3EB:Y (f)
-               +     0.727          net: ClockDivs_0_clk_800kHz
-  N/C                          Sensors_0/Pressure_Sensor_0/I2C_Master_0/data_out[2]:CLK (f)
-               -     0.297          Library recovery time: ADLIB:DFN0E1C1
-  N/C                          Sensors_0/Pressure_Sensor_0/I2C_Master_0/data_out[2]:CLR
+  N/C                          ClockDivs_0/clk_800kHz:Q (r)
+               +     0.947          net: ClockDivs_0/clk_800kHz_i
+  N/C                          ClockDivs_0/clk_800kHz_RNIT3EB:A (r)
+               +     0.718          cell: ADLIB:CLKINT
+  N/C                          ClockDivs_0/clk_800kHz_RNIT3EB:Y (r)
+               +     0.672          net: ClockDivs_0_clk_800kHz
+  N/C                          Sensors_0/Gyro_0/I2C_Master_0/scl_0:CLK (r)
+               -     0.297          Library recovery time: ADLIB:DFN1P1
+  N/C                          Sensors_0/Gyro_0/I2C_Master_0/scl_0:PRE
 
 
 END SET External Recovery
@@ -1140,62 +1152,62 @@ Clock Domain FMC_CLK
 SET Register to Register
 
 Path 1
-  From:                  Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_MEM_RADDR[0]\\:CLK
-  To:                    Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:D
-  Delay (ns):            11.631
-  Slack (ns):            6.346
-  Arrival (ns):          15.961
-  Required (ns):         22.307
-  Setup (ns):            0.539
-  Minimum Period (ns):   12.173
-
-Path 2
   From:                  Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:CLK
   To:                    Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:D
-  Delay (ns):            11.340
-  Slack (ns):            6.640
-  Arrival (ns):          15.667
-  Required (ns):         22.307
+  Delay (ns):            11.939
+  Slack (ns):            6.041
+  Arrival (ns):          16.231
+  Required (ns):         22.272
   Setup (ns):            0.539
-  Minimum Period (ns):   11.879
+  Minimum Period (ns):   12.478
+
+Path 2
+  From:                  Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_MEM_RADDR[0]\\:CLK
+  To:                    Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:D
+  Delay (ns):            11.514
+  Slack (ns):            6.441
+  Arrival (ns):          15.831
+  Required (ns):         22.272
+  Setup (ns):            0.539
+  Minimum Period (ns):   12.078
 
 Path 3
-  From:                  Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_MEM_RADDR[4]\\:CLK
+  From:                  Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_WGRYSYNC[7]\\:CLK
   To:                    Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:D
-  Delay (ns):            10.841
-  Slack (ns):            7.114
-  Arrival (ns):          15.193
-  Required (ns):         22.307
-  Setup (ns):            0.539
-  Minimum Period (ns):   11.405
+  Delay (ns):            11.054
+  Slack (ns):            6.879
+  Arrival (ns):          15.358
+  Required (ns):         22.237
+  Setup (ns):            0.574
+  Minimum Period (ns):   11.640
 
 Path 4
-  From:                  Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_MEM_RADDR[1]\\:CLK
+  From:                  Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_WGRYSYNC[8]\\:CLK
   To:                    Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:D
-  Delay (ns):            10.748
-  Slack (ns):            7.232
-  Arrival (ns):          15.075
-  Required (ns):         22.307
-  Setup (ns):            0.539
-  Minimum Period (ns):   11.287
+  Delay (ns):            10.849
+  Slack (ns):            7.071
+  Arrival (ns):          15.166
+  Required (ns):         22.237
+  Setup (ns):            0.574
+  Minimum Period (ns):   11.448
 
 Path 5
-  From:                  Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_MEM_RADDR[6]\\:CLK
+  From:                  Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_WGRYSYNC[6]\\:CLK
   To:                    Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:D
-  Delay (ns):            10.587
-  Slack (ns):            7.390
-  Arrival (ns):          14.917
-  Required (ns):         22.307
-  Setup (ns):            0.539
-  Minimum Period (ns):   11.129
+  Delay (ns):            10.550
+  Slack (ns):            7.395
+  Arrival (ns):          14.842
+  Required (ns):         22.237
+  Setup (ns):            0.574
+  Minimum Period (ns):   11.124
 
 
 Expanded Path 1
-  From: Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_MEM_RADDR[0]\\:CLK
+  From: Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:CLK
   To: Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:D
-  data required time                             22.307
-  data arrival time                          -   15.961
-  slack                                          6.346
+  data required time                             22.272
+  data arrival time                          -   16.231
+  slack                                          6.041
   ________________________________________________________
   Data arrival time calculation
   0.000                        FMC_CLK
@@ -1213,50 +1225,54 @@ Expanded Path 1
   2.829                        CLKINT_2:A (r)
                +     0.747          cell: ADLIB:CLKINT
   3.576                        CLKINT_2:Y (r)
-               +     0.754          net: CLKINT_2_Y
-  4.330                        Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_MEM_RADDR[0]\\:CLK (r)
-               +     0.737          cell: ADLIB:DFN1C0
-  5.067                        Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_MEM_RADDR[0]\\:Q (f)
-               +     0.323          net: Data_Saving_0/FPGA_Buffer_0/Z_MEM_RADDR[0]_
-  5.390                        HIEFFPLA_INST_0_49122:B (f)
-               +     0.607          cell: ADLIB:AND3A
-  5.997                        HIEFFPLA_INST_0_49122:Y (f)
-               +     0.381          net: HIEFFPLA_NET_0_66419
-  6.378                        HIEFFPLA_INST_0_49199:C (f)
-               +     0.641          cell: ADLIB:NAND3
-  7.019                        HIEFFPLA_INST_0_49199:Y (r)
-               +     0.308          net: HIEFFPLA_NET_0_66400
-  7.327                        HIEFFPLA_INST_0_49196:B (r)
-               +     0.515          cell: ADLIB:NOR2A
-  7.842                        HIEFFPLA_INST_0_49196:Y (f)
-               +     1.519          net: HIEFFPLA_NET_0_66401
-  9.361                        HIEFFPLA_INST_0_49193:A (f)
-               +     0.360          cell: ADLIB:AND3
-  9.721                        HIEFFPLA_INST_0_49193:Y (f)
-               +     0.384          net: HIEFFPLA_NET_0_66402
-  10.105                       HIEFFPLA_INST_0_49617:B (f)
-               +     0.970          cell: ADLIB:AX1C
-  11.075                       HIEFFPLA_INST_0_49617:Y (r)
-               +     0.822          net: HIEFFPLA_NET_0_66310
-  11.897                       HIEFFPLA_INST_0_49367:C (r)
-               +     0.986          cell: ADLIB:XOR3
-  12.883                       HIEFFPLA_INST_0_49367:Y (f)
-               +     0.320          net: HIEFFPLA_NET_0_66374
-  13.203                       HIEFFPLA_INST_0_49170:C (f)
+               +     0.716          net: CLKINT_2_Y
+  4.292                        Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:CLK (r)
+               +     0.737          cell: ADLIB:DFN1P0
+  5.029                        Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:Q (f)
+               +     1.060          net: Data_Saving_0/FPGA_Buffer_0/empty
+  6.089                        HIEFFPLA_INST_0_49184:A (f)
+               +     0.525          cell: ADLIB:AND3A
+  6.614                        HIEFFPLA_INST_0_49184:Y (r)
+               +     0.334          net: HIEFFPLA_NET_0_66557
+  6.948                        HIEFFPLA_INST_0_49255:C (r)
+               +     0.666          cell: ADLIB:NAND3
+  7.614                        HIEFFPLA_INST_0_49255:Y (f)
+               +     0.318          net: HIEFFPLA_NET_0_66539
+  7.932                        HIEFFPLA_INST_0_49252:B (f)
+               +     0.488          cell: ADLIB:NOR2A
+  8.420                        HIEFFPLA_INST_0_49252:Y (r)
+               +     0.323          net: HIEFFPLA_NET_0_66540
+  8.743                        HIEFFPLA_INST_0_49259:A (r)
+               +     0.751          cell: ADLIB:NOR3B
+  9.494                        HIEFFPLA_INST_0_49259:Y (r)
+               +     0.334          net: HIEFFPLA_NET_0_66538
+  9.828                        HIEFFPLA_INST_0_49685:B (r)
+               +     0.678          cell: ADLIB:AX1C
+  10.506                       HIEFFPLA_INST_0_49685:Y (r)
+               +     0.334          net: HIEFFPLA_NET_0_66446
+  10.840                       HIEFFPLA_INST_0_49403:C (r)
+               +     0.986          cell: ADLIB:XNOR3
+  11.826                       HIEFFPLA_INST_0_49403:Y (f)
+               +     0.334          net: HIEFFPLA_NET_0_66517
+  12.160                       HIEFFPLA_INST_0_49188:C (f)
+               +     0.725          cell: ADLIB:XA1
+  12.885                       HIEFFPLA_INST_0_49188:Y (f)
+               +     0.334          net: HIEFFPLA_NET_0_66556
+  13.219                       HIEFFPLA_INST_0_49247:C (f)
+               +     0.681          cell: ADLIB:AND3
+  13.900                       HIEFFPLA_INST_0_49247:Y (f)
+               +     0.320          net: HIEFFPLA_NET_0_66542
+  14.220                       HIEFFPLA_INST_0_49244:C (f)
+               +     0.641          cell: ADLIB:AND3
+  14.861                       HIEFFPLA_INST_0_49244:Y (f)
+               +     0.323          net: HIEFFPLA_NET_0_66543
+  15.184                       HIEFFPLA_INST_0_49194:C (f)
                +     0.713          cell: ADLIB:XA1A
-  13.916                       HIEFFPLA_INST_0_49170:Y (f)
-               +     0.318          net: HIEFFPLA_NET_0_66407
-  14.234                       HIEFFPLA_INST_0_49188:A (f)
-               +     0.360          cell: ADLIB:AND3
-  14.594                       HIEFFPLA_INST_0_49188:Y (f)
-               +     0.320          net: HIEFFPLA_NET_0_66404
-  14.914                       HIEFFPLA_INST_0_49132:C (f)
-               +     0.713          cell: ADLIB:XA1A
-  15.627                       HIEFFPLA_INST_0_49132:Y (f)
-               +     0.334          net: HIEFFPLA_NET_0_66417
-  15.961                       Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:D (f)
+  15.897                       HIEFFPLA_INST_0_49194:Y (f)
+               +     0.334          net: HIEFFPLA_NET_0_66555
+  16.231                       Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:D (f)
                                     
-  15.961                       data arrival time
+  16.231                       data arrival time
   ________________________________________________________
   Data required time calculation
   18.519                       FMC_CLK
@@ -1274,12 +1290,12 @@ Expanded Path 1
   21.348                       CLKINT_2:A (r)
                +     0.747          cell: ADLIB:CLKINT
   22.095                       CLKINT_2:Y (r)
-               +     0.751          net: CLKINT_2_Y
-  22.846                       Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:CLK (r)
+               +     0.716          net: CLKINT_2_Y
+  22.811                       Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:CLK (r)
                -     0.539          Library setup time: ADLIB:DFN1P0
-  22.307                       Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:D
+  22.272                       Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:D
                                     
-  22.307                       data required time
+  22.272                       data required time
 
 
 END SET Register to Register
@@ -1291,59 +1307,59 @@ SET External Setup
 Path 1
   From:                  FMC_NOE
   To:                    Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:D
-  Delay (ns):            15.353
+  Delay (ns):            15.217
   Slack (ns):
-  Arrival (ns):          15.353
+  Arrival (ns):          15.217
   Required (ns):
   Setup (ns):            0.539
-  External Setup (ns):   11.565
+  External Setup (ns):   11.464
 
 Path 2
   From:                  FMC_NOE
-  To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_RGRY[8]\\:D
-  Delay (ns):            12.451
+  To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_RGRY[7]\\:D
+  Delay (ns):            12.844
   Slack (ns):
-  Arrival (ns):          12.451
+  Arrival (ns):          12.844
   Required (ns):
-  Setup (ns):            0.539
-  External Setup (ns):   8.638
+  Setup (ns):            0.574
+  External Setup (ns):   9.126
 
 Path 3
   From:                  FMC_NOE
   To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_RGRY[10]\\:D
-  Delay (ns):            12.399
+  Delay (ns):            12.270
   Slack (ns):
-  Arrival (ns):          12.399
+  Arrival (ns):          12.270
   Required (ns):
   Setup (ns):            0.574
-  External Setup (ns):   8.621
+  External Setup (ns):   8.514
 
 Path 4
   From:                  FMC_NOE
-  To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_RGRY[7]\\:D
-  Delay (ns):            12.166
+  To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_RGRY[9]\\:D
+  Delay (ns):            12.035
   Slack (ns):
-  Arrival (ns):          12.166
+  Arrival (ns):          12.035
   Required (ns):
   Setup (ns):            0.574
-  External Setup (ns):   8.410
+  External Setup (ns):   8.293
 
 Path 5
   From:                  FMC_NOE
   To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_RGRY[5]\\:D
-  Delay (ns):            11.904
+  Delay (ns):            11.935
   Slack (ns):
-  Arrival (ns):          11.904
+  Arrival (ns):          11.935
   Required (ns):
   Setup (ns):            0.574
-  External Setup (ns):   8.168
+  External Setup (ns):   8.192
 
 
 Expanded Path 1
   From: FMC_NOE
   To: Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:D
   data required time                             N/C
-  data arrival time                          -   15.353
+  data arrival time                          -   15.217
   slack                                          N/C
   ________________________________________________________
   Data arrival time calculation
@@ -1356,46 +1372,50 @@ Expanded Path 1
   0.688                        FMC_NOE_pad/U0/U1:YIN (f)
                +     0.040          cell: ADLIB:IOIN_IB
   0.728                        FMC_NOE_pad/U0/U1:Y (f)
-               +     3.980          net: FMC_NOE_c
-  4.708                        HIEFFPLA_INST_0_49122:C (f)
+               +     3.991          net: FMC_NOE_c
+  4.719                        HIEFFPLA_INST_0_49184:C (f)
                +     0.681          cell: ADLIB:AND3A
-  5.389                        HIEFFPLA_INST_0_49122:Y (f)
-               +     0.381          net: HIEFFPLA_NET_0_66419
-  5.770                        HIEFFPLA_INST_0_49199:C (f)
+  5.400                        HIEFFPLA_INST_0_49184:Y (f)
+               +     0.320          net: HIEFFPLA_NET_0_66557
+  5.720                        HIEFFPLA_INST_0_49255:C (f)
                +     0.641          cell: ADLIB:NAND3
-  6.411                        HIEFFPLA_INST_0_49199:Y (r)
-               +     0.308          net: HIEFFPLA_NET_0_66400
-  6.719                        HIEFFPLA_INST_0_49196:B (r)
+  6.361                        HIEFFPLA_INST_0_49255:Y (r)
+               +     0.308          net: HIEFFPLA_NET_0_66539
+  6.669                        HIEFFPLA_INST_0_49252:B (r)
                +     0.515          cell: ADLIB:NOR2A
-  7.234                        HIEFFPLA_INST_0_49196:Y (f)
-               +     1.519          net: HIEFFPLA_NET_0_66401
-  8.753                        HIEFFPLA_INST_0_49193:A (f)
-               +     0.360          cell: ADLIB:AND3
-  9.113                        HIEFFPLA_INST_0_49193:Y (f)
-               +     0.384          net: HIEFFPLA_NET_0_66402
-  9.497                        HIEFFPLA_INST_0_49617:B (f)
+  7.184                        HIEFFPLA_INST_0_49252:Y (f)
+               +     0.334          net: HIEFFPLA_NET_0_66540
+  7.518                        HIEFFPLA_INST_0_49259:A (f)
+               +     0.681          cell: ADLIB:NOR3B
+  8.199                        HIEFFPLA_INST_0_49259:Y (f)
+               +     0.323          net: HIEFFPLA_NET_0_66538
+  8.522                        HIEFFPLA_INST_0_49685:B (f)
                +     0.970          cell: ADLIB:AX1C
-  10.467                       HIEFFPLA_INST_0_49617:Y (r)
-               +     0.822          net: HIEFFPLA_NET_0_66310
-  11.289                       HIEFFPLA_INST_0_49367:C (r)
-               +     0.986          cell: ADLIB:XOR3
-  12.275                       HIEFFPLA_INST_0_49367:Y (f)
-               +     0.320          net: HIEFFPLA_NET_0_66374
-  12.595                       HIEFFPLA_INST_0_49170:C (f)
+  9.492                        HIEFFPLA_INST_0_49685:Y (r)
+               +     0.334          net: HIEFFPLA_NET_0_66446
+  9.826                        HIEFFPLA_INST_0_49403:C (r)
+               +     0.986          cell: ADLIB:XNOR3
+  10.812                       HIEFFPLA_INST_0_49403:Y (f)
+               +     0.334          net: HIEFFPLA_NET_0_66517
+  11.146                       HIEFFPLA_INST_0_49188:C (f)
+               +     0.725          cell: ADLIB:XA1
+  11.871                       HIEFFPLA_INST_0_49188:Y (f)
+               +     0.334          net: HIEFFPLA_NET_0_66556
+  12.205                       HIEFFPLA_INST_0_49247:C (f)
+               +     0.681          cell: ADLIB:AND3
+  12.886                       HIEFFPLA_INST_0_49247:Y (f)
+               +     0.320          net: HIEFFPLA_NET_0_66542
+  13.206                       HIEFFPLA_INST_0_49244:C (f)
+               +     0.641          cell: ADLIB:AND3
+  13.847                       HIEFFPLA_INST_0_49244:Y (f)
+               +     0.323          net: HIEFFPLA_NET_0_66543
+  14.170                       HIEFFPLA_INST_0_49194:C (f)
                +     0.713          cell: ADLIB:XA1A
-  13.308                       HIEFFPLA_INST_0_49170:Y (f)
-               +     0.318          net: HIEFFPLA_NET_0_66407
-  13.626                       HIEFFPLA_INST_0_49188:A (f)
-               +     0.360          cell: ADLIB:AND3
-  13.986                       HIEFFPLA_INST_0_49188:Y (f)
-               +     0.320          net: HIEFFPLA_NET_0_66404
-  14.306                       HIEFFPLA_INST_0_49132:C (f)
-               +     0.713          cell: ADLIB:XA1A
-  15.019                       HIEFFPLA_INST_0_49132:Y (f)
-               +     0.334          net: HIEFFPLA_NET_0_66417
-  15.353                       Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:D (f)
+  14.883                       HIEFFPLA_INST_0_49194:Y (f)
+               +     0.334          net: HIEFFPLA_NET_0_66555
+  15.217                       Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:D (f)
                                     
-  15.353                       data arrival time
+  15.217                       data arrival time
   ________________________________________________________
   Data required time calculation
   N/C                          FMC_CLK
@@ -1413,7 +1433,7 @@ Expanded Path 1
   N/C                          CLKINT_2:A (r)
                +     0.747          cell: ADLIB:CLKINT
   N/C                          CLKINT_2:Y (r)
-               +     0.751          net: CLKINT_2_Y
+               +     0.716          net: CLKINT_2_Y
   N/C                          Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:CLK (r)
                -     0.539          Library setup time: ADLIB:DFN1P0
   N/C                          Data_Saving_0/FPGA_Buffer_0/DFN1P0_empty:D
@@ -1426,56 +1446,56 @@ END SET External Setup
 SET Clock to Output
 
 Path 1
-  From:                  Data_Saving_0/FPGA_Buffer_0/\\DFN1E1C0_data_out[1]\\/U1:CLK
-  To:                    FMC_DA[1]
-  Delay (ns):            13.375
+  From:                  Data_Saving_0/FPGA_Buffer_0/\\DFN1E1C0_data_out[2]\\/U1:CLK
+  To:                    FMC_DA[2]
+  Delay (ns):            13.149
   Slack (ns):
-  Arrival (ns):          17.727
+  Arrival (ns):          17.448
   Required (ns):
-  Clock to Out (ns):     17.727
+  Clock to Out (ns):     17.448
 
 Path 2
-  From:                  Data_Saving_0/FPGA_Buffer_0/\\DFN1E1C0_data_out[5]\\/U1:CLK
-  To:                    FMC_DA[5]
-  Delay (ns):            13.090
+  From:                  Data_Saving_0/FPGA_Buffer_0/\\DFN1E1C0_data_out[1]\\/U1:CLK
+  To:                    FMC_DA[1]
+  Delay (ns):            13.129
   Slack (ns):
-  Arrival (ns):          17.420
+  Arrival (ns):          17.433
   Required (ns):
-  Clock to Out (ns):     17.420
+  Clock to Out (ns):     17.433
 
 Path 3
   From:                  Data_Saving_0/FPGA_Buffer_0/\\DFN1E1C0_data_out[4]\\/U1:CLK
   To:                    FMC_DA[4]
-  Delay (ns):            13.079
+  Delay (ns):            13.113
   Slack (ns):
-  Arrival (ns):          17.406
+  Arrival (ns):          17.430
   Required (ns):
-  Clock to Out (ns):     17.406
+  Clock to Out (ns):     17.430
 
 Path 4
-  From:                  Data_Saving_0/FPGA_Buffer_0/\\DFN1E1C0_data_out[3]\\/U1:CLK
-  To:                    FMC_DA[3]
-  Delay (ns):            12.587
+  From:                  Data_Saving_0/FPGA_Buffer_0/\\DFN1E1C0_data_out[7]\\/U1:CLK
+  To:                    FMC_DA[7]
+  Delay (ns):            12.942
   Slack (ns):
-  Arrival (ns):          16.914
+  Arrival (ns):          17.247
   Required (ns):
-  Clock to Out (ns):     16.914
+  Clock to Out (ns):     17.247
 
 Path 5
-  From:                  Data_Saving_0/FPGA_Buffer_0/\\DFN1E1C0_data_out[2]\\/U1:CLK
-  To:                    FMC_DA[2]
-  Delay (ns):            12.036
+  From:                  Data_Saving_0/FPGA_Buffer_0/\\DFN1E1C0_data_out[5]\\/U1:CLK
+  To:                    FMC_DA[5]
+  Delay (ns):            12.941
   Slack (ns):
-  Arrival (ns):          16.388
+  Arrival (ns):          17.240
   Required (ns):
-  Clock to Out (ns):     16.388
+  Clock to Out (ns):     17.240
 
 
 Expanded Path 1
-  From: Data_Saving_0/FPGA_Buffer_0/\\DFN1E1C0_data_out[1]\\/U1:CLK
-  To: FMC_DA[1]
+  From: Data_Saving_0/FPGA_Buffer_0/\\DFN1E1C0_data_out[2]\\/U1:CLK
+  To: FMC_DA[2]
   data required time                             N/C
-  data arrival time                          -   17.727
+  data arrival time                          -   17.448
   slack                                          N/C
   ________________________________________________________
   Data arrival time calculation
@@ -1494,29 +1514,29 @@ Expanded Path 1
   2.829                        CLKINT_2:A (r)
                +     0.747          cell: ADLIB:CLKINT
   3.576                        CLKINT_2:Y (r)
-               +     0.776          net: CLKINT_2_Y
-  4.352                        Data_Saving_0/FPGA_Buffer_0/\\DFN1E1C0_data_out[1]\\/U1:CLK (r)
+               +     0.723          net: CLKINT_2_Y
+  4.299                        Data_Saving_0/FPGA_Buffer_0/\\DFN1E1C0_data_out[2]\\/U1:CLK (r)
                +     0.737          cell: ADLIB:DFN1C0
-  5.089                        Data_Saving_0/FPGA_Buffer_0/\\DFN1E1C0_data_out[1]\\/U1:Q (f)
-               +     1.724          net: FMC_DA_c[1]
-  6.813                        FMC_DA_pad[1]/U0/U1:D (f)
+  5.036                        Data_Saving_0/FPGA_Buffer_0/\\DFN1E1C0_data_out[2]\\/U1:Q (f)
+               +     1.498          net: FMC_DA_c[2]
+  6.534                        FMC_DA_pad[2]/U0/U1:D (f)
                +     0.659          cell: ADLIB:IOTRI_OB_EB
-  7.472                        FMC_DA_pad[1]/U0/U1:DOUT (f)
-               +     0.000          net: FMC_DA_pad[1]/U0/NET1
-  7.472                        FMC_DA_pad[1]/U0/U0:D (f)
+  7.193                        FMC_DA_pad[2]/U0/U1:DOUT (f)
+               +     0.000          net: FMC_DA_pad[2]/U0/NET1
+  7.193                        FMC_DA_pad[2]/U0/U0:D (f)
                +    10.255          cell: ADLIB:IOPAD_TRI
-  17.727                       FMC_DA_pad[1]/U0/U0:PAD (f)
-               +     0.000          net: FMC_DA[1]
-  17.727                       FMC_DA[1] (f)
+  17.448                       FMC_DA_pad[2]/U0/U0:PAD (f)
+               +     0.000          net: FMC_DA[2]
+  17.448                       FMC_DA[2] (f)
                                     
-  17.727                       data arrival time
+  17.448                       data arrival time
   ________________________________________________________
   Data required time calculation
   N/C                          FMC_CLK
                +     0.000          Clock source
   N/C                          FMC_CLK (r)
                                     
-  N/C                          FMC_DA[1] (f)
+  N/C                          FMC_DA[2] (f)
 
 
 END SET Clock to Output
@@ -1527,66 +1547,66 @@ SET Register to Asynchronous
 
 Path 1
   From:                  Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P:CLK
-  To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_WGRYSYNC[8]\\:CLR
-  Delay (ns):            3.073
-  Slack (ns):            15.107
-  Arrival (ns):          7.425
-  Required (ns):         22.532
+  To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_RGRY[7]\\:CLR
+  Delay (ns):            3.851
+  Slack (ns):            14.343
+  Arrival (ns):          8.171
+  Required (ns):         22.514
   Recovery (ns):         0.297
-  Minimum Period (ns):   3.412
-  Skew (ns):             0.042
+  Minimum Period (ns):   4.176
+  Skew (ns):             0.028
 
 Path 2
   From:                  Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P:CLK
-  To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_MEM_RADDR[0]\\:CLR
-  Delay (ns):            2.935
-  Slack (ns):            15.265
-  Arrival (ns):          7.287
-  Required (ns):         22.552
+  To:                    Data_Saving_0/FPGA_Buffer_0/DFN1C0_8:CLR
+  Delay (ns):            3.851
+  Slack (ns):            14.343
+  Arrival (ns):          8.171
+  Required (ns):         22.514
   Recovery (ns):         0.297
-  Minimum Period (ns):   3.254
-  Skew (ns):             0.022
+  Minimum Period (ns):   4.176
+  Skew (ns):             0.028
 
 Path 3
-  From:                  Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P_0:CLK
-  To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_RGRY[4]\\:CLR
-  Delay (ns):            2.881
-  Slack (ns):            15.268
-  Arrival (ns):          7.233
-  Required (ns):         22.501
+  From:                  Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P:CLK
+  To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_MEM_RADDR[1]\\:CLR
+  Delay (ns):            3.325
+  Slack (ns):            14.869
+  Arrival (ns):          7.645
+  Required (ns):         22.514
   Recovery (ns):         0.297
-  Minimum Period (ns):   3.251
-  Skew (ns):             0.073
+  Minimum Period (ns):   3.650
+  Skew (ns):             0.028
 
 Path 4
   From:                  Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P:CLK
-  To:                    Data_Saving_0/FPGA_Buffer_0/DFN1C0_8:CLR
-  Delay (ns):            2.840
-  Slack (ns):            15.274
-  Arrival (ns):          7.192
-  Required (ns):         22.466
+  To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_WGRYSYNC[8]\\:CLR
+  Delay (ns):            3.207
+  Slack (ns):            15.012
+  Arrival (ns):          7.527
+  Required (ns):         22.539
   Recovery (ns):         0.297
-  Minimum Period (ns):   3.245
-  Skew (ns):             0.108
+  Minimum Period (ns):   3.507
+  Skew (ns):             0.003
 
 Path 5
-  From:                  Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P_0:CLK
-  To:                    Data_Saving_0/FPGA_Buffer_0/DFN1C0_10:CLR
-  Delay (ns):            2.802
-  Slack (ns):            15.318
-  Arrival (ns):          7.154
-  Required (ns):         22.472
+  From:                  Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P:CLK
+  To:                    Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_WGRYSYNC[3]\\:CLR
+  Delay (ns):            3.014
+  Slack (ns):            15.180
+  Arrival (ns):          7.334
+  Required (ns):         22.514
   Recovery (ns):         0.297
-  Minimum Period (ns):   3.201
-  Skew (ns):             0.102
+  Minimum Period (ns):   3.339
+  Skew (ns):             0.028
 
 
 Expanded Path 1
   From: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P:CLK
-  To: Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_WGRYSYNC[8]\\:CLR
-  data required time                             22.532
-  data arrival time                          -   7.425
-  slack                                          15.107
+  To: Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_RGRY[7]\\:CLR
+  data required time                             22.514
+  data arrival time                          -   8.171
+  slack                                          14.343
   ________________________________________________________
   Data arrival time calculation
   0.000                        FMC_CLK
@@ -1604,14 +1624,14 @@ Expanded Path 1
   2.829                        CLKINT_2:A (r)
                +     0.747          cell: ADLIB:CLKINT
   3.576                        CLKINT_2:Y (r)
-               +     0.776          net: CLKINT_2_Y
-  4.352                        Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P:CLK (r)
+               +     0.744          net: CLKINT_2_Y
+  4.320                        Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P:CLK (r)
                +     0.581          cell: ADLIB:DFN1C0
-  4.933                        Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P:Q (r)
-               +     2.492          net: Data_Saving_0/FPGA_Buffer_0/READ_RESET_P
-  7.425                        Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_WGRYSYNC[8]\\:CLR (r)
+  4.901                        Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P:Q (r)
+               +     3.270          net: Data_Saving_0/FPGA_Buffer_0/READ_RESET_P
+  8.171                        Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_RGRY[7]\\:CLR (r)
                                     
-  7.425                        data arrival time
+  8.171                        data arrival time
   ________________________________________________________
   Data required time calculation
   18.519                       FMC_CLK
@@ -1629,12 +1649,12 @@ Expanded Path 1
   21.348                       CLKINT_2:A (r)
                +     0.747          cell: ADLIB:CLKINT
   22.095                       CLKINT_2:Y (r)
-               +     0.734          net: CLKINT_2_Y
-  22.829                       Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_WGRYSYNC[8]\\:CLK (r)
+               +     0.716          net: CLKINT_2_Y
+  22.811                       Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_RGRY[7]\\:CLK (r)
                -     0.297          Library recovery time: ADLIB:DFN1C0
-  22.532                       Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_WGRYSYNC[8]\\:CLR
+  22.514                       Data_Saving_0/FPGA_Buffer_0/\\DFN1C0_RGRY[7]\\:CLR
                                     
-  22.532                       data required time
+  22.514                       data required time
 
 
 END SET Register to Asynchronous
@@ -1645,40 +1665,40 @@ SET External Recovery
 
 Path 1
   From:                  RESET
-  To:                    Data_Saving_0/FPGA_Buffer_0/DFN1C0_2:CLR
-  Delay (ns):            4.062
+  To:                    Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P:CLR
+  Delay (ns):            4.091
   Slack (ns):
-  Arrival (ns):          4.062
+  Arrival (ns):          4.091
   Required (ns):
   Recovery (ns):         0.297
-  External Recovery (ns): 0.007
+  External Recovery (ns): 0.068
 
 Path 2
   From:                  RESET
   To:                    Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P_0:CLR
-  Delay (ns):            4.062
+  Delay (ns):            4.091
   Slack (ns):
-  Arrival (ns):          4.062
+  Arrival (ns):          4.091
   Required (ns):
   Recovery (ns):         0.297
-  External Recovery (ns): 0.007
+  External Recovery (ns): 0.068
 
 Path 3
   From:                  RESET
-  To:                    Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P:CLR
-  Delay (ns):            4.045
+  To:                    Data_Saving_0/FPGA_Buffer_0/DFN1C0_2:CLR
+  Delay (ns):            4.071
   Slack (ns):
-  Arrival (ns):          4.045
+  Arrival (ns):          4.071
   Required (ns):
   Recovery (ns):         0.297
-  External Recovery (ns): -0.010
+  External Recovery (ns): 0.048
 
 
 Expanded Path 1
   From: RESET
-  To: Data_Saving_0/FPGA_Buffer_0/DFN1C0_2:CLR
+  To: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P:CLR
   data required time                             N/C
-  data arrival time                          -   4.062
+  data arrival time                          -   4.091
   slack                                          N/C
   ________________________________________________________
   Data arrival time calculation
@@ -1691,14 +1711,14 @@ Expanded Path 1
   0.688                        RESET_pad/U0/U1:YIN (f)
                +     0.040          cell: ADLIB:IOIN_IB
   0.728                        RESET_pad/U0/U1:Y (f)
-               +     1.861          net: RESET_c
-  2.589                        CLKINT_1:A (f)
+               +     1.881          net: RESET_c
+  2.609                        CLKINT_1:A (f)
                +     0.767          cell: ADLIB:CLKINT
-  3.356                        CLKINT_1:Y (f)
-               +     0.706          net: CLKINT_1_Y
-  4.062                        Data_Saving_0/FPGA_Buffer_0/DFN1C0_2:CLR (f)
+  3.376                        CLKINT_1:Y (f)
+               +     0.715          net: CLKINT_1_Y
+  4.091                        Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P:CLR (f)
                                     
-  4.062                        data arrival time
+  4.091                        data arrival time
   ________________________________________________________
   Data required time calculation
   N/C                          FMC_CLK
@@ -1716,10 +1736,10 @@ Expanded Path 1
   N/C                          CLKINT_2:A (r)
                +     0.747          cell: ADLIB:CLKINT
   N/C                          CLKINT_2:Y (r)
-               +     0.776          net: CLKINT_2_Y
-  N/C                          Data_Saving_0/FPGA_Buffer_0/DFN1C0_2:CLK (r)
+               +     0.744          net: CLKINT_2_Y
+  N/C                          Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P:CLK (r)
                -     0.297          Library recovery time: ADLIB:DFN1C0
-  N/C                          Data_Saving_0/FPGA_Buffer_0/DFN1C0_2:CLR
+  N/C                          Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P:CLR
 
 
 END SET External Recovery
@@ -1789,116 +1809,116 @@ Clock Domain Timing_0/m_time[7]:Q
 SET Register to Register
 
 Path 1
-  From:                  Pressure_Signal_Debounce_0/state[1]:CLK
-  To:                    Pressure_Signal_Debounce_0/ms_cnt[7]:D
-  Delay (ns):            16.810
+  From:                  Pressure_Signal_Debounce_0/ms_cnt[0]:CLK
+  To:                    Pressure_Signal_Debounce_0/ms_cnt[4]:D
+  Delay (ns):            14.567
   Slack (ns):
-  Arrival (ns):          19.823
+  Arrival (ns):          17.652
   Required (ns):
-  Setup (ns):            0.574
-  Minimum Period (ns):   17.253
+  Setup (ns):            0.539
+  Minimum Period (ns):   15.933
 
 Path 2
-  From:                  Pressure_Signal_Debounce_0/state[1]:CLK
-  To:                    Pressure_Signal_Debounce_0/ms_cnt[8]:D
-  Delay (ns):            15.417
+  From:                  Pressure_Signal_Debounce_0/ms_cnt[0]:CLK
+  To:                    Pressure_Signal_Debounce_0/ms_cnt[1]:D
+  Delay (ns):            14.567
   Slack (ns):
-  Arrival (ns):          18.430
+  Arrival (ns):          17.652
   Required (ns):
-  Setup (ns):            0.574
-  Minimum Period (ns):   16.274
+  Setup (ns):            0.539
+  Minimum Period (ns):   15.876
 
 Path 3
-  From:                  Pressure_Signal_Debounce_0/state[1]:CLK
-  To:                    Pressure_Signal_Debounce_0/ms_cnt[5]:D
-  Delay (ns):            14.762
+  From:                  Pressure_Signal_Debounce_0/ms_cnt[0]:CLK
+  To:                    Pressure_Signal_Debounce_0/ms_cnt[6]:D
+  Delay (ns):            14.086
   Slack (ns):
-  Arrival (ns):          17.775
+  Arrival (ns):          17.171
   Required (ns):
   Setup (ns):            0.574
-  Minimum Period (ns):   15.311
+  Minimum Period (ns):   15.719
 
 Path 4
-  From:                  Pressure_Signal_Debounce_0/state[1]:CLK
-  To:                    Pressure_Signal_Debounce_0/ms_cnt[6]:D
-  Delay (ns):            14.283
+  From:                  Pressure_Signal_Debounce_0/ms_cnt[0]:CLK
+  To:                    Pressure_Signal_Debounce_0/ms_cnt[2]:D
+  Delay (ns):            14.567
   Slack (ns):
-  Arrival (ns):          17.296
+  Arrival (ns):          17.652
   Required (ns):
-  Setup (ns):            0.574
-  Minimum Period (ns):   15.070
+  Setup (ns):            0.539
+  Minimum Period (ns):   15.620
 
 Path 5
   From:                  Pressure_Signal_Debounce_0/state[1]:CLK
   To:                    Pressure_Signal_Debounce_0/ms_cnt[9]:D
-  Delay (ns):            14.795
+  Delay (ns):            14.342
   Slack (ns):
-  Arrival (ns):          17.808
+  Arrival (ns):          16.641
   Required (ns):
-  Setup (ns):            0.574
-  Minimum Period (ns):   14.510
+  Setup (ns):            0.539
+  Minimum Period (ns):   14.946
 
 
 Expanded Path 1
-  From: Pressure_Signal_Debounce_0/state[1]:CLK
-  To: Pressure_Signal_Debounce_0/ms_cnt[7]:D
+  From: Pressure_Signal_Debounce_0/ms_cnt[0]:CLK
+  To: Pressure_Signal_Debounce_0/ms_cnt[4]:D
   data required time                             N/C
-  data arrival time                          -   19.823
+  data arrival time                          -   17.652
   slack                                          N/C
   ________________________________________________________
   Data arrival time calculation
   0.000                        Timing_0/m_time[7]:Q
                +     0.000          Clock source
   0.000                        Timing_0/m_time[7]:Q (r)
-               +     3.013          net: m_time[7]
-  3.013                        Pressure_Signal_Debounce_0/state[1]:CLK (r)
-               +     0.737          cell: ADLIB:DFN1C1
-  3.750                        Pressure_Signal_Debounce_0/state[1]:Q (f)
-               +     3.082          net: Pressure_Signal_Debounce_0/state[1]
-  6.832                        HIEFFPLA_INST_0_55893:C (f)
-               +     0.716          cell: ADLIB:NOR3A
-  7.548                        HIEFFPLA_INST_0_55893:Y (r)
-               +     0.346          net: HIEFFPLA_NET_0_65026
-  7.894                        HIEFFPLA_INST_0_55900:B (r)
-               +     0.641          cell: ADLIB:AND3C
-  8.535                        HIEFFPLA_INST_0_55900:Y (f)
-               +     0.384          net: HIEFFPLA_NET_0_65024
-  8.919                        HIEFFPLA_INST_0_55907:A (f)
-               +     0.932          cell: ADLIB:OA1C
-  9.851                        HIEFFPLA_INST_0_55907:Y (r)
-               +     2.856          net: HIEFFPLA_NET_0_65022
-  12.707                       HIEFFPLA_INST_0_56059:B (r)
-               +     0.641          cell: ADLIB:AND3B
-  13.348                       HIEFFPLA_INST_0_56059:Y (f)
-               +     0.965          net: HIEFFPLA_NET_0_64982
-  14.313                       HIEFFPLA_INST_0_56054:C (f)
-               +     0.641          cell: ADLIB:AND3
-  14.954                       HIEFFPLA_INST_0_56054:Y (f)
-               +     2.031          net: HIEFFPLA_NET_0_64984
-  16.985                       HIEFFPLA_INST_0_56050:A (f)
-               +     0.464          cell: ADLIB:AND3
-  17.449                       HIEFFPLA_INST_0_56050:Y (f)
-               +     0.323          net: HIEFFPLA_NET_0_64986
-  17.772                       HIEFFPLA_INST_0_56039:A (f)
-               +     0.944          cell: ADLIB:AX1C
-  18.716                       HIEFFPLA_INST_0_56039:Y (r)
-               +     0.318          net: HIEFFPLA_NET_0_64988
-  19.034                       HIEFFPLA_INST_0_55859:A (r)
-               +     0.469          cell: ADLIB:AO1B
-  19.503                       HIEFFPLA_INST_0_55859:Y (r)
-               +     0.320          net: HIEFFPLA_NET_0_65033
-  19.823                       Pressure_Signal_Debounce_0/ms_cnt[7]:D (r)
+               +     3.085          net: m_time[7]
+  3.085                        Pressure_Signal_Debounce_0/ms_cnt[0]:CLK (r)
+               +     0.737          cell: ADLIB:DFN1
+  3.822                        Pressure_Signal_Debounce_0/ms_cnt[0]:Q (f)
+               +     1.579          net: Pressure_Signal_Debounce_0/ms_cnt[0]
+  5.401                        HIEFFPLA_INST_0_55841:B (f)
+               +     0.624          cell: ADLIB:AND3B
+  6.025                        HIEFFPLA_INST_0_55841:Y (r)
+               +     0.318          net: HIEFFPLA_NET_0_65161
+  6.343                        HIEFFPLA_INST_0_55837:A (r)
+               +     0.525          cell: ADLIB:NAND3
+  6.868                        HIEFFPLA_INST_0_55837:Y (f)
+               +     0.318          net: HIEFFPLA_NET_0_65162
+  7.186                        HIEFFPLA_INST_0_55846:A (f)
+               +     0.525          cell: ADLIB:AND3A
+  7.711                        HIEFFPLA_INST_0_55846:Y (r)
+               +     0.334          net: HIEFFPLA_NET_0_65159
+  8.045                        HIEFFPLA_INST_0_55844:B (r)
+               +     0.624          cell: ADLIB:NOR3B
+  8.669                        HIEFFPLA_INST_0_55844:Y (r)
+               +     2.090          net: HIEFFPLA_NET_0_65160
+  10.759                       HIEFFPLA_INST_0_55935:B (r)
+               +     0.516          cell: ADLIB:AND2
+  11.275                       HIEFFPLA_INST_0_55935:Y (r)
+               +     1.986          net: HIEFFPLA_NET_0_65135
+  13.261                       HIEFFPLA_INST_0_55905:A (r)
+               +     0.508          cell: ADLIB:OR2A
+  13.769                       HIEFFPLA_INST_0_55905:Y (f)
+               +     1.710          net: HIEFFPLA_NET_0_65145
+  15.479                       HIEFFPLA_INST_0_55868:B (f)
+               +     0.631          cell: ADLIB:AND2
+  16.110                       HIEFFPLA_INST_0_55868:Y (f)
+               +     0.483          net: HIEFFPLA_NET_0_65153
+  16.593                       HIEFFPLA_INST_0_55867:C (f)
+               +     0.725          cell: ADLIB:XA1
+  17.318                       HIEFFPLA_INST_0_55867:Y (f)
+               +     0.334          net: HIEFFPLA_NET_0_65154
+  17.652                       Pressure_Signal_Debounce_0/ms_cnt[4]:D (f)
                                     
-  19.823                       data arrival time
+  17.652                       data arrival time
   ________________________________________________________
   Data required time calculation
   N/C                          Timing_0/m_time[7]:Q
                +     0.000          Clock source
   N/C                          Timing_0/m_time[7]:Q (r)
-               +     3.144          net: m_time[7]
-  N/C                          Pressure_Signal_Debounce_0/ms_cnt[7]:CLK (r)
-               -     0.574          Library setup time: ADLIB:DFN1
-  N/C                          Pressure_Signal_Debounce_0/ms_cnt[7]:D
+               +     2.258          net: m_time[7]
+  N/C                          Pressure_Signal_Debounce_0/ms_cnt[4]:CLK (r)
+               -     0.539          Library setup time: ADLIB:DFN1
+  N/C                          Pressure_Signal_Debounce_0/ms_cnt[4]:D
 
 
 END SET Register to Register
@@ -1909,109 +1929,105 @@ SET External Setup
 
 Path 1
   From:                  RESET
-  To:                    Pressure_Signal_Debounce_0/ms_cnt[7]:D
-  Delay (ns):            11.189
+  To:                    Pressure_Signal_Debounce_0/ms_cnt[9]:D
+  Delay (ns):            9.814
   Slack (ns):
-  Arrival (ns):          11.189
+  Arrival (ns):          9.814
   Required (ns):
-  Setup (ns):            0.574
-  External Setup (ns):   8.619
+  Setup (ns):            0.539
+  External Setup (ns):   8.119
 
 Path 2
   From:                  RESET
-  To:                    Pressure_Signal_Debounce_0/ms_cnt[8]:D
-  Delay (ns):            9.796
+  To:                    Pressure_Signal_Debounce_0/ms_cnt[7]:D
+  Delay (ns):            9.649
   Slack (ns):
-  Arrival (ns):          9.796
+  Arrival (ns):          9.649
   Required (ns):
   Setup (ns):            0.574
-  External Setup (ns):   7.640
+  External Setup (ns):   7.875
 
 Path 3
   From:                  RESET
-  To:                    Pressure_Signal_Debounce_0/ms_cnt[4]:D
-  Delay (ns):            9.311
+  To:                    Pressure_Signal_Debounce_0/ms_cnt[8]:D
+  Delay (ns):            9.493
   Slack (ns):
-  Arrival (ns):          9.311
+  Arrival (ns):          9.493
   Required (ns):
-  Setup (ns):            0.539
-  External Setup (ns):   6.812
+  Setup (ns):            0.574
+  External Setup (ns):   7.203
 
 Path 4
   From:                  RESET
-  To:                    Pressure_Signal_Debounce_0/ms_cnt[1]:D
-  Delay (ns):            9.325
+  To:                    Pressure_Signal_Debounce_0/ms_cnt[4]:D
+  Delay (ns):            8.902
   Slack (ns):
-  Arrival (ns):          9.325
+  Arrival (ns):          8.902
   Required (ns):
   Setup (ns):            0.539
-  External Setup (ns):   6.696
+  External Setup (ns):   7.183
 
 Path 5
   From:                  RESET
-  To:                    Pressure_Signal_Debounce_0/ms_cnt[6]:D
-  Delay (ns):            8.918
+  To:                    Pressure_Signal_Debounce_0/ms_cnt[1]:D
+  Delay (ns):            8.902
   Slack (ns):
-  Arrival (ns):          8.918
+  Arrival (ns):          8.902
   Required (ns):
-  Setup (ns):            0.574
-  External Setup (ns):   6.692
+  Setup (ns):            0.539
+  External Setup (ns):   7.126
 
 
 Expanded Path 1
   From: RESET
-  To: Pressure_Signal_Debounce_0/ms_cnt[7]:D
+  To: Pressure_Signal_Debounce_0/ms_cnt[9]:D
   data required time                             N/C
-  data arrival time                          -   11.189
+  data arrival time                          -   9.814
   slack                                          N/C
   ________________________________________________________
   Data arrival time calculation
-  0.000                        RESET (r)
+  0.000                        RESET (f)
                +     0.000          net: RESET
-  0.000                        RESET_pad/U0/U0:PAD (r)
-               +     1.001          cell: ADLIB:IOPAD_IN
-  1.001                        RESET_pad/U0/U0:Y (r)
+  0.000                        RESET_pad/U0/U0:PAD (f)
+               +     0.688          cell: ADLIB:IOPAD_IN
+  0.688                        RESET_pad/U0/U0:Y (f)
                +     0.000          net: RESET_pad/U0/NET1
-  1.001                        RESET_pad/U0/U1:YIN (r)
-               +     0.043          cell: ADLIB:IOIN_IB
-  1.044                        RESET_pad/U0/U1:Y (r)
-               +     1.789          net: RESET_c
-  2.833                        CLKINT_1:A (r)
-               +     0.747          cell: ADLIB:CLKINT
-  3.580                        CLKINT_1:Y (r)
-               +     0.774          net: CLKINT_1_Y
-  4.354                        HIEFFPLA_INST_0_56059:A (r)
-               +     0.360          cell: ADLIB:AND3B
-  4.714                        HIEFFPLA_INST_0_56059:Y (f)
-               +     0.965          net: HIEFFPLA_NET_0_64982
-  5.679                        HIEFFPLA_INST_0_56054:C (f)
-               +     0.641          cell: ADLIB:AND3
-  6.320                        HIEFFPLA_INST_0_56054:Y (f)
-               +     2.031          net: HIEFFPLA_NET_0_64984
-  8.351                        HIEFFPLA_INST_0_56050:A (f)
-               +     0.464          cell: ADLIB:AND3
-  8.815                        HIEFFPLA_INST_0_56050:Y (f)
-               +     0.323          net: HIEFFPLA_NET_0_64986
-  9.138                        HIEFFPLA_INST_0_56039:A (f)
-               +     0.944          cell: ADLIB:AX1C
-  10.082                       HIEFFPLA_INST_0_56039:Y (r)
-               +     0.318          net: HIEFFPLA_NET_0_64988
-  10.400                       HIEFFPLA_INST_0_55859:A (r)
-               +     0.469          cell: ADLIB:AO1B
-  10.869                       HIEFFPLA_INST_0_55859:Y (r)
-               +     0.320          net: HIEFFPLA_NET_0_65033
-  11.189                       Pressure_Signal_Debounce_0/ms_cnt[7]:D (r)
+  0.688                        RESET_pad/U0/U1:YIN (f)
+               +     0.040          cell: ADLIB:IOIN_IB
+  0.728                        RESET_pad/U0/U1:Y (f)
+               +     1.881          net: RESET_c
+  2.609                        CLKINT_1:A (f)
+               +     0.767          cell: ADLIB:CLKINT
+  3.376                        CLKINT_1:Y (f)
+               +     0.706          net: CLKINT_1_Y
+  4.082                        HIEFFPLA_INST_0_56023:C (f)
+               +     0.488          cell: ADLIB:NOR3B
+  4.570                        HIEFFPLA_INST_0_56023:Y (r)
+               +     0.476          net: HIEFFPLA_NET_0_65111
+  5.046                        HIEFFPLA_INST_0_56069:B (r)
+               +     0.624          cell: ADLIB:NAND3
+  5.670                        HIEFFPLA_INST_0_56069:Y (f)
+               +     2.571          net: HIEFFPLA_NET_0_65098
+  8.241                        HIEFFPLA_INST_0_56045:C (f)
+               +     0.525          cell: ADLIB:NOR3B
+  8.766                        HIEFFPLA_INST_0_56045:Y (r)
+               +     0.318          net: HIEFFPLA_NET_0_65106
+  9.084                        HIEFFPLA_INST_0_55898:A (r)
+               +     0.396          cell: ADLIB:XA1
+  9.480                        HIEFFPLA_INST_0_55898:Y (f)
+               +     0.334          net: HIEFFPLA_NET_0_65148
+  9.814                        Pressure_Signal_Debounce_0/ms_cnt[9]:D (f)
                                     
-  11.189                       data arrival time
+  9.814                        data arrival time
   ________________________________________________________
   Data required time calculation
   N/C                          Timing_0/m_time[7]:Q
                +     0.000          Clock source
   N/C                          Timing_0/m_time[7]:Q (r)
-               +     3.144          net: m_time[7]
-  N/C                          Pressure_Signal_Debounce_0/ms_cnt[7]:CLK (r)
-               -     0.574          Library setup time: ADLIB:DFN1
-  N/C                          Pressure_Signal_Debounce_0/ms_cnt[7]:D
+               +     2.234          net: m_time[7]
+  N/C                          Pressure_Signal_Debounce_0/ms_cnt[9]:CLK (r)
+               -     0.539          Library setup time: ADLIB:DFN1
+  N/C                          Pressure_Signal_Debounce_0/ms_cnt[9]:D
 
 
 END SET External Setup
@@ -2038,40 +2054,40 @@ SET External Recovery
 
 Path 1
   From:                  RESET
-  To:                    Pressure_Signal_Debounce_0/state[1]:CLR
-  Delay (ns):            4.109
+  To:                    Pressure_Signal_Debounce_0/low_pressure:CLR
+  Delay (ns):            4.076
   Slack (ns):
-  Arrival (ns):          4.109
+  Arrival (ns):          4.076
   Required (ns):
   Recovery (ns):         0.297
-  External Recovery (ns): 1.393
+  External Recovery (ns): 2.315
 
 Path 2
   From:                  RESET
-  To:                    Pressure_Signal_Debounce_0/state[0]:CLR
-  Delay (ns):            4.069
+  To:                    Pressure_Signal_Debounce_0/state[1]:CLR
+  Delay (ns):            4.102
   Slack (ns):
-  Arrival (ns):          4.069
+  Arrival (ns):          4.102
   Required (ns):
   Recovery (ns):         0.297
-  External Recovery (ns): 1.200
+  External Recovery (ns): 2.100
 
 Path 3
   From:                  RESET
-  To:                    Pressure_Signal_Debounce_0/low_pressure:CLR
-  Delay (ns):            4.109
+  To:                    Pressure_Signal_Debounce_0/state[0]:CLR
+  Delay (ns):            4.102
   Slack (ns):
-  Arrival (ns):          4.109
+  Arrival (ns):          4.102
   Required (ns):
   Recovery (ns):         0.297
-  External Recovery (ns): 1.123
+  External Recovery (ns): 2.047
 
 
 Expanded Path 1
   From: RESET
-  To: Pressure_Signal_Debounce_0/state[1]:CLR
+  To: Pressure_Signal_Debounce_0/low_pressure:CLR
   data required time                             N/C
-  data arrival time                          -   4.109
+  data arrival time                          -   4.076
   slack                                          N/C
   ________________________________________________________
   Data arrival time calculation
@@ -2084,23 +2100,23 @@ Expanded Path 1
   0.688                        RESET_pad/U0/U1:YIN (f)
                +     0.040          cell: ADLIB:IOIN_IB
   0.728                        RESET_pad/U0/U1:Y (f)
-               +     1.861          net: RESET_c
-  2.589                        CLKINT_1:A (f)
+               +     1.881          net: RESET_c
+  2.609                        CLKINT_1:A (f)
                +     0.767          cell: ADLIB:CLKINT
-  3.356                        CLKINT_1:Y (f)
-               +     0.753          net: CLKINT_1_Y
-  4.109                        Pressure_Signal_Debounce_0/state[1]:CLR (f)
+  3.376                        CLKINT_1:Y (f)
+               +     0.700          net: CLKINT_1_Y
+  4.076                        Pressure_Signal_Debounce_0/low_pressure:CLR (f)
                                     
-  4.109                        data arrival time
+  4.076                        data arrival time
   ________________________________________________________
   Data required time calculation
   N/C                          Timing_0/m_time[7]:Q
                +     0.000          Clock source
   N/C                          Timing_0/m_time[7]:Q (r)
-               +     3.013          net: m_time[7]
-  N/C                          Pressure_Signal_Debounce_0/state[1]:CLK (r)
+               +     2.058          net: m_time[7]
+  N/C                          Pressure_Signal_Debounce_0/low_pressure:CLK (r)
                -     0.297          Library recovery time: ADLIB:DFN1C1
-  N/C                          Pressure_Signal_Debounce_0/state[1]:CLR
+  N/C                          Pressure_Signal_Debounce_0/low_pressure:CLR
 
 
 END SET External Recovery
@@ -2120,89 +2136,89 @@ Clock Domain Timing_0/s_time[5]:Q
 SET Register to Register
 
 Path 1
-  From:                  Science_0/ADC_RESET_0/state[0]:CLK
-  To:                    Science_0/ADC_RESET_0/state[0]:D
-  Delay (ns):            3.154
-  Slack (ns):
-  Arrival (ns):          4.492
-  Required (ns):
-  Setup (ns):            0.539
-  Minimum Period (ns):   3.693
-
-Path 2
   From:                  Science_0/ADC_RESET_0/state[1]:CLK
   To:                    Science_0/ADC_RESET_0/state[0]:D
   Delay (ns):            3.096
   Slack (ns):
-  Arrival (ns):          4.416
+  Arrival (ns):          4.753
   Required (ns):
   Setup (ns):            0.539
-  Minimum Period (ns):   3.617
+  Minimum Period (ns):   3.729
+
+Path 2
+  From:                  Science_0/ADC_RESET_0/state[0]:CLK
+  To:                    Science_0/ADC_RESET_0/state[0]:D
+  Delay (ns):            3.154
+  Slack (ns):
+  Arrival (ns):          4.717
+  Required (ns):
+  Setup (ns):            0.539
+  Minimum Period (ns):   3.693
 
 Path 3
-  From:                  Science_0/ADC_RESET_0/state[0]:CLK
-  To:                    Science_0/ADC_RESET_0/state[1]:D
-  Delay (ns):            2.108
-  Slack (ns):
-  Arrival (ns):          3.446
-  Required (ns):
-  Setup (ns):            0.539
-  Minimum Period (ns):   2.665
-
-Path 4
   From:                  Science_0/ADC_RESET_0/state[1]:CLK
   To:                    Science_0/ADC_RESET_0/state[1]:D
   Delay (ns):            2.006
   Slack (ns):
-  Arrival (ns):          3.326
+  Arrival (ns):          3.663
   Required (ns):
   Setup (ns):            0.574
   Minimum Period (ns):   2.580
 
-Path 5
+Path 4
   From:                  Science_0/ADC_RESET_0/state[0]:CLK
-  To:                    Science_0/ADC_RESET_0/old_enable:E
-  Delay (ns):            2.180
+  To:                    Science_0/ADC_RESET_0/state[1]:D
+  Delay (ns):            2.108
   Slack (ns):
-  Arrival (ns):          3.518
+  Arrival (ns):          3.671
   Required (ns):
-  Setup (ns):            0.400
-  Minimum Period (ns):   2.521
+  Setup (ns):            0.539
+  Minimum Period (ns):   2.553
+
+Path 5
+  From:                  Science_0/ADC_RESET_0/old_enable:CLK
+  To:                    Science_0/ADC_RESET_0/state[0]:D
+  Delay (ns):            1.867
+  Slack (ns):
+  Arrival (ns):          3.561
+  Required (ns):
+  Setup (ns):            0.539
+  Minimum Period (ns):   2.537
 
 
 Expanded Path 1
-  From: Science_0/ADC_RESET_0/state[0]:CLK
+  From: Science_0/ADC_RESET_0/state[1]:CLK
   To: Science_0/ADC_RESET_0/state[0]:D
   data required time                             N/C
-  data arrival time                          -   4.492
+  data arrival time                          -   4.753
   slack                                          N/C
   ________________________________________________________
   Data arrival time calculation
   0.000                        Timing_0/s_time[5]:Q
                +     0.000          Clock source
   0.000                        Timing_0/s_time[5]:Q (r)
-               +     1.338          net: s_time[5]
-  1.338                        Science_0/ADC_RESET_0/state[0]:CLK (r)
+               +     1.657          net: s_time[5]
+  1.657                        Science_0/ADC_RESET_0/state[1]:CLK (r)
                +     0.737          cell: ADLIB:DFN1E0
-  2.075                        Science_0/ADC_RESET_0/state[0]:Q (f)
-               +     0.406          net: Science_0/ADC_RESET_0/state[0]
-  2.481                        HIEFFPLA_INST_0_56759:B (f)
-               +     0.650          cell: ADLIB:AND2B
-  3.131                        HIEFFPLA_INST_0_56759:Y (r)
-               +     0.403          net: HIEFFPLA_NET_0_64785
-  3.534                        HIEFFPLA_INST_0_56761:B (r)
+  2.394                        Science_0/ADC_RESET_0/state[1]:Q (f)
+               +     0.461          net: Science_0/ADC_RESET_0/state[1]
+  2.855                        HIEFFPLA_INST_0_56784:A (f)
+               +     0.537          cell: ADLIB:AND2B
+  3.392                        HIEFFPLA_INST_0_56784:Y (r)
+               +     0.403          net: HIEFFPLA_NET_0_64895
+  3.795                        HIEFFPLA_INST_0_56786:B (r)
                +     0.624          cell: ADLIB:NOR3B
-  4.158                        HIEFFPLA_INST_0_56761:Y (r)
-               +     0.334          net: HIEFFPLA_NET_0_64784
-  4.492                        Science_0/ADC_RESET_0/state[0]:D (r)
+  4.419                        HIEFFPLA_INST_0_56786:Y (r)
+               +     0.334          net: HIEFFPLA_NET_0_64894
+  4.753                        Science_0/ADC_RESET_0/state[0]:D (r)
                                     
-  4.492                        data arrival time
+  4.753                        data arrival time
   ________________________________________________________
   Data required time calculation
   N/C                          Timing_0/s_time[5]:Q
                +     0.000          Clock source
   N/C                          Timing_0/s_time[5]:Q (r)
-               +     1.338          net: s_time[5]
+               +     1.563          net: s_time[5]
   N/C                          Science_0/ADC_RESET_0/state[0]:CLK (r)
                -     0.539          Library setup time: ADLIB:DFN1E0
   N/C                          Science_0/ADC_RESET_0/state[0]:D
@@ -2216,30 +2232,30 @@ SET External Setup
 
 Path 1
   From:                  RESET
-  To:                    Science_0/ADC_RESET_0/state[1]:E
-  Delay (ns):            4.298
+  To:                    Science_0/ADC_RESET_0/state[0]:E
+  Delay (ns):            4.316
   Slack (ns):
-  Arrival (ns):          4.298
+  Arrival (ns):          4.316
   Required (ns):
   Setup (ns):            0.435
-  External Setup (ns):   3.413
+  External Setup (ns):   3.188
 
 Path 2
   From:                  RESET
-  To:                    Science_0/ADC_RESET_0/state[0]:E
-  Delay (ns):            4.298
+  To:                    Science_0/ADC_RESET_0/state[1]:E
+  Delay (ns):            4.316
   Slack (ns):
-  Arrival (ns):          4.298
+  Arrival (ns):          4.316
   Required (ns):
   Setup (ns):            0.435
-  External Setup (ns):   3.395
+  External Setup (ns):   3.094
 
 
 Expanded Path 1
   From: RESET
-  To: Science_0/ADC_RESET_0/state[1]:E
+  To: Science_0/ADC_RESET_0/state[0]:E
   data required time                             N/C
-  data arrival time                          -   4.298
+  data arrival time                          -   4.316
   slack                                          N/C
   ________________________________________________________
   Data arrival time calculation
@@ -2252,23 +2268,23 @@ Expanded Path 1
   1.001                        RESET_pad/U0/U1:YIN (r)
                +     0.043          cell: ADLIB:IOIN_IB
   1.044                        RESET_pad/U0/U1:Y (r)
-               +     1.789          net: RESET_c
-  2.833                        CLKINT_1:A (r)
+               +     1.802          net: RESET_c
+  2.846                        CLKINT_1:A (r)
                +     0.747          cell: ADLIB:CLKINT
-  3.580                        CLKINT_1:Y (r)
-               +     0.718          net: CLKINT_1_Y
-  4.298                        Science_0/ADC_RESET_0/state[1]:E (r)
+  3.593                        CLKINT_1:Y (r)
+               +     0.723          net: CLKINT_1_Y
+  4.316                        Science_0/ADC_RESET_0/state[0]:E (r)
                                     
-  4.298                        data arrival time
+  4.316                        data arrival time
   ________________________________________________________
   Data required time calculation
   N/C                          Timing_0/s_time[5]:Q
                +     0.000          Clock source
   N/C                          Timing_0/s_time[5]:Q (r)
-               +     1.320          net: s_time[5]
-  N/C                          Science_0/ADC_RESET_0/state[1]:CLK (r)
+               +     1.563          net: s_time[5]
+  N/C                          Science_0/ADC_RESET_0/state[0]:CLK (r)
                -     0.435          Library setup time: ADLIB:DFN1E0
-  N/C                          Science_0/ADC_RESET_0/state[1]:E
+  N/C                          Science_0/ADC_RESET_0/state[0]:E
 
 
 END SET External Setup
@@ -2280,40 +2296,40 @@ SET Clock to Output
 Path 1
   From:                  Science_0/ADC_RESET_0/ADCRESET:CLK
   To:                    ARST
-  Delay (ns):            14.883
+  Delay (ns):            13.584
   Slack (ns):
-  Arrival (ns):          15.989
+  Arrival (ns):          15.657
   Required (ns):
-  Clock to Out (ns):     15.989
+  Clock to Out (ns):     15.657
 
 
 Expanded Path 1
   From: Science_0/ADC_RESET_0/ADCRESET:CLK
   To: ARST
   data required time                             N/C
-  data arrival time                          -   15.989
+  data arrival time                          -   15.657
   slack                                          N/C
   ________________________________________________________
   Data arrival time calculation
   0.000                        Timing_0/s_time[5]:Q
                +     0.000          Clock source
   0.000                        Timing_0/s_time[5]:Q (r)
-               +     1.106          net: s_time[5]
-  1.106                        Science_0/ADC_RESET_0/ADCRESET:CLK (r)
+               +     2.073          net: s_time[5]
+  2.073                        Science_0/ADC_RESET_0/ADCRESET:CLK (r)
                +     0.737          cell: ADLIB:DFN1C1
-  1.843                        Science_0/ADC_RESET_0/ADCRESET:Q (f)
-               +     3.232          net: ARST_c
-  5.075                        ARST_pad/U0/U1:D (f)
+  2.810                        Science_0/ADC_RESET_0/ADCRESET:Q (f)
+               +     1.933          net: ARST_c
+  4.743                        ARST_pad/U0/U1:D (f)
                +     0.659          cell: ADLIB:IOTRI_OB_EB
-  5.734                        ARST_pad/U0/U1:DOUT (f)
+  5.402                        ARST_pad/U0/U1:DOUT (f)
                +     0.000          net: ARST_pad/U0/NET1
-  5.734                        ARST_pad/U0/U0:D (f)
+  5.402                        ARST_pad/U0/U0:D (f)
                +    10.255          cell: ADLIB:IOPAD_TRI
-  15.989                       ARST_pad/U0/U0:PAD (f)
+  15.657                       ARST_pad/U0/U0:PAD (f)
                +     0.000          net: ARST
-  15.989                       ARST (f)
+  15.657                       ARST (f)
                                     
-  15.989                       data arrival time
+  15.657                       data arrival time
   ________________________________________________________
   Data required time calculation
   N/C                          Timing_0/s_time[5]:Q
@@ -2339,30 +2355,30 @@ SET External Recovery
 
 Path 1
   From:                  RESET
-  To:                    Science_0/ADC_RESET_0/ADCRESET:CLR
-  Delay (ns):            4.088
+  To:                    Science_0/ADC_RESET_0/old_enable:CLR
+  Delay (ns):            4.083
   Slack (ns):
-  Arrival (ns):          4.088
+  Arrival (ns):          4.083
   Required (ns):
   Recovery (ns):         0.297
-  External Recovery (ns): 3.279
+  External Recovery (ns): 2.686
 
 Path 2
   From:                  RESET
-  To:                    Science_0/ADC_RESET_0/old_enable:CLR
-  Delay (ns):            4.052
+  To:                    Science_0/ADC_RESET_0/ADCRESET:CLR
+  Delay (ns):            4.113
   Slack (ns):
-  Arrival (ns):          4.052
+  Arrival (ns):          4.113
   Required (ns):
   Recovery (ns):         0.297
-  External Recovery (ns): 2.952
+  External Recovery (ns): 2.337
 
 
 Expanded Path 1
   From: RESET
-  To: Science_0/ADC_RESET_0/ADCRESET:CLR
+  To: Science_0/ADC_RESET_0/old_enable:CLR
   data required time                             N/C
-  data arrival time                          -   4.088
+  data arrival time                          -   4.083
   slack                                          N/C
   ________________________________________________________
   Data arrival time calculation
@@ -2375,23 +2391,23 @@ Expanded Path 1
   0.688                        RESET_pad/U0/U1:YIN (f)
                +     0.040          cell: ADLIB:IOIN_IB
   0.728                        RESET_pad/U0/U1:Y (f)
-               +     1.861          net: RESET_c
-  2.589                        CLKINT_1:A (f)
+               +     1.881          net: RESET_c
+  2.609                        CLKINT_1:A (f)
                +     0.767          cell: ADLIB:CLKINT
-  3.356                        CLKINT_1:Y (f)
-               +     0.732          net: CLKINT_1_Y
-  4.088                        Science_0/ADC_RESET_0/ADCRESET:CLR (f)
+  3.376                        CLKINT_1:Y (f)
+               +     0.707          net: CLKINT_1_Y
+  4.083                        Science_0/ADC_RESET_0/old_enable:CLR (f)
                                     
-  4.088                        data arrival time
+  4.083                        data arrival time
   ________________________________________________________
   Data required time calculation
   N/C                          Timing_0/s_time[5]:Q
                +     0.000          Clock source
   N/C                          Timing_0/s_time[5]:Q (r)
-               +     1.106          net: s_time[5]
-  N/C                          Science_0/ADC_RESET_0/ADCRESET:CLK (r)
-               -     0.297          Library recovery time: ADLIB:DFN1C1
-  N/C                          Science_0/ADC_RESET_0/ADCRESET:CLR
+               +     1.694          net: s_time[5]
+  N/C                          Science_0/ADC_RESET_0/old_enable:CLK (r)
+               -     0.297          Library recovery time: ADLIB:DFN1E1C1
+  N/C                          Science_0/ADC_RESET_0/old_enable:CLR
 
 
 END SET External Recovery
@@ -2561,88 +2577,84 @@ Path set Pin to Pin
 SET Input to Output
 
 Path 1
-  From:                  EMU_RX
-  To:                    UC_UART_RX
-  Delay (ns):            18.106
+  From:                  UC_CONSOLE_EN
+  To:                    SCIENCE_TX
+  Delay (ns):            19.125
   Slack (ns):
-  Arrival (ns):          18.106
+  Arrival (ns):          19.125
   Required (ns):
 
 Path 2
-  From:                  UC_CONSOLE_EN
-  To:                    SCIENCE_TX
-  Delay (ns):            17.582
+  From:                  EMU_RX
+  To:                    UC_UART_RX
+  Delay (ns):            18.273
   Slack (ns):
-  Arrival (ns):          17.582
+  Arrival (ns):          18.273
   Required (ns):
 
 Path 3
   From:                  UC_UART_TX
   To:                    SCIENCE_TX
-  Delay (ns):            16.652
+  Delay (ns):            17.203
   Slack (ns):
-  Arrival (ns):          16.652
+  Arrival (ns):          17.203
   Required (ns):
 
 Path 4
   From:                  UC_CONSOLE_EN
-  To:                    TOP_UART_TX
-  Delay (ns):            16.366
+  To:                    UC_UART_RX
+  Delay (ns):            17.064
   Slack (ns):
-  Arrival (ns):          16.366
+  Arrival (ns):          17.064
   Required (ns):
 
 Path 5
   From:                  UC_CONSOLE_EN
-  To:                    UC_UART_RX
-  Delay (ns):            16.016
+  To:                    TOP_UART_TX
+  Delay (ns):            16.919
   Slack (ns):
-  Arrival (ns):          16.016
+  Arrival (ns):          16.919
   Required (ns):
 
 
 Expanded Path 1
-  From: EMU_RX
-  To: UC_UART_RX
+  From: UC_CONSOLE_EN
+  To: SCIENCE_TX
   data required time                             N/C
-  data arrival time                          -   18.106
+  data arrival time                          -   19.125
   slack                                          N/C
   ________________________________________________________
   Data arrival time calculation
-  0.000                        EMU_RX (f)
-               +     0.000          net: EMU_RX
-  0.000                        EMU_RX_pad/U0/U0:PAD (f)
-               +     0.688          cell: ADLIB:IOPAD_IN
-  0.688                        EMU_RX_pad/U0/U0:Y (f)
-               +     0.000          net: EMU_RX_pad/U0/NET1
-  0.688                        EMU_RX_pad/U0/U1:YIN (f)
-               +     0.040          cell: ADLIB:IOIN_IB
-  0.728                        EMU_RX_pad/U0/U1:Y (f)
-               +     3.689          net: EMU_RX_c
-  4.417                        HIEFFPLA_INST_0_48033:B (f)
-               +     0.631          cell: ADLIB:AND2
-  5.048                        HIEFFPLA_INST_0_48033:Y (f)
-               +     0.334          net: HIEFFPLA_NET_0_66694
-  5.382                        HIEFFPLA_INST_0_49094:B (f)
-               +     0.619          cell: ADLIB:MX2
-  6.001                        HIEFFPLA_INST_0_49094:Y (f)
-               +     1.767          net: UC_UART_RX_c
-  7.768                        UC_UART_RX_pad/U0/U1:D (f)
+  0.000                        UC_CONSOLE_EN (r)
+               +     0.000          net: UC_CONSOLE_EN
+  0.000                        UC_CONSOLE_EN_pad/U0/U0:PAD (r)
+               +     1.016          cell: ADLIB:IOPAD_IN
+  1.016                        UC_CONSOLE_EN_pad/U0/U0:Y (r)
+               +     0.000          net: UC_CONSOLE_EN_pad/U0/NET1
+  1.016                        UC_CONSOLE_EN_pad/U0/U1:YIN (r)
+               +     0.043          cell: ADLIB:IOIN_IB
+  1.059                        UC_CONSOLE_EN_pad/U0/U1:Y (r)
+               +     3.050          net: UC_CONSOLE_EN_c
+  4.109                        HIEFFPLA_INST_0_49149:S (r)
+               +     0.468          cell: ADLIB:MX2
+  4.577                        HIEFFPLA_INST_0_49149:Y (f)
+               +     4.210          net: SCIENCE_TX_c_c
+  8.787                        SCIENCE_TX_pad/U0/U1:D (f)
                +     0.659          cell: ADLIB:IOTRI_OB_EB
-  8.427                        UC_UART_RX_pad/U0/U1:DOUT (f)
-               +     0.000          net: UC_UART_RX_pad/U0/NET1
-  8.427                        UC_UART_RX_pad/U0/U0:D (f)
+  9.446                        SCIENCE_TX_pad/U0/U1:DOUT (f)
+               +     0.000          net: SCIENCE_TX_pad/U0/NET1
+  9.446                        SCIENCE_TX_pad/U0/U0:D (f)
                +     9.679          cell: ADLIB:IOPAD_TRI
-  18.106                       UC_UART_RX_pad/U0/U0:PAD (f)
-               +     0.000          net: UC_UART_RX
-  18.106                       UC_UART_RX (f)
+  19.125                       SCIENCE_TX_pad/U0/U0:PAD (f)
+               +     0.000          net: SCIENCE_TX
+  19.125                       SCIENCE_TX (f)
                                     
-  18.106                       data arrival time
+  19.125                       data arrival time
   ________________________________________________________
   Data required time calculation
-  N/C                          EMU_RX (f)
+  N/C                          UC_CONSOLE_EN (r)
                                     
-  N/C                          UC_UART_RX (f)
+  N/C                          SCIENCE_TX (f)
                                     
   N/C                          data required time
 

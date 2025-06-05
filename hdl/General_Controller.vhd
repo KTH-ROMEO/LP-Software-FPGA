@@ -48,6 +48,7 @@ port (
     st_rdata1  : IN std_logic_vector(15 downto 0);
 
     acc_packet : IN std_logic_vector(71 downto 0);
+    new_data : IN std_logic; -- example for periodic data
 
     st_wdata : OUT std_logic_vector(15 downto 0);
     st_waddr : OUT std_logic_vector(7 downto 0);
@@ -232,6 +233,9 @@ architecture architecture_General_Controller of General_Controller is
     signal old_1Hz : std_logic;
 
     signal mission_mode : std_logic;
+    
+    signal old_new_data : std_logic;
+
 begin
     process (clk, reset)
     begin
@@ -328,6 +332,7 @@ begin
             st_ren1  <= '0';
 
             tx_sensors_byte_index <= 0;
+            old_new_data <= '0';
 
         elsif rising_edge(clk) then
     ----------------------- Seconds counter -----------------------------
@@ -470,11 +475,6 @@ begin
     --------- Microcontroller UART transmit ------------
             case uc_tx_state is
                 when uc_tx_idle =>
-                    -- uc_tx_substate <= 1;
-
-                    -- if uc_rx_rdy = '1' then
-                    --     uc_rx_state <= uc_rx_preamble;
-                    -- end if;
 
                 when uc_tx_preamble =>
                     case uc_tx_substate is
@@ -1024,7 +1024,6 @@ begin
                     case uc_tx_substate is
                         when 1 => 
                             if uc_tx_rdy = '1' then
-                                -- uc_send <= msg_2send(((tx_sensors_byte_index+1)*8-1) downto (tx_sensors_byte_index*8));
                                 uc_send <= msg_2send((71-tx_sensors_byte_index*8) downto (64-tx_sensors_byte_index*8));
                                 uc_wen <= '1';
                                 uc_tx_substate <= 2;
@@ -1066,6 +1065,16 @@ begin
                      uc_tx_state <= uc_tx_idle;
 
             end case;
+
+    --------- Microcontroller UART receive ------------
+            old_new_data <= new_data;    -- this will not be needed if new_data is a strobe, but for now
+            if (new_data = '1') and (old_new_data = '0') then    -- detects the "rising edge" of new data, 
+                                                                -- not needed when new_data is a strobe
+                msg_2send <= acc_packet;
+                uc_tx_state <= uc_tx_preamble;
+                uc_tx_nextstate <= uc_tx_send_sensors_data;
+            end if;
+
 
     --------- Microcontroller UART receive ------------
             if uc_rx_state /= uc_rx_wait AND uc_rx_state /= uc_rx_get_byte then
