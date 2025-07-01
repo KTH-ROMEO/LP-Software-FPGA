@@ -1,0 +1,30 @@
+(DELAYFILE
+(SDFVERSION "OVI 2.1")
+(DESIGN "test_sim")
+(DATE "123")
+(VENDOR "ProASIC3")
+(PROGRAM "Synplify")
+(VERSION "mapact, Build 2172R")
+(DIVIDER /)
+(VOLTAGE 2.500000:2.500000:2.500000)
+(PROCESS "TYPICAL")
+(TEMPERATURE 70.000000:70.000000:70.000000)
+(TIMESCALE 1ns)
+(CELL
+  (CELLTYPE "test_sim")
+  (INSTANCE)
+  (TIMINGCHECK
+
+    (PATHCONSTRAINT test_div_0/cnt_int\[1\]/CLK  test_div_0/cnt_int\[1\]/Q  test_div_0/un3_cnt_int_1_SUM1/B  test_div_0/un3_cnt_int_1_SUM1/Y  test_div_0/cnt_int\[1\]/D  	(9.5:9.5:9.5) )
+
+    (PATHCONSTRAINT test_div_0/cnt_int\[0\]/CLK  test_div_0/cnt_int\[0\]/Q  test_div_0/cnt_int_RNO\[0\]/A  test_div_0/cnt_int_RNO\[0\]/Y  test_div_0/cnt_int\[0\]/D  	(9.5:9.5:9.5) )
+
+    (PATHCONSTRAINT test_div_0/cnt_int\[0\]/CLK  test_div_0/cnt_int\[0\]/Q  test_div_0/un3_cnt_int_1_SUM1/A  test_div_0/un3_cnt_int_1_SUM1/Y  test_div_0/cnt_int\[1\]/D  	(9.5:9.5:9.5) )
+
+    (PATHCONSTRAINT test_div_0/cnt_int\[0\]/CLK  test_div_0/cnt_int\[0\]/Q  cnt_pad\[0\]/D  cnt_pad\[0\]/PAD  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT test_div_0/cnt_int\[1\]/CLK  test_div_0/cnt_int\[1\]/Q  cnt_pad\[1\]/D  cnt_pad\[1\]/PAD  	(10.0:10.0:10.0) )
+
+  )
+)
+)

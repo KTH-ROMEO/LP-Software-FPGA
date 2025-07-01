@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Thu Jun 05 17:27:36 2025
+-- Created by SmartDesign Mon Jun 23 09:11:53 2025
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -242,6 +242,7 @@ component General_Controller
         ext_rx_rdy              : in  std_logic;
         ffu_ejected             : in  std_logic;
         low_pressure            : in  std_logic;
+        mag_packet              : in  std_logic_vector(71 downto 0);
         milliseconds            : in  std_logic_vector(23 downto 0);
         new_data                : in  std_logic;
         reset                   : in  std_logic;
@@ -526,6 +527,7 @@ signal Communications_0_uc_recv                     : std_logic_vector(7 downto 
 signal Communications_0_uc_rx_rdy                   : std_logic;
 signal Communications_0_uc_tx_rdy                   : std_logic;
 signal Data_Hub_Packets_0_acc_packet_0              : std_logic_vector(71 downto 0);
+signal Data_Hub_Packets_0_mag_packet_0              : std_logic_vector(71 downto 0);
 signal Eject_Signal_Debounce_0_ffu_ejected_out      : std_logic;
 signal FMC_DA_0                                     : std_logic_vector(7 downto 0);
 signal FPGA_BUF_INT_net_0                           : std_logic;
@@ -929,7 +931,7 @@ Data_Hub_Packets_0 : Data_Hub_Packets
         status_bits       => General_Controller_0_status_bits,
         -- Outputs
         acc_packet        => Data_Hub_Packets_0_acc_packet_0,
-        mag_packet        => OPEN,
+        mag_packet        => Data_Hub_Packets_0_mag_packet_0,
         gyro_packet       => OPEN,
         pressure_packet   => OPEN,
         status_packet     => OPEN 
@@ -1004,6 +1006,7 @@ General_Controller_0 : General_Controller
         st_rdata0               => SweepTable_0_RD,
         st_rdata1               => SweepTable_1_RD,
         acc_packet              => Data_Hub_Packets_0_acc_packet_0,
+        mag_packet              => Data_Hub_Packets_0_mag_packet_0,
         new_data                => Timing_0_s_clks24to24(24),
         -- Outputs
         st_wdata                => General_Controller_0_st_wdata,

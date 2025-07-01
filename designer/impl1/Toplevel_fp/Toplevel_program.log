@@ -5,7 +5,7 @@ Release: v11.9 SP6
 Software Version: 11.9.6.7
 PDB file 'C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer\impl1\Toplevel.pdb' has
 been loaded successfully.
-DESIGN : Toplevel;  CHECKSUM : 253E;  PDB_VERSION : 1.9
+DESIGN : Toplevel;  CHECKSUM : 1F28;  PDB_VERSION : 1.9
 programmer 'S20059FFJ4' : FlashPro5
 Opened
 'C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer\impl1\Toplevel_fp\Toplevel.pro'
@@ -17,16 +17,18 @@ programmer 'S20059FFJ4' : Executing action PROGRAM
 programmer 'S20059FFJ4' : EXPORT FSN[48] = 0007563c887d
 programmer 'S20059FFJ4' : Erase ...
 programmer 'S20059FFJ4' : Completed erase
-programmer 'S20059FFJ4' : EXPORT CHECKSUM[16] = 253e
+programmer 'S20059FFJ4' : EXPORT CHECKSUM[16] = 1f28
 programmer 'S20059FFJ4' : Programming FPGA Array
 programmer 'S20059FFJ4' : Verifying FPGA Array
-programmer 'S20059FFJ4' :         Verifying FPGA Array -- pass
-programmer 'S20059FFJ4' : Finished: Thu Jun 05 17:35:36 2025 (Elapsed time 00:01:07)
-programmer 'S20059FFJ4' : Executing action PROGRAM PASSED.
+programmer 'S20059FFJ4' : Verify 1 failed at row 974.
+programmer 'S20059FFJ4' : EXPORT ERROR_CODE[16] = 805c
+programmer 'S20059FFJ4' : Finished: Mon Jun 30 19:51:55 2025 (Elapsed time 00:01:04)
+Error: programmer 'S20059FFJ4' : Executing action PROGRAM FAILED, EXIT 11, refer to FlashPro
+       online help for details.
 
                         o - o - o - o - o - o
 
-The 'run_selected_actions' command succeeded.
-Project saved.
-The 'save_project' command succeeded.
+Error: The command 'run_selected_actions' failed.
+Error: Failure when executing Tcl script. [ Line 3 ]
+Error: The Execute Script command failed.
 Project closed.

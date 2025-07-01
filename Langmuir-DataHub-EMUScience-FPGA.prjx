@@ -35,7 +35,7 @@ KEY ProjectDescription ""
 KEY Pa4PeripheralNewSeq "GOOD"
 KEY SimulationType "VHDL"
 KEY Vendor "Actel"
-KEY ActiveRoot "Toplevel::work"
+KEY ActiveRoot "Accelerometer::work"
 LIST REVISIONS
 VALUE="Impl1",NUM=1
 CURREV=1
@@ -197,29 +197,52 @@ IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\Toplevel\Toplevel.cxf,actgen_cxf"
 STATE="utd"
-TIME="1749068452"
+TIME="1750662743"
 SIZE="10033"
 ENDFILE
 VALUE "<project>\component\work\Toplevel\Toplevel.vhd,hdl"
 STATE="utd"
-TIME="1749068452"
-SIZE="60141"
+TIME="1750662713"
+SIZE="60506"
 PARENT="<project>\component\work\Toplevel\Toplevel.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\UART_RX_FSM_tb\UART_RX_FSM_tb.cxf,actgen_cxf"
+STATE="utd"
+TIME="1750697101"
+SIZE="1980"
+ENDFILE
+VALUE "<project>\component\work\UART_RX_FSM_tb\UART_RX_FSM_tb.vhd,tb_hdl"
+STATE="utd"
+TIME="1750697100"
+SIZE="1987"
+PARENT="<project>\component\work\UART_RX_FSM_tb\UART_RX_FSM_tb.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\designer\impl1\test_div.ide_des,ide_des"
+STATE="utd"
+TIME="1750695672"
+SIZE="211"
+ENDFILE
+VALUE "<project>\designer\impl1\test_sim.ide_des,ide_des"
+STATE="utd"
+TIME="1750695879"
+SIZE="211"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel.adb,adb"
 STATE="utd"
-TIME="1749068452"
-SIZE="12293632"
+TIME="1750664199"
+SIZE="12880896"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel.ide_des,ide_des"
 STATE="utd"
-TIME="1749068452"
-SIZE="1029"
+TIME="1750664200"
+SIZE="997"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel.pdb,pdb"
 STATE="utd"
-TIME="1749068452"
-SIZE="130219"
+TIME="1750664198"
+SIZE="130500"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_ba.sdf,ba_sdf"
 STATE="ood"
@@ -233,18 +256,18 @@ SIZE="1476003"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_compile_log.rpt,log"
 STATE="utd"
-TIME="1749068452"
-SIZE="16407"
+TIME="1750663898"
+SIZE="16075"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_fp\projectData\Toplevel.pdb,pdb"
 STATE="utd"
-TIME="1749068452"
-SIZE="130219"
+TIME="1750664250"
+SIZE="130500"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_fp\Toplevel.pro,pro"
 STATE="utd"
-TIME="1749068452"
-SIZE="2480"
+TIME="1750664250"
+SIZE="2432"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_iteration_summary.rpt,log"
 STATE="utd"
@@ -253,8 +276,8 @@ SIZE="2505"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_placeroute_log.rpt,log"
 STATE="utd"
-TIME="1749068452"
-SIZE="3123"
+TIME="1750664149"
+SIZE="2999"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_power.rpt,log"
 STATE="utd"
@@ -308,8 +331,8 @@ SIZE="12269"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_prgdata_log.rpt,log"
 STATE="utd"
-TIME="1749068452"
-SIZE="813"
+TIME="1750664200"
+SIZE="742"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_timing.rpt,log"
 STATE="utd"
@@ -468,8 +491,23 @@ SIZE="30478"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_verifytiming_log.rpt,log"
 STATE="utd"
-TIME="1749068452"
-SIZE="1214"
+TIME="1750664173"
+SIZE="1181"
+ENDFILE
+VALUE "<project>\designer\impl1\UARTLineReleaser.ide_des,ide_des"
+STATE="utd"
+TIME="1750695864"
+SIZE="219"
+ENDFILE
+VALUE "<project>\designer\impl1\UART_RX_FSM_tb.ide_des,ide_des"
+STATE="utd"
+TIME="1750776469"
+SIZE="311"
+ENDFILE
+VALUE "<project>\designer\impl1\UART_RX_FSM_tb_1.ide_des,ide_des"
+STATE="utd"
+TIME="1750698019"
+SIZE="219"
 ENDFILE
 VALUE "<project>\hdl\ADC_Data_Packer.vhd,hdl"
 STATE="utd"
@@ -518,8 +556,8 @@ SIZE="1918"
 ENDFILE
 VALUE "<project>\hdl\Data_Hub_Packets.vhd,hdl"
 STATE="utd"
-TIME="1749068452"
-SIZE="2867"
+TIME="1749579676"
+SIZE="2423"
 ENDFILE
 VALUE "<project>\hdl\Data_Packer.vhd,hdl"
 STATE="utd"
@@ -548,8 +586,8 @@ SIZE="5572"
 ENDFILE
 VALUE "<project>\hdl\General_Controller.vhd,hdl"
 STATE="utd"
-TIME="1749068452"
-SIZE="68105"
+TIME="1749580741"
+SIZE="70444"
 ENDFILE
 VALUE "<project>\hdl\GS_Readout.vhd,hdl"
 STATE="utd"
@@ -663,13 +701,13 @@ SIZE="2089"
 ENDFILE
 VALUE "<project>\simulation\run.do,do"
 STATE="utd"
-TIME="1749068452"
-SIZE="1157"
+TIME="1750775778"
+SIZE="748"
 ENDFILE
 VALUE "<project>\simulation\wave.do,do"
 STATE="utd"
-TIME="1749068452"
-SIZE="6380"
+TIME="1750661682"
+SIZE="919"
 ENDFILE
 VALUE "<project>\smartgen\FPGA_Buffer\FPGA_Buffer.cxf,actgen_cxf"
 STATE="utd"
@@ -733,30 +771,55 @@ STATE="utd"
 TIME="1749068452"
 SIZE="4913"
 ENDFILE
-VALUE "<project>\synthesis\synwork\layer0.so,so"
+VALUE "<project>\stimulus\testbench_cnt.vhd,tb_hdl"
 STATE="utd"
-TIME="1749068452"
-SIZE="159"
+TIME="1750661070"
+SIZE="1813"
+ENDFILE
+VALUE "<project>\stimulus\UART_RX_FSM_tb.vhd,tb_hdl"
+STATE="utd"
+TIME="1750775979"
+SIZE="1022"
+ENDFILE
+VALUE "<project>\synthesis\test_sim.so,so"
+STATE="utd"
+TIME="1750660920"
+SIZE="237"
+ENDFILE
+VALUE "<project>\synthesis\test_sim_syn.prj,prj"
+STATE="utd"
+TIME="1750660921"
+SIZE="1851"
 ENDFILE
 VALUE "<project>\synthesis\Toplevel.edn,syn_edn"
 STATE="utd"
-TIME="1749068452"
-SIZE="2485485"
+TIME="1750663879"
+SIZE="2519218"
 ENDFILE
 VALUE "<project>\synthesis\Toplevel.so,so"
 STATE="utd"
-TIME="1749068452"
-SIZE="253"
+TIME="1750663879"
+SIZE="237"
 ENDFILE
 VALUE "<project>\synthesis\Toplevel_sdc.sdc,syn_sdc"
 STATE="utd"
-TIME="1749068452"
+TIME="1750663878"
 SIZE="498"
 ENDFILE
 VALUE "<project>\synthesis\Toplevel_syn.prj,prj"
 STATE="utd"
-TIME="1749068452"
-SIZE="5977"
+TIME="1750663879"
+SIZE="5401"
+ENDFILE
+VALUE "<project>\synthesis\UART_RX_FSM_tb.so,so"
+STATE="utd"
+TIME="1750698017"
+SIZE="246"
+ENDFILE
+VALUE "<project>\synthesis\UART_RX_FSM_tb_syn.prj,prj"
+STATE="utd"
+TIME="1750775984"
+SIZE="1533"
 ENDFILE
 ENDLIST
 LIST UsedFile
@@ -802,7 +865,7 @@ Type=max
 RunTime=5000ns
 Resolution=1ps
 VsimOpt=
-EntityName=testbench
+EntityName=UART_RX_FSM_tb
 TopInstanceName=<top>_0
 DoFileName=
 DoFileName2=wave.do
@@ -1079,6 +1142,19 @@ SUBBLOCK "SweepTable::work","smartgen\SweepTable\SweepTable.vhd","TRUE","FALSE"
 ENDLIST
 LIST "Sweep_test::work","stimulus\Sweep test.vhd","FALSE","TRUE"
 SUBBLOCK "Toplevel::work","component\work\Toplevel\Toplevel.vhd","TRUE","FALSE"
+ENDLIST
+LIST "test_sim::work","","FALSE","FALSE"
+ENDLIST
+LIST "testbench_cnt::work","stimulus\testbench_cnt.vhd","FALSE","TRUE"
+SUBBLOCK "test_sim::work","","FALSE","FALSE"
+ENDLIST
+LIST "UART_RX_FSM::work","","FALSE","FALSE"
+ENDLIST
+LIST "UART_RX_FSM_tb::work","component\work\UART_RX_FSM_tb\UART_RX_FSM_tb.vhd","TRUE","TRUE"
+SUBBLOCK "UART_RX_FSM::work","","FALSE","FALSE"
+ENDLIST
+LIST "uart_rx_fsm_tb::work","stimulus\UART_RX_FSM_tb.vhd","FALSE","TRUE"
+SUBBLOCK "UART_RX_FSM::work","","FALSE","FALSE"
 ENDLIST
 ENDLIST
 LIST ActiveTestBenchList

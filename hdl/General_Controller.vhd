@@ -48,6 +48,7 @@ port (
     st_rdata1  : IN std_logic_vector(15 downto 0);
 
     acc_packet : IN std_logic_vector(71 downto 0);
+    mag_packet : IN std_logic_vector(71 downto 0);
     new_data : IN std_logic; -- example for periodic data
 
     st_wdata : OUT std_logic_vector(15 downto 0);
@@ -235,6 +236,8 @@ architecture architecture_General_Controller of General_Controller is
     signal mission_mode : std_logic;
     
     signal old_new_data : std_logic;
+    signal acc_send_req : std_logic := '0';
+    signal mag_send_req : std_logic := '0';
 
 begin
     process (clk, reset)
@@ -333,6 +336,8 @@ begin
 
             tx_sensors_byte_index <= 0;
             old_new_data <= '0';
+            acc_send_req <= '0';
+            mag_send_req <= '0';
 
         elsif rising_edge(clk) then
     ----------------------- Seconds counter -----------------------------
@@ -473,6 +478,22 @@ begin
             end case;
 
     --------- Microcontroller UART transmit ------------
+
+            -- Handle TX flags --
+            if uc_tx_state = uc_tx_idle then -- if not sending
+                if acc_send_req = '1' then
+                    msg_2send <= acc_packet;
+                    acc_send_req <= '0';
+                    uc_tx_state <= uc_tx_preamble;
+                    uc_tx_nextstate <= uc_tx_send_sensors_data;
+                elsif mag_send_req = '1' then
+                    msg_2send <= mag_packet;
+                    mag_send_req <= '0';
+                    uc_tx_state <= uc_tx_preamble;
+                    uc_tx_nextstate <= uc_tx_send_sensors_data;
+                end if;
+            end if;
+
             case uc_tx_state is
                 when uc_tx_idle =>
 
@@ -1070,9 +1091,11 @@ begin
             old_new_data <= new_data;    -- this will not be needed if new_data is a strobe, but for now
             if (new_data = '1') and (old_new_data = '0') then    -- detects the "rising edge" of new data, 
                                                                 -- not needed when new_data is a strobe
-                msg_2send <= acc_packet;
-                uc_tx_state <= uc_tx_preamble;
-                uc_tx_nextstate <= uc_tx_send_sensors_data;
+                acc_send_req <= '1';
+                mag_send_req <= '1';
+                -- msg_2send <= acc_packet;
+                -- uc_tx_state <= uc_tx_preamble;
+                -- uc_tx_nextstate <= uc_tx_send_sensors_data;
             end if;
 
 
@@ -1149,9 +1172,21 @@ begin
                                 when x"A3" => uc_rx_state <= uc_rx_readback_swt_samples_per_step;
                                 when x"A4" => uc_rx_state <= uc_rx_readback_swt_skip;
                                 when x"A5" => uc_rx_state <= uc_rx_readback_swt_samples_per_point;
-                                when x"A6" => uc_rx_state <= uc_rx_readback_swt_points;
+                                --when x"A6" => uc_rx_state <= uc_rx_readback_swt_points; -- ORIGINAL COMMAND
                                 when x"F6" => uc_rx_state <= uc_rx_readback_sensors_data;
-                                                msg_2send <= acc_packet;
+                                              mag_send_req <= '1';
+                                when x"A6" => uc_rx_state <= uc_rx_readback_sensors_data;
+                                              acc_send_req <= '1';
+                                              
+                                              
+                               -- when x"A6" => uc_rx_state <= uc_rx_readback_sensors_data; -- NOT its command ID (need to implement)
+                               --               mag_send_req <= '1';
+                               --               msg_2send <= mag_packet;                                               
+                               -- when x"F6" => uc_rx_state <= uc_rx_readback_sensors_data;
+                               --               acc_send_req <= '1';
+                               --               msg_2send <= acc_packet;
+                               --               -- try to only add uc_rx_state <= postamble e togli msg2send 
+
 
                                 when others => uc_rx_state <= uc_rx_idle;                       -- Unknown message, ignore.
                             end case;
@@ -1496,9 +1531,9 @@ begin
                 when uc_rx_readback_sensors_data =>
                     case uc_rx_substate is
                         when 1 =>
-                            uc_tx_state <= uc_tx_preamble;
-                            uc_tx_nextstate <= uc_tx_send_sensors_data;
-                            uc_rx_state <= uc_rx_postamble;
+                            -- uc_tx_state <= uc_tx_preamble;
+                            -- uc_tx_nextstate <= uc_tx_send_sensors_data;
+                            uc_rx_state <= uc_rx_postamble; -- need to test if possible to add it directly on commands
                         when others =>
                     end case;
 
