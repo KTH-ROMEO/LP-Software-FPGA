@@ -1,13 +1,13 @@
 ***************************************************************************
                                Status Report
-                          Mon Jun 30 19:47:10 2025 ***************************************************************************
+                          Tue Jul 01 18:23:23 2025 ***************************************************************************
 
 Product: Designer
 Release: v11.9 SP6
 Version: 11.9.6.7
 File Name: C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer\impl1\Toplevel.adb
 Design Name: Toplevel  Design State: layout
-Last Saved: Mon Jun 30 19:44:14 2025
+Last Saved: Tue Jul 01 18:20:23 2025
 
 ***** Device Data **************************************************
 
@@ -22,7 +22,7 @@ Voltage Range:   COM
 
 ***** Import Variables *********************************************
 
-Source File(s) Imported on Mon Jun 30 19:44:05 2025:
+Source File(s) Imported on Tue Jul 01 18:20:14 2025:
         C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\synthesis\Toplevel.edn
 
 
@@ -156,9 +156,9 @@ Optimized macros:
   - Buffers:                0
   - Inverters:              3
   - Tieoff:                 35
-  - Logic combining:        226
+  - Logic combining:        233
 
-    Total macros optimized  276
+    Total macros optimized  283
 
 Warning: CMP503: Remapped 8 enable flip-flop(s) to a 2-tile implementation because the CLR/PRE
          pin on the enable flip-flop is not being driven by a global net.
@@ -175,7 +175,7 @@ There were 0 error(s) and 0 warning(s).
 Compile report:
 ===============
 
-    CORE                       Used:   4867  Total:   6144   (79.22%)
+    CORE                       Used:   4873  Total:   6144   (79.31%)
     IO (W/ clocks)             Used:     50  Total:     68   (73.53%)
     Differential IO            Used:      0  Total:     13   (0.00%)
     GLOBAL (Chip+Quadrant)     Used:      5  Total:     18   (27.78%)
@@ -200,8 +200,8 @@ Core Information:
 
     Type    | Instances    | Core tiles
     --------|--------------|-----------
-    COMB    | 3583         | 3583
-    SEQ     | 1284         | 1284
+    COMB    | 3584         | 3584
+    SEQ     | 1289         | 1289
 
 I/O Function:
 
@@ -241,16 +241,16 @@ The following nets drive enable flip-flops that have been remapped to a 2-tile i
 The following nets have been assigned to a chip global resource:
     Fanout  Type          Name
     --------------------------
-    1102    CLK_NET       Net   : CLKINT_0_Y_0
+    1106    CLK_NET       Net   : CLKINT_0_Y_0
                           Driver: CLKINT_0
                           Source: NETLIST
-    988     SET/RESET_NET Net   : CLKINT_1_Y
+    990     SET/RESET_NET Net   : CLKINT_1_Y
                           Driver: CLKINT_1
                           Source: NETLIST
-    106     CLK_NET       Net   : ClockDivs_0_clk_800kHz
+    107     CLK_NET       Net   : ClockDivs_0_clk_800kHz
                           Driver: ClockDivs_0/clk_800kHz_RNIT3EB
                           Source: NETLIST
-    57      INT_NET       Net   : GS_Readout_0/subState[0]
+    58      INT_NET       Net   : GS_Readout_0/subState[0]
                           Driver: GS_Readout_0/subState_RNITID3[0]
                           Source: NETLIST
     55      CLK_NET       Net   : CLKINT_2_Y
@@ -260,54 +260,50 @@ The following nets have been assigned to a chip global resource:
 High fanout nets in the post compile netlist:
     Fanout  Type          Name
     --------------------------
-    24      INT_NET       Net   : ACCE_SCL_c
-                          Driver: Sensors_0/Accelerometer_0/I2C_Master_0/scl
     24      INT_NET       Net   : GYRO_SCL_c
                           Driver: Sensors_0/Gyro_0/I2C_Master_0/scl
+    24      INT_NET       Net   : General_Controller_0/uc_rx_byte[2]
+                          Driver: General_Controller_0/uc_rx_byte[2]
     24      INT_NET       Net   : General_Controller_0/uc_rx_byte[6]
                           Driver: General_Controller_0/uc_rx_byte[6]
-    24      INT_NET       Net   : General_Controller_0/uc_rx_state[2]
-                          Driver: General_Controller_0/uc_rx_state[2]
+    24      INT_NET       Net   : General_Controller_0/uc_rx_byte[5]
+                          Driver: General_Controller_0/uc_rx_byte[5]
     24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P_0
                           Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P_0
     24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P
                           Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P
-    24      INT_NET       Net   : Science_0/SWEEP_ROMEO_0/N_368
+    24      INT_NET       Net   : Science_0/SWEEP_ROMEO_0/stepe
                           Driver: Science_0/SWEEP_ROMEO_0/sweep_state_RNI7KU88[2]
-    24      INT_NET       Net   :
-Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[2]
-                          Driver:
-Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[2]
-    24      INT_NET       Net   : Sensors_0/Gyro_0/state[8]
-                          Driver: Sensors_0/Gyro_0/I2C_Master_0/state[8]
     24      INT_NET       Net   : Timekeeper_0/un3_old_1khz
                           Driver: Timekeeper_0/old_1kHz_RNICNFV
+    23      INT_NET       Net   : General_Controller_0/uc_rx_state[3]
+                          Driver: General_Controller_0/uc_rx_state[3]
+    23      INT_NET       Net   : General_Controller_0/uc_rx_substate[0]
+                          Driver: General_Controller_0/uc_rx_substate[0]
 
 Nets that are candidates for clock assignment and the resulting fanout:
     Fanout  Type          Name
     --------------------------
-    24      INT_NET       Net   : ACCE_SCL_c
-                          Driver: Sensors_0/Accelerometer_0/I2C_Master_0/scl
     24      INT_NET       Net   : GYRO_SCL_c
                           Driver: Sensors_0/Gyro_0/I2C_Master_0/scl
+    24      INT_NET       Net   : General_Controller_0/uc_rx_byte[2]
+                          Driver: General_Controller_0/uc_rx_byte[2]
     24      INT_NET       Net   : General_Controller_0/uc_rx_byte[6]
                           Driver: General_Controller_0/uc_rx_byte[6]
-    24      INT_NET       Net   : General_Controller_0/uc_rx_state[2]
-                          Driver: General_Controller_0/uc_rx_state[2]
+    24      INT_NET       Net   : General_Controller_0/uc_rx_byte[5]
+                          Driver: General_Controller_0/uc_rx_byte[5]
     24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P_0
                           Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P_0
     24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P
                           Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P
-    24      INT_NET       Net   : Science_0/SWEEP_ROMEO_0/N_368
+    24      INT_NET       Net   : Science_0/SWEEP_ROMEO_0/stepe
                           Driver: Science_0/SWEEP_ROMEO_0/sweep_state_RNI7KU88[2]
-    24      INT_NET       Net   :
-Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[2]
-                          Driver:
-Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[2]
-    24      INT_NET       Net   : Sensors_0/Gyro_0/state[8]
-                          Driver: Sensors_0/Gyro_0/I2C_Master_0/state[8]
     24      INT_NET       Net   : Timekeeper_0/un3_old_1khz
                           Driver: Timekeeper_0/old_1kHz_RNICNFV
+    23      INT_NET       Net   : General_Controller_0/uc_rx_state[3]
+                          Driver: General_Controller_0/uc_rx_state[3]
+    23      INT_NET       Net   : General_Controller_0/uc_rx_substate[0]
+                          Driver: General_Controller_0/uc_rx_substate[0]
 
 
 Layout Output:
@@ -334,26 +330,26 @@ Global net placement completed successfully.
 
                         o - o - o - o - o - o
 
-Timing-driven Placer Started: Mon Jun 30 19:44:27 2025
+Timing-driven Placer Started: Tue Jul 01 18:20:36 2025
 High-Effort Placer Started...
 
-Placer Finished: Mon Jun 30 19:46:36 2025
-Total Placer CPU Time:     00:02:09
+Placer Finished: Tue Jul 01 18:22:44 2025
+Total Placer CPU Time:     00:02:08
 
                         o - o - o - o - o - o
 
 
 
 Post-Layout Core Information:
-    Used:   4629  Total:   6144   (75.34%)
+    Used:   4654  Total:   6144   (75.75%)
 
     Type       | Instances    | Core tiles
     -----------|--------------|-----------
-    COMB       | 3345         | 3345
-    SEQ        | 1284         | 1284
+    COMB       | 3365         | 3365
+    SEQ        | 1289         | 1289
 
 Timing-driven Router 
-Design: Toplevel                        Started: Mon Jun 30 19:46:42 2025
+Design: Toplevel                        Started: Tue Jul 01 18:22:50 2025
 
  
 Iterative improvement...
@@ -362,9 +358,9 @@ Iterative improvement...
 Timing-driven Router completed successfully.
 
 Design: Toplevel                        
-Finished: Mon Jun 30 19:47:05 2025
-Total CPU Time:     00:00:22            Total Elapsed Time: 00:00:23
-Total Memory Usage: 239.2 Mbytes
+Finished: Tue Jul 01 18:23:18 2025
+Total CPU Time:     00:00:27            Total Elapsed Time: 00:00:28
+Total Memory Usage: 248.9 Mbytes
                         o - o - o - o - o - o
 
 
