@@ -29,7 +29,7 @@ port (
     reset : IN std_logic;
 
     enable : IN std_logic;
-    gs_id : IN std_logic_vector(7 downto 0);      -- gs_id byte, second character of message.
+    -- gs_id : IN std_logic_vector(7 downto 0);      -- gs_id byte, second character of message.
 
     ch0_data : IN std_logic_vector(11 downto 0);
     ch1_data : IN std_logic_vector(11 downto 0);
@@ -160,7 +160,7 @@ begin
 
                         when 2 =>   -- Send identifier.
                             if txrdy then
-                                send <= gs_id;       -- Send an identifier so the ground station know what unit is sending.
+                                -- send <= gs_id;       -- Send an identifier so the ground station know what unit is sending.
 
                                 state <= state_send_wait;
                             end if;

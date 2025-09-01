@@ -30,7 +30,7 @@ port (
 
     command_oen : IN std_logic;
 
-    identifier : IN std_logic_vector(7 downto 0);
+   -- identifier : IN std_logic_vector(7 downto 0);
 
     rmu_oen : OUT std_logic;
     command_out : OUT std_logic_vector(7 downto 0);
@@ -63,9 +63,9 @@ begin
 
                     -- The x"20" is convenient when debugging but VERY DANGEROUS for flight if there are multiple
                     -- units on the same UART line.
-                    if byte_in = identifier then --OR byte_in = x"20" then
-                        state <= 2;
-                    end if;
+                   -- if byte_in = identifier then --OR byte_in = x"20" then
+                   --     state <= 2;
+                   -- end if;
                 end if;
 
             when 2 =>

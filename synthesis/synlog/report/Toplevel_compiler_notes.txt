@@ -67,10 +67,12 @@
 @N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\GS_Readout.vhd":26:7:26:16|Synthesizing work.gs_readout.architecture_gs_readout.
 @N: CD231 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\GS_Readout.vhd":60:20:60:21|Using onehot encoding for type state_type. For example, enumeration state_idle is mapped to "10000000".
 @N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\GS_Readout.vhd":249:16:249:29|OTHERS clause is not synthesized.
-@N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":25:7:25:24|Synthesizing work.general_controller.architecture_general_controller.
-@N: CD231 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":116:26:116:27|Using onehot encoding for type uc_tx_state_type. For example, enumeration uc_tx_idle is mapped to "100000000000000000".
-@N: CD232 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":138:26:138:27|Using gray code encoding for type uc_rx_state_type.
-@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1547:16:1547:29|OTHERS clause is not synthesized.
+@N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":7:7:7:24|Synthesizing work.general_controller.architecture_general_controller.
+@N: CD231 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":104:26:104:27|Using onehot encoding for type uc_rx_state_type. For example, enumeration rx_idle is mapped to "10000000".
+@N: CD233 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":116:25:116:26|Using sequential encoding for type rx_context_type.
+@N: CD233 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":98:26:98:27|Using sequential encoding for type uc_tx_state_type.
+@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":621:16:621:29|OTHERS clause is not synthesized.
+@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":866:32:866:45|OTHERS clause is not synthesized.
 @N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Eject_Signal_Debounce.vhd":24:7:24:27|Synthesizing work.eject_signal_debounce.architecture_eject_signal_debounce.
 @N: CD233 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Eject_Signal_Debounce.vhd":39:20:39:21|Using sequential encoding for type state_type.
 @N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\component\work\Data_Saving\Data_Saving.vhd":17:7:17:17|Synthesizing work.data_saving.rtl.
@@ -125,7 +127,14 @@
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":33:4:33:8|Input mag_y is unused.
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":34:4:34:8|Input mag_z is unused.
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":36:4:36:12|Input gyro_time is unused.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":37:4:37:9|Input gyro_x is unused.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":38:4:38:9|Input gyro_y is unused.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":39:4:39:9|Input gyro_z is unused.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":40:4:40:12|Input gyro_temp is unused.
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":42:4:42:16|Input pressure_time is unused.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":43:4:43:15|Input pressure_raw is unused.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":44:4:44:20|Input pressure_temp_raw is unused.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":47:4:47:14|Input status_bits is unused.
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Packet_Saver.vhd":27:4:27:7|Input sync is unused.
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Packet_Saver.vhd":29:4:29:13|Input acc_packet is unused.
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Packet_Saver.vhd":32:4:32:13|Input mag_packet is unused.
@@ -140,10 +149,16 @@
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Packet_Saver.vhd":52:4:52:14|Input ch_4_packet is unused.
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Packet_Saver.vhd":53:4:53:14|Input ch_5_packet is unused.
 @N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Eject_Signal_Debounce.vhd":51:4:51:5|Trying to extract state machine for register state.
-@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Trying to extract state machine for register flight_state.
-@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Trying to extract state machine for register uc_rx_state.
-@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Trying to extract state machine for register ext_rx_state.
-@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Trying to extract state machine for register uc_tx_state.
+@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Trying to extract state machine for register flight_state.
+@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Trying to extract state machine for register ext_rx_state.
+@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Trying to extract state machine for register uc_tx_state.
+@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Trying to extract state machine for register swt_wr_substate.
+@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Trying to extract state machine for register swt_rd_substate.
+@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Trying to extract state machine for register preamble_counter.
+@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Trying to extract state machine for register uc_rx_state.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":34:4:34:14|Input gyro_packet is unused.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":35:4:35:18|Input pressure_packet is unused.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":36:4:36:11|Input new_data is unused.
 @N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\GS_Readout.vhd":133:8:133:9|Trying to extract state machine for register state.
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\GS_Readout.vhd":46:4:46:16|Input exp_SC_packet is unused.
 @N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\I2C_PassThrough.vhd":51:8:51:9|Trying to extract state machine for register state.

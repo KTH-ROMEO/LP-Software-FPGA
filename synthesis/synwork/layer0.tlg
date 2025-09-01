@@ -147,69 +147,96 @@ Post processing for work.i2c_passthrough.architecture_i2c_passthrough
 @W: CD274 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\GS_Readout.vhd":237:20:237:23|Incomplete case statement - add more cases or a when others
 @N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\GS_Readout.vhd":249:16:249:29|OTHERS clause is not synthesized.
 Post processing for work.gs_readout.architecture_gs_readout
-@N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":25:7:25:24|Synthesizing work.general_controller.architecture_general_controller.
-@N: CD231 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":116:26:116:27|Using onehot encoding for type uc_tx_state_type. For example, enumeration uc_tx_idle is mapped to "100000000000000000".
-@N: CD232 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":138:26:138:27|Using gray code encoding for type uc_rx_state_type.
-@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1547:16:1547:29|OTHERS clause is not synthesized.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\GS_Readout.vhd":133:8:133:9|Optimizing register bit send(7) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\GS_Readout.vhd":133:8:133:9|Pruning register bit 7 of send(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":7:7:7:24|Synthesizing work.general_controller.architecture_general_controller.
+@N: CD231 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":104:26:104:27|Using onehot encoding for type uc_rx_state_type. For example, enumeration rx_idle is mapped to "10000000".
+@N: CD233 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":116:25:116:26|Using sequential encoding for type rx_context_type.
+@N: CD233 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":98:26:98:27|Using sequential encoding for type uc_tx_state_type.
+@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":621:16:621:29|OTHERS clause is not synthesized.
+@W: CD609 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":721:20:721:50|Index value 0 to 7 could be out of prefix range 0 to 3 
+@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":866:32:866:45|OTHERS clause is not synthesized.
 Post processing for work.general_controller.architecture_general_controller
-@W: CL240 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":110:4:110:24|Signal Sweep_points_per_step is floating; a simulation mismatch is possible.
-@W: CL240 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":109:4:109:23|Signal Sweep_skiped_samples is floating; a simulation mismatch is possible.
-@W: CL240 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":108:4:108:26|Signal Sweep_samples_per_point is floating; a simulation mismatch is possible.
-@W: CL240 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":107:4:107:25|Signal Sweep_samples_per_step is floating; a simulation mismatch is possible.
-@W: CL240 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":106:4:106:17|Signal Sweep_no_steps is floating; a simulation mismatch is possible.
-@W: CL240 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":103:4:103:12|Signal C_bias_V1 is floating; a simulation mismatch is possible.
-@W: CL240 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":102:4:102:12|Signal C_bias_V0 is floating; a simulation mismatch is possible.
-@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Pruning unused register send_flight_state_3. Make sure that there are no unused intermediate registers.
-@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Pruning unused register send_telemetry_request_3. Make sure that there are no unused intermediate registers.
-@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Pruning unused register send_led4_3. Make sure that there are no unused intermediate registers.
-@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Pruning unused register send_led3_3. Make sure that there are no unused intermediate registers.
-@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Pruning unused register send_console_enable_3. Make sure that there are no unused intermediate registers.
-@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Pruning unused register sweep_table_activate_sweep_3. Make sure that there are no unused intermediate registers.
-@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Pruning unused register constant_bias_mode_6. Make sure that there are no unused intermediate registers.
-@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Feedback mux created for signal uc_tx_nextstate[0:17]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Feedback mux created for signal sweep_table_read_value[15:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Feedback mux created for signal Sweep_enabled. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Feedback mux created for signal Bias_enabled. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Feedback mux created for signal sweep_table_write_value[15:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Feedback mux created for signal sweep_table_samples_per_step[15:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Feedback mux created for signal msg_2send[71:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Feedback mux created for signal uc_rx_byte[7:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Feedback mux created for signal command[7:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(7) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(8) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(9) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(10) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(11) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(12) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(13) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(14) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(15) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(16) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(17) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(18) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(19) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(20) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(21) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(22) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(23) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(24) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(25) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(26) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(27) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(28) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(29) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(30) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(31) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(32) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(33) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(34) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(35) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(36) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(37) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(38) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|All reachable assignments to status_bits(39) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Feedback mux created for signal status_bits[63:40]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Feedback mux created for signal status_bits[6:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@W: CL240 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":82:4:82:12|Signal C_bias_V1 is floating; a simulation mismatch is possible.
+@W: CL240 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":81:4:81:12|Signal C_bias_V0 is floating; a simulation mismatch is possible.
+@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning unused register sweep_table_activate_sweep_3. Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning unused register constant_bias_probe_id_3(7 downto 0). Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning unused register send_flight_state_3. Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning unused register send_telemetry_request_3. Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning unused register send_led4_3. Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning unused register send_led3_3. Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning unused register send_console_enable_3. Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning unused register constant_bias_mode_4. Make sure that there are no unused intermediate registers.
+@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Feedback mux created for signal sweep_table_read_value[15:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Feedback mux created for signal Bias_enabled. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Feedback mux created for signal Sweep_enabled. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Feedback mux created for signal sweep_table_samples_per_step[15:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Feedback mux created for signal received_byte[7:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Feedback mux created for signal command[7:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(7) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(8) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(9) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(10) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(11) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(12) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(13) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(14) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(15) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(16) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(17) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(18) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(19) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(20) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(21) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(22) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(23) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(24) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(25) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(26) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(27) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(28) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(29) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(30) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(31) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(32) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(33) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(34) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(35) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(36) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(37) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(38) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|All reachable assignments to status_bits(39) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Feedback mux created for signal status_bits[63:40]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Feedback mux created for signal status_bits[6:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Optimizing register bit acc_tx_periodic_flag to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Optimizing register bit mag_tx_periodic_flag to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Optimizing register bit msg_2send_0(1) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Optimizing register bit msg_2send_0(3) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Optimizing register bit msg_2send_0(6) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Optimizing register bit msg_2send_1(2) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Optimizing register bit msg_2send_1(3) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Optimizing register bit msg_2send_1(4) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Optimizing register bit msg_2send_1(5) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Optimizing register bit msg_2send_1(7) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Optimizing register bit msg_2send_2(2) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Optimizing register bit msg_2send_11(0) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Optimizing register bit msg_2send_11(2) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Optimizing register bit msg_2send_11(4) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Optimizing register bit msg_2send_11(5) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Optimizing register bit msg_2send_11(6) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Optimizing register bit msg_2send_11(7) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning register bit 2 of msg_2send_2(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning register bit 6 of msg_2send_0(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning register bit 3 of msg_2send_0(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning register bit 1 of msg_2send_0(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning register bit 7 of msg_2send_1(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning register bits 5 to 2 of msg_2send_1(7 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning register bits 7 to 4 of msg_2send_11(7 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning register bit 2 of msg_2send_11(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning register bit 0 of msg_2send_11(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning unused register acc_tx_periodic_flag. Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning unused register mag_tx_periodic_flag. Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning unused register old_new_data. Make sure that there are no unused intermediate registers.
 @N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Eject_Signal_Debounce.vhd":24:7:24:27|Synthesizing work.eject_signal_debounce.architecture_eject_signal_debounce.
 @N: CD233 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Eject_Signal_Debounce.vhd":39:20:39:21|Using sequential encoding for type state_type.
 Post processing for work.eject_signal_debounce.architecture_eject_signal_debounce
@@ -356,6 +383,7 @@ Post processing for work.fpga_buffer.def_arch
 Post processing for work.data_saving.rtl
 @N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":23:7:23:22|Synthesizing work.data_hub_packets.architecture_data_hub_packets.
 Post processing for work.data_hub_packets.architecture_data_hub_packets
+@W: CL240 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":54:4:54:16|Signal status_packet is floating; a simulation mismatch is possible.
 @N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\component\work\Communications\Communications.vhd":17:7:17:20|Synthesizing work.communications.rtl.
 @N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\UART_Ext2uC_Switch.vhd":23:7:23:24|Synthesizing work.uart_ext2uc_switch.architecture_uart_ext2uc_switch.
 Post processing for work.uart_ext2uc_switch.architecture_uart_ext2uc_switch
@@ -379,12 +407,6 @@ Post processing for work.clockdivs.architecture_clockdivs
 Post processing for proasic3.clkint.syn_black_box
 Post processing for work.toplevel.rtl
 @N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\FFU_Command_Checker.vhd":49:4:49:5|Trying to extract state machine for register state.
-Extracted state machine for register state
-State machine has 4 reachable states with original encodings of:
-   001
-   010
-   011
-   100
 @N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\UART.vhd":132:8:132:9|Trying to extract state machine for register rx_state.
 Extracted state machine for register rx_state
 State machine has 4 reachable states with original encodings of:
@@ -409,7 +431,14 @@ State machine has 4 reachable states with original encodings of:
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":33:4:33:8|Input mag_y is unused.
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":34:4:34:8|Input mag_z is unused.
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":36:4:36:12|Input gyro_time is unused.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":37:4:37:9|Input gyro_x is unused.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":38:4:38:9|Input gyro_y is unused.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":39:4:39:9|Input gyro_z is unused.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":40:4:40:12|Input gyro_temp is unused.
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":42:4:42:16|Input pressure_time is unused.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":43:4:43:15|Input pressure_raw is unused.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":44:4:44:20|Input pressure_temp_raw is unused.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":47:4:47:14|Input status_bits is unused.
 @W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Packet_Saver.vhd":126:8:126:9|Pruning register bits 0 to 4 of packet_select(0 to 12). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
 @W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Packet_Saver.vhd":126:8:126:9|Pruning register bits 6 to 12 of packet_select(0 to 12). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Packet_Saver.vhd":27:4:27:7|Input sync is unused.
@@ -432,7 +461,7 @@ State machine has 4 reachable states with original encodings of:
    01
    10
    11
-@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Trying to extract state machine for register flight_state.
+@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Trying to extract state machine for register flight_state.
 Extracted state machine for register flight_state
 State machine has 5 reachable states with original encodings of:
    00000001
@@ -440,72 +469,55 @@ State machine has 5 reachable states with original encodings of:
    00000011
    00000100
    00000111
-@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Trying to extract state machine for register uc_rx_state.
-Extracted state machine for register uc_rx_state
-State machine has 32 reachable states with original encodings of:
-   00000
-   00001
-   00010
-   00011
-   00100
-   00101
-   00110
-   00111
-   01000
-   01001
-   01010
-   01011
-   01100
-   01101
-   01110
-   01111
-   10000
-   10001
-   10010
-   10011
-   10100
-   10101
-   10110
-   10111
-   11000
-   11001
-   11010
-   11011
-   11100
-   11101
-   11110
-   11111
-@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Trying to extract state machine for register ext_rx_state.
+@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Trying to extract state machine for register ext_rx_state.
 Extracted state machine for register ext_rx_state
 State machine has 3 reachable states with original encodings of:
    001
    010
    011
-@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Trying to extract state machine for register uc_tx_state.
+@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Trying to extract state machine for register uc_tx_state.
 Extracted state machine for register uc_tx_state
-State machine has 18 reachable states with original encodings of:
-   000000000000000001
-   000000000000000010
-   000000000000000100
-   000000000000001000
-   000000000000010000
-   000000000000100000
-   000000000001000000
-   000000000010000000
-   000000000100000000
-   000000001000000000
-   000000010000000000
-   000000100000000000
-   000001000000000000
-   000010000000000000
-   000100000000000000
-   001000000000000000
-   010000000000000000
-   100000000000000000
-@W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Pruning register bits 10 to 16 of uc_tx_nextstate(0 to 17). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
-@W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Pruning register bits 3 to 1 of ramp(3 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
-@W: CL257 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Register bit 0 always 0, optimizing ...
-@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":245:8:245:9|Pruning unused register uc_tx_nextstate(uc_tx_idle). Make sure that there are no unused intermediate registers.
+State machine has 3 reachable states with original encodings of:
+   00
+   01
+   10
+@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Trying to extract state machine for register swt_wr_substate.
+Extracted state machine for register swt_wr_substate
+State machine has 2 reachable states with original encodings of:
+   00
+   01
+@W: CL249 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Initial value is not supported on state machine swt_wr_substate
+@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Trying to extract state machine for register swt_rd_substate.
+Extracted state machine for register swt_rd_substate
+State machine has 3 reachable states with original encodings of:
+   00
+   01
+   10
+@W: CL249 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Initial value is not supported on state machine swt_rd_substate
+@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Trying to extract state machine for register preamble_counter.
+Extracted state machine for register preamble_counter
+State machine has 3 reachable states with original encodings of:
+   00
+   01
+   10
+@W: CL249 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Initial value is not supported on state machine preamble_counter
+@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Trying to extract state machine for register uc_rx_state.
+Extracted state machine for register uc_rx_state
+State machine has 8 reachable states with original encodings of:
+   00000001
+   00000010
+   00000100
+   00001000
+   00010000
+   00100000
+   01000000
+   10000000
+@W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning register bits 3 to 1 of ramp(3 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning register bit 5 of msg_2send_0(5 downto 4). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":230:8:230:9|Pruning register bit 1 of msg_2send_1(1 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":34:4:34:14|Input gyro_packet is unused.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":35:4:35:18|Input pressure_packet is unused.
+@N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":36:4:36:11|Input new_data is unused.
 @N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\GS_Readout.vhd":133:8:133:9|Trying to extract state machine for register state.
 Extracted state machine for register state
 State machine has 8 reachable states with original encodings of:

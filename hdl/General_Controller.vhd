@@ -1,26 +1,8 @@
---------------------------------------------------------------------------------
--- Company: <Name>
---
--- File: General_Controller.vhd
--- File history:
---      <Revision number>: <Date>: <Comments>
---      <Revision number>: <Date>: <Comments>
---      <Revision number>: <Date>: <Comments>
---
--- Description: 
---
--- <Description here>
---
--- Targeted device: <Family::ProASIC3> <Die::A3P250> <Package::100 VQFP>
--- Author: <Name>
---
---------------------------------------------------------------------------------
-
 library IEEE;
-
 use IEEE.std_logic_1164.all;
-use IEEE.std_logic_unsigned.all;
 use IEEE.numeric_std.all;
+use IEEE.std_logic_unsigned.all;
+
 
 entity General_Controller is
 port (
@@ -47,8 +29,10 @@ port (
     st_rdata0  : IN std_logic_vector(15 downto 0);
     st_rdata1  : IN std_logic_vector(15 downto 0);
 
-    acc_packet : IN std_logic_vector(71 downto 0);
-    mag_packet : IN std_logic_vector(71 downto 0);
+    acc_packet      : IN std_logic_vector(63 downto 0);
+    mag_packet      : IN std_logic_vector(63 downto 0);
+    gyro_packet     : IN std_logic_vector(63 downto 0);
+    pressure_packet : IN std_logic_vector(63 downto 0);
     new_data : IN std_logic; -- example for periodic data
 
     st_wdata : OUT std_logic_vector(15 downto 0);
@@ -60,10 +44,6 @@ port (
     st_wen1   : OUT std_logic;
     st_ren0   : OUT std_logic;
     st_ren1   : OUT std_logic;
-
-    unit_id : OUT std_logic_vector(7 downto 0);
-    ffu_id : OUT std_logic_vector(7 downto 0);
-    gs_id : OUT std_logic_vector(7 downto 0);
 
     uc_send : OUT std_logic_vector(7 downto 0);
     uc_wen : OUT std_logic;
@@ -95,109 +75,125 @@ port (
     man_gain4 : OUT std_logic_vector(1 downto 0);
     DAC_zero_value : OUT std_logic;
     DAC_max_value  : OUT std_logic;
-
-    ------------------------------------------------
-    --Ports for DAC/ADC signals
-    Bias_enabled : OUT std_logic;
-    C_bias_V0 : OUT std_logic_vector(15 downto 0);
-    C_bias_V1 : OUT std_logic_vector(15 downto 0);
-
-    Sweep_enabled               : OUT std_logic;
-    Sweep_no_steps              : OUT std_logic_vector(7 downto 0);
-    Sweep_samples_per_step      : OUT std_logic_vector(15 downto 0);
-    Sweep_samples_per_point     : OUT std_logic_vector(15 downto 0);
-    Sweep_skiped_samples        : OUT std_logic_vector(15 downto 0);
-    Sweep_points_per_step       : OUT std_logic_vector(15 downto 0) -- sweep_table_points
     
-    ------------------------------------------------
+
+    --TODO: clarify with Jesus
+    C_bias_V0 : OUT std_logic_vector(15 downto 0); 
+    C_bias_V1 : OUT std_logic_vector(15 downto 0);
+    
+    Bias_enabled                    : OUT std_logic;
+    Sweep_enabled                   : OUT std_logic;
+    sweep_table_nof_steps           : OUT std_logic_vector(7 downto 0);
+    sweep_table_samples_per_step    : OUT std_logic_vector(15 downto 0);
+    sweep_table_samples_per_point   : OUT std_logic_vector(15 downto 0);
+    sweep_table_sample_skip         : OUT std_logic_vector(15 downto 0);
+    sweep_table_points              : OUT std_logic_vector(15 downto 0) 
+
 );
 end General_Controller;
-architecture architecture_General_Controller of General_Controller is
-    type uc_tx_state_type is (
-        uc_tx_idle,
-        uc_tx_preamble,
-        uc_tx_send_console_en,
-        uc_tx_postamble,
-        uc_tx_led3,
-        uc_tx_led4,
-        uc_tx_telemetry,
-        uc_tx_send_state,
 
-        uc_tx_send_const_bias_measurement,
-        uc_tx_send_const_bias_voltage,
-        uc_tx_send_swt_sweep_cnt,
-        uc_tx_send_sweep_table,
-        uc_tx_send_swt_steps,
-        uc_tx_send_swt_samples_per_step,
-        uc_tx_send_swt_skip,
-        uc_tx_send_swt_samples_per_point,
-        uc_tx_send_swt_points,
-        uc_tx_send_sensors_data
+architecture architecture_General_Controller of General_Controller is
+
+    
+    type uc_tx_state_type is (
+        TX_IDLE,
+        TX_SEND_BYTE,
+        TX_WAIT_RDY
     );
 
     type uc_rx_state_type is (
-        uc_rx_idle,
-        uc_rx_preamble,
-        uc_rx_get_byte,
-        uc_rx_wait,
-        uc_rx_receive_ffu_id,
-        uc_rx_receive_unit_id,
-        uc_rx_receive_gs_id,
-
-        uc_rx_receive_en_cb_mode,
-        uc_rx_receive_dis_cb_mode,
-        uc_rx_receive_const_bias,
-
-        uc_rx_readback_const_bias,
-
-        uc_rx_receive_activate_sweep,
-        uc_rx_receive_sweep_table,
-        uc_rx_receive_swt_steps,
-        uc_rx_receive_swt_samples_per_step,
-        uc_rx_receive_swt_skip,
-        uc_rx_receive_swt_samples_per_point,
-        uc_rx_receive_swt_points,
-
-        uc_rx_readback_swt_sweep_cnt,
-        uc_rx_readback_sweep_table,
-        uc_rx_readback_swt_steps,
-        uc_rx_readback_swt_samples_per_step,
-        uc_rx_readback_swt_skip,
-        uc_rx_readback_swt_samples_per_point,
-        uc_rx_readback_swt_points,
-        uc_rx_readback_sensors_data,
-        uc_rx_postamble
+        RX_IDLE,
+        RX_GET_BYTE,
+        RX_WAIT_RDY_LOW,
+        RX_PROCESS_PREAMBLE,
+        RX_COMMAND,
+        RX_PAYLOAD,
+        RX_POSTAMBLE,
+        RX_EXECUTE
     );
 
+    type payload_array_type is array (0 to 3) of std_logic_vector(7 downto 0); -- payload buffer
+    type rx_context_type is (CTX_PREAMBLE, CTX_PAYLOAD, CTX_POSTAMBLE); -- Context for wait state in RX FSM
+    type byte_array_type is array(0 to 11) of std_logic_vector(7 downto 0); --msg_2send
 
-    signal temp_first_byte : std_logic_vector(7 downto 0);
-    -------------------------------------------------------------
+
+
+    -- SCIENCE DATA
     signal constant_bias_mode : std_logic;
     signal constant_bias_voltage_0 : std_logic_vector(15 downto 0);
     signal constant_bias_voltage_1 : std_logic_vector(15 downto 0);
     signal constant_bias_probe_id : std_logic_vector(7 downto 0);
-
-    signal sweep_table_activate_sweep : std_logic;
+    signal sweep_table_activate_sweep : std_logic; --TODO NEED of having this strobe
     signal sweep_table_sweep_cnt : std_logic_vector(15 downto 0); -- Number of activated sweeps since last FPGA power on.
-    signal sweep_table_write_value : std_logic_vector(15 downto 0);
     signal sweep_table_read_value  : std_logic_vector(15 downto 0);
+--    signal sweep_table_nof_steps : std_logic_vector(7 downto 0);
+--    signal sweep_table_samples_per_step : std_logic_vector(15 downto 0);
+--    signal sweep_table_sample_skip : std_logic_vector(15 downto 0);
+--    signal sweep_table_samples_per_point : std_logic_vector(15 downto 0);
+--    signal sweep_table_points : std_logic_vector(15 downto 0);
 
-    signal sweep_table_probe_id : std_logic_vector(7 downto 0);
-    signal sweep_table_step_id : std_logic_vector(7 downto 0);
 
-    signal sweep_table_nof_steps : std_logic_vector(7 downto 0);
-    signal sweep_table_samples_per_step : std_logic_vector(15 downto 0);
-    signal sweep_table_sample_skip : std_logic_vector(15 downto 0);
-    signal sweep_table_samples_per_point : std_logic_vector(15 downto 0);
-    signal sweep_table_points : std_logic_vector(15 downto 0);
-
+    -- RX FSM
+    signal uc_rx_state : uc_rx_state_type;
+    signal preamble_counter : integer range 0 to 2 := 0;
+    signal received_byte : std_logic_vector(7 downto 0);
+    signal command_byte : std_logic_vector(7 downto 0);
+    signal current_command : std_logic_vector(4 downto 0);
+    signal expected_payload_length : integer range 0 to 7 := 0;
+    signal payload_buffer : payload_array_type; 
+    signal payload_index  : integer range 0 to 7 := 0;
+    signal rx_context : rx_context_type := CTX_PREAMBLE;
+    signal long_command_active : std_logic := '0';
+    signal swt_wr_substate : integer range 0 to 2 := 0;
     signal sweep_table_write_wait : integer range 0 to 3;
+    signal swt_rd_substate : integer range 0 to 2 := 0;
     signal sweep_table_read_wait : integer range 0 to 3;
+    constant POSTAMBLE : std_logic_vector(7 downto 0) := x"0A";
+    constant PREAMBLE_1 : std_logic_vector(7 downto 0) := x"B5";
+    constant PREAMBLE_2 : std_logic_vector(7 downto 0) := x"43";
+    signal acc_send_req           : std_logic := '0';
+    signal mag_send_req           : std_logic := '0';
+    signal const_volt_send_req    : std_logic := '0';
+    signal swt_swp_cnt_send_req       : std_logic := '0';
+    signal swt_steps_send_req     : std_logic := '0';
+    signal swt_sps_send_req       : std_logic := '0';
+    signal swt_skip_send_req      : std_logic := '0';
+    signal swt_spp_send_req       : std_logic := '0';
+    signal swt_points_send_req    : std_logic := '0';
+    signal const_measure_send_req : std_logic := '0';
+    signal swt_value_send_req     : std_logic := '0';
 
-    signal msg_2send : std_logic_vector(71 downto 0); -- this can be extended to include pre/postamble
-    -------------------------------------------------------------
+    -- TX FSM
+    signal uc_tx_state : uc_tx_state_type;
+    signal msg_2send  : byte_array_type := (others => (others => '0'));
+    signal start_tx : std_logic := '0';
+    signal tx_byte_index : integer range 0 to 11 := 0;
+    signal acc_tx_flag               : std_logic := '0';
+    signal mag_tx_flag               : std_logic := '0';
+    signal const_volt_tx_flag        : std_logic := '0';
+    signal swt_swp_cnt_tx_flag           : std_logic := '0';
+    signal swt_steps_tx_flag         : std_logic := '0';
+    signal swt_sps_tx_flag           : std_logic := '0';
+    signal swt_skip_tx_flag          : std_logic := '0';
+    signal swt_spp_tx_flag           : std_logic := '0';
+    signal swt_points_tx_flag        : std_logic := '0';
+    signal const_measure_tx_flag     : std_logic := '0';
+    signal swt_value_tx_flag         : std_logic := '0';
+    signal constant_bias_voltage_tx  : std_logic_vector(15 downto 0);
 
+
+    -- PERIODIC TX
+    signal old_new_data : std_logic;
+    signal acc_tx_periodic_flag  : std_logic := '0';
+    signal mag_tx_periodic_flag  : std_logic := '0';
+
+    -- FLIGHT STATES
     signal flight_state : std_logic_vector(7 downto 0);
+    signal old_status_packet_clk : std_logic;
+    signal state_seconds : std_logic_vector(19 downto 0);
+    signal send_flight_state : std_logic;
+    signal mission_mode : std_logic;
+    signal old_1Hz : std_logic;
     constant boot : std_logic_vector(7 downto 0) := x"01";
     constant idle : std_logic_vector(7 downto 0) := x"02";
     constant inside_rocket : std_logic_vector(7 downto 0) := x"03";
@@ -208,56 +204,32 @@ architecture architecture_General_Controller of General_Controller is
     constant power_save : std_logic_vector(7 downto 0) := x"08";
     constant debug : std_logic_vector(7 downto 0) := x"09";
 
+    -- EXT RX
     signal ext_rx_state : integer range 1 to 4;
     signal command : std_logic_vector(7 downto 0);
-
-    signal uc_tx_state : uc_tx_state_type;
-    signal uc_tx_nextstate : uc_tx_state_type;
-    signal uc_tx_substate : integer range 1 to 18;
     signal send_console_enable : std_logic;
     signal send_led3 : std_logic;
     signal send_led4 : std_logic;
     signal send_telemetry_request : std_logic;
 
-    signal uc_rx_state : uc_rx_state_type;
-    signal uc_rx_prev_state : uc_rx_state_type;
-    signal uc_rx_byte : std_logic_vector(7 downto 0);
-    signal uc_rx_substate : integer range 1 to 16;
 
-    signal tx_sensors_byte_index : integer range 0 to 8;
-
-    signal old_status_packet_clk : std_logic;
-
-    signal state_seconds : std_logic_vector(19 downto 0);
-    signal send_flight_state : std_logic;
-
-    signal old_1Hz : std_logic;
-
-    signal mission_mode : std_logic;
-    
-    signal old_new_data : std_logic;
-    signal acc_send_req : std_logic := '0';
-    signal mag_send_req : std_logic := '0';
+    -- ADDED by Angelo on 03/08 -- TODO:check
+    function vector_2array(v : std_logic_vector(95 downto 0)) return byte_array_type is
+    variable result : byte_array_type;
+    begin
+        for i in 0 to 11 loop
+            result(i) := v((95 - i*8) downto (88 - i*8));
+        end loop;
+        return result;
+    end function;
 
 begin
+
     process (clk, reset)
     begin
         if reset /= '0' then
-            ------------------------------------------------
-            --Default state of DAC/ADC signals
+       
             constant_bias_mode <= '0';
-            constant_bias_voltage_0 <= x"0000";
-            constant_bias_voltage_1 <= x"0000";
-
-            sweep_table_activate_sweep <= '0';
-            sweep_table_nof_steps <= x"00";
-            sweep_table_samples_per_point <= x"0000";
-            sweep_table_points <= x"0000";
-            ------------------------------------------------
-            
-            unit_id <= x"21";       -- Default unit identifier - before microcontroller reads out the stored value.
-            ffu_id <= x"00";        -- Default FFU identifier - before microcontroller reads out the stored value.
-            gs_id <= x"00";        -- Default FFU identifier - before microcontroller reads out the stored value.
 
             flight_state <= boot;
 
@@ -272,16 +244,13 @@ begin
             uc_send <= (others => '0');
             uc_wen <= '0';
             uc_oen <= '0';
-            uc_tx_state <= uc_tx_idle;
-            uc_tx_substate <= 1;
+            uc_tx_state <= TX_IDLE;
             send_console_enable <= '0';
             send_led3 <= '0';
             send_led4 <= '0';
             send_telemetry_request <= '0';
 
-            uc_rx_state <= uc_rx_idle;
-            uc_rx_prev_state <= uc_rx_idle;
-            uc_rx_substate <= 1;
+            uc_rx_state <= RX_IDLE;
 
             en_sensors <= '0';
             en_data_saving <= '0';
@@ -307,24 +276,20 @@ begin
             state_seconds <= (others => '0');
             send_flight_state <= '0';
 
-            temp_first_byte <= (others => '0');
 
             constant_bias_voltage_0 <= (others => '0');
             constant_bias_voltage_1 <= (others => '0');
+            constant_bias_voltage_tx <= (others => '0');
             constant_bias_probe_id <= (others => '0');
             
             sweep_table_activate_sweep <= '0';
             sweep_table_sweep_cnt <= (others => '0');
-            sweep_table_probe_id <= (others => '0');
-            sweep_table_step_id <= (others => '0');
 
             sweep_table_nof_steps <= (others => '0');
             sweep_table_sample_skip <= (others => '0');
             sweep_table_samples_per_point <= (others => '0');
             sweep_table_points <= (others => '0');
 
-            sweep_table_write_wait <= 0;
-            sweep_table_read_wait <= 0;
             st_wdata <= (others => '0');
             st_waddr <= (others => '0');
             st_raddr <= (others => '0');
@@ -334,10 +299,53 @@ begin
             st_ren0  <= '0';
             st_ren1  <= '0';
 
-            tx_sensors_byte_index <= 0;
+            -- ADDED by Angelo on 2025-06-22 --
             old_new_data <= '0';
             acc_send_req <= '0';
             mag_send_req <= '0';
+            -- ADDED by Angelo on 2025-07-01 --
+            preamble_counter <= 0;
+            payload_index <= 0;
+            command_byte <= (others => '0');
+            current_command <= (others => '0');
+            expected_payload_length <= 0;
+            rx_context <= CTX_PREAMBLE;
+            for i in 0 to 3 loop
+                payload_buffer(i) <= (others => '0');
+            end loop;
+            long_command_active <= '0';
+            swt_rd_substate <= 0;
+            swt_wr_substate <= 0;
+            sweep_table_write_wait <= 0;
+            sweep_table_read_wait <= 0;
+            -- ADDED by Angelo on 2025-07-26 --
+            tx_byte_index <= 0;
+            start_tx <= '0';
+            msg_2send <= (others => (others => '0'));
+            -- ADDED by Angelo on 2025-08-03
+            const_volt_send_req  <= '0';
+            swt_swp_cnt_send_req     <= '0';
+            swt_steps_send_req   <= '0';
+            swt_sps_send_req     <= '0';
+            swt_skip_send_req    <= '0';
+            swt_spp_send_req     <= '0';
+            swt_points_send_req  <= '0';
+            const_measure_send_req  <= '0';
+            swt_value_send_req   <= '0';
+            -- ADDED by Angelo on 2025-08-18
+            acc_tx_flag             <= '0';
+            mag_tx_flag             <= '0';
+            const_volt_tx_flag      <= '0';
+            swt_swp_cnt_tx_flag         <= '0';
+            swt_steps_tx_flag       <= '0';
+            swt_sps_tx_flag         <= '0';
+            swt_skip_tx_flag        <= '0';
+            swt_spp_tx_flag         <= '0';
+            swt_points_tx_flag      <= '0';
+            const_measure_tx_flag   <= '0';
+            swt_value_tx_flag       <= '0';
+            acc_tx_periodic_flag    <= '0';
+            mag_tx_periodic_flag    <= '0';
 
         elsif rising_edge(clk) then
     ----------------------- Seconds counter -----------------------------
@@ -351,8 +359,6 @@ begin
                 end if;
             end if;
 
-    --------------Disable Sweep Trigger if activated --------------------
-            sweep_table_activate_sweep <= '0';
 
     --------- General state machine - mission sequence, etc. ------------
             case flight_state is
@@ -477,1076 +483,487 @@ begin
 
             end case;
 
-    --------- Microcontroller UART transmit ------------
+    --------- TX FSM ------------
 
-            -- Handle TX flags --
-            if uc_tx_state = uc_tx_idle then -- if not sending
-                if acc_send_req = '1' then
-                    msg_2send <= acc_packet;
-                    acc_send_req <= '0';
-                    uc_tx_state <= uc_tx_preamble;
-                    uc_tx_nextstate <= uc_tx_send_sensors_data;
-                elsif mag_send_req = '1' then
-                    msg_2send <= mag_packet;
-                    mag_send_req <= '0';
-                    uc_tx_state <= uc_tx_preamble;
-                    uc_tx_nextstate <= uc_tx_send_sensors_data;
+            -- RX strobes to internal TX flags --
+            if acc_send_req = '1' then
+                acc_tx_flag <= '1';
+            end if;
+            if mag_send_req = '1' then
+                mag_tx_flag <= '1';
+            end if;    
+            if const_volt_send_req = '1' then
+                const_volt_tx_flag <= '1';
+            end if;
+            if swt_swp_cnt_send_req = '1' then
+                swt_swp_cnt_tx_flag <= '1';
+            end if;
+            if swt_steps_send_req = '1' then
+                swt_steps_tx_flag <= '1';
+            end if;
+            if swt_sps_send_req = '1' then
+                swt_sps_tx_flag <= '1';
+            end if;
+            if swt_skip_send_req = '1' then
+                swt_skip_tx_flag <= '1';
+            end if;
+            if swt_spp_send_req = '1' then
+                swt_spp_tx_flag <= '1';
+            end if;
+            if swt_points_send_req = '1' then
+                swt_points_tx_flag <= '1';
+            end if;
+            if const_measure_send_req = '1' then
+                const_measure_tx_flag <= '1';
+            end if;
+            if swt_value_send_req = '1' then
+                swt_value_tx_flag <= '1';
+            end if;
+
+
+            -- Handle TX flags, building packet to send --
+            if uc_tx_state = TX_IDLE then
+
+                if (acc_tx_flag = '1') or (acc_tx_periodic_flag = '1') then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"11110"&"000"& acc_packet & POSTAMBLE); 
+                    acc_tx_flag <= '0';
+                    start_tx <= '1';
+
+                elsif (mag_tx_flag = '1') or (mag_tx_periodic_flag = '1') then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"11110"&"000"& mag_packet & POSTAMBLE);
+                    mag_tx_flag <= '0';
+                    start_tx <= '1';
+                
+                elsif const_volt_tx_flag = '1' then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"00100"&"001"& constant_bias_voltage_tx(7 downto 0)& constant_bias_voltage_tx(15 downto 8)&(47 downto 0 => '0') & POSTAMBLE);
+                    const_volt_tx_flag <= '0';
+                    start_tx <= '1';
+
+                elsif swt_swp_cnt_tx_flag = '1' then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"01011"&"000"& sweep_table_sweep_cnt(7 downto 0)& sweep_table_sweep_cnt(15 downto 8)&(47 downto 0 => '0') & POSTAMBLE);
+                    swt_swp_cnt_tx_flag <= '0';
+                    start_tx <= '1';
+
+                elsif swt_steps_tx_flag = '1' then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"01101"&"000"& sweep_table_nof_steps &(55 downto 0 => '0') & POSTAMBLE);
+                    swt_steps_tx_flag <= '0';
+                    start_tx <= '1';
+
+                elsif swt_sps_tx_flag = '1' then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"01111"&"000"& sweep_table_samples_per_step(7 downto 0)& sweep_table_samples_per_step(15 downto 8)&(47 downto 0 => '0') & POSTAMBLE);
+                    swt_sps_tx_flag <= '0';
+                    start_tx <= '1';
+
+                elsif swt_skip_tx_flag = '1' then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"10001"&"000"& sweep_table_sample_skip(7 downto 0)& sweep_table_sample_skip(15 downto 8)&(47 downto 0 => '0') & POSTAMBLE);
+                    swt_skip_tx_flag <= '0';
+                    start_tx <= '1';
+
+                elsif swt_spp_tx_flag = '1' then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"10011"&"000"& sweep_table_samples_per_point(7 downto 0)& sweep_table_samples_per_point(15 downto 8)&(47 downto 0 => '0') & POSTAMBLE);
+                    swt_spp_tx_flag <= '0';
+                    start_tx <= '1';
+
+                elsif swt_points_tx_flag = '1' then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"10101"&"000"& sweep_table_points(7 downto 0)& sweep_table_points(15 downto 8)&(47 downto 0 => '0') & POSTAMBLE);
+                    swt_points_tx_flag <= '0';
+                    start_tx <= '1';
+
+                elsif const_measure_tx_flag = '1' then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"00001"&"000"&x"aabb"&(47 downto 0 => '0') & POSTAMBLE);
+                    const_measure_tx_flag <= '0';
+                    start_tx <= '1';
+
+                elsif swt_value_tx_flag = '1' then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"10111"&"010"& sweep_table_read_value(7 downto 0)& sweep_table_read_value(15 downto 8)&(47 downto 0 => '0') & POSTAMBLE);
+                    swt_value_tx_flag <= '0';
+                    start_tx <= '1';
+
                 end if;
             end if;
 
             case uc_tx_state is
-                when uc_tx_idle =>
 
-                when uc_tx_preamble =>
-                    case uc_tx_substate is
-                        when 1 =>
-                            if uc_tx_rdy = '1' then
-                                uc_send <= x"B5";
-                                uc_wen <= '1';
-                                uc_tx_substate <= 2;
-                            end if;
-                        when 2 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 3;
-                            end if;
-                        when 3 =>
-                            if uc_tx_rdy = '1' then
-                                uc_send <= x"43";
-                                uc_wen <= '1';
-                                uc_tx_substate <= 4;
-                            end if;
-                        when 4 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_state <= uc_tx_nextstate;
-                            end if;
-                        when others =>
-                    end case;
-                
-                when uc_tx_send_const_bias_measurement =>
-                    case uc_tx_substate is 
-                        when 1 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= x"CA";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 2 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 3 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= "00000001";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 4 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 5 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= "00000010";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 6 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 7 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= "00000011";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 8 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 9 =>
-                            if uc_tx_rdy = '1' then
-                                uc_send <= "00000100";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 10 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 11 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= "00000101";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 12 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 13 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= "00000110";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 14 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 15 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= "00000111";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 16 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 17 =>
-                            if uc_tx_rdy = '1' then
-                                uc_send <= "00001000";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 18 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_state <= uc_tx_postamble;
-                            end if;
-                        when others =>
-                    end case;
+                when TX_IDLE =>
+                    if start_tx = '1' then
+                        tx_byte_index <= 0;
+                        uc_tx_state   <= TX_SEND_BYTE;
+                        start_tx <= '0';
 
-                when uc_tx_send_const_bias_voltage =>
-                    case uc_tx_substate is
-                        when 1 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= x"CC";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 2 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 3 => 
-                            if uc_tx_rdy = '1' then
-                                case constant_bias_probe_id is
-                                    when x"00" => uc_send <= constant_bias_voltage_0(7 downto 0);
-                                    when x"01" => uc_send <= constant_bias_voltage_1(7 downto 0);
-                                    when others =>
-                                end case;
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 4 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 5 => 
-                            if uc_tx_rdy = '1' then
-                                case constant_bias_probe_id is
-                                    when x"00" => uc_send <= constant_bias_voltage_0(15 downto 8);
-                                    when x"01" => uc_send <= constant_bias_voltage_1(15 downto 8);
-                                    when others =>
-                                end case;
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 6 | 8 | 10 | 12 | 14 | 16 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 7 | 9 | 11 | 13 | 15 | 17 =>
-                            if uc_tx_rdy = '1' then
-                                uc_send <= "00000000";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 18 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_state <= uc_tx_postamble;
-                            end if;
-                        when others =>
-                    end case;
+                    end if;
 
+                when TX_SEND_BYTE =>
+                    if uc_tx_rdy = '1' then
+                        uc_send <= msg_2send(tx_byte_index);
+                        uc_wen  <= '1';
+                        uc_tx_state <= TX_WAIT_RDY;
+                    end if;
 
-                when uc_tx_send_swt_sweep_cnt =>
-                    case uc_tx_substate is
-                        when 1 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= x"A0";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 2 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 3 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= sweep_table_sweep_cnt(7 downto 0);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 4 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 5 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= sweep_table_sweep_cnt(15 downto 8);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 6 | 8 | 10 | 12 | 14 | 16 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 7 | 9 | 11 | 13 | 15 | 17 =>
-                            if uc_tx_rdy = '1' then
-                                uc_send <= "00000000";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 18 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_state <= uc_tx_postamble;
-                            end if;
-                        when others =>
-                    end case;
+                when TX_WAIT_RDY =>
+                    if uc_tx_rdy = '0' then
+                        uc_wen <= '0';
+                        if tx_byte_index < 11 then
+                            tx_byte_index <= tx_byte_index + 1;
+                            uc_tx_state   <= TX_SEND_BYTE;
+                        else
+                            uc_tx_state   <= TX_IDLE;
+                        end if;
+                    end if;
 
-
-                when uc_tx_send_sweep_table =>
-                    case uc_tx_substate is
-                        when 1 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= x"A1";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 2 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 3 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= sweep_table_read_value(7 downto 0);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 4 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 5 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= sweep_table_read_value(15 downto 8);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 6 | 8 | 10 | 12 | 14 | 16 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 7 | 9 | 11 | 13 | 15 | 17 =>
-                            if uc_tx_rdy = '1' then
-                                uc_send <= "00000000";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 18 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_state <= uc_tx_postamble;
-                            end if;
-                        when others =>
-                    end case;
-
-
-                when uc_tx_send_swt_steps =>
-                    case uc_tx_substate is
-                        when 1 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= x"A2";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 2 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 3 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= sweep_table_nof_steps;
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 4 | 6 | 8 | 10 | 12 | 14 | 16 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 5 | 7 | 9 | 11 | 13 | 15 | 17 =>
-                            if uc_tx_rdy = '1' then
-                                uc_send <= "00000000";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 18 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_state <= uc_tx_postamble;
-                            end if;
-                        when others =>
-                    end case;
-
-
-                when uc_tx_send_swt_samples_per_step =>
-                    case uc_tx_substate is
-                        when 1 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= x"A3";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 2 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 3 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= sweep_table_samples_per_step(7 downto 0);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 4 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 5 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= sweep_table_samples_per_step(15 downto 8);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 6 | 8 | 10 | 12 | 14 | 16 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 7 | 9 | 11 | 13 | 15 | 17 =>
-                            if uc_tx_rdy = '1' then
-                                uc_send <= "00000000";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 18 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_state <= uc_tx_postamble;
-                            end if;
-                        when others =>
-                    end case;
-
-
-                when uc_tx_send_swt_skip =>
-                    case uc_tx_substate is
-                        when 1 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= x"A4";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 2 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 3 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= sweep_table_sample_skip(7 downto 0);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 4 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 5 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= sweep_table_sample_skip(15 downto 8);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 6 | 8 | 10 | 12 | 14 | 16 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 7 | 9 | 11 | 13 | 15 | 17 =>
-                            if uc_tx_rdy = '1' then
-                                uc_send <= "00000000";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 18 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_state <= uc_tx_postamble;
-                            end if;
-                        when others =>
-                    end case;
-
-
-                when uc_tx_send_swt_samples_per_point =>
-                    case uc_tx_substate is
-                        when 1 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= x"A5";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 2 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 3 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= sweep_table_samples_per_point(7 downto 0);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 4 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 5 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= sweep_table_samples_per_point(15 downto 8);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 6 | 8 | 10 | 12 | 14 | 16 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 7 | 9 | 11 | 13 | 15 | 17 =>
-                            if uc_tx_rdy = '1' then
-                                uc_send <= "00000000";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 18 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_state <= uc_tx_postamble;
-                            end if;
-                        when others =>
-                    end case;
-
-
-
-                when uc_tx_send_swt_points =>
-                    case uc_tx_substate is
-                        when 1 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= x"A6";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 2 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 3 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= sweep_table_points(7 downto 0);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 4 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 5 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= sweep_table_points(15 downto 8);
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 6 | 8 | 10 | 12 | 14 | 16 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 7 | 9 | 11 | 13 | 15 | 17 =>
-                            if uc_tx_rdy = '1' then
-                                uc_send <= "00000000";
-                                uc_wen <= '1';
-                                uc_tx_substate <= uc_tx_substate + 1;
-                            end if;
-                        when 18 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_state <= uc_tx_postamble;
-                            end if;
-                        when others =>
-                    end case;
-    
-                when uc_tx_send_sensors_data =>
-                    case uc_tx_substate is
-                        when 1 => 
-                            if uc_tx_rdy = '1' then
-                                uc_send <= msg_2send((71-tx_sensors_byte_index*8) downto (64-tx_sensors_byte_index*8));
-                                uc_wen <= '1';
-                                uc_tx_substate <= 2;
-                            end if;
-
-                        when 2 =>  
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                if tx_sensors_byte_index < 8 then
-                                    tx_sensors_byte_index <= tx_sensors_byte_index + 1;
-                                else
-                                    tx_sensors_byte_index <= 0;
-                                    uc_tx_state <= uc_tx_postamble;
-                                end if;
-                            end if;
-                        when others =>
-                    end case;
-
-
-                when uc_tx_postamble =>
-                    case uc_tx_substate is
-                        when 1 =>
-                            if uc_tx_rdy = '1' then
-                                uc_send <= x"0A";
-                                uc_wen <= '1';
-                                uc_tx_substate <= 2;
-                            end if;
-                        when 2 =>
-                            if uc_tx_rdy = '0' then
-                                uc_wen <= '0';
-                                uc_tx_substate <= 1;
-                                uc_tx_state <= uc_tx_idle;
-                            end if;
-                        when others =>
-                            uc_tx_state <= uc_tx_idle;
-                    end case;
                 when others =>
-                     uc_tx_state <= uc_tx_idle;
+                    uc_tx_state <= TX_IDLE;
 
             end case;
 
-    --------- Microcontroller UART receive ------------
+    --------- PERIODIC FLAGS ------------
             old_new_data <= new_data;    -- this will not be needed if new_data is a strobe, but for now
             if (new_data = '1') and (old_new_data = '0') then    -- detects the "rising edge" of new data, 
                                                                 -- not needed when new_data is a strobe
-                acc_send_req <= '1';
-                mag_send_req <= '1';
-                -- msg_2send <= acc_packet;
-                -- uc_tx_state <= uc_tx_preamble;
-                -- uc_tx_nextstate <= uc_tx_send_sensors_data;
+                acc_tx_periodic_flag <= '0';
+                mag_tx_periodic_flag <= '0';
             end if;
 
 
-    --------- Microcontroller UART receive ------------
-            if uc_rx_state /= uc_rx_wait AND uc_rx_state /= uc_rx_get_byte then
-                uc_rx_prev_state <= uc_rx_state;
-            end if;
+-- NEW RX FSM --
 
             case uc_rx_state is
-                when uc_rx_idle =>
-                    uc_rx_substate <= 1;
+
+                when RX_IDLE =>   -- TODO: is the "idle state" really needed?
+
+                    -- strobes --
+                    Sweep_enabled <= '0'; -- set to 1 in command 01010
+                    sweep_table_activate_sweep <= '0';  -- set to 1 in command 01010
+                    acc_send_req         <= '0';
+                    mag_send_req         <= '0';
+                    const_volt_send_req  <= '0';
+                    swt_swp_cnt_send_req     <= '0';
+                    swt_steps_send_req   <= '0';
+                    swt_sps_send_req     <= '0';
+                    swt_skip_send_req    <= '0';
+                    swt_spp_send_req     <= '0';
+                    swt_points_send_req  <= '0';
+                    const_measure_send_req  <= '0';
+                    swt_value_send_req   <= '0';
+
+
+
 
                     if uc_rx_rdy = '1' then
-                        uc_rx_state <= uc_rx_preamble;
+                        uc_rx_state <= RX_GET_BYTE;
                     end if;
 
-                when uc_rx_get_byte =>
+                when RX_GET_BYTE =>
                     if uc_rx_rdy = '1' then
-                        uc_rx_byte <= uc_recv;
-                        uc_oen <= '1';
-                        uc_rx_state <= uc_rx_wait;
+                        received_byte <= uc_recv;  
+                        uc_oen <= '1';             
+                        uc_rx_state <= RX_WAIT_RDY_LOW;
                     end if;
 
-                when uc_rx_wait =>
+                when RX_WAIT_RDY_LOW =>
                     if uc_rx_rdy = '0' then
-                        uc_rx_substate <= uc_rx_substate + 1;
-                        uc_rx_state <= uc_rx_prev_state;
                         uc_oen <= '0';
+                        case rx_context is
+                            when CTX_PREAMBLE =>
+                                uc_rx_state <= RX_PROCESS_PREAMBLE;
+                            when CTX_PAYLOAD =>
+                                uc_rx_state <= RX_PAYLOAD;
+                            when CTX_POSTAMBLE =>
+                                uc_rx_state <= RX_POSTAMBLE;
+                        end case;
                     end if;
 
-                when uc_rx_preamble =>
-                    case uc_rx_substate is
+                when RX_PROCESS_PREAMBLE =>
+                    case preamble_counter is
+                        when 0 =>
+                            if received_byte = PREAMBLE_1 then
+                                preamble_counter <= 1;
+                            else
+                                preamble_counter <= 0;  
+                            end if;
+                            uc_rx_state <= RX_IDLE;
+
                         when 1 =>
-                            uc_rx_state <= uc_rx_get_byte;
+                            if received_byte = PREAMBLE_2 then
+                                preamble_counter <= 2;
+                            else
+                                preamble_counter <= 0;
+                            end if;
+                            uc_rx_state <= RX_IDLE;  
 
                         when 2 =>
-                            if uc_rx_byte = x"B5" then          -- "�"
-                                uc_rx_state <= uc_rx_get_byte;
-                            else
-                                uc_rx_state <= uc_rx_idle;
-                            end if;
-
-                        when 3 =>
-                            if uc_rx_byte = x"43" then          -- "C"
-                                uc_rx_state <= uc_rx_get_byte;
-                            else
-                                uc_rx_state <= uc_rx_idle;
-                            end if;
-
-                        when 4 =>
-                            uc_rx_substate <= 1;
-
-                            case uc_rx_byte is
-                                when x"46" => uc_rx_state <= uc_rx_receive_ffu_id;              -- "F" - FFU ID
-                                when x"47" => uc_rx_state <= uc_rx_receive_gs_id;               -- "G" - GS ID for FPGA
-                                when x"55" => uc_rx_state <= uc_rx_receive_unit_id;             -- "U" - Unit ID
-
-                                when x"CA" => uc_rx_state <= uc_rx_receive_en_cb_mode;
-                                when x"C0" => uc_rx_state <= uc_rx_receive_dis_cb_mode;
-                                when x"CB" => uc_rx_state <= uc_rx_receive_const_bias;
-                                when x"CC" => uc_rx_state <= uc_rx_readback_const_bias;
-
-                                when x"AA" => uc_rx_state <= uc_rx_receive_activate_sweep;
-                                when x"AB" => uc_rx_state <= uc_rx_receive_sweep_table;
-                                when x"AC" => uc_rx_state <= uc_rx_receive_swt_steps;
-                                when x"AD" => uc_rx_state <= uc_rx_receive_swt_samples_per_step;
-                                when x"AE" => uc_rx_state <= uc_rx_receive_swt_skip;
-                                when x"AF" => uc_rx_state <= uc_rx_receive_swt_samples_per_point;
-                                when x"B0" => uc_rx_state <= uc_rx_receive_swt_points;
-
-                                when x"A0" => uc_rx_state <= uc_rx_readback_swt_sweep_cnt;
-                                when x"A1" => uc_rx_state <= uc_rx_readback_sweep_table;
-                                when x"A2" => uc_rx_state <= uc_rx_readback_swt_steps;
-                                when x"A3" => uc_rx_state <= uc_rx_readback_swt_samples_per_step;
-                                when x"A4" => uc_rx_state <= uc_rx_readback_swt_skip;
-                                when x"A5" => uc_rx_state <= uc_rx_readback_swt_samples_per_point;
-                                --when x"A6" => uc_rx_state <= uc_rx_readback_swt_points; -- ORIGINAL COMMAND
-                                when x"F6" => uc_rx_state <= uc_rx_readback_sensors_data;
-                                              mag_send_req <= '1';
-                                when x"A6" => uc_rx_state <= uc_rx_readback_sensors_data;
-                                              acc_send_req <= '1';
-                                              
-                                              
-                               -- when x"A6" => uc_rx_state <= uc_rx_readback_sensors_data; -- NOT its command ID (need to implement)
-                               --               mag_send_req <= '1';
-                               --               msg_2send <= mag_packet;                                               
-                               -- when x"F6" => uc_rx_state <= uc_rx_readback_sensors_data;
-                               --               acc_send_req <= '1';
-                               --               msg_2send <= acc_packet;
-                               --               -- try to only add uc_rx_state <= postamble e togli msg2send 
-
-
-                                when others => uc_rx_state <= uc_rx_idle;                       -- Unknown message, ignore.
-                            end case;
-                    when others =>
+                            command_byte <= received_byte;  
+                            preamble_counter <= 0;
+                            uc_rx_state <= RX_COMMAND;
                     end case;
 
-                when uc_rx_receive_ffu_id =>
-                    case uc_rx_substate is
-                        when 1 => uc_rx_state <= uc_rx_get_byte;
-                        when 2 => ffu_id <= uc_rx_byte; uc_rx_state <= uc_rx_postamble; uc_rx_substate <= 1;
-                        when others =>
-                    end case;
+                when RX_COMMAND =>
+                    current_command <= command_byte(7 downto 3);
+                    expected_payload_length <= to_integer(unsigned(command_byte(2 downto 0)));
 
-                when uc_rx_receive_unit_id =>
-                    case uc_rx_substate is
-                        when 1 => uc_rx_state <= uc_rx_get_byte;
-                        when 2 => 
-                            if uc_rx_byte /= x"00" then
-                                unit_id <= uc_rx_byte;
-                            end if;
+                    if (command_byte(2 downto 0)) = "000" then
+                        rx_context <= CTX_POSTAMBLE;  
+                    else
+                        payload_index <= 0;
+                        rx_context <= CTX_PAYLOAD;   
+                    end if;
 
-                            uc_rx_state <= uc_rx_postamble;
-                            uc_rx_substate <= 1;
-                        when others =>
-                    end case;
+                    uc_rx_state <= RX_IDLE;
 
-                when uc_rx_receive_gs_id =>
-                    case uc_rx_substate is
-                        when 1 => uc_rx_state <= uc_rx_get_byte;
-                        when 2 => gs_id <= uc_rx_byte; uc_rx_state <= uc_rx_postamble; uc_rx_substate <= 1;
-                        when others =>
-                    end case;
+                when RX_PAYLOAD =>
+                    payload_buffer( payload_index ) <= received_byte;
 
+                    if payload_index + 1 = expected_payload_length then
+                        rx_context <= CTX_POSTAMBLE;
+                    else
+                        payload_index <= payload_index + 1;
+                        rx_context <= CTX_PAYLOAD;
+                    end if;    
 
-                when uc_rx_receive_en_cb_mode => 
-                    case uc_rx_substate is
-                        when 1 =>
+                    uc_rx_state <= RX_IDLE;
+
+                when RX_POSTAMBLE =>
+                    if received_byte = POSTAMBLE then
+                        if current_command = "10111" or current_command = "10110" then -- commands on sweep table (readback, write)
+                            long_command_active <= '1';
+                        else
+                            long_command_active <= '0';
+                        end if;
+                        uc_rx_state <= RX_EXECUTE;  
+                    else
+                        uc_rx_state <= RX_IDLE;
+                        rx_context <= CTX_PREAMBLE;
+                    end if;   
+
+                when RX_EXECUTE =>
+                    case current_command is
+
+                        -- ZERO BYTES PAYLOAD --
+
+                        -- Enable Constant Bias Mode (and send measurements)
+                        when "00001" =>  
                             led1 <= '1';
                             constant_bias_mode <= '1';
-                            Bias_enabled <='1'; -- Activate the CB_en port to Science module, proper implementation is left as an exercise for the reader
-                            uc_tx_state <= uc_tx_preamble;
-                            uc_tx_nextstate <= uc_tx_send_const_bias_measurement;
-                            uc_rx_state <= uc_rx_postamble;
-                            uc_rx_substate <= 1;
-                        when others =>
-                    end case;
+                            Bias_enabled <= '1';
+                            const_measure_send_req <= '1';
 
-                when uc_rx_receive_dis_cb_mode => 
-                    case uc_rx_substate is
-                        when 1 =>
+                        -- Disable Constant Bias Mode
+                        when "00010" => 
                             led1 <= '0';
                             led2 <= '0';
                             constant_bias_mode <= '0';
-                            Bias_enabled <='0'; --Deactivate the CB_en port to Science module, proper implementation is left as an exercise for the reader
-                            uc_rx_state <= uc_rx_postamble;
-                            uc_rx_substate <= 1;
-                        when others =>
-                    end case;
+                            Bias_enabled <= '0';
 
-
-
-                when uc_rx_receive_const_bias =>
-                    case uc_rx_substate is 
-                        when 1 => uc_rx_state <= uc_rx_get_byte;
-                        when 2 => 
-                            constant_bias_probe_id <= uc_rx_byte;
-                            uc_rx_state <= uc_rx_get_byte;
-                        when 3 =>
-                                temp_first_byte <= uc_rx_byte;
-                                uc_rx_state <= uc_rx_get_byte;
-                        when 4 =>
-                            case constant_bias_probe_id is
-                                when x"00" =>
-                                    constant_bias_voltage_0(7 downto 0) <= temp_first_byte;
-                                    constant_bias_voltage_0(15 downto 8) <= uc_rx_byte;
-                                when x"01" =>
-                                    constant_bias_voltage_1(7 downto 0) <= temp_first_byte;
-                                    constant_bias_voltage_1(15 downto 8) <= uc_rx_byte;
-                                when others =>
-                            end case;
-                            uc_rx_state <= uc_rx_postamble;
-                            uc_rx_substate <= 1;
-                        when others =>
-                    end case;
-
-
-                when uc_rx_readback_const_bias =>
-                    case uc_rx_substate is
-                        when 1 => uc_rx_state <= uc_rx_get_byte;
-                        when 2 =>
-                            constant_bias_probe_id <= uc_rx_byte;
-                            uc_tx_state <= uc_tx_preamble;
-                            uc_tx_nextstate <= uc_tx_send_const_bias_voltage;
-                            uc_rx_state <= uc_rx_postamble;
-                            uc_rx_substate <= 1;
-                        when others =>
-                    end case;
-
-
-                when uc_rx_receive_activate_sweep => 
-                    case uc_rx_substate is
-                        when 1 => 
-                            Sweep_enabled <= '1';  -- Generate the SW_en port strobe to Science module, proper implementation is left as an exercise for the reader
-                            uc_rx_substate <= uc_rx_substate + 1;
-                        when 2 =>
-                            Sweep_enabled <= '0'; -- Generate the SW_en port strobe to Science module, proper implementation is left as an exercise for the reader
+                        -- Activate Sweep mode
+                        when "01010" =>  
+                            Sweep_enabled <= '1';  
+                            sweep_table_activate_sweep <= '1'; 
+                            constant_bias_mode <= '0';  -- Disable CB mode --TODO: Should this be done? -Jesus
                             sweep_table_sweep_cnt <= sweep_table_sweep_cnt + 1;
-                            sweep_table_activate_sweep <= '1';
-                            constant_bias_mode <= '0'; -- TODO: Consider - should this be done?
-                            uc_rx_state <= uc_rx_postamble;
-                            uc_rx_substate <= 1; 
-                       when others =>
-                    end case;
+
+                        -- Readback Sweep Count
+                        when "01011" => 
+                            swt_swp_cnt_send_req <= '1';
+
+                        -- Readback Sweep Steps
+                        when "01101" =>  
+                            swt_steps_send_req <= '1';
+
+                        -- Readback Samples per Step
+                        when "01111" =>  
+                            swt_sps_send_req <= '1';
+
+                        -- Readback Skip
+                        when "10001" =>  
+                            swt_skip_send_req <= '1';
+
+                        -- Readback Samples per Point
+                        when "10011" =>  
+                            swt_spp_send_req <= '1';
+
+                        -- Readback Sweep Points
+                        when "10101" =>  
+                            swt_points_send_req <= '1';
+
+                        -- Readback Sensors Data (accelerometer)
+                        when "11110" =>  
+                            acc_send_req <= '1';
+
+                        -- Readback Sensors Data (magnetometer)
+                        when "11111" =>  
+                            mag_send_req <= '1';
 
 
-                when uc_rx_receive_sweep_table =>
-                    case uc_rx_substate is 
-                        when 1 => uc_rx_state <= uc_rx_get_byte;
-                        when 2 => 
-                            sweep_table_probe_id <= uc_rx_byte;
-                            uc_rx_state <= uc_rx_get_byte;
-                        when 3 => 
-                            sweep_table_step_id <= uc_rx_byte;
-                            uc_rx_state <= uc_rx_get_byte;
-                        when 4 =>
-                            temp_first_byte <= uc_rx_byte;
-                            uc_rx_state <= uc_rx_get_byte;
-                        when 5 =>
-                            sweep_table_write_value(7 downto 0) <= temp_first_byte;
-                            sweep_table_write_value(15 downto 8) <= uc_rx_byte;
-                            uc_rx_substate <= uc_rx_substate + 1;
-                        when 6 =>
-                            -- Write to SweepTable RAM
-                            case sweep_table_probe_id is
-                                when x"00" =>
-                                    st_wen0 <= '1';
-                                    st_wen1 <= '0';
-                                when x"01" =>
-                                    st_wen0 <= '0';
-                                    st_wen1 <= '1';
+                        -- 1 BYTE PAYLOAD --
+
+                        -- Readback Constant Bias 
+                        when "00100" =>
+                            case payload_buffer(0) is -- payload_buffer(0) is constant_bias_probe_id
+                                when x"00" => constant_bias_voltage_tx <= constant_bias_voltage_0;
+                                when x"01" => constant_bias_voltage_tx <= constant_bias_voltage_1;
                                 when others =>
                             end case;
-                            st_ren0 <= '0';
-                            st_ren1 <= '0';
-                            st_waddr <= sweep_table_step_id;
-                            st_wdata <= sweep_table_write_value;
-                            uc_rx_substate <= uc_rx_substate + 1;
-                        when 7 => 
-                            -- Wait 3 CLK cycles for data to be written.
-                            if sweep_table_write_wait /= 3 then
-                               sweep_table_write_wait <= sweep_table_write_wait + 1;
-                            else
-                                uc_rx_substate <= uc_rx_substate + 1;
-                            end if;
-                        when 8 =>
-                            sweep_table_write_wait <= 0;
-                            uc_rx_state <= uc_rx_postamble;
-                            uc_rx_substate <= 1;
-                        when others =>
-                    end case;
+                            const_volt_send_req <= '1';
+
+                        -- Set Sweep Table Steps 
+                        when "01100" =>  
+                            sweep_table_nof_steps <= payload_buffer(0);
 
 
-                when uc_rx_receive_swt_steps => 
-                    case uc_rx_substate is
-                        when 1 => uc_rx_state <= uc_rx_get_byte;
-                        when 2 =>
-                            sweep_table_nof_steps <= uc_rx_byte;
-                            uc_rx_state <= uc_rx_postamble;
-                            uc_rx_substate <= 1;
-                        when others =>
-                    end case;
+                        -- 2 BYTES PAYLOAD --
+                                                       
+                        -- Readback Sweep Table
+                        when "10111" =>  
+                            case swt_rd_substate is
+
+                                when 0 =>
+                                    -- payload_buffer(0) is sweep_table_probe_id
+                                    -- payload_buffer(1) is sweep_table_step_id
+            
+                                    st_raddr <= payload_buffer(1);
+                                    st_wen0  <= '0';
+                                    st_wen1  <= '0';
+
+                                    case payload_buffer(0) is
+                                        when x"00" =>
+                                            st_ren0 <= '1';
+                                            st_ren1 <= '0';
+                                        when x"01" =>
+                                            st_ren0 <= '0';
+                                            st_ren1 <= '1';
+                                        when others =>
+                                    end case;
+
+                                    swt_rd_substate <= 1;  
+
+                                -- Wait 3 clock cycles
+                                when 1 =>
+                                    if sweep_table_read_wait < 3 then
+                                        sweep_table_read_wait <= sweep_table_read_wait + 1;
+                                    else
+                                        sweep_table_read_wait <= 0;
+                                        swt_rd_substate <= 2;
+                                        long_command_active <= '0'; -- set 1 clock cycle before  
+                                    end if;   
+
+                                when 2 =>
+                                    if payload_buffer(0) = x"00" then
+                                        sweep_table_read_value <= st_rdata0;
+                                    elsif payload_buffer(0) = x"01" then
+                                        sweep_table_read_value <= st_rdata1;
+                                    end if;
+
+                                    swt_value_send_req <= '1';
+                                    swt_rd_substate <= 0;
+
+                                when others => -- additional reset 
+                                    swt_rd_substate <= 0;
+                                    long_command_active <= '0';
+                                    uc_rx_state <= RX_IDLE;
+                                    rx_context <= CTX_PREAMBLE;
+                            end case;
 
 
-                when uc_rx_receive_swt_samples_per_step => 
-                    case uc_rx_substate is
-                        when 1 => uc_rx_state <= uc_rx_get_byte;
-                        when 2 =>
-                            temp_first_byte <= uc_rx_byte;
-                            uc_rx_state <= uc_rx_get_byte;
-                        when 3 => 
-                            sweep_table_samples_per_step(7 downto 0) <= temp_first_byte;
-                            sweep_table_samples_per_step(15 downto 8) <= uc_rx_byte;
-                            uc_rx_state <= uc_rx_postamble;
-                            uc_rx_substate <= 1;
-                        when others =>
-                    end case;
+                        -- Set Samples per Step 
+                        when "01110" =>   
+                            sweep_table_samples_per_step(7 downto 0)  <= payload_buffer(0);
+                            sweep_table_samples_per_step(15 downto 8) <= payload_buffer(1);
+                            
+                        -- Set Sweep Skip 
+                        when "10000" => 
+                            sweep_table_sample_skip(7 downto 0)  <= payload_buffer(0);
+                            sweep_table_sample_skip(15 downto 8) <= payload_buffer(1);
+
+                        -- Set Samples per Point
+                        when "10010" =>  
+                            sweep_table_samples_per_point(7 downto 0)  <= payload_buffer(0);
+                            sweep_table_samples_per_point(15 downto 8) <= payload_buffer(1);
+
+                        -- Set Sweep Points
+                        when "10100" => 
+                            sweep_table_points(7 downto 0)  <= payload_buffer(0);
+                            sweep_table_points(15 downto 8) <= payload_buffer(1);
 
 
-                when uc_rx_receive_swt_skip => 
-                    case uc_rx_substate is
-                        when 1 => uc_rx_state <= uc_rx_get_byte;
-                        when 2 =>
-                            temp_first_byte <= uc_rx_byte;
-                            uc_rx_state <= uc_rx_get_byte;
-                        when 3 => 
-                            sweep_table_sample_skip(7 downto 0) <= temp_first_byte;
-                            sweep_table_sample_skip(15 downto 8) <= uc_rx_byte;
-                            uc_rx_state <= uc_rx_postamble;
-                            uc_rx_substate <= 1;
-                        when others =>
-                    end case;
+                        -- 3 BYTES PAYLOAD --
 
+                        -- Set Constant Bias Voltage
+                        when "00011" =>  
+                            constant_bias_probe_id <= payload_buffer(0);
 
-                when uc_rx_receive_swt_samples_per_point => 
-                    case uc_rx_substate is
-                        when 1 => uc_rx_state <= uc_rx_get_byte;
-                        when 2 =>
-                            temp_first_byte <= uc_rx_byte;
-                            uc_rx_state <= uc_rx_get_byte;
-                        when 3 => 
-                            sweep_table_samples_per_point(7 downto 0) <= temp_first_byte;
-                            sweep_table_samples_per_point(15 downto 8) <= uc_rx_byte;
-                            uc_rx_state <= uc_rx_postamble;
-                            uc_rx_substate <= 1;
-                        when others =>
-                    end case;
-
-
-                when uc_rx_receive_swt_points => 
-                    case uc_rx_substate is
-                        when 1 => uc_rx_state <= uc_rx_get_byte;
-                        when 2 =>
-                            temp_first_byte <= uc_rx_byte;
-                            uc_rx_state <= uc_rx_get_byte;
-                        when 3 => 
-                            sweep_table_points(7 downto 0) <= temp_first_byte;
-                            sweep_table_points(15 downto 8) <= uc_rx_byte;
-                            uc_rx_state <= uc_rx_postamble;
-                            uc_rx_substate <= 1;
-                        when others =>
-                    end case;
-
-
-                when uc_rx_readback_swt_sweep_cnt =>
-                    case uc_rx_substate is
-                        when 1 =>
-                            uc_tx_state <= uc_tx_preamble;
-                            uc_tx_nextstate <= uc_tx_send_swt_sweep_cnt;
-                            uc_rx_state <= uc_rx_postamble;
-                            uc_rx_substate <= 1; 
-                       when others =>
-                    end case;
-
-
-                when uc_rx_readback_sweep_table =>
-                    case uc_rx_substate is
-                        when 1 => uc_rx_state <= uc_rx_get_byte;
-                        when 2 =>
-                            sweep_table_probe_id <= uc_rx_byte;
-                            uc_rx_state <= uc_rx_get_byte;
-                        when 3 =>
-                            sweep_table_step_id <= uc_rx_byte;
-                            uc_rx_substate <= uc_rx_substate + 1;
-                        when 4 =>
-                            st_raddr <= sweep_table_step_id;
-                            st_wen0 <= '0';
-                            st_wen1 <= '0';
-                            case sweep_table_probe_id is
+                            case payload_buffer(0) is
                                 when x"00" =>
-                                    st_ren0 <= '1';
-                                    st_ren1 <= '0';
+                                    constant_bias_voltage_0(7 downto 0)  <= payload_buffer(1);
+                                    constant_bias_voltage_0(15 downto 8) <= payload_buffer(2);
                                 when x"01" =>
+                                    constant_bias_voltage_1(7 downto 0)  <= payload_buffer(1);
+                                    constant_bias_voltage_1(15 downto 8) <= payload_buffer(2);
+                                when others =>
+                            end case;
+
+
+                        -- 4 BYTES PAYLOAD --
+
+                        -- Receive Sweep Table 
+                        when "10110" =>  
+                            case swt_wr_substate is
+
+                                when 0 =>
+                                    -- payload_buffer(0) -> sweep_table_probe_id
+                                    -- payload_buffer(1) -> sweep_table_step_id
+
+                                    case payload_buffer(0) is
+                                        when x"00" =>
+                                            st_wen0 <= '1';
+                                            st_wen1 <= '0';
+                                        when x"01" =>
+                                            st_wen0 <= '0';
+                                            st_wen1 <= '1';
+                                        when others =>
+                                    end case;
+
                                     st_ren0 <= '0';
-                                    st_ren1 <= '1';
-                                when others =>
+                                    st_ren1 <= '0';
+                                    st_waddr <= payload_buffer(1);
+                                    st_wdata <= payload_buffer(3) & payload_buffer(2);
+
+                                    swt_wr_substate <= 1;
+
+                                -- Wait 3 clock cycles
+                                when 1 =>
+
+                                    if sweep_table_write_wait < 2 then
+                                        sweep_table_write_wait <= sweep_table_write_wait + 1;
+                                    elsif sweep_table_write_wait = 2 then
+                                        long_command_active <= '0';
+                                        sweep_table_write_wait <= sweep_table_write_wait + 1;
+                                    else
+                                        sweep_table_write_wait <= 0;
+                                        swt_wr_substate <= 0;
+                                    end if;
+
+                                when others => -- additional reset
+                                    swt_wr_substate <= 0;
+                                    long_command_active <= '0';
+                                    uc_rx_state <= RX_IDLE; 
+                                    rx_context <= CTX_PREAMBLE; 
                             end case;
-                            uc_rx_substate <= uc_rx_substate + 1;
-                        when 5 => 
-                            -- Wait 3 CLK cycles for data to be read.
-                            if sweep_table_read_wait /= 3 then
-                               sweep_table_read_wait <= sweep_table_read_wait + 1;
-                            else
-                                uc_rx_substate <= uc_rx_substate + 1;
-                            end if;
-                        when 6 =>
-                            sweep_table_read_wait <= 0;
-                            case sweep_table_probe_id is
-                                when x"00" =>
-                                    sweep_table_read_value <= st_rdata0;
-                                when x"01" =>
-                                    sweep_table_read_value <= st_rdata1;
-                                when others =>
-                            end case;
 
-                            uc_tx_state <= uc_tx_preamble;
-                            uc_tx_nextstate <= uc_tx_send_sweep_table;
-                            uc_rx_state <= uc_rx_postamble;
-                            uc_rx_substate <= 1;
                         when others =>
+
                     end case;
 
-
-                when uc_rx_readback_swt_steps =>
-                    case uc_rx_substate is
-                        when 1 =>
-                            uc_tx_state <= uc_tx_preamble;
-                            uc_tx_nextstate <= uc_tx_send_swt_steps;
-                            uc_rx_state <= uc_rx_postamble;
-                        when others =>
-                    end case;
+                    if long_command_active /= '1' then 
+                        uc_rx_state <= RX_IDLE;
+                        rx_context <= CTX_PREAMBLE;
+                        for i in 0 to 3 loop
+                            payload_buffer(i) <= (others => '0');
+                        end loop;
+                    end if;
 
 
-                when uc_rx_readback_swt_samples_per_step =>
-                    case uc_rx_substate is
-                        when 1 =>
-                            uc_tx_state <= uc_tx_preamble;
-                            uc_tx_nextstate <= uc_tx_send_swt_samples_per_step;
-                            uc_rx_state <= uc_rx_postamble;
-                        when others =>
-                    end case;
-
-
-                when uc_rx_readback_swt_skip =>
-                    case uc_rx_substate is
-                        when 1 =>
-                            uc_tx_state <= uc_tx_preamble;
-                            uc_tx_nextstate <= uc_tx_send_swt_skip;
-                            uc_rx_state <= uc_rx_postamble;
-                        when others =>
-                    end case;
-
-
-                when uc_rx_readback_swt_samples_per_point =>
-                    case uc_rx_substate is
-                        when 1 =>
-                            uc_tx_state <= uc_tx_preamble;
-                            uc_tx_nextstate <= uc_tx_send_swt_samples_per_point;
-                            uc_rx_state <= uc_rx_postamble;
-                        when others =>
-                    end case;
-
-
-                when uc_rx_readback_swt_points =>
-                    case uc_rx_substate is
-                        when 1 =>
-                            uc_tx_state <= uc_tx_preamble;
-                            uc_tx_nextstate <= uc_tx_send_swt_points;
-                            uc_rx_state <= uc_rx_postamble;
-                        when others =>
-                    end case;
-
-                when uc_rx_readback_sensors_data =>
-                    case uc_rx_substate is
-                        when 1 =>
-                            -- uc_tx_state <= uc_tx_preamble;
-                            -- uc_tx_nextstate <= uc_tx_send_sensors_data;
-                            uc_rx_state <= uc_rx_postamble; -- need to test if possible to add it directly on commands
-                        when others =>
-                    end case;
-
-                when uc_rx_postamble =>
-                    case uc_rx_substate is
-                        when 1 => uc_rx_state <= uc_rx_get_byte;
-                        when 2 => uc_rx_state <= uc_rx_idle;
-                        when others =>
-                    end case;
-
-                when others =>
-                     uc_rx_state <= uc_rx_idle;
             end case;
+
+
 
 ----------------- Status bits generation ---------------------
             old_status_packet_clk <= status_packet_clk;
@@ -1562,4 +979,7 @@ begin
             end if;
         end if;
     end process;
+
+
+
 end architecture_General_Controller;

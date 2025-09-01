@@ -1,0 +1,59 @@
+FlashPro
+Version: 11.9.6.7
+Release: v11.9 SP6
+
+Software Version: 11.9.6.7
+PDB file 'C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer\impl1\Toplevel.pdb' has
+been loaded successfully.
+DESIGN : Toplevel;  CHECKSUM : 47DE;  PDB_VERSION : 1.9
+programmer 'S20059FEOK' : FlashPro5
+Warning: The programmer with id 'S20059FFJ4' in the project file cannot be detected and
+         connected.
+Opened
+'C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer\impl1\Toplevel_fp\Toplevel.pro'
+Rescanning for Programmers...
+Rescanning for Programmers DONE.
+Error: No programmers found. Please check the programmer connection to the computer and ensure
+       the drivers are properly installed.
+Error: Failed to run Action.
+Rescanning for Programmers...
+programmer 'S20059FFJ4' : FlashPro5
+Rescanning for Programmers DONE.
+programmer 'S20059FFJ4' : Scan Chain...
+programmer 'S20059FFJ4' : Scan Chain PASSED.
+programmer 'S20059FFJ4' : Executing action PROGRAM
+programmer 'S20059FFJ4' : EXPORT FSN[48] = 0007563c887d
+programmer 'S20059FFJ4' : Erase ...
+programmer 'S20059FFJ4' : Completed erase
+programmer 'S20059FFJ4' : EXPORT CHECKSUM[16] = 47de
+programmer 'S20059FFJ4' : Programming FPGA Array
+programmer 'S20059FFJ4' : Verifying FPGA Array
+programmer 'S20059FFJ4' : Verify 1 failed at row 923.
+programmer 'S20059FFJ4' : EXPORT ERROR_CODE[16] = 805c
+programmer 'S20059FFJ4' : Finished: Fri Aug 29 18:07:16 2025 (Elapsed time 00:01:04)
+Error: programmer 'S20059FFJ4' : Executing action PROGRAM FAILED, EXIT 11, refer to FlashPro
+       online help for details.
+
+                        o - o - o - o - o - o
+
+Rescanning for Programmers...
+programmer 'S20059FEOK' : FlashPro5
+Rescanning for Programmers DONE.
+programmer 'S20059FEOK' : Scan Chain...
+programmer 'S20059FEOK' : Scan Chain PASSED.
+programmer 'S20059FEOK' : Executing action PROGRAM
+programmer 'S20059FEOK' : EXPORT FSN[48] = 0007563c887d
+programmer 'S20059FEOK' : Erase ...
+programmer 'S20059FEOK' : Completed erase
+programmer 'S20059FEOK' : EXPORT CHECKSUM[16] = 47de
+programmer 'S20059FEOK' : Programming FPGA Array
+programmer 'S20059FEOK' : Verifying FPGA Array
+programmer 'S20059FEOK' :         Verifying FPGA Array -- pass
+programmer 'S20059FEOK' : Finished: Fri Aug 29 18:09:08 2025 (Elapsed time 00:01:07)
+programmer 'S20059FEOK' : Executing action PROGRAM PASSED.
+
+                        o - o - o - o - o - o
+
+Warning: Project 'Toplevel' has been modified. Do you want to save it? [YES]
+Project saved.
+Project closed.
