@@ -1,4 +1,4 @@
-# Fri Aug 29 17:16:12 2025
+# Mon Sep 01 16:12:46 2025
 
 Synopsys Microsemi Technology Mapper, Version mapact, Build 2172R, Built Oct 30 2017 10:54:39
 Copyright (C) 1994-2017 Synopsys, Inc. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -25,7 +25,7 @@ Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapse
 @W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\packet_saver.vhd":126:8:126:9|Register bit ch_1_flag (in view view:work.Packet_Saver(architecture_packet_saver)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
 @W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\packet_saver.vhd":126:8:126:9|Register bit pres_cal2_flag (in view view:work.Packet_Saver(architecture_packet_saver)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
 @W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\packet_saver.vhd":126:8:126:9|Register bit pres_cal1_flag (in view view:work.Packet_Saver(architecture_packet_saver)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@N: MO111 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Tristate driver uc_reset_2 (in view: work.General_Controller(architecture_general_controller)) on net uc_reset (in view: work.General_Controller(architecture_general_controller)) has its enable tied to GND.
+@N: MO111 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Tristate driver uc_reset_2 (in view: work.General_Controller(architecture_general_controller)) on net uc_reset (in view: work.General_Controller(architecture_general_controller)) has its enable tied to GND.
 @N: MO111 :|Tristate driver UC_RESET_t (in view: work.Toplevel(rtl)) on net UC_RESET (in view: work.Toplevel(rtl)) has its enable tied to GND.
 
 Available hyper_sources - for debug and ip models
@@ -40,16 +40,16 @@ Available hyper_sources - for debug and ip models
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":76:8:76:9|Removing sequential instance clk_4kHz (in view: work.ClockDivs(architecture_clockdivs)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":76:8:76:9|Removing sequential instance clk_1kHz (in view: work.ClockDivs(architecture_clockdivs)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":100:8:100:9|Removing sequential instance clk_50Hz (in view: work.ClockDivs(architecture_clockdivs)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance General_Controller_0.msg_2send_1[6] because it is equivalent to instance General_Controller_0.msg_2send_0[7]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance General_Controller_0.msg_2send_0[7] because it is equivalent to instance General_Controller_0.msg_2send_0[4]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance General_Controller_0.msg_2send_11[3] because it is equivalent to instance General_Controller_0.msg_2send_0[4]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance General_Controller_0.msg_2send_0[4] because it is equivalent to instance General_Controller_0.msg_2send_0[2]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance General_Controller_0.msg_2send_11[1] because it is equivalent to instance General_Controller_0.msg_2send_0[2]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance General_Controller_0.msg_2send_1[0] because it is equivalent to instance General_Controller_0.msg_2send_0[2]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance General_Controller_0.msg_2send_0[2] because it is equivalent to instance General_Controller_0.msg_2send_0[0]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance DAC_zero_value (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffse(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance sweep_en (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Removing sequential instance DAC_max_value (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Removing sequential instance General_Controller_0.msg_2send_1[6] because it is equivalent to instance General_Controller_0.msg_2send_0[7]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Removing sequential instance General_Controller_0.msg_2send_0[7] because it is equivalent to instance General_Controller_0.msg_2send_0[4]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Removing sequential instance General_Controller_0.msg_2send_11[3] because it is equivalent to instance General_Controller_0.msg_2send_0[4]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Removing sequential instance General_Controller_0.msg_2send_0[4] because it is equivalent to instance General_Controller_0.msg_2send_0[2]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Removing sequential instance General_Controller_0.msg_2send_11[1] because it is equivalent to instance General_Controller_0.msg_2send_0[2]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Removing sequential instance General_Controller_0.msg_2send_1[0] because it is equivalent to instance General_Controller_0.msg_2send_0[2]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Removing sequential instance General_Controller_0.msg_2send_0[2] because it is equivalent to instance General_Controller_0.msg_2send_0[0]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Removing sequential instance DAC_zero_value (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffse(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Removing sequential instance sweep_en (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Removing sequential instance DAC_max_value (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":73:8:73:9|Removing sequential instance point_counter[15:0] (in view: work.ADC_Data_Packer(architecture_adc_data_packer)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":73:8:73:9|Removing sequential instance ACC_chan4[21:0] (in view: work.ADC_Data_Packer(architecture_adc_data_packer)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":73:8:73:9|Removing sequential instance ACC_chan0[21:0] (in view: work.ADC_Data_Packer(architecture_adc_data_packer)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
@@ -111,9 +111,9 @@ original code -> new code
    10 -> 10
    11 -> 11
 @N: MO225 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\eject_signal_debounce.vhd":51:4:51:5|There are no possible illegal states for state machine state[0:3] (in view: work.Eject_Signal_Debounce(architecture_eject_signal_debounce)); safe FSM implementation is not required.
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Found counter in view:work.General_Controller(architecture_general_controller) instance tx_byte_index[3:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Found counter in view:work.General_Controller(architecture_general_controller) instance sweep_table_sweep_cnt[15:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Found counter in view:work.General_Controller(architecture_general_controller) instance state_seconds[19:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Found counter in view:work.General_Controller(architecture_general_controller) instance tx_byte_index[3:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Found counter in view:work.General_Controller(architecture_general_controller) instance sweep_table_sweep_cnt[15:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Found counter in view:work.General_Controller(architecture_general_controller) instance state_seconds[19:0] 
 Encoding state machine uc_tx_state[0:2] (in view: work.General_Controller(architecture_general_controller))
 original code -> new code
    00 -> 00
@@ -140,7 +140,7 @@ Encoding state machine swt_wr_substate[0:1] (in view: work.General_Controller(ar
 original code -> new code
    00 -> 0
    01 -> 1
-@N: MO225 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|There are no possible illegal states for state machine swt_wr_substate[0:1] (in view: work.General_Controller(architecture_general_controller)); safe FSM implementation is not required.
+@N: MO225 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|There are no possible illegal states for state machine swt_wr_substate[0:1] (in view: work.General_Controller(architecture_general_controller)); safe FSM implementation is not required.
 Encoding state machine swt_rd_substate[0:2] (in view: work.General_Controller(architecture_general_controller))
 original code -> new code
    00 -> 00
@@ -156,24 +156,24 @@ original code -> new code
    001 -> 00
    010 -> 01
    011 -> 10
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":723:23:723:39|Found 3-bit incrementor, 'un7_expected_payload_length[29:32]'
-@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Register bit msg_2send_5[3] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Register bit msg_2send_5[2] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Register bit msg_2send_6[3] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Register bit msg_2send_6[1] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Register bit msg_2send_6[0] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Register bit msg_2send_7[3] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Register bit msg_2send_7[1] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Register bit msg_2send_8[3] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Register bit msg_2send_8[0] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Register bit msg_2send_9[7] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Register bit msg_2send_9[6] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Register bit msg_2send_9[5] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Register bit msg_2send_9[4] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Register bit msg_2send_10[3] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Register bit msg_2send_10[2] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Register bit msg_2send_10[1] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":230:8:230:9|Register bit msg_2send_10[0] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":748:23:748:39|Found 3-bit incrementor, 'un7_expected_payload_length[29:32]'
+@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Register bit msg_2send_5[3] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
+@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Register bit msg_2send_5[2] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
+@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Register bit msg_2send_6[3] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
+@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Register bit msg_2send_6[1] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
+@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Register bit msg_2send_6[0] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
+@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Register bit msg_2send_7[3] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
+@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Register bit msg_2send_7[1] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
+@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Register bit msg_2send_8[3] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
+@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Register bit msg_2send_8[0] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
+@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Register bit msg_2send_9[7] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
+@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Register bit msg_2send_9[6] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
+@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Register bit msg_2send_9[5] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
+@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Register bit msg_2send_9[4] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
+@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Register bit msg_2send_10[3] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
+@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Register bit msg_2send_10[2] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
+@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Register bit msg_2send_10[1] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
+@W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":237:8:237:9|Register bit msg_2send_10[0] (in view view:work.General_Controller(architecture_general_controller)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
 Encoding state machine state[0:7] (in view: work.GS_Readout(architecture_gs_readout))
 original code -> new code
    00000001 -> 00000001
@@ -410,10 +410,10 @@ Finished factoring (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; M
 @W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":164:8:164:9|Register bit Science_0.ADC_Data_Packer_0.cnt2up[0] (in view view:work.Toplevel(rtl)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
 @W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":164:8:164:9|Register bit Science_0.ADC_Data_Packer_0.cnt1up[0] (in view view:work.Toplevel(rtl)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
 
-Starting gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 137MB peak: 142MB)
+Starting gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 137MB peak: 141MB)
 
 
-Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 137MB peak: 142MB)
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 137MB peak: 141MB)
 
 @W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":164:8:164:9|Register bit Science_0.ADC_Data_Packer_0.cnt2dn[7] (in view view:work.Toplevel(rtl)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
 @W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":164:8:164:9|Register bit Science_0.ADC_Data_Packer_0.cnt2dn[6] (in view view:work.Toplevel(rtl)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
@@ -434,19 +434,19 @@ Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:04
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance Science_0.ADC_READ_0.DATA_c0_1[0] (in view: work.Toplevel(rtl)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_read.vhd":63:2:63:3|Removing sequential instance Science_0.ADC_READ_0.data_a[0] (in view: work.Toplevel(rtl)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 
-Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:04s; Memory used current: 141MB peak: 162MB)
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:04s; Memory used current: 142MB peak: 166MB)
 
 
-Starting Early Timing Optimization (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:05s; Memory used current: 143MB peak: 162MB)
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:05s; Memory used current: 143MB peak: 166MB)
 
 
-Finished Early Timing Optimization (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 143MB peak: 162MB)
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 143MB peak: 166MB)
 
 
-Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 141MB peak: 162MB)
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 142MB peak: 166MB)
 
 
-Finished preparing to map (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 142MB peak: 162MB)
+Finished preparing to map (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 142MB peak: 166MB)
 
 
 Finished technology mapping (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 171MB peak: 174MB)
@@ -455,52 +455,54 @@ Finished technology mapping (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:0
 High Fanout Net Report
 **********************
 
-Driver Instance / Pin Name                                Fanout, notes                     
---------------------------------------------------------------------------------------------
-CLKINT_1 / Y                                              1059 : 1009 asynchronous set/reset
-General_Controller_0.Bias_enabled / Q                     30                                
-Data_Saving_0.FPGA_Buffer_0.DFN1C0_WRITE_RESET_P / Q      42 : 42 asynchronous set/reset    
-Data_Saving_0.FPGA_Buffer_0.DFN1C0_READ_RESET_P / Q       48 : 48 asynchronous set/reset    
-Sensors_0.Accelerometer_0.I2C_Master_0.state[8] / Q       30                                
-Science_0.SWEEP_ROMEO_0.SW_active / Q                     39                                
-GS_Readout_0.un3_s_vector.I_5 / Y                         30                                
-GS_Readout_0.subState[0] / Q                              56                                
-General_Controller_0.payload_buffer_0[0] / Q              43                                
-General_Controller_0.tx_byte_index[1] / Q                 34                                
-General_Controller_0.tx_byte_index[3] / Q                 28                                
-General_Controller_0.start_tx_0_sqmuxa_0_a2 / Y           55                                
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl / Q          29                                
-General_Controller_0.status_bits_0_sqmuxa / Y             31                                
-Science_0.SWEEP_ROMEO_0.dac1_int_1_sqmuxa_1_i_0 / Y       32                                
-Science_0.SWEEP_ROMEO_0.step_0_sqmuxa_i_0_o3_0_o2 / Y     26                                
-============================================================================================
+Driver Instance / Pin Name                                              Fanout, notes                     
+----------------------------------------------------------------------------------------------------------
+CLKINT_1 / Y                                                            1062 : 1013 asynchronous set/reset
+General_Controller_0.Bias_enabled / Q                                   27                                
+Data_Saving_0.FPGA_Buffer_0.DFN1C0_WRITE_RESET_P / Q                    42 : 42 asynchronous set/reset    
+Data_Saving_0.FPGA_Buffer_0.DFN1C0_READ_RESET_P / Q                     48 : 48 asynchronous set/reset    
+Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[2] / Q     25                                
+Sensors_0.Accelerometer_0.I2C_Master_0.state[8] / Q                     30                                
+Science_0.SWEEP_ROMEO_0.SW_active / Q                                   38                                
+GS_Readout_0.un3_s_vector.I_5 / Y                                       29                                
+GS_Readout_0.subState[0] / Q                                            56                                
+General_Controller_0.payload_buffer_0[0] / Q                            47                                
+General_Controller_0.tx_byte_index[1] / Q                               34                                
+General_Controller_0.tx_byte_index[3] / Q                               29                                
+General_Controller_0.status_bits_0_sqmuxa / Y                           31                                
+Sensors_0.Accelerometer_0.I2C_Master_0.scl / Q                          25                                
+General_Controller_0.start_tx_0_sqmuxa / Y                              56                                
+Science_0.SWEEP_ROMEO_0.dac1_int_1_sqmuxa_1_i_0 / Y                     32                                
+Science_0.SWEEP_ROMEO_0.step_0_sqmuxa_i_0_o3_0_o2 / Y                   26                                
+==========================================================================================================
 
 @N: FP130 |Promoting Net ClockDivs_0_clk_800kHz on CLKINT  ClockDivs_0.clk_800kHz_inferred_clock 
-@N: FP130 |Promoting Net GS_Readout_0.subState[0] on CLKINT  I_245 
-@N: FP130 |Promoting Net General_Controller_0.start_tx_0_sqmuxa on CLKINT  I_246 
+@N: FP130 |Promoting Net GS_Readout_0.subState[0] on CLKINT  I_207 
+@N: FP130 |Promoting Net General_Controller_0.start_tx_0_sqmuxa on CLKINT  I_208 
 
 Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 174MB peak: 178MB)
 
 Replicating Combinational Instance Science_0.SWEEP_ROMEO_0.step_0_sqmuxa_i_0_o3_0_o2, fanout 26 segments 2
 Replicating Combinational Instance Science_0.SWEEP_ROMEO_0.dac1_int_1_sqmuxa_1_i_0, fanout 32 segments 2
+Replicating Sequential Instance Sensors_0.Accelerometer_0.I2C_Master_0.scl, fanout 25 segments 2
 Replicating Combinational Instance General_Controller_0.status_bits_0_sqmuxa, fanout 31 segments 2
-Replicating Sequential Instance Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl, fanout 29 segments 2
-Replicating Sequential Instance General_Controller_0.tx_byte_index[3], fanout 28 segments 2
+Replicating Sequential Instance General_Controller_0.tx_byte_index[3], fanout 29 segments 2
 Replicating Sequential Instance General_Controller_0.tx_byte_index[1], fanout 34 segments 2
-Replicating Sequential Instance General_Controller_0.payload_buffer_0[0], fanout 43 segments 2
-Replicating Combinational Instance GS_Readout_0.un3_s_vector.I_5, fanout 30 segments 2
-Replicating Sequential Instance Science_0.SWEEP_ROMEO_0.SW_active, fanout 39 segments 2
+Replicating Sequential Instance General_Controller_0.payload_buffer_0[0], fanout 47 segments 2
+Replicating Combinational Instance GS_Readout_0.un3_s_vector.I_5, fanout 29 segments 2
+Replicating Sequential Instance Science_0.SWEEP_ROMEO_0.SW_active, fanout 38 segments 2
 Replicating Sequential Instance Sensors_0.Accelerometer_0.I2C_Master_0.state[8], fanout 30 segments 2
+Replicating Sequential Instance Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[2], fanout 25 segments 2
 Replicating Sequential Instance Data_Saving_0.FPGA_Buffer_0.DFN1C0_READ_RESET_P, fanout 48 segments 2
 Replicating Sequential Instance Data_Saving_0.FPGA_Buffer_0.DFN1C0_WRITE_RESET_P, fanout 42 segments 2
-Replicating Sequential Instance General_Controller_0.Bias_enabled, fanout 30 segments 2
+Replicating Sequential Instance General_Controller_0.Bias_enabled, fanout 27 segments 2
 
 Added 0 Buffers
-Added 13 Cells via replication
-	Added 9 Sequential Cells via replication
+Added 14 Cells via replication
+	Added 10 Sequential Cells via replication
 	Added 4 Combinational Cells via replication
 
-Finished restoring hierarchy (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 174MB peak: 178MB)
+Finished restoring hierarchy (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 175MB peak: 178MB)
 
 @N: MT611 :|Automatically generated clock ClockDivs|clk_1kHz_inferred_clock is not used and is being removed
 @N: MT611 :|Automatically generated clock ClockDivs|clk_50Hz_inferred_clock is not used and is being removed
@@ -512,14 +514,14 @@ Finished restoring hierarchy (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:
 #### START OF CLOCK OPTIMIZATION REPORT #####[
 
 Clock optimization not enabled
-2 non-gated/non-generated clock tree(s) driving 1194 clock pin(s) of sequential element(s)
+2 non-gated/non-generated clock tree(s) driving 1199 clock pin(s) of sequential element(s)
 4 gated/generated clock tree(s) driving 140 clock pin(s) of sequential element(s)
 0 instances converted, 140 sequential instances remain driven by gated/generated clocks
 
 ========================================== Non-Gated/Non-Generated Clocks ==========================================
 Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance                             
 --------------------------------------------------------------------------------------------------------------------
-@K:CKID0005       CLOCK               port                   1139       Timing_0.s_count[7]                         
+@K:CKID0005       CLOCK               port                   1144       Timing_0.s_count[7]                         
 @K:CKID0006       FMC_CLK             port                   55         Data_Saving_0.FPGA_Buffer_0.\DFN1C0_RGRY[9]\
 ====================================================================================================================
 ============================================================================================= Gated/Generated Clocks =============================================================================================
@@ -535,7 +537,7 @@ Clock Tree ID     Driving Element                Drive Element Type     Fanout  
 ##### END OF CLOCK OPTIMIZATION REPORT ######]
 
 
-Start Writing Netlists (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:07s; Memory used current: 164MB peak: 178MB)
+Start Writing Netlists (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 164MB peak: 178MB)
 
 Writing Analyst data base C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\synthesis\synwork\Toplevel_m.srm
 
@@ -558,7 +560,7 @@ Start final timing analysis (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:0
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Fri Aug 29 17:16:21 2025
+# Timing Report written on Mon Sep 01 16:12:54 2025
 #
 
 
@@ -605,14 +607,14 @@ Clocks                                                                    |    r
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Starting                             Ending                               |  constraint  slack   |  constraint  slack   |  constraint  slack  |  constraint  slack 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Toplevel|CLOCK                       Toplevel|CLOCK                       |  31.250      9.671   |  31.250      23.214  |  15.625      9.167  |  15.625      -3.754
+Toplevel|CLOCK                       Toplevel|CLOCK                       |  31.250      9.671   |  31.250      23.365  |  15.625      9.167  |  15.625      -3.754
 Toplevel|CLOCK                       ClockDivs|clk_800kHz_inferred_clock  |  No paths    -       |  No paths    -       |  Diff grp    -      |  No paths    -     
 Toplevel|CLOCK                       DAC_SET|ADR_inferred_clock[1]        |  No paths    -       |  No paths    -       |  Diff grp    -      |  No paths    -     
 Toplevel|CLOCK                       Timing|s_time_inferred_clock[5]      |  Diff grp    -       |  No paths    -       |  No paths    -      |  No paths    -     
 Toplevel|CLOCK                       Timing|m_time_inferred_clock[7]      |  Diff grp    -       |  No paths    -       |  No paths    -      |  No paths    -     
 Toplevel|CLOCK                       Toplevel|FMC_CLK                     |  Diff grp    -       |  No paths    -       |  No paths    -      |  No paths    -     
 ClockDivs|clk_800kHz_inferred_clock  Toplevel|CLOCK                       |  No paths    -       |  No paths    -       |  No paths    -      |  Diff grp    -     
-ClockDivs|clk_800kHz_inferred_clock  ClockDivs|clk_800kHz_inferred_clock  |  31.250      25.710  |  31.250      12.973  |  15.625      1.171  |  15.625      9.118 
+ClockDivs|clk_800kHz_inferred_clock  ClockDivs|clk_800kHz_inferred_clock  |  31.250      25.710  |  31.250      14.095  |  15.625      1.171  |  15.625      9.182 
 DAC_SET|ADR_inferred_clock[1]        Toplevel|CLOCK                       |  No paths    -       |  No paths    -       |  No paths    -      |  Diff grp    -     
 Timing|s_time_inferred_clock[5]      Timing|s_time_inferred_clock[5]      |  31.250      27.329  |  No paths    -       |  No paths    -      |  No paths    -     
 Timing|m_time_inferred_clock[7]      Toplevel|CLOCK                       |  Diff grp    -       |  No paths    -       |  No paths    -      |  No paths    -     
@@ -641,41 +643,41 @@ Detailed Report for Clock: ClockDivs|clk_800kHz_inferred_clock
 Starting Points with Worst Slack
 ********************************
 
-                                                      Starting                                                                        Arrival           
-Instance                                              Reference                               Type       Pin     Net                  Time        Slack 
-                                                      Clock                                                                                             
---------------------------------------------------------------------------------------------------------------------------------------------------------
-Sensors_0.Gyro_0.I2C_Master_0.scl                     ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       GYRO_SCL_c           0.737       1.171 
-Sensors_0.Accelerometer_0.I2C_Master_0.scl            ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       ACCE_SCL_c           0.737       1.230 
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl_0        ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       PRESSURE_SCL_c_0     0.737       4.153 
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl          ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       PRESSURE_SCL_c       0.737       4.940 
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.state[8]     ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       state[8]             0.653       9.118 
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.state[0]     ClockDivs|clk_800kHz_inferred_clock     DFN0C1     Q       state[0]             0.653       10.052
-Sensors_0.Gyro_0.I2C_Master_0.state[8]                ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       state[8]             0.653       10.860
-Sensors_0.Accelerometer_0.I2C_Master_0.state_0[8]     ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       state_0[8]           0.653       11.198
-Sensors_0.Accelerometer_0.I2C_Master_0.state[0]       ClockDivs|clk_800kHz_inferred_clock     DFN0C1     Q       state[0]             0.653       11.233
-Sensors_0.Gyro_0.I2C_Master_0.state[0]                ClockDivs|clk_800kHz_inferred_clock     DFN0C1     Q       state[0]             0.653       11.233
-========================================================================================================================================================
+                                                      Starting                                                                      Arrival           
+Instance                                              Reference                               Type       Pin     Net                Time        Slack 
+                                                      Clock                                                                                           
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Sensors_0.Gyro_0.I2C_Master_0.scl                     ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       GYRO_SCL_c         0.737       1.171 
+Sensors_0.Accelerometer_0.I2C_Master_0.scl_0          ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       ACCE_SCL_c_0       0.737       1.600 
+Sensors_0.Accelerometer_0.I2C_Master_0.scl            ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       ACCE_SCL_c         0.737       2.825 
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl          ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       PRESSURE_SCL_c     0.737       3.899 
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.state[8]     ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       state[8]           0.653       9.182 
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.state[0]     ClockDivs|clk_800kHz_inferred_clock     DFN0C1     Q       state[0]           0.653       10.116
+Sensors_0.Gyro_0.I2C_Master_0.state[8]                ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       state[8]           0.653       10.917
+Sensors_0.Accelerometer_0.I2C_Master_0.state_0[8]     ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       state_0[8]         0.653       11.134
+Sensors_0.Accelerometer_0.I2C_Master_0.state[0]       ClockDivs|clk_800kHz_inferred_clock     DFN0C1     Q       state[0]           0.653       11.169
+Sensors_0.Gyro_0.I2C_Master_0.state[0]                ClockDivs|clk_800kHz_inferred_clock     DFN0C1     Q       state[0]           0.653       11.233
+======================================================================================================================================================
 
 
 Ending Points with Worst Slack
 ******************************
 
-                                                         Starting                                                                    Required          
-Instance                                                 Reference                               Type       Pin     Net              Time         Slack
-                                                         Clock                                                                                         
--------------------------------------------------------------------------------------------------------------------------------------------------------
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt[3]                  ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       bitcnt_12[3]     14.913       1.171
-Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[3]         ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       bitcnt_12[3]     14.913       1.230
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt[2]                  ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[2]     14.913       2.033
-Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[2]         ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[2]     14.913       2.092
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt[1]                  ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[1]     14.913       3.295
-Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[1]         ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[1]     14.913       3.354
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[3]       ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       bitcnt_12[3]     14.913       4.153
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt[0]                  ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[0]     14.913       4.158
-Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[0]         ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[0]     14.913       4.217
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.byte_cnt[0]     ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       N_520_mux        14.913       4.940
-=======================================================================================================================================================
+                                                       Starting                                                                    Required          
+Instance                                               Reference                               Type       Pin     Net              Time         Slack
+                                                       Clock                                                                                         
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt[3]                ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       bitcnt_12[3]     14.913       1.171
+Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[3]       ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       bitcnt_12[3]     14.913       1.600
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt[2]                ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[2]     14.913       2.033
+Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[2]       ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[2]     14.913       2.462
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt[1]                ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[1]     14.913       3.295
+Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[1]       ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[1]     14.913       3.724
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[3]     ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       bitcnt_12[3]     14.913       3.899
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt[0]                ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[0]     14.913       4.158
+Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[0]       ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[0]     14.913       4.588
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[2]     ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[2]     14.913       4.768
+=====================================================================================================================================================
 
 
 
@@ -755,13 +757,13 @@ Instance                                 Reference                           Typ
 Pressure_Signal_Debounce_0.state[1]      Timing|m_time_inferred_clock[7]     DFN1C1     Q       state[1]      0.737       17.255
 Pressure_Signal_Debounce_0.state[0]      Timing|m_time_inferred_clock[7]     DFN1C1     Q       state[0]      0.737       19.594
 Pressure_Signal_Debounce_0.ms_cnt[0]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[0]     0.737       21.464
-Pressure_Signal_Debounce_0.ms_cnt[5]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[5]     0.737       22.105
-Pressure_Signal_Debounce_0.ms_cnt[2]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[2]     0.737       22.114
-Pressure_Signal_Debounce_0.ms_cnt[3]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[3]     0.737       22.218
+Pressure_Signal_Debounce_0.ms_cnt[2]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[2]     0.737       21.691
+Pressure_Signal_Debounce_0.ms_cnt[4]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[4]     0.737       21.830
 Pressure_Signal_Debounce_0.ms_cnt[1]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[1]     0.737       22.251
-Pressure_Signal_Debounce_0.ms_cnt[8]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[8]     0.737       22.317
+Pressure_Signal_Debounce_0.ms_cnt[7]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[7]     0.737       22.282
+Pressure_Signal_Debounce_0.ms_cnt[3]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[3]     0.737       22.395
 Pressure_Signal_Debounce_0.ms_cnt[6]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[6]     0.737       22.711
-Pressure_Signal_Debounce_0.ms_cnt[4]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[4]     0.737       22.977
+Pressure_Signal_Debounce_0.ms_cnt[8]     Timing|m_time_inferred_clock[7]     DFN1       Q       ms_cnt[8]     0.737       23.231
 ================================================================================================================================
 
 
@@ -780,8 +782,8 @@ Pressure_Signal_Debounce_0.ms_cnt[5]     Timing|m_time_inferred_clock[7]     DFN
 Pressure_Signal_Debounce_0.ms_cnt[4]     Timing|m_time_inferred_clock[7]     DFN1     D       ms_cnt_RNO_0[4]     30.711       18.742
 Pressure_Signal_Debounce_0.ms_cnt[3]     Timing|m_time_inferred_clock[7]     DFN1     D       N_10                30.711       19.801
 Pressure_Signal_Debounce_0.ms_cnt[2]     Timing|m_time_inferred_clock[7]     DFN1     D       ms_cnt_RNO_0[2]     30.711       20.414
-Pressure_Signal_Debounce_0.ms_cnt[1]     Timing|m_time_inferred_clock[7]     DFN1     D       ms_cnt_RNO_0[1]     30.711       21.709
-Pressure_Signal_Debounce_0.ms_cnt[0]     Timing|m_time_inferred_clock[7]     DFN1     D       N_8                 30.677       22.124
+Pressure_Signal_Debounce_0.ms_cnt[1]     Timing|m_time_inferred_clock[7]     DFN1     D       ms_cnt_RNO_0[1]     30.677       21.691
+Pressure_Signal_Debounce_0.ms_cnt[0]     Timing|m_time_inferred_clock[7]     DFN1     D       N_8                 30.677       21.702
 =====================================================================================================================================
 
 
@@ -871,15 +873,15 @@ Science_0.ADC_RESET_0.old_enable     Timing|s_time_inferred_clock[5]     DFN1E1C
 Ending Points with Worst Slack
 ******************************
 
-                                     Starting                                                              Required           
-Instance                             Reference                           Type         Pin     Net          Time         Slack 
-                                     Clock                                                                                    
-------------------------------------------------------------------------------------------------------------------------------
-Science_0.ADC_RESET_0.state[0]       Timing|s_time_inferred_clock[5]     DFN1E0       D       N_13         30.711       27.329
-Science_0.ADC_RESET_0.old_enable     Timing|s_time_inferred_clock[5]     DFN1E1C1     E       N_13_1       30.850       28.414
-Science_0.ADC_RESET_0.state[1]       Timing|s_time_inferred_clock[5]     DFN1E0       D       N_14         30.711       28.440
-Science_0.ADC_RESET_0.ADCRESET       Timing|s_time_inferred_clock[5]     DFN1C1       D       state[1]     30.677       29.133
-==============================================================================================================================
+                                     Starting                                                                Required           
+Instance                             Reference                           Type         Pin     Net            Time         Slack 
+                                     Clock                                                                                      
+--------------------------------------------------------------------------------------------------------------------------------
+Science_0.ADC_RESET_0.state[0]       Timing|s_time_inferred_clock[5]     DFN1E0       D       N_13           30.711       27.329
+Science_0.ADC_RESET_0.old_enable     Timing|s_time_inferred_clock[5]     DFN1E1C1     E       state_d[2]     30.850       28.414
+Science_0.ADC_RESET_0.state[1]       Timing|s_time_inferred_clock[5]     DFN1E0       D       N_14           30.711       28.440
+Science_0.ADC_RESET_0.ADCRESET       Timing|s_time_inferred_clock[5]     DFN1C1       D       state[1]       30.677       29.133
+================================================================================================================================
 
 
 
@@ -910,7 +912,7 @@ Science_0.ADC_RESET_0.state[1]             DFN1E0     Q        Out     0.737    
 state[1]                                   Net        -        -       0.806     -           3         
 Science_0.ADC_RESET_0.state_RNIFH4T[0]     NOR2       A        In      -         1.543       -         
 Science_0.ADC_RESET_0.state_RNIFH4T[0]     NOR2       Y        Out     0.507     2.051       -         
-N_13_1                                     Net        -        -       0.386     -           2         
+state_d[2]                                 Net        -        -       0.386     -           2         
 Science_0.ADC_RESET_0.state_RNO[0]         NOR3B      B        In      -         2.437       -         
 Science_0.ADC_RESET_0.state_RNO[0]         NOR3B      Y        Out     0.624     3.060       -         
 N_13                                       Net        -        -       0.322     -           1         
@@ -944,7 +946,7 @@ Science_0.ADC_Data_Packer_0.G1[0]                         Toplevel|CLOCK     DFN
 Science_0.ADC_Data_Packer_0.G1[1]                         Toplevel|CLOCK     DFN1E0C1     Q       ADC_Data_Packer_0_G1[1]                 0.737       9.961 
 Data_Saving_0.FPGA_Buffer_0.DFN1C0_full                   Toplevel|CLOCK     DFN1C0       Q       full                                    0.737       10.063
 Data_Saving_0.FPGA_Buffer_0.\\DFN1C0_MEM_WADDR\[0\]\\     Toplevel|CLOCK     DFN1C0       Q       Z\\MEM_WADDR\[0\]\\                     0.737       10.651
-Data_Saving_0.FPGA_Buffer_0.\\DFN1C0_MEM_WADDR\[2\]\\     Toplevel|CLOCK     DFN1C0       Q       Z\\MEM_WADDR\[2\]\\                     0.737       11.238
+General_Controller_0.state_seconds[0]                     Toplevel|CLOCK     DFN1E1C1     Q       state_seconds[0]                        0.580       11.030
 ============================================================================================================================================================
 
 
@@ -1425,76 +1427,78 @@ Path delay compensated for clock skew. Clock skew is added to clock-to-out value
 Timing exceptions that could not be applied
 None
 
-Finished final timing analysis (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:08s; Memory used current: 168MB peak: 178MB)
+Finished final timing analysis (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:07s; Memory used current: 168MB peak: 178MB)
 
 
-Finished timing report (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:08s; Memory used current: 168MB peak: 178MB)
+Finished timing report (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:07s; Memory used current: 168MB peak: 178MB)
 
 --------------------------------------------------------------------------------
 Target Part: A3P250_VQFP100_STD
 Report for cell Toplevel.rtl
   Core Cell usage:
               cell count     area count*area
-              AND2    77      1.0       77.0
+              AND2    84      1.0       84.0
              AND2A     1      1.0        1.0
               AND3    15      1.0       15.0
-               AO1   165      1.0      165.0
-              AO1A    97      1.0       97.0
-              AO1B    25      1.0       25.0
-              AO1C    25      1.0       25.0
-              AO1D    21      1.0       21.0
-              AOI1    18      1.0       18.0
+               AO1   191      1.0      191.0
+              AO1A   111      1.0      111.0
+              AO1B    18      1.0       18.0
+              AO1C    23      1.0       23.0
+              AO1D    22      1.0       22.0
+              AOI1    21      1.0       21.0
              AOI1B     6      1.0        6.0
-               AX1     7      1.0        7.0
-              AX1A     5      1.0        5.0
+               AX1     6      1.0        6.0
+              AX1A     4      1.0        4.0
               AX1B     6      1.0        6.0
-              AX1C    50      1.0       50.0
+              AX1C    34      1.0       34.0
               AX1D     6      1.0        6.0
               AX1E     1      1.0        1.0
               AXO5     1      1.0        1.0
               AXO6     1      1.0        1.0
              AXOI4     2      1.0        2.0
-             AXOI7     2      1.0        2.0
+             AXOI7     1      1.0        1.0
               BUFF     2      1.0        2.0
             CLKINT     6      0.0        0.0
                GND    38      0.0        0.0
                INV    29      1.0       29.0
-              MAJ3     5      1.0        5.0
-               MX2   295      1.0      295.0
-              MX2A    22      1.0       22.0
-              MX2B     9      1.0        9.0
-              MX2C    10      1.0       10.0
+              MAJ3     4      1.0        4.0
+             MIN3X     2      1.0        2.0
+               MX2   292      1.0      292.0
+              MX2A    23      1.0       23.0
+              MX2B     8      1.0        8.0
+              MX2C    11      1.0       11.0
              NAND2     2      1.0        2.0
             NAND3A     4      1.0        4.0
-              NOR2   131      1.0      131.0
-             NOR2A   347      1.0      347.0
-             NOR2B   361      1.0      361.0
-              NOR3    57      1.0       57.0
-             NOR3A   140      1.0      140.0
-             NOR3B   135      1.0      135.0
-             NOR3C   147      1.0      147.0
-               OA1    60      1.0       60.0
-              OA1A    28      1.0       28.0
-              OA1B    36      1.0       36.0
-              OA1C    57      1.0       57.0
-              OAI1    10      1.0       10.0
-               OR2   176      1.0      176.0
-              OR2A   102      1.0      102.0
-              OR2B    51      1.0       51.0
-               OR3   166      1.0      166.0
-              OR3A    41      1.0       41.0
+              NOR2   151      1.0      151.0
+             NOR2A   329      1.0      329.0
+             NOR2B   406      1.0      406.0
+              NOR3    47      1.0       47.0
+             NOR3A   147      1.0      147.0
+             NOR3B   130      1.0      130.0
+             NOR3C   121      1.0      121.0
+               OA1    46      1.0       46.0
+              OA1A    27      1.0       27.0
+              OA1B    39      1.0       39.0
+              OA1C    50      1.0       50.0
+              OAI1     8      1.0        8.0
+               OR2   192      1.0      192.0
+              OR2A   101      1.0      101.0
+              OR2B    53      1.0       53.0
+               OR3   153      1.0      153.0
+              OR3A    48      1.0       48.0
               OR3B    19      1.0       19.0
-              OR3C     9      1.0        9.0
+              OR3C     7      1.0        7.0
                VCC    38      0.0        0.0
-               XA1    16      1.0       16.0
-              XA1A    18      1.0       18.0
-              XA1B    44      1.0       44.0
+               XA1    21      1.0       21.0
+              XA1A    20      1.0       20.0
+              XA1B    66      1.0       66.0
               XA1C     4      1.0        4.0
+              XAI1     1      1.0        1.0
              XNOR2    47      1.0       47.0
              XNOR3    26      1.0       26.0
                XO1    26      1.0       26.0
               XO1A     5      1.0        5.0
-              XOR2   299      1.0      299.0
+              XOR2   289      1.0      289.0
               XOR3    11      1.0       11.0
 
 
@@ -1507,13 +1511,13 @@ Report for cell Toplevel.rtl
             DFN0P1    23      1.0       23.0
               DFN1    54      1.0       54.0
             DFN1C0    83      1.0       83.0
-            DFN1C1   181      1.0      181.0
+            DFN1C1   182      1.0      182.0
             DFN1E0    26      1.0       26.0
-          DFN1E0C1    86      1.0       86.0
+          DFN1E0C1   106      1.0      106.0
           DFN1E0P1     4      1.0        4.0
             DFN1E1   110      1.0      110.0
           DFN1E1C0     8      1.0        8.0
-          DFN1E1C1   562      1.0      562.0
+          DFN1E1C1   546      1.0      546.0
           DFN1E1P1    21      1.0       21.0
             DFN1P0     1      1.0        1.0
             DFN1P1    36      1.0       36.0
@@ -1521,7 +1525,7 @@ Report for cell Toplevel.rtl
             RAM4K9     4      0.0        0.0
          RAM512X18     2      0.0        0.0
                    -----          ----------
-             TOTAL  4888              4800.0
+             TOTAL  4936              4848.0
 
 
   IO Cell usage:
@@ -1534,7 +1538,7 @@ Report for cell Toplevel.rtl
              TOTAL    50
 
 
-Core Cells         : 4800 of 6144 (78%)
+Core Cells         : 4848 of 6144 (79%)
 IO Cells           : 50
 
   RAM/ROM Usage Summary
@@ -1542,9 +1546,9 @@ Block Rams : 6 of 8 (75%)
 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:08s; Memory used current: 36MB peak: 178MB)
+At Mapper Exit (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:07s; Memory used current: 36MB peak: 178MB)
 
-Process took 0h:00m:08s realtime, 0h:00m:08s cputime
-# Fri Aug 29 17:16:21 2025
+Process took 0h:00m:08s realtime, 0h:00m:07s cputime
+# Mon Sep 01 16:12:55 2025
 
 ###########################################################]

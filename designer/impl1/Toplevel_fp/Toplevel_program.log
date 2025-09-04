@@ -9,6 +9,8 @@ DESIGN : Toplevel;  CHECKSUM : 1057;  PDB_VERSION : 1.9
 programmer 'S20059FEOK' : FlashPro5
 Opened
 'C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer\impl1\Toplevel_fp\Toplevel.pro'
+The 'open_project' command succeeded.
+The 'set_programming_action' command succeeded.
 programmer 'S20059FEOK' : Scan Chain...
 programmer 'S20059FEOK' : Scan Chain PASSED.
 programmer 'S20059FEOK' : Executing action PROGRAM
@@ -18,12 +20,15 @@ programmer 'S20059FEOK' : Completed erase
 programmer 'S20059FEOK' : EXPORT CHECKSUM[16] = 1057
 programmer 'S20059FEOK' : Programming FPGA Array
 programmer 'S20059FEOK' : Verifying FPGA Array
-programmer 'S20059FEOK' :         Verifying FPGA Array -- pass
-programmer 'S20059FEOK' : Finished: Mon Sep 01 16:24:23 2025 (Elapsed time 00:01:06)
-programmer 'S20059FEOK' : Executing action PROGRAM PASSED.
+programmer 'S20059FEOK' : Verify 1 failed at row 379.
+programmer 'S20059FEOK' : EXPORT ERROR_CODE[16] = 805c
+programmer 'S20059FEOK' : Finished: Mon Sep 01 16:23:00 2025 (Elapsed time 00:01:05)
+Error: programmer 'S20059FEOK' : Executing action PROGRAM FAILED, EXIT 11, refer to FlashPro
+       online help for details.
 
                         o - o - o - o - o - o
 
-Warning: Project 'Toplevel' has been modified. Do you want to save it? [YES]
-Project saved.
+Error: The command 'run_selected_actions' failed.
+Error: Failure when executing Tcl script. [ Line 3 ]
+Error: The Execute Script command failed.
 Project closed.

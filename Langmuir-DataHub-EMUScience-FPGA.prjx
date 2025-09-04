@@ -236,13 +236,13 @@ SIZE="211"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel.adb,adb"
 STATE="ood"
-TIME="1756306173"
-SIZE="13059072"
+TIME="1756483172"
+SIZE="13053440"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel.ide_des,ide_des"
 STATE="utd"
-TIME="1756306174"
-SIZE="997"
+TIME="1756483173"
+SIZE="996"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel.pdb,pdb"
 STATE="ood"
@@ -266,17 +266,17 @@ SIZE="1476003"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_compile_log.rpt,log"
 STATE="utd"
-TIME="1756305924"
-SIZE="16646"
+TIME="1756480607"
+SIZE="16536"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_fp\projectData\Toplevel.pdb,pdb"
 STATE="utd"
-TIME="1756308014"
-SIZE="128377"
+TIME="1756483755"
+SIZE="126599"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_fp\Toplevel.pro,pro"
 STATE="utd"
-TIME="1756308014"
+TIME="1756483755"
 SIZE="2432"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_iteration_summary.rpt,log"
@@ -341,8 +341,8 @@ SIZE="12269"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_prgdata_log.rpt,log"
 STATE="utd"
-TIME="1756483111"
-SIZE="742"
+TIME="1756483174"
+SIZE="1360"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_timing.rpt,log"
 STATE="utd"
@@ -803,22 +803,22 @@ SIZE="1851"
 ENDFILE
 VALUE "<project>\synthesis\Toplevel.edn,syn_edn"
 STATE="ood"
-TIME="1756305898"
-SIZE="2451903"
+TIME="1756480581"
+SIZE="2452203"
 ENDFILE
 VALUE "<project>\synthesis\Toplevel.so,so"
 STATE="utd"
-TIME="1756305898"
+TIME="1756480581"
 SIZE="237"
 ENDFILE
 VALUE "<project>\synthesis\Toplevel_sdc.sdc,syn_sdc"
 STATE="ood"
-TIME="1756305898"
+TIME="1756480581"
 SIZE="498"
 ENDFILE
 VALUE "<project>\synthesis\Toplevel_syn.prj,prj"
 STATE="utd"
-TIME="1756305899"
+TIME="1756480581"
 SIZE="5401"
 ENDFILE
 VALUE "<project>\synthesis\UART_RX_FSM_tb.so,so"
@@ -927,8 +927,8 @@ NAME="Synplify Pro ME"
 FUNCTION="Synthesis"
 TOOL="Synplify Pro ME"
 LOCATION="C:\Microsemi\Libero_SoC_v11.9\SynplifyPro\bin\synplify_pro.exe"
-PARAM="-licensetype synplifypro_actel -batch -log synplify.log"
-BATCH=1
+PARAM=""
+BATCH=0
 LICENSE=""
 IS32BIT="1"
 EndProfile
@@ -986,13 +986,8 @@ LIST UserCustomizedFileList
 ENDLIST
 LIST OpenedFileList
 ORIENTATION;HORIZONTAL
-Reports;Reports;0
-ReportsCurrentItem;Generate Programming Data:Toplevel_prgdata_log.rpt
 StartPage;StartPage;0
-SmartDesign;Toplevel;0
-HDL;hdl\Data_Hub_Packets.vhd;0
-HDL;hdl\General_Controller.vhd;0
-ACTIVEVIEW;Toplevel
+ACTIVEVIEW;StartPage
 ENDLIST
 LIST ModuleSubBlockList
 LIST "Accelerometer::work","component\work\Accelerometer\Accelerometer.vhd","TRUE","FALSE"
@@ -1112,6 +1107,7 @@ SUBBLOCK "Data_Hub_Packets::work","hdl\Data_Hub_Packets.vhd","FALSE","FALSE"
 SUBBLOCK "Data_Saving::work","component\work\Data_Saving\Data_Saving.vhd","TRUE","FALSE"
 SUBBLOCK "Eject_Signal_Debounce::work","hdl\Eject_Signal_Debounce.vhd","FALSE","FALSE"
 SUBBLOCK "GS_Readout::work","hdl\GS_Readout.vhd","FALSE","FALSE"
+SUBBLOCK "General_Controller::work","hdl\General_Controller.vhd","FALSE","FALSE"
 SUBBLOCK "I2C_PassThrough::work","hdl\I2C_PassThrough.vhd","FALSE","FALSE"
 SUBBLOCK "Pressure_Signal_Debounce::work","hdl\Pressure_Signal_Debounce.vhd","FALSE","FALSE"
 SUBBLOCK "Science::work","component\work\Science\Science.vhd","TRUE","FALSE"
@@ -1120,7 +1116,6 @@ SUBBLOCK "SweepTable::work","smartgen\SweepTable\SweepTable.vhd","TRUE","FALSE"
 SUBBLOCK "TableSelect::work","hdl\TableSelect.vhd","FALSE","FALSE"
 SUBBLOCK "Timekeeper::work","hdl\Timekeeper.vhd","FALSE","FALSE"
 SUBBLOCK "Timing::work","hdl\Timing.vhd","FALSE","FALSE"
-SUBBLOCK "General_Controller::work","hdl\General_Controller.vhd","FALSE","FALSE"
 ENDLIST
 LIST "UART::work","hdl\UART.vhd","FALSE","FALSE"
 ENDLIST
@@ -1131,8 +1126,8 @@ ENDLIST
 LIST "CLK_GEN::work","component\Actel\Simulation\CLK_GEN\1.0.1\CLK_GEN.vhd","FALSE","TRUE"
 ENDLIST
 LIST "General_Controller_Testbench::work","stimulus\General_Controller_Testbench.vhd","FALSE","TRUE"
-SUBBLOCK "SweepTable::work","smartgen\SweepTable\SweepTable.vhd","TRUE","FALSE"
 SUBBLOCK "General_Controller::work","hdl\General_Controller.vhd","FALSE","FALSE"
+SUBBLOCK "SweepTable::work","smartgen\SweepTable\SweepTable.vhd","TRUE","FALSE"
 ENDLIST
 LIST "RESET_GEN::work","component\Actel\Simulation\RESET_GEN\1.0.1\RESET_GEN.vhd","FALSE","TRUE"
 ENDLIST
