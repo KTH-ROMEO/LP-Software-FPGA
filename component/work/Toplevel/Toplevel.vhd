@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Fri Aug 29 17:15:26 2025
+-- Created by SmartDesign Fri Sep 05 18:46:45 2025
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -39,14 +39,19 @@ entity Toplevel is
         ACS           : out   std_logic;
         ACST          : out   std_logic;
         ARST          : out   std_logic;
+        DPIN_19       : out   std_logic;
+        DPIN_22       : out   std_logic;
+        DPIN_59       : out   std_logic;
+        DPIN_69       : out   std_logic;
+        DPIN_70       : out   std_logic;
+        DPIN_71       : out   std_logic;
+        DPIN_96       : out   std_logic;
         FMC_DA        : out   std_logic_vector(7 downto 0);
         FPGA_BUF_INT  : out   std_logic;
         FRAM_SCL      : out   std_logic;
         GYRO_SCL      : out   std_logic;
         L1WR          : out   std_logic;
         L2WR          : out   std_logic;
-        L3WR          : out   std_logic;
-        L4WR          : out   std_logic;
         LA0           : out   std_logic;
         LA1           : out   std_logic;
         LDCLK         : out   std_logic;
@@ -54,8 +59,8 @@ entity Toplevel is
         LDSDI         : out   std_logic;
         LED1          : out   std_logic;
         LED2          : out   std_logic;
+        MAX_SCL       : out   std_logic;
         PRESSURE_SCL  : out   std_logic;
-        SCIENCE_TX    : out   std_logic;
         TOP_UART_TX   : out   std_logic;
         UC_PWR_EN     : out   std_logic;
         UC_RESET      : out   std_logic;
@@ -63,7 +68,9 @@ entity Toplevel is
         -- Inouts
         ACCE_SDA      : inout std_logic;
         FRAM_SDA      : inout std_logic;
+        FRSTDATA      : inout std_logic;
         GYRO_SDA      : inout std_logic;
+        MAX_SDA       : inout std_logic;
         PRESSURE_SDA  : inout std_logic;
         UC_I2C4_SDA   : inout std_logic
         );
@@ -213,6 +220,29 @@ component Data_Saving
         -- Outputs
         fmc_da             : out std_logic_vector(7 downto 0);
         uC_interrupt       : out std_logic
+        );
+end component;
+-- Dummy_Pins
+component Dummy_Pins
+    -- Port list
+    port(
+        -- Inputs
+        RESET    : in    std_logic;
+        -- Outputs
+        MAX_SCL  : out   std_logic;
+        p13      : out   std_logic;
+        p15      : out   std_logic;
+        p16      : out   std_logic;
+        p19      : out   std_logic;
+        p22      : out   std_logic;
+        p59      : out   std_logic;
+        p69      : out   std_logic;
+        p70      : out   std_logic;
+        p71      : out   std_logic;
+        p96      : out   std_logic;
+        -- Inouts
+        FRSTDATA : inout std_logic;
+        MAX_SDA  : inout std_logic
         );
 end component;
 -- Eject_Signal_Debounce
@@ -527,6 +557,13 @@ signal Data_Hub_Packets_0_acc_packet_1                    : std_logic_vector(63 
 signal Data_Hub_Packets_0_gyro_packet_0                   : std_logic_vector(63 downto 0);
 signal Data_Hub_Packets_0_mag_packet_1                    : std_logic_vector(63 downto 0);
 signal Data_Hub_Packets_0_pressure_packet_0               : std_logic_vector(63 downto 0);
+signal DPIN_19_net_0                                      : std_logic;
+signal DPIN_22_net_0                                      : std_logic;
+signal DPIN_59_net_0                                      : std_logic;
+signal DPIN_69_net_0                                      : std_logic;
+signal DPIN_70_net_0                                      : std_logic;
+signal DPIN_71_net_0                                      : std_logic;
+signal DPIN_96_net_0                                      : std_logic;
 signal Eject_Signal_Debounce_0_ffu_ejected_out            : std_logic;
 signal FMC_DA_0                                           : std_logic_vector(7 downto 0);
 signal FPGA_BUF_INT_net_0                                 : std_logic;
@@ -562,8 +599,6 @@ signal GS_Readout_0_wen                                   : std_logic;
 signal GYRO_SCL_net_0                                     : std_logic;
 signal L1WR_net_0                                         : std_logic;
 signal L2WR_net_0                                         : std_logic;
-signal L3WR_net_0                                         : std_logic;
-signal L4WR_net_0                                         : std_logic;
 signal LA0_net_0                                          : std_logic;
 signal LA1_net_0                                          : std_logic;
 signal LDCLK_net_0                                        : std_logic;
@@ -571,6 +606,7 @@ signal LDCS_net_0                                         : std_logic;
 signal LDSDI_net_0                                        : std_logic;
 signal LED1_0                                             : std_logic;
 signal LED2_net_0                                         : std_logic;
+signal MAX_SCL_net_0                                      : std_logic;
 signal PRESSURE_SCL_net_0                                 : std_logic;
 signal Pressure_Signal_Debounce_0_low_pressure            : std_logic;
 signal Science_0_new_SC_packet                            : std_logic;
@@ -632,14 +668,11 @@ signal LED2_net_1                                         : std_logic;
 signal UC_PWR_EN_net_1                                    : std_logic;
 signal UC_RESET_net_1                                     : std_logic;
 signal FRAM_SCL_net_1                                     : std_logic;
-signal TOP_UART_TX_net_2                                  : std_logic;
 signal ACS_net_1                                          : std_logic;
 signal ACLK_net_1                                         : std_logic;
 signal ACST_net_1                                         : std_logic;
 signal L1WR_net_1                                         : std_logic;
 signal L2WR_net_1                                         : std_logic;
-signal L3WR_net_1                                         : std_logic;
-signal L4WR_net_1                                         : std_logic;
 signal LDCS_net_1                                         : std_logic;
 signal LDSDI_net_1                                        : std_logic;
 signal LDCLK_net_1                                        : std_logic;
@@ -647,6 +680,14 @@ signal LA0_net_1                                          : std_logic;
 signal LA1_net_1                                          : std_logic;
 signal ARST_net_1                                         : std_logic;
 signal FMC_DA_0_net_0                                     : std_logic_vector(7 downto 0);
+signal DPIN_19_net_1                                      : std_logic;
+signal DPIN_22_net_1                                      : std_logic;
+signal MAX_SCL_net_1                                      : std_logic;
+signal DPIN_59_net_1                                      : std_logic;
+signal DPIN_69_net_1                                      : std_logic;
+signal DPIN_70_net_1                                      : std_logic;
+signal DPIN_71_net_1                                      : std_logic;
+signal DPIN_96_net_1                                      : std_logic;
 signal gyro_z_slice_0                                     : std_logic_vector(3 downto 0);
 signal pressure_raw_slice_0                               : std_logic_vector(11 downto 0);
 signal pressure_temp_raw_slice_0                          : std_logic_vector(11 downto 0);
@@ -754,8 +795,6 @@ begin
  UC_RESET           <= UC_RESET_net_1;
  FRAM_SCL_net_1     <= FRAM_SCL_net_0;
  FRAM_SCL           <= FRAM_SCL_net_1;
- TOP_UART_TX_net_2  <= TOP_UART_TX_net_0;
- SCIENCE_TX         <= TOP_UART_TX_net_2;
  ACS_net_1          <= ACS_net_0;
  ACS                <= ACS_net_1;
  ACLK_net_1         <= ACLK_net_0;
@@ -766,10 +805,6 @@ begin
  L1WR               <= L1WR_net_1;
  L2WR_net_1         <= L2WR_net_0;
  L2WR               <= L2WR_net_1;
- L3WR_net_1         <= L3WR_net_0;
- L3WR               <= L3WR_net_1;
- L4WR_net_1         <= L4WR_net_0;
- L4WR               <= L4WR_net_1;
  LDCS_net_1         <= LDCS_net_0;
  LDCS               <= LDCS_net_1;
  LDSDI_net_1        <= LDSDI_net_0;
@@ -784,6 +819,22 @@ begin
  ARST               <= ARST_net_1;
  FMC_DA_0_net_0     <= FMC_DA_0;
  FMC_DA(7 downto 0) <= FMC_DA_0_net_0;
+ DPIN_19_net_1      <= DPIN_19_net_0;
+ DPIN_19            <= DPIN_19_net_1;
+ DPIN_22_net_1      <= DPIN_22_net_0;
+ DPIN_22            <= DPIN_22_net_1;
+ MAX_SCL_net_1      <= MAX_SCL_net_0;
+ MAX_SCL            <= MAX_SCL_net_1;
+ DPIN_59_net_1      <= DPIN_59_net_0;
+ DPIN_59            <= DPIN_59_net_1;
+ DPIN_69_net_1      <= DPIN_69_net_0;
+ DPIN_69            <= DPIN_69_net_1;
+ DPIN_70_net_1      <= DPIN_70_net_0;
+ DPIN_70            <= DPIN_70_net_1;
+ DPIN_71_net_1      <= DPIN_71_net_0;
+ DPIN_71            <= DPIN_71_net_1;
+ DPIN_96_net_1      <= DPIN_96_net_0;
+ DPIN_96            <= DPIN_96_net_1;
 ----------------------------------------------------------------------
 -- Slices assignments
 ----------------------------------------------------------------------
@@ -971,6 +1022,27 @@ Data_Saving_0 : Data_Saving
         uC_interrupt       => FPGA_BUF_INT_net_0,
         fmc_da             => FMC_DA_0 
         );
+-- Dummy_Pins_0
+Dummy_Pins_0 : Dummy_Pins
+    port map( 
+        -- Inputs
+        RESET    => CLKINT_1_Y,
+        -- Outputs
+        p13      => OPEN,
+        p15      => OPEN,
+        p16      => OPEN,
+        p19      => DPIN_19_net_0,
+        p22      => DPIN_22_net_0,
+        MAX_SCL  => MAX_SCL_net_0,
+        p59      => DPIN_59_net_0,
+        p69      => DPIN_69_net_0,
+        p70      => DPIN_70_net_0,
+        p71      => DPIN_71_net_0,
+        p96      => DPIN_96_net_0,
+        -- Inouts
+        MAX_SDA  => MAX_SDA,
+        FRSTDATA => FRSTDATA 
+        );
 -- Eject_Signal_Debounce_0
 Eject_Signal_Debounce_0 : Eject_Signal_Debounce
     port map( 
@@ -990,31 +1062,27 @@ General_Controller_0 : General_Controller
         clk_1Hz                       => Timing_0_s_clks24to24(24),
         reset                         => CLKINT_1_Y,
         status_packet_clk             => Timing_0_s_clks18to18(18),
-        milliseconds                  => Timekeeper_0_milliseconds,
         ffu_ejected                   => Eject_Signal_Debounce_0_ffu_ejected_out,
         low_pressure                  => Pressure_Signal_Debounce_0_low_pressure,
         ext_rx_rdy                    => Communications_0_ext_rx_rdy,
-        ext_recv                      => Communications_0_ext_recv,
-        uc_recv                       => Communications_0_uc_recv,
         uc_tx_rdy                     => Communications_0_uc_tx_rdy,
         uc_rx_rdy                     => Communications_0_uc_rx_rdy,
         cu_sync                       => CU_SYNC,
+        new_data                      => Timing_0_s_clks24to24(24),
+        milliseconds                  => Timekeeper_0_milliseconds,
+        ext_recv                      => Communications_0_ext_recv,
+        uc_recv                       => Communications_0_uc_recv,
         st_rdata0                     => SweepTable_0_RD,
         st_rdata1                     => SweepTable_1_RD,
         acc_packet                    => Data_Hub_Packets_0_acc_packet_1,
         mag_packet                    => Data_Hub_Packets_0_mag_packet_1,
         gyro_packet                   => Data_Hub_Packets_0_gyro_packet_0,
         pressure_packet               => Data_Hub_Packets_0_pressure_packet_0,
-        new_data                      => Timing_0_s_clks24to24(24),
         -- Outputs
-        st_wdata                      => General_Controller_0_st_wdata,
-        st_waddr                      => General_Controller_0_st_waddr,
-        st_raddr                      => General_Controller_0_st_raddr_1,
         st_wen0                       => General_Controller_0_st_wen0,
         st_wen1                       => General_Controller_0_st_wen1,
         st_ren0                       => General_Controller_0_st_ren0,
         st_ren1                       => General_Controller_0_st_ren1,
-        uc_send                       => General_Controller_0_uc_send,
         uc_wen                        => General_Controller_0_uc_wen,
         uc_oen                        => General_Controller_0_uc_oen,
         ext_oen                       => General_Controller_0_ext_oen,
@@ -1025,22 +1093,26 @@ General_Controller_0 : General_Controller
         en_data_saving                => General_Controller_0_en_data_saving,
         led1                          => LED1_0,
         led2                          => LED2_net_0,
-        status_bits                   => General_Controller_0_status_bits,
         status_new_data               => General_Controller_0_status_new_data,
         en_science_packets            => OPEN,
         sweep_en                      => OPEN,
-        ramp                          => OPEN,
         exp_adc_reset                 => General_Controller_0_exp_adc_reset,
+        DAC_zero_value                => OPEN,
+        DAC_max_value                 => OPEN,
+        Bias_enabled                  => General_Controller_0_Bias_enabled,
+        Sweep_enabled                 => General_Controller_0_Sweep_enabled,
+        st_wdata                      => General_Controller_0_st_wdata,
+        st_waddr                      => General_Controller_0_st_waddr,
+        st_raddr                      => General_Controller_0_st_raddr_1,
+        uc_send                       => General_Controller_0_uc_send,
+        status_bits                   => General_Controller_0_status_bits,
+        ramp                          => OPEN,
         man_gain1                     => OPEN,
         man_gain2                     => OPEN,
         man_gain3                     => OPEN,
         man_gain4                     => OPEN,
-        DAC_zero_value                => OPEN,
-        DAC_max_value                 => OPEN,
         C_bias_V0                     => General_Controller_0_C_bias_V0,
         C_bias_V1                     => General_Controller_0_C_bias_V1,
-        Bias_enabled                  => General_Controller_0_Bias_enabled,
-        Sweep_enabled                 => General_Controller_0_Sweep_enabled,
         sweep_table_nof_steps         => General_Controller_0_sweep_table_nof_steps,
         sweep_table_samples_per_step  => General_Controller_0_sweep_table_samples_per_step,
         sweep_table_samples_per_point => General_Controller_0_sweep_table_samples_per_point,
@@ -1128,8 +1200,8 @@ Science_0 : Science
         LA1                     => LA1_net_0,
         L1WR                    => L1WR_net_0,
         L2WR                    => L2WR_net_0,
-        L3WR                    => L3WR_net_0,
-        L4WR                    => L4WR_net_0,
+        L3WR                    => OPEN,
+        L4WR                    => OPEN,
         LDCS                    => LDCS_net_0,
         LDSDI                   => LDSDI_net_0,
         LDCLK                   => LDCLK_net_0,

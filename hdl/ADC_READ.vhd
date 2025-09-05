@@ -114,14 +114,15 @@ begin
                 when "00010000" => -- set clock low, latch the serial data in 
                     exp_new_data <= '0';
                     ACLK <= '0';
-                    -- DEBUG to generate fake ADC values
+                    -- DEBUG to generate fake ADC values. DO NOT LEAVE THIS UNCOMMENTED FOR COMMIT IT DEASIGNS THE ADC PORTS
                     -- data_a <= "000111001000010001";
                     -- data_b <= "011010010000100010"; 
-                    data_a <= "111111111111111111";
-                    data_b <= "111111111111111111"; 
+                    -- data_a <= "111111111111111111";
+                    -- data_b <= "111111111111111111"; 
                     ---------------------------------------
-                    -- data_a <= data_a(16 downto 0) & AB; -- Lines are flipped on schematics
-                    -- data_b <= data_b(16 downto 0) & AA; -- Lines are flipped on schematics
+                    -- DO NOT LEAVE THIS COMMENTED FOR COMMIT IT DEASIGNS THE ADC PORTS
+                    data_a <= data_a(16 downto 0) & AA; -- Lines are flipped on schematics
+                    data_b <= data_b(16 downto 0) & AB; -- Lines are flipped on schematics
                     state <= "00100000";
                     cnt <= cnt + 1;
 

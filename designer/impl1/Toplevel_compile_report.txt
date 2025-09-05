@@ -1,13 +1,13 @@
 ***************************************************************************
                                Status Report
-                          Mon Sep 01 16:13:20 2025 ***************************************************************************
+                          Fri Sep 05 18:48:05 2025 ***************************************************************************
 
 Product: Designer
 Release: v11.9 SP6
 Version: 11.9.6.7
-File Name: C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer\impl1\Toplevel.adb
+File Name: C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\designer\impl1\Toplevel.adb
 Design Name: Toplevel  Design State: compile
-Last Saved: Mon Sep 01 11:46:59 2025
+Last Saved: Fri Sep 05 18:46:18 2025
 
 ***** Device Data **************************************************
 
@@ -22,8 +22,8 @@ Voltage Range:   COM
 
 ***** Import Variables *********************************************
 
-Source File(s) Imported on Mon Sep 01 16:13:12 2025:
-        C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\synthesis\Toplevel.edn
+Source File(s) Imported on Fri Sep 05 18:47:59 2025:
+        C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\synthesis\Toplevel.edn
 
 
 ***** CAE Variables ************************************************
@@ -49,7 +49,8 @@ Parameters used to run compile:
 Family      : ProASIC3
 Device      : A3P250
 Package     : 100 VQFP
-Source      : C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\synthesis\Toplevel.edn
+Source      :
+C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\synthesis\Toplevel.edn
 Format      : EDIF
 Topcell     : Toplevel
 Speed grade : STD
@@ -144,8 +145,6 @@ Warning: CMP201: Net SweepTable_0/SweepTable_R0C0_RD8 drives no load.
 Warning: CMP201: Net SweepTable_0/SweepTable_R0C0_RD17 drives no load.
 Warning: CMP201: Net SweepTable_1/SweepTable_R0C0_RD8_0 drives no load.
 Warning: CMP201: Net SweepTable_1/SweepTable_R0C0_RD17_0 drives no load.
-Warning: Top level port AA is not connected to any IO pad
-Warning: Top level port AB is not connected to any IO pad
 Warning: Top level port FMC_NE1 is not connected to any IO pad
 
 Netlist Optimization Report
@@ -156,14 +155,14 @@ Optimized macros:
   - Buffers:                0
   - Inverters:              3
   - Tieoff:                 35
-  - Logic combining:        204
+  - Logic combining:        219
 
-    Total macros optimized  254
+    Total macros optimized  269
 
 Warning: CMP503: Remapped 8 enable flip-flop(s) to a 2-tile implementation because the CLR/PRE
          pin on the enable flip-flop is not being driven by a global net.
 
-There were 0 error(s) and 72 warning(s) in this design.
+There were 0 error(s) and 70 warning(s) in this design.
 =====================================================================
 
 Reading previous post-compile physical placement constraints.
@@ -175,8 +174,8 @@ There were 0 error(s) and 0 warning(s).
 Compile report:
 ===============
 
-    CORE                       Used:   4602  Total:   6144   (74.90%)
-    IO (W/ clocks)             Used:     50  Total:     68   (73.53%)
+    CORE                       Used:   4819  Total:   6144   (78.43%)
+    IO (W/ clocks)             Used:     59  Total:     68   (86.76%)
     Differential IO            Used:      0  Total:     13   (0.00%)
     GLOBAL (Chip+Quadrant)     Used:      6  Total:     18   (33.33%)
     PLL                        Used:      0  Total:      1   (0.00%)
@@ -200,15 +199,15 @@ Core Information:
 
     Type    | Instances    | Core tiles
     --------|--------------|-----------
-    COMB    | 3280         | 3280
-    SEQ     | 1322         | 1322
+    COMB    | 3424         | 3424
+    SEQ     | 1395         | 1395
 
 I/O Function:
 
     Type                                  | w/o register  | w/ register  | w/ DDR register
     --------------------------------------|---------------|--------------|----------------
-    Input I/O                             | 12            | 0            | 0
-    Output I/O                            | 33            | 0            | 0
+    Input I/O                             | 14            | 0            | 0
+    Output I/O                            | 40            | 0            | 0
     Bidirectional I/O                     | 5             | 0            | 0
     Differential Input I/O Pairs          | 0             | 0            | 0
     Differential Output I/O Pairs         | 0             | 0            | 0
@@ -219,15 +218,13 @@ I/O Technology:
     --------------------------------|-------|-------|-------|--------|--------------
     I/O Standard(s)                 | Vcci  | Vref  | Input | Output | Bidirectional
     --------------------------------|-------|-------|-------|--------|--------------
-    LVCMOS33                        | 3.30v | N/A   | 12    | 33     | 5
+    LVCMOS33                        | 3.30v | N/A   | 14    | 40     | 5
 
 I/O Placement:
 
-    Locked  :  49 ( 98.00% )
-    Placed  :   1 (  2.00% )
+    Locked  :  59 ( 100.00% )
+    Placed  :   0
     UnPlaced:   0
-
-Warning: Only some I/Os are locked
 
 Net information report:
 =======================
@@ -241,16 +238,16 @@ The following nets drive enable flip-flops that have been remapped to a 2-tile i
 The following nets have been assigned to a chip global resource:
     Fanout  Type          Name
     --------------------------
-    1139    CLK_NET       Net   : CLKINT_0_Y_0
+    1211    CLK_NET       Net   : CLKINT_0_Y_0
                           Driver: CLKINT_0
                           Source: NETLIST
-    1070    SET/RESET_NET Net   : CLKINT_1_Y
+    1144    SET/RESET_NET Net   : CLKINT_1_Y
                           Driver: CLKINT_1
                           Source: NETLIST
-    107     CLK_NET       Net   : ClockDivs_0_clk_800kHz
+    108     CLK_NET       Net   : ClockDivs_0_clk_800kHz
                           Driver: ClockDivs_0/clk_800kHz_RNIT3EB
                           Source: NETLIST
-    57      INT_NET       Net   : GS_Readout_0/subState[0]
+    58      INT_NET       Net   : GS_Readout_0/subState[0]
                           Driver: GS_Readout_0/subState_RNITID3[0]
                           Source: NETLIST
     56      INT_NET       Net   : General_Controller_0/start_tx_0_sqmuxa
@@ -263,49 +260,61 @@ The following nets have been assigned to a chip global resource:
 High fanout nets in the post compile netlist:
     Fanout  Type          Name
     --------------------------
-    24      INT_NET       Net   : GYRO_SCL_c
-                          Driver: Sensors_0/Gyro_0/I2C_Master_0/scl
-    24      INT_NET       Net   : General_Controller_0/payload_buffer_0_0[0]
-                          Driver: General_Controller_0/payload_buffer_0_0[0]
     24      INT_NET       Net   : General_Controller_0/swt_wr_substate_1_sqmuxa
                           Driver: General_Controller_0/swt_wr_substate_RNIA6K11_0[0]
     24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P_0
                           Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P_0
     24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P
                           Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P
+    24      INT_NET       Net   :
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[2]
+                          Driver:
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[2]
     24      INT_NET       Net   : Timekeeper_0/un3_old_1khz
                           Driver: Timekeeper_0/old_1kHz_RNICNFV
-    23      INT_NET       Net   : General_Controller_0/payload_buffer_0[0]
-                          Driver: General_Controller_0/payload_buffer_0[0]
     23      INT_NET       Net   : General_Controller_0/uc_rx_state[0]
                           Driver: General_Controller_0/uc_rx_state[0]
-    22      INT_NET       Net   : Science_0/DAC_SET_0/state[3]
-                          Driver: Science_0/DAC_SET_0/state[3]
-    22      INT_NET       Net   : Sensors_0/Accelerometer_0/I2C_Master_0_write_done
-                          Driver: Sensors_0/Accelerometer_0/I2C_Master_0/write_done
+    23      INT_NET       Net   : Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state[0]
+                          Driver: Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state[0]
+    23      INT_NET       Net   :
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[3]
+                          Driver:
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[3]
+    23      INT_NET       Net   :
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[0]
+                          Driver:
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[0]
+    23      INT_NET       Net   : Sensors_0/Gyro_0/state[8]
+                          Driver: Sensors_0/Gyro_0/I2C_Master_0/state[8]
 
 Nets that are candidates for clock assignment and the resulting fanout:
     Fanout  Type          Name
     --------------------------
-    24      INT_NET       Net   : GYRO_SCL_c
-                          Driver: Sensors_0/Gyro_0/I2C_Master_0/scl
-    24      INT_NET       Net   : General_Controller_0/payload_buffer_0_0[0]
-                          Driver: General_Controller_0/payload_buffer_0_0[0]
     24      INT_NET       Net   : General_Controller_0/swt_wr_substate_1_sqmuxa
                           Driver: General_Controller_0/swt_wr_substate_RNIA6K11_0[0]
     24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P_0
                           Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P_0
     24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P
                           Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P
+    24      INT_NET       Net   :
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[2]
+                          Driver:
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[2]
     24      INT_NET       Net   : Timekeeper_0/un3_old_1khz
                           Driver: Timekeeper_0/old_1kHz_RNICNFV
-    23      INT_NET       Net   : General_Controller_0/payload_buffer_0[0]
-                          Driver: General_Controller_0/payload_buffer_0[0]
     23      INT_NET       Net   : General_Controller_0/uc_rx_state[0]
                           Driver: General_Controller_0/uc_rx_state[0]
-    22      INT_NET       Net   : Science_0/DAC_SET_0/state[3]
-                          Driver: Science_0/DAC_SET_0/state[3]
-    22      INT_NET       Net   : Sensors_0/Accelerometer_0/I2C_Master_0_write_done
-                          Driver: Sensors_0/Accelerometer_0/I2C_Master_0/write_done
+    23      INT_NET       Net   : Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state[0]
+                          Driver: Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state[0]
+    23      INT_NET       Net   :
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[3]
+                          Driver:
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[3]
+    23      INT_NET       Net   :
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[0]
+                          Driver:
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[0]
+    23      INT_NET       Net   : Sensors_0/Gyro_0/state[8]
+                          Driver: Sensors_0/Gyro_0/I2C_Master_0/state[8]
 
 
