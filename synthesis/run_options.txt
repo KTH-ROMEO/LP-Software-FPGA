@@ -1,6 +1,8 @@
 #--  Synopsys, Inc.
 #--  Version L-2016.09M-SP1-5
-#--  Project file C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\synthesis\scratchproject.prs
+#--  Project file C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\synthesis\run_options.txt
+#--  Written on Wed Sep 10 19:26:08 2025
+
 
 #project files
 add_file -vhdl -lib work "C:/Users/Jesus/Documents/KTH/ROMEO/Repositories/LP-Software-FPGA/hdl/ClockDivs.vhd"
@@ -43,7 +45,7 @@ add_file -vhdl -lib work "C:/Users/Jesus/Documents/KTH/ROMEO/Repositories/LP-Sof
 
 
 #implementation: "synthesis"
-impl -add C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\synthesis -type fpga
+impl -add synthesis -type fpga
 
 #device options
 set_option -technology ProASIC3
@@ -103,5 +105,5 @@ set_option -vhdl2008 1
 set_option -write_apr_constraint 1
 
 #set result format/file last
-project -result_file "C:/Users/Jesus/Documents/KTH/ROMEO/Repositories/LP-Software-FPGA/synthesis/Toplevel.edn"
+project -result_file "./Toplevel.edn"
 impl -active "synthesis"
