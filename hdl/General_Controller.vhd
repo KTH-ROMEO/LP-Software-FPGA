@@ -39,7 +39,6 @@ port (
     st_waddr : OUT std_logic_vector(7 downto 0);
     st_raddr : OUT std_logic_vector(7 downto 0);
 
-
     st_wen0   : OUT std_logic;
     st_wen1   : OUT std_logic;
     st_ren0   : OUT std_logic;
@@ -112,9 +111,10 @@ architecture architecture_General_Controller of General_Controller is
         RX_EXECUTE
     );
 
-    type payload_array_type is array (0 to 3) of std_logic_vector(7 downto 0); -- payload buffer
+    type payload_array_type is array (0 to 3) of std_logic_vector(7 downto 0); 
     type rx_context_type    is (CTX_PREAMBLE, CTX_PAYLOAD, CTX_POSTAMBLE); -- Context for wait state in RX FSM
-    type byte_array_type    is array(0 to 11) of std_logic_vector(7 downto 0); --msg_2send
+    type byte_array_type    is array(0 to 11) of std_logic_vector(7 downto 0); 
+    subtype sec_t           is natural range 0 to 255;
 
 
 
@@ -123,14 +123,10 @@ architecture architecture_General_Controller of General_Controller is
     signal constant_bias_voltage_0    : std_logic_vector(15 downto 0);
     signal constant_bias_voltage_1    : std_logic_vector(15 downto 0);
     signal constant_bias_probe_id     : std_logic_vector(7 downto 0);
-    signal sweep_table_activate_sweep : std_logic; --TODO NEED of having this strobe
+    signal sweep_table_activate_sweep : std_logic; 
     signal sweep_table_sweep_cnt      : std_logic_vector(15 downto 0); -- Number of activated sweeps since last FPGA power on.
     signal sweep_table_read_value     : std_logic_vector(15 downto 0);
---    signal sweep_table_nof_steps : std_logic_vector(7 downto 0);
---    signal sweep_table_samples_per_step : std_logic_vector(15 downto 0);
---    signal sweep_table_sample_skip : std_logic_vector(15 downto 0);
---    signal sweep_table_samples_per_point : std_logic_vector(15 downto 0);
---    signal sweep_table_points : std_logic_vector(15 downto 0);
+
 
 
     -- RX FSM
@@ -143,56 +139,80 @@ architecture architecture_General_Controller of General_Controller is
     signal payload_buffer           : payload_array_type; 
     signal payload_index            : integer range 0 to 7 := 0;
     signal rx_context               : rx_context_type := CTX_PREAMBLE;
-    signal long_command_active      : std_logic := '0';
-    signal swt_wr_substate          : integer range 0 to 2 := 0;
-    signal sweep_table_write_wait   : integer range 0 to 3;
-    signal swt_rd_substate          : integer range 0 to 2 := 0;
-    signal sweep_table_read_wait    : integer range 0 to 3;
-    signal acc_send_req             : std_logic := '0';
-    signal mag_send_req             : std_logic := '0';
-    signal gyro_send_req            : std_logic := '0';
-    signal pressure_send_req        : std_logic := '0';
-    signal const_volt_send_req      : std_logic := '0';
-    signal swt_swp_cnt_send_req     : std_logic := '0';
-    signal swt_steps_send_req       : std_logic := '0';
-    signal swt_sps_send_req         : std_logic := '0';
-    signal swt_skip_send_req        : std_logic := '0';
-    signal swt_spp_send_req         : std_logic := '0';
-    signal swt_points_send_req      : std_logic := '0';
-    signal const_measure_send_req   : std_logic := '0';
-    signal swt_value_send_req       : std_logic := '0';
-
+    
+    signal long_command_active     : std_logic := '0';
+    signal swt_wr_substate         : integer range 0 to 2 := 0;
+    signal sweep_table_write_wait  : integer range 0 to 3;
+    signal swt_rd_substate         : integer range 0 to 2 := 0;
+    signal sweep_table_read_wait   : integer range 0 to 3;
+    
+    signal acc_send_req            : std_logic := '0';
+    signal mag_send_req            : std_logic := '0';
+    signal gyro_send_req           : std_logic := '0';
+    signal pressure_send_req       : std_logic := '0';
+    signal const_volt_send_req     : std_logic := '0';
+    signal swt_swp_cnt_send_req    : std_logic := '0';
+    signal swt_steps_send_req      : std_logic := '0';
+    signal swt_sps_send_req        : std_logic := '0';
+    signal swt_skip_send_req       : std_logic := '0';
+    signal swt_spp_send_req        : std_logic := '0';
+    signal swt_points_send_req     : std_logic := '0';
+    signal const_measure_send_req  : std_logic := '0';
+    signal swt_value_send_req      : std_logic := '0';
+    
     constant POSTAMBLE  : std_logic_vector(7 downto 0) := x"0A";
     constant PREAMBLE_1 : std_logic_vector(7 downto 0) := x"B5";
     constant PREAMBLE_2 : std_logic_vector(7 downto 0) := x"43";
 
+
+
     -- TX FSM
-    signal uc_tx_state               : uc_tx_state_type;
-    signal msg_2send                 : byte_array_type := (others => (others => '0'));
-    signal start_tx                  : std_logic := '0';
-    signal tx_byte_index             : integer range 0 to 11 := 0;
-    signal acc_tx_flag               : std_logic := '0';
-    signal mag_tx_flag               : std_logic := '0';
-    signal gyro_tx_flag              : std_logic := '0';
-    signal pressure_tx_flag          : std_logic := '0';
-    signal const_volt_tx_flag        : std_logic := '0';
-    signal swt_swp_cnt_tx_flag       : std_logic := '0';
-    signal swt_steps_tx_flag         : std_logic := '0';
-    signal swt_sps_tx_flag           : std_logic := '0';
-    signal swt_skip_tx_flag          : std_logic := '0';
-    signal swt_spp_tx_flag           : std_logic := '0';
-    signal swt_points_tx_flag        : std_logic := '0';
-    signal const_measure_tx_flag     : std_logic := '0';
-    signal swt_value_tx_flag         : std_logic := '0';
+    signal uc_tx_state    : uc_tx_state_type;
+    signal msg_2send      : byte_array_type := (others => (others => '0'));
+    signal start_tx       : std_logic := '0';
+    signal tx_byte_index  : integer range 0 to 11 := 0;
+
     signal constant_bias_voltage_tx  : std_logic_vector(15 downto 0);
+
+    signal acc_tx_flag            : std_logic := '0';
+    signal mag_tx_flag            : std_logic := '0';
+    signal gyro_tx_flag           : std_logic := '0';
+    signal pressure_tx_flag       : std_logic := '0';
+    signal const_volt_tx_flag     : std_logic := '0';
+    signal swt_swp_cnt_tx_flag    : std_logic := '0';
+    signal swt_steps_tx_flag      : std_logic := '0';
+    signal swt_sps_tx_flag        : std_logic := '0';
+    signal swt_skip_tx_flag       : std_logic := '0';
+    signal swt_spp_tx_flag        : std_logic := '0';
+    signal swt_points_tx_flag     : std_logic := '0';
+    signal const_measure_tx_flag  : std_logic := '0';
+    signal swt_value_tx_flag      : std_logic := '0';
+
 
 
     -- PERIODIC TX
-    signal old_new_data              : std_logic;
-    signal acc_tx_periodic_flag      : std_logic := '0';
-    signal mag_tx_periodic_flag      : std_logic := '0';
-    signal gyro_tx_periodic_flag     : std_logic := '0';
-    signal pressure_tx_periodic_flag : std_logic := '0';
+    signal old_new_data   : std_logic;
+
+    signal acc_tx_periodic_flag       : std_logic := '0';
+    signal mag_tx_periodic_flag       : std_logic := '0';
+    signal gyro_tx_periodic_flag      : std_logic := '0';
+    signal pressure_tx_periodic_flag  : std_logic := '0';
+
+    signal acc_period_s   : sec_t := 0;
+    signal mag_period_s   : sec_t := 0;
+    signal gyro_period_s  : sec_t := 0;
+    signal pres_period_s  : sec_t := 0;
+    signal acc_cnt_s      : sec_t := 0;
+    signal mag_cnt_s      : sec_t := 0;
+    signal gyro_cnt_s     : sec_t := 0;
+    signal pres_cnt_s     : sec_t := 0;
+
+    constant T_HK_DIS : sec_t := 0; -- disabled
+    constant T_HK_5S  : sec_t := 5;
+    constant T_HK_10S : sec_t := 10;
+    constant T_HK_20S : sec_t := 20;
+
+
 
     -- FLIGHT STATES
     signal flight_state : std_logic_vector(7 downto 0);
@@ -209,8 +229,6 @@ architecture architecture_General_Controller of General_Controller is
     constant parachute : std_logic_vector(7 downto 0) := x"06";
     constant landed : std_logic_vector(7 downto 0) := x"07";
     constant power_save : std_logic_vector(7 downto 0) := x"08";
-    constant debug : std_logic_vector(7 downto 0) := x"09";
-
     -- EXT RX
     signal ext_rx_state : integer range 1 to 4;
     signal command : std_logic_vector(7 downto 0);
@@ -220,7 +238,7 @@ architecture architecture_General_Controller of General_Controller is
     signal send_telemetry_request : std_logic;
 
 
-    -- ADDED by Angelo on 03/08 -- 
+
     function vector_2array(v : std_logic_vector(95 downto 0)) return byte_array_type is
     variable result : byte_array_type;
     begin
@@ -236,7 +254,6 @@ begin
     begin
         if reset /= '0' then
        
-            constant_bias_mode <= '0';
 
             flight_state <= boot;
 
@@ -251,13 +268,13 @@ begin
             uc_send <= (others => '0');
             uc_wen <= '0';
             uc_oen <= '0';
-            uc_tx_state <= TX_IDLE;
             send_console_enable <= '0';
             send_led3 <= '0';
             send_led4 <= '0';
             send_telemetry_request <= '0';
 
             uc_rx_state <= RX_IDLE;
+            uc_tx_state <= TX_IDLE;
 
             en_sensors <= '0';
             en_data_saving <= '0';
@@ -284,81 +301,103 @@ begin
             send_flight_state <= '0';
 
 
-            constant_bias_voltage_0 <= (others => '0');
-            constant_bias_voltage_1 <= (others => '0');
-            constant_bias_voltage_tx <= (others => '0');
-            constant_bias_probe_id <= (others => '0');
-            
-            sweep_table_activate_sweep <= '0';
-            sweep_table_sweep_cnt <= (others => '0');
 
-            sweep_table_nof_steps <= (others => '0');
-            sweep_table_sample_skip <= (others => '0');
-            sweep_table_samples_per_point <= (others => '0');
-            sweep_table_points <= (others => '0');
+            -- SCIENCE DATA
+            Sweep_enabled       <= '0';
+            Bias_enabled        <= '0';
+            constant_bias_mode  <= '0';
+
+            constant_bias_voltage_0   <= (others => '0');
+            constant_bias_voltage_1   <= (others => '0');
+            constant_bias_voltage_tx  <= (others => '0');
+            constant_bias_probe_id    <= (others => '0');
+            
+            sweep_table_activate_sweep     <= '0';
+            sweep_table_sweep_cnt          <= (others => '0');
+            sweep_table_nof_steps          <= (others => '0');
+            sweep_table_sample_skip        <= (others => '0');
+            sweep_table_samples_per_point  <= (others => '0');
+            sweep_table_points             <= (others => '0');
 
             st_wdata <= (others => '0');
             st_waddr <= (others => '0');
             st_raddr <= (others => '0');
-
             st_wen0  <= '0';
             st_wen1  <= '0';
             st_ren0  <= '0';
             st_ren1  <= '0';
 
-            -- ADDED by Angelo on 2025-06-22 --
-            old_new_data <= '0';
-            acc_send_req <= '0';
-            mag_send_req <= '0';
-            gyro_send_req <= '0';
-            pressure_send_req <= '0';
-            -- ADDED by Angelo on 2025-07-01 --
-            preamble_counter <= 0;
-            payload_index <= 0;
-            command_byte <= (others => '0');
-            current_command <= (others => '0');
-            expected_payload_length <= 0;
-            rx_context <= CTX_PREAMBLE;
+
+
+            -- PERIODIC
+            old_new_data             <= '0'; -- 1Hz counter
+
+
+
+            -- RX FSM
+            rx_context               <= CTX_PREAMBLE;
+            preamble_counter         <= 0;
+            command_byte             <= (others => '0');
+            current_command          <= (others => '0');
+            payload_index            <= 0;
+            expected_payload_length  <= 0;
             for i in 0 to 3 loop
-                payload_buffer(i) <= (others => '0');
+                payload_buffer(i)    <= (others => '0');
             end loop;
-            long_command_active <= '0';
-            swt_rd_substate <= 0;
-            swt_wr_substate <= 0;
-            sweep_table_write_wait <= 0;
-            sweep_table_read_wait <= 0;
-            -- ADDED by Angelo on 2025-07-26 --
-            tx_byte_index <= 0;
-            start_tx <= '0';
-            msg_2send <= (others => (others => '0'));
-            -- ADDED by Angelo on 2025-08-03
-            const_volt_send_req  <= '0';
-            swt_swp_cnt_send_req     <= '0';
-            swt_steps_send_req   <= '0';
-            swt_sps_send_req     <= '0';
-            swt_skip_send_req    <= '0';
-            swt_spp_send_req     <= '0';
-            swt_points_send_req  <= '0';
+            long_command_active      <= '0';
+            swt_rd_substate          <= 0;
+            swt_wr_substate          <= 0;
+            sweep_table_write_wait   <= 0;
+            sweep_table_read_wait    <= 0;
+
+
+
+            -- TX FSM
+            start_tx       <= '0';
+            tx_byte_index  <= 0;
+            msg_2send      <= (others => (others => '0'));
+
+            acc_send_req            <= '0';
+            mag_send_req            <= '0';
+            gyro_send_req           <= '0';
+            pressure_send_req       <= '0';
+            const_volt_send_req     <= '0';
+            swt_swp_cnt_send_req    <= '0';
+            swt_steps_send_req      <= '0';
+            swt_sps_send_req        <= '0';
+            swt_skip_send_req       <= '0';
+            swt_spp_send_req        <= '0';
+            swt_points_send_req     <= '0';
             const_measure_send_req  <= '0';
-            swt_value_send_req   <= '0';
-            -- ADDED by Angelo on 2025-08-18
-            acc_tx_flag               <= '0';
-            mag_tx_flag               <= '0';
-            gyro_tx_flag              <= '0';
-            pressure_tx_flag          <= '0';
-            const_volt_tx_flag        <= '0';
-            swt_swp_cnt_tx_flag       <= '0';
-            swt_steps_tx_flag         <= '0';
-            swt_sps_tx_flag           <= '0';
-            swt_skip_tx_flag          <= '0';
-            swt_spp_tx_flag           <= '0';
-            swt_points_tx_flag        <= '0';
-            const_measure_tx_flag     <= '0';
-            swt_value_tx_flag         <= '0';
-            acc_tx_periodic_flag      <= '0';
-            mag_tx_periodic_flag      <= '0';
-            gyro_tx_periodic_flag     <= '0';
-            pressure_tx_periodic_flag <= '0';
+            swt_value_send_req      <= '0';
+
+            acc_tx_flag                <= '0';
+            mag_tx_flag                <= '0';
+            gyro_tx_flag               <= '0';
+            pressure_tx_flag           <= '0';
+            const_volt_tx_flag         <= '0';
+            swt_swp_cnt_tx_flag        <= '0';
+            swt_steps_tx_flag          <= '0';
+            swt_sps_tx_flag            <= '0';
+            swt_skip_tx_flag           <= '0';
+            swt_spp_tx_flag            <= '0';
+            swt_points_tx_flag         <= '0';
+            const_measure_tx_flag      <= '0';
+            swt_value_tx_flag          <= '0';
+            acc_tx_periodic_flag       <= '0';
+            mag_tx_periodic_flag       <= '0';
+            gyro_tx_periodic_flag      <= '0';
+            pressure_tx_periodic_flag  <= '0';
+            acc_period_s               <= 0;
+            mag_period_s               <= 0;
+            gyro_period_s              <= 0;
+            pres_period_s              <= 0;
+            acc_cnt_s                  <= 0;
+            mag_cnt_s                  <= 0;
+            gyro_cnt_s                 <= 0;
+            pres_cnt_s                 <= 0;
+
+
 
         elsif rising_edge(clk) then
     ----------------------- Seconds counter -----------------------------
@@ -544,22 +583,26 @@ begin
             if uc_tx_state = TX_IDLE then
 
                 if (acc_tx_flag = '1') or (acc_tx_periodic_flag = '1') then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"11111"&"001"& acc_packet & POSTAMBLE); 
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"11111"&"001"& acc_packet & POSTAMBLE);
+                    acc_tx_periodic_flag <= '0';
                     acc_tx_flag <= '0';
                     start_tx <= '1';
 
                 elsif (mag_tx_flag = '1') or (mag_tx_periodic_flag = '1') then
                     msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"11111"&"001"& mag_packet & POSTAMBLE);
+                    mag_tx_periodic_flag <= '0';
                     mag_tx_flag <= '0';
-                    start_tx <= '1';
+                    start_tx <= '1'; 
 
                 elsif (gyro_tx_flag = '1') or (gyro_tx_periodic_flag = '1') then
                     msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"11111"&"001"& gyro_packet & POSTAMBLE);
+                    gyro_tx_periodic_flag <= '0';
                     gyro_tx_flag <= '0';
                     start_tx <= '1';
 
                 elsif (pressure_tx_flag = '1') or (pressure_tx_periodic_flag = '1') then
                     msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"11111"&"001"& pressure_packet & POSTAMBLE);
+                    pressure_tx_periodic_flag <= '0';
                     pressure_tx_flag <= '0';
                     start_tx <= '1';
                 
@@ -604,7 +647,7 @@ begin
                     start_tx <= '1';
 
                 elsif swt_value_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"10111"&"010"& sweep_table_read_value(7 downto 0)& sweep_table_read_value(15 downto 8)&(47 downto 0 => '0') & POSTAMBLE);
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"10111"&"010"& sweep_table_read_value(15 downto 8)& sweep_table_read_value(7 downto 0)&(47 downto 0 => '0') & POSTAMBLE);
                     swt_value_tx_flag <= '0';
                     start_tx <= '1';
 
@@ -645,17 +688,62 @@ begin
             end case;
 
     --------- PERIODIC FLAGS ------------
-       --     old_new_data <= new_data;    -- this will not be needed if new_data is a strobe, but for now
-       --     if (new_data = '1') and (old_new_data = '0') then    -- detects the "rising edge" of new data, 
-       --                                                         -- not needed when new_data is a strobe
-       --         acc_tx_periodic_flag <= '0';
-       --         mag_tx_periodic_flag <= '0';
-       --         gyro_tx_periodic_flag <= '0';
-       --         pressure_tx_periodic_flag <= '0';
-       --     end if;
 
+            old_new_data <= new_data;   
+            if (new_data = '1') and (old_new_data = '0') then -- 1 HZ rising 
 
--- NEW RX FSM --
+                -- ACC
+                if acc_period_s = 0 then
+                    acc_cnt_s <= 0;                    
+                else
+                    if (acc_cnt_s + 1 = acc_period_s) then
+                        acc_cnt_s <= 0;
+                        acc_tx_periodic_flag <= '1';              
+                    else
+                        acc_cnt_s <= acc_cnt_s + 1;
+                    end if;
+                end if;
+
+                -- MAG
+                if mag_period_s = 0 then
+                    mag_cnt_s <= 0;                    
+                else
+                    if (mag_cnt_s + 1 = mag_period_s) then
+                        mag_cnt_s <= 0;
+                        mag_tx_periodic_flag <= '1';              
+                    else
+                        mag_cnt_s <= mag_cnt_s + 1;
+                    end if;
+                end if;
+
+                -- GYRO
+                if gyro_period_s = 0 then
+                    gyro_cnt_s <= 0;                    
+                else
+                    if (gyro_cnt_s + 1 = gyro_period_s) then
+                        gyro_cnt_s <= 0;
+                        gyro_tx_periodic_flag <= '1';              
+                    else
+                        gyro_cnt_s <= gyro_cnt_s + 1;
+                    end if;
+                end if;
+
+                -- PRESSURE
+                if pres_period_s = 0 then
+                    pres_cnt_s <= 0;                    
+                else
+                    if (pres_cnt_s + 1 = pres_period_s) then
+                        pres_cnt_s <= 0;
+                        pressure_tx_periodic_flag <= '1';              
+                    else
+                        pres_cnt_s <= pres_cnt_s + 1;
+                    end if;
+                end if;
+            end if;
+            
+                
+
+-- RX FSM --
 
             case uc_rx_state is
 
@@ -790,7 +878,7 @@ begin
                         when "01010" =>  
                             Sweep_enabled <= '1';  
                             sweep_table_activate_sweep <= '1'; 
-                            constant_bias_mode <= '0';  -- Disable CB mode --TODO: Should this be done? -Jesus
+                            constant_bias_mode <= '0';  -- Disable CB mode 
                             sweep_table_sweep_cnt <= sweep_table_sweep_cnt + 1;
 
                         -- Readback Sweep Count
@@ -918,6 +1006,56 @@ begin
                             sweep_table_points(7 downto 0)  <= payload_buffer(0);
                             sweep_table_points(15 downto 8) <= payload_buffer(1);
 
+                        -- Set Periodic HK sending
+                        when "11110" =>
+                            -- payload_buffer(0) = HK ID (00 acc, 01 mag, 02 gyro, 03 pressure)
+                            -- payload_buffer(1) = Period code (00=off, 01=5s, 02=10s, 03=20s)
+                        
+                            case payload_buffer(0) is
+           
+                                when x"00" =>  -- ACC
+                                    case payload_buffer(1) is
+                                        when x"00" => acc_period_s <= T_HK_DIS;
+                                        when x"01" => acc_period_s <= T_HK_5S;
+                                        when x"02" => acc_period_s <= T_HK_10S;
+                                        when x"03" => acc_period_s <= T_HK_20S;
+                                        when others => 
+                                    end case;
+                                    acc_cnt_s <= 0;
+                                    
+                                when x"01" =>  -- MAG
+                                    case payload_buffer(1) is
+                                        when x"00" => mag_period_s <= T_HK_DIS;
+                                        when x"01" => mag_period_s <= T_HK_5S;
+                                        when x"02" => mag_period_s <= T_HK_10S;
+                                        when x"03" => mag_period_s <= T_HK_20S;
+                                        when others =>
+                                    end case;
+                                    mag_cnt_s <= 0;
+                        
+                                when x"02" =>  -- GYRO
+                                    case payload_buffer(1) is
+                                        when x"00" => gyro_period_s <= T_HK_DIS;
+                                        when x"01" => gyro_period_s <= T_HK_5S;
+                                        when x"02" => gyro_period_s <= T_HK_10S;
+                                        when x"03" => gyro_period_s <= T_HK_20S;
+                                        when others => 
+                                    end case;
+                                    gyro_cnt_s <= 0;
+                        
+                                when x"03" =>  -- PRESSURE
+                                    case payload_buffer(1) is
+                                        when x"00" => pres_period_s <= T_HK_DIS;
+                                        when x"01" => pres_period_s <= T_HK_5S;
+                                        when x"02" => pres_period_s <= T_HK_10S;
+                                        when x"03" => pres_period_s <= T_HK_20S;
+                                        when others => 
+                                    end case;
+                                    pres_cnt_s <= 0;  
+                      
+                                when others => 
+                            end case;
+
 
                         -- 3 BYTES PAYLOAD --
 
@@ -940,6 +1078,7 @@ begin
 
                         -- Receive Sweep Table 
                         when "10110" =>  
+
                             case swt_wr_substate is
 
                                 when 0 =>
@@ -959,22 +1098,9 @@ begin
                                     st_ren0 <= '0';
                                     st_ren1 <= '0';
                                     st_waddr <= payload_buffer(1);
-                                    st_wdata <= payload_buffer(3) & payload_buffer(2);
+                                    st_wdata <= payload_buffer(2) & payload_buffer(3);
 
                                     swt_wr_substate <= 1;
-
-                                -- Wait 3 clock cycles
-                                when 1 =>
-
-                                    if sweep_table_write_wait < 2 then
-                                        sweep_table_write_wait <= sweep_table_write_wait + 1;
-                                    elsif sweep_table_write_wait = 2 then
-                                        long_command_active <= '0';
-                                        sweep_table_write_wait <= sweep_table_write_wait + 1;
-                                    else
-                                        sweep_table_write_wait <= 0;
-                                        swt_wr_substate <= 0;
-                                    end if;
 
                                 when others => -- additional reset
                                     swt_wr_substate <= 0;

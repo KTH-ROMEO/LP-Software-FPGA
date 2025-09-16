@@ -59,87 +59,87 @@ fsm_state_encoding {19514513} debounce_not_ejected {11}
 
 fsm_registers {19514513} {state[1]}  {state[0]} 
 
-fsm_encoding {2123782376} sequential
+fsm_encoding {2125582556} sequential
 
-fsm_state_encoding {2123782376} tx_idle {00}
+fsm_state_encoding {2125582556} tx_idle {00}
 
-fsm_state_encoding {2123782376} tx_send_byte {01}
+fsm_state_encoding {2125582556} tx_send_byte {01}
 
-fsm_state_encoding {2123782376} tx_wait_rdy {10}
+fsm_state_encoding {2125582556} tx_wait_rdy {10}
 
-fsm_registers {2123782376} {uc_tx_state[1]}  {uc_tx_state[0]} 
+fsm_registers {2125582556} {uc_tx_state[1]}  {uc_tx_state[0]} 
 
-fsm_encoding {2123782374} onehot
+fsm_encoding {2125582554} onehot
 
-fsm_state_encoding {2123782374} boot {00001}
+fsm_state_encoding {2125582554} boot {00001}
 
-fsm_state_encoding {2123782374} idle {00010}
+fsm_state_encoding {2125582554} idle {00010}
 
-fsm_state_encoding {2123782374} inside_rocket {00100}
+fsm_state_encoding {2125582554} inside_rocket {00100}
 
-fsm_state_encoding {2123782374} freefall {01000}
+fsm_state_encoding {2125582554} freefall {01000}
 
-fsm_state_encoding {2123782374} landed {10000}
+fsm_state_encoding {2125582554} landed {10000}
 
-fsm_registers {2123782374} {flight_state[0]}  {flight_state[1]}  {flight_state[2]}  {flight_state[3]}  {flight_state[4]} 
+fsm_registers {2125582554} {flight_state[0]}  {flight_state[1]}  {flight_state[2]}  {flight_state[3]}  {flight_state[4]} 
 
-fsm_encoding {21237823710} onehot
+fsm_encoding {21255825510} onehot
 
-fsm_state_encoding {21237823710} rx_idle {00000001}
+fsm_state_encoding {21255825510} rx_idle {00000001}
 
-fsm_state_encoding {21237823710} rx_get_byte {00000010}
+fsm_state_encoding {21255825510} rx_get_byte {00000010}
 
-fsm_state_encoding {21237823710} rx_wait_rdy_low {00000100}
+fsm_state_encoding {21255825510} rx_wait_rdy_low {00000100}
 
-fsm_state_encoding {21237823710} rx_process_preamble {00001000}
+fsm_state_encoding {21255825510} rx_process_preamble {00001000}
 
-fsm_state_encoding {21237823710} rx_command {00010000}
+fsm_state_encoding {21255825510} rx_command {00010000}
 
-fsm_state_encoding {21237823710} rx_payload {00100000}
+fsm_state_encoding {21255825510} rx_payload {00100000}
 
-fsm_state_encoding {21237823710} rx_postamble {01000000}
+fsm_state_encoding {21255825510} rx_postamble {01000000}
 
-fsm_state_encoding {21237823710} rx_execute {10000000}
+fsm_state_encoding {21255825510} rx_execute {10000000}
 
-fsm_registers {21237823710} {uc_rx_state[0]}  {uc_rx_state[1]}  {uc_rx_state[2]}  {uc_rx_state[3]}  {uc_rx_state[4]}  {uc_rx_state[5]}  {uc_rx_state[6]}  {uc_rx_state[7]} 
+fsm_registers {21255825510} {uc_rx_state[0]}  {uc_rx_state[1]}  {uc_rx_state[2]}  {uc_rx_state[3]}  {uc_rx_state[4]}  {uc_rx_state[5]}  {uc_rx_state[6]}  {uc_rx_state[7]} 
 
-fsm_encoding {2123782377} sequential
+fsm_encoding {2125582558} sequential
 
-fsm_state_encoding {2123782377} 00 {0}
+fsm_state_encoding {2125582558} 00 {00}
 
-fsm_state_encoding {2123782377} 01 {1}
+fsm_state_encoding {2125582558} 01 {01}
 
-fsm_registers {2123782377} {swt_wr_substate[0]} 
+fsm_state_encoding {2125582558} 10 {10}
 
-fsm_encoding {2123782378} sequential
+fsm_registers {2125582558} {swt_rd_substate[1]}  {swt_rd_substate[0]} 
 
-fsm_state_encoding {2123782378} 00 {00}
+fsm_encoding {2125582557} sequential
 
-fsm_state_encoding {2123782378} 01 {01}
+fsm_state_encoding {2125582557} 00 {0}
 
-fsm_state_encoding {2123782378} 10 {10}
+fsm_state_encoding {2125582557} 01 {1}
 
-fsm_registers {2123782378} {swt_rd_substate[1]}  {swt_rd_substate[0]} 
+fsm_registers {2125582557} {swt_wr_substate[0]} 
 
-fsm_encoding {2123782379} sequential
+fsm_encoding {2125582559} sequential
 
-fsm_state_encoding {2123782379} 00 {00}
+fsm_state_encoding {2125582559} 00 {00}
 
-fsm_state_encoding {2123782379} 01 {01}
+fsm_state_encoding {2125582559} 01 {01}
 
-fsm_state_encoding {2123782379} 10 {10}
+fsm_state_encoding {2125582559} 10 {10}
 
-fsm_registers {2123782379} {preamble_counter[1]}  {preamble_counter[0]} 
+fsm_registers {2125582559} {preamble_counter[1]}  {preamble_counter[0]} 
 
-fsm_encoding {2123782375} sequential
+fsm_encoding {2125582555} sequential
 
-fsm_state_encoding {2123782375} 001 {00}
+fsm_state_encoding {2125582555} 001 {00}
 
-fsm_state_encoding {2123782375} 010 {01}
+fsm_state_encoding {2125582555} 010 {01}
 
-fsm_state_encoding {2123782375} 011 {10}
+fsm_state_encoding {2125582555} 011 {10}
 
-fsm_registers {2123782375} {ext_rx_state[1]}  {ext_rx_state[0]} 
+fsm_registers {2125582555} {ext_rx_state[1]}  {ext_rx_state[0]} 
 
 fsm_encoding {20133813311} onehot
 

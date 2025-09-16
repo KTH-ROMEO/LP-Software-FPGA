@@ -1,6 +1,6 @@
 <project name="Toplevel" version="1.1">
     <ProjectDirectory>
-        C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\designer\impl1\Toplevel_fp
+        C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer\impl1\Toplevel_fp
     </ProjectDirectory>
     <View>
         SingleSTAPLView
@@ -9,17 +9,17 @@
         
     </LiberoTargetDevice>
     <LogFile>
-        C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\designer\impl1\Toplevel_fp\Toplevel.log
+        C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer\impl1\Toplevel_fp\Toplevel.log
     </LogFile>
     <SerializationOption>
         Skip
     </SerializationOption>
     <programmer status="enable" type="FlashPro5" revision="UndefRev" connection="usb2.0">
         <name>
-            S20059FEOK
+            S20059FFJ4
         </name>
         <id>
-            S20059FEOK
+            S20059FFJ4
         </id>
     </programmer>
     <configuration>
@@ -74,7 +74,7 @@
         </Hardware>
         <Algo type="PDB">
             <filename>
-                C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\designer\impl1\Toplevel.pdb
+                C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer\impl1\Toplevel.pdb
             </filename>
             <local>
                 projectData\Toplevel.pdb
