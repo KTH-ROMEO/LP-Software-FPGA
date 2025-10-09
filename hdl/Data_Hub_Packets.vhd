@@ -56,16 +56,14 @@ port (
 end Data_Hub_Packets;
 architecture architecture_Data_Hub_Packets of Data_Hub_Packets is
 begin
-    --    acc_packet <= acc_x & acc_y & acc_z & x"0" & acc_temp & x"0000";
-    --    mag_packet <= mag_x & mag_y & mag_z & x"0" & acc_temp & x"0000";
-    --    gyro_packet <= gyro_x & gyro_y & gyro_z & gyro_temp & x"00";
-    --    pressure_packet <= pressure_raw & pressure_temp_raw & x"0000";
-    --    status_packet <= status_bits;
+    --    acc_packet      <= x"01"   & x"0" & acc_x & acc_y & acc_z    & acc_temp           & x"00";
+    --    mag_packet      <= x"02"   & x"0" & mag_x & mag_y & mag_z                         & x"0000";
+    --    gyro_packet     <= x"03"   & gyro_x & gyro_y & gyro_z        & gyro_temp; 
+    --    pressure_packet <= x"04"   & pressure_raw                    & pressure_temp_raw  & x"0000";
 
-    acc_packet      <= x"a1a2a3a4a5a60aa0"; -- for debugging
-    gyro_packet     <= x"b1b2b3b4b5b60bb0"; -- for debugging 
-    pressure_packet <= x"c0c2c3c4c5c60cc0"; -- for debugging
-    mag_packet      <= x"d0d2d3d4d5d60dd0"; -- for debugging
-    --TODO: implement/ask for status bits
+    acc_packet      <= x"01" & x"a0a1a2a3a4a5a6"; -- for debugging
+    mag_packet      <= x"02" & x"b0b1b2b3b4b5b6"; -- for debugging
+    gyro_packet     <= x"03" & x"c0c1c2c3c4c5c6"; -- for debugging 
+    pressure_packet <= x"04" & x"d0d1d2d3d4d5d6"; -- for debugging
 
 end architecture_Data_Hub_Packets;

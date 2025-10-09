@@ -607,12 +607,12 @@ begin
                     start_tx <= '1';
                 
                 elsif const_volt_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"00100"&"001"& constant_bias_voltage_tx(7 downto 0)& constant_bias_voltage_tx(15 downto 8)&(47 downto 0 => '0') & POSTAMBLE);
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"00100"&"001"& constant_bias_voltage_tx(15 downto 8)& constant_bias_voltage_tx(7 downto 0)& (47 downto 0 => '0') & POSTAMBLE);
                     const_volt_tx_flag <= '0';
                     start_tx <= '1';
 
                 elsif swt_swp_cnt_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"01011"&"000"& sweep_table_sweep_cnt(7 downto 0)& sweep_table_sweep_cnt(15 downto 8)&(47 downto 0 => '0') & POSTAMBLE);
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"01011"&"000"& sweep_table_sweep_cnt(15 downto 8)& sweep_table_sweep_cnt(7 downto 0)&(47 downto 0 => '0') & POSTAMBLE);
                     swt_swp_cnt_tx_flag <= '0';
                     start_tx <= '1';
 
@@ -622,27 +622,27 @@ begin
                     start_tx <= '1';
 
                 elsif swt_sps_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"01111"&"000"& sweep_table_samples_per_step(7 downto 0)& sweep_table_samples_per_step(15 downto 8)&(47 downto 0 => '0') & POSTAMBLE);
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"01111"&"000"& sweep_table_samples_per_step(15 downto 8)& sweep_table_samples_per_step(7 downto 0)&(47 downto 0 => '0') & POSTAMBLE);
                     swt_sps_tx_flag <= '0';
                     start_tx <= '1';
 
                 elsif swt_skip_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"10001"&"000"& sweep_table_sample_skip(7 downto 0)& sweep_table_sample_skip(15 downto 8)&(47 downto 0 => '0') & POSTAMBLE);
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"10001"&"000"& sweep_table_sample_skip(15 downto 8)& sweep_table_sample_skip(7 downto 0)&(47 downto 0 => '0') & POSTAMBLE);
                     swt_skip_tx_flag <= '0';
                     start_tx <= '1';
 
                 elsif swt_spp_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"10011"&"000"& sweep_table_samples_per_point(7 downto 0)& sweep_table_samples_per_point(15 downto 8)&(47 downto 0 => '0') & POSTAMBLE);
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"10011"&"000"& sweep_table_samples_per_point(15 downto 8)& sweep_table_samples_per_point(7 downto 0)&(47 downto 0 => '0') & POSTAMBLE);
                     swt_spp_tx_flag <= '0';
                     start_tx <= '1';
 
                 elsif swt_points_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"10101"&"000"& sweep_table_points(7 downto 0)& sweep_table_points(15 downto 8)&(47 downto 0 => '0') & POSTAMBLE);
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"10101"&"000"& sweep_table_points(15 downto 8)& sweep_table_points(7 downto 0)&(47 downto 0 => '0') & POSTAMBLE);
                     swt_points_tx_flag <= '0';
                     start_tx <= '1';
 
                 elsif const_measure_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"00001"&"000"&x"aabb"&(47 downto 0 => '0') & POSTAMBLE);
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"00001"&"000"&constant_bias_voltage_tx &(47 downto 0 => '0') & POSTAMBLE);
                     const_measure_tx_flag <= '0';
                     start_tx <= '1';
 
@@ -988,23 +988,23 @@ begin
 
                         -- Set Samples per Step 
                         when "01110" =>   
-                            sweep_table_samples_per_step(7 downto 0)  <= payload_buffer(0);
-                            sweep_table_samples_per_step(15 downto 8) <= payload_buffer(1);
+                            sweep_table_samples_per_step(15 downto 8) <= payload_buffer(0);
+                            sweep_table_samples_per_step(7 downto 0)  <= payload_buffer(1);
                             
                         -- Set Sweep Skip 
                         when "10000" => 
-                            sweep_table_sample_skip(7 downto 0)  <= payload_buffer(0);
-                            sweep_table_sample_skip(15 downto 8) <= payload_buffer(1);
+                            sweep_table_sample_skip(15 downto 8) <= payload_buffer(0);
+                            sweep_table_sample_skip(7 downto 0)  <= payload_buffer(1);
 
                         -- Set Samples per Point
                         when "10010" =>  
-                            sweep_table_samples_per_point(7 downto 0)  <= payload_buffer(0);
-                            sweep_table_samples_per_point(15 downto 8) <= payload_buffer(1);
+                            sweep_table_samples_per_point(15 downto 8) <= payload_buffer(0);
+                            sweep_table_samples_per_point(7 downto 0)  <= payload_buffer(1);
 
                         -- Set Sweep Points
                         when "10100" => 
-                            sweep_table_points(7 downto 0)  <= payload_buffer(0);
-                            sweep_table_points(15 downto 8) <= payload_buffer(1);
+                            sweep_table_points(15 downto 8) <= payload_buffer(0);
+                            sweep_table_points(7 downto 0)  <= payload_buffer(1);
 
                         -- Set Periodic HK sending
                         when "11110" =>
@@ -1013,7 +1013,7 @@ begin
                         
                             case payload_buffer(0) is
            
-                                when x"00" =>  -- ACC
+                                when x"01" =>  -- ACC
                                     case payload_buffer(1) is
                                         when x"00" => acc_period_s <= T_HK_DIS;
                                         when x"01" => acc_period_s <= T_HK_5S;
@@ -1023,7 +1023,7 @@ begin
                                     end case;
                                     acc_cnt_s <= 0;
                                     
-                                when x"01" =>  -- MAG
+                                when x"02" =>  -- MAG
                                     case payload_buffer(1) is
                                         when x"00" => mag_period_s <= T_HK_DIS;
                                         when x"01" => mag_period_s <= T_HK_5S;
@@ -1033,7 +1033,7 @@ begin
                                     end case;
                                     mag_cnt_s <= 0;
                         
-                                when x"02" =>  -- GYRO
+                                when x"03" =>  -- GYRO
                                     case payload_buffer(1) is
                                         when x"00" => gyro_period_s <= T_HK_DIS;
                                         when x"01" => gyro_period_s <= T_HK_5S;
@@ -1043,7 +1043,7 @@ begin
                                     end case;
                                     gyro_cnt_s <= 0;
                         
-                                when x"03" =>  -- PRESSURE
+                                when x"04" =>  -- PRESSURE
                                     case payload_buffer(1) is
                                         when x"00" => pres_period_s <= T_HK_DIS;
                                         when x"01" => pres_period_s <= T_HK_5S;
@@ -1065,11 +1065,11 @@ begin
 
                             case payload_buffer(0) is
                                 when x"00" =>
-                                    constant_bias_voltage_0(7 downto 0)  <= payload_buffer(1);
-                                    constant_bias_voltage_0(15 downto 8) <= payload_buffer(2);
+                                    constant_bias_voltage_0(15 downto 8) <= payload_buffer(1);
+                                    constant_bias_voltage_0(7 downto 0)  <= payload_buffer(2);
                                 when x"01" =>
-                                    constant_bias_voltage_1(7 downto 0)  <= payload_buffer(1);
-                                    constant_bias_voltage_1(15 downto 8) <= payload_buffer(2);
+                                    constant_bias_voltage_1(15 downto 8) <= payload_buffer(1);
+                                    constant_bias_voltage_1(7 downto 0)  <= payload_buffer(2);
                                 when others =>
                             end case;
 

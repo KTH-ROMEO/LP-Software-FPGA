@@ -40,23 +40,9 @@ File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\component\work\Pressure
 File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\component\work\Sensors\Sensors.vhd changed - recompiling
 File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\component\work\Toplevel\Toplevel.vhd changed - recompiling
 VHDL syntax check successful!
-File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\I2C_PassThrough.vhd changed - recompiling
-File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Pressure_Signal_Debounce.vhd changed - recompiling
-File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\ADC_Data_Packer.vhd changed - recompiling
-File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\ADC_READ.vhd changed - recompiling
-File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\ADC_RESET.vhd changed - recompiling
-File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\DAC_SET.vhd changed - recompiling
-File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\SET_LP_GAIN.vhd changed - recompiling
-File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\SWEEP_ROMEO.vhd changed - recompiling
-File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\I2C_Master.vhd changed - recompiling
-File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\LSM303AGR_I2C_Interface.vhd changed - recompiling
-File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\L3GD20H_Interface.vhd changed - recompiling
-File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\MS5611_01BA03_Interface.vhd changed - recompiling
-File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\smartgen\SweepTable\SweepTable.vhd changed - recompiling
-File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\TableSelect.vhd changed - recompiling
-File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Timekeeper.vhd changed - recompiling
-File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Timing.vhd changed - recompiling
-File C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd changed - recompiling
+
+Compiler output is up to date.  No re-compile necessary
+
 @N: CD231 :"C:\Microsemi\Libero_SoC_v11.9\SynplifyPro\lib\vhd2008\std1164.vhd":890:16:890:17|Using onehot encoding for type mvl9plus. For example, enumeration 'U' is mapped to "1000000000".
 @N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\component\work\Toplevel\Toplevel.vhd":17:7:17:14|Synthesizing work.toplevel.rtl.
 @N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Timing.vhd":46:7:46:12|Synthesizing work.timing.architecture_timing.
@@ -214,7 +200,7 @@ Post processing for work.gs_readout.architecture_gs_readout
 @N: CD233 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":97:26:97:27|Using sequential encoding for type uc_tx_state_type.
 @N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":685:16:685:29|OTHERS clause is not synthesized.
 @W: CD609 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":834:20:834:50|Index value 0 to 7 could be out of prefix range 0 to 3 
-@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":981:32:981:45|OTHERS clause is not synthesized.
+@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":987:32:987:45|OTHERS clause is not synthesized.
 Post processing for work.general_controller.architecture_general_controller
 @W: CL240 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":81:4:81:12|Signal C_bias_V1 is floating; a simulation mismatch is possible.
 @W: CL240 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":80:4:80:12|Signal C_bias_V0 is floating; a simulation mismatch is possible.
@@ -771,12 +757,12 @@ State machine has 6 reachable states with original encodings of:
 @W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\MS5611_01BA03_Interface.vhd":99:8:99:9|Pruning register bit 5 of data_out(6 downto 3). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\component\work\Toplevel\Toplevel.vhd":29:8:29:14|Input FMC_NE1 is unused.
 
-At c_vhdl Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 96MB peak: 102MB)
+At c_vhdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 77MB peak: 78MB)
 
-Process took 0h:00m:02s realtime, 0h:00m:02s cputime
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue Sep 16 17:13:33 2025
+# Thu Oct 09 14:45:21 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q4p1, Build 512R, built Oct 26 2017
@@ -787,16 +773,16 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue Sep 16 17:13:34 2025
+# Thu Oct 09 14:45:22 2025
 
 ###########################################################]
 @END
 
-At c_hdl Exit (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:02s; Memory used current: 3MB peak: 4MB)
+At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 3MB peak: 4MB)
 
-Process took 0h:00m:03s realtime, 0h:00m:02s cputime
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue Sep 16 17:13:34 2025
+# Thu Oct 09 14:45:22 2025
 
 ###########################################################]
