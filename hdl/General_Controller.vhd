@@ -924,10 +924,10 @@ begin
                         -- Readback HK Data (oneshot)
                         when "11111" =>  
                             case payload_buffer(0) is
-                                when x"00" => acc_send_req      <= '1';
-                                when x"01" => mag_send_req      <= '1';
-                                when x"02" => gyro_send_req     <= '1';
-                                when x"03" => pressure_send_req <= '1';
+                                when x"01" => acc_send_req      <= '1';
+                                when x"02" => mag_send_req      <= '1';
+                                when x"03" => gyro_send_req     <= '1';
+                                when x"04" => pressure_send_req <= '1';
                                 when others => 
                             end case;
                             
