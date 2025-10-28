@@ -43,15 +43,11 @@ port (
     pressure_raw : IN std_logic_vector(23 downto 0);
     pressure_temp_raw : IN std_logic_vector(23 downto 0);
 
-
-    status_bits : IN std_logic_vector(63 downto 0);
-
     acc_packet : OUT std_logic_vector(63 downto 0);
     mag_packet : OUT std_logic_vector(63 downto 0);
     gyro_packet : OUT std_logic_vector(63 downto 0);
-    pressure_packet : OUT std_logic_vector(63 downto 0);
+    pressure_packet : OUT std_logic_vector(63 downto 0)
 
-    status_packet : OUT std_logic_vector(63 downto 0)
 );
 end Data_Hub_Packets;
 architecture architecture_Data_Hub_Packets of Data_Hub_Packets is

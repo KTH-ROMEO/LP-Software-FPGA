@@ -81,25 +81,25 @@ IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\Communications\Communications.cxf,actgen_cxf"
 STATE="utd"
-TIME="1756140183"
-SIZE="4599"
+TIME="1761667035"
+SIZE="2897"
 ENDFILE
 VALUE "<project>\component\work\Communications\Communications.vhd,hdl"
 STATE="utd"
-TIME="1756140183"
-SIZE="8063"
+TIME="1761667034"
+SIZE="3892"
 PARENT="<project>\component\work\Communications\Communications.cxf"
 IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\Data_Saving\Data_Saving.cxf,actgen_cxf"
 STATE="utd"
-TIME="1749068452"
-SIZE="7191"
+TIME="1761667036"
+SIZE="3121"
 ENDFILE
 VALUE "<project>\component\work\Data_Saving\Data_Saving.vhd,hdl"
 STATE="utd"
-TIME="1749068452"
-SIZE="9192"
+TIME="1761667035"
+SIZE="5498"
 PARENT="<project>\component\work\Data_Saving\Data_Saving.cxf"
 IS_READONLY="TRUE"
 ENDFILE
@@ -197,13 +197,13 @@ IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\Toplevel\Toplevel.cxf,actgen_cxf"
 STATE="utd"
-TIME="1757438562"
-SIZE="11226"
+TIME="1761669181"
+SIZE="9513"
 ENDFILE
 VALUE "<project>\component\work\Toplevel\Toplevel.vhd,hdl"
 STATE="utd"
-TIME="1757517224"
-SIZE="64837"
+TIME="1761669170"
+SIZE="46130"
 PARENT="<project>\component\work\Toplevel\Toplevel.cxf"
 IS_READONLY="TRUE"
 ENDFILE
@@ -235,7 +235,7 @@ TIME="1750695879"
 SIZE="211"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel.adb,adb"
-STATE="ood"
+STATE="utd"
 TIME="1760013963"
 SIZE="13952512"
 ENDFILE
@@ -243,6 +243,11 @@ VALUE "<project>\designer\impl1\Toplevel.ide_des,ide_des"
 STATE="utd"
 TIME="1760013964"
 SIZE="998"
+ENDFILE
+VALUE "<project>\designer\impl1\Toplevel.pdb,pdb"
+STATE="utd"
+TIME="1761670702"
+SIZE="119313"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel.stp,stp"
 STATE="ood"
@@ -278,6 +283,11 @@ VALUE "<project>\designer\impl1\Toplevel_iteration_summary.rpt,log"
 STATE="utd"
 TIME="1749068452"
 SIZE="2505"
+ENDFILE
+VALUE "<project>\designer\impl1\Toplevel_placeroute_log.rpt,log"
+STATE="utd"
+TIME="1761670659"
+SIZE="3142"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_power.rpt,log"
 STATE="utd"
@@ -328,6 +338,11 @@ VALUE "<project>\designer\impl1\Toplevel_power_r2_s7.rpt,log"
 STATE="utd"
 TIME="1749068452"
 SIZE="12269"
+ENDFILE
+VALUE "<project>\designer\impl1\Toplevel_prgdata_log.rpt,log"
+STATE="utd"
+TIME="1761670703"
+SIZE="742"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_timing.rpt,log"
 STATE="utd"
@@ -484,6 +499,11 @@ STATE="utd"
 TIME="1749068452"
 SIZE="30478"
 ENDFILE
+VALUE "<project>\designer\impl1\Toplevel_verifytiming_log.rpt,log"
+STATE="utd"
+TIME="1761670687"
+SIZE="1181"
+ENDFILE
 VALUE "<project>\designer\impl1\UARTLineReleaser.ide_des,ide_des"
 STATE="utd"
 TIME="1750695864"
@@ -546,8 +566,8 @@ SIZE="1918"
 ENDFILE
 VALUE "<project>\hdl\Data_Hub_Packets.vhd,hdl"
 STATE="utd"
-TIME="1759492627"
-SIZE="2609"
+TIME="1761669846"
+SIZE="2496"
 ENDFILE
 VALUE "<project>\hdl\Data_Packer.vhd,hdl"
 STATE="utd"
@@ -581,13 +601,13 @@ SIZE="5572"
 ENDFILE
 VALUE "<project>\hdl\General_Controller.vhd,hdl"
 STATE="utd"
-TIME="1760014072"
-SIZE="47554"
+TIME="1761670304"
+SIZE="38780"
 ENDFILE
 VALUE "<project>\hdl\GS_Readout.vhd,hdl"
 STATE="utd"
-TIME="1756140248"
-SIZE="10019"
+TIME="1761659132"
+SIZE="10491"
 ENDFILE
 VALUE "<project>\hdl\I2C_Master.vhd,hdl"
 STATE="utd"
@@ -621,8 +641,8 @@ SIZE="16467"
 ENDFILE
 VALUE "<project>\hdl\Packet_Saver.vhd,hdl"
 STATE="utd"
-TIME="1749068452"
-SIZE="12359"
+TIME="1761670398"
+SIZE="15551"
 ENDFILE
 VALUE "<project>\hdl\Pressure_Signal_Debounce.vhd,hdl"
 STATE="utd"
@@ -792,7 +812,7 @@ TIME="1757696280"
 SIZE="1851"
 ENDFILE
 VALUE "<project>\synthesis\Toplevel.edn,syn_edn"
-STATE="ood"
+STATE="utd"
 TIME="1760013937"
 SIZE="2692914"
 ENDFILE
@@ -802,7 +822,7 @@ TIME="1760013937"
 SIZE="237"
 ENDFILE
 VALUE "<project>\synthesis\Toplevel_sdc.sdc,syn_sdc"
-STATE="ood"
+STATE="utd"
 TIME="1760013937"
 SIZE="496"
 ENDFILE
@@ -832,7 +852,10 @@ VALUE "<project>\stimulus\Sweep test.vhd,tb_hdl"
 ENDLIST
 LIST ProjectState5.1
 LIST Impl1
+LiberoState=Post_Layout
 ideSTIMULUS=StateSuccess
+ideSYNTHESIS(<project>\synthesis\Toplevel.edn,syn_edn)=StateSuccess
+ideDESIGNER(<project>\designer\impl1\Toplevel.adb,adb)=StateSuccess
 LIST FlowOptions
 UsePhySynth=FALSE
 UseSynth=TRUE
@@ -841,6 +864,10 @@ ENDLIST
 Used_File_List
 ENDUsed_File_List
 ENDLIST
+ENDLIST
+LIST PinReports
+VALUE "<project>\designer\impl1\Toplevel_report_pin_byname.txt,log"
+VALUE "<project>\designer\impl1\Toplevel_report_pin_bynumber.txt,log"
 ENDLIST
 ENDLIST
 ENDLIST
@@ -917,8 +944,8 @@ NAME="Synplify Pro ME"
 FUNCTION="Synthesis"
 TOOL="Synplify Pro ME"
 LOCATION="C:\Microsemi\Libero_SoC_v11.9\SynplifyPro\bin\synplify_pro.exe"
-PARAM=""
-BATCH=0
+PARAM="-licensetype synplifypro_actel -batch -log synplify.log"
+BATCH=1
 LICENSE=""
 IS32BIT="1"
 EndProfile
@@ -953,7 +980,10 @@ ENDLIST
 LIST ProjectState5.1
 LIST "Toplevel::work"
 LIST Impl1
+LiberoState=Post_Layout
 ideSTIMULUS=StateSuccess
+ideSYNTHESIS(<project>\synthesis\Toplevel.edn,syn_edn)=StateSuccess
+ideDESIGNER(<project>\designer\impl1\Toplevel.adb,adb)=StateSuccess
 LIST FlowOptions
 UsePhySynth=FALSE
 UseSynth=TRUE
@@ -976,8 +1006,11 @@ LIST UserCustomizedFileList
 ENDLIST
 LIST OpenedFileList
 ORIENTATION;HORIZONTAL
-StartPage;StartPage;0
-ACTIVEVIEW;StartPage
+Reports;Reports;0
+ReportsCurrentItem;Program Device:Toplevel_program.log
+SmartDesign;Toplevel;0
+HDL;hdl\General_Controller.vhd;0
+ACTIVEVIEW;Reports
 ENDLIST
 LIST ModuleSubBlockList
 LIST "Accelerometer::work","component\work\Accelerometer\Accelerometer.vhd","TRUE","FALSE"
@@ -997,9 +1030,7 @@ ENDLIST
 LIST "ClockDivs::work","hdl\ClockDivs.vhd","FALSE","FALSE"
 ENDLIST
 LIST "Communications::work","component\work\Communications\Communications.vhd","TRUE","FALSE"
-SUBBLOCK "FFU_Command_Checker::work","hdl\FFU_Command_Checker.vhd","FALSE","FALSE"
 SUBBLOCK "UART::work","hdl\UART.vhd","FALSE","FALSE"
-SUBBLOCK "UART_Ext2uC_Switch::work","hdl\UART_Ext2uC_Switch.vhd","FALSE","FALSE"
 ENDLIST
 LIST "Constant_Bias_Fake_Data_Generator::work","hdl\Constant_Bias_Fake_Data_Generator.vhd","FALSE","FALSE"
 ENDLIST
@@ -1033,8 +1064,6 @@ ENDLIST
 LIST "FPGA_Buffer::work","smartgen\FPGA_Buffer\FPGA_Buffer.vhd","TRUE","FALSE"
 ENDLIST
 LIST "General_Controller::work","hdl\General_Controller.vhd","FALSE","FALSE"
-ENDLIST
-LIST "GS_Readout::work","hdl\GS_Readout.vhd","FALSE","FALSE"
 ENDLIST
 LIST "Gyro::work","component\work\Gyro\Gyro.vhd","TRUE","FALSE"
 SUBBLOCK "I2C_Master::work","hdl\I2C_Master.vhd","FALSE","FALSE"
@@ -1095,20 +1124,16 @@ ENDLIST
 LIST "Toplevel::work","component\work\Toplevel\Toplevel.vhd","TRUE","FALSE"
 SUBBLOCK "ClockDivs::work","hdl\ClockDivs.vhd","FALSE","FALSE"
 SUBBLOCK "Communications::work","component\work\Communications\Communications.vhd","TRUE","FALSE"
-SUBBLOCK "Data_Hub_Packets::work","hdl\Data_Hub_Packets.vhd","FALSE","FALSE"
 SUBBLOCK "Data_Saving::work","component\work\Data_Saving\Data_Saving.vhd","TRUE","FALSE"
 SUBBLOCK "Dummy_Pins::work","hdl\Dummy_Pins.vhd","FALSE","FALSE"
-SUBBLOCK "Eject_Signal_Debounce::work","hdl\Eject_Signal_Debounce.vhd","FALSE","FALSE"
-SUBBLOCK "GS_Readout::work","hdl\GS_Readout.vhd","FALSE","FALSE"
-SUBBLOCK "General_Controller::work","hdl\General_Controller.vhd","FALSE","FALSE"
-SUBBLOCK "I2C_PassThrough::work","hdl\I2C_PassThrough.vhd","FALSE","FALSE"
-SUBBLOCK "Pressure_Signal_Debounce::work","hdl\Pressure_Signal_Debounce.vhd","FALSE","FALSE"
 SUBBLOCK "Science::work","component\work\Science\Science.vhd","TRUE","FALSE"
 SUBBLOCK "Sensors::work","component\work\Sensors\Sensors.vhd","TRUE","FALSE"
 SUBBLOCK "SweepTable::work","smartgen\SweepTable\SweepTable.vhd","TRUE","FALSE"
 SUBBLOCK "TableSelect::work","hdl\TableSelect.vhd","FALSE","FALSE"
 SUBBLOCK "Timekeeper::work","hdl\Timekeeper.vhd","FALSE","FALSE"
 SUBBLOCK "Timing::work","hdl\Timing.vhd","FALSE","FALSE"
+SUBBLOCK "Data_Hub_Packets::work","hdl\Data_Hub_Packets.vhd","FALSE","FALSE"
+SUBBLOCK "General_Controller::work","hdl\General_Controller.vhd","FALSE","FALSE"
 ENDLIST
 LIST "UART::work","hdl\UART.vhd","FALSE","FALSE"
 ENDLIST
@@ -1119,8 +1144,8 @@ ENDLIST
 LIST "CLK_GEN::work","component\Actel\Simulation\CLK_GEN\1.0.1\CLK_GEN.vhd","FALSE","TRUE"
 ENDLIST
 LIST "General_Controller_Testbench::work","stimulus\General_Controller_Testbench.vhd","FALSE","TRUE"
-SUBBLOCK "General_Controller::work","hdl\General_Controller.vhd","FALSE","FALSE"
 SUBBLOCK "SweepTable::work","smartgen\SweepTable\SweepTable.vhd","TRUE","FALSE"
+SUBBLOCK "General_Controller::work","hdl\General_Controller.vhd","FALSE","FALSE"
 ENDLIST
 LIST "RESET_GEN::work","component\Actel\Simulation\RESET_GEN\1.0.1\RESET_GEN.vhd","FALSE","TRUE"
 ENDLIST
