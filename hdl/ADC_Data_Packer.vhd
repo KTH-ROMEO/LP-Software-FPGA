@@ -44,6 +44,7 @@ port (
     SC_packet   : OUT std_logic_vector(63 downto 0);
     new_SC_packet   : OUT std_logic
 
+
 );
 end ADC_Data_Packer;
 architecture architecture_ADC_Data_Packer of ADC_Data_Packer is
@@ -82,7 +83,7 @@ begin
             SC_packet <= (others => '0');
             ACC_chan0 <= (others =>'0');
             ACC_chan4 <= (others =>'0');
-            n_points <= (others => '0');
+            n_points <= (others => '0');         
 
         ---------------------------------------------------------------
         elsif rising_edge(CLK) then
@@ -113,7 +114,7 @@ begin
                             SC_packet <= point_counter & G1 & ACC_chan0 & G2 & ACC_chan4;      -- Using Channel 0 & 4 (connected to test points in prototype board, but will be connected to LP in final design)
                             n_point_samples <=x"0000";
                             n_points <= n_points + x"0001";
-                            point_counter <= point_counter+1;      
+                            point_counter <= point_counter+1;  
                             ACC_chan0 <= (others =>'0');
                             ACC_chan4 <= (others =>'0');
                             new_SC_packet <='1';
@@ -123,6 +124,7 @@ begin
                             state <= 0;
                         end if;
                     when 4 =>
+
                         -- Gain update after point recorded
                         G1 <= g1i;
                         G2 <= g2i;
@@ -135,6 +137,7 @@ begin
                         end if;
                         new_SC_packet <='0';
                     when 5 =>
+
                         if STEP_END = '1' or CB_EN='1' then
                             -- Gain update at the end of the step
                             G1 <= g1i;
@@ -156,6 +159,8 @@ begin
                 ACC_chan4 <= (others =>'0');
                 n_points <= (others => '0');
             end if;
+
+
         end if;
     end process;
 

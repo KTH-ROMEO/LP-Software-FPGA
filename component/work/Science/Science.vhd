@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Thu Mar 20 00:38:59 2025
+-- Created by SmartDesign Mon Nov 03 20:45:21 2025
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -295,17 +295,17 @@ ADC_Data_Packer_0 : ADC_Data_Packer
         SW_EN             => SWEEP_ROMEO_0_SWEEP_ACTIVE,
         CB_EN             => Bias_enabled,
         STEP_END          => SWEEP_ROMEO_0_STEP_END,
-        exp_new_data      => ADC_READ_0_exp_new_data,
         CHAN0             => ADC_READ_0_DATA_c0,
         CHAN4             => ADC_READ_0_DATA_c4,
+        exp_new_data      => ADC_READ_0_exp_new_data,
         N_SAMPLES_POINT   => Sweep_samples_per_point,
         N_POINT_STEP      => Sweep_points_per_step,
         N_SKIPPED_SAMPLES => Sweep_skipped_samples,
         -- Outputs
-        new_SC_packet     => new_SC_packet_net_0,
         G1                => ADC_Data_Packer_0_G1,
         G2                => ADC_Data_Packer_0_G2,
-        SC_packet         => SC_packet_net_0 
+        SC_packet         => SC_packet_net_0,
+        new_SC_packet     => new_SC_packet_net_0 
         );
 -- ADC_READ_0
 ADC_READ_0 : ADC_READ

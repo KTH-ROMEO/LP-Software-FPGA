@@ -10,10 +10,15 @@ if {[file exists presynth/_info]} {
 vmap presynth presynth
 vmap proasic3 "C:/Microsemi/Libero_SoC_v11.9/Designer/lib/modelsim/precompiled/vhdl/proasic3"
 
-vcom -2008 -explicit  -work presynth "${PROJECT_DIR}/hdl/UART_RX_FSM.vhd"
-vcom -2008 -explicit  -work presynth "${PROJECT_DIR}/hdl/UART_RX_FSM_tb.vhd"
+vcom -2008 -explicit  -work presynth "${PROJECT_DIR}/hdl/ADC_Data_Packer.vhd"
+vcom -2008 -explicit  -work presynth "${PROJECT_DIR}/hdl/ADC_READ.vhd"
+vcom -2008 -explicit  -work presynth "${PROJECT_DIR}/component/Actel/Simulation/CLK_GEN/1.0.1/CLK_GEN.vhd"
+vcom -2008 -explicit  -work presynth "${PROJECT_DIR}/hdl/DAC_SET.vhd"
+vcom -2008 -explicit  -work presynth "${PROJECT_DIR}/component/Actel/Simulation/RESET_GEN/1.0.1/RESET_GEN.vhd"
+vcom -2008 -explicit  -work presynth "${PROJECT_DIR}/hdl/SWEEP_SPIDER2.vhd"
+vcom -2008 -explicit  -work presynth "${PROJECT_DIR}/smartgen/SweepTable/SweepTable.vhd"
+vcom -2008 -explicit  -work presynth "${PROJECT_DIR}/component/work/RomeoSweep_Test/RomeoSweep_Test.vhd"
 
-vsim -L proasic3 -L presynth  -t 1ps presynth.UART_RX_FSM_tb
-# The following lines are commented because no testbench is associated with the project
-# add wave /UART_RX_FSM_tb/*
-# run 5000ns
+vsim -L proasic3 -L presynth  -t 1ps presynth.RomeoSweep_Test
+add wave /RomeoSweep_Test/*
+run 5000ns

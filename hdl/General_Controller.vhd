@@ -23,6 +23,9 @@ port (
     pressure_packet : IN std_logic_vector(63 downto 0);
     new_data        : IN std_logic; -- example for periodic data
 
+    sc_bias_new     : IN std_logic;
+    sc_bias_data    : IN std_logic_vector(63 downto 0);
+
     st_wdata : OUT std_logic_vector(15 downto 0);
     st_waddr : OUT std_logic_vector(7 downto 0);
     st_raddr : OUT std_logic_vector(7 downto 0);
@@ -97,7 +100,8 @@ architecture architecture_General_Controller of General_Controller is
     signal sweep_table_activate_sweep : std_logic; 
     signal sweep_table_sweep_cnt      : std_logic_vector(15 downto 0); -- Number of activated sweeps since last FPGA power on.
     signal sweep_table_read_value     : std_logic_vector(15 downto 0);
-
+    signal sc_bias_new_d              : std_logic := '0';
+    signal sc_bias_new_rise           : std_logic := '0';
 
 
     -- RX FSM
@@ -157,6 +161,7 @@ architecture architecture_General_Controller of General_Controller is
     signal swt_spp_tx_flag        : std_logic := '0';
     signal swt_points_tx_flag     : std_logic := '0';
     signal const_measure_tx_flag  : std_logic := '0';
+    signal sc_bias_data_tx_flag   : std_logic := '0';
     signal swt_value_tx_flag      : std_logic := '0';
 
 
@@ -184,7 +189,7 @@ architecture architecture_General_Controller of General_Controller is
     constant T_HK_20S : sec_t := 20;
 
 
-
+   
    -- seconds counter 
     signal state_seconds : std_logic_vector(19 downto 0);
     signal old_1Hz : std_logic;
@@ -229,6 +234,8 @@ begin
             Sweep_enabled       <= '0';
             Bias_enabled        <= '0';
             constant_bias_mode  <= '0';
+            sc_bias_new_rise    <= '0';
+            sc_bias_new_d       <= '0';
 
             constant_bias_voltage_0   <= (others => '0');
             constant_bias_voltage_1   <= (others => '0');
@@ -301,6 +308,7 @@ begin
             gyro_tx_flag               <= '0';
             pressure_tx_flag           <= '0';
             const_volt_tx_flag         <= '0';
+            sc_bias_data_tx_flag       <= '0';
             swt_swp_cnt_tx_flag        <= '0';
             swt_steps_tx_flag          <= '0';
             swt_sps_tx_flag            <= '0';
@@ -332,6 +340,13 @@ begin
             if old_1Hz = '0' AND clk_1Hz = '1' then
                 state_seconds <= state_seconds + 1;
             end if;
+            if state_seconds > 4 then
+                state_seconds <= (others => '0');
+                led2 <= '0'; --DEBUG
+            end if;
+
+            sc_bias_new_rise <= '1' when (sc_bias_new = '1' and sc_bias_new_d = '0') else '0';
+            sc_bias_new_d    <= sc_bias_new;
 
 
 -- TX FSM --
@@ -373,6 +388,14 @@ begin
             if const_measure_send_req = '1' then
                 const_measure_tx_flag <= '1';
             end if;
+            if (constant_bias_mode = '1') and (sc_bias_new_rise = '1') then
+                sc_bias_data_tx_flag <= '1';
+            end if;
+            if constant_bias_mode = '1' then
+                if sc_bias_new = '1' then
+                    sc_bias_data_tx_flag <= '1';
+                end if;
+            end if;
             if swt_value_send_req = '1' then
                 swt_value_tx_flag <= '1';
             end if;
@@ -385,7 +408,7 @@ begin
                     msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"11111"&"001"& acc_packet & POSTAMBLE);
                     acc_tx_periodic_flag <= '0';
                     acc_tx_flag <= '0';
-                    start_tx <= '1';
+                    start_tx <= '1';                    
 
                 elsif (mag_tx_flag = '1') or (mag_tx_periodic_flag = '1') then
                     msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"11111"&"001"& mag_packet & POSTAMBLE);
@@ -399,6 +422,7 @@ begin
                     gyro_tx_flag <= '0';
                     start_tx <= '1';
 
+
                 elsif (pressure_tx_flag = '1') or (pressure_tx_periodic_flag = '1') then
                     msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"11111"&"001"& pressure_packet & POSTAMBLE);
                     pressure_tx_periodic_flag <= '0';
@@ -408,7 +432,13 @@ begin
                 elsif const_volt_tx_flag = '1' then
                     msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"00100"&"001"& constant_bias_voltage_tx(15 downto 8)& constant_bias_voltage_tx(7 downto 0)& (47 downto 0 => '0') & POSTAMBLE);
                     const_volt_tx_flag <= '0';
+                    start_tx <= '1'; 
+
+                elsif sc_bias_data_tx_flag = '1' then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 & x"09"& sc_bias_data & POSTAMBLE);
+                    sc_bias_data_tx_flag <= '0';
                     start_tx <= '1';
+                    led2 <= '1'; --DEBUG
 
                 elsif swt_swp_cnt_tx_flag = '1' then
                     msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"01011"&"000"& sweep_table_sweep_cnt(15 downto 8)& sweep_table_sweep_cnt(7 downto 0)&(47 downto 0 => '0') & POSTAMBLE);

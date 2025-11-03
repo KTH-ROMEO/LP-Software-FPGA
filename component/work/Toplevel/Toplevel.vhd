@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Tue Oct 28 17:32:50 2025
+-- Created by SmartDesign Mon Nov 03 20:45:45 2025
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -205,6 +205,8 @@ component General_Controller
         new_data                      : in  std_logic;
         pressure_packet               : in  std_logic_vector(63 downto 0);
         reset                         : in  std_logic;
+        sc_bias_data                  : in  std_logic_vector(63 downto 0);
+        sc_bias_new                   : in  std_logic;
         st_rdata0                     : in  std_logic_vector(15 downto 0);
         st_rdata1                     : in  std_logic_vector(15 downto 0);
         uc_recv                       : in  std_logic_vector(7 downto 0);
@@ -698,13 +700,13 @@ Communications_0 : Communications
         reset     => CLKINT_1_Y,
         uc_oen    => General_Controller_0_uc_oen,
         uc_wen    => General_Controller_0_uc_wen,
-        uc_send   => General_Controller_0_uc_send,
         rx        => UC_UART_TX,
+        uc_send   => General_Controller_0_uc_send,
         -- Outputs
         uc_tx_rdy => Communications_0_uc_tx_rdy,
         uc_rx_rdy => Communications_0_uc_rx_rdy,
-        uc_recv   => Communications_0_uc_recv,
-        tx        => UC_UART_RX_net_0 
+        tx        => UC_UART_RX_net_0,
+        uc_recv   => Communications_0_uc_recv 
         );
 -- Data_Hub_Packets_0
 Data_Hub_Packets_0 : Data_Hub_Packets
@@ -743,8 +745,8 @@ Data_Saving_0 : Data_Saving
         sync          => CU_SYNC,
         fmc_noe       => FMC_NOE,
         fmc_clk       => CLKINT_2_Y,
-        exp_SC_packet => Science_0_SC_packet,
         en            => General_Controller_0_en_data_saving_0,
+        exp_SC_packet => Science_0_SC_packet,
         -- Outputs
         uC_interrupt  => FPGA_BUF_INT_net_0,
         fmc_da        => FMC_DA_0 
@@ -787,6 +789,8 @@ General_Controller_0 : General_Controller
         gyro_packet                   => Data_Hub_Packets_0_gyro_packet_0,
         pressure_packet               => Data_Hub_Packets_0_pressure_packet_0,
         new_data                      => Timing_0_s_clks24to24(24),
+        sc_bias_new                   => Science_0_new_SC_packet,
+        sc_bias_data                  => Science_0_SC_packet,
         -- Outputs
         st_wdata                      => General_Controller_0_st_wdata,
         st_waddr                      => General_Controller_0_st_waddr,

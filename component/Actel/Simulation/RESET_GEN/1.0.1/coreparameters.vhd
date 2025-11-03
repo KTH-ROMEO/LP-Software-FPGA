@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by Microsemi SmartDesign Tue Mar 18 18:05:43 2025
+-- Created by Microsemi SmartDesign Thu Oct 30 20:47:20 2025
 -- Parameters for RESET_GEN
 ----------------------------------------------------------------------
 
