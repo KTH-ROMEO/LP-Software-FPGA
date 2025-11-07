@@ -25,14 +25,14 @@
 @N: MO225 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\uart.vhd":67:8:67:9|There are no possible illegal states for state machine tx_state[0:3] (in view: work.UART(architecture_uart)); safe FSM implementation is not required.
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\uart.vhd":67:8:67:9|Found counter in view:work.UART(architecture_uart) instance tx_clk_count[8:0] 
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\interrupt_generator.vhd":44:4:44:5|Found counter in view:work.Interrupt_Generator(architecture_interrupt_generator) instance counter[9:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":103:53:103:55|Found counter in view:work.General_Controller(architecture_general_controller) instance tx_byte_index[3:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":103:53:103:55|Found counter in view:work.General_Controller(architecture_general_controller) instance sweep_table_sweep_cnt[15:0] 
-@N: MO225 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":103:53:103:55|There are no possible illegal states for state machine swt_wr_substate[0:1] (in view: work.General_Controller(architecture_general_controller)); safe FSM implementation is not required.
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":528:24:528:36|Found 8-bit incrementor, 'un7_new_data[24:32]'
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":540:24:540:36|Found 8-bit incrementor, 'un16_new_data[24:32]'
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":552:24:552:37|Found 8-bit incrementor, 'un25_new_data[24:32]'
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":564:24:564:37|Found 8-bit incrementor, 'un34_new_data[24:32]'
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":665:23:665:39|Found 3-bit incrementor, 'un7_expected_payload_length[29:32]'
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":105:53:105:55|Found counter in view:work.General_Controller(architecture_general_controller) instance tx_byte_index[3:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":105:53:105:55|Found counter in view:work.General_Controller(architecture_general_controller) instance sweep_table_sweep_cnt[15:0] 
+@N: MO225 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":105:53:105:55|There are no possible illegal states for state machine swt_wr_substate[0:1] (in view: work.General_Controller(architecture_general_controller)); safe FSM implementation is not required.
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":589:24:589:36|Found 8-bit incrementor, 'un3_acc_period_s[24:32]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":603:24:603:36|Found 8-bit incrementor, 'un3_mag_period_s[24:32]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":617:24:617:37|Found 8-bit incrementor, 'un3_gyro_period_s[24:32]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":631:24:631:37|Found 8-bit incrementor, 'un3_pres_period_s[24:32]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":792:23:792:39|Found 3-bit incrementor, 'un7_expected_payload_length[29:32]'
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":74:8:74:9|Found counter in view:work.ADC_Data_Packer(architecture_adc_data_packer) instance n_point_samples[15:0] 
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":74:8:74:9|Found counter in view:work.ADC_Data_Packer(architecture_adc_data_packer) instance n_skipped[15:0] 
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":74:8:74:9|Found counter in view:work.ADC_Data_Packer(architecture_adc_data_packer) instance point_counter[15:0] 
@@ -76,8 +76,8 @@
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\i2c_master.vhd":68:8:68:9|Removing sequential instance Sensors_0.Gyro_0.I2C_Master_0.data_out[6] (in view: work.Toplevel(rtl)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\i2c_master.vhd":68:8:68:9|Removing sequential instance Sensors_0.Gyro_0.I2C_Master_0.data_out[7] (in view: work.Toplevel(rtl)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 @N: FP130 |Promoting Net ClockDivs_0_clk_800kHz on CLKINT  ClockDivs_0.clk_800kHz_inferred_clock 
-@N: FP130 |Promoting Net General_Controller_0.start_tx_0_sqmuxa on CLKINT  I_121 
-@N: FP130 |Promoting Net Science_0.ADC_Data_Packer_0.N_734 on CLKINT  I_122 
+@N: FP130 |Promoting Net General_Controller_0.start_tx_0_sqmuxa on CLKINT  I_115 
+@N: FP130 |Promoting Net Science_0.ADC_Data_Packer_0.N_734 on CLKINT  I_116 
 @N: MT611 :|Automatically generated clock ClockDivs|clk_1kHz_inferred_clock is not used and is being removed
 @N: MT611 :|Automatically generated clock ClockDivs|clk_50Hz_inferred_clock is not used and is being removed
 @N: MT320 |This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report.

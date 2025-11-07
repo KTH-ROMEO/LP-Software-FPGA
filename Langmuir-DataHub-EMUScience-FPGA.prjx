@@ -236,17 +236,12 @@ SIZE="211"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel.adb,adb"
 STATE="utd"
-TIME="1761841949"
-SIZE="13463552"
-ENDFILE
-VALUE "<project>\designer\impl1\Toplevel.dtf\netlist.pdc,pdc"
-STATE="utd"
-TIME="1761851072"
-SIZE="6522"
+TIME="1762199431"
+SIZE="14044672"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel.ide_des,ide_des"
 STATE="utd"
-TIME="1761840713"
+TIME="1762199431"
 SIZE="996"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel.pdb,pdb"
@@ -271,17 +266,17 @@ SIZE="1476003"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_compile_log.rpt,log"
 STATE="utd"
-TIME="1761841949"
-SIZE="16642"
+TIME="1762199204"
+SIZE="16645"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_fp\projectData\Toplevel.pdb,pdb"
 STATE="utd"
-TIME="1761841949"
-SIZE="119313"
+TIME="1762199507"
+SIZE="128401"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_fp\Toplevel.pro,pro"
 STATE="utd"
-TIME="1761840877"
+TIME="1762199507"
 SIZE="2432"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_iteration_summary.rpt,log"
@@ -711,8 +706,8 @@ SIZE="18660"
 ENDFILE
 VALUE "<project>\simulation\RomeoSweep_Test_presynth_simulation.log,log"
 STATE="utd"
-TIME="1749068452"
-SIZE="7128"
+TIME="1761853751"
+SIZE="8372"
 ENDFILE
 VALUE "<project>\simulation\ROMEO_presynth_simulation.log,log"
 STATE="utd"
@@ -721,8 +716,8 @@ SIZE="2089"
 ENDFILE
 VALUE "<project>\simulation\run.do,do"
 STATE="utd"
-TIME="1750775778"
-SIZE="748"
+TIME="1761853647"
+SIZE="1219"
 ENDFILE
 VALUE "<project>\simulation\wave.do,do"
 STATE="utd"
@@ -803,7 +798,7 @@ SIZE="1022"
 ENDFILE
 VALUE "<project>\synthesis\synwork\layer0.so,so"
 STATE="utd"
-TIME="1760013823"
+TIME="1761849304"
 SIZE="159"
 ENDFILE
 VALUE "<project>\synthesis\test_sim.so,so"
@@ -818,22 +813,22 @@ SIZE="1851"
 ENDFILE
 VALUE "<project>\synthesis\Toplevel.edn,syn_edn"
 STATE="utd"
-TIME="1761841949"
-SIZE="2037580"
+TIME="1762199180"
+SIZE="2389344"
 ENDFILE
 VALUE "<project>\synthesis\Toplevel.so,so"
 STATE="utd"
-TIME="1761840239"
+TIME="1762199180"
 SIZE="237"
 ENDFILE
 VALUE "<project>\synthesis\Toplevel_sdc.sdc,syn_sdc"
 STATE="utd"
-TIME="1761840239"
+TIME="1762199180"
 SIZE="496"
 ENDFILE
 VALUE "<project>\synthesis\Toplevel_syn.prj,prj"
 STATE="utd"
-TIME="1761841949"
+TIME="1762199181"
 SIZE="4864"
 ENDFILE
 VALUE "<project>\synthesis\UART_RX_FSM_tb.so,so"
@@ -949,8 +944,8 @@ NAME="Synplify Pro ME"
 FUNCTION="Synthesis"
 TOOL="Synplify Pro ME"
 LOCATION="C:\Microsemi\Libero_SoC_v11.9\SynplifyPro\bin\synplify_pro.exe"
-PARAM="-licensetype synplifypro_actel -batch -log synplify.log"
-BATCH=1
+PARAM=""
+BATCH=0
 LICENSE=""
 IS32BIT="1"
 EndProfile
@@ -958,7 +953,7 @@ NAME="ModelSim ME"
 FUNCTION="Simulation"
 TOOL="ModelSim"
 LOCATION="C:\Microsemi\Libero_SoC_v11.9\Modelsim\win32acoem\modelsim.exe"
-PARAM=" -l RomeoSweep_Test_presynth_simulation.log "
+PARAM=""
 BATCH=0
 LICENSE=""
 IS32BIT="1"
@@ -1011,14 +1006,8 @@ LIST UserCustomizedFileList
 ENDLIST
 LIST OpenedFileList
 ORIENTATION;HORIZONTAL
-Reports;Reports;0
-ReportsCurrentItem;Generate Programming Data:Toplevel_prgdata_log.rpt
-SmartDesign;Toplevel;0
-HDL;hdl\ADC_Data_Packer.vhd;0
-HDL;hdl\General_Controller.vhd;0
-SmartDesign;Science;0
-HDL;hdl\ADC_READ.vhd;0
-ACTIVEVIEW;Reports
+StartPage;StartPage;0
+ACTIVEVIEW;StartPage
 ENDLIST
 LIST ModuleSubBlockList
 LIST "Accelerometer::work","component\work\Accelerometer\Accelerometer.vhd","TRUE","FALSE"
@@ -1152,19 +1141,19 @@ ENDLIST
 LIST "CLK_GEN::work","component\Actel\Simulation\CLK_GEN\1.0.1\CLK_GEN.vhd","FALSE","TRUE"
 ENDLIST
 LIST "General_Controller_Testbench::work","stimulus\General_Controller_Testbench.vhd","FALSE","TRUE"
-SUBBLOCK "SweepTable::work","smartgen\SweepTable\SweepTable.vhd","TRUE","FALSE"
 SUBBLOCK "General_Controller::work","hdl\General_Controller.vhd","FALSE","FALSE"
+SUBBLOCK "SweepTable::work","smartgen\SweepTable\SweepTable.vhd","TRUE","FALSE"
 ENDLIST
 LIST "RESET_GEN::work","component\Actel\Simulation\RESET_GEN\1.0.1\RESET_GEN.vhd","FALSE","TRUE"
 ENDLIST
 LIST "RomeoSweep_Test::work","component\work\RomeoSweep_Test\RomeoSweep_Test.vhd","TRUE","TRUE"
+SUBBLOCK "ADC_Data_Packer::work","hdl\ADC_Data_Packer.vhd","FALSE","FALSE"
 SUBBLOCK "ADC_READ::work","hdl\ADC_READ.vhd","FALSE","FALSE"
 SUBBLOCK "CLK_GEN::work","component\Actel\Simulation\CLK_GEN\1.0.1\CLK_GEN.vhd","FALSE","TRUE"
 SUBBLOCK "DAC_SET::work","hdl\DAC_SET.vhd","FALSE","FALSE"
 SUBBLOCK "RESET_GEN::work","component\Actel\Simulation\RESET_GEN\1.0.1\RESET_GEN.vhd","FALSE","TRUE"
 SUBBLOCK "SWEEP_SPIDER2::work","hdl\SWEEP_SPIDER2.vhd","FALSE","FALSE"
 SUBBLOCK "SweepTable::work","smartgen\SweepTable\SweepTable.vhd","TRUE","FALSE"
-SUBBLOCK "ADC_Data_Packer::work","hdl\ADC_Data_Packer.vhd","FALSE","FALSE"
 ENDLIST
 LIST "Sweep_test::work","stimulus\Sweep test.vhd","FALSE","TRUE"
 SUBBLOCK "Toplevel::work","component\work\Toplevel\Toplevel.vhd","TRUE","FALSE"

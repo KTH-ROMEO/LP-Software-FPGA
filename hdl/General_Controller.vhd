@@ -6,9 +6,11 @@ use IEEE.std_logic_unsigned.all;
 
 entity General_Controller is
 port (
-	clk     : IN  std_logic;
-    clk_1Hz : IN std_logic;
-    reset   : IN std_logic;
+	clk         : IN std_logic;
+    clk_1Hz     : IN std_logic;
+    clk_4Hz     : IN std_logic;
+    clk_256Hz   : IN std_logic;
+    reset       : IN std_logic;
     
     uc_recv   : IN std_logic_vector(7 downto 0);
     uc_tx_rdy : IN std_logic;
@@ -21,7 +23,6 @@ port (
     mag_packet      : IN std_logic_vector(63 downto 0);
     gyro_packet     : IN std_logic_vector(63 downto 0);
     pressure_packet : IN std_logic_vector(63 downto 0);
-    new_data        : IN std_logic; -- example for periodic data
 
     sc_bias_new     : IN std_logic;
     sc_bias_data    : IN std_logic_vector(63 downto 0);
@@ -96,11 +97,12 @@ architecture architecture_General_Controller of General_Controller is
     signal constant_bias_mode         : std_logic;
     signal constant_bias_voltage_0    : std_logic_vector(15 downto 0);
     signal constant_bias_voltage_1    : std_logic_vector(15 downto 0);
-    signal constant_bias_probe_id     : std_logic_vector(7 downto 0);
+    signal constant_bias_probe_id     : std_logic_vector(7 downto 0); 
+    signal sweep_table_probe_id       : std_logic_vector(7 downto 0);
     signal sweep_table_activate_sweep : std_logic; 
     signal sweep_table_sweep_cnt      : std_logic_vector(15 downto 0); -- Number of activated sweeps since last FPGA power on.
     signal sweep_table_read_value     : std_logic_vector(15 downto 0);
-    signal sc_bias_new_d              : std_logic := '0';
+    signal old_sc_bias_new            : std_logic := '0';
     signal sc_bias_new_rise           : std_logic := '0';
 
 
@@ -125,6 +127,7 @@ architecture architecture_General_Controller of General_Controller is
     signal mag_send_req            : std_logic := '0';
     signal gyro_send_req           : std_logic := '0';
     signal pressure_send_req       : std_logic := '0';
+    signal T_send_req              : std_logic := '0';
     signal const_volt_send_req     : std_logic := '0';
     signal swt_swp_cnt_send_req    : std_logic := '0';
     signal swt_steps_send_req      : std_logic := '0';
@@ -132,7 +135,6 @@ architecture architecture_General_Controller of General_Controller is
     signal swt_skip_send_req       : std_logic := '0';
     signal swt_spp_send_req        : std_logic := '0';
     signal swt_points_send_req     : std_logic := '0';
-    signal const_measure_send_req  : std_logic := '0';
     signal swt_value_send_req      : std_logic := '0';
     
     constant POSTAMBLE  : std_logic_vector(7 downto 0) := x"0A";
@@ -153,6 +155,7 @@ architecture architecture_General_Controller of General_Controller is
     signal mag_tx_flag            : std_logic := '0';
     signal gyro_tx_flag           : std_logic := '0';
     signal pressure_tx_flag       : std_logic := '0';
+    signal T_tx_flag              : std_logic := '0';
     signal const_volt_tx_flag     : std_logic := '0';
     signal swt_swp_cnt_tx_flag    : std_logic := '0';
     signal swt_steps_tx_flag      : std_logic := '0';
@@ -160,39 +163,46 @@ architecture architecture_General_Controller of General_Controller is
     signal swt_skip_tx_flag       : std_logic := '0';
     signal swt_spp_tx_flag        : std_logic := '0';
     signal swt_points_tx_flag     : std_logic := '0';
-    signal const_measure_tx_flag  : std_logic := '0';
     signal sc_bias_data_tx_flag   : std_logic := '0';
     signal swt_value_tx_flag      : std_logic := '0';
 
 
 
     -- PERIODIC TX
-    signal old_new_data   : std_logic;
+    signal old_clk_256Hz   : std_logic;
 
     signal acc_tx_periodic_flag       : std_logic := '0';
     signal mag_tx_periodic_flag       : std_logic := '0';
     signal gyro_tx_periodic_flag      : std_logic := '0';
     signal pressure_tx_periodic_flag  : std_logic := '0';
 
-    signal acc_period_s   : sec_t := 0;
-    signal mag_period_s   : sec_t := 0;
-    signal gyro_period_s  : sec_t := 0;
-    signal pres_period_s  : sec_t := 0;
-    signal acc_cnt_s      : sec_t := 0;
-    signal mag_cnt_s      : sec_t := 0;
-    signal gyro_cnt_s     : sec_t := 0;
-    signal pres_cnt_s     : sec_t := 0;
+    signal acc_period_s     : sec_t := 0;
+    signal mag_period_s     : sec_t := 0;
+    signal gyro_period_s    : sec_t := 0;
+    signal pres_period_s    : sec_t := 0;
+    signal acc_cnt_s        : sec_t := 0;
+    signal mag_cnt_s        : sec_t := 0;
+    signal gyro_cnt_s       : sec_t := 0;
+    signal pres_cnt_s       : sec_t := 0;
+    signal acc_scale        : std_logic_vector(1 downto 0);
+    signal mag_scale        : std_logic_vector(1 downto 0);
+    signal gyro_scale       : std_logic_vector(1 downto 0);
+    signal pres_scale       : std_logic_vector(1 downto 0);
+    signal acc_period_code  : std_logic_vector(7 downto 0);
+    signal mag_period_code  : std_logic_vector(7 downto 0);
+    signal gyro_period_code : std_logic_vector(7 downto 0);
+    signal pres_period_code : std_logic_vector(7 downto 0);
+    signal T_2rb            : std_logic_vector(7 downto 0);
+    signal HK_ID_2rb        : std_logic_vector(7 downto 0);
 
-    constant T_HK_DIS : sec_t := 0; -- disabled
-    constant T_HK_5S  : sec_t := 5;
-    constant T_HK_10S : sec_t := 10;
-    constant T_HK_20S : sec_t := 20;
+    constant T_HK_MIN : integer := 1; -- 256Hz as implemented now
 
 
    
    -- seconds counter 
     signal state_seconds : std_logic_vector(19 downto 0);
-    signal old_1Hz : std_logic;
+    signal old_clk_1Hz : std_logic;
+    signal old_clk_4Hz : std_logic;
 
 
 
@@ -208,6 +218,17 @@ architecture architecture_General_Controller of General_Controller is
 begin
 
     process (clk, reset)
+
+        variable v_scale : std_logic_vector(1 downto 0):= (others => '0');
+        variable v_val : integer := 0;
+        variable tick_1Hz    : boolean := false;
+        variable tick_4Hz    : boolean := false;
+        variable tick_256Hz  : boolean := false;
+        variable acc_tick    : boolean := false;
+        variable mag_tick    : boolean := false;
+        variable gyro_tick   : boolean := false;
+        variable pres_tick   : boolean := false;
+
     begin
         if reset /= '0' then
        
@@ -225,7 +246,9 @@ begin
             -- maybe adc reset to implement in the future
             exp_adc_reset <= '0';
             
-            old_1Hz <= '0';
+            old_clk_1Hz <= '0';
+            old_clk_4Hz <= '0';
+
             state_seconds <= (others => '0');
 
 
@@ -235,13 +258,14 @@ begin
             Bias_enabled        <= '0';
             constant_bias_mode  <= '0';
             sc_bias_new_rise    <= '0';
-            sc_bias_new_d       <= '0';
+            old_sc_bias_new       <= '0';
 
             constant_bias_voltage_0   <= (others => '0');
             constant_bias_voltage_1   <= (others => '0');
             constant_bias_voltage_tx  <= (others => '0');
             constant_bias_probe_id    <= (others => '0');
-            
+
+            sweep_table_probe_id           <= (others => '0');
             sweep_table_activate_sweep     <= '0';
             sweep_table_sweep_cnt          <= (others => '0');
             sweep_table_nof_steps          <= (others => '0');
@@ -260,7 +284,7 @@ begin
 
 
             -- PERIODIC
-            old_new_data             <= '0'; -- 1Hz counter
+            old_clk_256Hz             <= '0'; -- 1Hz counter
 
 
 
@@ -293,6 +317,7 @@ begin
             mag_send_req            <= '0';
             gyro_send_req           <= '0';
             pressure_send_req       <= '0';
+            T_send_req              <= '0';
             const_volt_send_req     <= '0';
             swt_swp_cnt_send_req    <= '0';
             swt_steps_send_req      <= '0';
@@ -300,13 +325,13 @@ begin
             swt_skip_send_req       <= '0';
             swt_spp_send_req        <= '0';
             swt_points_send_req     <= '0';
-            const_measure_send_req  <= '0';
             swt_value_send_req      <= '0';
 
             acc_tx_flag                <= '0';
             mag_tx_flag                <= '0';
             gyro_tx_flag               <= '0';
             pressure_tx_flag           <= '0';
+            T_tx_flag                  <= '0';
             const_volt_tx_flag         <= '0';
             sc_bias_data_tx_flag       <= '0';
             swt_swp_cnt_tx_flag        <= '0';
@@ -315,7 +340,6 @@ begin
             swt_skip_tx_flag           <= '0';
             swt_spp_tx_flag            <= '0';
             swt_points_tx_flag         <= '0';
-            const_measure_tx_flag      <= '0';
             swt_value_tx_flag          <= '0';
             acc_tx_periodic_flag       <= '0';
             mag_tx_periodic_flag       <= '0';
@@ -329,24 +353,15 @@ begin
             mag_cnt_s                  <= 0;
             gyro_cnt_s                 <= 0;
             pres_cnt_s                 <= 0;
-
+            acc_period_code            <= (others => '0');
+            mag_period_code            <= (others => '0');
+            gyro_period_code           <= (others => '0');
+            pres_period_code           <= (others => '0');
+            T_2rb                      <= (others => '0');
+            HK_ID_2rb                  <= (others => '0');
 
 
         elsif rising_edge(clk) then
-
--- Seconds counter --
-            old_1Hz <= clk_1Hz;
-
-            if old_1Hz = '0' AND clk_1Hz = '1' then
-                state_seconds <= state_seconds + 1;
-            end if;
-            if state_seconds > 4 then
-                state_seconds <= (others => '0');
-                led2 <= '0'; --DEBUG
-            end if;
-
-            sc_bias_new_rise <= '1' when (sc_bias_new = '1' and sc_bias_new_d = '0') else '0';
-            sc_bias_new_d    <= sc_bias_new;
 
 
 -- TX FSM --
@@ -361,9 +376,12 @@ begin
             if gyro_send_req = '1' then
                 gyro_tx_flag <= '1';
             end if;
-            if pressure_send_req = '1' then
+            if pressure_send_req = '1' then 
                 pressure_tx_flag <= '1';
             end if;  
+            if T_send_req = '1' then
+                T_tx_flag <= '1';
+            end if;
             if const_volt_send_req = '1' then
                 const_volt_tx_flag <= '1';
             end if;
@@ -385,16 +403,8 @@ begin
             if swt_points_send_req = '1' then
                 swt_points_tx_flag <= '1';
             end if;
-            if const_measure_send_req = '1' then
-                const_measure_tx_flag <= '1';
-            end if;
             if (constant_bias_mode = '1') and (sc_bias_new_rise = '1') then
                 sc_bias_data_tx_flag <= '1';
-            end if;
-            if constant_bias_mode = '1' then
-                if sc_bias_new = '1' then
-                    sc_bias_data_tx_flag <= '1';
-                end if;
             end if;
             if swt_value_send_req = '1' then
                 swt_value_tx_flag <= '1';
@@ -422,15 +432,19 @@ begin
                     gyro_tx_flag <= '0';
                     start_tx <= '1';
 
-
                 elsif (pressure_tx_flag = '1') or (pressure_tx_periodic_flag = '1') then
                     msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"11111"&"001"& pressure_packet & POSTAMBLE);
                     pressure_tx_periodic_flag <= '0';
                     pressure_tx_flag <= '0';
                     start_tx <= '1';
+
+                elsif (T_tx_flag = '1') then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"11111"&"001"& HK_ID_2rb & T_2rb & (47 downto 0 => '0') & POSTAMBLE);
+                    T_tx_flag <= '0';
+                    start_tx <= '1';
                 
                 elsif const_volt_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"00100"&"001"& constant_bias_voltage_tx(15 downto 8)& constant_bias_voltage_tx(7 downto 0)& (47 downto 0 => '0') & POSTAMBLE);
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"00100"&"001"& constant_bias_probe_id & constant_bias_voltage_tx & (39 downto 0 => '0') & POSTAMBLE);
                     const_volt_tx_flag <= '0';
                     start_tx <= '1'; 
 
@@ -470,13 +484,8 @@ begin
                     swt_points_tx_flag <= '0';
                     start_tx <= '1';
 
-                elsif const_measure_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"00001"&"000"&constant_bias_voltage_tx &(47 downto 0 => '0') & POSTAMBLE);
-                    const_measure_tx_flag <= '0';
-                    start_tx <= '1';
-
                 elsif swt_value_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"10111"&"010"& sweep_table_read_value(15 downto 8)& sweep_table_read_value(7 downto 0)&(47 downto 0 => '0') & POSTAMBLE);
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"10111"&"010"& sweep_table_probe_id & st_raddr & sweep_table_read_value(15 downto 8)& sweep_table_read_value(7 downto 0)&(31 downto 0 => '0') & POSTAMBLE);
                     swt_value_tx_flag <= '0';
                     start_tx <= '1';
 
@@ -516,59 +525,179 @@ begin
 
             end case;
 
+
 -- PERIODIC FLAGS --
 
-            old_new_data <= new_data;   
-            if (new_data = '1') and (old_new_data = '0') then -- 1 HZ rising 
 
-                -- ACC
+
+            -- edge detect on clocks and tick calculation
+            old_clk_1Hz   <= clk_1Hz;
+            old_clk_4Hz   <= clk_4Hz;
+            old_clk_256Hz <= clk_256Hz;
+            tick_1Hz   := (clk_1Hz = '1')   and (old_clk_1Hz = '0');
+            tick_4Hz   := (clk_4Hz = '1')   and (old_clk_4Hz = '0');
+            tick_256Hz := (clk_256Hz = '1') and (old_clk_256Hz = '0');
+
+            old_sc_bias_new <= sc_bias_new;
+            sc_bias_new_rise <= '1' when (sc_bias_new = '1' and old_sc_bias_new = '0') else '0';
+
+
+            -- scale selection for each sensor --
+            -- ACC
+            if acc_scale = "00" then
+                acc_tick := tick_256Hz;
+            elsif acc_scale = "01" then
+                acc_tick := tick_4Hz;
+            elsif acc_scale = "10" or acc_scale = "11" then
+                acc_tick := tick_1Hz;
+            end if;
+
+            -- MAG
+            if mag_scale = "00" then
+                mag_tick := tick_256Hz;
+            elsif mag_scale = "01" then
+                mag_tick := tick_4Hz;
+            elsif mag_scale = "10" or mag_scale = "11" then
+                mag_tick := tick_1Hz;
+            end if;
+
+            -- GYRO
+            if gyro_scale = "00" then
+                gyro_tick := tick_256Hz;
+            elsif gyro_scale = "01" then
+                gyro_tick := tick_4Hz;
+            elsif gyro_scale = "10" or gyro_scale = "11" then
+                gyro_tick := tick_1Hz;
+            end if;
+
+            -- PRESSURE
+            if pres_scale = "00" then
+                pres_tick := tick_256Hz;
+            elsif pres_scale = "01" then
+                pres_tick := tick_4Hz;
+            elsif pres_scale = "10" or pres_scale = "11" then
+                pres_tick := tick_1Hz;
+            end if;
+
+
+            -- sensors periodic flags logic
+            -- ACC
+            if acc_tick then
                 if acc_period_s = 0 then
-                    acc_cnt_s <= 0;                    
+                    acc_cnt_s <= 0;
                 else
                     if (acc_cnt_s + 1 = acc_period_s) then
                         acc_cnt_s <= 0;
-                        acc_tx_periodic_flag <= '1';              
+                        acc_tx_periodic_flag <= '1';
                     else
                         acc_cnt_s <= acc_cnt_s + 1;
                     end if;
                 end if;
+            end if;
 
-                -- MAG
+            -- MAG
+            if mag_tick then
                 if mag_period_s = 0 then
-                    mag_cnt_s <= 0;                    
+                    mag_cnt_s <= 0;
                 else
                     if (mag_cnt_s + 1 = mag_period_s) then
                         mag_cnt_s <= 0;
-                        mag_tx_periodic_flag <= '1';              
+                        mag_tx_periodic_flag <= '1';
                     else
                         mag_cnt_s <= mag_cnt_s + 1;
                     end if;
                 end if;
+            end if;
 
-                -- GYRO
+            -- GYRO
+            if gyro_tick then
                 if gyro_period_s = 0 then
-                    gyro_cnt_s <= 0;                    
+                    gyro_cnt_s <= 0;
                 else
                     if (gyro_cnt_s + 1 = gyro_period_s) then
                         gyro_cnt_s <= 0;
-                        gyro_tx_periodic_flag <= '1';              
+                        gyro_tx_periodic_flag <= '1';
                     else
                         gyro_cnt_s <= gyro_cnt_s + 1;
                     end if;
                 end if;
+            end if;
 
-                -- PRESSURE
+            -- PRESSURE
+            if pres_tick then
                 if pres_period_s = 0 then
-                    pres_cnt_s <= 0;                    
+                    pres_cnt_s <= 0;
                 else
                     if (pres_cnt_s + 1 = pres_period_s) then
                         pres_cnt_s <= 0;
-                        pressure_tx_periodic_flag <= '1';              
+                        pressure_tx_periodic_flag <= '1';
                     else
                         pres_cnt_s <= pres_cnt_s + 1;
                     end if;
                 end if;
             end if;
+
+--            old_clk_1Hz       <= clk_1Hz;
+--            old_clk_4Hz       <= clk_4Hz;
+--            old_clk_256Hz     <= clk_256Hz;   
+--            old_sc_bias_new   <= sc_bias_new;
+--
+--            sc_bias_new_rise <= '1' when (sc_bias_new = '1' and old_sc_bias_new = '0') else '0';
+-- 
+--            if (clk_1Hz = '1') and (old_clk_1Hz = '0') then
+--                state_seconds <= state_seconds + 1;
+--            end if;
+--
+--            if (clk_256Hz = '1') and (old_clk_256Hz = '0') then -- 256 HZ rising 
+--
+--                -- ACC
+--                if acc_period_s = 0 then
+--                    acc_cnt_s <= 0;                    
+--                else
+--                    if (acc_cnt_s + 1 = acc_period_s) then
+--                        acc_cnt_s <= 0;
+--                        acc_tx_periodic_flag <= '1';              
+--                    else
+--                        acc_cnt_s <= acc_cnt_s + 1;
+--                    end if;
+--                end if;
+--
+--                -- MAG
+--                if mag_period_s = 0 then
+--                    mag_cnt_s <= 0;                    
+--                else
+--                    if (mag_cnt_s + 1 = mag_period_s) then
+--                        mag_cnt_s <= 0;
+--                        mag_tx_periodic_flag <= '1';              
+--                    else
+--                        mag_cnt_s <= mag_cnt_s + 1;
+--                    end if;
+--                end if;
+--
+--                -- GYRO
+--                if gyro_period_s = 0 then
+--                    gyro_cnt_s <= 0;                    
+--                else
+--                    if (gyro_cnt_s + 1 = gyro_period_s) then
+--                        gyro_cnt_s <= 0;
+--                        gyro_tx_periodic_flag <= '1';              
+--                    else
+--                        gyro_cnt_s <= gyro_cnt_s + 1;
+--                    end if;
+--                end if;
+--
+--                -- PRESSURE
+--                if pres_period_s = 0 then
+--                    pres_cnt_s <= 0;                    
+--                else
+--                    if (pres_cnt_s + 1 = pres_period_s) then
+--                        pres_cnt_s <= 0;
+--                        pressure_tx_periodic_flag <= '1';              
+--                    else
+--                        pres_cnt_s <= pres_cnt_s + 1;
+--                    end if;
+--                end if;
+--            end if;
             
                 
 
@@ -585,6 +714,7 @@ begin
                     mag_send_req               <= '0';
                     gyro_send_req              <= '0';
                     pressure_send_req          <= '0';
+                    T_send_req                 <= '0';
                     const_volt_send_req        <= '0';
                     swt_swp_cnt_send_req       <= '0';
                     swt_steps_send_req         <= '0';
@@ -592,10 +722,7 @@ begin
                     swt_skip_send_req          <= '0';
                     swt_spp_send_req           <= '0';
                     swt_points_send_req        <= '0';
-                    const_measure_send_req     <= '0';
                     swt_value_send_req         <= '0';
-
-
 
 
                     if uc_rx_rdy = '1' then
@@ -694,7 +821,6 @@ begin
                             led1 <= '1';
                             constant_bias_mode <= '1';
                             Bias_enabled <= '1';
-                            const_measure_send_req <= '1';
 
                         -- Disable Constant Bias Mode
                         when "00010" => 
@@ -737,9 +863,10 @@ begin
 
                         -- 1 BYTE PAYLOAD --
 
-                        -- Readback Constant Bias 
+                        -- Readback Constant Bias Voltage
                         when "00100" =>
-                            case payload_buffer(0) is -- payload_buffer(0) is constant_bias_probe_id
+                            constant_bias_probe_id <= payload_buffer(0);
+                            case payload_buffer(0) is
                                 when x"00" => constant_bias_voltage_tx <= constant_bias_voltage_0;
                                 when x"01" => constant_bias_voltage_tx <= constant_bias_voltage_1;
                                 when others =>
@@ -759,7 +886,20 @@ begin
                                 when x"04" => pressure_send_req <= '1';
                                 when others => 
                             end case;
-                            
+
+                        -- Readback HK Period
+                        when "11101" =>
+                            acc_send_req <= '1';
+                            HK_ID_2rb <= payload_buffer(0);
+                            case payload_buffer(0) is
+                                when x"01" => T_2rb <= acc_period_code;
+                                when x"02" => T_2rb <= mag_period_code;
+                                when x"03" => T_2rb <= gyro_period_code;
+                                when x"04" => T_2rb <= pres_period_code;
+                                when others => 
+                            end case; 
+                            T_send_req <= '1';
+
 
                         -- 2 BYTES PAYLOAD --
                                                        
@@ -770,7 +910,8 @@ begin
                                 when 0 =>
                                     -- payload_buffer(0) is sweep_table_probe_id
                                     -- payload_buffer(1) is sweep_table_step_id
-            
+
+                                    sweep_table_probe_id <= payload_buffer(0);
                                     st_raddr <= payload_buffer(1);
                                     st_wen0  <= '0';
                                     st_wen1  <= '0';
@@ -837,53 +978,70 @@ begin
 
                         -- Set Periodic HK sending
                         when "11110" =>
-                            -- payload_buffer(0) = HK ID (00 acc, 01 mag, 02 gyro, 03 pressure)
-                            -- payload_buffer(1) = Period code (00=off, 01=5s, 02=10s, 03=20s)
-                        
+                            -- payload_buffer(0) = HK ID
+                            -- payload_buffer(1) = [7:6]=scale, [5:0]=value
+
+                            v_scale := payload_buffer(1)(7 downto 6);
+                            v_val := to_integer(unsigned(payload_buffer(1)(5 downto 0)));
+
                             case payload_buffer(0) is
-           
+
                                 when x"01" =>  -- ACC
-                                    case payload_buffer(1) is
-                                        when x"00" => acc_period_s <= T_HK_DIS;
-                                        when x"01" => acc_period_s <= T_HK_5S;
-                                        when x"02" => acc_period_s <= T_HK_10S;
-                                        when x"03" => acc_period_s <= T_HK_20S;
-                                        when others => 
-                                    end case;
-                                    acc_cnt_s <= 0;
-                                    
+                                    acc_period_code <= payload_buffer(1);
+                                    acc_scale       <= v_scale;
+                                    acc_period_s    <= 60 * v_val when v_scale = x"11" else v_val;
+                                    acc_cnt_s       <= 0;
+
                                 when x"02" =>  -- MAG
-                                    case payload_buffer(1) is
-                                        when x"00" => mag_period_s <= T_HK_DIS;
-                                        when x"01" => mag_period_s <= T_HK_5S;
-                                        when x"02" => mag_period_s <= T_HK_10S;
-                                        when x"03" => mag_period_s <= T_HK_20S;
-                                        when others =>
-                                    end case;
-                                    mag_cnt_s <= 0;
-                        
+                                    mag_period_code <= payload_buffer(1);
+                                    mag_scale       <= v_scale;
+                                    mag_period_s    <= 60 * v_val when v_scale = x"11" else v_val;
+                                    mag_cnt_s       <= 0;
+
                                 when x"03" =>  -- GYRO
-                                    case payload_buffer(1) is
-                                        when x"00" => gyro_period_s <= T_HK_DIS;
-                                        when x"01" => gyro_period_s <= T_HK_5S;
-                                        when x"02" => gyro_period_s <= T_HK_10S;
-                                        when x"03" => gyro_period_s <= T_HK_20S;
-                                        when others => 
-                                    end case;
-                                    gyro_cnt_s <= 0;
-                        
-                                when x"04" =>  -- PRESSURE
-                                    case payload_buffer(1) is
-                                        when x"00" => pres_period_s <= T_HK_DIS;
-                                        when x"01" => pres_period_s <= T_HK_5S;
-                                        when x"02" => pres_period_s <= T_HK_10S;
-                                        when x"03" => pres_period_s <= T_HK_20S;
-                                        when others => 
-                                    end case;
-                                    pres_cnt_s <= 0;  
-                      
-                                when others => 
+                                    gyro_period_code <= payload_buffer(1);
+                                    gyro_scale       <= v_scale;
+                                    gyro_period_s    <= 60 * v_val when v_scale = x"11" else v_val;
+                                    gyro_cnt_s       <= 0;
+
+                                when x"04" =>  -- PRES
+                                    pres_period_code <= payload_buffer(1);
+                                    pres_scale       <= v_scale;
+                                    pres_period_s    <= 60 * v_val when v_scale = x"11" else v_val;
+                                    pres_cnt_s       <= 0;
+
+                                when others =>
                             end case;
+
+      --                  -- Set Periodic HK sending
+      --                  when "11110" =>
+      --                      -- payload_buffer(0) = HK ID (01 acc, 02 mag, 03 gyro, 04 pressure)
+      --                      -- payload_buffer(1) = period code (multiplier to T_HK_MIN)
+--
+      --                      case payload_buffer(0) is 
+--
+      --                          when x"01" => -- ACC
+      --                              acc_period_code <= payload_buffer(1);
+      --                              acc_period_s <= 0 when unsigned(payload_buffer(1)) = 0 else T_HK_MIN * (2 ** to_integer(unsigned(payload_buffer(1))));
+      --                              acc_cnt_s <= 0;
+--
+      --                          when x"02" => -- MAG
+      --                              mag_period_code <= payload_buffer(1);
+      --                              mag_period_s <= 0 when unsigned(payload_buffer(1)) = 0 else T_HK_MIN * (2 ** to_integer(unsigned(payload_buffer(1))));
+      --                              mag_cnt_s <= 0;
+--
+      --                          when x"03" => -- GYRO
+      --                              gyro_period_code <= payload_buffer(1);
+      --                              gyro_period_s <= 0 when unsigned(payload_buffer(1)) = 0 else T_HK_MIN * (2 ** to_integer(unsigned(payload_buffer(1))));
+      --                              gyro_cnt_s <= 0;
+--
+      --                          when x"04" => -- PRESSURE
+      --                              pres_period_code <= payload_buffer(1);
+      --                              pres_period_s <= 0 when unsigned(payload_buffer(1)) = 0 else T_HK_MIN * (2 ** to_integer(unsigned(payload_buffer(1))));
+      --                              pres_cnt_s <= 0;
+      --                      
+      --                          when others =>
+      --                      end case;
 
 
                         -- 3 BYTES PAYLOAD --

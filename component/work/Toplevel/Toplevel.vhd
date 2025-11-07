@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Mon Nov 03 20:45:45 2025
+-- Created by SmartDesign Fri Nov 07 16:24:20 2025
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -200,9 +200,10 @@ component General_Controller
         acc_packet                    : in  std_logic_vector(63 downto 0);
         clk                           : in  std_logic;
         clk_1Hz                       : in  std_logic;
+        clk_256Hz                     : in  std_logic;
+        clk_4Hz                       : in  std_logic;
         gyro_packet                   : in  std_logic_vector(63 downto 0);
         mag_packet                    : in  std_logic_vector(63 downto 0);
-        new_data                      : in  std_logic;
         pressure_packet               : in  std_logic_vector(63 downto 0);
         reset                         : in  std_logic;
         sc_bias_data                  : in  std_logic_vector(63 downto 0);
@@ -490,8 +491,10 @@ signal Timekeeper_0_milliseconds                          : std_logic_vector(23 
 signal Timing_0_s_clks4to4                                : std_logic_vector(4 to 4);
 signal Timing_0_s_clks9to9                                : std_logic_vector(9 to 9);
 signal Timing_0_s_clks14to14                              : std_logic_vector(14 to 14);
+signal Timing_0_s_clks16to16                              : std_logic_vector(16 to 16);
 signal Timing_0_s_clks18to18                              : std_logic_vector(18 to 18);
 signal Timing_0_s_clks20to20                              : std_logic_vector(20 to 20);
+signal Timing_0_s_clks22to22                              : std_logic_vector(22 to 22);
 signal Timing_0_s_clks24to24                              : std_logic_vector(24 to 24);
 signal UC_UART_RX_net_0                                   : std_logic;
 signal FPGA_BUF_INT_net_1                                 : std_logic;
@@ -530,19 +533,17 @@ signal s_clks_slice_2                                     : std_logic_vector(11 
 signal s_clks_slice_3                                     : std_logic_vector(12 to 12);
 signal s_clks_slice_4                                     : std_logic_vector(13 to 13);
 signal s_clks_slice_5                                     : std_logic_vector(15 to 15);
-signal s_clks_slice_6                                     : std_logic_vector(16 to 16);
-signal s_clks_slice_7                                     : std_logic_vector(17 to 17);
-signal s_clks_slice_8                                     : std_logic_vector(19 to 19);
-signal s_clks_slice_9                                     : std_logic_vector(1 to 1);
-signal s_clks_slice_10                                    : std_logic_vector(21 to 21);
-signal s_clks_slice_11                                    : std_logic_vector(22 to 22);
-signal s_clks_slice_12                                    : std_logic_vector(23 to 23);
-signal s_clks_slice_13                                    : std_logic_vector(2 to 2);
-signal s_clks_slice_14                                    : std_logic_vector(3 to 3);
-signal s_clks_slice_15                                    : std_logic_vector(5 to 5);
-signal s_clks_slice_16                                    : std_logic_vector(6 to 6);
-signal s_clks_slice_17                                    : std_logic_vector(7 to 7);
-signal s_clks_slice_18                                    : std_logic_vector(8 to 8);
+signal s_clks_slice_6                                     : std_logic_vector(17 to 17);
+signal s_clks_slice_7                                     : std_logic_vector(19 to 19);
+signal s_clks_slice_8                                     : std_logic_vector(1 to 1);
+signal s_clks_slice_9                                     : std_logic_vector(21 to 21);
+signal s_clks_slice_10                                    : std_logic_vector(23 to 23);
+signal s_clks_slice_11                                    : std_logic_vector(2 to 2);
+signal s_clks_slice_12                                    : std_logic_vector(3 to 3);
+signal s_clks_slice_13                                    : std_logic_vector(5 to 5);
+signal s_clks_slice_14                                    : std_logic_vector(6 to 6);
+signal s_clks_slice_15                                    : std_logic_vector(7 to 7);
+signal s_clks_slice_16                                    : std_logic_vector(8 to 8);
 signal s_clks_net_0                                       : std_logic_vector(24 downto 0);
 ----------------------------------------------------------------------
 -- Inverted Signals
@@ -622,8 +623,10 @@ begin
  Timing_0_s_clks4to4(4)            <= s_clks_net_0(4);
  Timing_0_s_clks9to9(9)            <= s_clks_net_0(9);
  Timing_0_s_clks14to14(14)         <= s_clks_net_0(14);
+ Timing_0_s_clks16to16(16)         <= s_clks_net_0(16);
  Timing_0_s_clks18to18(18)         <= s_clks_net_0(18);
  Timing_0_s_clks20to20(20)         <= s_clks_net_0(20);
+ Timing_0_s_clks22to22(22)         <= s_clks_net_0(22);
  Timing_0_s_clks24to24(24)         <= s_clks_net_0(24);
  gyro_z_slice_0                    <= Sensors_0_gyro_z(3 downto 0);
  pressure_raw_slice_0              <= Sensors_0_pressure_raw(11 downto 0);
@@ -634,19 +637,17 @@ begin
  s_clks_slice_3(12)                <= s_clks_net_0(12);
  s_clks_slice_4(13)                <= s_clks_net_0(13);
  s_clks_slice_5(15)                <= s_clks_net_0(15);
- s_clks_slice_6(16)                <= s_clks_net_0(16);
- s_clks_slice_7(17)                <= s_clks_net_0(17);
- s_clks_slice_8(19)                <= s_clks_net_0(19);
- s_clks_slice_9(1)                 <= s_clks_net_0(1);
- s_clks_slice_10(21)               <= s_clks_net_0(21);
- s_clks_slice_11(22)               <= s_clks_net_0(22);
- s_clks_slice_12(23)               <= s_clks_net_0(23);
- s_clks_slice_13(2)                <= s_clks_net_0(2);
- s_clks_slice_14(3)                <= s_clks_net_0(3);
- s_clks_slice_15(5)                <= s_clks_net_0(5);
- s_clks_slice_16(6)                <= s_clks_net_0(6);
- s_clks_slice_17(7)                <= s_clks_net_0(7);
- s_clks_slice_18(8)                <= s_clks_net_0(8);
+ s_clks_slice_6(17)                <= s_clks_net_0(17);
+ s_clks_slice_7(19)                <= s_clks_net_0(19);
+ s_clks_slice_8(1)                 <= s_clks_net_0(1);
+ s_clks_slice_9(21)                <= s_clks_net_0(21);
+ s_clks_slice_10(23)               <= s_clks_net_0(23);
+ s_clks_slice_11(2)                <= s_clks_net_0(2);
+ s_clks_slice_12(3)                <= s_clks_net_0(3);
+ s_clks_slice_13(5)                <= s_clks_net_0(5);
+ s_clks_slice_14(6)                <= s_clks_net_0(6);
+ s_clks_slice_15(7)                <= s_clks_net_0(7);
+ s_clks_slice_16(8)                <= s_clks_net_0(8);
 ----------------------------------------------------------------------
 -- Component instances
 ----------------------------------------------------------------------
@@ -778,6 +779,8 @@ General_Controller_0 : General_Controller
         -- Inputs
         clk                           => CLKINT_0_Y_0,
         clk_1Hz                       => Timing_0_s_clks24to24(24),
+        clk_4Hz                       => Timing_0_s_clks22to22(22),
+        clk_256Hz                     => Timing_0_s_clks16to16(16),
         reset                         => CLKINT_1_Y,
         uc_recv                       => Communications_0_uc_recv,
         uc_tx_rdy                     => Communications_0_uc_tx_rdy,
@@ -788,7 +791,6 @@ General_Controller_0 : General_Controller
         mag_packet                    => Data_Hub_Packets_0_mag_packet_1,
         gyro_packet                   => Data_Hub_Packets_0_gyro_packet_0,
         pressure_packet               => Data_Hub_Packets_0_pressure_packet_0,
-        new_data                      => Timing_0_s_clks24to24(24),
         sc_bias_new                   => Science_0_new_SC_packet,
         sc_bias_data                  => Science_0_SC_packet,
         -- Outputs
