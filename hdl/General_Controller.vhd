@@ -412,7 +412,20 @@ begin
 
 
             -- Handle TX flags, building packet to send --
-            if uc_tx_state = TX_IDLE then
+            if uc_tx_state = TX_IDLE and start_tx = '0' then -- TODO: decide wether to use start_tx as a variable for not losing clock cycles
+
+                -- TESTING PACKETS for RESYNC in MUC
+                -- ACC
+                --  x"00" & PREAMBLE_1 & PREAMBLE_2 &"11111"&"001"& acc_packet
+                -- MAG
+                -- POSTAMBLE & x"000000" & PREAMBLE_1 & PREAMBLE_2 &"11111"&"001"& mag_packet(63 downto 24)
+                -- GYRO
+                -- mag_packet(23 downto 0) & POSTAMBLE & (63 downto 0 => '0')
+                -- T_tx
+                -- (95 downto 8 => '0') & PREAMBLE_1
+                -- PRESS
+                -- PREAMBLE_2 &"11111"&"001"& pressure_packet & POSTAMBLE & x"00"
+
 
                 if (acc_tx_flag = '1') or (acc_tx_periodic_flag = '1') then
                     msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"11111"&"001"& acc_packet & POSTAMBLE);
@@ -636,76 +649,13 @@ begin
                     end if;
                 end if;
             end if;
-
---            old_clk_1Hz       <= clk_1Hz;
---            old_clk_4Hz       <= clk_4Hz;
---            old_clk_256Hz     <= clk_256Hz;   
---            old_sc_bias_new   <= sc_bias_new;
---
---            sc_bias_new_rise <= '1' when (sc_bias_new = '1' and old_sc_bias_new = '0') else '0';
--- 
---            if (clk_1Hz = '1') and (old_clk_1Hz = '0') then
---                state_seconds <= state_seconds + 1;
---            end if;
---
---            if (clk_256Hz = '1') and (old_clk_256Hz = '0') then -- 256 HZ rising 
---
---                -- ACC
---                if acc_period_s = 0 then
---                    acc_cnt_s <= 0;                    
---                else
---                    if (acc_cnt_s + 1 = acc_period_s) then
---                        acc_cnt_s <= 0;
---                        acc_tx_periodic_flag <= '1';              
---                    else
---                        acc_cnt_s <= acc_cnt_s + 1;
---                    end if;
---                end if;
---
---                -- MAG
---                if mag_period_s = 0 then
---                    mag_cnt_s <= 0;                    
---                else
---                    if (mag_cnt_s + 1 = mag_period_s) then
---                        mag_cnt_s <= 0;
---                        mag_tx_periodic_flag <= '1';              
---                    else
---                        mag_cnt_s <= mag_cnt_s + 1;
---                    end if;
---                end if;
---
---                -- GYRO
---                if gyro_period_s = 0 then
---                    gyro_cnt_s <= 0;                    
---                else
---                    if (gyro_cnt_s + 1 = gyro_period_s) then
---                        gyro_cnt_s <= 0;
---                        gyro_tx_periodic_flag <= '1';              
---                    else
---                        gyro_cnt_s <= gyro_cnt_s + 1;
---                    end if;
---                end if;
---
---                -- PRESSURE
---                if pres_period_s = 0 then
---                    pres_cnt_s <= 0;                    
---                else
---                    if (pres_cnt_s + 1 = pres_period_s) then
---                        pres_cnt_s <= 0;
---                        pressure_tx_periodic_flag <= '1';              
---                    else
---                        pres_cnt_s <= pres_cnt_s + 1;
---                    end if;
---                end if;
---            end if;
-            
-                
+        
 
 -- RX FSM --
 
             case uc_rx_state is
 
-                when RX_IDLE =>   -- TODO: is the "idle state" really needed?
+                when RX_IDLE =>   -- TODO: "idle state" not really needed
 
                     -- strobes --
                     Sweep_enabled              <= '0'; -- set to 1 in command 01010
@@ -889,7 +839,6 @@ begin
 
                         -- Readback HK Period
                         when "11101" =>
-                            acc_send_req <= '1';
                             HK_ID_2rb <= payload_buffer(0);
                             case payload_buffer(0) is
                                 when x"01" => T_2rb <= acc_period_code;
@@ -1012,36 +961,6 @@ begin
 
                                 when others =>
                             end case;
-
-      --                  -- Set Periodic HK sending
-      --                  when "11110" =>
-      --                      -- payload_buffer(0) = HK ID (01 acc, 02 mag, 03 gyro, 04 pressure)
-      --                      -- payload_buffer(1) = period code (multiplier to T_HK_MIN)
---
-      --                      case payload_buffer(0) is 
---
-      --                          when x"01" => -- ACC
-      --                              acc_period_code <= payload_buffer(1);
-      --                              acc_period_s <= 0 when unsigned(payload_buffer(1)) = 0 else T_HK_MIN * (2 ** to_integer(unsigned(payload_buffer(1))));
-      --                              acc_cnt_s <= 0;
---
-      --                          when x"02" => -- MAG
-      --                              mag_period_code <= payload_buffer(1);
-      --                              mag_period_s <= 0 when unsigned(payload_buffer(1)) = 0 else T_HK_MIN * (2 ** to_integer(unsigned(payload_buffer(1))));
-      --                              mag_cnt_s <= 0;
---
-      --                          when x"03" => -- GYRO
-      --                              gyro_period_code <= payload_buffer(1);
-      --                              gyro_period_s <= 0 when unsigned(payload_buffer(1)) = 0 else T_HK_MIN * (2 ** to_integer(unsigned(payload_buffer(1))));
-      --                              gyro_cnt_s <= 0;
---
-      --                          when x"04" => -- PRESSURE
-      --                              pres_period_code <= payload_buffer(1);
-      --                              pres_period_s <= 0 when unsigned(payload_buffer(1)) = 0 else T_HK_MIN * (2 ** to_integer(unsigned(payload_buffer(1))));
-      --                              pres_cnt_s <= 0;
-      --                      
-      --                          when others =>
-      --                      end case;
 
 
                         -- 3 BYTES PAYLOAD --
