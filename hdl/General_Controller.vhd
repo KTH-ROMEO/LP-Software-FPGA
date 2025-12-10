@@ -366,6 +366,7 @@ begin
 
 -- TX FSM --
 
+
             -- RX strobes to internal TX flags --
             if acc_send_req = '1' then
                 acc_tx_flag <= '1';
@@ -426,8 +427,17 @@ begin
                 -- PRESS
                 -- PREAMBLE_2 &"11111"&"001"& pressure_packet & POSTAMBLE & x"00"
 
+                if sc_bias_data_tx_flag = '1' then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 & x"09"& sc_bias_data & POSTAMBLE);
+                    sc_bias_data_tx_flag <= '0';
+                    start_tx <= '1';
+                
+                elsif const_volt_tx_flag = '1' then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"00100"&"001"& constant_bias_probe_id & constant_bias_voltage_tx & (39 downto 0 => '0') & POSTAMBLE);
+                    const_volt_tx_flag <= '0';
+                    start_tx <= '1'; 
 
-                if (acc_tx_flag = '1') or (acc_tx_periodic_flag = '1') then
+                elsif (acc_tx_flag = '1') or (acc_tx_periodic_flag = '1') then
                     msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"11111"&"001"& acc_packet & POSTAMBLE);
                     acc_tx_periodic_flag <= '0';
                     acc_tx_flag <= '0';
@@ -455,17 +465,6 @@ begin
                     msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"11111"&"001"& HK_ID_2rb & T_2rb & (47 downto 0 => '0') & POSTAMBLE);
                     T_tx_flag <= '0';
                     start_tx <= '1';
-                
-                elsif const_volt_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"00100"&"001"& constant_bias_probe_id & constant_bias_voltage_tx & (39 downto 0 => '0') & POSTAMBLE);
-                    const_volt_tx_flag <= '0';
-                    start_tx <= '1'; 
-
-                elsif sc_bias_data_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 & x"09"& sc_bias_data & POSTAMBLE);
-                    sc_bias_data_tx_flag <= '0';
-                    start_tx <= '1';
-                    led2 <= '1'; --DEBUG
 
                 elsif swt_swp_cnt_tx_flag = '1' then
                     msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 &"01011"&"000"& sweep_table_sweep_cnt(15 downto 8)& sweep_table_sweep_cnt(7 downto 0)&(47 downto 0 => '0') & POSTAMBLE);
@@ -768,14 +767,11 @@ begin
 
                         -- Enable Constant Bias Mode (and send measurements)
                         when "00001" =>  
-                            led1 <= '1';
                             constant_bias_mode <= '1';
                             Bias_enabled <= '1';
 
                         -- Disable Constant Bias Mode
                         when "00010" => 
-                            led1 <= '0';
-                            led2 <= '0';
                             constant_bias_mode <= '0';
                             Bias_enabled <= '0';
 

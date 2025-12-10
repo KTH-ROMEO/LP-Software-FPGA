@@ -138,9 +138,9 @@ Post processing for work.science.rtl
 @N: CD231 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":78:26:78:27|Using onehot encoding for type uc_rx_state_type. For example, enumeration rx_idle is mapped to "10000000".
 @N: CD233 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":90:28:90:29|Using sequential encoding for type rx_context_type.
 @N: CD233 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":72:26:72:27|Using sequential encoding for type uc_tx_state_type.
-@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":536:16:536:29|OTHERS clause is not synthesized.
-@W: CD609 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":740:20:740:50|Index value 0 to 7 could be out of prefix range 0 to 3 
-@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":900:32:900:45|OTHERS clause is not synthesized.
+@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":535:16:535:29|OTHERS clause is not synthesized.
+@W: CD609 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":739:20:739:50|Index value 0 to 7 could be out of prefix range 0 to 3 
+@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":896:32:896:45|OTHERS clause is not synthesized.
 Post processing for work.general_controller.architecture_general_controller
 @W: CL240 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":56:4:56:12|Signal C_bias_V1 is floating; a simulation mismatch is possible.
 @W: CL240 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":55:4:55:12|Signal C_bias_V0 is floating; a simulation mismatch is possible.
@@ -154,6 +154,8 @@ Post processing for work.general_controller.architecture_general_controller
 @A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":226:42:226:47|Feedback mux created for signal acc_scale[1:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
 @A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":226:42:226:47|Feedback mux created for signal sweep_table_samples_per_step[15:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
 @A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":226:42:226:47|Feedback mux created for signal received_byte[7:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":233:8:233:9|All reachable assignments to led2 are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":233:8:233:9|All reachable assignments to led1 are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
 @W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":233:8:233:9|All reachable assignments to exp_adc_reset are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
 @W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":233:8:233:9|All reachable assignments to en_sensors are '1'; removing register. To preserve a constant register, use the syn_preserve attribute.
 @W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":233:8:233:9|All reachable assignments to en_data_saving are '1'; removing register. To preserve a constant register, use the syn_preserve attribute.
