@@ -215,7 +215,7 @@ begin
                     --else cnt2dn <= cnt2dn + 1;                                    
                     --end if;                                
                 --else cnt2dn <= 0;
-                end if;
+                --end if;
 
                 ------------------------- done with gain control dealing --------------------------------
 
