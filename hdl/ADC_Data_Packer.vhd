@@ -181,40 +181,40 @@ begin
             if exp_new_data = '1' then 
                 
                 --  GAIN CONTROL FOR CHANNEL 0
-                if (CHAN0(17 downto 12) = "00" & x"7") or (CHAN0(17 downto 12) = "00" & x"8") then
-                    if (cnt1up(3) = '1') then  cnt1up <= (others => '0');
-                        if G1 /= "11" then g1i <= G1 + "1";
-                        end if;
-                    else cnt1up <= cnt1up + 1;
-                    end if;
-                else cnt1up <= (others => '0');
-                end if;
-
-                if (CHAN0(17 downto 15) = "100") or (CHAN0(17 downto 15) = "011") then 
-                    if (cnt1dn = 8) then cnt1dn <= 0;
-                        if G1 /= "00" then g1i <= G1 - "1";                                 
-                        end if;
-                    else cnt1dn <= cnt1dn + 1;                                    
-                    end if;                                
-                else cnt1dn <= 0;
-                end if;
-                --  GAIN CONTROL FOR CHANNEL 4
-                if (CHAN4(17 downto 12) = "00" & x"7") or (CHAN4(17 downto 12) = "00" & x"8") then
-                    if (cnt2up(3) = '1') then  cnt2up <= (others => '0');
-                        if G2 /= "11" then g2i <= G2 + "1";
-                        end if;
-                    else cnt2up <= cnt2up + 1;
-                    end if;
-                else cnt2up <= (others => '0');
-                end if;
-
-                if (CHAN4(17 downto 15) = "100") or (CHAN4(17 downto 15) = "011") then 
-                    if (cnt2dn = 8) then cnt2dn <= 0;
-                        if G2 /= "00" then g2i <= G2 - "1";                                 
-                        end if;
-                    else cnt2dn <= cnt2dn + 1;                                    
-                    end if;                                
-                else cnt2dn <= 0;
+                --if (CHAN0(17 downto 12) = "00" & x"7") or (CHAN0(17 downto 12) = "00" & x"8") then
+                    --if (cnt1up(3) = '1') then  cnt1up <= (others => '0');
+                        --if G1 /= "11" then g1i <= G1 + "1";
+                        --end if;
+                    --else cnt1up <= cnt1up + 1;
+                    --end if;
+                --else cnt1up <= (others => '0');
+                --end if;
+--
+                --if (CHAN0(17 downto 15) = "100") or (CHAN0(17 downto 15) = "011") then 
+                    --if (cnt1dn = 8) then cnt1dn <= 0;
+                        --if G1 /= "00" then g1i <= G1 - "1";                                 
+                        --end if;
+                    --else cnt1dn <= cnt1dn + 1;                                    
+                    --end if;                                
+                --else cnt1dn <= 0;
+                --end if;
+                ----  GAIN CONTROL FOR CHANNEL 4
+                --if (CHAN4(17 downto 12) = "00" & x"7") or (CHAN4(17 downto 12) = "00" & x"8") then
+                    --if (cnt2up(3) = '1') then  cnt2up <= (others => '0');
+                        --if G2 /= "11" then g2i <= G2 + "1";
+                        --end if;
+                    --else cnt2up <= cnt2up + 1;
+                    --end if;
+                --else cnt2up <= (others => '0');
+                --end if;
+--
+                --if (CHAN4(17 downto 15) = "100") or (CHAN4(17 downto 15) = "011") then 
+                    --if (cnt2dn = 8) then cnt2dn <= 0;
+                        --if G2 /= "00" then g2i <= G2 - "1";                                 
+                        --end if;
+                    --else cnt2dn <= cnt2dn + 1;                                    
+                    --end if;                                
+                --else cnt2dn <= 0;
                 end if;
 
                 ------------------------- done with gain control dealing --------------------------------
