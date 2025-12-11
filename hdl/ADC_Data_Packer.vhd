@@ -105,8 +105,8 @@ begin
                         end if;
                         
                     when 2 =>
-                        ACC_chan0 <= ACC_chan0 + CHAN0;
-                        ACC_chan4 <= ACC_chan4 + CHAN4;
+                        ACC_chan0 <= ACC_chan0 + CHAN0(17)&"0000"&CHAN0(16 downto 0);
+                        ACC_chan4 <= ACC_chan4 + CHAN4(17)&"0000"&CHAN4(16 downto 0);
                         n_point_samples <= n_point_samples + x"0001";
                         state <= 3;
                     when 3 => 
