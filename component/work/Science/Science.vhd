@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Mon Nov 03 20:45:21 2025
+-- Created by SmartDesign Sat Dec 13 16:12:36 2025
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -103,8 +103,8 @@ component ADC_READ
         ACLK         : out std_logic;
         ACS          : out std_logic;
         ACST         : out std_logic;
-        DATA_c0      : out std_logic_vector(17 downto 0);
         DATA_c4      : out std_logic_vector(17 downto 0);
+        DATA_c5      : out std_logic_vector(17 downto 0);
         exp_new_data : out std_logic
         );
 end component;
@@ -191,8 +191,8 @@ signal ACS_net_0                  : std_logic;
 signal ACST_net_0                 : std_logic;
 signal ADC_Data_Packer_0_G1       : std_logic_vector(1 downto 0);
 signal ADC_Data_Packer_0_G2       : std_logic_vector(1 downto 0);
-signal ADC_READ_0_DATA_c0         : std_logic_vector(17 downto 0);
 signal ADC_READ_0_DATA_c4         : std_logic_vector(17 downto 0);
+signal ADC_READ_0_DATA_c5         : std_logic_vector(17 downto 0);
 signal ADC_READ_0_exp_new_data    : std_logic;
 signal ARST_net_0                 : std_logic;
 signal L1WR_net_0                 : std_logic;
@@ -295,17 +295,17 @@ ADC_Data_Packer_0 : ADC_Data_Packer
         SW_EN             => SWEEP_ROMEO_0_SWEEP_ACTIVE,
         CB_EN             => Bias_enabled,
         STEP_END          => SWEEP_ROMEO_0_STEP_END,
-        CHAN0             => ADC_READ_0_DATA_c0,
-        CHAN4             => ADC_READ_0_DATA_c4,
         exp_new_data      => ADC_READ_0_exp_new_data,
+        CHAN0             => ADC_READ_0_DATA_c4,
+        CHAN4             => ADC_READ_0_DATA_c5,
         N_SAMPLES_POINT   => Sweep_samples_per_point,
         N_POINT_STEP      => Sweep_points_per_step,
         N_SKIPPED_SAMPLES => Sweep_skipped_samples,
         -- Outputs
+        new_SC_packet     => new_SC_packet_net_0,
         G1                => ADC_Data_Packer_0_G1,
         G2                => ADC_Data_Packer_0_G2,
-        SC_packet         => SC_packet_net_0,
-        new_SC_packet     => new_SC_packet_net_0 
+        SC_packet         => SC_packet_net_0 
         );
 -- ADC_READ_0
 ADC_READ_0 : ADC_READ
@@ -321,9 +321,9 @@ ADC_READ_0 : ADC_READ
         ACS          => ACS_net_0,
         ACLK         => ACLK_net_0,
         ACST         => ACST_net_0,
-        exp_new_data => ADC_READ_0_exp_new_data,
-        DATA_c0      => ADC_READ_0_DATA_c0,
-        DATA_c4      => ADC_READ_0_DATA_c4 
+        DATA_c4      => ADC_READ_0_DATA_c4,
+        DATA_c5      => ADC_READ_0_DATA_c5,
+        exp_new_data => ADC_READ_0_exp_new_data 
         );
 -- ADC_RESET_0
 ADC_RESET_0 : ADC_RESET

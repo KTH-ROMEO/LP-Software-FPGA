@@ -1,4 +1,4 @@
-open_project -project {C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer\impl1\Toplevel_fp\Toplevel.pro}
+open_project -project {C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\designer\impl1\Toplevel_fp\Toplevel.pro}
 set_programming_action -action {PROGRAM}
 run_selected_actions
 save_project

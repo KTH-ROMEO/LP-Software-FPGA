@@ -173,7 +173,7 @@ end DEF_ARCH;
 -- GEN_BHV_VERILOG_VAL:F
 -- MGNTIMER:F
 -- MGNCMPL:T
--- DESDIR:C:/Users/Jesus/Documents/KTH/ROMEO/test_vhdl/Master-Thesis-Code-FPGA/smartgen\SweepTable
+-- DESDIR:C:/Users/Jesus/Documents/KTH/ROMEO/Repositories/LP-Software-FPGA/smartgen\SweepTable
 -- GEN_BEHV_MODULE:F
 -- SMARTGEN_DIE:IS4X4M1
 -- SMARTGEN_PACKAGE:vq100

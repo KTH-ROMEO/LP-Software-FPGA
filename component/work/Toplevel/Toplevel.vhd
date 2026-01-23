@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Fri Nov 07 16:24:20 2025
+-- Created by SmartDesign Thu Dec 11 16:10:19 2025
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -782,26 +782,22 @@ General_Controller_0 : General_Controller
         clk_4Hz                       => Timing_0_s_clks22to22(22),
         clk_256Hz                     => Timing_0_s_clks16to16(16),
         reset                         => CLKINT_1_Y,
-        uc_recv                       => Communications_0_uc_recv,
         uc_tx_rdy                     => Communications_0_uc_tx_rdy,
         uc_rx_rdy                     => Communications_0_uc_rx_rdy,
+        sc_bias_new                   => Science_0_new_SC_packet,
+        uc_recv                       => Communications_0_uc_recv,
         st_rdata0                     => SweepTable_0_RD,
         st_rdata1                     => SweepTable_1_RD,
         acc_packet                    => Data_Hub_Packets_0_acc_packet_1,
         mag_packet                    => Data_Hub_Packets_0_mag_packet_1,
         gyro_packet                   => Data_Hub_Packets_0_gyro_packet_0,
         pressure_packet               => Data_Hub_Packets_0_pressure_packet_0,
-        sc_bias_new                   => Science_0_new_SC_packet,
         sc_bias_data                  => Science_0_SC_packet,
         -- Outputs
-        st_wdata                      => General_Controller_0_st_wdata,
-        st_waddr                      => General_Controller_0_st_waddr,
-        st_raddr                      => General_Controller_0_st_raddr_1,
         st_wen0                       => General_Controller_0_st_wen0,
         st_wen1                       => General_Controller_0_st_wen1,
         st_ren0                       => General_Controller_0_st_ren0,
         st_ren1                       => General_Controller_0_st_ren1,
-        uc_send                       => General_Controller_0_uc_send,
         uc_wen                        => General_Controller_0_uc_wen,
         uc_oen                        => General_Controller_0_uc_oen,
         en_sensors                    => General_Controller_0_en_sensors,
@@ -809,10 +805,14 @@ General_Controller_0 : General_Controller
         led1                          => LED1_0,
         led2                          => LED2_net_0,
         exp_adc_reset                 => General_Controller_0_exp_adc_reset,
-        C_bias_V0                     => General_Controller_0_C_bias_V0,
-        C_bias_V1                     => General_Controller_0_C_bias_V1,
         Bias_enabled                  => General_Controller_0_Bias_enabled,
         Sweep_enabled                 => General_Controller_0_Sweep_enabled,
+        st_wdata                      => General_Controller_0_st_wdata,
+        st_waddr                      => General_Controller_0_st_waddr,
+        st_raddr                      => General_Controller_0_st_raddr_1,
+        uc_send                       => General_Controller_0_uc_send,
+        C_bias_V0                     => General_Controller_0_C_bias_V0,
+        C_bias_V1                     => General_Controller_0_C_bias_V1,
         sweep_table_nof_steps         => General_Controller_0_sweep_table_nof_steps,
         sweep_table_samples_per_step  => General_Controller_0_sweep_table_samples_per_step,
         sweep_table_samples_per_point => General_Controller_0_sweep_table_samples_per_point,

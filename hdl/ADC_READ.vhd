@@ -27,12 +27,12 @@ entity ADC_READ is
         ACLK        : out std_logic;
         ACST        : out std_logic;
 
-        DATA_c0                : OUT std_logic_vector(17 downto 0);
+        --DATA_c0                : OUT std_logic_vector(17 downto 0);
         --DATA_c1                : OUT std_logic_vector(17 downto 0);
         --DATA_c2                : OUT std_logic_vector(17 downto 0);
         --DATA_c3                : OUT std_logic_vector(17 downto 0);
         DATA_c4                : OUT std_logic_vector(17 downto 0);
-        --DATA_c5                : OUT std_logic_vector(17 downto 0);
+        DATA_c5                : OUT std_logic_vector(17 downto 0);
         --DATA_c6                : OUT std_logic_vector(17 downto 0);
         --DATA_c7                : OUT std_logic_vector(17 downto 0);
         
@@ -72,7 +72,7 @@ begin
            cnt_chan <= "00";
            chan <= "00";
            end_point_step <='0';
-           DATA_c0 <= (others => '0');
+           DATA_c5 <= (others => '0');
            DATA_c4 <= (others => '0');
            exp_new_data <= '0';
 
@@ -131,7 +131,10 @@ begin
                     if cnt=x"12" then 
                         cnt <= x"00";
                         case cnt_chan is 
-                            when "00" => DATA_c0 <= data_a; DATA_c4 <= data_b; exp_new_data <='1';  --exp_new_data updated here to save time if only chan0 and chan4 (cnt_chan=00) require to be read
+                            --when "00" => DATA_c0 <= data_a; DATA_c4 <= data_b; 
+                            --exp_new_data <='1';  --exp_new_data updated here to save time if only chan0 and chan4 (cnt_chan=00) require to be read
+                            when "00" => DATA_c4 <= data_b;
+                            when "01" => DATA_c5 <= data_b;
                             --when "01" => DATA_c1 <= data_a; DATA_c5 <= data_b;
                             --when "10" => DATA_c2 <= data_a; DATA_c6 <= data_b;
                             --when "11" => DATA_c3 <= data_a; DATA_c7 <= data_b;
@@ -140,8 +143,8 @@ begin
                         data_a <= (others => '0'); 
                         data_b <= (others => '0');
                         
-                        if cnt_chan = "11" then  -- Reading all 4 (8) channels
-                            --exp_new_data <='1'; (moved to previous case statement to save time)
+                        if cnt_chan = "01" then  -- Reading all 4 (8) channels (NOW only reads the first two channels)
+                            exp_new_data <='1'; --(moved to previous case statement to save time)
                             cnt_chan <= "00";
                             state <= "00000001"; 
                         else 

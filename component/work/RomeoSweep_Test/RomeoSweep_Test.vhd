@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Thu Oct 30 20:47:20 2025
+-- Created by SmartDesign Tue Dec 16 11:17:31 2025
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -76,8 +76,8 @@ component ADC_READ
         ACLK         : out std_logic;
         ACS          : out std_logic;
         ACST         : out std_logic;
-        DATA_c0      : out std_logic_vector(17 downto 0);
         DATA_c4      : out std_logic_vector(17 downto 0);
+        DATA_c5      : out std_logic_vector(17 downto 0);
         exp_new_data : out std_logic
         );
 end component;
@@ -169,11 +169,11 @@ end component;
 signal ADC_CLK_net_0            : std_logic;
 signal ADC_CS_net_0             : std_logic;
 signal ADC_CST_net_0            : std_logic;
+signal ADC_READ_0_DATA_c4       : std_logic_vector(17 downto 0);
+signal ADC_READ_0_DATA_c5       : std_logic_vector(17 downto 0);
 signal CLK_GEN_0_CLK            : std_logic;
 signal CLK_GEN_1_CLK            : std_logic;
 signal DAC2                     : std_logic_vector(15 downto 0);
-signal DATA_c0                  : std_logic_vector(17 downto 0);
-signal DATA_c4                  : std_logic_vector(17 downto 0);
 signal exp_new_data             : std_logic;
 signal G1_net_0                 : std_logic_vector(1 downto 0);
 signal G2_net_0                 : std_logic_vector(1 downto 0);
@@ -205,11 +205,11 @@ signal SC_packet_net_1          : std_logic_vector(63 downto 0);
 ----------------------------------------------------------------------
 -- TiedOff Signals
 ----------------------------------------------------------------------
-signal VCC_net                  : std_logic;
+signal GND_net                  : std_logic;
 signal N_SAMPLES_POINT_const_net_0: std_logic_vector(15 downto 0);
 signal N_POINT_STEP_const_net_0 : std_logic_vector(15 downto 0);
 signal N_SKIPPED_SAMPLES_const_net_0: std_logic_vector(15 downto 0);
-signal GND_net                  : std_logic;
+signal VCC_net                  : std_logic;
 signal N_STEPS_const_net_0      : std_logic_vector(7 downto 0);
 signal N_SAMPLES_const_net_0    : std_logic_vector(15 downto 0);
 signal CBIASV0_const_net_0      : std_logic_vector(15 downto 0);
@@ -218,24 +218,32 @@ signal WD_const_net_0           : std_logic_vector(15 downto 0);
 signal WADDR_const_net_0        : std_logic_vector(7 downto 0);
 signal WD_const_net_1           : std_logic_vector(15 downto 0);
 signal WADDR_const_net_1        : std_logic_vector(7 downto 0);
+----------------------------------------------------------------------
+-- Inverted Signals
+----------------------------------------------------------------------
+signal SW_END_OUT_PRE_INV0_0    : std_logic;
 
 begin
 ----------------------------------------------------------------------
 -- Constant assignments
 ----------------------------------------------------------------------
- VCC_net                       <= '1';
- N_SAMPLES_POINT_const_net_0   <= B"0000000000010000";
- N_POINT_STEP_const_net_0      <= B"0000000000000010";
- N_SKIPPED_SAMPLES_const_net_0 <= B"0000000000000000";
  GND_net                       <= '0';
- N_STEPS_const_net_0           <= B"00000100";
- N_SAMPLES_const_net_0         <= B"0000000000001111";
+ N_SAMPLES_POINT_const_net_0   <= B"0000000000000001";
+ N_POINT_STEP_const_net_0      <= B"0000000000000001";
+ N_SKIPPED_SAMPLES_const_net_0 <= B"0000000000000011";
+ VCC_net                       <= '1';
+ N_STEPS_const_net_0           <= B"11111111";
+ N_SAMPLES_const_net_0         <= B"0000000000001010";
  CBIASV0_const_net_0           <= B"0000000010101010";
  CBIASV1_const_net_0           <= B"0000000000001010";
  WD_const_net_0                <= B"0000000000000000";
  WADDR_const_net_0             <= B"00000000";
  WD_const_net_1                <= B"0000000000000000";
  WADDR_const_net_1             <= B"00000000";
+----------------------------------------------------------------------
+-- Inversions
+----------------------------------------------------------------------
+ SWEEP_SPIDER2_0_SW_END <= NOT SW_END_OUT_PRE_INV0_0;
 ----------------------------------------------------------------------
 -- Top level output port assignments
 ----------------------------------------------------------------------
@@ -271,11 +279,11 @@ ADC_Data_Packer_0 : ADC_Data_Packer
         CLK               => CLK_GEN_0_CLK,
         RESET             => RESET_GEN_0_RESET,
         SW_EN             => SWEEP_SPIDER2_0_SW_END,
-        CB_EN             => VCC_net,
+        CB_EN             => GND_net,
         STEP_END          => SWEEP_SPIDER2_0_STEP_END,
         exp_new_data      => exp_new_data,
-        CHAN0             => DATA_c0,
-        CHAN4             => DATA_c4,
+        CHAN0             => ADC_READ_0_DATA_c4,
+        CHAN4             => ADC_READ_0_DATA_c5,
         N_SAMPLES_POINT   => N_SAMPLES_POINT_const_net_0,
         N_POINT_STEP      => N_POINT_STEP_const_net_0,
         N_SKIPPED_SAMPLES => N_SKIPPED_SAMPLES_const_net_0,
@@ -300,8 +308,8 @@ ADC_READ_0 : ADC_READ
         ACLK         => ADC_CLK_net_0,
         ACST         => ADC_CST_net_0,
         exp_new_data => exp_new_data,
-        DATA_c0      => DATA_c0,
-        DATA_c4      => DATA_c4 
+        DATA_c4      => ADC_READ_0_DATA_c4,
+        DATA_c5      => ADC_READ_0_DATA_c5 
         );
 -- CLK_GEN_0   -   Actel:Simulation:CLK_GEN:1.0.1
 CLK_GEN_0 : CLK_GEN
@@ -355,7 +363,7 @@ SWEEP_SPIDER2_0 : SWEEP_SPIDER2
         CLK       => CLK_GEN_0_CLK,
         CLK_SLOW  => CLK_GEN_1_CLK,
         SW_ENABLE => SWEEP_SPIDER2_0_SW_END,
-        CB_ENABLE => VCC_net,
+        CB_ENABLE => GND_net,
         RD0       => SweepTable_0_RD,
         RD1       => SweepTable_1_RD,
         N_STEPS   => N_STEPS_const_net_0,
@@ -366,7 +374,7 @@ SWEEP_SPIDER2_0 : SWEEP_SPIDER2
         REN       => SWEEP_SPIDER2_0_REN,
         SET       => SET_net_0,
         STEP_END  => SWEEP_SPIDER2_0_STEP_END,
-        SW_END    => SWEEP_SPIDER2_0_SW_END,
+        SW_END    => SW_END_OUT_PRE_INV0_0,
         RADDR     => SWEEP_SPIDER2_0_RADDR,
         DAC1      => SWEEP_SPIDER2_0_DAC1,
         DAC2      => DAC2 

@@ -769,6 +769,8 @@ begin
                         when "00001" =>  
                             constant_bias_mode <= '1';
                             Bias_enabled <= '1';
+                            C_bias_V0 <= constant_bias_voltage_0;
+                            C_bias_V1 <= constant_bias_voltage_1;
 
                         -- Disable Constant Bias Mode
                         when "00010" => 

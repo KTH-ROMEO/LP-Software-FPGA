@@ -36,8 +36,9 @@ port (
     N_POINT_STEP: IN std_logic_vector(15 downto 0);
     N_SKIPPED_SAMPLES: IN std_logic_vector(15 downto 0);   
     --DEBUG:
-    --Skipped   : OUT std_logic_vector(15 downto 0);
+    --skipped   : OUT std_logic_vector(15 downto 0);
     --Point_samples   : OUT std_logic_vector(15 downto 0);
+    --DSTATE           :out std_logic_vector(2 downto 0);
     --
     G1          : OUT  std_logic_vector(1 downto 0);
     G2          : OUT  std_logic_vector(1 downto 0);
@@ -87,6 +88,9 @@ begin
 
         ---------------------------------------------------------------
         elsif rising_edge(CLK) then
+            --Point_samples <=n_point_samples;--DEBUG
+            --skipped <= n_skipped;--Debug
+            --DSTATE <= std_logic_vector(to_unsigned(state, DSTATE'length));
             if SW_EN ='1' or CB_EN='1' then             
                 case state is
                     when 0 => -- idle
@@ -105,8 +109,8 @@ begin
                         end if;
                         
                     when 2 =>
-                        ACC_chan0 <= ACC_chan0 + CHAN0(17)&"0000"&CHAN0(16 downto 0);
-                        ACC_chan4 <= ACC_chan4 + CHAN4(17)&"0000"&CHAN4(16 downto 0);
+                        ACC_chan0 <= std_logic_vector(signed(ACC_chan0) + resize(signed(CHAN0), ACC_chan0'length));
+                        ACC_chan4 <= std_logic_vector(signed(ACC_chan4) + resize(signed(CHAN4), ACC_chan4'length));
                         n_point_samples <= n_point_samples + x"0001";
                         state <= 3;
                     when 3 => 
@@ -129,7 +133,7 @@ begin
                         G1 <= g1i;
                         G2 <= g2i;
                         -----------------------------------
-                        if n_points = N_POINT_STEP then
+                        if n_points = N_POINT_STEP or CB_EN='1'then
                             n_points <= x"0000";
                             state <= 5;
                         else
@@ -137,7 +141,6 @@ begin
                         end if;
                         new_SC_packet <='0';
                     when 5 =>
-
                         if STEP_END = '1' or CB_EN='1' then
                             -- Gain update at the end of the step
                             G1 <= g1i;
@@ -179,6 +182,8 @@ begin
         ---------------------------------------------------------------
         elsif rising_edge(CLK) then -- Gain control and packet assembly, condition met once each channel is read (4 times every sample)
             if exp_new_data = '1' then 
+                g1i <= "10";     -- these are the gain settings for the gain of the AD8253
+                g2i <= "10";     -- "00" is 1, "01" is 10, "10" is 100 and "11" is 1000
                 
                 --  GAIN CONTROL FOR CHANNEL 0
                 --if (CHAN0(17 downto 12) = "00" & x"7") or (CHAN0(17 downto 12) = "00" & x"8") then

@@ -1,5 +1,5 @@
 quietly set ACTELLIBNAME ProASIC3
-quietly set PROJECT_DIR "C:/Users/Utente/Desktop/ROMEO_FPGA/LP-Software-FPGA"
+quietly set PROJECT_DIR "C:/Users/Jesus/Documents/KTH/ROMEO/Repositories/LP-Software-FPGA"
 
 if {[file exists presynth/_info]} {
    echo "INFO: Simulation library presynth already exists"
