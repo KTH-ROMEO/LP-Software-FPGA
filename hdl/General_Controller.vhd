@@ -51,7 +51,6 @@ port (
     exp_adc_reset : OUT std_logic;
     
 
-    --TODO
     C_bias_V0 : OUT std_logic_vector(15 downto 0); 
     C_bias_V1 : OUT std_logic_vector(15 downto 0);
     
@@ -87,7 +86,7 @@ architecture architecture_General_Controller of General_Controller is
     );
 
     type payload_array_type is array (0 to 3) of std_logic_vector(7 downto 0); 
-    type rx_context_type    is (CTX_PREAMBLE, CTX_PAYLOAD, CTX_POSTAMBLE); -- Context for wait state in RX FSM
+    type rx_context_type    is (CTX_PREAMBLE, CTX_COMMAND, CTX_PAYLOAD, CTX_POSTAMBLE); -- Context for wait state in RX FSM
     type byte_array_type    is array(0 to 11) of std_logic_vector(7 downto 0); 
     subtype sec_t           is natural range 0 to 255;
 
@@ -691,6 +690,8 @@ begin
                         case rx_context is
                             when CTX_PREAMBLE =>
                                 uc_rx_state <= RX_PROCESS_PREAMBLE;
+                            when CTX_COMMAND =>
+                                uc_rx_state <= RX_COMMAND;
                             when CTX_PAYLOAD =>
                                 uc_rx_state <= RX_PAYLOAD;
                             when CTX_POSTAMBLE =>
@@ -710,23 +711,17 @@ begin
 
                         when 1 =>
                             if received_byte = PREAMBLE_2 then
-                                preamble_counter <= 2;
-                            else
-                                preamble_counter <= 0;
+                                rx_context <= CTX_COMMAND;                                
                             end if;
-                            uc_rx_state <= RX_IDLE;  
-
-                        when 2 =>
-                            command_byte <= received_byte;  
                             preamble_counter <= 0;
-                            uc_rx_state <= RX_COMMAND;
+                            uc_rx_state <= RX_IDLE;  
                     end case;
 
                 when RX_COMMAND =>
-                    current_command <= command_byte(7 downto 3);
-                    expected_payload_length <= to_integer(unsigned(command_byte(2 downto 0)));
+                    current_command <= received_byte(7 downto 3);
+                    expected_payload_length <= to_integer(unsigned(received_byte(2 downto 0)));
 
-                    if (command_byte(2 downto 0)) = "000" then
+                    if (received_byte(2 downto 0)) = "000" then
                         rx_context <= CTX_POSTAMBLE;  
                     else
                         payload_index <= 0;

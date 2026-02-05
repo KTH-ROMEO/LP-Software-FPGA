@@ -9,15 +9,14 @@ Opened an existing Libero design Toplevel.adb.
 'IDE_DESIGNERVIEW_COUNT' set to '1'
 'IDE_DESIGNERVIEW_REV0' set to 'Impl1'
 'IDE_DESIGNERVIEW_REVNUM0' set to '1'
-'IDE_DESIGNERVIEW_ROOTDIR' set to
-'C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\designer'
+'IDE_DESIGNERVIEW_ROOTDIR' set to 'C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer'
 'IDE_DESIGNERVIEW_LASTREV' set to '1'
 
  Netlist Reading Time = 0.0 seconds
 Imported the file:
-   C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\synthesis\Toplevel.edn
+   C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\synthesis\Toplevel.edn
 
-The Import command succeeded ( 00:00:03 )
+The Import command succeeded ( 00:00:04 )
 =====================================================================
 Parameters used to run compile:
 ===============================
@@ -25,8 +24,7 @@ Parameters used to run compile:
 Family      : ProASIC3
 Device      : A3P250
 Package     : 100 VQFP
-Source      :
-C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\synthesis\Toplevel.edn
+Source      : C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\synthesis\Toplevel.edn
 Format      : EDIF
 Topcell     : Toplevel
 Speed grade : STD
@@ -136,9 +134,9 @@ Optimized macros:
   - Buffers:                0
   - Inverters:              3
   - Tieoff:                 35
-  - Logic combining:        187
+  - Logic combining:        190
 
-    Total macros optimized  226
+    Total macros optimized  229
 
 Warning: CMP503: Remapped 8 enable flip-flop(s) to a 2-tile implementation because the CLR/PRE
          pin on the enable flip-flop is not being driven by a global net.
@@ -155,7 +153,7 @@ There were 0 error(s) and 0 warning(s).
 Compile report:
 ===============
 
-    CORE                       Used:   4674  Total:   6144   (76.07%)
+    CORE                       Used:   4696  Total:   6144   (76.43%)
     IO (W/ clocks)             Used:     46  Total:     68   (67.65%)
     Differential IO            Used:      0  Total:     13   (0.00%)
     GLOBAL (Chip+Quadrant)     Used:      6  Total:     18   (33.33%)
@@ -180,8 +178,8 @@ Core Information:
 
     Type    | Instances    | Core tiles
     --------|--------------|-----------
-    COMB    | 3326         | 3326
-    SEQ     | 1348         | 1348
+    COMB    | 3359         | 3359
+    SEQ     | 1337         | 1337
 
 I/O Function:
 
@@ -219,20 +217,20 @@ The following nets drive enable flip-flops that have been remapped to a 2-tile i
 The following nets have been assigned to a chip global resource:
     Fanout  Type          Name
     --------------------------
-    1203    CLK_NET       Net   : CLKINT_0_Y_0
+    1193    CLK_NET       Net   : CLKINT_0_Y_0
                           Driver: CLKINT_0
                           Source: NETLIST
-    1140    SET/RESET_NET Net   : CLKINT_1_Y
+    1124    SET/RESET_NET Net   : CLKINT_1_Y
                           Driver: CLKINT_1
                           Source: NETLIST
-    86      CLK_NET       Net   : ClockDivs_0_clk_800kHz
+    85      CLK_NET       Net   : ClockDivs_0_clk_800kHz
                           Driver: ClockDivs_0/clk_800kHz_RNIT3EB
                           Source: NETLIST
     74      INT_NET       Net   : General_Controller_0/start_tx_0_sqmuxa
-                          Driver: General_Controller_0/swt_value_tx_flag_RNIVN315_1
+                          Driver: General_Controller_0/swt_value_tx_flag_RNIGMON4_1
                           Source: NETLIST
-    69      INT_NET       Net   : Science_0/N_268
-                          Driver: Science_0/SWEEP_ROMEO_0/SW_active_RNI5T58_1
+    64      INT_NET       Net   : General_Controller_0/sc_bias_data_tx_flag
+                          Driver: General_Controller_0/sc_bias_data_tx_flag_RNIFCE2
                           Source: NETLIST
     55      CLK_NET       Net   : CLKINT_2_Y
                           Driver: CLKINT_2
@@ -241,56 +239,60 @@ The following nets have been assigned to a chip global resource:
 High fanout nets in the post compile netlist:
     Fanout  Type          Name
     --------------------------
+    24      INT_NET       Net   : ACCE_SCL_c
+                          Driver: Sensors_0/Accelerometer_0/I2C_Master_0/scl
     24      INT_NET       Net   : General_Controller_0/st_waddr_1_sqmuxa
                           Driver: General_Controller_0/uc_rx_state_RNIA6K11[0]
-    24      INT_NET       Net   : General_Controller_0/acc_period_code_1_sqmuxa
-                          Driver: General_Controller_0/current_command_RNI0FJ31_0[0]
     24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P_0
                           Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P_0
     24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P
                           Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P
+    24      INT_NET       Net   : Science_0/N_155_1
+                          Driver: Science_0/SWEEP_ROMEO_0/SW_active_RNIKES4
+    24      INT_NET       Net   :
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[3]
+                          Driver:
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[3]
     24      INT_NET       Net   :
 Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[0]
                           Driver:
 Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[0]
-    23      INT_NET       Net   : General_Controller_0/gyro_period_code_1_sqmuxa
-                          Driver: General_Controller_0/payload_buffer_0_RNIGRK31_0[0]
-    23      INT_NET       Net   : General_Controller_0/pres_period_code_1_sqmuxa
-                          Driver: General_Controller_0/payload_buffer_0_RNIGRK31[2]
-    23      INT_NET       Net   : General_Controller_0/mag_period_code_1_sqmuxa
-                          Driver: General_Controller_0/payload_buffer_0_RNIGRK31[0]
-    23      INT_NET       Net   : Science_0/ADC_Data_Packer_0/N_596_0
-                          Driver: Science_0/ADC_Data_Packer_0/state_RNIRT78[3]
-    23      INT_NET       Net   : Sensors_0/Gyro_0/state[8]
-                          Driver: Sensors_0/Gyro_0/I2C_Master_0/state[8]
+    23      INT_NET       Net   : GYRO_SCL_c
+                          Driver: Sensors_0/Gyro_0/I2C_Master_0/scl
+    23      INT_NET       Net   : General_Controller_0_Bias_enabled_0
+                          Driver: General_Controller_0/Bias_enabled_0
+    23      INT_NET       Net   : General_Controller_0/acc_period_code_1_sqmuxa
+                          Driver: General_Controller_0/uc_rx_state_1_RNI0D9B1_1[0]
 
 Nets that are candidates for clock assignment and the resulting fanout:
     Fanout  Type          Name
     --------------------------
+    24      INT_NET       Net   : ACCE_SCL_c
+                          Driver: Sensors_0/Accelerometer_0/I2C_Master_0/scl
     24      INT_NET       Net   : General_Controller_0/st_waddr_1_sqmuxa
                           Driver: General_Controller_0/uc_rx_state_RNIA6K11[0]
-    24      INT_NET       Net   : General_Controller_0/acc_period_code_1_sqmuxa
-                          Driver: General_Controller_0/current_command_RNI0FJ31_0[0]
     24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P_0
                           Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P_0
     24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P
                           Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P
+    24      INT_NET       Net   : Science_0/N_155_1
+                          Driver: Science_0/SWEEP_ROMEO_0/SW_active_RNIKES4
+    24      INT_NET       Net   :
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[3]
+                          Driver:
+Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[3]
     24      INT_NET       Net   :
 Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[0]
                           Driver:
 Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[0]
-    23      INT_NET       Net   : General_Controller_0/gyro_period_code_1_sqmuxa
-                          Driver: General_Controller_0/payload_buffer_0_RNIGRK31_0[0]
-    23      INT_NET       Net   : General_Controller_0/pres_period_code_1_sqmuxa
-                          Driver: General_Controller_0/payload_buffer_0_RNIGRK31[2]
-    23      INT_NET       Net   : General_Controller_0/mag_period_code_1_sqmuxa
-                          Driver: General_Controller_0/payload_buffer_0_RNIGRK31[0]
-    23      INT_NET       Net   : Science_0/ADC_Data_Packer_0/N_596_0
-                          Driver: Science_0/ADC_Data_Packer_0/state_RNIRT78[3]
-    23      INT_NET       Net   : Sensors_0/Gyro_0/state[8]
-                          Driver: Sensors_0/Gyro_0/I2C_Master_0/state[8]
+    23      INT_NET       Net   : GYRO_SCL_c
+                          Driver: Sensors_0/Gyro_0/I2C_Master_0/scl
+    23      INT_NET       Net   : General_Controller_0_Bias_enabled_0
+                          Driver: General_Controller_0/Bias_enabled_0
+    23      INT_NET       Net   : General_Controller_0/acc_period_code_1_sqmuxa
+                          Driver: General_Controller_0/uc_rx_state_1_RNI0D9B1_1[0]
 
-The Compile command succeeded ( 00:00:02 )
+The Compile command succeeded ( 00:00:03 )
 Wrote status report to file: Toplevel_compile_report.txt
 
 The Report command succeeded ( 00:00:00 )
@@ -301,8 +303,8 @@ Wrote pin report to file: Toplevel_report_pin_bynumber.txt
 
 The Report command succeeded ( 00:00:01 )
 Design saved to file
-C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\designer\impl1\Toplevel.adb.
+C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer\impl1\Toplevel.adb.
 
-The Execute Script command succeeded ( 00:00:09 )
+The Execute Script command succeeded ( 00:00:11 )
 Design closed.
 
