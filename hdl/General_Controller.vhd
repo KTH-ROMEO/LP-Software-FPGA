@@ -541,7 +541,7 @@ begin
 
 
 
-            -- edge detect on clocks and tick calculation
+            -- edge detection on clocks and tick calculation
             old_clk_1Hz   <= clk_1Hz;
             old_clk_4Hz   <= clk_4Hz;
             old_clk_256Hz <= clk_256Hz;
@@ -810,8 +810,8 @@ begin
                         when "00100" =>
                             constant_bias_probe_id <= payload_buffer(0);
                             case payload_buffer(0) is
-                                when x"00" => constant_bias_voltage_tx <= constant_bias_voltage_0;
-                                when x"01" => constant_bias_voltage_tx <= constant_bias_voltage_1;
+                                when x"01" => constant_bias_voltage_tx <= constant_bias_voltage_0;
+                                when x"02" => constant_bias_voltage_tx <= constant_bias_voltage_1;
                                 when others =>
                             end case;
                             const_volt_send_req <= '1';
@@ -859,10 +859,10 @@ begin
                                     st_wen1  <= '0';
 
                                     case payload_buffer(0) is
-                                        when x"00" =>
+                                        when x"01" =>
                                             st_ren0 <= '1';
                                             st_ren1 <= '0';
-                                        when x"01" =>
+                                        when x"02" =>
                                             st_ren0 <= '0';
                                             st_ren1 <= '1';
                                         when others =>
@@ -881,9 +881,9 @@ begin
                                     end if;   
 
                                 when 2 =>
-                                    if payload_buffer(0) = x"00" then
+                                    if payload_buffer(0) = x"01" then
                                         sweep_table_read_value <= st_rdata0;
-                                    elsif payload_buffer(0) = x"01" then
+                                    elsif payload_buffer(0) = x"02" then
                                         sweep_table_read_value <= st_rdata1;
                                     end if;
 
@@ -963,10 +963,10 @@ begin
                             constant_bias_probe_id <= payload_buffer(0);
 
                             case payload_buffer(0) is
-                                when x"00" =>
+                                when x"01" =>
                                     constant_bias_voltage_0(15 downto 8) <= payload_buffer(1);
                                     constant_bias_voltage_0(7 downto 0)  <= payload_buffer(2);
-                                when x"01" =>
+                                when x"02" =>
                                     constant_bias_voltage_1(15 downto 8) <= payload_buffer(1);
                                     constant_bias_voltage_1(7 downto 0)  <= payload_buffer(2);
                                 when others =>
@@ -985,10 +985,10 @@ begin
                                     -- payload_buffer(1) -> sweep_table_step_id
 
                                     case payload_buffer(0) is
-                                        when x"00" =>
+                                        when x"01" =>
                                             st_wen0 <= '1';
                                             st_wen1 <= '0';
-                                        when x"01" =>
+                                        when x"02" =>
                                             st_wen0 <= '0';
                                             st_wen1 <= '1';
                                         when others =>
