@@ -1,4 +1,4 @@
-# Fri Mar 06 19:36:01 2026
+# Thu May 07 18:39:34 2026
 
 Synopsys Microsemi Technology Mapper, Version mapact, Build 2172R, Built Oct 30 2017 10:54:39
 Copyright (C) 1994-2017 Synopsys, Inc. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -16,7 +16,7 @@ Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0
 
 
 
-Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 113MB peak: 114MB)
+Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 114MB peak: 114MB)
 
 
 Available hyper_sources - for debug and ip models
@@ -31,13 +31,13 @@ Available hyper_sources - for debug and ip models
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":76:8:76:9|Removing sequential instance clk_4kHz (in view: work.ClockDivs(architecture_clockdivs)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":76:8:76:9|Removing sequential instance clk_1kHz (in view: work.ClockDivs(architecture_clockdivs)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":100:8:100:9|Removing sequential instance clk_50Hz (in view: work.ClockDivs(architecture_clockdivs)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":104:53:104:55|Removing sequential instance General_Controller_0.msg_2send_1[6] because it is equivalent to instance General_Controller_0.msg_2send_0[7]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":104:53:104:55|Removing sequential instance General_Controller_0.msg_2send_0[7] because it is equivalent to instance General_Controller_0.msg_2send_0[4]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":104:53:104:55|Removing sequential instance General_Controller_0.msg_2send_11[3] because it is equivalent to instance General_Controller_0.msg_2send_0[4]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":104:53:104:55|Removing sequential instance General_Controller_0.msg_2send_0[4] because it is equivalent to instance General_Controller_0.msg_2send_0[2]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":104:53:104:55|Removing sequential instance General_Controller_0.msg_2send_11[1] because it is equivalent to instance General_Controller_0.msg_2send_0[2]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":104:53:104:55|Removing sequential instance General_Controller_0.msg_2send_1[0] because it is equivalent to instance General_Controller_0.msg_2send_0[2]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":104:53:104:55|Removing sequential instance General_Controller_0.msg_2send_0[2] because it is equivalent to instance General_Controller_0.msg_2send_0[0]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":243:8:243:9|Removing sequential instance General_Controller_0.macro_meta2_send_req because it is equivalent to instance General_Controller_0.macro_meta1_send_req. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":243:8:243:9|Removing sequential instance General_Controller_0.msg_2send_0[7] because it is equivalent to instance General_Controller_0.msg_2send_1[6]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":243:8:243:9|Removing sequential instance General_Controller_0.msg_2send_1[6] because it is equivalent to instance General_Controller_0.msg_2send_0[2]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":243:8:243:9|Removing sequential instance General_Controller_0.msg_2send_11[3] because it is equivalent to instance General_Controller_0.msg_2send_11[1]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":243:8:243:9|Removing sequential instance General_Controller_0.msg_2send_0[2] because it is equivalent to instance General_Controller_0.msg_2send_0[0]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":243:8:243:9|Removing sequential instance General_Controller_0.msg_2send_1[1:0] because it is equivalent to instance General_Controller_0.msg_2send_0[5:4]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":243:8:243:9|Removing sequential instance General_Controller_0.msg_2send_11[1] because it is equivalent to instance General_Controller_0.msg_2send_0[0]. To keep the instance, apply constraint syn_preserve=1 on the instance.
 @W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":172:8:172:9|Removing sequential instance Science_0.ADC_Data_Packer_0.g2i[1] because it is equivalent to instance Science_0.ADC_Data_Packer_0.g1i[1]. To keep the instance, apply constraint syn_preserve=1 on the instance.
 @W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":75:8:75:9|Removing sequential instance Science_0.ADC_Data_Packer_0.G2[1:0] because it is equivalent to instance Science_0.ADC_Data_Packer_0.G1[1:0]. To keep the instance, apply constraint syn_preserve=1 on the instance.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\l3gd20h_interface.vhd":81:8:81:9|Removing sequential instance gyro_new_data (in view: work.L3GD20H_Interface(architecture_l3gd20h_interface)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
@@ -56,7 +56,7 @@ Available hyper_sources - for debug and ip models
 @A: BN291 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\ms5611_01ba03_interface.vhd":99:8:99:9|Boundary register pressure_raw[23:0] (in view: work.MS5611_01BA03_Interface(architecture_ms5611_01ba03_interface)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timing.vhd":67:4:67:5|Removing sequential instance f_time[6:0] (in view: work.Timing(architecture_timing)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 
-Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 113MB peak: 116MB)
+Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 114MB peak: 116MB)
 
 @N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":69:30:69:43|Found 5-bit incrementor, 'un2_cnt_800khz[4:0]'
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\uart.vhd":132:8:132:9|Found counter in view:work.UART(architecture_uart) instance rx_count[2:0] 
@@ -78,8 +78,9 @@ original code -> new code
 @N: MO225 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\uart.vhd":67:8:67:9|There are no possible illegal states for state machine tx_state[0:3] (in view: work.UART(architecture_uart)); safe FSM implementation is not required.
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\uart.vhd":67:8:67:9|Found counter in view:work.UART(architecture_uart) instance tx_clk_count[8:0] 
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\interrupt_generator.vhd":44:4:44:5|Found counter in view:work.Interrupt_Generator(architecture_interrupt_generator) instance counter[9:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":104:53:104:55|Found counter in view:work.General_Controller(architecture_general_controller) instance tx_byte_index[3:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":104:53:104:55|Found counter in view:work.General_Controller(architecture_general_controller) instance sweep_table_sweep_cnt[15:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":236:42:236:47|Found counter in view:work.General_Controller(architecture_general_controller) instance mac_swt_step[7:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":243:8:243:9|Found counter in view:work.General_Controller(architecture_general_controller) instance tx_byte_index[3:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":243:8:243:9|Found counter in view:work.General_Controller(architecture_general_controller) instance swt_sweep_cnt[15:0] 
 Encoding state machine uc_rx_state[0:7] (in view: work.General_Controller(architecture_general_controller))
 original code -> new code
    00000001 -> 00000001
@@ -95,21 +96,29 @@ original code -> new code
    00 -> 00
    01 -> 01
    10 -> 10
+Encoding state machine mac_swt_substate[0:3] (in view: work.General_Controller(architecture_general_controller))
+original code -> new code
+   00 -> 00
+   01 -> 01
+   10 -> 10
+   11 -> 11
+@N: MO225 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":243:8:243:9|There are no possible illegal states for state machine mac_swt_substate[0:3] (in view: work.General_Controller(architecture_general_controller)); safe FSM implementation is not required.
 Encoding state machine swt_rd_substate[0:2] (in view: work.General_Controller(architecture_general_controller))
 original code -> new code
    00 -> 00
    01 -> 01
    10 -> 10
-Encoding state machine swt_wr_substate[0:1] (in view: work.General_Controller(architecture_general_controller))
+Encoding state machine preamble_counter[0:1] (in view: work.General_Controller(architecture_general_controller))
 original code -> new code
    00 -> 0
    01 -> 1
-@N: MO225 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":104:53:104:55|There are no possible illegal states for state machine swt_wr_substate[0:1] (in view: work.General_Controller(architecture_general_controller)); safe FSM implementation is not required.
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":642:24:642:37|Found 8-bit incrementor, 'un3_pres_period_s[24:32]'
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":600:24:600:36|Found 8-bit incrementor, 'un3_acc_period_s[24:32]'
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":614:24:614:36|Found 8-bit incrementor, 'un3_mag_period_s[24:32]'
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":628:24:628:37|Found 8-bit incrementor, 'un3_gyro_period_s[24:32]'
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":736:23:736:39|Found 3-bit incrementor, 'un7_expected_payload_length[29:32]'
+@N: MO225 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":243:8:243:9|There are no possible illegal states for state machine preamble_counter[0:1] (in view: work.General_Controller(architecture_general_controller)); safe FSM implementation is not required.
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":664:24:664:36|Found 8-bit incrementor, 'un3_acc_period_s[24:32]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":678:24:678:36|Found 8-bit incrementor, 'un3_mag_period_s[24:32]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":692:24:692:37|Found 8-bit incrementor, 'un3_gyro_period_s[24:32]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":706:24:706:37|Found 8-bit incrementor, 'un3_pres_period_s[24:32]'
+@N: MF179 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":741:28:741:69|Found 8 by 8 bit less-than operator ('<') un13_mac_swt_active (in view: work.General_Controller(architecture_general_controller))
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":900:23:900:39|Found 3-bit incrementor, 'un7_expected_payload_length[29:32]'
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":75:8:75:9|Found counter in view:work.ADC_Data_Packer(architecture_adc_data_packer) instance n_point_samples[15:0] 
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":75:8:75:9|Found counter in view:work.ADC_Data_Packer(architecture_adc_data_packer) instance n_skipped[15:0] 
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":75:8:75:9|Found counter in view:work.ADC_Data_Packer(architecture_adc_data_packer) instance point_counter[15:0] 
@@ -279,12 +288,12 @@ original code -> new code
 @N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timing.vhd":76:19:76:29|Found 8-bit incrementor, 'un1_m_count_1[7:0]'
 @W: MO160 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\set_lp_gain.vhd":65:2:65:3|Register bit LA0 (in view view:work.SET_LP_GAIN(behavioral)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
 
-Starting factoring (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 122MB peak: 123MB)
+Starting factoring (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:02s; Memory used current: 125MB peak: 126MB)
 
 @W: BN132 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\dac_set.vhd":56:2:56:3|Removing sequential instance Science_0.DAC_SET_0.DCLK because it is equivalent to instance Science_0.DAC_SET_0.state[0]. To keep the instance, apply constraint syn_preserve=1 on the instance.
 @N: BN115 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\component\work\science\science.vhd":329:0:329:10|Removing instance ADC_RESET_0 (in view: work.Science(rtl)) of type view:work.ADC_RESET(behavioral) because it does not drive other instances.
 
-Finished factoring (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:03s; Memory used current: 140MB peak: 142MB)
+Finished factoring (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 142MB peak: 145MB)
 
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\i2c_master.vhd":68:8:68:9|Removing sequential instance Sensors_0.Pressure_Sensor_0.I2C_Master_0.data_out[0] (in view: work.Toplevel(rtl)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 @A: BN291 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\i2c_master.vhd":68:8:68:9|Boundary register Sensors_0.Pressure_Sensor_0.I2C_Master_0.data_out[0] (in view: work.Toplevel(rtl)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
@@ -317,28 +326,28 @@ Finished factoring (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:03s; M
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\i2c_master.vhd":68:8:68:9|Removing sequential instance Sensors_0.Gyro_0.I2C_Master_0.data_out[7] (in view: work.Toplevel(rtl)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 @A: BN291 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\i2c_master.vhd":68:8:68:9|Boundary register Sensors_0.Gyro_0.I2C_Master_0.data_out[7] (in view: work.Toplevel(rtl)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
 
-Starting gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:03s; Memory used current: 135MB peak: 142MB)
+Starting gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 136MB peak: 145MB)
 
 
-Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:03s; Memory used current: 135MB peak: 142MB)
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 136MB peak: 145MB)
 
 
-Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 139MB peak: 162MB)
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 140MB peak: 169MB)
 
 
-Starting Early Timing Optimization (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:04s; Memory used current: 140MB peak: 162MB)
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 142MB peak: 169MB)
 
 
-Finished Early Timing Optimization (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:05s; Memory used current: 142MB peak: 162MB)
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 144MB peak: 169MB)
 
 
-Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 141MB peak: 162MB)
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:07s; Memory used current: 143MB peak: 169MB)
 
 
-Finished preparing to map (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 141MB peak: 162MB)
+Finished preparing to map (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:07s; Memory used current: 142MB peak: 169MB)
 
 
-Finished technology mapping (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:06s; Memory used current: 190MB peak: 192MB)
+Finished technology mapping (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:08s; Memory used current: 188MB peak: 191MB)
 
 
 High Fanout Net Report
@@ -346,66 +355,83 @@ High Fanout Net Report
 
 Driver Instance / Pin Name                                              Fanout, notes                     
 ----------------------------------------------------------------------------------------------------------
-CLKINT_1 / Y                                                            1110 : 1078 asynchronous set/reset
-General_Controller_0.Bias_enabled / Q                                   42                                
+CLKINT_1 / Y                                                            1151 : 1115 asynchronous set/reset
+General_Controller_0.Bias_enabled / Q                                   43                                
 Data_Saving_0.FPGA_Buffer_0.DFN1C0_WRITE_RESET_P / Q                    42 : 42 asynchronous set/reset    
 Data_Saving_0.FPGA_Buffer_0.DFN1C0_READ_RESET_P / Q                     48 : 48 asynchronous set/reset    
-Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[2] / Q     26                                
+Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[2] / Q     25                                
 Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[3] / Q     25                                
-Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[0] / Q     25                                
 Sensors_0.Accelerometer_0.I2C_Master_0.state[8] / Q                     26                                
 Science_0.ADC_Data_Packer_0.state_4_sqmuxa_i_o3 / Y                     45                                
-Science_0.ADC_Data_Packer_0.n_points_1_sqmuxa_i_o3 / Y                  71                                
-General_Controller_0.sc_bias_data_tx_flag / Q                           63                                
-General_Controller_0.payload_buffer_0[0] / Q                            52                                
-General_Controller_0.uc_rx_state[0] / Q                                 48                                
-General_Controller_0.tx_byte_index[1] / Q                               34                                
-General_Controller_0.tx_byte_index[3] / Q                               34                                
-Sensors_0.Accelerometer_0.I2C_Master_0.scl / Q                          26                                
-General_Controller_0.start_tx_0_sqmuxa / Y                              74                                
-Science_0.SWEEP_ROMEO_0.step_0_sqmuxa_i_0_o3_0_o2 / Y                   26                                
-Science_0.SWEEP_ROMEO_0.sweep_state_ns_i_o2_i_o2_i_o2[0] / Y            56                                
-Science_0.ADC_Data_Packer_0.n_point_sampleslde_0 / Y                    60                                
+Science_0.ADC_Data_Packer_0.n_points_1_sqmuxa_i_o3 / Y                  63                                
+General_Controller_0.uc_rx_state[0] / Q                                 30                                
+General_Controller_0.payload_buffer_0[0] / Q                            64                                
+General_Controller_0.sc_data_tx_flag / Q                                57                                
+General_Controller_0.tx_byte_index[0] / Q                               50                                
+Sensors_0.Accelerometer_0.I2C_Master_0.scl / Q                          29                                
+Sensors_0.Gyro_0.I2C_Master_0.scl / Q                                   26                                
+General_Controller_0.un1_msg_2send_115 / Y                              69                                
+General_Controller_0.un74_uc_tx_state / Y                               64                                
+General_Controller_0.un62_uc_tx_state / Y                               35                                
+General_Controller_0.msg_2send_2_2k_i_a3_0[3] / Y                       27                                
 Science_0.SWEEP_ROMEO_0.dac1_int_1_sqmuxa_1_i_0 / Y                     32                                
-General_Controller_0.un1_swt_swp_cnt_tx_flag_1 / Y                      39                                
+Science_0.SWEEP_ROMEO_0.dac1_int_8_sn_m1 / Y                            64                                
+General_Controller_0.C_bias_V0_0_sqmuxa_0_a2_0_a3 / Y                   32                                
 Science_0.ADC_Data_Packer_0.point_counterlde_0_o3 / Y                   36                                
-General_Controller_0.C_bias_V0_0_sqmuxa / Y                             32                                
+Science_0.ADC_Data_Packer_0.n_point_sampleslde_0 / Y                    60                                
+General_Controller_0.pres_scale_1_sqmuxa_0_a2_0_a3 / Y                  25                                
+General_Controller_0.mac_swt_wait_1_sqmuxa_1 / Y                        32                                
+General_Controller_0.un70_uc_tx_state / Y                               36                                
+General_Controller_0.un66_uc_tx_state / Y                               27                                
+Science_0.SWEEP_ROMEO_0.step_0_sqmuxa_i_0_o3_0_o2 / Y                   26                                
+General_Controller_0.acc_scale_1_sqmuxa_0_a2_0_a3 / Y                   25                                
+General_Controller_0.gyro_scale_1_sqmuxa_0_a2_0_a3 / Y                  25                                
+General_Controller_0.mag_scale_1_sqmuxa_0_a2_1_a3 / Y                   25                                
 ==========================================================================================================
 
 @N: FP130 |Promoting Net ClockDivs_0_clk_800kHz on CLKINT  ClockDivs_0.clk_800kHz_inferred_clock 
-@N: FP130 |Promoting Net General_Controller_0.start_tx_0_sqmuxa on CLKINT  I_124 
-@N: FP130 |Promoting Net Science_0.ADC_Data_Packer_0.N_597 on CLKINT  I_125 
+@N: FP130 |Promoting Net General_Controller_0.un1_msg_2send_115 on CLKINT  I_126 
+@N: FP130 |Promoting Net General_Controller_0.payload_buffer_0[0] on CLKINT  I_127 
 
-Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:07s; Memory used current: 193MB peak: 196MB)
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:09s; CPU Time elapsed 0h:00m:08s; Memory used current: 191MB peak: 193MB)
 
-Replicating Combinational Instance General_Controller_0.C_bias_V0_0_sqmuxa, fanout 32 segments 2
-Replicating Combinational Instance Science_0.ADC_Data_Packer_0.point_counterlde_0_o3, fanout 36 segments 2
-Replicating Combinational Instance General_Controller_0.un1_swt_swp_cnt_tx_flag_1, fanout 39 segments 2
-Replicating Combinational Instance Science_0.SWEEP_ROMEO_0.dac1_int_1_sqmuxa_1_i_0, fanout 32 segments 2
-Replicating Combinational Instance Science_0.ADC_Data_Packer_0.n_point_sampleslde_0, fanout 60 segments 3
-Replicating Combinational Instance Science_0.SWEEP_ROMEO_0.sweep_state_ns_i_o2_i_o2_i_o2[0], fanout 57 segments 3
+Replicating Combinational Instance General_Controller_0.mag_scale_1_sqmuxa_0_a2_1_a3, fanout 25 segments 2
+Replicating Combinational Instance General_Controller_0.gyro_scale_1_sqmuxa_0_a2_0_a3, fanout 25 segments 2
+Replicating Combinational Instance General_Controller_0.acc_scale_1_sqmuxa_0_a2_0_a3, fanout 25 segments 2
 Replicating Combinational Instance Science_0.SWEEP_ROMEO_0.step_0_sqmuxa_i_0_o3_0_o2, fanout 26 segments 2
-Replicating Sequential Instance Sensors_0.Accelerometer_0.I2C_Master_0.scl, fanout 26 segments 2
-Replicating Sequential Instance General_Controller_0.tx_byte_index[3], fanout 34 segments 2
-Replicating Sequential Instance General_Controller_0.tx_byte_index[1], fanout 34 segments 2
-Replicating Sequential Instance General_Controller_0.uc_rx_state[0], fanout 48 segments 2
-Replicating Sequential Instance General_Controller_0.payload_buffer_0[0], fanout 52 segments 3
-Replicating Sequential Instance General_Controller_0.sc_bias_data_tx_flag, fanout 63 segments 3
+Replicating Combinational Instance General_Controller_0.un66_uc_tx_state, fanout 27 segments 2
+Replicating Combinational Instance General_Controller_0.un70_uc_tx_state, fanout 36 segments 2
+Replicating Combinational Instance General_Controller_0.mac_swt_wait_1_sqmuxa_1, fanout 32 segments 2
+Replicating Combinational Instance General_Controller_0.pres_scale_1_sqmuxa_0_a2_0_a3, fanout 25 segments 2
+Replicating Combinational Instance Science_0.ADC_Data_Packer_0.n_point_sampleslde_0, fanout 60 segments 3
+Replicating Combinational Instance Science_0.ADC_Data_Packer_0.point_counterlde_0_o3, fanout 38 segments 2
+Replicating Combinational Instance General_Controller_0.C_bias_V0_0_sqmuxa_0_a2_0_a3, fanout 32 segments 2
+Replicating Combinational Instance Science_0.SWEEP_ROMEO_0.dac1_int_8_sn_m1, fanout 66 segments 3
+Replicating Combinational Instance Science_0.SWEEP_ROMEO_0.dac1_int_1_sqmuxa_1_i_0, fanout 32 segments 2
+Replicating Combinational Instance General_Controller_0.msg_2send_2_2k_i_a3_0[3], fanout 27 segments 2
+Replicating Combinational Instance General_Controller_0.un62_uc_tx_state, fanout 35 segments 2
+Replicating Combinational Instance General_Controller_0.un74_uc_tx_state, fanout 64 segments 3
+Replicating Sequential Instance Sensors_0.Gyro_0.I2C_Master_0.scl, fanout 26 segments 2
+Replicating Sequential Instance Sensors_0.Accelerometer_0.I2C_Master_0.scl, fanout 29 segments 2
+Replicating Sequential Instance General_Controller_0.tx_byte_index[0], fanout 50 segments 3
+Replicating Sequential Instance General_Controller_0.sc_data_tx_flag, fanout 58 segments 3
+Replicating Sequential Instance General_Controller_0.uc_rx_state[0], fanout 30 segments 2
+Replicating Combinational Instance Science_0.ADC_Data_Packer_0.n_points_1_sqmuxa_i_o3, fanout 63 segments 3
 Replicating Combinational Instance Science_0.ADC_Data_Packer_0.state_4_sqmuxa_i_o3, fanout 45 segments 2
 Replicating Sequential Instance Sensors_0.Accelerometer_0.I2C_Master_0.state[8], fanout 26 segments 2
-Replicating Sequential Instance Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[0], fanout 25 segments 2
 Replicating Sequential Instance Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[3], fanout 25 segments 2
-Replicating Sequential Instance Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[2], fanout 26 segments 2
+Replicating Sequential Instance Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[2], fanout 25 segments 2
 Replicating Sequential Instance Data_Saving_0.FPGA_Buffer_0.DFN1C0_READ_RESET_P, fanout 48 segments 2
 Replicating Sequential Instance Data_Saving_0.FPGA_Buffer_0.DFN1C0_WRITE_RESET_P, fanout 42 segments 2
-Replicating Sequential Instance General_Controller_0.Bias_enabled, fanout 44 segments 2
+Replicating Sequential Instance General_Controller_0.Bias_enabled, fanout 45 segments 2
+Replicating Combinational Instance General_Controller_0.un18_uc_tx_state_1, fanout 25 segments 2
 
 Added 0 Buffers
-Added 25 Cells via replication
-	Added 15 Sequential Cells via replication
-	Added 10 Combinational Cells via replication
+Added 36 Cells via replication
+	Added 13 Sequential Cells via replication
+	Added 23 Combinational Cells via replication
 
-Finished restoring hierarchy (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:07s; Memory used current: 194MB peak: 196MB)
+Finished restoring hierarchy (Real Time elapsed 0h:00m:09s; CPU Time elapsed 0h:00m:09s; Memory used current: 191MB peak: 193MB)
 
 @N: MT611 :|Automatically generated clock ClockDivs|clk_1kHz_inferred_clock is not used and is being removed
 @N: MT611 :|Automatically generated clock ClockDivs|clk_50Hz_inferred_clock is not used and is being removed
@@ -417,20 +443,20 @@ Finished restoring hierarchy (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:
 #### START OF CLOCK OPTIMIZATION REPORT #####[
 
 Clock optimization not enabled
-2 non-gated/non-generated clock tree(s) driving 1251 clock pin(s) of sequential element(s)
-2 gated/generated clock tree(s) driving 102 clock pin(s) of sequential element(s)
-0 instances converted, 102 sequential instances remain driven by gated/generated clocks
+2 non-gated/non-generated clock tree(s) driving 1304 clock pin(s) of sequential element(s)
+2 gated/generated clock tree(s) driving 103 clock pin(s) of sequential element(s)
+0 instances converted, 103 sequential instances remain driven by gated/generated clocks
 
 ========================================== Non-Gated/Non-Generated Clocks ==========================================
 Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance                             
 --------------------------------------------------------------------------------------------------------------------
-@K:CKID0003       CLOCK               port                   1196       Timing_0.s_count[7]                         
+@K:CKID0003       CLOCK               port                   1249       Timing_0.s_count[7]                         
 @K:CKID0004       FMC_CLK             port                   55         Data_Saving_0.FPGA_Buffer_0.\DFN1C0_RGRY[9]\
 ====================================================================================================================
 ============================================================================================= Gated/Generated Clocks =============================================================================================
 Clock Tree ID     Driving Element                Drive Element Type     Fanout     Sample Instance                                        Explanation                                                             
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-@K:CKID0001       ClockDivs_0.clk_800kHz         DFN1C1                 86         Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[3]     No generated or derived clock directive on output of sequential instance
+@K:CKID0001       ClockDivs_0.clk_800kHz         DFN1C1                 87         Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[3]     No generated or derived clock directive on output of sequential instance
 @K:CKID0002       Science_0.DAC_SET_0.ADR[1]     DFN1C1                 16         Science_0.DAC_SET_0.DAC[10]                            No generated or derived clock directive on output of sequential instance
 ==================================================================================================================================================================================================================
 
@@ -438,19 +464,19 @@ Clock Tree ID     Driving Element                Drive Element Type     Fanout  
 ##### END OF CLOCK OPTIMIZATION REPORT ######]
 
 
-Start Writing Netlists (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:07s; Memory used current: 184MB peak: 196MB)
+Start Writing Netlists (Real Time elapsed 0h:00m:09s; CPU Time elapsed 0h:00m:09s; Memory used current: 181MB peak: 193MB)
 
 Writing Analyst data base C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\synthesis\synwork\Toplevel_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:08s; Memory used current: 188MB peak: 196MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:09s; Memory used current: 185MB peak: 193MB)
 
 Writing EDIF Netlist and constraint files
 L-2016.09M-SP1-5
 
-Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:08s; Memory used current: 190MB peak: 196MB)
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:10s; Memory used current: 188MB peak: 193MB)
 
 
-Start final timing analysis (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:08s; Memory used current: 189MB peak: 196MB)
+Start final timing analysis (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:10s; Memory used current: 186MB peak: 193MB)
 
 @W: MT420 |Found inferred clock Toplevel|CLOCK with period 10.00ns. Please declare a user-defined clock on object "p:CLOCK"
 @W: MT420 |Found inferred clock Toplevel|FMC_CLK with period 10.00ns. Please declare a user-defined clock on object "p:FMC_CLK"
@@ -460,7 +486,7 @@ Start final timing analysis (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:0
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Fri Mar 06 19:36:10 2026
+# Timing Report written on Thu May 07 18:39:45 2026
 #
 
 
@@ -487,7 +513,7 @@ Worst slack in design: -15.665
                                         Requested     Estimated     Requested     Estimated                 Clock        Clock              
 Starting Clock                          Frequency     Frequency     Period        Period        Slack       Type         Group              
 --------------------------------------------------------------------------------------------------------------------------------------------
-ClockDivs|clk_800kHz_inferred_clock     100.0 MHz     40.0 MHz      10.000        25.012        -7.506      inferred     Inferred_clkgroup_1
+ClockDivs|clk_800kHz_inferred_clock     100.0 MHz     41.4 MHz      10.000        24.153        -7.077      inferred     Inferred_clkgroup_1
 DAC_SET|ADR_inferred_clock[1]           100.0 MHz     NA            10.000        NA            NA          inferred     Inferred_clkgroup_2
 Timing|s_time_inferred_clock[5]         100.0 MHz     NA            10.000        NA            NA          inferred     Inferred_clkgroup_3
 Toplevel|CLOCK                          100.0 MHz     24.2 MHz      10.000        41.330        -15.665     inferred     Inferred_clkgroup_0
@@ -511,7 +537,7 @@ Toplevel|CLOCK                       ClockDivs|clk_800kHz_inferred_clock  |  No 
 Toplevel|CLOCK                       DAC_SET|ADR_inferred_clock[1]        |  No paths    -        |  No paths    -       |  Diff grp    -       |  No paths    -      
 Toplevel|CLOCK                       Toplevel|FMC_CLK                     |  Diff grp    -        |  No paths    -       |  No paths    -       |  No paths    -      
 ClockDivs|clk_800kHz_inferred_clock  Toplevel|CLOCK                       |  No paths    -        |  No paths    -       |  No paths    -       |  Diff grp    -      
-ClockDivs|clk_800kHz_inferred_clock  ClockDivs|clk_800kHz_inferred_clock  |  10.000      4.460    |  10.000      -5.255  |  5.000       -7.506  |  5.000       -1.533 
+ClockDivs|clk_800kHz_inferred_clock  ClockDivs|clk_800kHz_inferred_clock  |  10.000      4.778    |  10.000      -4.878  |  5.000       -7.077  |  5.000       -1.578 
 DAC_SET|ADR_inferred_clock[1]        Toplevel|CLOCK                       |  No paths    -        |  No paths    -       |  No paths    -       |  Diff grp    -      
 Toplevel|FMC_CLK                     Toplevel|CLOCK                       |  Diff grp    -        |  No paths    -       |  No paths    -       |  No paths    -      
 Toplevel|FMC_CLK                     Toplevel|FMC_CLK                     |  10.000      -5.613   |  No paths    -       |  No paths    -       |  No paths    -      
@@ -537,21 +563,21 @@ Detailed Report for Clock: ClockDivs|clk_800kHz_inferred_clock
 Starting Points with Worst Slack
 ********************************
 
-                                                       Starting                                                                      Arrival           
-Instance                                               Reference                               Type       Pin     Net                Time        Slack 
-                                                       Clock                                                                                           
--------------------------------------------------------------------------------------------------------------------------------------------------------
-Sensors_0.Gyro_0.I2C_Master_0.scl                      ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       GYRO_SCL_c         0.737       -7.506
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl           ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       PRESSURE_SCL_c     0.737       -6.726
-Sensors_0.Accelerometer_0.I2C_Master_0.scl_0           ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       ACCE_SCL_c_0       0.737       -6.382
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[0]     ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       bitcnt[0]          0.653       -5.255
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[2]     ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       bitcnt[2]          0.653       -5.219
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt[1]                ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       bitcnt[1]          0.527       -5.212
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt[0]                ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       bitcnt[0]          0.527       -5.111
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt[2]                ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       bitcnt[2]          0.527       -5.038
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[1]     ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       bitcnt[1]          0.653       -4.876
-Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[1]       ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       bitcnt[1]          0.653       -4.423
-=======================================================================================================================================================
+                                                     Starting                                                                      Arrival           
+Instance                                             Reference                               Type       Pin     Net                Time        Slack 
+                                                     Clock                                                                                           
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Sensors_0.Gyro_0.I2C_Master_0.scl_0                  ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       GYRO_SCL_c_0       0.737       -7.077
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl         ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       PRESSURE_SCL_c     0.737       -6.753
+Sensors_0.Accelerometer_0.I2C_Master_0.scl_0         ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       ACCE_SCL_c_0       0.737       -6.472
+Sensors_0.Accelerometer_0.I2C_Master_0.scl           ClockDivs|clk_800kHz_inferred_clock     DFN1P1     Q       ACCE_SCL_c         0.737       -5.685
+Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[1]     ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       bitcnt[1]          0.653       -4.878
+Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[2]     ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       bitcnt[2]          0.653       -4.796
+Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[0]     ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       bitcnt[0]          0.653       -4.617
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt[1]              ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       bitcnt[1]          0.653       -4.489
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt[0]              ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       bitcnt[0]          0.653       -4.383
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt[2]              ClockDivs|clk_800kHz_inferred_clock     DFN0P1     Q       bitcnt[2]          0.653       -4.370
+=====================================================================================================================================================
 
 
 Ending Points with Worst Slack
@@ -561,16 +587,16 @@ Ending Points with Worst Slack
 Instance                                                 Reference                               Type       Pin     Net              Time         Slack 
                                                          Clock                                                                                          
 --------------------------------------------------------------------------------------------------------------------------------------------------------
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt[3]                  ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       bitcnt_12[3]     4.287        -7.506
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[3]       ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       bitcnt_12[3]     4.287        -6.726
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt[2]                  ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[2]     4.287        -6.644
-Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[3]         ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       bitcnt_12[3]     4.287        -6.382
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.byte_cnt[0]     ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       N_520_mux        4.287        -6.173
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[2]       ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[2]     4.287        -5.857
-Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[2]         ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[2]     4.287        -5.513
-Sensors_0.Accelerometer_0.I2C_Master_0.byte_cnt[0]       ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       N_520_mux        4.287        -5.480
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt[1]                  ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[1]     4.287        -5.382
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[0]       ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[0]     4.287        -4.651
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt[3]                  ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       bitcnt_12[3]     4.287        -7.077
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[3]       ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       bitcnt_12[3]     4.287        -6.753
+Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[3]         ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       bitcnt_12[3]     4.287        -6.472
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt[2]                  ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[2]     4.287        -6.215
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.byte_cnt[0]     ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       N_520_mux        4.287        -6.105
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[2]       ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[2]     4.287        -5.885
+Sensors_0.Accelerometer_0.I2C_Master_0.byte_cnt[0]       ClockDivs|clk_800kHz_inferred_clock     DFN0C1     D       N_520_mux        4.287        -5.685
+Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[2]         ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[2]     4.287        -5.603
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt[1]                  ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[1]     4.287        -4.953
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[0]       ClockDivs|clk_800kHz_inferred_clock     DFN0P1     D       bitcnt_12[0]     4.287        -4.679
 ========================================================================================================================================================
 
 
@@ -585,12 +611,12 @@ Path information for path number 1:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         4.287
 
-    - Propagation time:                      11.793
+    - Propagation time:                      11.364
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -7.506
+    = Slack (non-critical) :                 -7.077
 
     Number of logic level(s):                7
-    Starting point:                          Sensors_0.Gyro_0.I2C_Master_0.scl / Q
+    Starting point:                          Sensors_0.Gyro_0.I2C_Master_0.scl_0 / Q
     Ending point:                            Sensors_0.Gyro_0.I2C_Master_0.bitcnt[3] / D
     The start point is clocked by            ClockDivs|clk_800kHz_inferred_clock [rising] on pin CLK
     The end   point is clocked by            ClockDivs|clk_800kHz_inferred_clock [falling] on pin CLK
@@ -598,32 +624,32 @@ Path information for path number 1:
 Instance / Net                                                 Pin      Pin               Arrival     No. of    
 Name                                                Type       Name     Dir     Delay     Time        Fan Out(s)
 ----------------------------------------------------------------------------------------------------------------
-Sensors_0.Gyro_0.I2C_Master_0.scl                   DFN1P1     Q        Out     0.737     0.737       -         
-GYRO_SCL_c                                          Net        -        -       2.466     -           24        
-Sensors_0.Gyro_0.I2C_Master_0.state_RNITGH91[1]     OA1        C        In      -         3.203       -         
-Sensors_0.Gyro_0.I2C_Master_0.state_RNITGH91[1]     OA1        Y        Out     0.666     3.869       -         
+Sensors_0.Gyro_0.I2C_Master_0.scl_0                 DFN1P1     Q        Out     0.737     0.737       -         
+GYRO_SCL_c_0                                        Net        -        -       2.037     -           13        
+Sensors_0.Gyro_0.I2C_Master_0.state_RNICKT21[1]     OA1        C        In      -         2.774       -         
+Sensors_0.Gyro_0.I2C_Master_0.state_RNICKT21[1]     OA1        Y        Out     0.666     3.439       -         
 r_N_4_mux                                           Net        -        -       0.386     -           2         
-Sensors_0.Gyro_0.I2C_Master_0.state_RNISDLT5[0]     NOR3       C        In      -         4.255       -         
-Sensors_0.Gyro_0.I2C_Master_0.state_RNISDLT5[0]     NOR3       Y        Out     0.751     5.005       -         
+Sensors_0.Gyro_0.I2C_Master_0.state_RNIBH1N5[0]     NOR3       C        In      -         3.825       -         
+Sensors_0.Gyro_0.I2C_Master_0.state_RNIBH1N5[0]     NOR3       Y        Out     0.751     4.576       -         
 N_387                                               Net        -        -       1.669     -           9         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_9        XOR2       B        In      -         6.674       -         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_9        XOR2       Y        Out     0.937     7.611       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_9        XOR2       B        In      -         6.245       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_9        XOR2       Y        Out     0.937     7.181       -         
 DWACT_ADD_CI_0_pog_array_0[0]                       Net        -        -       0.322     -           1         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_20       AO1        A        In      -         7.932       -         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_20       AO1        Y        Out     0.520     8.452       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_20       AO1        A        In      -         7.503       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_20       AO1        Y        Out     0.520     8.022       -         
 DWACT_ADD_CI_0_g_array_1[0]                         Net        -        -       0.386     -           2         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_22       AO1        B        In      -         8.837       -         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_22       AO1        Y        Out     0.567     9.404       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_22       AO1        B        In      -         8.408       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_22       AO1        Y        Out     0.567     8.975       -         
 DWACT_ADD_CI_0_g_array_12[0]                        Net        -        -       0.322     -           1         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_16       XOR2       B        In      -         9.725       -         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_16       XOR2       Y        Out     0.937     10.662      -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_16       XOR2       B        In      -         9.296       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_16       XOR2       Y        Out     0.937     10.233      -         
 un1_bitcnt[0]                                       Net        -        -       0.322     -           1         
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt_RNO[3]         NOR2B      A        In      -         10.984      -         
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt_RNO[3]         NOR2B      Y        Out     0.488     11.472      -         
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt_RNO[3]         NOR2B      A        In      -         10.554      -         
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt_RNO[3]         NOR2B      Y        Out     0.488     11.043      -         
 bitcnt_12[3]                                        Net        -        -       0.322     -           1         
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt[3]             DFN0C1     D        In      -         11.793      -         
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt[3]             DFN0C1     D        In      -         11.364      -         
 ================================================================================================================
-Total path delay (propagation time + setup) of 12.506 is 6.314(50.5%) logic and 6.192(49.5%) route.
+Total path delay (propagation time + setup) of 12.077 is 6.314(52.3%) logic and 5.763(47.7%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -633,12 +659,12 @@ Path information for path number 2:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         4.287
 
-    - Propagation time:                      11.508
+    - Propagation time:                      11.079
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -7.221
+    = Slack (non-critical) :                 -6.792
 
     Number of logic level(s):                7
-    Starting point:                          Sensors_0.Gyro_0.I2C_Master_0.scl / Q
+    Starting point:                          Sensors_0.Gyro_0.I2C_Master_0.scl_0 / Q
     Ending point:                            Sensors_0.Gyro_0.I2C_Master_0.bitcnt[3] / D
     The start point is clocked by            ClockDivs|clk_800kHz_inferred_clock [rising] on pin CLK
     The end   point is clocked by            ClockDivs|clk_800kHz_inferred_clock [falling] on pin CLK
@@ -646,32 +672,32 @@ Path information for path number 2:
 Instance / Net                                                 Pin      Pin               Arrival     No. of    
 Name                                                Type       Name     Dir     Delay     Time        Fan Out(s)
 ----------------------------------------------------------------------------------------------------------------
-Sensors_0.Gyro_0.I2C_Master_0.scl                   DFN1P1     Q        Out     0.737     0.737       -         
-GYRO_SCL_c                                          Net        -        -       2.466     -           24        
-Sensors_0.Gyro_0.I2C_Master_0.state_RNITGH91[1]     OA1        C        In      -         3.203       -         
-Sensors_0.Gyro_0.I2C_Master_0.state_RNITGH91[1]     OA1        Y        Out     0.666     3.869       -         
+Sensors_0.Gyro_0.I2C_Master_0.scl_0                 DFN1P1     Q        Out     0.737     0.737       -         
+GYRO_SCL_c_0                                        Net        -        -       2.037     -           13        
+Sensors_0.Gyro_0.I2C_Master_0.state_RNICKT21[1]     OA1        C        In      -         2.774       -         
+Sensors_0.Gyro_0.I2C_Master_0.state_RNICKT21[1]     OA1        Y        Out     0.666     3.439       -         
 r_N_4_mux                                           Net        -        -       0.386     -           2         
-Sensors_0.Gyro_0.I2C_Master_0.state_RNISDLT5[0]     NOR3       C        In      -         4.255       -         
-Sensors_0.Gyro_0.I2C_Master_0.state_RNISDLT5[0]     NOR3       Y        Out     0.751     5.005       -         
+Sensors_0.Gyro_0.I2C_Master_0.state_RNIBH1N5[0]     NOR3       C        In      -         3.825       -         
+Sensors_0.Gyro_0.I2C_Master_0.state_RNIBH1N5[0]     NOR3       Y        Out     0.751     4.576       -         
 N_387                                               Net        -        -       1.669     -           9         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_6        AND2       B        In      -         6.674       -         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_6        AND2       Y        Out     0.516     7.190       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_6        AND2       B        In      -         6.245       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_6        AND2       Y        Out     0.516     6.761       -         
 DWACT_ADD_CI_0_g_array_0_1[0]                       Net        -        -       0.322     -           1         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_20       AO1        C        In      -         7.511       -         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_20       AO1        Y        Out     0.655     8.167       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_20       AO1        C        In      -         7.082       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_20       AO1        Y        Out     0.655     7.737       -         
 DWACT_ADD_CI_0_g_array_1[0]                         Net        -        -       0.386     -           2         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_22       AO1        B        In      -         8.552       -         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_22       AO1        Y        Out     0.567     9.119       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_22       AO1        B        In      -         8.123       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_22       AO1        Y        Out     0.567     8.690       -         
 DWACT_ADD_CI_0_g_array_12[0]                        Net        -        -       0.322     -           1         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_16       XOR2       B        In      -         9.440       -         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_16       XOR2       Y        Out     0.937     10.377      -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_16       XOR2       B        In      -         9.011       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_16       XOR2       Y        Out     0.937     9.948       -         
 un1_bitcnt[0]                                       Net        -        -       0.322     -           1         
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt_RNO[3]         NOR2B      A        In      -         10.699      -         
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt_RNO[3]         NOR2B      Y        Out     0.488     11.187      -         
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt_RNO[3]         NOR2B      A        In      -         10.269      -         
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt_RNO[3]         NOR2B      Y        Out     0.488     10.758      -         
 bitcnt_12[3]                                        Net        -        -       0.322     -           1         
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt[3]             DFN0C1     D        In      -         11.508      -         
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt[3]             DFN0C1     D        In      -         11.079      -         
 ================================================================================================================
-Total path delay (propagation time + setup) of 12.221 is 6.029(49.3%) logic and 6.192(50.7%) route.
+Total path delay (propagation time + setup) of 11.792 is 6.029(51.1%) logic and 5.763(48.9%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -681,12 +707,12 @@ Path information for path number 3:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         4.287
 
-    - Propagation time:                      11.484
+    - Propagation time:                      11.055
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -7.197
+    = Slack (non-critical) :                 -6.767
 
     Number of logic level(s):                7
-    Starting point:                          Sensors_0.Gyro_0.I2C_Master_0.scl / Q
+    Starting point:                          Sensors_0.Gyro_0.I2C_Master_0.scl_0 / Q
     Ending point:                            Sensors_0.Gyro_0.I2C_Master_0.bitcnt[3] / D
     The start point is clocked by            ClockDivs|clk_800kHz_inferred_clock [rising] on pin CLK
     The end   point is clocked by            ClockDivs|clk_800kHz_inferred_clock [falling] on pin CLK
@@ -694,32 +720,32 @@ Path information for path number 3:
 Instance / Net                                                 Pin      Pin               Arrival     No. of    
 Name                                                Type       Name     Dir     Delay     Time        Fan Out(s)
 ----------------------------------------------------------------------------------------------------------------
-Sensors_0.Gyro_0.I2C_Master_0.scl                   DFN1P1     Q        Out     0.737     0.737       -         
-GYRO_SCL_c                                          Net        -        -       2.466     -           24        
-Sensors_0.Gyro_0.I2C_Master_0.state_RNITGH91[1]     OA1        C        In      -         3.203       -         
-Sensors_0.Gyro_0.I2C_Master_0.state_RNITGH91[1]     OA1        Y        Out     0.666     3.869       -         
+Sensors_0.Gyro_0.I2C_Master_0.scl_0                 DFN1P1     Q        Out     0.737     0.737       -         
+GYRO_SCL_c_0                                        Net        -        -       2.037     -           13        
+Sensors_0.Gyro_0.I2C_Master_0.state_RNICKT21[1]     OA1        C        In      -         2.774       -         
+Sensors_0.Gyro_0.I2C_Master_0.state_RNICKT21[1]     OA1        Y        Out     0.666     3.439       -         
 r_N_4_mux                                           Net        -        -       0.386     -           2         
-Sensors_0.Gyro_0.I2C_Master_0.state_RNISDLT5[0]     NOR3       C        In      -         4.255       -         
-Sensors_0.Gyro_0.I2C_Master_0.state_RNISDLT5[0]     NOR3       Y        Out     0.751     5.005       -         
+Sensors_0.Gyro_0.I2C_Master_0.state_RNIBH1N5[0]     NOR3       C        In      -         3.825       -         
+Sensors_0.Gyro_0.I2C_Master_0.state_RNIBH1N5[0]     NOR3       Y        Out     0.751     4.576       -         
 N_387                                               Net        -        -       1.669     -           9         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_1        AND2       B        In      -         6.674       -         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_1        AND2       Y        Out     0.516     7.190       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_1        AND2       B        In      -         6.245       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_1        AND2       Y        Out     0.516     6.761       -         
 DWACT_ADD_CI_0_TMP[0]                               Net        -        -       0.386     -           2         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_20       AO1        B        In      -         7.576       -         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_20       AO1        Y        Out     0.567     8.142       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_20       AO1        B        In      -         7.146       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_20       AO1        Y        Out     0.567     7.713       -         
 DWACT_ADD_CI_0_g_array_1[0]                         Net        -        -       0.386     -           2         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_22       AO1        B        In      -         8.528       -         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_22       AO1        Y        Out     0.567     9.095       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_22       AO1        B        In      -         8.099       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_22       AO1        Y        Out     0.567     8.665       -         
 DWACT_ADD_CI_0_g_array_12[0]                        Net        -        -       0.322     -           1         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_16       XOR2       B        In      -         9.416       -         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_16       XOR2       Y        Out     0.937     10.353      -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_16       XOR2       B        In      -         8.987       -         
+Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_16       XOR2       Y        Out     0.937     9.923       -         
 un1_bitcnt[0]                                       Net        -        -       0.322     -           1         
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt_RNO[3]         NOR2B      A        In      -         10.674      -         
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt_RNO[3]         NOR2B      Y        Out     0.488     11.163      -         
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt_RNO[3]         NOR2B      A        In      -         10.245      -         
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt_RNO[3]         NOR2B      Y        Out     0.488     10.733      -         
 bitcnt_12[3]                                        Net        -        -       0.322     -           1         
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt[3]             DFN0C1     D        In      -         11.484      -         
+Sensors_0.Gyro_0.I2C_Master_0.bitcnt[3]             DFN0C1     D        In      -         11.055      -         
 ================================================================================================================
-Total path delay (propagation time + setup) of 12.197 is 5.940(48.7%) logic and 6.257(51.3%) route.
+Total path delay (propagation time + setup) of 11.767 is 5.940(50.5%) logic and 5.827(49.5%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -729,9 +755,9 @@ Path information for path number 4:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         4.287
 
-    - Propagation time:                      11.013
+    - Propagation time:                      11.041
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -6.726
+    = Slack (non-critical) :                 -6.754
 
     Number of logic level(s):                6
     Starting point:                          Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl / Q
@@ -743,28 +769,28 @@ Instance / Net                                                          Pin     
 Name                                                         Type       Name     Dir     Delay     Time        Fan Out(s)
 -------------------------------------------------------------------------------------------------------------------------
 Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl                 DFN1P1     Q        Out     0.737     0.737       -         
-PRESSURE_SCL_c                                               Net        -        -       2.381     -           21        
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl_RNITB265        AOI1       B        In      -         3.118       -         
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl_RNITB265        AOI1       Y        Out     0.931     4.050       -         
+PRESSURE_SCL_c                                               Net        -        -       2.409     -           22        
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl_RNITB265        AOI1       B        In      -         3.146       -         
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.scl_RNITB265        AOI1       Y        Out     0.931     4.077       -         
 N_388                                                        Net        -        -       1.669     -           9         
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.un1_bitcnt.I_9      XOR2       B        In      -         5.718       -         
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.un1_bitcnt.I_9      XOR2       Y        Out     0.937     6.655       -         
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.un1_bitcnt.I_9      XOR2       B        In      -         5.746       -         
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.un1_bitcnt.I_9      XOR2       Y        Out     0.937     6.683       -         
 DWACT_ADD_CI_0_pog_array_0[0]                                Net        -        -       0.322     -           1         
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.un1_bitcnt.I_20     AO1        A        In      -         6.976       -         
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.un1_bitcnt.I_20     AO1        Y        Out     0.520     7.496       -         
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.un1_bitcnt.I_20     AO1        A        In      -         7.004       -         
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.un1_bitcnt.I_20     AO1        Y        Out     0.520     7.524       -         
 DWACT_ADD_CI_0_g_array_1[0]                                  Net        -        -       0.386     -           2         
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.un1_bitcnt.I_22     AO1        B        In      -         7.882       -         
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.un1_bitcnt.I_22     AO1        Y        Out     0.567     8.448       -         
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.un1_bitcnt.I_22     AO1        B        In      -         7.909       -         
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.un1_bitcnt.I_22     AO1        Y        Out     0.567     8.476       -         
 DWACT_ADD_CI_0_g_array_12[0]                                 Net        -        -       0.322     -           1         
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.un1_bitcnt.I_16     XOR2       B        In      -         8.770       -         
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.un1_bitcnt.I_16     XOR2       Y        Out     0.937     9.706       -         
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.un1_bitcnt.I_16     XOR2       B        In      -         8.797       -         
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.un1_bitcnt.I_16     XOR2       Y        Out     0.937     9.734       -         
 un1_bitcnt[0]                                                Net        -        -       0.322     -           1         
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt_RNO[3]       NOR3A      A        In      -         10.028      -         
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt_RNO[3]       NOR3A      Y        Out     0.664     10.692      -         
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt_RNO[3]       NOR3A      A        In      -         10.056      -         
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt_RNO[3]       NOR3A      Y        Out     0.664     10.720      -         
 bitcnt_12[3]                                                 Net        -        -       0.322     -           1         
-Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[3]           DFN0C1     D        In      -         11.013      -         
+Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[3]           DFN0C1     D        In      -         11.041      -         
 =========================================================================================================================
-Total path delay (propagation time + setup) of 11.726 is 6.004(51.2%) logic and 5.721(48.8%) route.
+Total path delay (propagation time + setup) of 11.754 is 6.004(51.1%) logic and 5.749(48.9%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -774,42 +800,42 @@ Path information for path number 5:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         4.287
 
-    - Propagation time:                      10.932
+    - Propagation time:                      10.759
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -6.644
+    = Slack (non-critical) :                 -6.472
 
     Number of logic level(s):                6
-    Starting point:                          Sensors_0.Gyro_0.I2C_Master_0.scl / Q
-    Ending point:                            Sensors_0.Gyro_0.I2C_Master_0.bitcnt[2] / D
+    Starting point:                          Sensors_0.Accelerometer_0.I2C_Master_0.scl_0 / Q
+    Ending point:                            Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[3] / D
     The start point is clocked by            ClockDivs|clk_800kHz_inferred_clock [rising] on pin CLK
     The end   point is clocked by            ClockDivs|clk_800kHz_inferred_clock [falling] on pin CLK
 
-Instance / Net                                                 Pin      Pin               Arrival     No. of    
-Name                                                Type       Name     Dir     Delay     Time        Fan Out(s)
-----------------------------------------------------------------------------------------------------------------
-Sensors_0.Gyro_0.I2C_Master_0.scl                   DFN1P1     Q        Out     0.737     0.737       -         
-GYRO_SCL_c                                          Net        -        -       2.466     -           24        
-Sensors_0.Gyro_0.I2C_Master_0.state_RNITGH91[1]     OA1        C        In      -         3.203       -         
-Sensors_0.Gyro_0.I2C_Master_0.state_RNITGH91[1]     OA1        Y        Out     0.666     3.869       -         
-r_N_4_mux                                           Net        -        -       0.386     -           2         
-Sensors_0.Gyro_0.I2C_Master_0.state_RNISDLT5[0]     NOR3       C        In      -         4.255       -         
-Sensors_0.Gyro_0.I2C_Master_0.state_RNISDLT5[0]     NOR3       Y        Out     0.751     5.005       -         
-N_387                                               Net        -        -       1.669     -           9         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_9        XOR2       B        In      -         6.674       -         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_9        XOR2       Y        Out     0.937     7.611       -         
-DWACT_ADD_CI_0_pog_array_0[0]                       Net        -        -       0.322     -           1         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_20       AO1        A        In      -         7.932       -         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_20       AO1        Y        Out     0.520     8.452       -         
-DWACT_ADD_CI_0_g_array_1[0]                         Net        -        -       0.386     -           2         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_18       XOR2       B        In      -         8.837       -         
-Sensors_0.Gyro_0.I2C_Master_0.un1_bitcnt.I_18       XOR2       Y        Out     0.937     9.774       -         
-un1_bitcnt[1]                                       Net        -        -       0.322     -           1         
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt_RNO[2]         OR2A       B        In      -         10.096      -         
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt_RNO[2]         OR2A       Y        Out     0.514     10.610      -         
-bitcnt_12[2]                                        Net        -        -       0.322     -           1         
-Sensors_0.Gyro_0.I2C_Master_0.bitcnt[2]             DFN0P1     D        In      -         10.932      -         
-================================================================================================================
-Total path delay (propagation time + setup) of 11.644 is 5.773(49.6%) logic and 5.871(50.4%) route.
+Instance / Net                                                        Pin      Pin               Arrival     No. of    
+Name                                                       Type       Name     Dir     Delay     Time        Fan Out(s)
+-----------------------------------------------------------------------------------------------------------------------
+Sensors_0.Accelerometer_0.I2C_Master_0.scl_0               DFN1P1     Q        Out     0.737     0.737       -         
+ACCE_SCL_c_0                                               Net        -        -       2.127     -           15        
+Sensors_0.Accelerometer_0.I2C_Master_0.scl_0_RNI50P86      AOI1       B        In      -         2.864       -         
+Sensors_0.Accelerometer_0.I2C_Master_0.scl_0_RNI50P86      AOI1       Y        Out     0.931     3.796       -         
+N_374                                                      Net        -        -       1.669     -           9         
+Sensors_0.Accelerometer_0.I2C_Master_0.un1_bitcnt.I_9      XOR2       B        In      -         5.464       -         
+Sensors_0.Accelerometer_0.I2C_Master_0.un1_bitcnt.I_9      XOR2       Y        Out     0.937     6.401       -         
+DWACT_ADD_CI_0_pog_array_0[0]                              Net        -        -       0.322     -           1         
+Sensors_0.Accelerometer_0.I2C_Master_0.un1_bitcnt.I_20     AO1        A        In      -         6.722       -         
+Sensors_0.Accelerometer_0.I2C_Master_0.un1_bitcnt.I_20     AO1        Y        Out     0.520     7.242       -         
+DWACT_ADD_CI_0_g_array_1[0]                                Net        -        -       0.386     -           2         
+Sensors_0.Accelerometer_0.I2C_Master_0.un1_bitcnt.I_22     AO1        B        In      -         7.628       -         
+Sensors_0.Accelerometer_0.I2C_Master_0.un1_bitcnt.I_22     AO1        Y        Out     0.567     8.194       -         
+DWACT_ADD_CI_0_g_array_12[0]                               Net        -        -       0.322     -           1         
+Sensors_0.Accelerometer_0.I2C_Master_0.un1_bitcnt.I_16     XOR2       B        In      -         8.516       -         
+Sensors_0.Accelerometer_0.I2C_Master_0.un1_bitcnt.I_16     XOR2       Y        Out     0.937     9.453       -         
+un1_bitcnt[0]                                              Net        -        -       0.322     -           1         
+Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt_RNO[3]       NOR3A      A        In      -         9.774       -         
+Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt_RNO[3]       NOR3A      Y        Out     0.664     10.438      -         
+bitcnt_12[3]                                               Net        -        -       0.322     -           1         
+Sensors_0.Accelerometer_0.I2C_Master_0.bitcnt[3]           DFN0C1     D        In      -         10.759      -         
+=======================================================================================================================
+Total path delay (propagation time + setup) of 11.472 is 6.004(52.3%) logic and 5.468(47.7%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -851,13 +877,13 @@ Instance                                                              Reference 
 Data_Saving_0.FPGA_Buffer_0.DFN1C0_afull                              Toplevel|CLOCK     DFN1C0     D       OR2_0_Y            4.426        -15.665
 Data_Saving_0.FPGA_Buffer_0.DFN1C0_full                               Toplevel|CLOCK     DFN1C0     D       FULLINT            4.461        -10.264
 Data_Saving_0.FPGA_Buffer_0.\\DFN1C0_WGRY\[6\]\\                      Toplevel|CLOCK     DFN1C0     D       XOR2_37_Y          4.461        -7.770 
-Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[3]       Toplevel|CLOCK     DFN1C1     D       subState_30[3]     9.461        -7.412 
-Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState_0[3]     Toplevel|CLOCK     DFN1C1     D       subState_30[3]     9.461        -7.412 
+Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[3]       Toplevel|CLOCK     DFN1C1     D       subState_30[3]     9.461        -7.388 
+Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState_0[3]     Toplevel|CLOCK     DFN1C1     D       subState_30[3]     9.461        -7.388 
 Data_Saving_0.FPGA_Buffer_0.\\DFN1C0_WGRY\[7\]\\                      Toplevel|CLOCK     DFN1C0     D       XOR2_44_Y          4.461        -7.322 
 Data_Saving_0.FPGA_Buffer_0.\\DFN1C0_WGRY\[5\]\\                      Toplevel|CLOCK     DFN1C0     D       XOR2_26_Y          4.461        -6.851 
 Data_Saving_0.FPGA_Buffer_0.\\DFN1C0_WGRY\[4\]\\                      Toplevel|CLOCK     DFN1C0     D       XOR2_47_Y          4.461        -6.786 
-Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[2]       Toplevel|CLOCK     DFN1C1     D       subState_30[2]     9.461        -6.585 
-Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState_0[2]     Toplevel|CLOCK     DFN1C1     D       subState_30[2]     9.461        -6.585 
+Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState[2]       Toplevel|CLOCK     DFN1C1     D       subState_30[2]     9.461        -6.561 
+Sensors_0.Accelerometer_0.LSM303AGR_I2C_Interface_0.subState_0[2]     Toplevel|CLOCK     DFN1C1     D       subState_30[2]     9.461        -6.561 
 ===================================================================================================================================================
 
 
@@ -1585,77 +1611,79 @@ Path delay compensated for clock skew. Clock skew is added to clock-to-out value
 Timing exceptions that could not be applied
 None
 
-Finished final timing analysis (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:08s; Memory used current: 189MB peak: 196MB)
+Finished final timing analysis (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:10s; Memory used current: 186MB peak: 193MB)
 
 
-Finished timing report (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:08s; Memory used current: 189MB peak: 196MB)
+Finished timing report (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:10s; Memory used current: 186MB peak: 193MB)
 
 --------------------------------------------------------------------------------
 Target Part: A3P250_VQFP100_STD
 Report for cell Toplevel.rtl
   Core Cell usage:
               cell count     area count*area
-              AND2    90      1.0       90.0
-             AND2A     1      1.0        1.0
-              AND3    43      1.0       43.0
-               AO1   284      1.0      284.0
-              AO1A    66      1.0       66.0
+              AND2    82      1.0       82.0
+             AND2A     3      1.0        3.0
+              AND3    44      1.0       44.0
+               AO1   338      1.0      338.0
+              AO1A    70      1.0       70.0
               AO1B     9      1.0        9.0
-              AO1C    15      1.0       15.0
-              AO1D     7      1.0        7.0
-              AOI1    18      1.0       18.0
-             AOI1B     7      1.0        7.0
+              AO1C    18      1.0       18.0
+              AO1D    13      1.0       13.0
+              AOI1    23      1.0       23.0
+             AOI1A     2      1.0        2.0
+             AOI1B     9      1.0        9.0
                AX1     8      1.0        8.0
-              AX1A     3      1.0        3.0
-              AX1B     4      1.0        4.0
+              AX1A     2      1.0        2.0
+              AX1B     5      1.0        5.0
               AX1C    26      1.0       26.0
-              AX1D     1      1.0        1.0
+              AX1D     2      1.0        2.0
               AX1E     1      1.0        1.0
               AXO5     1      1.0        1.0
              AXOI1     1      1.0        1.0
              AXOI4     1      1.0        1.0
-             AXOI7     2      1.0        2.0
+             AXOI5     1      1.0        1.0
+             AXOI7     1      1.0        1.0
               BUFF     2      1.0        2.0
             CLKINT     6      0.0        0.0
                GND    29      0.0        0.0
-               INV    25      1.0       25.0
-              MAJ3    14      1.0       14.0
-               MX2   297      1.0      297.0
-              MX2A    18      1.0       18.0
-              MX2B     3      1.0        3.0
-              MX2C    20      1.0       20.0
+               INV    27      1.0       27.0
+              MAJ3    13      1.0       13.0
+               MX2   307      1.0      307.0
+              MX2A    17      1.0       17.0
+              MX2B     4      1.0        4.0
+              MX2C     6      1.0        6.0
              NAND2     2      1.0        2.0
             NAND3A     3      1.0        3.0
-              NOR2   122      1.0      122.0
-             NOR2A   292      1.0      292.0
-             NOR2B   534      1.0      534.0
-              NOR3    40      1.0       40.0
-             NOR3A   127      1.0      127.0
-             NOR3B    91      1.0       91.0
-             NOR3C   125      1.0      125.0
-               OA1    76      1.0       76.0
-              OA1A    16      1.0       16.0
-              OA1B    17      1.0       17.0
-              OA1C    20      1.0       20.0
+              NOR2   123      1.0      123.0
+             NOR2A   340      1.0      340.0
+             NOR2B   586      1.0      586.0
+              NOR3    49      1.0       49.0
+             NOR3A   142      1.0      142.0
+             NOR3B   108      1.0      108.0
+             NOR3C   115      1.0      115.0
+               OA1    68      1.0       68.0
+              OA1A    18      1.0       18.0
+              OA1B    19      1.0       19.0
+              OA1C    21      1.0       21.0
               OAI1     5      1.0        5.0
-               OR2   198      1.0      198.0
-              OR2A    88      1.0       88.0
-              OR2B    46      1.0       46.0
-               OR3   177      1.0      177.0
-              OR3A    31      1.0       31.0
-              OR3B    15      1.0       15.0
-              OR3C     8      1.0        8.0
+               OR2   234      1.0      234.0
+              OR2A    89      1.0       89.0
+              OR2B    53      1.0       53.0
+               OR3   224      1.0      224.0
+              OR3A    32      1.0       32.0
+              OR3B    13      1.0       13.0
+              OR3C    10      1.0       10.0
                VCC    29      0.0        0.0
-               XA1    59      1.0       59.0
-              XA1A     5      1.0        5.0
-              XA1B    58      1.0       58.0
-              XA1C    14      1.0       14.0
+               XA1    51      1.0       51.0
+              XA1A     6      1.0        6.0
+              XA1B    71      1.0       71.0
+              XA1C    21      1.0       21.0
               XAI1     1      1.0        1.0
-             XNOR2    41      1.0       41.0
+             XNOR2    39      1.0       39.0
              XNOR3    26      1.0       26.0
                XO1    22      1.0       22.0
-              XO1A     8      1.0        8.0
-              XOR2   332      1.0      332.0
+              XO1A     9      1.0        9.0
+              XOR2   334      1.0      334.0
               XOR3     6      1.0        6.0
 
 
@@ -1667,23 +1695,23 @@ Report for cell Toplevel.rtl
             DFN0E1     6      1.0        6.0
           DFN0E1C1    23      1.0       23.0
             DFN0P1    17      1.0       17.0
-              DFN1     4      1.0        4.0
+              DFN1     6      1.0        6.0
             DFN1C0    83      1.0       83.0
-            DFN1C1   129      1.0      129.0
-            DFN1E0    22      1.0       22.0
-          DFN1E0C1   181      1.0      181.0
+            DFN1C1   130      1.0      130.0
+            DFN1E0    38      1.0       38.0
+          DFN1E0C1   244      1.0      244.0
           DFN1E0P1     3      1.0        3.0
-            DFN1E1   107      1.0      107.0
+            DFN1E1   108      1.0      108.0
           DFN1E1C0     8      1.0        8.0
-          DFN1E1C1   631      1.0      631.0
+          DFN1E1C1   603      1.0      603.0
           DFN1E1P1    20      1.0       20.0
             DFN1P0     1      1.0        1.0
-            DFN1P1    35      1.0       35.0
+            DFN1P1    34      1.0       34.0
               DLN0    16      1.0       16.0
             RAM4K9     4      0.0        0.0
          RAM512X18     2      0.0        0.0
                    -----          ----------
-             TOTAL  4983              4913.0
+             TOTAL  5341              5271.0
 
 
   IO Cell usage:
@@ -1695,7 +1723,7 @@ Report for cell Toplevel.rtl
              TOTAL    46
 
 
-Core Cells         : 4913 of 6144 (80%)
+Core Cells         : 5271 of 6144 (86%)
 IO Cells           : 46
 
   RAM/ROM Usage Summary
@@ -1703,9 +1731,9 @@ Block Rams : 6 of 8 (75%)
 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:09s; CPU Time elapsed 0h:00m:08s; Memory used current: 36MB peak: 196MB)
+At Mapper Exit (Real Time elapsed 0h:00m:11s; CPU Time elapsed 0h:00m:10s; Memory used current: 36MB peak: 193MB)
 
-Process took 0h:00m:09s realtime, 0h:00m:08s cputime
-# Fri Mar 06 19:36:10 2026
+Process took 0h:00m:11s realtime, 0h:00m:10s cputime
+# Thu May 07 18:39:45 2026
 
 ###########################################################]

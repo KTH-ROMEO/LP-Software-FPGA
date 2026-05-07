@@ -197,13 +197,13 @@ IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\Toplevel\Toplevel.cxf,actgen_cxf"
 STATE="utd"
-TIME="1762529072"
+TIME="1778171951"
 SIZE="9513"
 ENDFILE
 VALUE "<project>\component\work\Toplevel\Toplevel.vhd,hdl"
 STATE="utd"
-TIME="1770209047"
-SIZE="46517"
+TIME="1778171940"
+SIZE="44092"
 PARENT="<project>\component\work\Toplevel\Toplevel.cxf"
 IS_READONLY="TRUE"
 ENDFILE
@@ -236,18 +236,18 @@ SIZE="211"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel.adb,adb"
 STATE="utd"
-TIME="1772822497"
+TIME="1773418394"
 SIZE="14746624"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel.ide_des,ide_des"
 STATE="utd"
-TIME="1772822497"
+TIME="1773418394"
 SIZE="996"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel.pdb,pdb"
 STATE="utd"
-TIME="1772822497"
-SIZE="130499"
+TIME="1778172371"
+SIZE="135802"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel.stp,stp"
 STATE="ood"
@@ -266,17 +266,17 @@ SIZE="1476003"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_compile_log.rpt,log"
 STATE="utd"
-TIME="1772822208"
-SIZE="16647"
+TIME="1773418118"
+SIZE="16773"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_fp\projectData\Toplevel.pdb,pdb"
 STATE="utd"
-TIME="1772822626"
-SIZE="130499"
+TIME="1773418496"
+SIZE="130443"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_fp\Toplevel.pro,pro"
 STATE="utd"
-TIME="1772822626"
+TIME="1773418496"
 SIZE="2432"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_iteration_summary.rpt,log"
@@ -286,8 +286,8 @@ SIZE="2505"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_placeroute_log.rpt,log"
 STATE="utd"
-TIME="1772822401"
-SIZE="3168"
+TIME="1778172253"
+SIZE="3090"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_power.rpt,log"
 STATE="utd"
@@ -341,7 +341,7 @@ SIZE="12269"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_prgdata_log.rpt,log"
 STATE="utd"
-TIME="1772822498"
+TIME="1778172372"
 SIZE="742"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_timing.rpt,log"
@@ -501,7 +501,7 @@ SIZE="30478"
 ENDFILE
 VALUE "<project>\designer\impl1\Toplevel_verifytiming_log.rpt,log"
 STATE="utd"
-TIME="1772822483"
+TIME="1778172355"
 SIZE="1181"
 ENDFILE
 VALUE "<project>\designer\impl1\UARTLineReleaser.ide_des,ide_des"
@@ -601,8 +601,8 @@ SIZE="5572"
 ENDFILE
 VALUE "<project>\hdl\General_Controller.vhd,hdl"
 STATE="utd"
-TIME="1772822148"
-SIZE="42933"
+TIME="1778171857"
+SIZE="51100"
 ENDFILE
 VALUE "<project>\hdl\GS_Readout.vhd,hdl"
 STATE="utd"
@@ -671,8 +671,8 @@ SIZE="8307"
 ENDFILE
 VALUE "<project>\hdl\TableSelect.vhd,hdl"
 STATE="utd"
-TIME="1749068452"
-SIZE="1679"
+TIME="1778165971"
+SIZE="1458"
 ENDFILE
 VALUE "<project>\hdl\Timekeeper.vhd,hdl"
 STATE="utd"
@@ -813,22 +813,22 @@ SIZE="1851"
 ENDFILE
 VALUE "<project>\synthesis\Toplevel.edn,syn_edn"
 STATE="utd"
-TIME="1772822170"
-SIZE="2464688"
+TIME="1773418092"
+SIZE="2462774"
 ENDFILE
 VALUE "<project>\synthesis\Toplevel.so,so"
 STATE="utd"
-TIME="1772822170"
+TIME="1773418092"
 SIZE="237"
 ENDFILE
 VALUE "<project>\synthesis\Toplevel_sdc.sdc,syn_sdc"
 STATE="utd"
-TIME="1772822170"
+TIME="1773418092"
 SIZE="496"
 ENDFILE
 VALUE "<project>\synthesis\Toplevel_syn.prj,prj"
 STATE="utd"
-TIME="1772822171"
+TIME="1773418093"
 SIZE="4864"
 ENDFILE
 VALUE "<project>\synthesis\UART_RX_FSM_tb.so,so"
@@ -944,8 +944,8 @@ NAME="Synplify Pro ME"
 FUNCTION="Synthesis"
 TOOL="Synplify Pro ME"
 LOCATION="C:\Microsemi\Libero_SoC_v11.9\SynplifyPro\bin\synplify_pro.exe"
-PARAM=""
-BATCH=0
+PARAM="-licensetype synplifypro_actel -batch -log synplify.log"
+BATCH=1
 LICENSE=""
 IS32BIT="1"
 EndProfile
@@ -1006,17 +1006,21 @@ LIST UserCustomizedFileList
 ENDLIST
 LIST OpenedFileList
 ORIENTATION;HORIZONTAL
-HDL;hdl\UART.vhd;0
-SmartDesign;Science;0
-SmartDesign;Communications;0
 Reports;Reports;0
-ReportsCurrentItem;Program Device:Toplevel_program.log
-SmartDesign;RomeoSweep_Test;0
-SmartDesign;Toplevel;0
+ReportsCurrentItem;Generate Programming Data:Toplevel_prgdata_log.rpt
+HDL;hdl\ADC_Data_Packer.vhd;0
 HDL;hdl\General_Controller.vhd;0
-HDL;hdl\SWEEP_ROMEO.vhd;0
+SmartDesign;Toplevel;0
+SmartDesign;Science;0
 StartPage;StartPage;0
-ACTIVEVIEW;hdl\UART.vhd
+HDL;hdl\TableSelect.vhd;0
+SmartDesign;RomeoSweep_Test;0
+SmartDesign;Communications;0
+SmartDesign;Accelerometer;0
+HDL;hdl\Data_Hub_Packets.vhd;0
+HDL;hdl\UART.vhd;0
+HDL;hdl\SWEEP_ROMEO.vhd;0
+ACTIVEVIEW;hdl\General_Controller.vhd
 ENDLIST
 LIST ModuleSubBlockList
 LIST "Accelerometer::work","component\work\Accelerometer\Accelerometer.vhd","TRUE","FALSE"
@@ -1150,8 +1154,8 @@ ENDLIST
 LIST "CLK_GEN::work","component\Actel\Simulation\CLK_GEN\1.0.1\CLK_GEN.vhd","FALSE","TRUE"
 ENDLIST
 LIST "General_Controller_Testbench::work","stimulus\General_Controller_Testbench.vhd","FALSE","TRUE"
-SUBBLOCK "General_Controller::work","hdl\General_Controller.vhd","FALSE","FALSE"
 SUBBLOCK "SweepTable::work","smartgen\SweepTable\SweepTable.vhd","TRUE","FALSE"
+SUBBLOCK "General_Controller::work","hdl\General_Controller.vhd","FALSE","FALSE"
 ENDLIST
 LIST "RESET_GEN::work","component\Actel\Simulation\RESET_GEN\1.0.1\RESET_GEN.vhd","FALSE","TRUE"
 ENDLIST
