@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Thu May 07 18:39:00 2026
+-- Created by SmartDesign Mon May 11 16:07:56 2026
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -104,24 +104,6 @@ component ClockDivs
         clk_8MHz   : out std_logic
         );
 end component;
--- Communications
-component Communications
-    -- Port list
-    port(
-        -- Inputs
-        clk       : in  std_logic;
-        reset     : in  std_logic;
-        rx        : in  std_logic;
-        uc_oen    : in  std_logic;
-        uc_send   : in  std_logic_vector(7 downto 0);
-        uc_wen    : in  std_logic;
-        -- Outputs
-        tx        : out std_logic;
-        uc_recv   : out std_logic_vector(7 downto 0);
-        uc_rx_rdy : out std_logic;
-        uc_tx_rdy : out std_logic
-        );
-end component;
 -- Data_Hub_Packets
 component Data_Hub_Packets
     -- Port list
@@ -210,9 +192,9 @@ component General_Controller
         sc_new                : in  std_logic;
         swt_rdata0            : in  std_logic_vector(15 downto 0);
         swt_rdata1            : in  std_logic_vector(15 downto 0);
-        uc_recv               : in  std_logic_vector(7 downto 0);
-        uc_rx_rdy             : in  std_logic;
-        uc_tx_rdy             : in  std_logic;
+        uart_rx_byte          : in  std_logic_vector(7 downto 0);
+        uart_rx_valid         : in  std_logic;
+        uart_tx_ready         : in  std_logic;
         -- Outputs
         Bias_enabled          : out std_logic;
         C_bias_V0             : out std_logic_vector(15 downto 0);
@@ -231,9 +213,9 @@ component General_Controller
         swt_wdata             : out std_logic_vector(15 downto 0);
         swt_wen0              : out std_logic;
         swt_wen1              : out std_logic;
-        uc_oen                : out std_logic;
-        uc_send               : out std_logic_vector(7 downto 0);
-        uc_wen                : out std_logic
+        uart_rx_ack           : out std_logic;
+        uart_tx_byte          : out std_logic_vector(7 downto 0);
+        uart_tx_start         : out std_logic
         );
 end component;
 -- Science
@@ -387,6 +369,26 @@ component Timing
         s_clks : out std_logic_vector(24 downto 0)
         );
 end component;
+-- UART
+component UART
+    -- Port list
+    port(
+        -- Inputs
+        clk          : in  std_logic;
+        recv_oen     : in  std_logic;
+        reset        : in  std_logic;
+        rx           : in  std_logic;
+        send         : in  std_logic_vector(7 downto 0);
+        send_wen     : in  std_logic;
+        -- Outputs
+        recv         : out std_logic_vector(7 downto 0);
+        rx_rdy       : out std_logic;
+        test_port    : out std_logic;
+        transmitting : out std_logic;
+        tx           : out std_logic;
+        tx_rdy       : out std_logic
+        );
+end component;
 ----------------------------------------------------------------------
 -- Signal declarations
 ----------------------------------------------------------------------
@@ -395,13 +397,10 @@ signal ACLK_net_0                                 : std_logic;
 signal ACS_net_0                                  : std_logic;
 signal ACST_net_0                                 : std_logic;
 signal ARST_net_0                                 : std_logic;
-signal CLKINT_0_Y_0                               : std_logic;
+signal CLKINT_0_Y_1                               : std_logic;
 signal CLKINT_1_Y                                 : std_logic;
 signal CLKINT_2_Y                                 : std_logic;
 signal ClockDivs_0_clk_800kHz                     : std_logic;
-signal Communications_0_uc_recv                   : std_logic_vector(7 downto 0);
-signal Communications_0_uc_rx_rdy                 : std_logic;
-signal Communications_0_uc_tx_rdy                 : std_logic;
 signal Data_Hub_Packets_0_acc_packet_1            : std_logic_vector(63 downto 0);
 signal Data_Hub_Packets_0_gyro_packet_0           : std_logic_vector(63 downto 0);
 signal Data_Hub_Packets_0_mag_packet_1            : std_logic_vector(63 downto 0);
@@ -430,9 +429,9 @@ signal General_Controller_0_swt_waddr             : std_logic_vector(7 downto 0)
 signal General_Controller_0_swt_wdata             : std_logic_vector(15 downto 0);
 signal General_Controller_0_swt_wen0              : std_logic;
 signal General_Controller_0_swt_wen1              : std_logic;
-signal General_Controller_0_uc_oen                : std_logic;
-signal General_Controller_0_uc_send               : std_logic_vector(7 downto 0);
-signal General_Controller_0_uc_wen                : std_logic;
+signal General_Controller_0_uart_rx_ack           : std_logic;
+signal General_Controller_0_uart_tx_byte          : std_logic_vector(7 downto 0);
+signal General_Controller_0_uart_tx_start         : std_logic;
 signal GYRO_SCL_net_0                             : std_logic;
 signal L1WR_net_0                                 : std_logic;
 signal L2WR_net_0                                 : std_logic;
@@ -485,6 +484,9 @@ signal Timing_0_s_clks18to18                      : std_logic_vector(18 to 18);
 signal Timing_0_s_clks20to20                      : std_logic_vector(20 to 20);
 signal Timing_0_s_clks22to22                      : std_logic_vector(22 to 22);
 signal Timing_0_s_clks24to24                      : std_logic_vector(24 to 24);
+signal UART_0_recv                                : std_logic_vector(7 downto 0);
+signal UART_0_rx_rdy                              : std_logic;
+signal UART_0_tx_rdy                              : std_logic;
 signal UC_UART_RX_net_0                           : std_logic;
 signal FPGA_BUF_INT_net_1                         : std_logic;
 signal PRESSURE_SCL_net_1                         : std_logic;
@@ -656,7 +658,7 @@ CLKINT_0 : CLKINT
         -- Inputs
         A => CLOCK,
         -- Outputs
-        Y => CLKINT_0_Y_0 
+        Y => CLKINT_0_Y_1 
         );
 -- CLKINT_1
 CLKINT_1 : CLKINT
@@ -678,7 +680,7 @@ CLKINT_2 : CLKINT
 ClockDivs_0 : ClockDivs
     port map( 
         -- Inputs
-        clk_32MHz  => CLKINT_0_Y_0,
+        clk_32MHz  => CLKINT_0_Y_1,
         reset      => CLKINT_1_Y,
         -- Outputs
         clk_16MHz  => OPEN,
@@ -691,22 +693,6 @@ ClockDivs_0 : ClockDivs
         clk_1kHz   => OPEN,
         clk_50Hz   => OPEN,
         clk_1Hz    => OPEN 
-        );
--- Communications_0
-Communications_0 : Communications
-    port map( 
-        -- Inputs
-        clk       => CLKINT_0_Y_0,
-        reset     => CLKINT_1_Y,
-        uc_oen    => General_Controller_0_uc_oen,
-        uc_wen    => General_Controller_0_uc_wen,
-        rx        => UC_UART_TX,
-        uc_send   => General_Controller_0_uc_send,
-        -- Outputs
-        uc_tx_rdy => Communications_0_uc_tx_rdy,
-        uc_rx_rdy => Communications_0_uc_rx_rdy,
-        tx        => UC_UART_RX_net_0,
-        uc_recv   => Communications_0_uc_recv 
         );
 -- Data_Hub_Packets_0
 Data_Hub_Packets_0 : Data_Hub_Packets
@@ -739,7 +725,7 @@ Data_Hub_Packets_0 : Data_Hub_Packets
 Data_Saving_0 : Data_Saving
     port map( 
         -- Inputs
-        clk           => CLKINT_0_Y_0,
+        clk           => CLKINT_0_Y_1,
         reset         => CLKINT_1_Y,
         ch_0_new_data => Science_0_new_SC_packet,
         sync          => CU_SYNC,
@@ -776,14 +762,14 @@ Dummy_Pins_0 : Dummy_Pins
 General_Controller_0 : General_Controller
     port map( 
         -- Inputs
-        clk                   => CLKINT_0_Y_0,
+        clk                   => CLKINT_0_Y_1,
         clk_1Hz               => Timing_0_s_clks24to24(24),
         clk_4Hz               => Timing_0_s_clks22to22(22),
         clk_256Hz             => Timing_0_s_clks16to16(16),
         reset                 => CLKINT_1_Y,
-        uc_recv               => Communications_0_uc_recv,
-        uc_tx_rdy             => Communications_0_uc_tx_rdy,
-        uc_rx_rdy             => Communications_0_uc_rx_rdy,
+        uart_rx_byte          => UART_0_recv,
+        uart_tx_ready         => UART_0_tx_rdy,
+        uart_rx_valid         => UART_0_rx_rdy,
         swt_rdata0            => SweepTable_0_RD,
         swt_rdata1            => SweepTable_1_RD,
         acc_packet            => Data_Hub_Packets_0_acc_packet_1,
@@ -799,9 +785,9 @@ General_Controller_0 : General_Controller
         swt_wen0              => General_Controller_0_swt_wen0,
         swt_wen1              => General_Controller_0_swt_wen1,
         swt_ren               => General_Controller_0_swt_ren,
-        uc_send               => General_Controller_0_uc_send,
-        uc_wen                => General_Controller_0_uc_wen,
-        uc_oen                => General_Controller_0_uc_oen,
+        uart_tx_byte          => General_Controller_0_uart_tx_byte,
+        uart_tx_start         => General_Controller_0_uart_tx_start,
+        uart_rx_ack           => General_Controller_0_uart_rx_ack,
         led1                  => LED1_0,
         led2                  => LED2_net_0,
         C_bias_V0             => General_Controller_0_C_bias_V0,
@@ -822,7 +808,7 @@ Science_0 : Science
         AB                      => AB,
         ABSY                    => ABSY,
         clk_32kHz               => Timing_0_s_clks9to9(9),
-        clk                     => CLKINT_0_Y_0,
+        clk                     => CLKINT_0_Y_1,
         reset                   => CLKINT_1_Y,
         exp_adc_reset           => GND_net,
         clk_16Hz                => Timing_0_s_clks20to20(20),
@@ -861,7 +847,7 @@ Science_0 : Science
 Sensors_0 : Sensors
     port map( 
         -- Inputs
-        clk               => CLKINT_0_Y_0,
+        clk               => CLKINT_0_Y_1,
         reset             => CLKINT_1_Y,
         en                => VCC_net,
         clk_1kHz          => Timing_0_s_clks14to14(14),
@@ -910,7 +896,7 @@ SweepTable_0 : SweepTable
         -- Inputs
         WEN   => General_Controller_0_swt_wen0,
         REN   => TableSelect_0_REN,
-        RWCLK => CLKINT_0_Y_0,
+        RWCLK => CLKINT_0_Y_1,
         RESET => CLKINT_1_Y,
         WD    => General_Controller_0_swt_wdata,
         WADDR => General_Controller_0_swt_waddr,
@@ -924,7 +910,7 @@ SweepTable_1 : SweepTable
         -- Inputs
         WEN   => General_Controller_0_swt_wen1,
         REN   => TableSelect_0_REN,
-        RWCLK => CLKINT_0_Y_0,
+        RWCLK => CLKINT_0_Y_1,
         RESET => CLKINT_1_Y,
         WD    => General_Controller_0_swt_wdata,
         WADDR => General_Controller_0_swt_waddr,
@@ -937,8 +923,8 @@ TableSelect_0 : TableSelect
     port map( 
         -- Inputs
         GCREN   => General_Controller_0_swt_ren,
-        GCRADDR => General_Controller_0_swt_raddr,
         ScREN   => Science_0_REN,
+        GCRADDR => General_Controller_0_swt_raddr,
         ScRADDR => Science_0_RADDR,
         -- Outputs
         REN     => TableSelect_0_REN,
@@ -948,7 +934,7 @@ TableSelect_0 : TableSelect
 Timekeeper_0 : Timekeeper
     port map( 
         -- Inputs
-        clk          => CLKINT_0_Y_0,
+        clk          => CLKINT_0_Y_1,
         clk_1MHz     => Timing_0_s_clks4to4(4),
         clk_1kHz     => Timing_0_s_clks14to14(14),
         clk_1Hz      => Timing_0_s_clks24to24(24),
@@ -962,10 +948,28 @@ Timekeeper_0 : Timekeeper
 Timing_0 : Timing
     port map( 
         -- Inputs
-        clk    => CLKINT_0_Y_0,
+        clk    => CLKINT_0_Y_1,
         reset  => CLKINT_1_Y,
         -- Outputs
         s_clks => s_clks_net_0 
+        );
+-- UART_0
+UART_0 : UART
+    port map( 
+        -- Inputs
+        clk          => CLKINT_0_Y_1,
+        reset        => CLKINT_1_Y,
+        rx           => UC_UART_TX,
+        send         => General_Controller_0_uart_tx_byte,
+        send_wen     => General_Controller_0_uart_tx_start,
+        recv_oen     => General_Controller_0_uart_rx_ack,
+        -- Outputs
+        tx           => UC_UART_RX_net_0,
+        recv         => UART_0_recv,
+        test_port    => OPEN,
+        rx_rdy       => UART_0_rx_rdy,
+        tx_rdy       => UART_0_tx_rdy,
+        transmitting => OPEN 
         );
 
 end RTL;
