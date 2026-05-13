@@ -1,14 +1,5 @@
 @N: MF248 |Running in 64-bit mode.
 @N: MF667 |Clock conversion disabled. (Command "set_option -fix_gated_and_generated_clocks 0" in the project file.)
-@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":76:8:76:9|Removing sequential instance cnt_1kHz[8:0] (in view: work.ClockDivs(architecture_clockdivs)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":115:8:115:9|Removing sequential instance cnt_1Hz[4:0] (in view: work.ClockDivs(architecture_clockdivs)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":100:8:100:9|Removing sequential instance cnt_50Hz[5:0] (in view: work.ClockDivs(architecture_clockdivs)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":76:8:76:9|Removing sequential instance cnt_4kHz[6:0] (in view: work.ClockDivs(architecture_clockdivs)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":57:8:57:9|Removing sequential instance div_by2[4:0] (in view: work.ClockDivs(architecture_clockdivs)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":115:8:115:9|Removing sequential instance clk_1Hz (in view: work.ClockDivs(architecture_clockdivs)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":76:8:76:9|Removing sequential instance clk_4kHz (in view: work.ClockDivs(architecture_clockdivs)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":76:8:76:9|Removing sequential instance clk_1kHz (in view: work.ClockDivs(architecture_clockdivs)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":100:8:100:9|Removing sequential instance clk_50Hz (in view: work.ClockDivs(architecture_clockdivs)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\l3gd20h_interface.vhd":81:8:81:9|Removing sequential instance gyro_new_data (in view: work.L3GD20H_Interface(architecture_l3gd20h_interface)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\l3gd20h_interface.vhd":81:8:81:9|Removing sequential instance gyro_z[15:0] (in view: work.L3GD20H_Interface(architecture_l3gd20h_interface)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\l3gd20h_interface.vhd":81:8:81:9|Removing sequential instance gyro_y[15:0] (in view: work.L3GD20H_Interface(architecture_l3gd20h_interface)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
@@ -16,20 +7,29 @@
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\ms5611_01ba03_interface.vhd":99:8:99:9|Removing sequential instance pressure_new_data (in view: work.MS5611_01BA03_Interface(architecture_ms5611_01ba03_interface)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\ms5611_01ba03_interface.vhd":99:8:99:9|Removing sequential instance temp_raw[23:0] (in view: work.MS5611_01BA03_Interface(architecture_ms5611_01ba03_interface)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\ms5611_01ba03_interface.vhd":99:8:99:9|Removing sequential instance pressure_raw[23:0] (in view: work.MS5611_01BA03_Interface(architecture_ms5611_01ba03_interface)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timing.vhd":67:4:67:5|Removing sequential instance f_time[6:0] (in view: work.Timing(architecture_timing)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":69:30:69:43|Found 5-bit incrementor, 'un2_cnt_800khz[4:0]'
+@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timekeeper.vhd":60:35:60:37|Removing sequential instance milliseconds_i[23:0] (in view: work.Timekeeper(architecture_timekeeper)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timekeeper.vhd":60:35:60:37|Removing sequential instance microseconds_i[23:0] (in view: work.Timekeeper(architecture_timekeeper)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timekeeper.vhd":58:35:58:37|Removing sequential instance old_1kHz (in view: work.Timekeeper(architecture_timekeeper)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\interrupt_generator.vhd":44:4:44:5|Found counter in view:work.Interrupt_Generator(architecture_interrupt_generator) instance counter[9:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":972:8:972:9|Found counter in view:work.General_Controller(architecture_general_controller) instance tx_byte_index[3:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":269:8:269:9|Found counter in view:work.General_Controller(architecture_general_controller) instance swt_sweep_cnt[15:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":823:8:823:9|Found counter in view:work.General_Controller(architecture_general_controller) instance mac_swt_step[7:0] 
-@N: MO225 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":269:8:269:9|There are no possible illegal states for state machine preamble_counter[0:1] (in view: work.General_Controller(architecture_general_controller)); safe FSM implementation is not required.
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":622:56:622:65|Found 4-bit incrementor, 'un1_acc_period_s_0[4:0]'
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":768:22:768:34|Found 8-bit incrementor, 'un22_acc_period_s[24:32]'
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":781:22:781:34|Found 8-bit incrementor, 'un23_mag_period_s[24:32]'
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":794:22:794:35|Found 8-bit incrementor, 'un23_gyro_period_s[24:32]'
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":807:22:807:35|Found 8-bit incrementor, 'un23_pres_period_s[24:32]'
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":450:23:450:39|Found 3-bit incrementor, 'un9_expected_payload_length[29:32]'
-@N: MF179 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":930:32:930:73|Found 8 by 8 bit less-than operator ('<') p_sweep_table_engine\.un1_mac_swt_step (in view: work.General_Controller(architecture_general_controller))
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":1157:8:1157:9|Found counter in view:work.General_Controller(architecture_general_controller) instance tx_byte_index[3:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":409:8:409:9|Found counter in view:work.General_Controller(architecture_general_controller) instance swt_sweep_cnt[15:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":997:8:997:9|Found counter in view:work.General_Controller(architecture_general_controller) instance mac_swt_step[7:0] 
+@N: MO225 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":409:8:409:9|There are no possible illegal states for state machine preamble_cnt[0:1] (in view: work.General_Controller(architecture_general_controller)); safe FSM implementation is not required.
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":342:8:342:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_impossible_branch_cnt[3:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":342:8:342:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_rx_postamble_cnt[3:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":342:8:342:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_rx_preamble_cnt[3:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":342:8:342:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_sweep_macro_busy_cnt[3:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":342:8:342:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_unknown_cmd_cnt[3:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":342:8:342:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_periodic_hk_overrun_cnt[7:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":342:8:342:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_readback_overrun_cnt[7:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":342:8:342:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_sc_cb_overrun_cnt[7:0] 
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":788:54:788:63|Found 4-bit incrementor, 'un1_acc_period_0[4:0]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":955:22:955:32|Found 8-bit incrementor, 'un23_mag_period[24:32]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":968:22:968:33|Found 8-bit incrementor, 'un23_gyro_period[24:32]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":981:22:981:33|Found 8-bit incrementor, 'un23_pres_period[24:32]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":942:22:942:32|Found 8-bit incrementor, 'un22_acc_period[24:32]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":615:23:615:39|Found 3-bit incrementor, 'un9_expected_payload_length[29:32]'
+@N: MF179 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":1115:32:1115:73|Found 8 by 8 bit less-than operator ('<') p_sweep_table_engine\.un1_mac_swt_step (in view: work.General_Controller(architecture_general_controller))
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":75:8:75:9|Found counter in view:work.ADC_Data_Packer(architecture_adc_data_packer) instance n_point_samples[15:0] 
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":75:8:75:9|Found counter in view:work.ADC_Data_Packer(architecture_adc_data_packer) instance n_skipped[15:0] 
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":75:8:75:9|Found counter in view:work.ADC_Data_Packer(architecture_adc_data_packer) instance point_counter[15:0] 
@@ -50,8 +50,15 @@
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\i2c_master.vhd":68:8:68:9|Found counter in view:work.I2C_Master_1(architecture_i2c_master) instance byte_cnt[3:0] 
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\i2c_master.vhd":68:8:68:9|Found counter in view:work.I2C_Master_2(architecture_i2c_master) instance byte_cnt[3:0] 
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\ms5611_01ba03_interface.vhd":99:8:99:9|Found counter in view:work.MS5611_01BA03_Interface(architecture_ms5611_01ba03_interface) instance ms_cnt[7:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timing.vhd":57:65:57:65|Found counter in view:work.Timing(architecture_timing) instance m_time[7:0] 
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timing.vhd":76:19:76:29|Found 8-bit incrementor, 'un1_m_count_1[7:0]'
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timekeeper.vhd":60:35:60:37|Found counter in view:work.Timekeeper(architecture_timekeeper) instance seconds_high_i[11:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timekeeper.vhd":60:35:60:37|Found counter in view:work.Timekeeper(architecture_timekeeper) instance seconds_i[19:0] 
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timekeeper.vhd":126:37:126:53|Found 20-bit incrementor, 'un1_usec_in_sec_i[19:0]'
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timing.vhd":60:69:60:69|Found counter in view:work.Timing(architecture_timing) instance m_time[7:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timing.vhd":73:4:73:5|Found counter in view:work.Timing(architecture_timing) instance f_time[6:0] 
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timing.vhd":92:26:92:39|Found 5-bit incrementor, 'un1_cnt_800khz[4:0]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timing.vhd":95:19:95:29|Found 8-bit incrementor, 'un1_m_count_1[7:0]'
+@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timing.vhd":73:4:73:5|Removing sequential instance f_time[6] (in view: work.Timing(architecture_timing)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timing.vhd":73:4:73:5|Removing sequential instance f_time[5] (in view: work.Timing(architecture_timing)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\uart.vhd":132:8:132:9|Found counter in view:work.UART(architecture_uart) instance rx_count[2:0] 
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\uart.vhd":67:8:67:9|Found counter in view:work.UART(architecture_uart) instance tx_count[2:0] 
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\uart.vhd":132:8:132:9|Found counter in view:work.UART(architecture_uart) instance rx_clk_count[23:31] 
@@ -74,11 +81,9 @@
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\i2c_master.vhd":68:8:68:9|Removing sequential instance Sensors_0.Gyro_0.I2C_Master_0.data_out[5] (in view: work.Toplevel(rtl)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\i2c_master.vhd":68:8:68:9|Removing sequential instance Sensors_0.Gyro_0.I2C_Master_0.data_out[6] (in view: work.Toplevel(rtl)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\i2c_master.vhd":68:8:68:9|Removing sequential instance Sensors_0.Gyro_0.I2C_Master_0.data_out[7] (in view: work.Toplevel(rtl)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
-@N: FP130 |Promoting Net ClockDivs_0_clk_800kHz on CLKINT  ClockDivs_0.clk_800kHz_inferred_clock 
-@N: FP130 |Promoting Net General_Controller_0.un1_msg_2send_115 on CLKINT  I_123 
-@N: FP130 |Promoting Net General_Controller_0.un74_tx_state on CLKINT  I_124 
-@N: MT611 :|Automatically generated clock ClockDivs|clk_1kHz_inferred_clock is not used and is being removed
-@N: MT611 :|Automatically generated clock ClockDivs|clk_50Hz_inferred_clock is not used and is being removed
+@N: FP130 |Promoting Net Timing_0_clk_800kHz on CLKINT  Timing_0.clk_800kHz_i_inferred_clock 
+@N: FP130 |Promoting Net General_Controller_0.sc_data_tx_flag on CLKINT  I_141 
+@N: FP130 |Promoting Net General_Controller_0.un1_msg_2send_115 on CLKINT  I_142 
 @N: MT320 |This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report.
 @N: MT322 |Clock constraints include only register-to-register paths associated with each individual clock.
 @N: MT582 |Estimated period and frequency not reported for given clock unless the clock has at least one timing path which is not a false or a max delay path and that does not have excessive slack

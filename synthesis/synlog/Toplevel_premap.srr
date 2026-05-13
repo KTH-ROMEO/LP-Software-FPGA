@@ -1,4 +1,4 @@
-# Mon May 11 18:19:51 2026
+# Wed May 13 12:08:41 2026
 
 Synopsys Microsemi Technology Pre-mapping, Version mapact, Build 2172R, Built Oct 30 2017 10:54:39
 Copyright (C) 1994-2017 Synopsys, Inc. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -17,8 +17,9 @@ Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s
 
 Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 110MB peak: 115MB)
 
-@N: BN115 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\component\work\toplevel\toplevel.vhd":698:0:698:17|Removing instance Data_Hub_Packets_0 (in view: work.Toplevel(rtl)) of type view:work.Data_Hub_Packets(architecture_data_hub_packets) because it does not drive other instances.
-@N: BN115 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\component\work\toplevel\toplevel.vhd":741:0:741:11|Removing instance Dummy_Pins_0 (in view: work.Toplevel(rtl)) of type view:work.Dummy_Pins(behavioral) because it does not drive other instances.
+@N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":342:8:342:9|Removing sequential instance err_fsm_illegal_state_cnt[3:0] (in view: work.General_Controller(architecture_general_controller)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN115 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\component\work\toplevel\toplevel.vhd":663:0:663:17|Removing instance Data_Hub_Packets_0 (in view: work.Toplevel(rtl)) of type view:work.Data_Hub_Packets(architecture_data_hub_packets) because it does not drive other instances.
+@N: BN115 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\component\work\toplevel\toplevel.vhd":706:0:706:11|Removing instance Dummy_Pins_0 (in view: work.Toplevel(rtl)) of type view:work.Dummy_Pins(behavioral) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\packet_saver.vhd":56:8:56:9|Removing sequential instance data_out[63:0] (in view: work.Packet_Saver(architecture_packet_saver)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\set_lp_gain.vhd":65:2:65:3|Removing sequential instance L3WR (in view: work.SET_LP_GAIN(behavioral)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\set_lp_gain.vhd":65:2:65:3|Removing sequential instance L4WR (in view: work.SET_LP_GAIN(behavioral)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
@@ -37,34 +38,29 @@ Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\l3gd20h_interface.vhd":81:8:81:9|Removing sequential instance gyro_time[23:0] (in view: work.L3GD20H_Interface(architecture_l3gd20h_interface)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\l3gd20h_interface.vhd":81:8:81:9|Removing sequential instance temp[7:0] (in view: work.L3GD20H_Interface(architecture_l3gd20h_interface)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\ms5611_01ba03_interface.vhd":99:8:99:9|Removing sequential instance pressure_time[23:0] (in view: work.MS5611_01BA03_Interface(architecture_ms5611_01ba03_interface)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N: BN115 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\component\work\toplevel\toplevel.vhd":934:0:934:11|Removing instance Timekeeper_0 (in view: work.Toplevel(rtl)) of type view:work.Timekeeper(architecture_timekeeper) because it does not drive other instances.
 
-Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 117MB peak: 119MB)
+Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 118MB peak: 119MB)
 
 
 
 Clock Summary
 *****************
 
-Start                                   Requested     Requested     Clock        Clock                   Clock
-Clock                                   Frequency     Period        Type         Group                   Load 
---------------------------------------------------------------------------------------------------------------
-ClockDivs|clk_1kHz_inferred_clock       100.0 MHz     10.000        inferred     Inferred_clkgroup_5     7    
-ClockDivs|clk_50Hz_inferred_clock       100.0 MHz     10.000        inferred     Inferred_clkgroup_6     6    
-ClockDivs|clk_800kHz_inferred_clock     100.0 MHz     10.000        inferred     Inferred_clkgroup_1     126  
-DAC_SET|ADR_inferred_clock[1]           100.0 MHz     10.000        inferred     Inferred_clkgroup_2     39   
-Timing|s_time_inferred_clock[5]         100.0 MHz     10.000        inferred     Inferred_clkgroup_3     4    
-Toplevel|CLOCK                          100.0 MHz     10.000        inferred     Inferred_clkgroup_0     1418 
-Toplevel|FMC_CLK                        100.0 MHz     10.000        inferred     Inferred_clkgroup_4     54   
-==============================================================================================================
+Start                                  Requested     Requested     Clock        Clock                   Clock
+Clock                                  Frequency     Period        Type         Group                   Load 
+-------------------------------------------------------------------------------------------------------------
+DAC_SET|ADR_inferred_clock[1]          100.0 MHz     10.000        inferred     Inferred_clkgroup_2     39   
+Timing|clk_800kHz_i_inferred_clock     100.0 MHz     10.000        inferred     Inferred_clkgroup_1     108  
+Timing|s_time_inferred_clock[5]        100.0 MHz     10.000        inferred     Inferred_clkgroup_3     4    
+Toplevel|CLOCK                         100.0 MHz     10.000        inferred     Inferred_clkgroup_0     1573 
+Toplevel|FMC_CLK                       100.0 MHz     10.000        inferred     Inferred_clkgroup_4     54   
+=============================================================================================================
 
-@W: MT530 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":57:8:57:9|Found inferred clock Toplevel|CLOCK which controls 1418 sequential elements including ClockDivs_0.cnt_800kHz[4:0]. This clock has no specified timing constraint which may adversely impact design performance. 
-@W: MT530 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":76:8:76:9|Found inferred clock ClockDivs|clk_800kHz_inferred_clock which controls 126 sequential elements including ClockDivs_0.cnt_1kHz[8:0]. This clock has no specified timing constraint which may adversely impact design performance. 
+@W: MT530 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\smartgen\fpga_buffer\fpga_buffer.vhd":2063:4:2063:23|Found inferred clock Toplevel|CLOCK which controls 1573 sequential elements including Data_Saving_0.FPGA_Buffer_0.\\DFN1C0_RGRYSYNC\[8\]\\. This clock has no specified timing constraint which may adversely impact design performance. 
+@W: MT530 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\i2c_master.vhd":68:8:68:9|Found inferred clock Timing|clk_800kHz_i_inferred_clock which controls 108 sequential elements including Sensors_0.Accelerometer_0.I2C_Master_0.state[0:8]. This clock has no specified timing constraint which may adversely impact design performance. 
 @W: MT530 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\dac_set.vhd":56:2:56:3|Found inferred clock DAC_SET|ADR_inferred_clock[1] which controls 39 sequential elements including Science_0.DAC_SET_0.state[0:4]. This clock has no specified timing constraint which may adversely impact design performance. 
 @W: MT530 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_reset.vhd":37:2:37:3|Found inferred clock Timing|s_time_inferred_clock[5] which controls 4 sequential elements including Science_0.ADC_RESET_0.state[0:2]. This clock has no specified timing constraint which may adversely impact design performance. 
 @W: MT530 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\smartgen\fpga_buffer\fpga_buffer.vhd":2135:4:2135:23|Found inferred clock Toplevel|FMC_CLK which controls 54 sequential elements including Data_Saving_0.FPGA_Buffer_0.\\DFN1C0_WGRYSYNC\[5\]\\. This clock has no specified timing constraint which may adversely impact design performance. 
-@W: MT530 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":100:8:100:9|Found inferred clock ClockDivs|clk_1kHz_inferred_clock which controls 7 sequential elements including ClockDivs_0.cnt_50Hz[5:0]. This clock has no specified timing constraint which may adversely impact design performance. 
-@W: MT530 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\clockdivs.vhd":115:8:115:9|Found inferred clock ClockDivs|clk_50Hz_inferred_clock which controls 6 sequential elements including ClockDivs_0.cnt_1Hz[4:0]. This clock has no specified timing constraint which may adversely impact design performance. 
 
 Finished Pre Mapping Phase.
 @N: BN225 |Writing default property annotation file C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\synthesis\Toplevel.sap.
@@ -95,11 +91,11 @@ original code -> new code
    0010000 -> 0010000
    0100000 -> 0100000
    1000000 -> 1000000
-Encoding state machine preamble_counter[0:1] (in view: work.General_Controller(architecture_general_controller))
+Encoding state machine preamble_cnt[0:1] (in view: work.General_Controller(architecture_general_controller))
 original code -> new code
    00 -> 0
    01 -> 1
-@N: MO225 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":269:8:269:9|There are no possible illegal states for state machine preamble_counter[0:1] (in view: work.General_Controller(architecture_general_controller)); safe FSM implementation is not required.
+@N: MO225 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":409:8:409:9|There are no possible illegal states for state machine preamble_cnt[0:1] (in view: work.General_Controller(architecture_general_controller)); safe FSM implementation is not required.
 Encoding state machine state[0:5] (in view: work.ADC_Data_Packer(architecture_adc_data_packer))
 original code -> new code
    000 -> 000001
@@ -255,13 +251,13 @@ original code -> new code
 None
 None
 
-Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 124MB peak: 126MB)
+Finished constraint checker (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 124MB peak: 126MB)
 
 Pre-mapping successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 35MB peak: 126MB)
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 35MB peak: 126MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Mon May 11 18:19:52 2026
+# Wed May 13 12:08:42 2026
 
 ###########################################################]

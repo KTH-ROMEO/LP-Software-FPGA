@@ -8,13 +8,10 @@
 Post processing for work.uart.architecture_uart
 @A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\UART.vhd":67:8:67:9|Feedback mux created for signal tx_byte[7:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
 @W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\UART.vhd":132:8:132:9|All reachable assignments to test_port are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Timing.vhd":46:7:46:12|Synthesizing work.timing.architecture_timing.
+@N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Timing.vhd":48:7:48:12|Synthesizing work.timing.architecture_timing.
 Post processing for work.timing.architecture_timing
-@N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Timekeeper.vhd":24:7:24:16|Synthesizing work.timekeeper.architecture_timekeeper.
+@N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Timekeeper.vhd":40:7:40:16|Synthesizing work.timekeeper.architecture_timekeeper.
 Post processing for work.timekeeper.architecture_timekeeper
-@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Timekeeper.vhd":44:8:44:9|Feedback mux created for signal old_1kHz. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Timekeeper.vhd":44:8:44:9|Feedback mux created for signal old_1MHz. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Timekeeper.vhd":44:8:44:9|Feedback mux created for signal old_1Hz. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
 @N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\TableSelect.vhd":23:7:23:17|Synthesizing work.tableselect.architecture_tableselect.
 Post processing for work.tableselect.architecture_tableselect
 @N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\smartgen\SweepTable\SweepTable.vhd":8:7:8:16|Synthesizing work.sweeptable.def_arch.
@@ -150,68 +147,78 @@ Post processing for work.adc_data_packer.architecture_adc_data_packer
 @W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\ADC_Data_Packer.vhd":172:8:172:9|Pruning register bit 0 of g2i(1 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
 Post processing for work.science.rtl
 @N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":6:7:6:24|Synthesizing work.general_controller.architecture_general_controller.
-@N: CD231 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":76:31:76:32|Using onehot encoding for type swt_engine_state_type. For example, enumeration swt_idle is mapped to "1000000".
-@N: CD231 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":65:23:65:24|Using onehot encoding for type rx_state_type. For example, enumeration rx_idle is mapped to "10000000".
-@N: CD233 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":87:28:87:29|Using sequential encoding for type rx_context_type.
-@N: CD233 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":59:23:59:24|Using sequential encoding for type tx_state_type.
-@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":403:28:403:48|OTHERS clause is not synthesized.
-@W: CD609 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":448:20:448:48|Index value 0 to 7 could be out of prefix range 0 to 3 
-@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":678:16:678:29|OTHERS clause is not synthesized.
-@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":958:20:958:33|OTHERS clause is not synthesized.
-@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1214:16:1214:29|OTHERS clause is not synthesized.
+@N: CD231 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":81:31:81:32|Using onehot encoding for type swt_engine_state_type. For example, enumeration swt_idle is mapped to "1000000".
+@N: CD231 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":69:23:69:24|Using onehot encoding for type rx_state_type. For example, enumeration rx_idle is mapped to "10000000".
+@N: CD233 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":92:28:92:29|Using sequential encoding for type rx_context_type.
+@N: CD233 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":62:23:62:24|Using sequential encoding for type tx_state_type.
+@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":562:28:562:41|OTHERS clause is not synthesized.
+@W: CD609 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":613:20:613:48|Index value 0 to 7 could be out of prefix range 0 to 3 
+@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":846:16:846:29|OTHERS clause is not synthesized.
+@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1143:20:1143:33|OTHERS clause is not synthesized.
+@N: CD604 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1459:16:1459:29|OTHERS clause is not synthesized.
+@W: CD638 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":271:11:271:35|Signal err_periodic_hk_unexp_evt is undriven. Either assign the signal a value or remove the signal declaration.
 Post processing for work.general_controller.architecture_general_controller
-@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":269:8:269:9|Pruning unused register command_byte_3(7 downto 0). Make sure that there are no unused intermediate registers.
-@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":269:8:269:9|Pruning unused register state_seconds_2(19 downto 0). Make sure that there are no unused intermediate registers.
-@W: CL177 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":269:8:269:9|Sharing sequential element macro_meta1_send_req. Add a syn_preserve attribute to the element to prevent sharing.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":269:8:269:9|All reachable assignments to led2 are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":269:8:269:9|All reachable assignments to led1 are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":152:50:152:52|Optimizing register bit mac_swt_mode(2) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":152:50:152:52|Optimizing register bit mac_swt_mode(3) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":152:50:152:52|Optimizing register bit mac_swt_mode(4) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":152:50:152:52|Optimizing register bit mac_swt_mode(5) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":152:50:152:52|Optimizing register bit mac_swt_mode(6) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":152:50:152:52|Optimizing register bit mac_swt_mode(7) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":152:50:152:52|Optimizing register bit swt_req_probe_id(2) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":152:50:152:52|Optimizing register bit swt_req_probe_id(3) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":152:50:152:52|Optimizing register bit swt_req_probe_id(4) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":152:50:152:52|Optimizing register bit swt_req_probe_id(5) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":152:50:152:52|Optimizing register bit swt_req_probe_id(6) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":152:50:152:52|Optimizing register bit swt_req_probe_id(7) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":823:8:823:9|Optimizing register bit mac_swt_tot_steps(8) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":823:8:823:9|Optimizing register bit mac_swt_tot_steps(9) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":823:8:823:9|Optimizing register bit mac_swt_tot_steps(10) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":823:8:823:9|Optimizing register bit mac_swt_tot_steps(11) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":823:8:823:9|Optimizing register bit mac_swt_tot_steps(12) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":823:8:823:9|Optimizing register bit mac_swt_tot_steps(13) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":823:8:823:9|Optimizing register bit mac_swt_tot_steps(14) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":823:8:823:9|Optimizing register bit mac_swt_tot_steps(15) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Optimizing register bit p_tx_manager.msg_2send_0(1) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Optimizing register bit p_tx_manager.msg_2send_0(3) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Optimizing register bit p_tx_manager.msg_2send_0(6) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Optimizing register bit p_tx_manager.msg_2send_1(2) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Optimizing register bit p_tx_manager.msg_2send_1(3) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Optimizing register bit p_tx_manager.msg_2send_1(4) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Optimizing register bit p_tx_manager.msg_2send_1(5) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Optimizing register bit p_tx_manager.msg_2send_1(7) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Optimizing register bit p_tx_manager.msg_2send_2(2) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Optimizing register bit p_tx_manager.msg_2send_11(0) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Optimizing register bit p_tx_manager.msg_2send_11(2) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Optimizing register bit p_tx_manager.msg_2send_11(4) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Optimizing register bit p_tx_manager.msg_2send_11(5) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Optimizing register bit p_tx_manager.msg_2send_11(6) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Optimizing register bit p_tx_manager.msg_2send_11(7) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Pruning register bit 6 of msg_2send_0(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
-@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Pruning register bit 3 of msg_2send_0(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
-@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Pruning register bit 1 of msg_2send_0(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
-@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Pruning register bit 7 of msg_2send_1(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
-@W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Pruning register bits 5 to 2 of msg_2send_1(7 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
-@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Pruning register bit 2 of msg_2send_2(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
-@W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Pruning register bits 7 to 4 of msg_2send_11(7 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
-@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Pruning register bit 2 of msg_2send_11(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
-@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Pruning register bit 0 of msg_2send_11(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
-@W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":152:50:152:52|Pruning register bits 7 to 2 of mac_swt_mode(7 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
-@W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":152:50:152:52|Pruning register bits 7 to 2 of swt_req_probe_id(7 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
-@W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":823:8:823:9|Pruning register bits 15 to 8 of mac_swt_tot_steps(15 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":409:8:409:9|Pruning unused register command_byte_3(7 downto 0). Make sure that there are no unused intermediate registers.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|All reachable assignments to err_fsm_illegal_state_tx_evt are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|All reachable assignments to err_fsm_illegal_state_swt_evt are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL177 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":409:8:409:9|Sharing sequential element macro_meta1_send_req. Add a syn_preserve attribute to the element to prevent sharing.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":342:8:342:9|All reachable assignments to err_periodic_hk_unexp_cnt(0) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":342:8:342:9|All reachable assignments to err_periodic_hk_unexp_cnt(1) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":342:8:342:9|All reachable assignments to err_periodic_hk_unexp_cnt(2) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":342:8:342:9|All reachable assignments to err_periodic_hk_unexp_cnt(3) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":342:8:342:9|All reachable assignments to err_reserved_cnt(0) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":342:8:342:9|All reachable assignments to err_reserved_cnt(1) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":342:8:342:9|All reachable assignments to err_reserved_cnt(2) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":342:8:342:9|All reachable assignments to err_reserved_cnt(3) are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":409:8:409:9|All reachable assignments to led2 are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":409:8:409:9|All reachable assignments to led1 are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":159:50:159:52|Optimizing register bit mac_swt_mode(2) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":159:50:159:52|Optimizing register bit mac_swt_mode(3) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":159:50:159:52|Optimizing register bit mac_swt_mode(4) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":159:50:159:52|Optimizing register bit mac_swt_mode(5) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":159:50:159:52|Optimizing register bit mac_swt_mode(6) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":159:50:159:52|Optimizing register bit mac_swt_mode(7) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":159:50:159:52|Optimizing register bit swt_req_probe_id(2) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":159:50:159:52|Optimizing register bit swt_req_probe_id(3) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":159:50:159:52|Optimizing register bit swt_req_probe_id(4) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":159:50:159:52|Optimizing register bit swt_req_probe_id(5) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":159:50:159:52|Optimizing register bit swt_req_probe_id(6) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":159:50:159:52|Optimizing register bit swt_req_probe_id(7) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|Optimizing register bit mac_swt_tot_steps(8) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|Optimizing register bit mac_swt_tot_steps(9) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|Optimizing register bit mac_swt_tot_steps(10) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|Optimizing register bit mac_swt_tot_steps(11) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|Optimizing register bit mac_swt_tot_steps(12) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|Optimizing register bit mac_swt_tot_steps(13) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|Optimizing register bit mac_swt_tot_steps(14) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|Optimizing register bit mac_swt_tot_steps(15) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Optimizing register bit p_tx_manager.msg_2send_0(1) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Optimizing register bit p_tx_manager.msg_2send_0(3) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Optimizing register bit p_tx_manager.msg_2send_0(6) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Optimizing register bit p_tx_manager.msg_2send_1(2) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Optimizing register bit p_tx_manager.msg_2send_1(3) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Optimizing register bit p_tx_manager.msg_2send_1(4) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Optimizing register bit p_tx_manager.msg_2send_1(5) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Optimizing register bit p_tx_manager.msg_2send_1(7) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Optimizing register bit p_tx_manager.msg_2send_2(2) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Optimizing register bit p_tx_manager.msg_2send_11(0) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Optimizing register bit p_tx_manager.msg_2send_11(2) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Optimizing register bit p_tx_manager.msg_2send_11(4) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Optimizing register bit p_tx_manager.msg_2send_11(5) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Optimizing register bit p_tx_manager.msg_2send_11(6) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Optimizing register bit p_tx_manager.msg_2send_11(7) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Pruning register bit 6 of msg_2send_0(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Pruning register bit 3 of msg_2send_0(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Pruning register bit 1 of msg_2send_0(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Pruning register bit 7 of msg_2send_1(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Pruning register bits 5 to 2 of msg_2send_1(7 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Pruning register bit 2 of msg_2send_2(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Pruning register bits 7 to 4 of msg_2send_11(7 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Pruning register bit 2 of msg_2send_11(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@W: CL260 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Pruning register bit 0 of msg_2send_11(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":159:50:159:52|Pruning register bits 7 to 2 of mac_swt_mode(7 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":159:50:159:52|Pruning register bits 7 to 2 of swt_req_probe_id(7 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|Pruning register bits 15 to 8 of mac_swt_tot_steps(15 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
 @N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Dummy_Pins.vhd":23:7:23:16|Synthesizing work.dummy_pins.behavioral.
 Post processing for work.dummy_pins.behavioral
 @W: CL111 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Dummy_Pins.vhd":51:2:51:3|All reachable assignments to p96 are '0'; removing register. To preserve a constant register, use the syn_preserve attribute.
@@ -349,10 +356,6 @@ Post processing for work.fpga_buffer.def_arch
 Post processing for work.data_saving.rtl
 @N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":23:7:23:22|Synthesizing work.data_hub_packets.architecture_data_hub_packets.
 Post processing for work.data_hub_packets.architecture_data_hub_packets
-@N: CD630 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\ClockDivs.vhd":24:7:24:15|Synthesizing work.clockdivs.architecture_clockdivs.
-Post processing for work.clockdivs.architecture_clockdivs
-@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\ClockDivs.vhd":115:8:115:9|Feedback mux created for signal cnt_1Hz[4:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A: CL282 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\ClockDivs.vhd":115:8:115:9|Feedback mux created for signal clk_1Hz. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
 @N: CD630 :"C:\Microsemi\Libero_SoC_v11.9\SynplifyPro\lib\proasic\proasic3.vhd":2858:10:2858:15|Synthesizing proasic3.clkint.syn_black_box.
 Post processing for proasic3.clkint.syn_black_box
 Post processing for work.toplevel.rtl
@@ -375,21 +378,21 @@ Post processing for work.toplevel.rtl
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Data_Hub_Packets.vhd":44:4:44:20|Input pressure_temp_raw is unused.
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Packet_Saver.vhd":25:4:25:7|Input sync is unused.
 @N: CL159 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\Dummy_Pins.vhd":28:4:28:8|Input RESET is unused.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":823:8:823:9|Optimizing register bit swt_probe_id(2) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":823:8:823:9|Optimizing register bit swt_probe_id(3) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":823:8:823:9|Optimizing register bit swt_probe_id(4) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":823:8:823:9|Optimizing register bit swt_probe_id(5) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":823:8:823:9|Optimizing register bit swt_probe_id(6) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":823:8:823:9|Optimizing register bit swt_probe_id(7) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":823:8:823:9|Pruning register bits 7 to 2 of swt_probe_id(7 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
-@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Trying to extract state machine for register tx_state.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|Optimizing register bit swt_probe_id(2) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|Optimizing register bit swt_probe_id(3) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|Optimizing register bit swt_probe_id(4) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|Optimizing register bit swt_probe_id(5) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|Optimizing register bit swt_probe_id(6) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|Optimizing register bit swt_probe_id(7) to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL279 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|Pruning register bits 7 to 2 of swt_probe_id(7 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Trying to extract state machine for register tx_state.
 Extracted state machine for register tx_state
 State machine has 3 reachable states with original encodings of:
    00
    01
    10
-@W: CL249 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":972:8:972:9|Initial value is not supported on state machine tx_state
-@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":823:8:823:9|Trying to extract state machine for register swt_engine_state.
+@W: CL249 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":1157:8:1157:9|Initial value is not supported on state machine tx_state
+@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|Trying to extract state machine for register swt_engine_state.
 Extracted state machine for register swt_engine_state
 State machine has 7 reachable states with original encodings of:
    0000001
@@ -399,14 +402,14 @@ State machine has 7 reachable states with original encodings of:
    0010000
    0100000
    1000000
-@W: CL249 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":823:8:823:9|Initial value is not supported on state machine swt_engine_state
-@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":269:8:269:9|Trying to extract state machine for register preamble_counter.
-Extracted state machine for register preamble_counter
+@W: CL249 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":997:8:997:9|Initial value is not supported on state machine swt_engine_state
+@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":409:8:409:9|Trying to extract state machine for register preamble_cnt.
+Extracted state machine for register preamble_cnt
 State machine has 2 reachable states with original encodings of:
    00
    01
-@W: CL249 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":269:8:269:9|Initial value is not supported on state machine preamble_counter
-@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":269:8:269:9|Trying to extract state machine for register rx_state.
+@W: CL249 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":409:8:409:9|Initial value is not supported on state machine preamble_cnt
+@N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":409:8:409:9|Trying to extract state machine for register rx_state.
 Extracted state machine for register rx_state
 State machine has 8 reachable states with original encodings of:
    00000001
@@ -417,7 +420,9 @@ State machine has 8 reachable states with original encodings of:
    00100000
    01000000
    10000000
-@W: CL249 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":269:8:269:9|Initial value is not supported on state machine rx_state
+@W: CL249 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":409:8:409:9|Initial value is not supported on state machine rx_state
+@W: CL190 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":159:50:159:52|Optimizing register bit err_fsm_illegal_state_rx_evt to a constant 0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: CL169 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\General_Controller.vhd":159:50:159:52|Pruning unused register err_fsm_illegal_state_rx_evt. Make sure that there are no unused intermediate registers.
 @N: CL201 :"C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\hdl\ADC_Data_Packer.vhd":75:8:75:9|Trying to extract state machine for register state.
 Extracted state machine for register state
 State machine has 6 reachable states with original encodings of:

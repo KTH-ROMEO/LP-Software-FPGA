@@ -38,6 +38,8 @@
 --          s_clks[1]:  8   MHz
 --          s_clks[0]:  16  MHz
 
+--          clk_800kHz: 800 KHz
+
 library IEEE;
 
 use IEEE.std_logic_1164.all;
@@ -45,49 +47,68 @@ use IEEE.std_logic_unsigned.all;
 
 entity Timing is
 port (
-	clk : IN  std_logic;
-    reset : IN std_logic;
-    
-    s_clks : OUT std_logic_vector(24 downto 0)    -- Slow clocks
+    clk       : IN  std_logic;
+    reset     : IN  std_logic;
+
+    s_clks     : OUT std_logic_vector(24 downto 0);
+    clk_800kHz : OUT std_logic
 );
 end Timing;
 
-
 architecture architecture_Timing of Timing is
-	signal f_time : std_logic_vector(6 downto 0) := (others => '0');
+
+    signal f_time  : std_logic_vector(6 downto 0) := (others => '0');
     signal m_count : std_logic_vector(7 downto 0) := (others => '0');
-	signal m_time : std_logic_vector(7 downto 0) := (others => '0');
+    signal m_time  : std_logic_vector(7 downto 0) := (others => '0');
     signal s_count : std_logic_vector(7 downto 0) := (others => '0');
-    signal s_time : std_logic_vector(9 downto 0) := (others => '0');
+    signal s_time  : std_logic_vector(9 downto 0) := (others => '0');
+
+    signal cnt_800kHz : std_logic_vector(4 downto 0) := (others => '0');
+    signal clk_800kHz_i : std_logic := '0';
 
 begin
 
 process(clk, reset)
 begin
     if reset /= '0' then
-        f_time <= (others => '0');
-        m_time <= (others => '0');
-        s_time <= (others => '0');
-        m_count <= (others => '0');
-        s_count <= (others => '0');
+
+        f_time       <= (others => '0');
+        m_time       <= (others => '0');
+        s_time       <= (others => '0');
+        m_count      <= (others => '0');
+        s_count      <= (others => '0');
+
+        cnt_800kHz   <= (others => '0');
+        clk_800kHz_i <= '0';
 
     elsif rising_edge(clk) then
+
         f_time <= f_time + 1;
+
+        if cnt_800kHz = 19 then
+            clk_800kHz_i <= not clk_800kHz_i;
+            cnt_800kHz   <= (others => '0');
+        else
+            cnt_800kHz <= cnt_800kHz + 1;
+        end if;
+
         m_count <= m_count + 1;
 
         if m_count = 124 then
-            m_time <= m_time + 1;
+            m_time  <= m_time + 1;
             s_count <= s_count + 1;
             m_count <= (others => '0');
         end if;
-   
-        if s_count = 250 then
-            s_time <= s_time + 1;
+
+        if s_count = 249 then
+            s_time  <= s_time + 1;
             s_count <= (others => '0');
         end if;
+
     end if;
 end process;
 
-s_clks <= s_time & m_time & f_time;
+s_clks     <= s_time & m_time & f_time;
+clk_800kHz <= clk_800kHz_i;
 
 end architecture_Timing;

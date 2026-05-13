@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Mon May 11 16:07:56 2026
+-- Created by SmartDesign Wed May 13 12:07:43 2026
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -82,26 +82,6 @@ component CLKINT
         A : in  std_logic;
         -- Outputs
         Y : out std_logic
-        );
-end component;
--- ClockDivs
-component ClockDivs
-    -- Port list
-    port(
-        -- Inputs
-        clk_32MHz  : in  std_logic;
-        reset      : in  std_logic;
-        -- Outputs
-        clk_16MHz  : out std_logic;
-        clk_1Hz    : out std_logic;
-        clk_1MHz   : out std_logic;
-        clk_1kHz   : out std_logic;
-        clk_2MHz   : out std_logic;
-        clk_4MHz   : out std_logic;
-        clk_4kHz   : out std_logic;
-        clk_50Hz   : out std_logic;
-        clk_800kHz : out std_logic;
-        clk_8MHz   : out std_logic
         );
 end component;
 -- Data_Hub_Packets
@@ -192,6 +172,7 @@ component General_Controller
         sc_new                : in  std_logic;
         swt_rdata0            : in  std_logic_vector(15 downto 0);
         swt_rdata1            : in  std_logic_vector(15 downto 0);
+        timestamp_packet      : in  std_logic_vector(55 downto 0);
         uart_rx_byte          : in  std_logic_vector(7 downto 0);
         uart_rx_valid         : in  std_logic;
         uart_tx_ready         : in  std_logic;
@@ -347,15 +328,16 @@ component Timekeeper
     -- Port list
     port(
         -- Inputs
-        clk          : in  std_logic;
-        clk_1Hz      : in  std_logic;
-        clk_1MHz     : in  std_logic;
-        clk_1kHz     : in  std_logic;
-        reset        : in  std_logic;
+        clk              : in  std_logic;
+        clk_1Hz          : in  std_logic;
+        clk_1MHz         : in  std_logic;
+        clk_1kHz         : in  std_logic;
+        reset            : in  std_logic;
         -- Outputs
-        microseconds : out std_logic_vector(23 downto 0);
-        milliseconds : out std_logic_vector(23 downto 0);
-        seconds      : out std_logic_vector(19 downto 0)
+        microseconds     : out std_logic_vector(23 downto 0);
+        milliseconds     : out std_logic_vector(23 downto 0);
+        seconds          : out std_logic_vector(19 downto 0);
+        timestamp_packet : out std_logic_vector(55 downto 0)
         );
 end component;
 -- Timing
@@ -363,10 +345,11 @@ component Timing
     -- Port list
     port(
         -- Inputs
-        clk    : in  std_logic;
-        reset  : in  std_logic;
+        clk        : in  std_logic;
+        reset      : in  std_logic;
         -- Outputs
-        s_clks : out std_logic_vector(24 downto 0)
+        clk_800kHz : out std_logic;
+        s_clks     : out std_logic_vector(24 downto 0)
         );
 end component;
 -- UART
@@ -400,7 +383,6 @@ signal ARST_net_0                                 : std_logic;
 signal CLKINT_0_Y_1                               : std_logic;
 signal CLKINT_1_Y                                 : std_logic;
 signal CLKINT_2_Y                                 : std_logic;
-signal ClockDivs_0_clk_800kHz                     : std_logic;
 signal Data_Hub_Packets_0_acc_packet_1            : std_logic_vector(63 downto 0);
 signal Data_Hub_Packets_0_gyro_packet_0           : std_logic_vector(63 downto 0);
 signal Data_Hub_Packets_0_mag_packet_1            : std_logic_vector(63 downto 0);
@@ -475,12 +457,12 @@ signal SweepTable_1_RD                            : std_logic_vector(15 downto 0
 signal TableSelect_0_RADDR                        : std_logic_vector(7 downto 0);
 signal TableSelect_0_REN                          : std_logic;
 signal Timekeeper_0_microseconds                  : std_logic_vector(23 downto 0);
-signal Timekeeper_0_milliseconds                  : std_logic_vector(23 downto 0);
+signal Timekeeper_0_timestamp_packet              : std_logic_vector(55 downto 0);
+signal Timing_0_clk_800kHz                        : std_logic;
 signal Timing_0_s_clks4to4                        : std_logic_vector(4 to 4);
 signal Timing_0_s_clks9to9                        : std_logic_vector(9 to 9);
 signal Timing_0_s_clks14to14                      : std_logic_vector(14 to 14);
 signal Timing_0_s_clks16to16                      : std_logic_vector(16 to 16);
-signal Timing_0_s_clks18to18                      : std_logic_vector(18 to 18);
 signal Timing_0_s_clks20to20                      : std_logic_vector(20 to 20);
 signal Timing_0_s_clks22to22                      : std_logic_vector(22 to 22);
 signal Timing_0_s_clks24to24                      : std_logic_vector(24 to 24);
@@ -525,16 +507,17 @@ signal s_clks_slice_3                             : std_logic_vector(12 to 12);
 signal s_clks_slice_4                             : std_logic_vector(13 to 13);
 signal s_clks_slice_5                             : std_logic_vector(15 to 15);
 signal s_clks_slice_6                             : std_logic_vector(17 to 17);
-signal s_clks_slice_7                             : std_logic_vector(19 to 19);
-signal s_clks_slice_8                             : std_logic_vector(1 to 1);
-signal s_clks_slice_9                             : std_logic_vector(21 to 21);
-signal s_clks_slice_10                            : std_logic_vector(23 to 23);
-signal s_clks_slice_11                            : std_logic_vector(2 to 2);
-signal s_clks_slice_12                            : std_logic_vector(3 to 3);
-signal s_clks_slice_13                            : std_logic_vector(5 to 5);
-signal s_clks_slice_14                            : std_logic_vector(6 to 6);
-signal s_clks_slice_15                            : std_logic_vector(7 to 7);
-signal s_clks_slice_16                            : std_logic_vector(8 to 8);
+signal s_clks_slice_7                             : std_logic_vector(18 to 18);
+signal s_clks_slice_8                             : std_logic_vector(19 to 19);
+signal s_clks_slice_9                             : std_logic_vector(1 to 1);
+signal s_clks_slice_10                            : std_logic_vector(21 to 21);
+signal s_clks_slice_11                            : std_logic_vector(23 to 23);
+signal s_clks_slice_12                            : std_logic_vector(2 to 2);
+signal s_clks_slice_13                            : std_logic_vector(3 to 3);
+signal s_clks_slice_14                            : std_logic_vector(5 to 5);
+signal s_clks_slice_15                            : std_logic_vector(6 to 6);
+signal s_clks_slice_16                            : std_logic_vector(7 to 7);
+signal s_clks_slice_17                            : std_logic_vector(8 to 8);
 signal s_clks_net_0                               : std_logic_vector(24 downto 0);
 ----------------------------------------------------------------------
 -- TiedOff Signals
@@ -625,7 +608,6 @@ begin
  Timing_0_s_clks9to9(9)            <= s_clks_net_0(9);
  Timing_0_s_clks14to14(14)         <= s_clks_net_0(14);
  Timing_0_s_clks16to16(16)         <= s_clks_net_0(16);
- Timing_0_s_clks18to18(18)         <= s_clks_net_0(18);
  Timing_0_s_clks20to20(20)         <= s_clks_net_0(20);
  Timing_0_s_clks22to22(22)         <= s_clks_net_0(22);
  Timing_0_s_clks24to24(24)         <= s_clks_net_0(24);
@@ -639,16 +621,17 @@ begin
  s_clks_slice_4(13)                <= s_clks_net_0(13);
  s_clks_slice_5(15)                <= s_clks_net_0(15);
  s_clks_slice_6(17)                <= s_clks_net_0(17);
- s_clks_slice_7(19)                <= s_clks_net_0(19);
- s_clks_slice_8(1)                 <= s_clks_net_0(1);
- s_clks_slice_9(21)                <= s_clks_net_0(21);
- s_clks_slice_10(23)               <= s_clks_net_0(23);
- s_clks_slice_11(2)                <= s_clks_net_0(2);
- s_clks_slice_12(3)                <= s_clks_net_0(3);
- s_clks_slice_13(5)                <= s_clks_net_0(5);
- s_clks_slice_14(6)                <= s_clks_net_0(6);
- s_clks_slice_15(7)                <= s_clks_net_0(7);
- s_clks_slice_16(8)                <= s_clks_net_0(8);
+ s_clks_slice_7(18)                <= s_clks_net_0(18);
+ s_clks_slice_8(19)                <= s_clks_net_0(19);
+ s_clks_slice_9(1)                 <= s_clks_net_0(1);
+ s_clks_slice_10(21)               <= s_clks_net_0(21);
+ s_clks_slice_11(23)               <= s_clks_net_0(23);
+ s_clks_slice_12(2)                <= s_clks_net_0(2);
+ s_clks_slice_13(3)                <= s_clks_net_0(3);
+ s_clks_slice_14(5)                <= s_clks_net_0(5);
+ s_clks_slice_15(6)                <= s_clks_net_0(6);
+ s_clks_slice_16(7)                <= s_clks_net_0(7);
+ s_clks_slice_17(8)                <= s_clks_net_0(8);
 ----------------------------------------------------------------------
 -- Component instances
 ----------------------------------------------------------------------
@@ -675,24 +658,6 @@ CLKINT_2 : CLKINT
         A => FMC_CLK,
         -- Outputs
         Y => CLKINT_2_Y 
-        );
--- ClockDivs_0
-ClockDivs_0 : ClockDivs
-    port map( 
-        -- Inputs
-        clk_32MHz  => CLKINT_0_Y_1,
-        reset      => CLKINT_1_Y,
-        -- Outputs
-        clk_16MHz  => OPEN,
-        clk_8MHz   => OPEN,
-        clk_4MHz   => OPEN,
-        clk_2MHz   => OPEN,
-        clk_1MHz   => OPEN,
-        clk_800kHz => ClockDivs_0_clk_800kHz,
-        clk_4kHz   => OPEN,
-        clk_1kHz   => OPEN,
-        clk_50Hz   => OPEN,
-        clk_1Hz    => OPEN 
         );
 -- Data_Hub_Packets_0
 Data_Hub_Packets_0 : Data_Hub_Packets
@@ -776,6 +741,7 @@ General_Controller_0 : General_Controller
         mag_packet            => Data_Hub_Packets_0_mag_packet_1,
         gyro_packet           => Data_Hub_Packets_0_gyro_packet_0,
         pressure_packet       => Data_Hub_Packets_0_pressure_packet_0,
+        timestamp_packet      => Timekeeper_0_timestamp_packet,
         sc_new                => Science_0_new_SC_packet,
         sc_data               => Science_0_SC_packet,
         -- Outputs
@@ -851,7 +817,7 @@ Sensors_0 : Sensors
         reset             => CLKINT_1_Y,
         en                => VCC_net,
         clk_1kHz          => Timing_0_s_clks14to14(14),
-        i2c_clk           => ClockDivs_0_clk_800kHz,
+        i2c_clk           => Timing_0_clk_800kHz,
         microseconds      => Timekeeper_0_microseconds,
         -- Outputs
         acce_scl          => ACCE_SCL_net_0,
@@ -934,24 +900,26 @@ TableSelect_0 : TableSelect
 Timekeeper_0 : Timekeeper
     port map( 
         -- Inputs
-        clk          => CLKINT_0_Y_1,
-        clk_1MHz     => Timing_0_s_clks4to4(4),
-        clk_1kHz     => Timing_0_s_clks14to14(14),
-        clk_1Hz      => Timing_0_s_clks24to24(24),
-        reset        => CLKINT_1_Y,
+        clk              => CLKINT_0_Y_1,
+        clk_1MHz         => Timing_0_s_clks4to4(4),
+        clk_1kHz         => Timing_0_s_clks14to14(14),
+        clk_1Hz          => Timing_0_s_clks24to24(24),
+        reset            => CLKINT_1_Y,
         -- Outputs
-        microseconds => Timekeeper_0_microseconds,
-        milliseconds => Timekeeper_0_milliseconds,
-        seconds      => OPEN 
+        microseconds     => Timekeeper_0_microseconds,
+        milliseconds     => OPEN,
+        seconds          => OPEN,
+        timestamp_packet => Timekeeper_0_timestamp_packet 
         );
 -- Timing_0
 Timing_0 : Timing
     port map( 
         -- Inputs
-        clk    => CLKINT_0_Y_1,
-        reset  => CLKINT_1_Y,
+        clk        => CLKINT_0_Y_1,
+        reset      => CLKINT_1_Y,
         -- Outputs
-        s_clks => s_clks_net_0 
+        s_clks     => s_clks_net_0,
+        clk_800kHz => Timing_0_clk_800kHz 
         );
 -- UART_0
 UART_0 : UART
