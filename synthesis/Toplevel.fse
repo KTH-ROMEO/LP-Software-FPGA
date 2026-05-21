@@ -1,59 +1,59 @@
 
-fsm_encoding {1540984094} onehot
+fsm_encoding {1542384234} onehot
 
-fsm_state_encoding {1540984094} rx_idle {00000001}
+fsm_state_encoding {1542384234} rx_idle {00000001}
 
-fsm_state_encoding {1540984094} rx_get_byte {00000010}
+fsm_state_encoding {1542384234} rx_get_byte {00000010}
 
-fsm_state_encoding {1540984094} rx_wait_rdy_low {00000100}
+fsm_state_encoding {1542384234} rx_wait_rdy_low {00000100}
 
-fsm_state_encoding {1540984094} rx_process_preamble {00001000}
+fsm_state_encoding {1542384234} rx_process_preamble {00001000}
 
-fsm_state_encoding {1540984094} rx_command {00010000}
+fsm_state_encoding {1542384234} rx_command {00010000}
 
-fsm_state_encoding {1540984094} rx_payload {00100000}
+fsm_state_encoding {1542384234} rx_payload {00100000}
 
-fsm_state_encoding {1540984094} rx_postamble {01000000}
+fsm_state_encoding {1542384234} rx_postamble {01000000}
 
-fsm_state_encoding {1540984094} rx_execute {10000000}
+fsm_state_encoding {1542384234} rx_execute {10000000}
 
-fsm_registers {1540984094} {rx_state[0]}  {rx_state[1]}  {rx_state[2]}  {rx_state[3]}  {rx_state[4]}  {rx_state[5]}  {rx_state[6]}  {rx_state[7]} 
+fsm_registers {1542384234} {rx_state[0]}  {rx_state[1]}  {rx_state[2]}  {rx_state[3]}  {rx_state[4]}  {rx_state[5]}  {rx_state[6]}  {rx_state[7]} 
 
-fsm_encoding {151157811571} sequential
+fsm_encoding {151261812611} sequential
 
-fsm_state_encoding {151157811571} tx_idle {00}
+fsm_state_encoding {151261812611} tx_idle {00}
 
-fsm_state_encoding {151157811571} tx_send_byte {01}
+fsm_state_encoding {151261812611} tx_send_byte {01}
 
-fsm_state_encoding {151157811571} tx_wait_rdy {10}
+fsm_state_encoding {151261812611} tx_wait_rdy {10}
 
-fsm_registers {151157811571} {tx_state[1]}  {tx_state[0]} 
+fsm_registers {151261812611} {tx_state[1]}  {tx_state[0]} 
 
-fsm_encoding {1599789972} onehot
+fsm_encoding {151101811012} onehot
 
-fsm_state_encoding {1599789972} swt_idle {0000001}
+fsm_state_encoding {151101811012} swt_idle {0000001}
 
-fsm_state_encoding {1599789972} swt_single_read_wait {0000010}
+fsm_state_encoding {151101811012} swt_single_read_wait {0000010}
 
-fsm_state_encoding {1599789972} swt_single_read_latch {0000100}
+fsm_state_encoding {151101811012} swt_single_read_latch {0000100}
 
-fsm_state_encoding {1599789972} swt_macro_issue_read {0001000}
+fsm_state_encoding {151101811012} swt_macro_issue_read {0001000}
 
-fsm_state_encoding {1599789972} swt_macro_wait_read {0010000}
+fsm_state_encoding {151101811012} swt_macro_wait_read {0010000}
 
-fsm_state_encoding {1599789972} swt_macro_request_tx {0100000}
+fsm_state_encoding {151101811012} swt_macro_request_tx {0100000}
 
-fsm_state_encoding {1599789972} swt_macro_wait_tx_accept {1000000}
+fsm_state_encoding {151101811012} swt_macro_wait_tx_accept {1000000}
 
-fsm_registers {1599789972} {swt_engine_state[0]}  {swt_engine_state[1]}  {swt_engine_state[2]}  {swt_engine_state[3]}  {swt_engine_state[4]}  {swt_engine_state[5]}  {swt_engine_state[6]} 
+fsm_registers {151101811012} {swt_engine_state[0]}  {swt_engine_state[1]}  {swt_engine_state[2]}  {swt_engine_state[3]}  {swt_engine_state[4]}  {swt_engine_state[5]}  {swt_engine_state[6]} 
 
-fsm_encoding {1540984093} sequential
+fsm_encoding {1542384233} sequential
 
-fsm_state_encoding {1540984093} 00 {0}
+fsm_state_encoding {1542384233} 00 {0}
 
-fsm_state_encoding {1540984093} 01 {1}
+fsm_state_encoding {1542384233} 01 {1}
 
-fsm_registers {1540984093} {preamble_cnt[0]} 
+fsm_registers {1542384233} {preamble_cnt[0]} 
 
 fsm_encoding {16758755} onehot
 

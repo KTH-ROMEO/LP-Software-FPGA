@@ -12,11 +12,11 @@ Opened an existing Libero design Toplevel.adb.
 'IDE_DESIGNERVIEW_ROOTDIR' set to 'C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer'
 'IDE_DESIGNERVIEW_LASTREV' set to '1'
 
- Netlist Reading Time = 0.0 seconds
+ Netlist Reading Time = 1.0 seconds
 Imported the file:
    C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\synthesis\Toplevel.edn
 
-The Import command succeeded ( 00:00:03 )
+The Import command succeeded ( 00:00:04 )
 =====================================================================
 Parameters used to run compile:
 ===============================
@@ -134,9 +134,9 @@ Optimized macros:
   - Buffers:                0
   - Inverters:              3
   - Tieoff:                 35
-  - Logic combining:        186
+  - Logic combining:        208
 
-    Total macros optimized  225
+    Total macros optimized  247
 
 Warning: CMP503: Remapped 8 enable flip-flop(s) to a 2-tile implementation because the CLR/PRE
          pin on the enable flip-flop is not being driven by a global net.
@@ -153,7 +153,7 @@ There were 0 error(s) and 0 warning(s).
 Compile report:
 ===============
 
-    CORE                       Used:   5665  Total:   6144   (92.20%)
+    CORE                       Used:   5851  Total:   6144   (95.23%)
     IO (W/ clocks)             Used:     46  Total:     68   (67.65%)
     Differential IO            Used:      0  Total:     13   (0.00%)
     GLOBAL (Chip+Quadrant)     Used:      6  Total:     18   (33.33%)
@@ -178,8 +178,8 @@ Core Information:
 
     Type    | Instances    | Core tiles
     --------|--------------|-----------
-    COMB    | 4114         | 4114
-    SEQ     | 1551         | 1551
+    COMB    | 4241         | 4241
+    SEQ     | 1610         | 1610
 
 I/O Function:
 
@@ -217,20 +217,20 @@ The following nets drive enable flip-flops that have been remapped to a 2-tile i
 The following nets have been assigned to a chip global resource:
     Fanout  Type          Name
     --------------------------
-    1417    SET/RESET_NET Net   : CLKINT_1_Y
+    1476    SET/RESET_NET Net   : CLKINT_1_Y
                           Driver: CLKINT_1
                           Source: NETLIST
-    1406    CLK_NET       Net   : CLKINT_0_Y_1
+    1464    CLK_NET       Net   : CLKINT_0_Y_1
                           Driver: CLKINT_0
                           Source: NETLIST
-    86      CLK_NET       Net   : Timing_0_clk_800kHz
+    87      CLK_NET       Net   : Timing_0_clk_800kHz
                           Driver: Timing_0/clk_800kHz_i_RNIBEP9
                           Source: NETLIST
-    77      INT_NET       Net   : General_Controller_0/sc_data_tx_flag
+    80      INT_NET       Net   : General_Controller_0/sc_data_tx_flag
                           Driver: General_Controller_0/sc_data_tx_flag_RNIHT59
                           Source: NETLIST
     69      INT_NET       Net   : General_Controller_0/un1_msg_2send_115
-                          Driver: General_Controller_0/start_tx_RNIS1TI5_0
+                          Driver: General_Controller_0/start_tx_RNIIBGN5_0
                           Source: NETLIST
     55      CLK_NET       Net   : CLKINT_2_Y
                           Driver: CLKINT_2
@@ -239,54 +239,50 @@ The following nets have been assigned to a chip global resource:
 High fanout nets in the post compile netlist:
     Fanout  Type          Name
     --------------------------
-    24      INT_NET       Net   : General_Controller_0_Bias_enabled_0
-                          Driver: General_Controller_0/Bias_enabled_0
+    24      INT_NET       Net   : General_Controller_0/current_command[0]
+                          Driver: General_Controller_0/current_command[0]
     24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P_0
                           Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P_0
     24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P
                           Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P
-    24      INT_NET       Net   :
-Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[0]
-                          Driver:
-Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[0]
-    23      INT_NET       Net   : General_Controller_0/payload_buffer_0[2]
-                          Driver: General_Controller_0/p_rx_and_execute.payload_buffer_0[2]
-    23      INT_NET       Net   : Science_0/state25_1
-                          Driver: Science_0/SWEEP_ROMEO_0/SW_active_RNIKES4_1
-    23      INT_NET       Net   : Science_0/ADC_Data_Packer_0/N_596_0
-                          Driver: Science_0/ADC_Data_Packer_0/state_RNIAFU4[3]
-    23      INT_NET       Net   : Sensors_0/Accelerometer_0/I2C_Master_0_write_done
-                          Driver: Sensors_0/Accelerometer_0/I2C_Master_0/write_done
-    23      INT_NET       Net   : Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state[0]
-                          Driver: Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state[0]
-    23      INT_NET       Net   : Sensors_0/Gyro_0/state[8]
-                          Driver: Sensors_0/Gyro_0/I2C_Master_0/state[8]
+    24      INT_NET       Net   : Science_0/state25_0
+                          Driver: Science_0/SWEEP_ROMEO_0/SW_active_RNIKES4
+    24      INT_NET       Net   : Science_0/state25_1
+                          Driver: Science_0/SWEEP_ROMEO_0/SW_active_RNIKES4_0
+    23      INT_NET       Net   : General_Controller_0_Bias_enabled
+                          Driver: General_Controller_0/Bias_enabled
+    23      INT_NET       Net   : General_Controller_0_Bias_enabled_0
+                          Driver: General_Controller_0/Bias_enabled_0
+    23      INT_NET       Net   : General_Controller_0/un36_tx_state_0
+                          Driver: General_Controller_0/const_volt_tx_flag_RNIKSHA2
+    23      INT_NET       Net   : General_Controller_0/un74_tx_state
+                          Driver: General_Controller_0/const_volt_tx_flag_RNI46BJ4
+    23      INT_NET       Net   : General_Controller_0/un36_tx_state
+                          Driver: General_Controller_0/const_volt_tx_flag_RNIKSHA2_0
 
 Nets that are candidates for clock assignment and the resulting fanout:
     Fanout  Type          Name
     --------------------------
-    24      INT_NET       Net   : General_Controller_0_Bias_enabled_0
-                          Driver: General_Controller_0/Bias_enabled_0
+    24      INT_NET       Net   : General_Controller_0/current_command[0]
+                          Driver: General_Controller_0/current_command[0]
     24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P_0
                           Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P_0
     24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P
                           Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P
-    24      INT_NET       Net   :
-Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[0]
-                          Driver:
-Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/subState[0]
-    23      INT_NET       Net   : General_Controller_0/payload_buffer_0[2]
-                          Driver: General_Controller_0/p_rx_and_execute.payload_buffer_0[2]
-    23      INT_NET       Net   : Science_0/state25_1
-                          Driver: Science_0/SWEEP_ROMEO_0/SW_active_RNIKES4_1
-    23      INT_NET       Net   : Science_0/ADC_Data_Packer_0/N_596_0
-                          Driver: Science_0/ADC_Data_Packer_0/state_RNIAFU4[3]
-    23      INT_NET       Net   : Sensors_0/Accelerometer_0/I2C_Master_0_write_done
-                          Driver: Sensors_0/Accelerometer_0/I2C_Master_0/write_done
-    23      INT_NET       Net   : Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state[0]
-                          Driver: Sensors_0/Accelerometer_0/LSM303AGR_I2C_Interface_0/state[0]
-    23      INT_NET       Net   : Sensors_0/Gyro_0/state[8]
-                          Driver: Sensors_0/Gyro_0/I2C_Master_0/state[8]
+    24      INT_NET       Net   : Science_0/state25_0
+                          Driver: Science_0/SWEEP_ROMEO_0/SW_active_RNIKES4
+    24      INT_NET       Net   : Science_0/state25_1
+                          Driver: Science_0/SWEEP_ROMEO_0/SW_active_RNIKES4_0
+    23      INT_NET       Net   : General_Controller_0_Bias_enabled
+                          Driver: General_Controller_0/Bias_enabled
+    23      INT_NET       Net   : General_Controller_0_Bias_enabled_0
+                          Driver: General_Controller_0/Bias_enabled_0
+    23      INT_NET       Net   : General_Controller_0/un36_tx_state_0
+                          Driver: General_Controller_0/const_volt_tx_flag_RNIKSHA2
+    23      INT_NET       Net   : General_Controller_0/un74_tx_state
+                          Driver: General_Controller_0/const_volt_tx_flag_RNI46BJ4
+    23      INT_NET       Net   : General_Controller_0/un36_tx_state
+                          Driver: General_Controller_0/const_volt_tx_flag_RNIKSHA2_0
 
 The Compile command succeeded ( 00:00:04 )
 Wrote status report to file: Toplevel_compile_report.txt
@@ -294,13 +290,13 @@ Wrote status report to file: Toplevel_compile_report.txt
 The Report command succeeded ( 00:00:00 )
 Wrote pin report to file: Toplevel_report_pin_byname.txt
 
-The Report command succeeded ( 00:00:02 )
+The Report command succeeded ( 00:00:01 )
 Wrote pin report to file: Toplevel_report_pin_bynumber.txt
 
 The Report command succeeded ( 00:00:00 )
 Design saved to file
 C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer\impl1\Toplevel.adb.
 
-The Execute Script command succeeded ( 00:00:12 )
+The Execute Script command succeeded ( 00:00:13 )
 Design closed.
 

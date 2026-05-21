@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Wed May 13 12:07:43 2026
+-- Created by SmartDesign Wed May 20 18:43:17 2026
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -107,10 +107,10 @@ component Data_Hub_Packets
         pressure_temp_raw : in  std_logic_vector(23 downto 0);
         pressure_time     : in  std_logic_vector(23 downto 0);
         -- Outputs
-        acc_packet        : out std_logic_vector(63 downto 0);
-        gyro_packet       : out std_logic_vector(63 downto 0);
-        mag_packet        : out std_logic_vector(63 downto 0);
-        pressure_packet   : out std_logic_vector(63 downto 0)
+        acc_packet        : out std_logic_vector(55 downto 0);
+        gyro_packet       : out std_logic_vector(55 downto 0);
+        mag_packet        : out std_logic_vector(55 downto 0);
+        pressure_packet   : out std_logic_vector(55 downto 0)
         );
 end component;
 -- Data_Saving
@@ -159,14 +159,14 @@ component General_Controller
     -- Port list
     port(
         -- Inputs
-        acc_packet            : in  std_logic_vector(63 downto 0);
+        acc_packet            : in  std_logic_vector(55 downto 0);
         clk                   : in  std_logic;
         clk_1Hz               : in  std_logic;
         clk_256Hz             : in  std_logic;
         clk_4Hz               : in  std_logic;
-        gyro_packet           : in  std_logic_vector(63 downto 0);
-        mag_packet            : in  std_logic_vector(63 downto 0);
-        pressure_packet       : in  std_logic_vector(63 downto 0);
+        gyro_packet           : in  std_logic_vector(55 downto 0);
+        mag_packet            : in  std_logic_vector(55 downto 0);
+        pres_packet           : in  std_logic_vector(55 downto 0);
         reset                 : in  std_logic;
         sc_data               : in  std_logic_vector(63 downto 0);
         sc_new                : in  std_logic;
@@ -383,10 +383,10 @@ signal ARST_net_0                                 : std_logic;
 signal CLKINT_0_Y_1                               : std_logic;
 signal CLKINT_1_Y                                 : std_logic;
 signal CLKINT_2_Y                                 : std_logic;
-signal Data_Hub_Packets_0_acc_packet_1            : std_logic_vector(63 downto 0);
-signal Data_Hub_Packets_0_gyro_packet_0           : std_logic_vector(63 downto 0);
-signal Data_Hub_Packets_0_mag_packet_1            : std_logic_vector(63 downto 0);
-signal Data_Hub_Packets_0_pressure_packet_0       : std_logic_vector(63 downto 0);
+signal Data_Hub_Packets_0_acc_packet_2            : std_logic_vector(55 downto 0);
+signal Data_Hub_Packets_0_gyro_packet_1           : std_logic_vector(55 downto 0);
+signal Data_Hub_Packets_0_mag_packet_2            : std_logic_vector(55 downto 0);
+signal Data_Hub_Packets_0_pressure_packet_2       : std_logic_vector(55 downto 0);
 signal DPIN_19_net_0                              : std_logic;
 signal DPIN_22_net_0                              : std_logic;
 signal DPIN_59_net_0                              : std_logic;
@@ -681,10 +681,10 @@ Data_Hub_Packets_0 : Data_Hub_Packets
         pressure_raw      => Sensors_0_pressure_raw,
         pressure_temp_raw => Sensors_0_pressure_temp_raw,
         -- Outputs
-        acc_packet        => Data_Hub_Packets_0_acc_packet_1,
-        mag_packet        => Data_Hub_Packets_0_mag_packet_1,
-        gyro_packet       => Data_Hub_Packets_0_gyro_packet_0,
-        pressure_packet   => Data_Hub_Packets_0_pressure_packet_0 
+        acc_packet        => Data_Hub_Packets_0_acc_packet_2,
+        mag_packet        => Data_Hub_Packets_0_mag_packet_2,
+        gyro_packet       => Data_Hub_Packets_0_gyro_packet_1,
+        pressure_packet   => Data_Hub_Packets_0_pressure_packet_2 
         );
 -- Data_Saving_0
 Data_Saving_0 : Data_Saving
@@ -737,10 +737,10 @@ General_Controller_0 : General_Controller
         uart_rx_valid         => UART_0_rx_rdy,
         swt_rdata0            => SweepTable_0_RD,
         swt_rdata1            => SweepTable_1_RD,
-        acc_packet            => Data_Hub_Packets_0_acc_packet_1,
-        mag_packet            => Data_Hub_Packets_0_mag_packet_1,
-        gyro_packet           => Data_Hub_Packets_0_gyro_packet_0,
-        pressure_packet       => Data_Hub_Packets_0_pressure_packet_0,
+        acc_packet            => Data_Hub_Packets_0_acc_packet_2,
+        mag_packet            => Data_Hub_Packets_0_mag_packet_2,
+        gyro_packet           => Data_Hub_Packets_0_gyro_packet_1,
+        pres_packet           => Data_Hub_Packets_0_pressure_packet_2,
         timestamp_packet      => Timekeeper_0_timestamp_packet,
         sc_new                => Science_0_new_SC_packet,
         sc_data               => Science_0_SC_packet,
@@ -918,8 +918,8 @@ Timing_0 : Timing
         clk        => CLKINT_0_Y_1,
         reset      => CLKINT_1_Y,
         -- Outputs
-        s_clks     => s_clks_net_0,
-        clk_800kHz => Timing_0_clk_800kHz 
+        clk_800kHz => Timing_0_clk_800kHz,
+        s_clks     => s_clks_net_0 
         );
 -- UART_0
 UART_0 : UART
@@ -928,16 +928,16 @@ UART_0 : UART
         clk          => CLKINT_0_Y_1,
         reset        => CLKINT_1_Y,
         rx           => UC_UART_TX,
-        send         => General_Controller_0_uart_tx_byte,
         send_wen     => General_Controller_0_uart_tx_start,
         recv_oen     => General_Controller_0_uart_rx_ack,
+        send         => General_Controller_0_uart_tx_byte,
         -- Outputs
         tx           => UC_UART_RX_net_0,
-        recv         => UART_0_recv,
         test_port    => OPEN,
         rx_rdy       => UART_0_rx_rdy,
         tx_rdy       => UART_0_tx_rdy,
-        transmitting => OPEN 
+        transmitting => OPEN,
+        recv         => UART_0_recv 
         );
 
 end RTL;

@@ -43,23 +43,23 @@ port (
     pressure_raw : IN std_logic_vector(23 downto 0);
     pressure_temp_raw : IN std_logic_vector(23 downto 0);
 
-    acc_packet : OUT std_logic_vector(63 downto 0);
-    mag_packet : OUT std_logic_vector(63 downto 0);
-    gyro_packet : OUT std_logic_vector(63 downto 0);
-    pressure_packet : OUT std_logic_vector(63 downto 0)
+    acc_packet : OUT std_logic_vector(55 downto 0);
+    mag_packet : OUT std_logic_vector(55 downto 0);
+    gyro_packet : OUT std_logic_vector(55 downto 0);
+    pressure_packet : OUT std_logic_vector(55 downto 0)
 
 );
 end Data_Hub_Packets;
 architecture architecture_Data_Hub_Packets of Data_Hub_Packets is
 begin
-    --    acc_packet      <= x"01"   & x"0" & acc_x & acc_y & acc_z    & acc_temp           & x"00";
-    --    mag_packet      <= x"02"   & x"0" & mag_x & mag_y & mag_z                         & x"0000";
-    --    gyro_packet     <= x"03"   & gyro_x & gyro_y & gyro_z        & gyro_temp; 
-    --    pressure_packet <= x"04"   & pressure_raw                    & pressure_temp_raw  & x"0000";
+    --    acc_packet      <= x"0" & acc_x & acc_y & acc_z    & acc_temp           & x"00";
+    --    mag_packet      <= x"0" & mag_x & mag_y & mag_z                         & x"0000";
+    --    gyro_packet     <= gyro_x & gyro_y & gyro_z        & gyro_temp; 
+    --    pressure_packet <= pressure_raw                    & pressure_temp_raw  & x"0000";
 
-    acc_packet      <= x"01" & x"a0a1a2a3a4a5a6"; -- for debugging
-    mag_packet      <= x"02" & x"b0b1b2b3b4b5b6"; -- for debugging
-    gyro_packet     <= x"03" & x"c0c1c2c3c4c5c6"; -- for debugging 
-    pressure_packet <= x"04" & x"d0d1d2d3d4d5d6"; -- for debugging
+    acc_packet      <= x"a0a1a2a3a4a5a6"; -- for debugging
+    mag_packet      <= x"b0b1b2b3b4b5b6"; -- for debugging
+    gyro_packet     <= x"c0c1c2c3c4c5c6"; -- for debugging 
+    pressure_packet <= x"d0d1d2d3d4d5d6"; -- for debugging
 
 end architecture_Data_Hub_Packets;

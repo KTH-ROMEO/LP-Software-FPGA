@@ -88,9 +88,9 @@ begin
     seconds32 <= std_logic_vector(seconds_high_i) & std_logic_vector(seconds_i);
 
     timestamp_packet <=
-        timestamp_flags &
         seconds32 &
-        std_logic_vector(usec_in_sec_i);
+        std_logic_vector(usec_in_sec_i) &
+        timestamp_flags;
 
     process(clk, reset)
     begin

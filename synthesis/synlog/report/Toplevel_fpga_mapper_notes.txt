@@ -11,25 +11,27 @@
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timekeeper.vhd":60:35:60:37|Removing sequential instance microseconds_i[23:0] (in view: work.Timekeeper(architecture_timekeeper)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\timekeeper.vhd":58:35:58:37|Removing sequential instance old_1kHz (in view: work.Timekeeper(architecture_timekeeper)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\interrupt_generator.vhd":44:4:44:5|Found counter in view:work.Interrupt_Generator(architecture_interrupt_generator) instance counter[9:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":1157:8:1157:9|Found counter in view:work.General_Controller(architecture_general_controller) instance tx_byte_index[3:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":409:8:409:9|Found counter in view:work.General_Controller(architecture_general_controller) instance swt_sweep_cnt[15:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":997:8:997:9|Found counter in view:work.General_Controller(architecture_general_controller) instance mac_swt_step[7:0] 
-@N: MO225 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":409:8:409:9|There are no possible illegal states for state machine preamble_cnt[0:1] (in view: work.General_Controller(architecture_general_controller)); safe FSM implementation is not required.
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":342:8:342:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_impossible_branch_cnt[3:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":342:8:342:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_rx_postamble_cnt[3:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":342:8:342:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_rx_preamble_cnt[3:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":342:8:342:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_sweep_macro_busy_cnt[3:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":342:8:342:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_unknown_cmd_cnt[3:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":342:8:342:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_periodic_hk_overrun_cnt[7:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":342:8:342:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_readback_overrun_cnt[7:0] 
-@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":342:8:342:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_sc_cb_overrun_cnt[7:0] 
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":788:54:788:63|Found 4-bit incrementor, 'un1_acc_period_0[4:0]'
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":955:22:955:32|Found 8-bit incrementor, 'un23_mag_period[24:32]'
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":968:22:968:33|Found 8-bit incrementor, 'un23_gyro_period[24:32]'
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":981:22:981:33|Found 8-bit incrementor, 'un23_pres_period[24:32]'
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":942:22:942:32|Found 8-bit incrementor, 'un22_acc_period[24:32]'
-@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":615:23:615:39|Found 3-bit incrementor, 'un9_expected_payload_length[29:32]'
-@N: MF179 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":1115:32:1115:73|Found 8 by 8 bit less-than operator ('<') p_sweep_table_engine\.un1_mac_swt_step (in view: work.General_Controller(architecture_general_controller))
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":1261:8:1261:9|Found counter in view:work.General_Controller(architecture_general_controller) instance tx_byte_index[3:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":423:8:423:9|Found counter in view:work.General_Controller(architecture_general_controller) instance swt_sweep_cnt[15:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":1101:8:1101:9|Found counter in view:work.General_Controller(architecture_general_controller) instance mac_swt_step[7:0] 
+@N: MO225 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":423:8:423:9|There are no possible illegal states for state machine preamble_cnt[0:1] (in view: work.General_Controller(architecture_general_controller)); safe FSM implementation is not required.
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":360:8:360:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_impossible_branch_cnt[3:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":360:8:360:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_rx_postamble_cnt[3:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":360:8:360:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_rx_preamble_cnt[3:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":360:8:360:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_sweep_macro_busy_cnt[3:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":360:8:360:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_unknown_cmd_cnt[3:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":360:8:360:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_periodic_hk_overrun_cnt[7:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":360:8:360:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_readback_overrun_cnt[7:0] 
+@N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":360:8:360:9|Found counter in view:work.General_Controller(architecture_general_controller) instance err_sc_cb_overrun_cnt[7:0] 
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":816:54:816:63|Found 4-bit incrementor, 'un1_acc_period_0[4:0]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":1019:22:1019:32|Found 8-bit incrementor, 'un22_acc_period[24:32]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":1032:22:1032:32|Found 8-bit incrementor, 'un23_mag_period[24:32]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":1045:22:1045:33|Found 8-bit incrementor, 'un23_gyro_period[24:32]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":1058:22:1058:33|Found 8-bit incrementor, 'un23_pres_period[24:32]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":1071:22:1071:36|Found 8-bit incrementor, 'un23_err_pkt_period[24:32]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":1084:22:1084:38|Found 8-bit incrementor, 'un23_timestamp_period[24:32]'
+@N: MF238 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":637:23:637:39|Found 3-bit incrementor, 'un9_expected_payload_length[29:32]'
+@N: MF179 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\general_controller.vhd":1219:32:1219:73|Found 8 by 8 bit less-than operator ('<') p_sweep_table_engine\.un1_mac_swt_step (in view: work.General_Controller(architecture_general_controller))
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":75:8:75:9|Found counter in view:work.ADC_Data_Packer(architecture_adc_data_packer) instance n_point_samples[15:0] 
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":75:8:75:9|Found counter in view:work.ADC_Data_Packer(architecture_adc_data_packer) instance n_skipped[15:0] 
 @N: MO231 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\adc_data_packer.vhd":75:8:75:9|Found counter in view:work.ADC_Data_Packer(architecture_adc_data_packer) instance point_counter[15:0] 
@@ -82,8 +84,8 @@
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\i2c_master.vhd":68:8:68:9|Removing sequential instance Sensors_0.Gyro_0.I2C_Master_0.data_out[6] (in view: work.Toplevel(rtl)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\utente\desktop\romeo_fpga\lp-software-fpga\hdl\i2c_master.vhd":68:8:68:9|Removing sequential instance Sensors_0.Gyro_0.I2C_Master_0.data_out[7] (in view: work.Toplevel(rtl)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 @N: FP130 |Promoting Net Timing_0_clk_800kHz on CLKINT  Timing_0.clk_800kHz_i_inferred_clock 
-@N: FP130 |Promoting Net General_Controller_0.sc_data_tx_flag on CLKINT  I_141 
-@N: FP130 |Promoting Net General_Controller_0.un1_msg_2send_115 on CLKINT  I_142 
+@N: FP130 |Promoting Net General_Controller_0.sc_data_tx_flag on CLKINT  I_149 
+@N: FP130 |Promoting Net General_Controller_0.un1_msg_2send_115 on CLKINT  I_150 
 @N: MT320 |This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report.
 @N: MT322 |Clock constraints include only register-to-register paths associated with each individual clock.
 @N: MT582 |Estimated period and frequency not reported for given clock unless the clock has at least one timing path which is not a false or a max delay path and that does not have excessive slack
