@@ -21,7 +21,7 @@ port (
     acc_packet       : IN std_logic_vector(55 downto 0);
     mag_packet       : IN std_logic_vector(55 downto 0);
     gyro_packet      : IN std_logic_vector(55 downto 0);
-    pres_packet  : IN std_logic_vector(55 downto 0);
+    pres_packet      : IN std_logic_vector(55 downto 0);
     timestamp_packet : IN std_logic_vector(55 downto 0);
 
     sc_new     : IN std_logic;
@@ -1486,7 +1486,7 @@ begin
                     start_tx <= '1';
 
                 elsif T_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 & "11111" & "001" & HK_ID_2rb & T_2rb & (47 downto 0 => '0') & POSTAMBLE);
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 & "11101" & "001" & HK_ID_2rb & T_2rb & (47 downto 0 => '0') & POSTAMBLE);
                     T_tx_flag <= '0';
                     start_tx <= '1';
 

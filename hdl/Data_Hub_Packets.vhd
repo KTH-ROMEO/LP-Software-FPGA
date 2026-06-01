@@ -52,10 +52,10 @@ port (
 end Data_Hub_Packets;
 architecture architecture_Data_Hub_Packets of Data_Hub_Packets is
 begin
-    --    acc_packet      <= x"0" & acc_x & acc_y & acc_z    & acc_temp           & x"00";
-    --    mag_packet      <= x"0" & mag_x & mag_y & mag_z                         & x"0000";
-    --    gyro_packet     <= gyro_x & gyro_y & gyro_z        & gyro_temp; 
-    --    pressure_packet <= pressure_raw                    & pressure_temp_raw  & x"0000";
+    --    acc_packet      <= acc_x  & acc_y  & acc_z  & acc_temp   & x"0" & x"00";
+    --    mag_packet      <= mag_x  & mag_y  & mag_z               & x"0" & x"0000";
+    --    gyro_packet     <= gyro_x & gyro_y & gyro_z & gyro_temp; 
+    --    pressure_packet <= pressure_raw             & pressure_temp_raw & x"00";
 
     acc_packet      <= x"a0a1a2a3a4a5a6"; -- for debugging
     mag_packet      <= x"b0b1b2b3b4b5b6"; -- for debugging
