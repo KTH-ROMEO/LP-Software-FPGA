@@ -22,18 +22,18 @@ use IEEE.std_logic_1164.all;
 entity Packet_Saver is
 port (
     clk, reset, en : IN std_logic;
-    sync           : IN std_logic;
+    sync, afull    : IN std_logic;
 
     ch_0_packet     : IN std_logic_vector(63 downto 0);
     ch_0_new_data   : IN std_logic;
 
-    data_out : OUT std_logic_vector(63 downto 0);
+    data_out : OUT std_logic_vector(31 downto 0);
     we       : OUT std_logic
 );
 end Packet_Saver;
 
 architecture architecture_Packet_Saver of Packet_Saver is
-    type state_type is (select_packet, clock_out_data);
+    type state_type is (select_packet, clock_out_data, fill_FIFO);
     type packet is (ch_0); 
     -- keep full type commented for future reuse
     -- type packet is (acc, mag, pressure, gyro, status, pres_cal1, pres_cal2, ch_0, ch_1, ch_2, ch_3, ch_4, ch_5);
@@ -41,9 +41,10 @@ architecture architecture_Packet_Saver of Packet_Saver is
     signal state          : state_type;
     signal packet_select  : packet;
     signal ch_0_flag      : std_logic;
+    signal sw_flag        : std_logic;
     signal old_ch_0_new_data : std_logic;
     signal selected_packet : std_logic_vector(63 downto 0);
-    signal word_cnt        : integer range 1 to 3;
+    signal word_cnt, cnt  : integer range 1 to 5;
 begin
 
     -- Packet selection (only ch_0 active)
@@ -61,35 +62,52 @@ begin
             word_cnt <= 1;
             data_out <= (others => '0');
             we <= '0';
+            sw_flag <= '0';
 
         elsif falling_edge(clk) then
+            
             old_ch_0_new_data <= ch_0_new_data;
 
-            if en = '1' then
-                -- Detect new packet
-                if (ch_0_new_data = '1' and old_ch_0_new_data = '0') then
-                    ch_0_flag <= '1';
+            if ch_0_new_data = '1' AND old_ch_0_new_data = '0' AND en = '1' then
+                ch_0_flag <= '1';
+            end if;
+
+            if state = select_packet then
+                word_cnt <= 1;
+                we <= '0';
+                cnt <=0;
+                
+                if ch_0_flag = '1' then
+                    packet_select <= ch_0;
+                    ch_0_flag <= '0';
+                    sw_flag <= '1';
+                    state <= clock_out_data;
+                elsif sw_flag = '1' AND en = '0' then
+                    state <= fill_FIFO;
+                    sw_flag <= '0';
                 end if;
+            elsif state = fill_FIFO then
+                if afull='1' then
+                    state <= select_packet;
+                else
+                    if cnt=5 then
+                        we <='1';
+                        cnt <=0;
+                        data_out <= (others => '0');
+                    else
+                        cnt <= cnt+1;
+                    end if;
+                end if;
+                
+            else
+                we <= '1';
+                word_cnt <= word_cnt + 1;
 
-                case state is
-                    when select_packet =>
-                        word_cnt <= 1;
-                        we <= '0';
-
-                        if ch_0_flag = '1' then
-                            packet_select <= ch_0;
-                            ch_0_flag <= '0';
-                            state <= clock_out_data;
-                        end if;
-
-                    when clock_out_data =>
-                        we <= '1';
-                        data_out <= selected_packet;
-                        state <= select_packet;  
-                        word_cnt <= 1;
-
-                    when others =>
-                        state <= select_packet;
+                case word_cnt is
+                        when 1 => data_out <=  selected_packet(39 downto 32) & selected_packet(47 downto 40) & selected_packet(55 downto 48) & selected_packet(63 downto 56);
+                        when 2 => data_out <=  selected_packet(7 downto 0) & selected_packet(15 downto 8) & selected_packet(23 downto 16) & selected_packet(31 downto 24);
+                                state <= select_packet;
+                        when others => word_cnt <= 1;
                 end case;
             end if;
         end if;

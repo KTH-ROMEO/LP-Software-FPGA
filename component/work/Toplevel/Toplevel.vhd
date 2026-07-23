@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Wed May 20 18:43:17 2026
+-- Created by SmartDesign Fri Jul 24 00:42:52 2026
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -23,11 +23,9 @@ entity Toplevel is
         ABSY         : in    std_logic;
         CLOCK        : in    std_logic;
         CU_SYNC      : in    std_logic;
-        FFU_EJECTED  : in    std_logic;
         FMC_CLK      : in    std_logic;
         FMC_NOE      : in    std_logic;
         RESET        : in    std_logic;
-        UC_I2C4_SCL  : in    std_logic;
         UC_UART_TX   : in    std_logic;
         -- Outputs
         ACCE_SCL     : out   std_logic;
@@ -59,12 +57,10 @@ entity Toplevel is
         UC_UART_RX   : out   std_logic;
         -- Inouts
         ACCE_SDA     : inout std_logic;
-        FRAM_SDA     : inout std_logic;
         FRSTDATA     : inout std_logic;
         GYRO_SDA     : inout std_logic;
         MAX_SDA      : inout std_logic;
-        PRESSURE_SDA : inout std_logic;
-        UC_I2C4_SDA  : inout std_logic
+        PRESSURE_SDA : inout std_logic
         );
 end Toplevel;
 ----------------------------------------------------------------------
@@ -118,9 +114,9 @@ component Data_Saving
     -- Port list
     port(
         -- Inputs
+        SW_EN         : in  std_logic;
         ch_0_new_data : in  std_logic;
         clk           : in  std_logic;
-        en            : in  std_logic;
         exp_SC_packet : in  std_logic_vector(63 downto 0);
         fmc_clk       : in  std_logic;
         fmc_noe       : in  std_logic;
@@ -164,6 +160,7 @@ component General_Controller
         clk_1Hz               : in  std_logic;
         clk_256Hz             : in  std_logic;
         clk_4Hz               : in  std_logic;
+        clk_64s               : in  std_logic;
         gyro_packet           : in  std_logic_vector(55 downto 0);
         mag_packet            : in  std_logic_vector(55 downto 0);
         pres_packet           : in  std_logic_vector(55 downto 0);
@@ -181,6 +178,10 @@ component General_Controller
         C_bias_V0             : out std_logic_vector(15 downto 0);
         C_bias_V1             : out std_logic_vector(15 downto 0);
         Sweep_enabled         : out std_logic;
+        cb_points_per_step    : out std_logic_vector(15 downto 0);
+        cb_sample_skip        : out std_logic_vector(15 downto 0);
+        cb_samples_per_point  : out std_logic_vector(15 downto 0);
+        cb_samples_per_step   : out std_logic_vector(15 downto 0);
         led1                  : out std_logic;
         led2                  : out std_logic;
         swt_nof_steps         : out std_logic_vector(7 downto 0);
@@ -208,6 +209,10 @@ component Science
         AB                      : in  std_logic;
         ABSY                    : in  std_logic;
         Bias_enabled            : in  std_logic;
+        CB_Samples              : in  std_logic_vector(15 downto 0);
+        CB_points_per_step      : in  std_logic_vector(15 downto 0);
+        CB_samples_per_point    : in  std_logic_vector(15 downto 0);
+        CB_skipped_samples      : in  std_logic_vector(15 downto 0);
         C_bias_V0               : in  std_logic_vector(15 downto 0);
         C_bias_V1               : in  std_logic_vector(15 downto 0);
         RData0                  : in  std_logic_vector(15 downto 0);
@@ -240,6 +245,7 @@ component Science
         RADDR                   : out std_logic_vector(7 downto 0);
         REN                     : out std_logic;
         SC_packet               : out std_logic_vector(63 downto 0);
+        SW_EN                   : out std_logic;
         SW_END                  : out std_logic;
         new_SC_packet           : out std_logic
         );
@@ -349,7 +355,7 @@ component Timing
         reset      : in  std_logic;
         -- Outputs
         clk_800kHz : out std_logic;
-        s_clks     : out std_logic_vector(24 downto 0)
+        s_clks     : out std_logic_vector(30 downto 0)
         );
 end component;
 -- UART
@@ -399,6 +405,10 @@ signal FPGA_BUF_INT_net_0                         : std_logic;
 signal General_Controller_0_Bias_enabled          : std_logic;
 signal General_Controller_0_C_bias_V0             : std_logic_vector(15 downto 0);
 signal General_Controller_0_C_bias_V1             : std_logic_vector(15 downto 0);
+signal General_Controller_0_cb_points_per_step    : std_logic_vector(15 downto 0);
+signal General_Controller_0_cb_sample_skip        : std_logic_vector(15 downto 0);
+signal General_Controller_0_cb_samples_per_point  : std_logic_vector(15 downto 0);
+signal General_Controller_0_cb_samples_per_step   : std_logic_vector(15 downto 0);
 signal General_Controller_0_Sweep_enabled         : std_logic;
 signal General_Controller_0_swt_nof_steps         : std_logic_vector(7 downto 0);
 signal General_Controller_0_swt_points_per_step   : std_logic_vector(15 downto 0);
@@ -430,6 +440,7 @@ signal Science_0_new_SC_packet                    : std_logic;
 signal Science_0_RADDR                            : std_logic_vector(7 downto 0);
 signal Science_0_REN                              : std_logic;
 signal Science_0_SC_packet                        : std_logic_vector(63 downto 0);
+signal Science_0_SW_EN                            : std_logic;
 signal Sensors_0_acc_temp                         : std_logic_vector(7 downto 0);
 signal Sensors_0_acc_time                         : std_logic_vector(23 downto 0);
 signal Sensors_0_acc_x                            : std_logic_vector(11 downto 0);
@@ -466,6 +477,7 @@ signal Timing_0_s_clks16to16                      : std_logic_vector(16 to 16);
 signal Timing_0_s_clks20to20                      : std_logic_vector(20 to 20);
 signal Timing_0_s_clks22to22                      : std_logic_vector(22 to 22);
 signal Timing_0_s_clks24to24                      : std_logic_vector(24 to 24);
+signal Timing_0_s_clks30to30                      : std_logic_vector(30 to 30);
 signal UART_0_recv                                : std_logic_vector(7 downto 0);
 signal UART_0_rx_rdy                              : std_logic;
 signal UART_0_tx_rdy                              : std_logic;
@@ -512,33 +524,30 @@ signal s_clks_slice_8                             : std_logic_vector(19 to 19);
 signal s_clks_slice_9                             : std_logic_vector(1 to 1);
 signal s_clks_slice_10                            : std_logic_vector(21 to 21);
 signal s_clks_slice_11                            : std_logic_vector(23 to 23);
-signal s_clks_slice_12                            : std_logic_vector(2 to 2);
-signal s_clks_slice_13                            : std_logic_vector(3 to 3);
-signal s_clks_slice_14                            : std_logic_vector(5 to 5);
-signal s_clks_slice_15                            : std_logic_vector(6 to 6);
-signal s_clks_slice_16                            : std_logic_vector(7 to 7);
-signal s_clks_slice_17                            : std_logic_vector(8 to 8);
-signal s_clks_net_0                               : std_logic_vector(24 downto 0);
+signal s_clks_slice_12                            : std_logic_vector(25 to 25);
+signal s_clks_slice_13                            : std_logic_vector(26 to 26);
+signal s_clks_slice_14                            : std_logic_vector(27 to 27);
+signal s_clks_slice_15                            : std_logic_vector(28 to 28);
+signal s_clks_slice_16                            : std_logic_vector(29 to 29);
+signal s_clks_slice_17                            : std_logic_vector(2 to 2);
+signal s_clks_slice_18                            : std_logic_vector(3 to 3);
+signal s_clks_slice_19                            : std_logic_vector(5 to 5);
+signal s_clks_slice_20                            : std_logic_vector(6 to 6);
+signal s_clks_slice_21                            : std_logic_vector(7 to 7);
+signal s_clks_slice_22                            : std_logic_vector(8 to 8);
+signal s_clks_net_0                               : std_logic_vector(30 downto 0);
 ----------------------------------------------------------------------
 -- TiedOff Signals
 ----------------------------------------------------------------------
-signal VCC_net                                    : std_logic;
 signal GND_net                                    : std_logic;
-----------------------------------------------------------------------
--- Inverted Signals
-----------------------------------------------------------------------
-signal FFU_EJECTED_IN_POST_INV0_0                 : std_logic;
+signal VCC_net                                    : std_logic;
 
 begin
 ----------------------------------------------------------------------
 -- Constant assignments
 ----------------------------------------------------------------------
- VCC_net <= '1';
  GND_net <= '0';
-----------------------------------------------------------------------
--- Inversions
-----------------------------------------------------------------------
- FFU_EJECTED_IN_POST_INV0_0 <= NOT FFU_EJECTED;
+ VCC_net <= '1';
 ----------------------------------------------------------------------
 -- Top level output port assignments
 ----------------------------------------------------------------------
@@ -611,6 +620,7 @@ begin
  Timing_0_s_clks20to20(20)         <= s_clks_net_0(20);
  Timing_0_s_clks22to22(22)         <= s_clks_net_0(22);
  Timing_0_s_clks24to24(24)         <= s_clks_net_0(24);
+ Timing_0_s_clks30to30(30)         <= s_clks_net_0(30);
  gyro_z_slice_0                    <= Sensors_0_gyro_z(3 downto 0);
  pressure_raw_slice_0              <= Sensors_0_pressure_raw(11 downto 0);
  pressure_temp_raw_slice_0         <= Sensors_0_pressure_temp_raw(11 downto 0);
@@ -626,12 +636,17 @@ begin
  s_clks_slice_9(1)                 <= s_clks_net_0(1);
  s_clks_slice_10(21)               <= s_clks_net_0(21);
  s_clks_slice_11(23)               <= s_clks_net_0(23);
- s_clks_slice_12(2)                <= s_clks_net_0(2);
- s_clks_slice_13(3)                <= s_clks_net_0(3);
- s_clks_slice_14(5)                <= s_clks_net_0(5);
- s_clks_slice_15(6)                <= s_clks_net_0(6);
- s_clks_slice_16(7)                <= s_clks_net_0(7);
- s_clks_slice_17(8)                <= s_clks_net_0(8);
+ s_clks_slice_12(25)               <= s_clks_net_0(25);
+ s_clks_slice_13(26)               <= s_clks_net_0(26);
+ s_clks_slice_14(27)               <= s_clks_net_0(27);
+ s_clks_slice_15(28)               <= s_clks_net_0(28);
+ s_clks_slice_16(29)               <= s_clks_net_0(29);
+ s_clks_slice_17(2)                <= s_clks_net_0(2);
+ s_clks_slice_18(3)                <= s_clks_net_0(3);
+ s_clks_slice_19(5)                <= s_clks_net_0(5);
+ s_clks_slice_20(6)                <= s_clks_net_0(6);
+ s_clks_slice_21(7)                <= s_clks_net_0(7);
+ s_clks_slice_22(8)                <= s_clks_net_0(8);
 ----------------------------------------------------------------------
 -- Component instances
 ----------------------------------------------------------------------
@@ -696,7 +711,7 @@ Data_Saving_0 : Data_Saving
         sync          => CU_SYNC,
         fmc_noe       => FMC_NOE,
         fmc_clk       => CLKINT_2_Y,
-        en            => VCC_net,
+        SW_EN         => Science_0_SW_EN,
         exp_SC_packet => Science_0_SC_packet,
         -- Outputs
         uC_interrupt  => FPGA_BUF_INT_net_0,
@@ -731,10 +746,12 @@ General_Controller_0 : General_Controller
         clk_1Hz               => Timing_0_s_clks24to24(24),
         clk_4Hz               => Timing_0_s_clks22to22(22),
         clk_256Hz             => Timing_0_s_clks16to16(16),
+        clk_64s               => Timing_0_s_clks30to30(30),
         reset                 => CLKINT_1_Y,
-        uart_rx_byte          => UART_0_recv,
         uart_tx_ready         => UART_0_tx_rdy,
         uart_rx_valid         => UART_0_rx_rdy,
+        sc_new                => Science_0_new_SC_packet,
+        uart_rx_byte          => UART_0_recv,
         swt_rdata0            => SweepTable_0_RD,
         swt_rdata1            => SweepTable_1_RD,
         acc_packet            => Data_Hub_Packets_0_acc_packet_2,
@@ -742,29 +759,32 @@ General_Controller_0 : General_Controller
         gyro_packet           => Data_Hub_Packets_0_gyro_packet_1,
         pres_packet           => Data_Hub_Packets_0_pressure_packet_2,
         timestamp_packet      => Timekeeper_0_timestamp_packet,
-        sc_new                => Science_0_new_SC_packet,
         sc_data               => Science_0_SC_packet,
         -- Outputs
-        swt_wdata             => General_Controller_0_swt_wdata,
-        swt_waddr             => General_Controller_0_swt_waddr,
-        swt_raddr             => General_Controller_0_swt_raddr,
         swt_wen0              => General_Controller_0_swt_wen0,
         swt_wen1              => General_Controller_0_swt_wen1,
         swt_ren               => General_Controller_0_swt_ren,
-        uart_tx_byte          => General_Controller_0_uart_tx_byte,
         uart_tx_start         => General_Controller_0_uart_tx_start,
         uart_rx_ack           => General_Controller_0_uart_rx_ack,
         led1                  => LED1_0,
         led2                  => LED2_net_0,
-        C_bias_V0             => General_Controller_0_C_bias_V0,
-        C_bias_V1             => General_Controller_0_C_bias_V1,
         Bias_enabled          => General_Controller_0_Bias_enabled,
         Sweep_enabled         => General_Controller_0_Sweep_enabled,
+        swt_wdata             => General_Controller_0_swt_wdata,
+        swt_waddr             => General_Controller_0_swt_waddr,
+        swt_raddr             => General_Controller_0_swt_raddr,
+        uart_tx_byte          => General_Controller_0_uart_tx_byte,
+        C_bias_V0             => General_Controller_0_C_bias_V0,
+        C_bias_V1             => General_Controller_0_C_bias_V1,
         swt_nof_steps         => General_Controller_0_swt_nof_steps,
         swt_samples_per_step  => General_Controller_0_swt_samples_per_step,
         swt_samples_per_point => General_Controller_0_swt_samples_per_point,
         swt_sample_skip       => General_Controller_0_swt_sample_skip,
-        swt_points_per_step   => General_Controller_0_swt_points_per_step 
+        swt_points_per_step   => General_Controller_0_swt_points_per_step,
+        cb_samples_per_step   => General_Controller_0_cb_samples_per_step,
+        cb_samples_per_point  => General_Controller_0_cb_samples_per_point,
+        cb_sample_skip        => General_Controller_0_cb_sample_skip,
+        cb_points_per_step    => General_Controller_0_cb_points_per_step 
         );
 -- Science_0
 Science_0 : Science
@@ -789,6 +809,10 @@ Science_0 : Science
         RData1                  => SweepTable_1_RD,
         Sweep_samples_per_point => General_Controller_0_swt_samples_per_point,
         Sweep_points_per_step   => General_Controller_0_swt_points_per_step,
+        CB_Samples              => General_Controller_0_cb_samples_per_step,
+        CB_samples_per_point    => General_Controller_0_cb_samples_per_point,
+        CB_points_per_step      => General_Controller_0_cb_points_per_step,
+        CB_skipped_samples      => General_Controller_0_cb_sample_skip,
         -- Outputs
         ACS                     => ACS_net_0,
         ACLK                    => ACLK_net_0,
@@ -806,6 +830,7 @@ Science_0 : Science
         REN                     => Science_0_REN,
         new_SC_packet           => Science_0_new_SC_packet,
         SW_END                  => OPEN,
+        SW_EN                   => Science_0_SW_EN,
         RADDR                   => Science_0_RADDR,
         SC_packet               => Science_0_SC_packet 
         );

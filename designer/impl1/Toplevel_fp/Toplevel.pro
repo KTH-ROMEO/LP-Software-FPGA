@@ -1,6 +1,6 @@
 <project name="Toplevel" version="1.1">
     <ProjectDirectory>
-        C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer\impl1\Toplevel_fp
+        C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\designer\impl1\Toplevel_fp
     </ProjectDirectory>
     <View>
         SingleSTAPLView
@@ -9,7 +9,7 @@
         
     </LiberoTargetDevice>
     <LogFile>
-        C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer\impl1\Toplevel_fp\Toplevel.log
+        C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\designer\impl1\Toplevel_fp\Toplevel.log
     </LogFile>
     <SerializationOption>
         Skip
@@ -74,7 +74,7 @@
         </Hardware>
         <Algo type="PDB">
             <filename>
-                C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer\impl1\Toplevel.pdb
+                C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\designer\impl1\Toplevel_fp\projectData\Toplevel.pdb
             </filename>
             <local>
                 projectData\Toplevel.pdb

@@ -12,7 +12,14 @@
 --
 --------------------------------------------------------------------------------
 --
--- Outputs: s_clks[24]: 1   Hz
+-- Outputs: 
+--          s_clks[30]: 64  s
+--          s_clks[29]: 32  s
+--          s_clks[28]: 16  s
+--          s_clks[27]: 8   s
+--          s_clks[26]: 4   s
+--          s_clks[25]: 2   s
+--          s_clks[24]: 1   Hz
 --          s_clks[23]: 2   Hz
 --          s_clks[22]: 4   Hz
 --          s_clks[21]: 8   Hz
@@ -50,7 +57,7 @@ port (
     clk       : IN  std_logic;
     reset     : IN  std_logic;
 
-    s_clks     : OUT std_logic_vector(24 downto 0);
+    s_clks     : OUT std_logic_vector(30 downto 0);
     clk_800kHz : OUT std_logic
 );
 end Timing;
@@ -62,6 +69,9 @@ architecture architecture_Timing of Timing is
     signal m_time  : std_logic_vector(7 downto 0) := (others => '0');
     signal s_count : std_logic_vector(7 downto 0) := (others => '0');
     signal s_time  : std_logic_vector(9 downto 0) := (others => '0');
+
+    signal d_count : std_logic_vector(7 downto 0) := (others => '0');
+    signal d_time  : std_logic_vector(5 downto 0) := (others => '0');
 
     signal cnt_800kHz : std_logic_vector(4 downto 0) := (others => '0');
     signal clk_800kHz_i : std_logic := '0';
@@ -75,8 +85,10 @@ begin
         f_time       <= (others => '0');
         m_time       <= (others => '0');
         s_time       <= (others => '0');
+        d_time       <= (others => '0');
         m_count      <= (others => '0');
         s_count      <= (others => '0');
+        d_count      <= (others => '0');
 
         cnt_800kHz   <= (others => '0');
         clk_800kHz_i <= '0';
@@ -102,13 +114,18 @@ begin
 
         if s_count = 249 then
             s_time  <= s_time + 1;
+            d_count <= d_count + 1;
             s_count <= (others => '0');
+        end if;
+        if d_count = 249 then
+            d_time  <= d_time + 1;
+            d_count <= (others => '0');
         end if;
 
     end if;
 end process;
 
-s_clks     <= s_time & m_time & f_time;
+s_clks     <= d_time & s_time & m_time & f_time;
 clk_800kHz <= clk_800kHz_i;
 
 end architecture_Timing;

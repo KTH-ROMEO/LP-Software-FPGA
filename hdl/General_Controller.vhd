@@ -9,6 +9,7 @@ port (
     clk_1Hz     : IN std_logic;
     clk_4Hz     : IN std_logic;
     clk_256Hz   : IN std_logic;
+    clk_64s     : IN std_logic;
     reset       : IN std_logic;
     
     uart_rx_byte  : IN std_logic_vector(7 downto 0);
@@ -51,7 +52,11 @@ port (
     swt_samples_per_step    : OUT std_logic_vector(15 downto 0);
     swt_samples_per_point   : OUT std_logic_vector(15 downto 0);
     swt_sample_skip         : OUT std_logic_vector(15 downto 0);
-    swt_points_per_step     : OUT std_logic_vector(15 downto 0)
+    swt_points_per_step     : OUT std_logic_vector(15 downto 0);
+    cb_samples_per_step     : OUT std_logic_vector(15 downto 0);
+    cb_samples_per_point    : OUT std_logic_vector(15 downto 0);
+    cb_sample_skip          : OUT std_logic_vector(15 downto 0);
+    cb_points_per_step      : OUT std_logic_vector(15 downto 0)
 );
 end General_Controller;
 
@@ -101,21 +106,28 @@ architecture architecture_General_Controller of General_Controller is
     signal swt_wen1_i  : std_logic := '0';
     signal swt_ren_i   : std_logic := '0';
 
-    -- Internal versions of sweep table configuration parameters OUT ports
+    -- Internal versions of sweep table configuration parameters OUT ports for Sweep
     signal swt_nof_steps_i           : std_logic_vector(7 downto 0)  := (others => '0');
     signal swt_samples_per_step_i    : std_logic_vector(15 downto 0) := (others => '0');
     signal swt_samples_per_point_i   : std_logic_vector(15 downto 0) := (others => '0');
     signal swt_sample_skip_i         : std_logic_vector(15 downto 0) := (others => '0');
     signal swt_points_per_step_i     : std_logic_vector(15 downto 0) := (others => '0');
+    -- Internal versions of sweep table configuration parameters OUT ports for Constant Bias
+    signal cb_samples_per_step_i    : std_logic_vector(15 downto 0) := (others => '0');
+    signal cb_samples_per_point_i   : std_logic_vector(15 downto 0) := (others => '0');
+    signal cb_sample_skip_i         : std_logic_vector(15 downto 0) := (others => '0');
+    signal cb_points_per_step_i     : std_logic_vector(15 downto 0) := (others => '0');
 
     -- SCIENCE DATA
     signal cb_mode         : std_logic := '0';
     signal cb_voltage_0    : std_logic_vector(15 downto 0) := (others => '0');
     signal cb_voltage_1    : std_logic_vector(15 downto 0) := (others => '0');
-    signal cb_voltage_tx   : std_logic_vector(15 downto 0) := (others => '0');
-    signal cb_probe_id     : std_logic_vector(7 downto 0)  := (others => '0'); 
+    signal cb_voltage_tx   : std_logic_vector(31 downto 0) := (others => '0');
     signal swt_probe_id    : std_logic_vector(7 downto 0)  := (others => '0');
     signal swt_sweep_cnt   : std_logic_vector(15 downto 0) := (others => '0');
+    signal nof_sweeps      : std_logic_vector(7 downto 0)  := (others => '0');
+    signal sweep_period    : std_logic_vector(7 downto 0)  := (others => '0');
+
     signal swt_read_value  : std_logic_vector(15 downto 0) := (others => '0');
 
     -- MACRO SWEEP
@@ -152,10 +164,10 @@ architecture architecture_General_Controller of General_Controller is
     signal const_volt_send_req     : std_logic := '0';
     signal swt_swp_cnt_send_req    : std_logic := '0';
     signal swt_steps_send_req      : std_logic := '0';
-    signal swt_sps_send_req        : std_logic := '0';
-    signal swt_skip_send_req       : std_logic := '0';
-    signal swt_spp_send_req        : std_logic := '0';
-    signal swt_points_send_req     : std_logic := '0';
+    signal sc_sps_send_req        : std_logic := '0';
+    signal sc_skip_send_req       : std_logic := '0';
+    signal sc_spp_send_req        : std_logic := '0';
+    signal sc_points_send_req     : std_logic := '0';
     signal macro_meta1_send_req    : std_logic := '0';
     signal macro_meta2_send_req    : std_logic := '0';
 
@@ -193,10 +205,10 @@ architecture architecture_General_Controller of General_Controller is
     signal const_volt_tx_flag     : std_logic := '0';
     signal swt_swp_cnt_tx_flag    : std_logic := '0';
     signal swt_steps_tx_flag      : std_logic := '0';
-    signal swt_sps_tx_flag        : std_logic := '0';
-    signal swt_skip_tx_flag       : std_logic := '0';
-    signal swt_spp_tx_flag        : std_logic := '0';
-    signal swt_points_tx_flag     : std_logic := '0';
+    signal sc_sps_tx_flag        : std_logic := '0';
+    signal sc_skip_tx_flag       : std_logic := '0';
+    signal sc_spp_tx_flag        : std_logic := '0';
+    signal sc_points_tx_flag     : std_logic := '0';
     signal sc_data_tx_flag        : std_logic := '0';
     signal swt_value_tx_flag      : std_logic := '0';
     signal macro_meta1_tx_flag    : std_logic := '0';
@@ -206,6 +218,7 @@ architecture architecture_General_Controller of General_Controller is
     signal old_clk_256Hz   : std_logic := '0';
     signal old_clk_1Hz     : std_logic := '0';
     signal old_clk_4Hz     : std_logic := '0';
+    signal old_clk_64s     : std_logic := '0';
 
     signal acc_periodic_send_req       : std_logic := '0';
     signal mag_periodic_send_req       : std_logic := '0';
@@ -345,6 +358,11 @@ begin
     swt_sample_skip       <= swt_sample_skip_i;
     swt_points_per_step   <= swt_points_per_step_i;
 
+    cb_samples_per_step  <= cb_samples_per_step_i;
+    cb_samples_per_point <= cb_samples_per_point_i;
+    cb_sample_skip       <= cb_sample_skip_i;
+    cb_points_per_step   <= cb_points_per_step_i;
+
     -- Mirroring of internal Error signals into TX used error packet
     hk_error_cnt_packet <=
         err_sc_cb_overrun_cnt &
@@ -450,17 +468,22 @@ begin
             cb_voltage_0  <= (others => '0');
             cb_voltage_1  <= (others => '0');
             cb_voltage_tx <= (others => '0');
-            cb_probe_id   <= (others => '0');
 
             C_bias_V0 <= (others => '0');
             C_bias_V1 <= (others => '0');
 
             swt_sweep_cnt              <= (others => '0');
+            nof_sweeps                 <= (others => '0');
+            sweep_period               <= (others => '0');
             swt_nof_steps_i            <= (others => '0');
             swt_sample_skip_i          <= (others => '0');
             swt_samples_per_point_i    <= (others => '0');
             swt_points_per_step_i      <= (others => '0');
             swt_samples_per_step_i     <= (others => '0');
+            cb_sample_skip_i          <= (others => '0');
+            cb_samples_per_point_i    <= (others => '0');
+            cb_points_per_step_i      <= (others => '0');
+            cb_samples_per_step_i     <= (others => '0');
 
             acc_period       <= 0;
             mag_period       <= 0;
@@ -503,10 +526,10 @@ begin
             const_volt_send_req  <= '0';
             swt_swp_cnt_send_req <= '0';
             swt_steps_send_req   <= '0';
-            swt_sps_send_req     <= '0';
-            swt_skip_send_req    <= '0';
-            swt_spp_send_req     <= '0';
-            swt_points_send_req  <= '0';
+            sc_sps_send_req     <= '0';
+            sc_skip_send_req    <= '0';
+            sc_spp_send_req     <= '0';
+            sc_points_send_req  <= '0';
             macro_meta1_send_req <= '0';
             macro_meta2_send_req <= '0';
 
@@ -542,10 +565,10 @@ begin
             const_volt_send_req  <= '0';
             swt_swp_cnt_send_req <= '0';
             swt_steps_send_req   <= '0';
-            swt_sps_send_req     <= '0';
-            swt_skip_send_req    <= '0';
-            swt_spp_send_req     <= '0';
-            swt_points_send_req  <= '0';
+            sc_sps_send_req     <= '0';
+            sc_skip_send_req    <= '0';
+            sc_spp_send_req     <= '0';
+            sc_points_send_req  <= '0';
             macro_meta1_send_req <= '0';
             macro_meta2_send_req <= '0';
 
@@ -685,37 +708,23 @@ begin
 
                         -- Set Constant Bias Voltage
                         when "00011" =>
-                            cb_probe_id <= payload_buffer(0);
-                            case payload_buffer(0) is
-                                when x"01" =>
-                                    cb_voltage_0(15 downto 8) <= payload_buffer(1);
-                                    cb_voltage_0(7 downto 0)  <= payload_buffer(2);
-                                when x"02" =>
-                                    cb_voltage_1(15 downto 8) <= payload_buffer(1);
-                                    cb_voltage_1(7 downto 0)  <= payload_buffer(2);
-                                when others =>
+                            cb_voltage_0(15 downto 8) <= payload_buffer(0);
+                            cb_voltage_0(7 downto 0)  <= payload_buffer(1);
+                            cb_voltage_1(15 downto 8) <= payload_buffer(2);
+                            cb_voltage_1(7 downto 0)  <= payload_buffer(3);
                                      
-                            end case;
-
                         -- Readback Constant Bias Voltage
                         when "00100" =>
-                            cb_probe_id <= payload_buffer(0);
-                            case payload_buffer(0) is
-                                when x"01" =>
-                                    cb_voltage_tx       <= cb_voltage_0;
-                                    const_volt_send_req <= '1';
-                                when x"02" =>
-                                    cb_voltage_tx       <= cb_voltage_1;
-                                    const_volt_send_req <= '1';
-                                when others =>
-                                     
-                            end case;
-
+                            cb_voltage_tx       <= cb_voltage_0 & cb_voltage_1;
+                            const_volt_send_req <= '1';
+                             
                         -- Activate Sweep mode
                         when "01010" =>
                             Sweep_enabled <= '1';
                             cb_mode       <= '0';
-                            swt_sweep_cnt <= std_logic_vector(unsigned(swt_sweep_cnt) + 1);
+                            swt_sweep_cnt <= std_logic_vector(unsigned(swt_sweep_cnt) + unsigned(nof_sweeps));
+                            nof_sweeps    <= payload_buffer(0);
+                            sweep_period  <= payload_buffer(1);
 
                         -- Readback Sweep Count
                         when "01011" =>
@@ -731,39 +740,47 @@ begin
 
                         -- Set Samples per Step
                         when "01110" =>
-                            swt_samples_per_step_i(15 downto 8) <= payload_buffer(0);
-                            swt_samples_per_step_i(7 downto 0)  <= payload_buffer(1);
+                            cb_samples_per_step_i(15 downto 8) <= payload_buffer(0);
+                            cb_samples_per_step_i(7 downto 0)  <= payload_buffer(1);                            
+                            swt_samples_per_step_i(15 downto 8) <= payload_buffer(2);
+                            swt_samples_per_step_i(7 downto 0)  <= payload_buffer(3);
 
                         -- Readback Samples per Step
                         when "01111" =>
-                            swt_sps_send_req <= '1';
+                            sc_sps_send_req <= '1';
 
                         -- Set Sweep Skip
                         when "10000" =>
-                            swt_sample_skip_i(15 downto 8) <= payload_buffer(0);
-                            swt_sample_skip_i(7 downto 0)  <= payload_buffer(1);
+                            cb_sample_skip_i(15 downto 8) <= payload_buffer(0);
+                            cb_sample_skip_i(7 downto 0)  <= payload_buffer(1);
+                            swt_sample_skip_i(15 downto 8) <= payload_buffer(2);
+                            swt_sample_skip_i(7 downto 0)  <= payload_buffer(3);
 
                         -- Readback Skip
                         when "10001" =>
-                            swt_skip_send_req <= '1';
+                            sc_skip_send_req <= '1';
 
                         -- Set Samples per Point
                         when "10010" =>
-                            swt_samples_per_point_i(15 downto 8) <= payload_buffer(0);
-                            swt_samples_per_point_i(7 downto 0)  <= payload_buffer(1);
+                            cb_samples_per_point_i(15 downto 8) <= payload_buffer(0);
+                            cb_samples_per_point_i(7 downto 0)  <= payload_buffer(1);
+                            swt_samples_per_point_i(15 downto 8) <= payload_buffer(2);
+                            swt_samples_per_point_i(7 downto 0)  <= payload_buffer(3);
 
                         -- Readback Samples per Point
                         when "10011" =>
-                            swt_spp_send_req <= '1';
+                            sc_spp_send_req <= '1';
 
                         -- Set Sweep Points
                         when "10100" =>
-                            swt_points_per_step_i(15 downto 8) <= payload_buffer(0);
-                            swt_points_per_step_i(7 downto 0)  <= payload_buffer(1);
+                            cb_points_per_step_i(15 downto 8) <= payload_buffer(0);
+                            cb_points_per_step_i(7 downto 0)  <= payload_buffer(1);
+                            swt_points_per_step_i(15 downto 8) <= payload_buffer(2);
+                            swt_points_per_step_i(7 downto 0)  <= payload_buffer(3);
 
                         -- Readback Sweep Points
                         when "10101" =>
-                            swt_points_send_req <= '1';
+                            sc_points_send_req <= '1';
 
                         -- Receive Sweep Table
                         when "10110" =>
@@ -829,61 +846,37 @@ begin
                                 when HK_ACC_ID =>
                                     acc_period_code <= payload_buffer(1);
                                     acc_scale_code  <= v_scale;
-                                    if v_scale = "11" then
-                                        acc_period <= 60 * v_val;
-                                    else
-                                        acc_period <= v_val;
-                                    end if;
+                                    acc_period <= v_val;
                                     acc_cnt_reset_req <= '1';
 
                                 when HK_MAG_ID =>
                                     mag_period_code <= payload_buffer(1);
                                     mag_scale_code  <= v_scale;
-                                    if v_scale = "11" then
-                                        mag_period <= 60 * v_val;
-                                    else
-                                        mag_period <= v_val;
-                                    end if;
+                                    mag_period <= v_val;
                                     mag_cnt_reset_req <= '1';
 
                                 when HK_GYRO_ID =>
                                     gyro_period_code <= payload_buffer(1);
                                     gyro_scale_code  <= v_scale;
-                                    if v_scale = "11" then
-                                        gyro_period <= 60 * v_val;
-                                    else
-                                        gyro_period <= v_val;
-                                    end if;
+                                    gyro_period <= v_val;
                                     gyro_cnt_reset_req <= '1';
 
                                 when HK_PRES_ID =>
                                     pres_period_code <= payload_buffer(1);
                                     pres_scale_code  <= v_scale;
-                                    if v_scale = "11" then
-                                        pres_period <= 60 * v_val;
-                                    else
-                                        pres_period <= v_val;
-                                    end if;
+                                    pres_period <= v_val;
                                     pres_cnt_reset_req <= '1';
 
                                 when HK_ERR_ID =>
                                     err_pkt_period_code <= payload_buffer(1);
                                     err_pkt_scale_code  <= v_scale;
-                                    if v_scale = "11" then
-                                        err_pkt_period <= 60 * v_val;
-                                    else
-                                        err_pkt_period <= v_val;
-                                    end if;
+                                    err_pkt_period <= v_val;
                                     err_pkt_cnt_reset_req <= '1';
 
                                 when HK_TIME_ID =>
                                     timestamp_period_code <= payload_buffer(1);
                                     timestamp_scale_code  <= v_scale;
-                                    if v_scale = "11" then
-                                        timestamp_period <= 60 * v_val;
-                                    else
-                                        timestamp_period <= v_val;
-                                    end if;
+                                    timestamp_period <= v_val;
                                     timestamp_cnt_reset_req <= '1';
 
 
@@ -924,6 +917,7 @@ begin
         variable tick_1Hz   : boolean := false;
         variable tick_4Hz   : boolean := false;
         variable tick_256Hz : boolean := false;
+        variable tick_64s   : boolean := false;
         variable acc_tick       : boolean := false;
         variable mag_tick       : boolean := false;
         variable gyro_tick      : boolean := false;
@@ -936,6 +930,7 @@ begin
             old_clk_1Hz   <= '0';
             old_clk_4Hz   <= '0';
             old_clk_256Hz <= '0';
+            old_clk_64s   <= '0';
 
             acc_cnt       <= 0;
             mag_cnt       <= 0;
@@ -963,10 +958,12 @@ begin
             tick_1Hz   := (clk_1Hz = '1')   and (old_clk_1Hz = '0');
             tick_4Hz   := (clk_4Hz = '1')   and (old_clk_4Hz = '0');
             tick_256Hz := (clk_256Hz = '1') and (old_clk_256Hz = '0');
+            tick_64s   := (clk_64s = '1')   and (old_clk_64s = '0');
 
             old_clk_1Hz   <= clk_1Hz;
             old_clk_4Hz   <= clk_4Hz;
             old_clk_256Hz <= clk_256Hz;
+            old_clk_64s   <= clk_64s;
 
             -- HK specific ticks, driven initially to default state
             acc_tick       := false;
@@ -982,48 +979,60 @@ begin
                 acc_tick := tick_256Hz;
             elsif acc_scale_code = "01" then
                 acc_tick := tick_4Hz;
-            elsif acc_scale_code = "10" or acc_scale_code = "11" then
+            elsif acc_scale_code = "10" then
                 acc_tick := tick_1Hz;
+            else
+                acc_tick := tick_64s;
             end if;
 
             if mag_scale_code = "00" then
                 mag_tick := tick_256Hz;
             elsif mag_scale_code = "01" then
                 mag_tick := tick_4Hz;
-            elsif mag_scale_code = "10" or mag_scale_code = "11" then
+            elsif mag_scale_code = "10" then
                 mag_tick := tick_1Hz;
+            else
+                mag_tick := tick_64s;
             end if;
 
             if gyro_scale_code = "00" then
                 gyro_tick := tick_256Hz;
             elsif gyro_scale_code = "01" then
                 gyro_tick := tick_4Hz;
-            elsif gyro_scale_code = "10" or gyro_scale_code = "11" then
-                gyro_tick := tick_1Hz;
+            elsif gyro_scale_code = "10" then
+                gyro_tick := tick_1Hz;            
+            else
+                gyro_tick := tick_64s;
             end if;
 
             if pres_scale_code = "00" then
                 pres_tick := tick_256Hz;
             elsif pres_scale_code = "01" then
                 pres_tick := tick_4Hz;
-            elsif pres_scale_code = "10" or pres_scale_code = "11" then
+            elsif pres_scale_code = "10" then
                 pres_tick := tick_1Hz;
+            else
+                pres_tick := tick_64s;
             end if;
 
             if err_pkt_scale_code = "00" then
                 err_pkt_tick := tick_256Hz;
             elsif err_pkt_scale_code = "01" then
                 err_pkt_tick := tick_4Hz;
-            elsif err_pkt_scale_code = "10" or err_pkt_scale_code = "11" then
+            elsif err_pkt_scale_code = "10" then
                 err_pkt_tick := tick_1Hz;
+            else
+                err_pkt_tick := tick_64s;
             end if;
 
             if timestamp_scale_code = "00" then
                 timestamp_tick := tick_256Hz;
             elsif timestamp_scale_code = "01" then
                 timestamp_tick := tick_4Hz;
-            elsif timestamp_scale_code = "10" or timestamp_scale_code = "11" then
+            elsif timestamp_scale_code = "10" then
                 timestamp_tick := tick_1Hz;
+            else
+                timestamp_tick := tick_64s;
             end if;
 
             -- reset request for HK periodic counters
@@ -1217,49 +1226,49 @@ begin
                         swt_value_send_req <= '1';
                         swt_engine_state <= SWT_IDLE;
 
-                    when SWT_MACRO_ISSUE_READ =>
-                        swt_raddr_i <= mac_swt_step;
-                        swt_ren_i   <= '1';
-                        mac_swt_wait <= 0;
-                        swt_engine_state <= SWT_MACRO_WAIT_READ;
-
-                    when SWT_MACRO_WAIT_READ =>
-                        swt_ren_i <= '0';
-
-                        if mac_swt_wait < 3 then
-                            mac_swt_wait <= mac_swt_wait + 1;
-                        else
-                            mac_swt_wait <= 0;
-                            mac_swt_val0 <= swt_rdata0;
-                            mac_swt_val1 <= swt_rdata1;
-
-                            if (x"00" & mac_swt_step) >= mac_swt_tot_steps then
-                                mac_swt_last_pkt <= '1';
-                            else
-                                mac_swt_last_pkt <= '0';
-                            end if;
-
-                            swt_engine_state <= SWT_MACRO_REQUEST_TX;
-                        end if;
-
-                    when SWT_MACRO_REQUEST_TX =>
-                        if macro_table_tx_flag = '0' then
-                            macro_table_tx_flag <= '1';
-                            swt_engine_state <= SWT_MACRO_WAIT_TX_ACCEPT;
-                        end if;
-
-                    when SWT_MACRO_WAIT_TX_ACCEPT =>
-                        if  macro_table_tx_ack = '1' then
-                             macro_table_tx_flag <= '0';
-
-                            if mac_swt_last_pkt = '1' then
-                                mac_swt_active <= '0';
-                                swt_engine_state <= SWT_IDLE;
-                            else
-                                mac_swt_step <= mac_swt_step + 1;
-                                swt_engine_state <= SWT_MACRO_ISSUE_READ;
-                            end if;
-                        end if;
+                    --when SWT_MACRO_ISSUE_READ =>
+                        --swt_raddr_i <= mac_swt_step;
+                        --swt_ren_i   <= '1';
+                        --mac_swt_wait <= 0;
+                        --swt_engine_state <= SWT_MACRO_WAIT_READ;
+--
+                    --when SWT_MACRO_WAIT_READ =>
+                        --swt_ren_i <= '0';
+--
+                        --if mac_swt_wait < 3 then
+                            --mac_swt_wait <= mac_swt_wait + 1;
+                        --else
+                            --mac_swt_wait <= 0;
+                            --mac_swt_val0 <= swt_rdata0;
+                            --mac_swt_val1 <= swt_rdata1;
+--
+                            --if (x"00" & mac_swt_step) >= mac_swt_tot_steps then
+                                --mac_swt_last_pkt <= '1';
+                            --else
+                                --mac_swt_last_pkt <= '0';
+                            --end if;
+--
+                            --swt_engine_state <= SWT_MACRO_REQUEST_TX;
+                        --end if;
+--
+                    --when SWT_MACRO_REQUEST_TX =>
+                        --if macro_table_tx_flag = '0' then
+                            --macro_table_tx_flag <= '1';
+                            --swt_engine_state <= SWT_MACRO_WAIT_TX_ACCEPT;
+                        --end if;
+--
+                    --when SWT_MACRO_WAIT_TX_ACCEPT =>
+                        --if  macro_table_tx_ack = '1' then
+                             --macro_table_tx_flag <= '0';
+--
+                            --if mac_swt_last_pkt = '1' then
+                                --mac_swt_active <= '0';
+                                --swt_engine_state <= SWT_IDLE;
+                            --else
+                                --mac_swt_step <= mac_swt_step + 1;
+                                --swt_engine_state <= SWT_MACRO_ISSUE_READ;
+                            --end if;
+                        --end if;
 
                     when others =>
                         err_fsm_illegal_state_swt_evt <= '1';
@@ -1294,10 +1303,10 @@ begin
             const_volt_tx_flag  <= '0';
             swt_swp_cnt_tx_flag <= '0';
             swt_steps_tx_flag   <= '0';
-            swt_sps_tx_flag     <= '0';
-            swt_skip_tx_flag    <= '0';
-            swt_spp_tx_flag     <= '0';
-            swt_points_tx_flag  <= '0';
+            sc_sps_tx_flag     <= '0';
+            sc_skip_tx_flag    <= '0';
+            sc_spp_tx_flag     <= '0';
+            sc_points_tx_flag  <= '0';
             swt_value_tx_flag   <= '0';
             sc_data_tx_flag     <= '0';
             macro_meta1_tx_flag <= '0';
@@ -1348,10 +1357,10 @@ begin
                (const_volt_send_req = '1' and const_volt_tx_flag = '1') or
                (swt_swp_cnt_send_req = '1' and swt_swp_cnt_tx_flag = '1') or
                (swt_steps_send_req = '1' and swt_steps_tx_flag = '1') or
-               (swt_sps_send_req = '1' and swt_sps_tx_flag = '1') or
-               (swt_skip_send_req = '1' and swt_skip_tx_flag = '1') or
-               (swt_spp_send_req = '1' and swt_spp_tx_flag = '1') or
-               (swt_points_send_req = '1' and swt_points_tx_flag = '1') or
+               (sc_sps_send_req = '1' and sc_sps_tx_flag = '1') or
+               (sc_skip_send_req = '1' and sc_skip_tx_flag = '1') or
+               (sc_spp_send_req = '1' and sc_spp_tx_flag = '1') or
+               (sc_points_send_req = '1' and sc_points_tx_flag = '1') or
                (swt_value_send_req = '1' and swt_value_tx_flag = '1') or
                (macro_meta1_send_req = '1' and macro_meta1_tx_flag = '1') or
                (macro_meta2_send_req = '1' and macro_meta2_tx_flag = '1') then
@@ -1389,17 +1398,17 @@ begin
             if swt_steps_send_req = '1' then
                 swt_steps_tx_flag <= '1';
             end if;
-            if swt_sps_send_req = '1' then
-                swt_sps_tx_flag <= '1';
+            if sc_sps_send_req = '1' then
+                sc_sps_tx_flag <= '1';
             end if;
-            if swt_skip_send_req = '1' then
-                swt_skip_tx_flag <= '1';
+            if sc_skip_send_req = '1' then
+                sc_skip_tx_flag <= '1';
             end if;
-            if swt_spp_send_req = '1' then
-                swt_spp_tx_flag <= '1';
+            if sc_spp_send_req = '1' then
+                sc_spp_tx_flag <= '1';
             end if;
-            if swt_points_send_req = '1' then
-                swt_points_tx_flag <= '1';
+            if sc_points_send_req = '1' then
+                sc_points_tx_flag <= '1';
             end if;
             if swt_value_send_req = '1' then
                 swt_value_tx_flag <= '1';
@@ -1444,7 +1453,7 @@ begin
                     start_tx <= '1';
 
                 elsif const_volt_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 & "00100" & "001" & cb_probe_id & cb_voltage_tx & (39 downto 0 => '0') & POSTAMBLE);
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 & "00100" & "001"  & cb_voltage_tx & (31 downto 0 => '0') & POSTAMBLE);
                     const_volt_tx_flag <= '0';
                     start_tx <= '1';
 
@@ -1500,24 +1509,24 @@ begin
                     swt_steps_tx_flag <= '0';
                     start_tx <= '1';
 
-                elsif swt_sps_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 & "01111" & "000" & swt_samples_per_step_i(15 downto 8) & swt_samples_per_step_i(7 downto 0) & (47 downto 0 => '0') & POSTAMBLE);
-                    swt_sps_tx_flag <= '0';
+                elsif sc_sps_tx_flag = '1' then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 & "01111" & "000" & cb_samples_per_step_i(15 downto 8) & cb_samples_per_step_i(7 downto 0)& swt_samples_per_step_i(15 downto 8) & swt_samples_per_step_i(7 downto 0) & (31 downto 0 => '0') & POSTAMBLE);
+                    sc_sps_tx_flag <= '0';
                     start_tx <= '1';
 
-                elsif swt_skip_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 & "10001" & "000" & swt_sample_skip_i(15 downto 8) & swt_sample_skip_i(7 downto 0) & (47 downto 0 => '0') & POSTAMBLE);
-                    swt_skip_tx_flag <= '0';
+                elsif sc_skip_tx_flag = '1' then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 & "10001" & "000" & cb_sample_skip_i(15 downto 8) & cb_sample_skip_i(7 downto 0) & swt_sample_skip_i(15 downto 8) & swt_sample_skip_i(7 downto 0) & (31 downto 0 => '0') & POSTAMBLE);
+                    sc_skip_tx_flag <= '0';
                     start_tx <= '1';
 
-                elsif swt_spp_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 & "10011" & "000" & swt_samples_per_point_i(15 downto 8) & swt_samples_per_point_i(7 downto 0) & (47 downto 0 => '0') & POSTAMBLE);
-                    swt_spp_tx_flag <= '0';
+                elsif sc_spp_tx_flag = '1' then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 & "10011" & "000" & cb_samples_per_point_i(15 downto 8) & cb_samples_per_point_i(7 downto 0) & swt_samples_per_point_i(15 downto 8) & swt_samples_per_point_i(7 downto 0) & (31 downto 0 => '0') & POSTAMBLE);
+                    sc_spp_tx_flag <= '0';
                     start_tx <= '1';
 
-                elsif swt_points_tx_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 & "10101" & "000" & swt_points_per_step_i(15 downto 8) & swt_points_per_step_i(7 downto 0) & (47 downto 0 => '0') & POSTAMBLE);
-                    swt_points_tx_flag <= '0';
+                elsif sc_points_tx_flag = '1' then
+                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 & "10101" & "000" & cb_points_per_step_i(15 downto 8) & cb_points_per_step_i(7 downto 0) & swt_points_per_step_i(15 downto 8) & swt_points_per_step_i(7 downto 0) & (31 downto 0 => '0') & POSTAMBLE);
+                    sc_points_tx_flag <= '0';
                     start_tx <= '1';
 
                 elsif swt_value_tx_flag = '1' then

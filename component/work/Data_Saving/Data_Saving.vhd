@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Tue Oct 28 16:57:15 2025
+-- Created by SmartDesign Wed Jul 22 17:52:41 2026
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -18,9 +18,9 @@ entity Data_Saving is
     -- Port list
     port(
         -- Inputs
+        SW_EN         : in  std_logic;
         ch_0_new_data : in  std_logic;
         clk           : in  std_logic;
-        en            : in  std_logic;
         exp_SC_packet : in  std_logic_vector(63 downto 0);
         fmc_clk       : in  std_logic;
         fmc_noe       : in  std_logic;
@@ -73,6 +73,7 @@ component Packet_Saver
     -- Port list
     port(
         -- Inputs
+        afull         : in  std_logic;
         ch_0_new_data : in  std_logic;
         ch_0_packet   : in  std_logic_vector(63 downto 0);
         clk           : in  std_logic;
@@ -80,29 +81,22 @@ component Packet_Saver
         reset         : in  std_logic;
         sync          : in  std_logic;
         -- Outputs
-        data_out      : out std_logic_vector(63 downto 0);
+        data_out      : out std_logic_vector(31 downto 0);
         we            : out std_logic
         );
 end component;
 ----------------------------------------------------------------------
 -- Signal declarations
 ----------------------------------------------------------------------
-signal fmc_da_net_0        : std_logic_vector(7 downto 0);
-signal FPGA_Buffer_0_afull : std_logic;
-signal Packet_Saver_0_we   : std_logic;
-signal uC_interrupt_net_0  : std_logic;
-signal uC_interrupt_net_1  : std_logic;
-signal fmc_da_net_1        : std_logic_vector(7 downto 0);
-----------------------------------------------------------------------
--- TiedOff Signals
-----------------------------------------------------------------------
-signal data_in_const_net_0 : std_logic_vector(31 downto 0);
+signal fmc_da_net_0              : std_logic_vector(7 downto 0);
+signal FPGA_Buffer_0_afull       : std_logic;
+signal Packet_Saver_0_data_out_1 : std_logic_vector(31 downto 0);
+signal Packet_Saver_0_we         : std_logic;
+signal uC_interrupt_net_0        : std_logic;
+signal uC_interrupt_net_1        : std_logic;
+signal fmc_da_net_1              : std_logic_vector(7 downto 0);
 
 begin
-----------------------------------------------------------------------
--- Constant assignments
-----------------------------------------------------------------------
- data_in_const_net_0 <= B"00000000000000000000000000000000";
 ----------------------------------------------------------------------
 -- Top level output port assignments
 ----------------------------------------------------------------------
@@ -122,7 +116,7 @@ FPGA_Buffer_0 : FPGA_Buffer
         w_clk    => clk,
         r_clk    => fmc_clk,
         reset    => reset,
-        data_in  => data_in_const_net_0,
+        data_in  => Packet_Saver_0_data_out_1,
         -- Outputs
         full     => OPEN,
         empty    => OPEN,
@@ -145,12 +139,13 @@ Packet_Saver_0 : Packet_Saver
         -- Inputs
         clk           => clk,
         reset         => reset,
-        en            => en,
+        en            => SW_EN,
         sync          => sync,
+        afull         => FPGA_Buffer_0_afull,
         ch_0_packet   => exp_SC_packet,
         ch_0_new_data => ch_0_new_data,
         -- Outputs
-        data_out      => OPEN,
+        data_out      => Packet_Saver_0_data_out_1,
         we            => Packet_Saver_0_we 
         );
 

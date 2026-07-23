@@ -1,13 +1,13 @@
 ***************************************************************************
                                Status Report
-                          Wed May 20 18:50:42 2026 ***************************************************************************
+                          Fri Jul 24 00:54:24 2026 ***************************************************************************
 
 Product: Designer
 Release: v11.9 SP6
 Version: 11.9.6.7
-File Name: C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer\impl1\Toplevel.adb
+File Name: C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\designer\impl1\Toplevel.adb
 Design Name: Toplevel  Design State: layout
-Last Saved: Wed May 20 18:44:50 2026
+Last Saved: Fri Jul 24 00:44:06 2026
 
 ***** Device Data **************************************************
 
@@ -22,8 +22,8 @@ Voltage Range:   COM
 
 ***** Import Variables *********************************************
 
-Source File(s) Imported on Wed May 20 18:44:39 2026:
-        C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\synthesis\Toplevel.edn
+Source File(s) Imported on Fri Jul 24 00:43:56 2026:
+        C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\synthesis\Toplevel.edn
 
 
 ***** CAE Variables ************************************************
@@ -49,7 +49,8 @@ Parameters used to run compile:
 Family      : ProASIC3
 Device      : A3P250
 Package     : 100 VQFP
-Source      : C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\synthesis\Toplevel.edn
+Source      :
+C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\synthesis\Toplevel.edn
 Format      : EDIF
 Topcell     : Toplevel
 Speed grade : STD
@@ -146,27 +147,23 @@ Warning: CMP201: Net SweepTable_1/SweepTable_R0C0_RD8_0 drives no load.
 Warning: CMP201: Net SweepTable_1/SweepTable_R0C0_RD17_0 drives no load.
 Warning: Top level port AA is not connected to any IO pad
 Warning: Top level port CU_SYNC is not connected to any IO pad
-Warning: Top level port FFU_EJECTED is not connected to any IO pad
-Warning: Top level port UC_I2C4_SCL is not connected to any IO pad
-Warning: Top level port FRAM_SDA is not connected to any IO pad
-Warning: Top level port UC_I2C4_SDA is not connected to any IO pad
 
 Netlist Optimization Report
 ===========================
 
 Optimized macros:
-  - Dangling net drivers:   1
+  - Dangling net drivers:   2
   - Buffers:                0
   - Inverters:              3
-  - Tieoff:                 35
-  - Logic combining:        208
+  - Tieoff:                 36
+  - Logic combining:        237
 
-    Total macros optimized  247
+    Total macros optimized  278
 
 Warning: CMP503: Remapped 8 enable flip-flop(s) to a 2-tile implementation because the CLR/PRE
          pin on the enable flip-flop is not being driven by a global net.
 
-There were 0 error(s) and 75 warning(s) in this design.
+There were 0 error(s) and 71 warning(s) in this design.
 =====================================================================
 
 Reading previous post-compile physical placement constraints.
@@ -178,7 +175,7 @@ There were 0 error(s) and 0 warning(s).
 Compile report:
 ===============
 
-    CORE                       Used:   5851  Total:   6144   (95.23%)
+    CORE                       Used:   6113  Total:   6144   (99.50%)
     IO (W/ clocks)             Used:     46  Total:     68   (67.65%)
     Differential IO            Used:      0  Total:     13   (0.00%)
     GLOBAL (Chip+Quadrant)     Used:      6  Total:     18   (33.33%)
@@ -203,8 +200,8 @@ Core Information:
 
     Type    | Instances    | Core tiles
     --------|--------------|-----------
-    COMB    | 4241         | 4241
-    SEQ     | 1610         | 1610
+    COMB    | 4345         | 4345
+    SEQ     | 1768         | 1768
 
 I/O Function:
 
@@ -236,78 +233,78 @@ Net information report:
 The following nets drive enable flip-flops that have been remapped to a 2-tile implementation:
     EffCnt  Type          Name
     --------------------------
-    8       SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P_0
-                          Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P_0
+    8       SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P
+                          Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P
 
 The following nets have been assigned to a chip global resource:
     Fanout  Type          Name
     --------------------------
-    1476    SET/RESET_NET Net   : CLKINT_1_Y
+    1625    SET/RESET_NET Net   : CLKINT_1_Y
                           Driver: CLKINT_1
                           Source: NETLIST
-    1464    CLK_NET       Net   : CLKINT_0_Y_1
+    1622    CLK_NET       Net   : CLKINT_0_Y_1
                           Driver: CLKINT_0
                           Source: NETLIST
-    87      CLK_NET       Net   : Timing_0_clk_800kHz
+    84      CLK_NET       Net   : Timing_0_clk_800kHz
                           Driver: Timing_0/clk_800kHz_i_RNIBEP9
                           Source: NETLIST
-    80      INT_NET       Net   : General_Controller_0/sc_data_tx_flag
-                          Driver: General_Controller_0/sc_data_tx_flag_RNIHT59
+    80      INT_NET       Net   : Science_0/ADC_Data_Packer_0/n_point_samplese
+                          Driver: Science_0/ADC_Data_Packer_0/state_RNIIJ7QB_0[2]
                           Source: NETLIST
-    69      INT_NET       Net   : General_Controller_0/un1_msg_2send_115
-                          Driver: General_Controller_0/start_tx_RNIIBGN5_0
+    71      INT_NET       Net   : Science_0/N_84
+                          Driver: Science_0/SWEEP_ROMEO_0/SW_active_RNI5T58_1
                           Source: NETLIST
-    55      CLK_NET       Net   : CLKINT_2_Y
+    58      CLK_NET       Net   : CLKINT_2_Y
                           Driver: CLKINT_2
                           Source: NETLIST
 
 High fanout nets in the post compile netlist:
     Fanout  Type          Name
     --------------------------
-    24      INT_NET       Net   : General_Controller_0/current_command[0]
-                          Driver: General_Controller_0/current_command[0]
-    24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P_0
-                          Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P_0
-    24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P
+    70      INT_NET       Net   : General_Controller_0/un1_msg_2send_115
+                          Driver: General_Controller_0/start_tx_RNINDGA5_0
+    66      INT_NET       Net   : General_Controller_0/sc_data_tx_flag
+                          Driver: General_Controller_0/sc_data_tx_flag
+    65      INT_NET       Net   : Science_0/ADC_Data_Packer_0/N_758
+                          Driver: Science_0/ADC_Data_Packer_0/state_RNITJ5QB_0[1]
+    65      INT_NET       Net   : Science_0/ADC_Data_Packer_0/state_RNIQS78[2]
+                          Driver: Science_0/ADC_Data_Packer_0/state_RNIQS78[2]
+    64      INT_NET       Net   : General_Controller_0/N_8_0_i
+                          Driver: General_Controller_0/hk_error_cnt_packet_clear_req
+    60      INT_NET       Net   : General_Controller_0/un42_tx_state
+                          Driver: General_Controller_0/const_volt_tx_flag_RNIEMUC2
+    53      INT_NET       Net   : General_Controller_0/un36_tx_state
+                          Driver: General_Controller_0/sc_data_tx_flag_RNIKSHA2
+    52      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P
                           Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P
-    24      INT_NET       Net   : Science_0/state25_0
-                          Driver: Science_0/SWEEP_ROMEO_0/SW_active_RNIKES4
-    24      INT_NET       Net   : Science_0/state25_1
-                          Driver: Science_0/SWEEP_ROMEO_0/SW_active_RNIKES4_0
-    23      INT_NET       Net   : General_Controller_0_Bias_enabled
-                          Driver: General_Controller_0/Bias_enabled
-    23      INT_NET       Net   : General_Controller_0_Bias_enabled_0
-                          Driver: General_Controller_0/Bias_enabled_0
-    23      INT_NET       Net   : General_Controller_0/un36_tx_state_0
-                          Driver: General_Controller_0/const_volt_tx_flag_RNIKSHA2
-    23      INT_NET       Net   : General_Controller_0/un74_tx_state
-                          Driver: General_Controller_0/const_volt_tx_flag_RNI46BJ4
-    23      INT_NET       Net   : General_Controller_0/un36_tx_state
-                          Driver: General_Controller_0/const_volt_tx_flag_RNIKSHA2_0
+    50      INT_NET       Net   : General_Controller_0/tx_byte_index[0]
+                          Driver: General_Controller_0/tx_byte_index[0]
+    48      INT_NET       Net   : Data_Saving_0/Packet_Saver_0/state[1]
+                          Driver: Data_Saving_0/Packet_Saver_0/state[1]
 
 Nets that are candidates for clock assignment and the resulting fanout:
     Fanout  Type          Name
     --------------------------
-    24      INT_NET       Net   : General_Controller_0/current_command[0]
-                          Driver: General_Controller_0/current_command[0]
-    24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P_0
-                          Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P_0
-    24      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P
+    70      INT_NET       Net   : General_Controller_0/un1_msg_2send_115
+                          Driver: General_Controller_0/start_tx_RNINDGA5_0
+    66      INT_NET       Net   : General_Controller_0/sc_data_tx_flag
+                          Driver: General_Controller_0/sc_data_tx_flag
+    65      INT_NET       Net   : Science_0/ADC_Data_Packer_0/N_758
+                          Driver: Science_0/ADC_Data_Packer_0/state_RNITJ5QB_0[1]
+    65      INT_NET       Net   : Science_0/ADC_Data_Packer_0/state_RNIQS78[2]
+                          Driver: Science_0/ADC_Data_Packer_0/state_RNIQS78[2]
+    64      INT_NET       Net   : General_Controller_0/N_8_0_i
+                          Driver: General_Controller_0/hk_error_cnt_packet_clear_req
+    60      INT_NET       Net   : General_Controller_0/un42_tx_state
+                          Driver: General_Controller_0/const_volt_tx_flag_RNIEMUC2
+    53      INT_NET       Net   : General_Controller_0/un36_tx_state
+                          Driver: General_Controller_0/sc_data_tx_flag_RNIKSHA2
+    52      SET/RESET_NET Net   : Data_Saving_0/FPGA_Buffer_0/READ_RESET_P
                           Driver: Data_Saving_0/FPGA_Buffer_0/DFN1C0_READ_RESET_P
-    24      INT_NET       Net   : Science_0/state25_0
-                          Driver: Science_0/SWEEP_ROMEO_0/SW_active_RNIKES4
-    24      INT_NET       Net   : Science_0/state25_1
-                          Driver: Science_0/SWEEP_ROMEO_0/SW_active_RNIKES4_0
-    23      INT_NET       Net   : General_Controller_0_Bias_enabled
-                          Driver: General_Controller_0/Bias_enabled
-    23      INT_NET       Net   : General_Controller_0_Bias_enabled_0
-                          Driver: General_Controller_0/Bias_enabled_0
-    23      INT_NET       Net   : General_Controller_0/un36_tx_state_0
-                          Driver: General_Controller_0/const_volt_tx_flag_RNIKSHA2
-    23      INT_NET       Net   : General_Controller_0/un74_tx_state
-                          Driver: General_Controller_0/const_volt_tx_flag_RNI46BJ4
-    23      INT_NET       Net   : General_Controller_0/un36_tx_state
-                          Driver: General_Controller_0/const_volt_tx_flag_RNIKSHA2_0
+    50      INT_NET       Net   : General_Controller_0/tx_byte_index[0]
+                          Driver: General_Controller_0/tx_byte_index[0]
+    48      INT_NET       Net   : Data_Saving_0/Packet_Saver_0/state[1]
+                          Driver: Data_Saving_0/Packet_Saver_0/state[1]
 
 
 Layout Output:
@@ -334,26 +331,26 @@ Global net placement completed successfully.
 
                         o - o - o - o - o - o
 
-Timing-driven Placer Started: Wed May 20 18:45:06 2026
+Timing-driven Placer Started: Fri Jul 24 00:45:21 2026
 High-Effort Placer Started...
 
-Placer Finished: Wed May 20 18:49:30 2026
-Total Placer CPU Time:     00:04:24
+Placer Finished: Fri Jul 24 00:52:32 2026
+Total Placer CPU Time:     00:07:11
 
                         o - o - o - o - o - o
 
 
 
 Post-Layout Core Information:
-    Used:   5495  Total:   6144   (89.44%)
+    Used:   5744  Total:   6144   (93.49%)
 
     Type       | Instances    | Core tiles
     -----------|--------------|-----------
-    COMB       | 3885         | 3885
-    SEQ        | 1610         | 1610
+    COMB       | 3976         | 3976
+    SEQ        | 1768         | 1768
 
 Timing-driven Router 
-Design: Toplevel                        Started: Wed May 20 18:49:41 2026
+Design: Toplevel                        Started: Fri Jul 24 00:52:46 2026
 
  
 Iterative improvement...
@@ -362,16 +359,11 @@ Iterative improvement...
 Timing-driven Router completed successfully.
 
 Design: Toplevel                        
-Finished: Wed May 20 18:50:34 2026
-Total CPU Time:     00:00:51            Total Elapsed Time: 00:00:53
-Total Memory Usage: 269.9 Mbytes
+Finished: Fri Jul 24 00:54:12 2026
+Total CPU Time:     00:01:22            Total Elapsed Time: 00:01:26
+Total Memory Usage: 285.4 Mbytes
                         o - o - o - o - o - o
 
-status 257
-status 257
-status 257
-status 257
-status 257
 status 257
 status 257
 status 257

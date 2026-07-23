@@ -1,0 +1,32 @@
+<html><body><samp><pre>
+<!@TC:0>
+
+
+@S |Clock Optimization Summary
+
+
+<a name=clockReport8></a>#### START OF CLOCK OPTIMIZATION REPORT #####[</a>
+
+Clock optimization not enabled
+2 non-gated/non-generated clock tree(s) driving 1707 clock pin(s) of sequential element(s)
+2 gated/generated clock tree(s) driving 100 clock pin(s) of sequential element(s)
+0 instances converted, 100 sequential instances remain driven by gated/generated clocks
+
+========================================== Non-Gated/Non-Generated Clocks ==========================================
+Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance                             
+--------------------------------------------------------------------------------------------------------------------
+<a href="@|S:CLOCK@|E:UART_0.tx_byte[7]@|F:@syn_sample_clock_path==CKID0003@|M:ClockId0003  @XP_NAMES_BY_PROP">ClockId0003 </a>       CLOCK               port                   1649       UART_0.tx_byte[7]                           
+<a href="@|S:FMC_CLK@|E:Data_Saving_0.FPGA_Buffer_0.\DFN1C0_RGRY[9]\@|F:@syn_sample_clock_path==CKID0004@|M:ClockId0004  @XP_NAMES_BY_PROP">ClockId0004 </a>       FMC_CLK             port                   58         Data_Saving_0.FPGA_Buffer_0.\DFN1C0_RGRY[9]\
+====================================================================================================================
+============================================================================================= Gated/Generated Clocks =============================================================================================
+Clock Tree ID     Driving Element                Drive Element Type     Fanout     Sample Instance                                        Explanation                                                             
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<a href="@|S:Timing_0.clk_800kHz_i@|E:Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[3]@|F:@syn_sample_clock_path==CKID0001@|M:ClockId0001  @XP_NAMES_BY_PROP">ClockId0001 </a>       Timing_0.clk_800kHz_i          DFN1C1                 84         Sensors_0.Pressure_Sensor_0.I2C_Master_0.bitcnt[3]     No generated or derived clock directive on output of sequential instance
+<a href="@|S:Science_0.DAC_SET_0.ADR[1]@|E:Science_0.DAC_SET_0.DAC[10]@|F:@syn_sample_clock_path==CKID0002@|M:ClockId0002  @XP_NAMES_BY_PROP">ClockId0002 </a>       Science_0.DAC_SET_0.ADR[1]     DFN1C1                 16         Science_0.DAC_SET_0.DAC[10]                            No generated or derived clock directive on output of sequential instance
+==================================================================================================================================================================================================================
+
+
+##### END OF CLOCK OPTIMIZATION REPORT ######]
+
+
+</pre></samp></body></html>

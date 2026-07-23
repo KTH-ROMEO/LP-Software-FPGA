@@ -2,8 +2,8 @@
 
 # Clocks
 
-create_clock -name {Toplevel|CLOCK} -period 10.000000 -waveform {0.000000 5.000000} CLOCK
-create_clock -name {Toplevel|FMC_CLK} -period 10.000000 -waveform {0.000000 5.000000} FMC_CLK
+create_clock -name {Toplevel|CLOCK} -period 31.250000 -waveform {0.000000 15.625000} CLOCK
+create_clock -name {Toplevel|FMC_CLK} -period 31.250000 -waveform {0.000000 15.625000} FMC_CLK
 
 # False Paths Between Clocks
 
