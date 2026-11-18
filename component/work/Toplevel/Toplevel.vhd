@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Fri Jul 24 00:42:52 2026
+-- Created by SmartDesign Fri Oct 23 14:44:45 2026
 -- Version: v11.9 SP6 11.9.6.7
 ----------------------------------------------------------------------
 
@@ -53,7 +53,6 @@ entity Toplevel is
         LED1         : out   std_logic;
         LED2         : out   std_logic;
         MAX_SCL      : out   std_logic;
-        PRESSURE_SCL : out   std_logic;
         UC_UART_RX   : out   std_logic;
         -- Inouts
         ACCE_SDA     : inout std_logic;
@@ -85,28 +84,24 @@ component Data_Hub_Packets
     -- Port list
     port(
         -- Inputs
-        acc_temp          : in  std_logic_vector(7 downto 0);
-        acc_time          : in  std_logic_vector(23 downto 0);
-        acc_x             : in  std_logic_vector(11 downto 0);
-        acc_y             : in  std_logic_vector(11 downto 0);
-        acc_z             : in  std_logic_vector(11 downto 0);
-        gyro_temp         : in  std_logic_vector(7 downto 0);
-        gyro_time         : in  std_logic_vector(23 downto 0);
-        gyro_x            : in  std_logic_vector(15 downto 0);
-        gyro_y            : in  std_logic_vector(15 downto 0);
-        gyro_z            : in  std_logic_vector(15 downto 0);
-        mag_time          : in  std_logic_vector(23 downto 0);
-        mag_x             : in  std_logic_vector(11 downto 0);
-        mag_y             : in  std_logic_vector(11 downto 0);
-        mag_z             : in  std_logic_vector(11 downto 0);
-        pressure_raw      : in  std_logic_vector(23 downto 0);
-        pressure_temp_raw : in  std_logic_vector(23 downto 0);
-        pressure_time     : in  std_logic_vector(23 downto 0);
+        acc_temp    : in  std_logic_vector(7 downto 0);
+        acc_time    : in  std_logic_vector(23 downto 0);
+        acc_x       : in  std_logic_vector(11 downto 0);
+        acc_y       : in  std_logic_vector(11 downto 0);
+        acc_z       : in  std_logic_vector(11 downto 0);
+        gyro_temp   : in  std_logic_vector(7 downto 0);
+        gyro_time   : in  std_logic_vector(23 downto 0);
+        gyro_x      : in  std_logic_vector(15 downto 0);
+        gyro_y      : in  std_logic_vector(15 downto 0);
+        gyro_z      : in  std_logic_vector(15 downto 0);
+        mag_time    : in  std_logic_vector(23 downto 0);
+        mag_x       : in  std_logic_vector(11 downto 0);
+        mag_y       : in  std_logic_vector(11 downto 0);
+        mag_z       : in  std_logic_vector(11 downto 0);
         -- Outputs
-        acc_packet        : out std_logic_vector(55 downto 0);
-        gyro_packet       : out std_logic_vector(55 downto 0);
-        mag_packet        : out std_logic_vector(55 downto 0);
-        pressure_packet   : out std_logic_vector(55 downto 0)
+        acc_packet  : out std_logic_vector(55 downto 0);
+        gyro_packet : out std_logic_vector(55 downto 0);
+        mag_packet  : out std_logic_vector(55 downto 0)
         );
 end component;
 -- Data_Saving
@@ -163,7 +158,6 @@ component General_Controller
         clk_64s               : in  std_logic;
         gyro_packet           : in  std_logic_vector(55 downto 0);
         mag_packet            : in  std_logic_vector(55 downto 0);
-        pres_packet           : in  std_logic_vector(55 downto 0);
         reset                 : in  std_logic;
         sc_data               : in  std_logic_vector(63 downto 0);
         sc_new                : in  std_logic;
@@ -255,48 +249,34 @@ component Sensors
     -- Port list
     port(
         -- Inputs
-        clk               : in    std_logic;
-        clk_1kHz          : in    std_logic;
-        en                : in    std_logic;
-        i2c_clk           : in    std_logic;
-        microseconds      : in    std_logic_vector(23 downto 0);
-        reset             : in    std_logic;
+        clk           : in    std_logic;
+        en            : in    std_logic;
+        i2c_clk       : in    std_logic;
+        microseconds  : in    std_logic_vector(23 downto 0);
+        reset         : in    std_logic;
         -- Outputs
-        C1                : out   std_logic_vector(15 downto 0);
-        C2                : out   std_logic_vector(15 downto 0);
-        C3                : out   std_logic_vector(15 downto 0);
-        C4                : out   std_logic_vector(15 downto 0);
-        C5                : out   std_logic_vector(15 downto 0);
-        C6                : out   std_logic_vector(15 downto 0);
-        acc_new_data      : out   std_logic;
-        acc_temp          : out   std_logic_vector(7 downto 0);
-        acc_time          : out   std_logic_vector(23 downto 0);
-        acc_x             : out   std_logic_vector(11 downto 0);
-        acc_y             : out   std_logic_vector(11 downto 0);
-        acc_z             : out   std_logic_vector(11 downto 0);
-        acce_scl          : out   std_logic;
-        gyro_new_data     : out   std_logic;
-        gyro_scl          : out   std_logic;
-        gyro_temp         : out   std_logic_vector(7 downto 0);
-        gyro_time         : out   std_logic_vector(23 downto 0);
-        gyro_x            : out   std_logic_vector(15 downto 0);
-        gyro_y            : out   std_logic_vector(15 downto 0);
-        gyro_z            : out   std_logic_vector(15 downto 0);
-        mag_new_data      : out   std_logic;
-        mag_time          : out   std_logic_vector(23 downto 0);
-        mag_x             : out   std_logic_vector(11 downto 0);
-        mag_y             : out   std_logic_vector(11 downto 0);
-        mag_z             : out   std_logic_vector(11 downto 0);
-        pres_cal_new_data : out   std_logic;
-        pressure_new_data : out   std_logic;
-        pressure_raw      : out   std_logic_vector(23 downto 0);
-        pressure_scl      : out   std_logic;
-        pressure_temp_raw : out   std_logic_vector(23 downto 0);
-        pressure_time     : out   std_logic_vector(23 downto 0);
+        acc_new_data  : out   std_logic;
+        acc_temp      : out   std_logic_vector(7 downto 0);
+        acc_time      : out   std_logic_vector(23 downto 0);
+        acc_x         : out   std_logic_vector(11 downto 0);
+        acc_y         : out   std_logic_vector(11 downto 0);
+        acc_z         : out   std_logic_vector(11 downto 0);
+        acce_scl      : out   std_logic;
+        gyro_new_data : out   std_logic;
+        gyro_scl      : out   std_logic;
+        gyro_temp     : out   std_logic_vector(7 downto 0);
+        gyro_time     : out   std_logic_vector(23 downto 0);
+        gyro_x        : out   std_logic_vector(15 downto 0);
+        gyro_y        : out   std_logic_vector(15 downto 0);
+        gyro_z        : out   std_logic_vector(15 downto 0);
+        mag_new_data  : out   std_logic;
+        mag_time      : out   std_logic_vector(23 downto 0);
+        mag_x         : out   std_logic_vector(11 downto 0);
+        mag_y         : out   std_logic_vector(11 downto 0);
+        mag_z         : out   std_logic_vector(11 downto 0);
         -- Inouts
-        acce_sda          : inout std_logic;
-        gyro_sda          : inout std_logic;
-        pressure_sda      : inout std_logic
+        acce_sda      : inout std_logic;
+        gyro_sda      : inout std_logic
         );
 end component;
 -- SweepTable
@@ -392,7 +372,6 @@ signal CLKINT_2_Y                                 : std_logic;
 signal Data_Hub_Packets_0_acc_packet_2            : std_logic_vector(55 downto 0);
 signal Data_Hub_Packets_0_gyro_packet_1           : std_logic_vector(55 downto 0);
 signal Data_Hub_Packets_0_mag_packet_2            : std_logic_vector(55 downto 0);
-signal Data_Hub_Packets_0_pressure_packet_2       : std_logic_vector(55 downto 0);
 signal DPIN_19_net_0                              : std_logic;
 signal DPIN_22_net_0                              : std_logic;
 signal DPIN_59_net_0                              : std_logic;
@@ -435,7 +414,6 @@ signal LDSDI_net_0                                : std_logic;
 signal LED1_0                                     : std_logic;
 signal LED2_net_0                                 : std_logic;
 signal MAX_SCL_net_0                              : std_logic;
-signal PRESSURE_SCL_net_0                         : std_logic;
 signal Science_0_new_SC_packet                    : std_logic;
 signal Science_0_RADDR                            : std_logic_vector(7 downto 0);
 signal Science_0_REN                              : std_logic;
@@ -458,11 +436,6 @@ signal Sensors_0_mag_time                         : std_logic_vector(23 downto 0
 signal Sensors_0_mag_x                            : std_logic_vector(11 downto 0);
 signal Sensors_0_mag_y                            : std_logic_vector(11 downto 0);
 signal Sensors_0_mag_z                            : std_logic_vector(11 downto 0);
-signal Sensors_0_pressure_raw                     : std_logic_vector(23 downto 0);
-signal Sensors_0_pressure_raw23to12               : std_logic_vector(23 downto 12);
-signal Sensors_0_pressure_temp_raw                : std_logic_vector(23 downto 0);
-signal Sensors_0_pressure_temp_raw23to12          : std_logic_vector(23 downto 12);
-signal Sensors_0_pressure_time                    : std_logic_vector(23 downto 0);
 signal SweepTable_0_RD                            : std_logic_vector(15 downto 0);
 signal SweepTable_1_RD                            : std_logic_vector(15 downto 0);
 signal TableSelect_0_RADDR                        : std_logic_vector(7 downto 0);
@@ -483,7 +456,6 @@ signal UART_0_rx_rdy                              : std_logic;
 signal UART_0_tx_rdy                              : std_logic;
 signal UC_UART_RX_net_0                           : std_logic;
 signal FPGA_BUF_INT_net_1                         : std_logic;
-signal PRESSURE_SCL_net_1                         : std_logic;
 signal UC_UART_RX_net_1                           : std_logic;
 signal GYRO_SCL_net_1                             : std_logic;
 signal ACCE_SCL_net_1                             : std_logic;
@@ -510,8 +482,6 @@ signal DPIN_71_net_1                              : std_logic;
 signal DPIN_96_net_1                              : std_logic;
 signal FMC_DA_0_net_0                             : std_logic_vector(7 downto 0);
 signal gyro_z_slice_0                             : std_logic_vector(3 downto 0);
-signal pressure_raw_slice_0                       : std_logic_vector(11 downto 0);
-signal pressure_temp_raw_slice_0                  : std_logic_vector(11 downto 0);
 signal s_clks_slice_0                             : std_logic_vector(0 to 0);
 signal s_clks_slice_1                             : std_logic_vector(10 to 10);
 signal s_clks_slice_2                             : std_logic_vector(11 to 11);
@@ -553,8 +523,6 @@ begin
 ----------------------------------------------------------------------
  FPGA_BUF_INT_net_1 <= FPGA_BUF_INT_net_0;
  FPGA_BUF_INT       <= FPGA_BUF_INT_net_1;
- PRESSURE_SCL_net_1 <= PRESSURE_SCL_net_0;
- PRESSURE_SCL       <= PRESSURE_SCL_net_1;
  UC_UART_RX_net_1   <= UC_UART_RX_net_0;
  UC_UART_RX         <= UC_UART_RX_net_1;
  GYRO_SCL_net_1     <= GYRO_SCL_net_0;
@@ -608,45 +576,41 @@ begin
 ----------------------------------------------------------------------
 -- Slices assignments
 ----------------------------------------------------------------------
- Sensors_0_gyro_z7to4              <= Sensors_0_gyro_z(7 downto 4);
- Sensors_0_gyro_z11to8             <= Sensors_0_gyro_z(11 downto 8);
- Sensors_0_gyro_z15to12            <= Sensors_0_gyro_z(15 downto 12);
- Sensors_0_pressure_raw23to12      <= Sensors_0_pressure_raw(23 downto 12);
- Sensors_0_pressure_temp_raw23to12 <= Sensors_0_pressure_temp_raw(23 downto 12);
- Timing_0_s_clks4to4(4)            <= s_clks_net_0(4);
- Timing_0_s_clks9to9(9)            <= s_clks_net_0(9);
- Timing_0_s_clks14to14(14)         <= s_clks_net_0(14);
- Timing_0_s_clks16to16(16)         <= s_clks_net_0(16);
- Timing_0_s_clks20to20(20)         <= s_clks_net_0(20);
- Timing_0_s_clks22to22(22)         <= s_clks_net_0(22);
- Timing_0_s_clks24to24(24)         <= s_clks_net_0(24);
- Timing_0_s_clks30to30(30)         <= s_clks_net_0(30);
- gyro_z_slice_0                    <= Sensors_0_gyro_z(3 downto 0);
- pressure_raw_slice_0              <= Sensors_0_pressure_raw(11 downto 0);
- pressure_temp_raw_slice_0         <= Sensors_0_pressure_temp_raw(11 downto 0);
- s_clks_slice_0(0)                 <= s_clks_net_0(0);
- s_clks_slice_1(10)                <= s_clks_net_0(10);
- s_clks_slice_2(11)                <= s_clks_net_0(11);
- s_clks_slice_3(12)                <= s_clks_net_0(12);
- s_clks_slice_4(13)                <= s_clks_net_0(13);
- s_clks_slice_5(15)                <= s_clks_net_0(15);
- s_clks_slice_6(17)                <= s_clks_net_0(17);
- s_clks_slice_7(18)                <= s_clks_net_0(18);
- s_clks_slice_8(19)                <= s_clks_net_0(19);
- s_clks_slice_9(1)                 <= s_clks_net_0(1);
- s_clks_slice_10(21)               <= s_clks_net_0(21);
- s_clks_slice_11(23)               <= s_clks_net_0(23);
- s_clks_slice_12(25)               <= s_clks_net_0(25);
- s_clks_slice_13(26)               <= s_clks_net_0(26);
- s_clks_slice_14(27)               <= s_clks_net_0(27);
- s_clks_slice_15(28)               <= s_clks_net_0(28);
- s_clks_slice_16(29)               <= s_clks_net_0(29);
- s_clks_slice_17(2)                <= s_clks_net_0(2);
- s_clks_slice_18(3)                <= s_clks_net_0(3);
- s_clks_slice_19(5)                <= s_clks_net_0(5);
- s_clks_slice_20(6)                <= s_clks_net_0(6);
- s_clks_slice_21(7)                <= s_clks_net_0(7);
- s_clks_slice_22(8)                <= s_clks_net_0(8);
+ Sensors_0_gyro_z7to4      <= Sensors_0_gyro_z(7 downto 4);
+ Sensors_0_gyro_z11to8     <= Sensors_0_gyro_z(11 downto 8);
+ Sensors_0_gyro_z15to12    <= Sensors_0_gyro_z(15 downto 12);
+ Timing_0_s_clks4to4(4)    <= s_clks_net_0(4);
+ Timing_0_s_clks9to9(9)    <= s_clks_net_0(9);
+ Timing_0_s_clks14to14(14) <= s_clks_net_0(14);
+ Timing_0_s_clks16to16(16) <= s_clks_net_0(16);
+ Timing_0_s_clks20to20(20) <= s_clks_net_0(20);
+ Timing_0_s_clks22to22(22) <= s_clks_net_0(22);
+ Timing_0_s_clks24to24(24) <= s_clks_net_0(24);
+ Timing_0_s_clks30to30(30) <= s_clks_net_0(30);
+ gyro_z_slice_0            <= Sensors_0_gyro_z(3 downto 0);
+ s_clks_slice_0(0)         <= s_clks_net_0(0);
+ s_clks_slice_1(10)        <= s_clks_net_0(10);
+ s_clks_slice_2(11)        <= s_clks_net_0(11);
+ s_clks_slice_3(12)        <= s_clks_net_0(12);
+ s_clks_slice_4(13)        <= s_clks_net_0(13);
+ s_clks_slice_5(15)        <= s_clks_net_0(15);
+ s_clks_slice_6(17)        <= s_clks_net_0(17);
+ s_clks_slice_7(18)        <= s_clks_net_0(18);
+ s_clks_slice_8(19)        <= s_clks_net_0(19);
+ s_clks_slice_9(1)         <= s_clks_net_0(1);
+ s_clks_slice_10(21)       <= s_clks_net_0(21);
+ s_clks_slice_11(23)       <= s_clks_net_0(23);
+ s_clks_slice_12(25)       <= s_clks_net_0(25);
+ s_clks_slice_13(26)       <= s_clks_net_0(26);
+ s_clks_slice_14(27)       <= s_clks_net_0(27);
+ s_clks_slice_15(28)       <= s_clks_net_0(28);
+ s_clks_slice_16(29)       <= s_clks_net_0(29);
+ s_clks_slice_17(2)        <= s_clks_net_0(2);
+ s_clks_slice_18(3)        <= s_clks_net_0(3);
+ s_clks_slice_19(5)        <= s_clks_net_0(5);
+ s_clks_slice_20(6)        <= s_clks_net_0(6);
+ s_clks_slice_21(7)        <= s_clks_net_0(7);
+ s_clks_slice_22(8)        <= s_clks_net_0(8);
 ----------------------------------------------------------------------
 -- Component instances
 ----------------------------------------------------------------------
@@ -678,28 +642,24 @@ CLKINT_2 : CLKINT
 Data_Hub_Packets_0 : Data_Hub_Packets
     port map( 
         -- Inputs
-        acc_time          => Sensors_0_acc_time,
-        acc_x             => Sensors_0_acc_x,
-        acc_y             => Sensors_0_acc_y,
-        acc_z             => Sensors_0_acc_z,
-        acc_temp          => Sensors_0_acc_temp,
-        mag_time          => Sensors_0_mag_time,
-        mag_x             => Sensors_0_mag_x,
-        mag_y             => Sensors_0_mag_y,
-        mag_z             => Sensors_0_mag_z,
-        gyro_time         => Sensors_0_gyro_time,
-        gyro_x            => Sensors_0_gyro_x,
-        gyro_y            => Sensors_0_gyro_y,
-        gyro_z            => Sensors_0_gyro_z,
-        gyro_temp         => Sensors_0_gyro_temp,
-        pressure_time     => Sensors_0_pressure_time,
-        pressure_raw      => Sensors_0_pressure_raw,
-        pressure_temp_raw => Sensors_0_pressure_temp_raw,
+        acc_time    => Sensors_0_acc_time,
+        acc_x       => Sensors_0_acc_x,
+        acc_y       => Sensors_0_acc_y,
+        acc_z       => Sensors_0_acc_z,
+        acc_temp    => Sensors_0_acc_temp,
+        mag_time    => Sensors_0_mag_time,
+        mag_x       => Sensors_0_mag_x,
+        mag_y       => Sensors_0_mag_y,
+        mag_z       => Sensors_0_mag_z,
+        gyro_time   => Sensors_0_gyro_time,
+        gyro_x      => Sensors_0_gyro_x,
+        gyro_y      => Sensors_0_gyro_y,
+        gyro_z      => Sensors_0_gyro_z,
+        gyro_temp   => Sensors_0_gyro_temp,
         -- Outputs
-        acc_packet        => Data_Hub_Packets_0_acc_packet_2,
-        mag_packet        => Data_Hub_Packets_0_mag_packet_2,
-        gyro_packet       => Data_Hub_Packets_0_gyro_packet_1,
-        pressure_packet   => Data_Hub_Packets_0_pressure_packet_2 
+        acc_packet  => Data_Hub_Packets_0_acc_packet_2,
+        mag_packet  => Data_Hub_Packets_0_mag_packet_2,
+        gyro_packet => Data_Hub_Packets_0_gyro_packet_1 
         );
 -- Data_Saving_0
 Data_Saving_0 : Data_Saving
@@ -748,34 +708,33 @@ General_Controller_0 : General_Controller
         clk_256Hz             => Timing_0_s_clks16to16(16),
         clk_64s               => Timing_0_s_clks30to30(30),
         reset                 => CLKINT_1_Y,
+        uart_rx_byte          => UART_0_recv,
         uart_tx_ready         => UART_0_tx_rdy,
         uart_rx_valid         => UART_0_rx_rdy,
-        sc_new                => Science_0_new_SC_packet,
-        uart_rx_byte          => UART_0_recv,
         swt_rdata0            => SweepTable_0_RD,
         swt_rdata1            => SweepTable_1_RD,
         acc_packet            => Data_Hub_Packets_0_acc_packet_2,
         mag_packet            => Data_Hub_Packets_0_mag_packet_2,
         gyro_packet           => Data_Hub_Packets_0_gyro_packet_1,
-        pres_packet           => Data_Hub_Packets_0_pressure_packet_2,
         timestamp_packet      => Timekeeper_0_timestamp_packet,
+        sc_new                => Science_0_new_SC_packet,
         sc_data               => Science_0_SC_packet,
         -- Outputs
+        swt_wdata             => General_Controller_0_swt_wdata,
+        swt_waddr             => General_Controller_0_swt_waddr,
+        swt_raddr             => General_Controller_0_swt_raddr,
         swt_wen0              => General_Controller_0_swt_wen0,
         swt_wen1              => General_Controller_0_swt_wen1,
         swt_ren               => General_Controller_0_swt_ren,
+        uart_tx_byte          => General_Controller_0_uart_tx_byte,
         uart_tx_start         => General_Controller_0_uart_tx_start,
         uart_rx_ack           => General_Controller_0_uart_rx_ack,
         led1                  => LED1_0,
         led2                  => LED2_net_0,
-        Bias_enabled          => General_Controller_0_Bias_enabled,
-        Sweep_enabled         => General_Controller_0_Sweep_enabled,
-        swt_wdata             => General_Controller_0_swt_wdata,
-        swt_waddr             => General_Controller_0_swt_waddr,
-        swt_raddr             => General_Controller_0_swt_raddr,
-        uart_tx_byte          => General_Controller_0_uart_tx_byte,
         C_bias_V0             => General_Controller_0_C_bias_V0,
         C_bias_V1             => General_Controller_0_C_bias_V1,
+        Bias_enabled          => General_Controller_0_Bias_enabled,
+        Sweep_enabled         => General_Controller_0_Sweep_enabled,
         swt_nof_steps         => General_Controller_0_swt_nof_steps,
         swt_samples_per_step  => General_Controller_0_swt_samples_per_step,
         swt_samples_per_point => General_Controller_0_swt_samples_per_point,
@@ -838,48 +797,34 @@ Science_0 : Science
 Sensors_0 : Sensors
     port map( 
         -- Inputs
-        clk               => CLKINT_0_Y_1,
-        reset             => CLKINT_1_Y,
-        en                => VCC_net,
-        clk_1kHz          => Timing_0_s_clks14to14(14),
-        i2c_clk           => Timing_0_clk_800kHz,
-        microseconds      => Timekeeper_0_microseconds,
+        clk           => CLKINT_0_Y_1,
+        reset         => CLKINT_1_Y,
+        en            => VCC_net,
+        i2c_clk       => Timing_0_clk_800kHz,
+        microseconds  => Timekeeper_0_microseconds,
         -- Outputs
-        acce_scl          => ACCE_SCL_net_0,
-        pressure_scl      => PRESSURE_SCL_net_0,
-        gyro_scl          => GYRO_SCL_net_0,
-        acc_new_data      => OPEN,
-        mag_new_data      => OPEN,
-        gyro_new_data     => OPEN,
-        pressure_new_data => OPEN,
-        pres_cal_new_data => OPEN,
-        acc_x             => Sensors_0_acc_x,
-        acc_y             => Sensors_0_acc_y,
-        acc_z             => Sensors_0_acc_z,
-        acc_temp          => Sensors_0_acc_temp,
-        mag_x             => Sensors_0_mag_x,
-        mag_y             => Sensors_0_mag_y,
-        mag_z             => Sensors_0_mag_z,
-        gyro_x            => Sensors_0_gyro_x,
-        gyro_y            => Sensors_0_gyro_y,
-        gyro_z            => Sensors_0_gyro_z,
-        gyro_temp         => Sensors_0_gyro_temp,
-        pressure_raw      => Sensors_0_pressure_raw,
-        pressure_temp_raw => Sensors_0_pressure_temp_raw,
-        C1                => OPEN,
-        C2                => OPEN,
-        C3                => OPEN,
-        C4                => OPEN,
-        C5                => OPEN,
-        C6                => OPEN,
-        pressure_time     => Sensors_0_pressure_time,
-        gyro_time         => Sensors_0_gyro_time,
-        acc_time          => Sensors_0_acc_time,
-        mag_time          => Sensors_0_mag_time,
+        acce_scl      => ACCE_SCL_net_0,
+        gyro_scl      => GYRO_SCL_net_0,
+        acc_new_data  => OPEN,
+        mag_new_data  => OPEN,
+        gyro_new_data => OPEN,
+        acc_x         => Sensors_0_acc_x,
+        acc_y         => Sensors_0_acc_y,
+        acc_z         => Sensors_0_acc_z,
+        acc_temp      => Sensors_0_acc_temp,
+        mag_x         => Sensors_0_mag_x,
+        mag_y         => Sensors_0_mag_y,
+        mag_z         => Sensors_0_mag_z,
+        gyro_x        => Sensors_0_gyro_x,
+        gyro_y        => Sensors_0_gyro_y,
+        gyro_z        => Sensors_0_gyro_z,
+        gyro_temp     => Sensors_0_gyro_temp,
+        gyro_time     => Sensors_0_gyro_time,
+        acc_time      => Sensors_0_acc_time,
+        mag_time      => Sensors_0_mag_time,
         -- Inouts
-        gyro_sda          => GYRO_SDA,
-        acce_sda          => ACCE_SDA,
-        pressure_sda      => PRESSURE_SDA 
+        gyro_sda      => GYRO_SDA,
+        acce_sda      => ACCE_SDA 
         );
 -- SweepTable_0
 SweepTable_0 : SweepTable

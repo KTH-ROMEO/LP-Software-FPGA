@@ -22,7 +22,6 @@ port (
     acc_packet       : IN std_logic_vector(55 downto 0);
     mag_packet       : IN std_logic_vector(55 downto 0);
     gyro_packet      : IN std_logic_vector(55 downto 0);
-    pres_packet      : IN std_logic_vector(55 downto 0);
     timestamp_packet : IN std_logic_vector(55 downto 0);
 
     sc_new     : IN std_logic;
@@ -157,7 +156,6 @@ architecture architecture_General_Controller of General_Controller is
     signal acc_send_req            : std_logic := '0';
     signal mag_send_req            : std_logic := '0';
     signal gyro_send_req           : std_logic := '0';
-    signal pres_send_req           : std_logic := '0';
     signal err_pkt_send_req        : std_logic := '0';
     signal timestamp_send_req      : std_logic := '0';
     signal T_send_req              : std_logic := '0';
@@ -198,7 +196,6 @@ architecture architecture_General_Controller of General_Controller is
     signal acc_tx_flag            : std_logic := '0';
     signal mag_tx_flag            : std_logic := '0';
     signal gyro_tx_flag           : std_logic := '0';
-    signal pres_tx_flag       : std_logic := '0';
     signal err_pkt_tx_flag        : std_logic := '0';
     signal timestamp_tx_flag      : std_logic := '0';
     signal T_tx_flag              : std_logic := '0';
@@ -223,46 +220,39 @@ architecture architecture_General_Controller of General_Controller is
     signal acc_periodic_send_req       : std_logic := '0';
     signal mag_periodic_send_req       : std_logic := '0';
     signal gyro_periodic_send_req      : std_logic := '0';
-    signal pres_periodic_send_req      : std_logic := '0';
     signal err_pkt_periodic_send_req   : std_logic := '0';
     signal timestamp_periodic_send_req : std_logic := '0';
 
     signal acc_cnt_reset_req           : std_logic := '0';
     signal mag_cnt_reset_req           : std_logic := '0';
     signal gyro_cnt_reset_req          : std_logic := '0';
-    signal pres_cnt_reset_req          : std_logic := '0';
     signal err_pkt_cnt_reset_req       : std_logic := '0';
     signal timestamp_cnt_reset_req     : std_logic := '0';
 
     signal acc_tx_periodic_flag       : std_logic := '0';
     signal mag_tx_periodic_flag       : std_logic := '0';
     signal gyro_tx_periodic_flag      : std_logic := '0';
-    signal pres_tx_periodic_flag      : std_logic := '0';
     signal err_pkt_tx_periodic_flag   : std_logic := '0';
     signal timestamp_tx_periodic_flag : std_logic := '0';
 
     signal acc_period       : hk_period_cnt_type := 0;
     signal mag_period       : hk_period_cnt_type := 0;
     signal gyro_period      : hk_period_cnt_type := 0;
-    signal pres_period      : hk_period_cnt_type := 0;
     signal err_pkt_period   : hk_period_cnt_type := 0;
     signal timestamp_period : hk_period_cnt_type := 0;
     signal acc_cnt        : hk_period_cnt_type := 0;
     signal mag_cnt        : hk_period_cnt_type := 0;
     signal gyro_cnt       : hk_period_cnt_type := 0;
-    signal pres_cnt       : hk_period_cnt_type := 0;
     signal err_pkt_cnt    : hk_period_cnt_type := 0;
     signal timestamp_cnt  : hk_period_cnt_type := 0;
     signal acc_scale_code       : std_logic_vector(1 downto 0) := (others => '0');
     signal mag_scale_code       : std_logic_vector(1 downto 0) := (others => '0');
     signal gyro_scale_code      : std_logic_vector(1 downto 0) := (others => '0');
-    signal pres_scale_code      : std_logic_vector(1 downto 0) := (others => '0');
     signal err_pkt_scale_code   : std_logic_vector(1 downto 0) := (others => '0');
     signal timestamp_scale_code : std_logic_vector(1 downto 0) := (others => '0');
     signal acc_period_code       : std_logic_vector(7 downto 0) := (others => '0');
     signal mag_period_code       : std_logic_vector(7 downto 0) := (others => '0');
     signal gyro_period_code      : std_logic_vector(7 downto 0) := (others => '0');
-    signal pres_period_code      : std_logic_vector(7 downto 0) := (others => '0');
     signal err_pkt_period_code   : std_logic_vector(7 downto 0) := (others => '0');
     signal timestamp_period_code : std_logic_vector(7 downto 0) := (others => '0');
     signal T_2rb            : std_logic_vector(7 downto 0) := (others => '0');
@@ -306,7 +296,6 @@ architecture architecture_General_Controller of General_Controller is
     constant HK_ACC_ID  : std_logic_vector(7 downto 0) := x"01";
     constant HK_MAG_ID  : std_logic_vector(7 downto 0) := x"02";
     constant HK_GYRO_ID : std_logic_vector(7 downto 0) := x"03";
-    constant HK_PRES_ID : std_logic_vector(7 downto 0) := x"04";
     constant HK_ERR_ID  : std_logic_vector(7 downto 0) := x"05";
     constant HK_TIME_ID : std_logic_vector(7 downto 0) := x"06";
 
@@ -488,19 +477,16 @@ begin
             acc_period       <= 0;
             mag_period       <= 0;
             gyro_period      <= 0;
-            pres_period      <= 0;
             err_pkt_period   <= 0;
             timestamp_period <= 0;
             acc_scale_code       <= (others => '0');
             mag_scale_code       <= (others => '0');
             gyro_scale_code      <= (others => '0');
-            pres_scale_code      <= (others => '0');
             err_pkt_scale_code   <= (others => '0');
             timestamp_scale_code <= (others => '0');
             acc_period_code        <= (others => '0');
             mag_period_code        <= (others => '0');
             gyro_period_code       <= (others => '0');
-            pres_period_code       <= (others => '0');
             err_pkt_period_code    <= (others => '0');
             timestamp_period_code  <= (others => '0');
             T_2rb     <= (others => '0');
@@ -519,7 +505,6 @@ begin
             acc_send_req         <= '0';
             mag_send_req         <= '0';
             gyro_send_req        <= '0';
-            pres_send_req        <= '0';
             err_pkt_send_req     <= '0';
             timestamp_send_req   <= '0';
             T_send_req           <= '0';
@@ -549,7 +534,6 @@ begin
             acc_cnt_reset_req    <= '0';
             mag_cnt_reset_req    <= '0';
             gyro_cnt_reset_req   <= '0';
-            pres_cnt_reset_req   <= '0';
 
         elsif rising_edge(clk) then
 
@@ -558,7 +542,6 @@ begin
             acc_send_req         <= '0';
             mag_send_req         <= '0';
             gyro_send_req        <= '0';
-            pres_send_req        <= '0';
             err_pkt_send_req     <= '0';
             timestamp_send_req   <= '0';
             T_send_req           <= '0';
@@ -588,7 +571,6 @@ begin
             acc_cnt_reset_req       <= '0';
             mag_cnt_reset_req       <= '0';
             gyro_cnt_reset_req      <= '0';
-            pres_cnt_reset_req      <= '0';
             err_pkt_cnt_reset_req   <= '0';
             timestamp_cnt_reset_req <= '0';
 
@@ -824,9 +806,6 @@ begin
                                 when HK_GYRO_ID =>
                                     T_2rb      <= gyro_period_code;
                                     T_send_req <= '1';
-                                when HK_PRES_ID =>
-                                    T_2rb      <= pres_period_code;
-                                    T_send_req <= '1';
                                 when HK_ERR_ID =>
                                     T_2rb      <= err_pkt_period_code;
                                     T_send_req <= '1';
@@ -861,12 +840,6 @@ begin
                                     gyro_period <= v_val;
                                     gyro_cnt_reset_req <= '1';
 
-                                when HK_PRES_ID =>
-                                    pres_period_code <= payload_buffer(1);
-                                    pres_scale_code  <= v_scale;
-                                    pres_period <= v_val;
-                                    pres_cnt_reset_req <= '1';
-
                                 when HK_ERR_ID =>
                                     err_pkt_period_code <= payload_buffer(1);
                                     err_pkt_scale_code  <= v_scale;
@@ -890,7 +863,6 @@ begin
                                 when HK_ACC_ID  => acc_send_req       <= '1';
                                 when HK_MAG_ID  => mag_send_req       <= '1';
                                 when HK_GYRO_ID => gyro_send_req      <= '1';
-                                when HK_PRES_ID => pres_send_req      <= '1';
                                 when HK_ERR_ID  => err_pkt_send_req   <= '1';
                                 when HK_TIME_ID => timestamp_send_req <= '1';
                                 when others =>
@@ -921,7 +893,6 @@ begin
         variable acc_tick       : boolean := false;
         variable mag_tick       : boolean := false;
         variable gyro_tick      : boolean := false;
-        variable pres_tick      : boolean := false;
         variable err_pkt_tick   : boolean := false;
         variable timestamp_tick : boolean := false;
 
@@ -935,14 +906,12 @@ begin
             acc_cnt       <= 0;
             mag_cnt       <= 0;
             gyro_cnt      <= 0;
-            pres_cnt      <= 0;
             err_pkt_cnt   <= 0;
             timestamp_cnt <= 0;
 
             acc_periodic_send_req       <= '0';
             mag_periodic_send_req       <= '0';
             gyro_periodic_send_req      <= '0';
-            pres_periodic_send_req      <= '0';
             err_pkt_periodic_send_req   <= '0';
             timestamp_periodic_send_req <= '0';
 
@@ -950,7 +919,6 @@ begin
             acc_periodic_send_req       <= '0';
             mag_periodic_send_req       <= '0';
             gyro_periodic_send_req      <= '0';
-            pres_periodic_send_req      <= '0';
             err_pkt_periodic_send_req   <= '0';
             timestamp_periodic_send_req <= '0';
 
@@ -969,7 +937,6 @@ begin
             acc_tick       := false;
             mag_tick       := false;
             gyro_tick      := false;
-            pres_tick      := false;
             err_pkt_tick   := false;
             timestamp_tick := false;
 
@@ -1005,15 +972,6 @@ begin
                 gyro_tick := tick_64s;
             end if;
 
-            if pres_scale_code = "00" then
-                pres_tick := tick_256Hz;
-            elsif pres_scale_code = "01" then
-                pres_tick := tick_4Hz;
-            elsif pres_scale_code = "10" then
-                pres_tick := tick_1Hz;
-            else
-                pres_tick := tick_64s;
-            end if;
 
             if err_pkt_scale_code = "00" then
                 err_pkt_tick := tick_256Hz;
@@ -1076,18 +1034,6 @@ begin
                 end if;
             end if;
 
-            if pres_cnt_reset_req = '1' then
-                pres_cnt <= 0;
-            elsif pres_tick then
-                if pres_period = 0 then
-                    pres_cnt <= 0;
-                elsif pres_cnt + 1 = pres_period then
-                    pres_cnt <= 0;
-                    pres_periodic_send_req <= '1';
-                else
-                    pres_cnt <= pres_cnt + 1;
-                end if;
-            end if;
 
             if err_pkt_cnt_reset_req = '1' then
                 err_pkt_cnt <= 0;
@@ -1226,49 +1172,49 @@ begin
                         swt_value_send_req <= '1';
                         swt_engine_state <= SWT_IDLE;
 
-                    --when SWT_MACRO_ISSUE_READ =>
-                        --swt_raddr_i <= mac_swt_step;
-                        --swt_ren_i   <= '1';
-                        --mac_swt_wait <= 0;
-                        --swt_engine_state <= SWT_MACRO_WAIT_READ;
---
-                    --when SWT_MACRO_WAIT_READ =>
-                        --swt_ren_i <= '0';
---
-                        --if mac_swt_wait < 3 then
-                            --mac_swt_wait <= mac_swt_wait + 1;
-                        --else
-                            --mac_swt_wait <= 0;
-                            --mac_swt_val0 <= swt_rdata0;
-                            --mac_swt_val1 <= swt_rdata1;
---
-                            --if (x"00" & mac_swt_step) >= mac_swt_tot_steps then
-                                --mac_swt_last_pkt <= '1';
-                            --else
-                                --mac_swt_last_pkt <= '0';
-                            --end if;
---
-                            --swt_engine_state <= SWT_MACRO_REQUEST_TX;
-                        --end if;
---
-                    --when SWT_MACRO_REQUEST_TX =>
-                        --if macro_table_tx_flag = '0' then
-                            --macro_table_tx_flag <= '1';
-                            --swt_engine_state <= SWT_MACRO_WAIT_TX_ACCEPT;
-                        --end if;
---
-                    --when SWT_MACRO_WAIT_TX_ACCEPT =>
-                        --if  macro_table_tx_ack = '1' then
-                             --macro_table_tx_flag <= '0';
---
-                            --if mac_swt_last_pkt = '1' then
-                                --mac_swt_active <= '0';
-                                --swt_engine_state <= SWT_IDLE;
-                            --else
-                                --mac_swt_step <= mac_swt_step + 1;
-                                --swt_engine_state <= SWT_MACRO_ISSUE_READ;
-                            --end if;
-                        --end if;
+                    when SWT_MACRO_ISSUE_READ =>
+                        swt_raddr_i <= mac_swt_step;
+                        swt_ren_i   <= '1';
+                        mac_swt_wait <= 0;
+                        swt_engine_state <= SWT_MACRO_WAIT_READ;
+
+                    when SWT_MACRO_WAIT_READ =>
+                        swt_ren_i <= '0';
+
+                        if mac_swt_wait < 3 then
+                            mac_swt_wait <= mac_swt_wait + 1;
+                        else
+                            mac_swt_wait <= 0;
+                            mac_swt_val0 <= swt_rdata0;
+                            mac_swt_val1 <= swt_rdata1;
+
+                            if (x"00" & mac_swt_step) >= mac_swt_tot_steps then
+                                mac_swt_last_pkt <= '1';
+                            else
+                                mac_swt_last_pkt <= '0';
+                            end if;
+
+                            swt_engine_state <= SWT_MACRO_REQUEST_TX;
+                        end if;
+
+                    when SWT_MACRO_REQUEST_TX =>
+                        if macro_table_tx_flag = '0' then
+                            macro_table_tx_flag <= '1';
+                            swt_engine_state <= SWT_MACRO_WAIT_TX_ACCEPT;
+                        end if;
+
+                    when SWT_MACRO_WAIT_TX_ACCEPT =>
+                        if  macro_table_tx_ack = '1' then
+                             macro_table_tx_flag <= '0';
+
+                            if mac_swt_last_pkt = '1' then
+                                mac_swt_active <= '0';
+                                swt_engine_state <= SWT_IDLE;
+                            else
+                                mac_swt_step <= mac_swt_step + 1;
+                                swt_engine_state <= SWT_MACRO_ISSUE_READ;
+                            end if;
+                        end if;
 
                     when others =>
                         err_fsm_illegal_state_swt_evt <= '1';
@@ -1296,7 +1242,6 @@ begin
             acc_tx_flag         <= '0';
             mag_tx_flag         <= '0';
             gyro_tx_flag        <= '0';
-            pres_tx_flag        <= '0';
             err_pkt_tx_flag     <= '0';
             timestamp_tx_flag   <= '0';
             T_tx_flag           <= '0';
@@ -1320,7 +1265,6 @@ begin
             acc_tx_periodic_flag       <= '0';
             mag_tx_periodic_flag       <= '0';
             gyro_tx_periodic_flag      <= '0';
-            pres_tx_periodic_flag      <= '0';
             err_pkt_tx_periodic_flag   <= '0';
             timestamp_tx_periodic_flag <= '0';
 
@@ -1342,7 +1286,6 @@ begin
             if (acc_periodic_send_req = '1' and (acc_tx_periodic_flag = '1' or acc_tx_flag = '1')) or
                (mag_periodic_send_req = '1' and (mag_tx_periodic_flag = '1' or mag_tx_flag = '1')) or
                (gyro_periodic_send_req = '1' and (gyro_tx_periodic_flag = '1' or gyro_tx_flag = '1')) or
-               (pres_periodic_send_req = '1' and (pres_tx_periodic_flag = '1' or pres_tx_flag = '1')) or
                (err_pkt_periodic_send_req = '1' and (err_pkt_tx_periodic_flag = '1' or err_pkt_tx_flag = '1')) or
                (timestamp_periodic_send_req = '1' and (timestamp_tx_periodic_flag = '1' or timestamp_tx_flag = '1')) then
                 err_periodic_hk_overrun_evt <= '1';
@@ -1350,7 +1293,6 @@ begin
             if (acc_send_req = '1' and (acc_tx_flag = '1' or acc_tx_periodic_flag = '1')) or
                (mag_send_req = '1' and (mag_tx_flag = '1' or mag_tx_periodic_flag = '1')) or
                (gyro_send_req = '1' and (gyro_tx_flag = '1' or gyro_tx_periodic_flag = '1')) or
-               (pres_send_req = '1' and (pres_tx_flag = '1' or pres_tx_periodic_flag = '1')) or
                (err_pkt_send_req = '1' and (err_pkt_tx_flag = '1' or err_pkt_tx_periodic_flag = '1')) or
                (timestamp_send_req = '1' and (timestamp_tx_flag = '1' or timestamp_tx_periodic_flag = '1')) or
                (T_send_req = '1' and T_tx_flag = '1') or
@@ -1376,9 +1318,6 @@ begin
             end if;
             if gyro_send_req = '1' then
                 gyro_tx_flag <= '1';
-            end if;
-            if pres_send_req = '1' then
-                pres_tx_flag <= '1';
             end if;
             if err_pkt_send_req = '1' then
                 err_pkt_tx_flag <= '1';
@@ -1429,9 +1368,6 @@ begin
             if gyro_periodic_send_req = '1' then
                 gyro_tx_periodic_flag <= '1';
             end if;
-            if pres_periodic_send_req = '1' then
-                pres_tx_periodic_flag <= '1';
-            end if;
             if err_pkt_periodic_send_req = '1' then
                 err_pkt_tx_periodic_flag <= '1';
             end if;
@@ -1475,11 +1411,6 @@ begin
                     gyro_tx_periodic_flag <= '0';
                     start_tx <= '1';
 
-                elsif pres_tx_flag = '1' or pres_tx_periodic_flag = '1' then
-                    msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 & "11111" & "001" & HK_PRES_ID & pres_packet & POSTAMBLE);
-                    pres_tx_flag <= '0';
-                    pres_tx_periodic_flag <= '0';
-                    start_tx <= '1';
 
                 elsif err_pkt_tx_flag = '1' or err_pkt_tx_periodic_flag = '1' then
                     msg_2send <= vector_2array(PREAMBLE_1 & PREAMBLE_2 & "11111" & "001" & HK_ERR_ID & hk_error_cnt_packet & POSTAMBLE);

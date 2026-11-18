@@ -1,5 +1,5 @@
 # Created by Microsemi Libero Software 11.9.6.7
-# Fri Jul 24 00:45:13 2026
+# Fri Oct 23 16:41:38 2026
 
 # (OPEN DESIGN)
 
@@ -11,7 +11,7 @@ set_defvar "IDE_DESIGNERVIEW_NAME" {Impl1}
 set_defvar "IDE_DESIGNERVIEW_COUNT" "1"
 set_defvar "IDE_DESIGNERVIEW_REV0" {Impl1}
 set_defvar "IDE_DESIGNERVIEW_REVNUM0" "1"
-set_defvar "IDE_DESIGNERVIEW_ROOTDIR" {C:\Users\Jesus\Documents\KTH\ROMEO\Repositories\LP-Software-FPGA\designer}
+set_defvar "IDE_DESIGNERVIEW_ROOTDIR" {C:\Users\Utente\Desktop\ROMEO_FPGA\LP-Software-FPGA\designer}
 set_defvar "IDE_DESIGNERVIEW_LASTREV" "1"
 
 
